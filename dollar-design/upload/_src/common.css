@@ -1,0 +1,24 @@
+@font-face { font-family: 'Black Han Sans'; src: url(fonts/BlackHanSans.ttf); }
+@font-face { font-family: 'Noto Sans KR'; font-weight: 500 700; src: url(fonts/NotoSansKR-700.ttf); }
+@font-face { font-family: 'Noto Sans KR'; font-weight: 800 900; src: url(fonts/NotoSansKR-900.ttf); }
+@font-face { font-family: 'Noto Serif KR'; font-weight: 700; src: url(fonts/NotoSerifKR-700.ttf); }
+@font-face { font-family: 'Noto Serif KR'; font-weight: 800 900; src: url(fonts/NotoSerifKR-900.ttf); }
+
+:root {
+  --ink: #06080e;
+  --night: #0b1222;
+  --lining: #14213d;
+  --paper: #f3efe6;
+  --gold: #e8b84a;
+  --gold-deep: #6b4a08;
+  --amber: #e08a1e;
+  --teal: #27c2b4;
+  --red: #e5484d;
+}
+
+html, body { margin: 0; padding: 0; overflow: hidden; background: var(--ink); }
+* { box-sizing: border-box; }
+
+.serif { font-family: 'Noto Serif KR', serif; }
+.sans { font-family: 'Noto Sans KR', sans-serif; }
+.display { font-family: 'Black Han Sans', sans-serif; }

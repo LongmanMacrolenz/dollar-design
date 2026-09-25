@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<style>
+  html, body { width: 2560px; height: 1440px; }
+  .stage {
+    position: relative; width: 2560px; height: 1440px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 40% 30% at 50% 50%, rgba(224,138,30,.22), transparent 70%),
+      linear-gradient(180deg, #0c1428 0%, var(--ink) 100%);
+  }
+  svg.threads { position: absolute; inset: 0; }
+  /* 모든 기기에서 보이는 안전 영역: 가운데 1546 × 423 */
+  .safe { position: absolute; left: 507px; top: 508px; width: 1546px; height: 423px;
+          display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .title { font-size: 150px; font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: 4px; text-shadow: 0 8px 0 var(--gold-deep); }
+  .tag { margin-top: 34px; font-size: 46px; font-weight: 700; color: var(--paper); }
+  .meta { margin-top: 26px; font-size: 32px; font-weight: 500; color: #b9b3a6; letter-spacing: 2px; display: flex; gap: 28px; align-items: center; }
+  .dot { display: inline-block; width: 18px; height: 18px; border-radius: 50%; margin-right: 10px; vertical-align: -1px; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="threads" viewBox="0 0 2560 1440" preserveAspectRatio="none">
+    <path d="M -50 1040 C 700 1000, 1600 1120, 2610 980" stroke="#e8b84a" stroke-width="6" fill="none" opacity=".55"/>
+    <path d="M -50 980 C 800 1080, 1700 960, 2610 1040" stroke="#e08a1e" stroke-width="6" fill="none" opacity=".45"/>
+    <path d="M -50 1100 C 900 1020, 1500 1060, 2610 1100" stroke="#27c2b4" stroke-width="6" fill="none" opacity=".55"/>
+  </svg>
+  <div class="safe">
+    <div class="title serif">달러의 설계</div>
+    <div class="tag sans">한 번도 진 적 없는 화폐는 어떻게 옷을 갈아입는가</div>
+    <div class="meta sans">
+      <span><i class="dot" style="background:#e8b84a"></i>금</span>
+      <span><i class="dot" style="background:#e08a1e"></i>석유</span>
+      <span><i class="dot" style="background:#27c2b4"></i>코드</span>
+      <span>·&nbsp; BC 416 멜로스에서 2026 호르무즈까지 &nbsp;·&nbsp; 매주 새 에피소드</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

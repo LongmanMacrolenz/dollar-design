@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<style>
+  html, body { width: 1280px; height: 720px; }
+  .stage {
+    position: relative; width: 1280px; height: 720px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 55% 60% at 50% 38%, rgba(224,138,30,.30), transparent 65%),
+      linear-gradient(180deg, #0d1528 0%, var(--ink) 85%);
+  }
+  svg.threads { position: absolute; inset: 0; }
+  .b2 { position: absolute; left: 50%; top: 34px; width: 900px; transform: translateX(-50%); opacity: .35; }
+  .top { position: absolute; top: 70px; width: 100%; text-align: center; font-size: 32px; font-weight: 700; color: var(--amber); letter-spacing: 6px; }
+  .big { position: absolute; top: 150px; width: 100%; text-align: center; line-height: 1; }
+  .big .w1 { font-size: 190px; color: var(--paper); letter-spacing: -4px; }
+  .big .w2 { font-size: 190px; color: var(--gold); letter-spacing: -4px; text-shadow: 0 8px 0 var(--gold-deep), 0 0 56px rgba(232,184,74,.45); }
+  .sub { position: absolute; top: 400px; width: 100%; text-align: center; font-size: 52px; font-weight: 900; color: var(--paper); }
+  .sub em { font-style: normal; color: var(--teal); }
+  .foot { position: absolute; bottom: 44px; width: 100%; display: flex; justify-content: center; align-items: center; gap: 18px; }
+  .badge { font-size: 32px; font-weight: 900; color: var(--ink); background: var(--gold); padding: 4px 16px 6px; border-radius: 6px; }
+  .series { font-size: 36px; font-weight: 900; color: var(--paper); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="b2" viewBox="0 0 400 145" aria-hidden="true">
+    <polygon fill="#04060b" points="200,0 400,110 386,121 342,113 300,138 252,113 200,141 148,113 100,138 58,113 14,121 0,110"/>
+  </svg>
+
+  <svg class="threads" viewBox="0 0 1280 720" preserveAspectRatio="none">
+    <defs>
+      <radialGradient id="knot" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#fff6dc"/>
+        <stop offset=".35" stop-color="#e8b84a" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#e8b84a" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <path d="M -40 700 C 300 600, 520 640, 640 590" stroke="#e8b84a" stroke-width="5" fill="none" opacity=".8"/>
+    <path d="M 1320 700 C 980 600, 760 640, 640 590" stroke="#27c2b4" stroke-width="5" fill="none" opacity=".8"/>
+    <path d="M -40 560 C 260 540, 520 575, 640 590" stroke="#e08a1e" stroke-width="5" fill="none" opacity=".8"/>
+    <circle cx="640" cy="590" r="46" fill="url(#knot)"/>
+  </svg>
+
+  <div class="top sans">이란 공습, 그날 새벽</div>
+  <div class="big display"><span class="w1">왜 하필 </span><span class="w2">지금?</span></div>
+  <div class="sub sans">돈은 <em>어디로</em> 흘러갔나</div>
+
+  <div class="foot">
+    <span class="badge sans">1화</span>
+    <span class="series serif">달러의 설계</span>
+  </div>
+</div>
+</body>
+</html>

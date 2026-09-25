@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<style>
+  html, body { width: 1280px; height: 720px; }
+  .stage {
+    position: relative; width: 1280px; height: 720px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 45% 55% at 82% 30%, rgba(224,138,30,.42), transparent 62%),
+      radial-gradient(ellipse 40% 45% at 92% 88%, rgba(39,194,180,.22), transparent 70%),
+      linear-gradient(180deg, #0c1428 0%, var(--ink) 78%);
+  }
+  svg.threads { position: absolute; inset: 0; }
+  .b2 { position: absolute; right: 64px; top: 58px; width: 470px; filter: drop-shadow(0 0 28px rgba(224,138,30,.55)); }
+  .date { position: absolute; left: 66px; top: 58px; font-size: 30px; font-weight: 700; color: var(--amber); letter-spacing: 5px; }
+  .copy { position: absolute; left: 60px; top: 236px; }
+  .l1 { font-size: 128px; line-height: 1; color: var(--paper); letter-spacing: -2px; }
+  .l1 b { color: var(--red); font-weight: normal; }
+  .l2 { margin-top: 18px; font-size: 158px; line-height: 1; color: var(--paper); letter-spacing: -3px; }
+  .l2 b { color: var(--gold); font-weight: normal; text-shadow: 0 7px 0 var(--gold-deep), 0 0 48px rgba(232,184,74,.45); }
+  .foot { position: absolute; left: 64px; bottom: 50px; display: flex; align-items: center; gap: 18px; }
+  .badge { font-size: 34px; font-weight: 900; color: var(--ink); background: var(--gold); padding: 4px 18px 6px; border-radius: 6px; }
+  .series { font-size: 38px; font-weight: 900; color: var(--paper); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="threads" viewBox="0 0 1280 720" preserveAspectRatio="none">
+    <defs>
+      <radialGradient id="knot" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#fff6dc" stop-opacity="1"/>
+        <stop offset=".35" stop-color="#e8b84a" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#e8b84a" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <path d="M -40 640 C 300 560, 700 700, 1150 560" stroke="#e8b84a" stroke-width="5" fill="none" opacity=".75"/>
+    <path d="M -40 470 C 380 520, 760 420, 1150 560" stroke="#e08a1e" stroke-width="5" fill="none" opacity=".6"/>
+    <path d="M 320 760 C 620 640, 900 660, 1150 560" stroke="#27c2b4" stroke-width="5" fill="none" opacity=".75"/>
+    <circle cx="1150" cy="560" r="70" fill="url(#knot)"/>
+  </svg>
+
+  <svg class="b2" viewBox="0 0 400 145" aria-hidden="true">
+    <polygon fill="#05070c" stroke="#f1b25a" stroke-opacity=".55" stroke-width="1.2"
+      points="200,0 400,110 386,121 342,113 300,138 252,113 200,141 148,113 100,138 58,113 14,121 0,110"/>
+  </svg>
+
+  <div class="date sans">2026. 2. 28.</div>
+
+  <div class="copy display">
+    <div class="l1">표면은 <b>핵</b></div>
+    <div class="l2">이면은 <b>달러</b></div>
+  </div>
+
+  <div class="foot">
+    <span class="badge sans">1화</span>
+    <span class="series serif">달러의 설계</span>
+  </div>
+</div>
+</body>
+</html>

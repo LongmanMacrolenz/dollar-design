@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<style>
+  html, body { width: 800px; height: 800px; }
+  .stage {
+    position: relative; width: 800px; height: 800px; overflow: hidden;
+    background: radial-gradient(circle at 50% 42%, #1a2a4d 0%, var(--lining) 45%, var(--ink) 100%);
+  }
+  svg.threads { position: absolute; inset: 0; }
+  .t1 { position: absolute; top: 190px; width: 100%; text-align: center; font-size: 104px; font-weight: 700; color: var(--paper); letter-spacing: 6px; }
+  .t2 { position: absolute; top: 300px; width: 100%; text-align: center; font-size: 250px; font-weight: 900; line-height: 1; color: var(--gold); text-shadow: 0 8px 0 var(--gold-deep); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="threads" viewBox="0 0 800 800">
+    <path d="M 150 640 C 280 600, 330 620, 400 610" stroke="#e8b84a" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M 650 640 C 520 600, 470 620, 400 610" stroke="#27c2b4" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M 400 700 C 380 670, 420 640, 400 610" stroke="#e08a1e" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <circle cx="400" cy="610" r="14" fill="#fff6dc"/>
+  </svg>
+  <div class="t1 serif">달러의</div>
+  <div class="t2 serif">설계</div>
+</div>
+</body>
+</html>
