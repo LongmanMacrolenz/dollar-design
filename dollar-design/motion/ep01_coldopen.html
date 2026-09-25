@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<!-- 1화 콜드 오픈 모션그래픽 (0:00–0:33). window.setTime(초)로 한 프레임씩 그린다. tools/motion_render.py가 사용 -->
+<link rel="stylesheet" href="../upload/_src/common.css">
+<style>
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+  #cam { position: absolute; inset: 0; transform-origin: 50% 50%; }
+  .layer { position: absolute; inset: 0; opacity: 0; overflow: hidden; }
+  .layer > svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+  .glow { position: absolute; border-radius: 50%; pointer-events: none; }
+
+  /* 뉴스 패널 */
+  #news { transform-origin: 50% 50%; }
+  .panel { position: absolute; top: 0; width: 640px; height: 1080px; overflow: hidden; }
+  .panel .flare { position: absolute; left: 170px; top: 250px; width: 300px; height: 300px; border-radius: 50%;
+                  background: radial-gradient(circle, #ffffff 0 12%, rgba(190,225,255,.85) 25%, rgba(120,170,255,.25) 50%, transparent 70%); }
+  .panel .streak { position: absolute; left: -200px; top: 395px; width: 1040px; height: 10px;
+                   background: linear-gradient(90deg, transparent, rgba(160,210,255,.9), transparent); filter: blur(2px); }
+  .ticker { position: absolute; left: 0; right: 0; bottom: 170px; height: 92px; display: flex; font-family: 'Noto Sans KR'; font-weight: 900; }
+  .ticker .lab { background: #d9232e; color: #fff; font-size: 38px; padding: 0 22px; display: flex; align-items: center; }
+  .ticker .txt { flex: 1; background: rgba(245,245,245,.96); color: #111; font-size: 44px; padding: 0 20px; display: flex; align-items: center; white-space: nowrap; }
+  #nuke { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0;
+          font-family: 'Black Han Sans'; font-size: 560px; color: #e5484d; line-height: 1;
+          text-shadow: 0 0 60px rgba(229,72,77,.8), 0 14px 0 #5a0c10; }
+  #tvbezel { position: absolute; inset: -60px; border: 60px solid #121317; border-radius: 30px; box-shadow: 0 0 0 8px #26282e, 0 40px 120px rgba(0,0,0,.9); opacity: 0; }
+
+  /* 자막 · 하단 바 · 큰 글자 */
+  .bar { position: absolute; left: 0; right: 0; height: 131px; background: #000; }
+  #cap { position: absolute; left: 0; right: 0; bottom: 0; height: 131px; display: flex; align-items: center; justify-content: center;
+         font-family: 'Noto Serif KR'; font-weight: 700; font-size: 46px; color: #f3efe6; letter-spacing: 1px; opacity: 0; }
+  #cap .who { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 30px; color: var(--amber); margin-right: 20px; letter-spacing: 2px; }
+  #lower { position: absolute; left: 96px; bottom: 190px; padding: 18px 180px 20px 30px; border-left: 8px solid var(--gold); opacity: 0;
+           background: linear-gradient(90deg, rgba(6,8,14,.88) 0, rgba(6,8,14,.8) calc(100% - 160px), rgba(6,8,14,0)); }
+  #lower .t { font-family: 'Noto Sans KR'; font-weight: 900; font-size: 54px; color: var(--paper); letter-spacing: 2px; }
+  #lower .s { margin-top: 6px; font-family: 'Noto Sans KR'; font-weight: 700; font-size: 32px; color: var(--amber); }
+  #question { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 10px; padding-left: 150px;
+              font-family: 'Black Han Sans'; color: var(--paper); text-shadow: 0 6px 24px rgba(0,0,0,.9); pointer-events: none; }
+  #question .l { font-size: 150px; line-height: 1.05; letter-spacing: -2px; display: flex; gap: 36px; }
+  #question .w { display: inline-block; opacity: 0; }
+  #question .gold { color: var(--gold); text-shadow: 0 8px 0 var(--gold-deep), 0 0 50px rgba(232,184,74,.5); }
+  #logo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0;
+          font-family: 'Noto Serif KR'; font-weight: 900; font-size: 190px; color: var(--gold); letter-spacing: 8px;
+          text-shadow: 0 10px 0 var(--gold-deep), 0 0 80px rgba(232,184,74,.5); }
+  #grain { position: absolute; inset: 0; width: 1920px; height: 1080px; opacity: .08; mix-blend-mode: overlay; }
+  #vig { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0,0,0,.55) 100%); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="cam">
+
+    <!-- S1 엔진 점화 -->
+    <div class="layer" id="s1">
+      <div class="glow" id="s1glow" style="left:260px; top:-140px; width:1400px; height:1400px;
+           background: radial-gradient(circle, rgba(255,150,40,.55), rgba(255,90,10,.18) 40%, transparent 65%);"></div>
+      <svg viewBox="0 0 1920 1080">
+        <defs>
+          <radialGradient id="core" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#fff8e0"/><stop offset=".22" stop-color="#ffd27a"/>
+            <stop offset=".5" stop-color="#ff8a1e"/><stop offset=".82" stop-color="#7a2a05"/><stop offset="1" stop-color="#1a0800"/>
+          </radialGradient>
+          <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#3a3d45"/><stop offset=".5" stop-color="#15161a"/><stop offset="1" stop-color="#2a2c33"/>
+          </linearGradient>
+          <filter id="heat" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence id="heatTurb" type="fractalNoise" baseFrequency="0.01 0.035" numOctaves="2" seed="1"/>
+            <feDisplacementMap in="SourceGraphic" scale="26"/>
+          </filter>
+        </defs>
+        <g id="s1zoom" transform-origin="960 560">
+          <circle cx="960" cy="560" r="470" fill="url(#metal)"/>
+          <circle cx="960" cy="560" r="420" fill="#050507" stroke="#0d0e12" stroke-width="10"/>
+          <g filter="url(#heat)">
+            <circle id="s1core" cx="960" cy="560" r="400" fill="url(#core)" opacity="0"/>
+          </g>
+          <g id="blades" stroke="#0c0c10" stroke-width="16" stroke-linecap="round"></g>
+          <circle cx="960" cy="560" r="80" fill="#0a0a0c" stroke="#1d1f25" stroke-width="8"/>
+          <circle cx="960" cy="560" r="470" fill="none" stroke="#4a4d57" stroke-width="3" opacity=".6"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- S2 원두와 저울 -->
+    <div class="layer" id="s2" style="background: radial-gradient(ellipse at 50% 35%, #4a2c16 0%, #1d1009 55%, #0a0503 100%);">
+      <div id="bokeh"></div>
+      <svg viewBox="0 0 1920 1080">
+        <defs>
+          <linearGradient id="plate" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#e9e6e0"/><stop offset=".5" stop-color="#b9b5ad"/><stop offset="1" stop-color="#6d6a64"/>
+          </linearGradient>
+          <radialGradient id="beanG" cx="35%" cy="30%" r="80%">
+            <stop offset="0" stop-color="#8a5a34"/><stop offset=".55" stop-color="#5a3419"/><stop offset="1" stop-color="#2a150a"/>
+          </radialGradient>
+        </defs>
+        <g id="s2zoom" transform-origin="960 700">
+          <rect x="560" y="690" width="800" height="250" rx="40" fill="#1b1c20" stroke="#33353c" stroke-width="4"/>
+          <ellipse cx="960" cy="690" rx="470" ry="70" fill="url(#plate)"/>
+          <ellipse cx="960" cy="682" rx="440" ry="56" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3"/>
+          <rect x="760" y="770" width="400" height="120" rx="14" fill="#0e140e" stroke="#2f3a2f" stroke-width="4"/>
+          <text id="lcd" x="1140" y="855" text-anchor="end" font-family="Noto Sans KR" font-weight="900" font-size="64" fill="#ffb347">12,800</text>
+          <text id="lcdUp" x="785" y="855" font-family="Noto Sans KR" font-weight="900" font-size="54" fill="#e5484d" opacity="0">▲</text>
+          <g id="bean">
+            <ellipse cx="0" cy="0" rx="72" ry="50" fill="url(#beanG)"/>
+            <path d="M -60 6 C -25 -18, 20 22, 62 -4" stroke="#1a0c05" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <ellipse cx="-24" cy="-26" rx="26" ry="9" fill="#c89468" opacity=".35"/>
+          </g>
+          <g id="sparks"></g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- S3 새벽 활주로 -->
+    <div class="layer" id="s3" style="background: linear-gradient(180deg, #050814 0%, #11163a 38%, #3a2a3a 50%, #b8621a 55.5%, #05070c 55.6%, #04060a 100%);">
+      <div class="glow" id="dawn" style="left:560px; top:380px; width:800px; height:400px; border-radius:50%;
+           background: radial-gradient(ellipse, rgba(255,170,70,.7), rgba(224,138,30,.25) 45%, transparent 70%);"></div>
+      <svg viewBox="0 0 1920 1080">
+        <polygon points="330,1080 1590,1080 990,600 930,600" fill="#0d0f14"/>
+        <g id="centerline"></g>
+        <g id="edgeLights"></g>
+        <g fill="#020306">
+          <path d="M 120 600 C 150 470, 170 380, 150 250 L 162 250 C 184 380, 164 470, 136 600 Z"/>
+          <path d="M 156 256 C 60 230, 0 270, -30 320 C 40 270, 100 262, 156 262 Z M 156 256 C 250 220, 320 250, 360 300 C 290 262, 220 258, 158 262 Z
+                   M 156 254 C 110 180, 40 170, 0 190 C 60 188, 110 208, 154 262 Z M 158 254 C 210 170, 290 165, 330 190 C 270 190, 210 210, 160 262 Z"/>
+          <path d="M 1790 600 C 1760 480, 1740 400, 1765 280 L 1776 280 C 1754 400, 1772 480, 1806 600 Z"/>
+          <path d="M 1770 286 C 1680 260, 1610 290, 1580 340 C 1640 296, 1700 290, 1770 292 Z M 1770 286 C 1860 250, 1930 270, 1960 320 C 1900 290, 1830 288, 1772 292 Z
+                   M 1770 284 C 1730 210, 1660 200, 1620 220 C 1680 218, 1720 240, 1768 292 Z"/>
+        </g>
+        <g id="b2run">
+          <polygon fill="#030407" stroke="#f1b25a" stroke-opacity=".45" stroke-width="1.2"
+                   points="200,0 400,110 386,121 342,113 300,138 252,113 200,141 148,113 100,138 58,113 14,121 0,110"/>
+          <g id="b2fire" fill="#ff9a2e">
+            <ellipse cx="170" cy="132" rx="7" ry="3"/><ellipse cx="230" cy="132" rx="7" ry="3"/>
+            <ellipse cx="125" cy="126" rx="6" ry="3"/><ellipse cx="275" cy="126" rx="6" ry="3"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- S4 머리 위를 지나는 폭격기 -->
+    <div class="layer" id="s4" style="background: linear-gradient(180deg, #03050d 0%, #0b1330 55%, #3b2a2e 82%, #a8561c 100%);">
+      <svg viewBox="0 0 1920 1080">
+        <g id="stars" fill="#cfd6ff"></g>
+        <defs>
+          <linearGradient id="rim" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0" stop-color="#ffb35a"/><stop offset=".6" stop-color="#ffb35a" stop-opacity=".2"/><stop offset="1" stop-color="#ffb35a" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g id="b2over">
+          <polygon fill="#05060a" stroke="url(#rim)" stroke-width="2.4"
+                   points="200,0 400,110 386,121 342,113 300,138 252,113 200,141 148,113 100,138 58,113 14,121 0,110"/>
+          <path d="M 200 10 L 200 130 M 120 70 L 280 70" stroke="#10131b" stroke-width="1.2"/>
+        </g>
+        <g id="dust" fill="#e9b27a"></g>
+      </svg>
+    </div>
+
+    <!-- S5 뉴스 몽타주 (S6에서 TV 화면으로 작아짐) -->
+    <div class="layer" id="shop" style="background: linear-gradient(180deg, #2a1a10 0%, #3b2515 60%, #1a0f08 100%);">
+      <svg viewBox="0 0 1920 1080">
+        <g fill="#140b06" opacity=".85">
+          <rect x="0" y="250" width="620" height="18"/><rect x="0" y="520" width="620" height="18"/><rect x="0" y="790" width="620" height="18"/>
+        </g>
+        <g fill="#6b4a2a">
+          <rect x="60" y="175" width="70" height="75" rx="10"/><rect x="160" y="165" width="90" height="85" rx="10"/><rect x="290" y="185" width="60" height="65" rx="10"/>
+          <rect x="420" y="170" width="80" height="80" rx="10"/><rect x="80" y="440" width="90" height="80" rx="10"/><rect x="210" y="450" width="70" height="70" rx="10"/>
+          <rect x="360" y="435" width="100" height="85" rx="10"/>
+        </g>
+        <g fill="#8a6a44" stroke="#5a4028" stroke-width="4">
+          <path d="M 40 1080 C 30 900, 90 820, 200 820 C 310 820, 360 900, 350 1080 Z"/>
+          <path d="M 300 1080 C 300 930, 360 870, 450 870 C 540 870, 590 930, 590 1080 Z"/>
+        </g>
+        <rect x="0" y="930" width="1920" height="150" fill="#24150b"/>
+      </svg>
+      <div class="glow" style="left:1000px; top:150px; width:700px; height:700px; background: radial-gradient(circle, rgba(120,160,255,.25), transparent 65%);"></div>
+    </div>
+
+    <div class="layer" id="news" style="background: repeating-linear-gradient(180deg, #07080c 0 3px, #0b0d12 3px 6px);">
+      <div class="panel" id="p1" style="left:0; background: linear-gradient(160deg, #4a0c14, #14040a);"></div>
+      <div class="panel" id="p2" style="left:640px; background: linear-gradient(160deg, #0c2150, #050a18);"></div>
+      <div class="panel" id="p3" style="left:1280px; background: linear-gradient(160deg, #4a0c14, #14040a);"></div>
+      <div id="nuke">핵</div>
+      <div id="tvbezel"></div>
+    </div>
+
+    <!-- S7 계산기 -->
+    <div class="layer" id="s7" style="background: radial-gradient(ellipse at 70% 30%, #5a3a20 0%, #2a180c 50%, #0e0704 100%);">
+      <div class="glow" style="left:1250px; top:120px; width:420px; height:420px; background: radial-gradient(circle, rgba(0,0,0,.0), rgba(0,0,0,0));"></div>
+      <svg viewBox="0 0 1920 1080">
+        <g opacity=".6" style="filter: blur(10px)">
+          <ellipse cx="1470" cy="320" rx="95" ry="115" fill="#120a06"/>
+          <rect x="1435" y="410" width="70" height="80" fill="#120a06"/>
+          <path d="M 1230 1080 C 1230 600, 1330 480, 1470 480 C 1610 480, 1710 600, 1710 1080 Z" fill="#1c1410"/>
+          <ellipse cx="1435" cy="315" rx="26" ry="10" fill="#fff" opacity=".0" id="glassL"/>
+          <ellipse cx="1505" cy="315" rx="26" ry="10" fill="#fff" opacity=".0" id="glassR"/>
+        </g>
+        <polygon points="0,700 1920,560 1920,1080 0,1080" fill="#6e4a2c"/>
+        <polygon points="0,700 1920,560 1920,590 0,730" fill="#8a603c"/>
+        <g transform="rotate(-6 700 760)">
+          <rect x="120" y="620" width="360" height="300" fill="#efe9dc"/>
+          <g stroke="#9a9384" stroke-width="8"><path d="M 150 680 H 440 M 150 720 H 400 M 150 760 H 430 M 150 800 H 380"/></g>
+          <text x="150" y="870" font-family="Noto Sans KR" font-weight="900" font-size="46" fill="#2a2620">USD</text>
+          <rect x="560" y="560" width="440" height="420" rx="36" fill="#26282e" stroke="#3a3d45" stroke-width="6"/>
+          <rect x="600" y="600" width="360" height="110" rx="12" fill="#9fb89a"/>
+          <text id="calc" x="940" y="682" text-anchor="end" font-family="Noto Sans KR" font-weight="900" font-size="72" fill="#1d2a1b">0</text>
+          <g id="keys"></g>
+          <g id="finger">
+            <rect x="-40" y="0" width="80" height="420" rx="40" fill="#c99a78"/>
+            <ellipse cx="0" cy="30" rx="26" ry="18" fill="#e8c3a6" opacity=".7"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <!-- S8 서진 -->
+    <div class="layer" id="s8">
+      <svg viewBox="0 0 1920 1080">
+        <defs>
+          <linearGradient id="tvlight" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#8fb3ff" stop-opacity=".9"/><stop offset=".35" stop-color="#8fb3ff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="760" width="1920" height="320" fill="#3a2515"/>
+        <rect x="0" y="740" width="1920" height="30" fill="#5a3a20"/>
+        <g id="seojin" transform="translate(1180 0)">
+          <path d="M 60 1080 C 40 820, 120 640, 250 620 C 380 640, 460 820, 440 1080 Z" fill="#2a2c33"/>
+          <path d="M 140 660 C 170 600, 330 600, 360 660 C 330 690, 170 690, 140 660 Z" fill="#202229"/>
+          <path d="M 60 1080 C 40 820, 120 640, 250 620 C 380 640, 460 820, 440 1080" fill="none" stroke="url(#tvlight)" stroke-width="10"/>
+          <g id="head" transform-origin="250 640">
+            <ellipse cx="250" cy="520" rx="105" ry="125" fill="#1b1c21"/>
+            <path d="M 140 500 C 130 380, 210 360, 250 380 C 280 350, 370 370, 365 470 C 380 440, 395 470, 380 520 C 360 470, 330 455, 300 450
+                     C 310 470, 300 480, 280 470 C 270 490, 250 485, 245 470 C 230 490, 210 490, 205 470 C 190 490, 160 480, 150 520 Z" fill="#0d0e12"/>
+            <path d="M 345 440 C 370 500, 365 580, 330 630" fill="none" stroke="url(#tvlight)" stroke-width="12" stroke-linecap="round"/>
+            <circle id="eye" cx="318" cy="525" r="6" fill="#dfe8ff" opacity="0"/>
+          </g>
+          <path d="M 120 800 C 200 760, 400 760, 520 790 L 540 840 C 400 820, 240 830, 140 860 Z" fill="#26282e"/>
+          <rect id="phone" x="470" y="770" width="70" height="120" rx="12" fill="#101216" transform="rotate(-20 505 830)"/>
+          <rect id="phoneGlow" x="478" y="778" width="54" height="104" rx="8" fill="#9cc2ff" opacity=".6" transform="rotate(-20 505 830)"/>
+        </g>
+      </svg>
+      <div class="glow" style="left:1650px; top:100px; width:900px; height:900px; background: radial-gradient(circle, rgba(120,160,255,.35), transparent 60%);"></div>
+    </div>
+
+    <!-- S9 실과 로고 -->
+    <div class="layer" id="s9" style="background: radial-gradient(ellipse at 50% 50%, #141c30 0%, #06080e 70%);">
+      <svg viewBox="0 0 1920 1080">
+        <defs>
+          <radialGradient id="knot" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#fff6dc"/><stop offset=".35" stop-color="#e8b84a" stop-opacity=".7"/><stop offset="1" stop-color="#e8b84a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path class="thread" d="M -60 900 C 400 760, 700 820, 960 700" stroke="#e8b84a" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path class="thread" d="M 1980 900 C 1520 760, 1220 820, 960 700" stroke="#27c2b4" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <path class="thread" d="M 960 1140 C 900 960, 1020 820, 960 700" stroke="#e08a1e" stroke-width="7" fill="none" stroke-linecap="round"/>
+        <circle id="knotC" cx="960" cy="700" r="90" fill="url(#knot)" opacity="0"/>
+      </svg>
+      <div id="logo">달러의 설계</div>
+    </div>
+
+  </div>
+
+  <div id="question">
+    <div class="l"><span class="w">왜</span><span class="w">우리</span><span class="w">가게</span></div>
+    <div class="l"><span class="w gold">원가가</span><span class="w">올라?</span></div>
+  </div>
+  <div id="lower"><div class="t">2026. 2. 28.</div><div class="s">인도양 · 디에고가르시아</div></div>
+  <canvas id="grain" width="480" height="270"></canvas>
+  <div id="vig"></div>
+  <div class="bar" id="barT" style="top:0"></div>
+  <div class="bar" id="barB" style="bottom:0"></div>
+  <div id="cap"></div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const lerp = (a, b, x) => a + (b - a) * x;
+const E = {
+  inOut: x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2,
+  out: x => 1 - Math.pow(1 - x, 3),
+  in: x => x * x * x,
+  back: x => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); },
+};
+function rng(seed) { return () => { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+const shakeXY = (t, amp) => [amp * (Math.sin(t * 61.3) * .6 + Math.sin(t * 23.1 + 1.3) * .4), amp * (Math.sin(t * 53.7 + 2.1) * .6 + Math.sin(t * 19.9) * .4)];
+// 장면 불투명도: a~b 구간, 앞뒤 페이드
+function show(el, t, a, b, fin = 0, fout = 0) {
+  let o = 0;
+  if (t >= a && t < b) o = Math.min(fin ? prog(t, a, a + fin) : 1, fout ? 1 - prog(t, b - fout, b) : 1);
+  el.style.opacity = o;
+  return o > 0;
+}
+const NS = 'http://www.w3.org/2000/svg';
+function svgEl(tag, attrs, parent) { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent.appendChild(e); return e; }
+
+// 한 번만 만드는 요소들
+for (let i = 0; i < 18; i++) {
+  const a = i / 18 * Math.PI * 2;
+  svgEl('line', {x1: 960 + Math.cos(a) * 95, y1: 560 + Math.sin(a) * 95, x2: 960 + Math.cos(a + .35) * 395, y2: 560 + Math.sin(a + .35) * 395}, $('blades'));
+}
+{ const r = rng(7), bk = $('bokeh');
+  for (let i = 0; i < 9; i++) { const d = document.createElement('div'); const s = 120 + r() * 220;
+    d.className = 'glow'; Object.assign(d.style, {left: r() * 1800 + 'px', top: r() * 520 + 'px', width: s + 'px', height: s + 'px',
+      background: `radial-gradient(circle, rgba(255,${170 + r() * 50 | 0},90,${.25 + r() * .25}), transparent 70%)`, filter: 'blur(6px)'});
+    d.dataset.vx = (r() - .5) * 20; bk.appendChild(d); } }
+{ const r = rng(3); for (let i = 0; i < 90; i++) svgEl('circle', {cx: r() * 1920, cy: r() * 700, r: r() * 1.8 + .4, opacity: r() * .7 + .2}, $('stars')); }
+const KEY = [];
+for (let row = 0; row < 4; row++) for (let col = 0; col < 4; col++)
+  KEY.push(svgEl('rect', {x: 600 + col * 92, y: 735 + row * 58, width: 76, height: 44, rx: 10, fill: '#3b3e46'}, $('keys')));
+const PANEL_TEXT = ['핵 프로그램 제거', '우라늄 농축 순도', '지하 시설의 깊이'];
+['p1', 'p2', 'p3'].forEach((id, i) => {
+  $(id).innerHTML = `<svg viewBox="0 0 640 1080" style="position:absolute;inset:0">
+      <path d="M 0 0 L 260 0 L 60 1080 L 0 1080 Z" fill="#fff" opacity=".04"/><path d="M 420 0 L 640 0 L 640 1080 L 560 1080 Z" fill="#fff" opacity=".03"/>
+      <circle cx="320" cy="400" r="95" fill="#0b0d14"/><path d="M 90 1080 C 110 650, 530 650, 550 1080 Z" fill="#0b0d14"/>
+      <path d="M 250 560 L 320 640 L 390 560 Z" fill="#e9ecf2" opacity=".85"/></svg>
+    <div class="flare"></div><div class="streak"></div>
+    <div class="ticker"><div class="lab">속보</div><div class="txt">${PANEL_TEXT[i]}</div></div>`;
+});
+const threads = [...document.querySelectorAll('.thread')];
+threads.forEach(p => { const L = p.getTotalLength(); p.style.strokeDasharray = L; p.dataset.len = L; });
+
+const CAPS = [
+  [0.35, 2.4, '', '폭격기는 이란으로 날아갔는데,'],
+  [2.75, 4.95, '', '원두값은 서울에서 올랐습니다.'],
+  [5.5, 8.9, '', '2026년 2월 28일 새벽.'],
+  [9.3, 12.9, '', '세계가 들은 이유는 하나였습니다.'],
+  [19.7, 22.9, '아버지', '원두값 또 오르겠네…'],
+  [24.4, 25.9, '서진', '전쟁은 이란에서 났는데,'],
+  [28.3, 29.9, '', '이 이야기는 그 질문에서 시작합니다.'],
+  [30.0, 31.1, '', '왜 하필 지금인가.'],
+];
+const grainCtx = $('grain').getContext('2d');
+const grainImg = grainCtx.createImageData(480, 270);
+
+window.setTime = function (T) {
+  const frame = Math.round(T * 24);
+  let camScale = 1, sx = 0, sy = 0, camFilter = '';
+
+  // S1 엔진 (0–2.5)
+  if (show($('s1'), T, 0, 2.5)) {
+    const ign = prog(T, .15, .35), flash = Math.exp(-Math.pow((T - .3) / .08, 2));
+    const glow = Math.min(1, .15 + ign * .6 + prog(T, .35, 2.3) * .35 + flash * .5);
+    $('s1core').setAttribute('opacity', glow);
+    $('s1glow').style.opacity = glow;
+    $('blades').setAttribute('transform', `rotate(${T * T * 40} 960 560)`);
+    $('s1zoom').setAttribute('transform', `scale(${1 + T * .035})`);
+    $('heatTurb').setAttribute('seed', frame % 97);
+    [sx, sy] = shakeXY(T, 3 + flash * 14);
+  }
+  // S2 원두 (2.5–5.0)
+  if (show($('s2'), T, 2.5, 5.0)) {
+    const t = T - 2.5, land = .85;
+    let y;
+    if (t < land) y = lerp(-120, 610, E.in(prog(t, 0, land)) * .6 + prog(t, 0, land) * .4);
+    else if (t < 1.12) { const b = prog(t, land, 1.12); y = 610 - Math.sin(b * Math.PI) * 55; }
+    else if (t < 1.3) { const b = prog(t, 1.12, 1.3); y = 610 - Math.sin(b * Math.PI) * 14; }
+    else y = 610;
+    $('bean').setAttribute('transform', `translate(960 ${y}) rotate(${-25 + Math.min(t, 1.3) * 22})`);
+    const up = prog(t, 1.25, 2.2);
+    const price = Math.round(lerp(12800, 15400, E.out(up)) / 100) * 100;
+    $('lcd').textContent = price.toLocaleString('en-US');
+    $('lcdUp').setAttribute('opacity', up > 0 ? 1 : 0);
+    const sp = $('sparks'); sp.innerHTML = '';
+    if (t > land && t < land + .35) { const k = prog(t, land, land + .35), r = rng(11);
+      for (let i = 0; i < 12; i++) { const a = -Math.PI * r(), d = 40 + k * 120 * (.5 + r());
+        svgEl('circle', {cx: 960 + Math.cos(a) * d, cy: 650 + Math.sin(a) * d * .5, r: 3 * (1 - k) + .5, fill: '#ffd9a0', opacity: 1 - k}, sp); } }
+    [...$('bokeh').children].forEach(d => d.style.transform = `translateX(${d.dataset.vx * t}px)`);
+    $('s2zoom').setAttribute('transform', `scale(${1 + t * .04})`);
+  }
+  // S3 활주로 (5.0–9.0)
+  if (show($('s3'), T, 5.0, 9.0)) {
+    const t = T - 5;
+    const lights = $('edgeLights'), cl = $('centerline'); lights.innerHTML = ''; cl.innerHTML = '';
+    for (let i = 0; i < 16; i++) {
+      const s = ((i / 16 + t * .45) % 1), p = Math.pow(s, 2.2), y = 600 + 480 * p, half = 30 + 600 * p;
+      [-1, 1].forEach(side => svgEl('ellipse', {cx: 960 + side * half, cy: y, rx: 2 + 16 * p, ry: 1 + 5 * p, fill: '#ffcf8a', opacity: .3 + .7 * s}, lights));
+      if (i % 2 === 0) { const s2 = ((i / 16 + t * .45 + .03) % 1), p2 = Math.pow(s2, 2.2);
+        svgEl('rect', {x: 960 - (1 + 10 * p), y: y, width: 2 + 20 * p, height: Math.max(2, 480 * (p2 - p)), fill: '#c9c4b8', opacity: .5 * s}, cl); }
+    }
+    const k = E.inOut(prog(t, .2, 4));
+    const scale = lerp(2.5, .95, k), cx = 960, cy = lerp(800, 440, k);
+    $('b2run').setAttribute('transform', `translate(${cx - 200 * scale} ${cy - 70 * scale}) scale(${scale})`);
+    $('b2fire').setAttribute('opacity', .7 + .3 * Math.sin(T * 40));
+    $('dawn').style.opacity = .6 + .4 * prog(t, 0, 4);
+    const lo = $('lower');
+    const a = E.out(prog(t, .4, 1.0)), b = prog(t, 3.5, 3.9);
+    lo.style.opacity = a * (1 - b); lo.style.transform = `translateX(${(1 - a) * -60}px)`;
+    [sx, sy] = shakeXY(T, 2 + 5 * (1 - k));
+  } else { $('lower').style.opacity = 0; }
+  // S4 머리 위 (9.0–13.0)
+  if (show($('s4'), T, 9.0, 13.0)) {
+    const t = T - 9, k = prog(t, .2, 3.6), scale = 4.6;
+    const y = lerp(1150, -780, E.inOut(k));
+    $('b2over').setAttribute('transform', `translate(${960 - 200 * scale} ${y}) scale(${scale})`);
+    const near = Math.exp(-Math.pow((t - 1.9) / .7, 2));
+    $('b2over').style.filter = `blur(${near * 2}px) drop-shadow(0 0 ${6 + near * 10}px rgba(255,160,60,.55))`;
+    const du = $('dust'); du.innerHTML = ''; const r = rng(21);
+    for (let i = 0; i < 60; i++) { const a = r() * Math.PI * 2, sp = 200 + r() * 900, d = ((t * sp + r() * 900) % 900);
+      svgEl('circle', {cx: 960 + Math.cos(a) * d * 1.3, cy: 640 + Math.sin(a) * d * .7, r: .8 + d / 400, opacity: near * .8 * (d / 900)}, du); }
+    [sx, sy] = shakeXY(T, 3 + near * 26);
+    camScale = 1 + near * .03;
+  }
+  // S5 뉴스 (13.0–17.0) → S6 TV로 축소 (17.0–19.0)
+  const newsOn = show($('news'), T, 13.0, 19.0);
+  show($('shop'), T, 16.9, 28.0);
+  if (newsOn) {
+    const t = T - 13;
+    [['p1', 0], ['p2', .8], ['p3', 1.6]].forEach(([id, at]) => {
+      const p = prog(t, at, at + .25), el = $(id);
+      el.style.opacity = p; el.style.transform = `scale(${lerp(1.25, 1, E.out(p))})`;
+      const dim = prog(t, 2.35, 2.6); el.style.filter = `brightness(${(1 + Math.exp(-Math.pow((t - at - .05) / .06, 2)) * 1.5) * (1 - dim * .6)})`;
+      el.querySelector('.txt').style.transform = `translateX(${(1 - E.out(prog(t, at + .1, at + .5))) * 300}px)`;
+    });
+    const n = prog(t, 2.6, 2.8), nOut = prog(t, 3.8, 4.0);
+    $('nuke').style.opacity = n * (1 - nOut);
+    $('nuke').style.transform = `scale(${lerp(2.4, 1, E.out(n))})`;
+    const hits = [0, .8, 1.6, 2.6].map(h => Math.exp(-Math.pow((t - h - .08) / .1, 2)));
+    [sx, sy] = shakeXY(T, 4 + Math.max(...hits) * 22);
+    const pb = E.inOut(prog(T, 17.0, 18.6));
+    $('news').style.transform = `translate(${390 * pb}px, ${-90 * pb}px) scale(${lerp(1, .34, pb)})`;
+    $('tvbezel').style.opacity = prog(T, 17.2, 17.8);
+  }
+  // S7 계산기 (19.0–23.0)
+  if (show($('s7'), T, 19.0, 23.0)) {
+    const t = T - 19, taps = [.35, .7, 1.05, 1.5, 1.9, 2.3, 2.75];
+    const keyIdx = [5, 2, 9, 14, 6, 1, 15];
+    let fingerKey = keyIdx[0], down = 0, count = 0;
+    taps.forEach((tp, i) => { if (t >= tp - .18) fingerKey = keyIdx[i]; const d = Math.exp(-Math.pow((t - tp) / .06, 2)); if (d > down) down = d; if (t >= tp) count = i + 1; });
+    KEY.forEach((k, i) => k.setAttribute('fill', i === fingerKey && down > .3 ? '#6a6e78' : '#3b3e46'));
+    const kx = +KEY[fingerKey].getAttribute('x') + 38, ky = +KEY[fingerKey].getAttribute('y') + 18;
+    $('finger').setAttribute('transform', `translate(${kx} ${ky - 20 + down * 18})`);
+    const vals = ['0', '1', '12', '128', '1,280', '12,800', '×1.2', '15,360'];
+    $('calc').textContent = vals[count];
+    const g = .5 + .5 * Math.sin(T * 3); $('glassL').setAttribute('opacity', .05 + .06 * g); $('glassR').setAttribute('opacity', .05 + .06 * g);
+    camScale = 1.02 + t * .01;
+  }
+  // S8 서진 (23.0–28.0) + S9 정지 (28.0–31.2)
+  const s8on = show($('s8'), T, 23.0, 31.3, 0, .3);
+  if (s8on) {
+    const t = Math.min(T, 27.99) - 23;
+    const lift = E.inOut(prog(t, .4, 1.3));
+    $('head').setAttribute('transform', `translate(${lerp(-60, 0, lift)} ${lerp(190, 0, lift)}) rotate(${lerp(-38, 6 * prog(t, 1.3, 2.2), lift)})`);
+    $('eye').setAttribute('opacity', prog(t, 1.3, 1.6));
+    $('phoneGlow').setAttribute('opacity', .35 + .25 * Math.sin(t * 2));
+    camScale = 1 + t * .012;
+    if (T >= 28) { const f = prog(T, 28, 28.4); camFilter = `grayscale(${f}) contrast(${1 + .15 * f}) brightness(${1 - .15 * f})`;
+      camScale = 1 + 4.99 * .012 + E.out(prog(T, 28, 31)) * .05; }
+  }
+  // 큰 질문 글자 (25.9–28.0)
+  const words = [...document.querySelectorAll('#question .w')];
+  words.forEach((w, i) => { const p = prog(T, 25.9 + i * .22, 26.1 + i * .22), out = T >= 28 ? 1 : 0;
+    w.style.opacity = p * (1 - out); w.style.transform = `translateY(${(1 - E.back(p)) * 40}px) scale(${lerp(1.3, 1, E.out(p))})`; });
+  // S9 실과 로고 (31.2–33.0)
+  if (show($('s9'), T, 31.1, 99, .25)) {
+    const k = E.inOut(prog(T, 31.2, 32.0));
+    threads.forEach(p => p.style.strokeDashoffset = p.dataset.len * (1 - k));
+    const kn = prog(T, 31.9, 32.1); $('knotC').setAttribute('opacity', kn); $('knotC').setAttribute('r', 90 + 40 * Math.exp(-Math.pow((T - 32.05) / .1, 2)));
+    const lg = E.out(prog(T, 32.0, 32.6)); $('logo').style.opacity = lg; $('logo').style.transform = `translateY(${-120 + (1 - lg) * 30}px) scale(${lerp(1.08, 1, lg)})`;
+    if (T > 31.95 && T < 32.3) [sx, sy] = shakeXY(T, 10 * (1 - prog(T, 31.95, 32.3)));
+  }
+
+  $('cam').style.transform = `translate(${sx}px, ${sy}px) scale(${camScale})`;
+  $('cam').style.filter = camFilter;
+
+  // 자막
+  const cap = $('cap'); let on = null;
+  for (const c of CAPS) if (T >= c[0] && T < c[1]) on = c;
+  if (on) { cap.innerHTML = (on[2] ? `<span class="who">${on[2]}</span>` : '') + on[3];
+    cap.style.opacity = Math.min(prog(T, on[0], on[0] + .25), 1 - prog(T, on[1] - .2, on[1])); }
+  else cap.style.opacity = 0;
+
+  // 필름 그레인
+  const r = rng(frame * 7919 + 1), d = grainImg.data;
+  for (let i = 0; i < d.length; i += 4) { const v = r() * 255 | 0; d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255; }
+  grainCtx.putImageData(grainImg, 0, 0);
+};
+window.DURATION = 33;
+window.setTime(0);
+</script>
+</body>
+</html>
