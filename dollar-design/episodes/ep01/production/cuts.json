@@ -1,0 +1,1981 @@
+[
+ {
+  "id": "C001",
+  "start": 0,
+  "duration": 2.5,
+  "method": "영상",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "칠흑 속에서 제트 엔진 배기구가 주황색으로 달아오르는 초근접",
+  "그림": "`[STYLE], [NIGHT], extreme close-up of a stealth bomber jet exhaust igniting, orange heat glow in total darkness, heat distortion`",
+  "움직임": "`exhaust glow flares brighter, heat shimmer, slight camera shake`",
+  "소리": "엔진 점화음 · **N** \"폭격기는 이란으로 날아갔는데,\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, pre-dawn darkness, deep navy and black, burning amber glow on the horizon, extreme close-up of a stealth bomber jet exhaust igniting, orange heat glow in total darkness, heat distortion",
+  "motion": "exhaust glow flares brighter, heat shimmer, slight camera shake",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "폭격기는 이란으로 날아갔는데,"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C002",
+  "start": 2,
+  "duration": 2.5,
+  "method": "영상",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "가게 저울 위로 커피 원두 한 알이 슬로모션으로 떨어짐",
+  "그림": "`[STYLE], [SHOP], macro shot of a single roasted coffee bean falling onto a small digital kitchen scale, shallow depth of field`",
+  "움직임": "`slow motion fall, bean bounces once, scale display glows`",
+  "소리": "원두가 톡 떨어지는 소리 · **N** \"원두값은 서울에서 올랐습니다.\"",
+  "편집": "저울 화면에 숫자가 올라가는 그래픽을 직접 얹기",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, macro shot of a single roasted coffee bean falling onto a small digital kitchen scale, shallow depth of field",
+  "motion": "slow motion fall, bean bounces once, scale display glows",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "원두값은 서울에서 올랐습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C003",
+  "start": 5,
+  "duration": 4.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "새벽 기지 활주로, 박쥐 날개 같은 폭격기 실루엣이 이륙 (썸네일 A와 같은 구도)",
+  "그림": "`[STYLE], [NIGHT], wide shot of a tropical island airbase runway at dawn, a black flying-wing stealth bomber silhouette taking off, amber horizon glow, palm silhouettes`",
+  "움직임": "`bomber lifts off and climbs toward the horizon, runway lights streak past`",
+  "소리": "굉음 · **N** \"2026년 2월 28일 새벽.\"",
+  "편집": "오버레이 06 (2026. 2. 28. 자막 바)",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, pre-dawn darkness, deep navy and black, burning amber glow on the horizon, wide shot of a tropical island airbase runway at dawn, a black flying-wing stealth bomber silhouette taking off, amber horizon glow, palm silhouettes",
+  "motion": "bomber lifts off and climbs toward the horizon, runway lights streak past",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "2026년 2월 28일 새벽."
+   }
+  ],
+  "overlays": [
+   "06"
+  ]
+ },
+ {
+  "id": "C004",
+  "start": 9,
+  "duration": 4.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "카메라 바로 위로 지나가는 폭격기 배면",
+  "그림": "`[STYLE], [NIGHT], low angle looking up, underside of a black flying-wing stealth bomber passing directly overhead, amber rim light on its edges`",
+  "움직임": "`bomber passes overhead fast, camera shakes, dust blows`",
+  "소리": "**N** \"세계가 들은 이유는 하나였습니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, pre-dawn darkness, deep navy and black, burning amber glow on the horizon, low angle looking up, underside of a black flying-wing stealth bomber passing directly overhead, amber rim light on its edges",
+  "motion": "bomber passes overhead fast, camera shakes, dust blows",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "세계가 들은 이유는 하나였습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C005",
+  "start": 13,
+  "duration": 4.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "세 개의 뉴스 화면이 겹친 몽타주. 앵커 얼굴은 렌즈 빛에 가려짐",
+  "그림": "`[STYLE], split screen of three TV news studios, anchors in suits with faces hidden by strong lens flare, red and blue studio lights`",
+  "소리": "앵커들 겹쳐서 \"핵 프로그램 제거… 우라늄 농축 순도… 지하 시설의 깊이…\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, split screen of three TV news studios, anchors in suits with faces hidden by strong lens flare, red and blue studio lights",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "앵커들",
+    "note": "겹쳐서",
+    "text": "핵 프로그램 제거… 우라늄 농축 순도… 지하 시설의 깊이…"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C006",
+  "start": 17,
+  "duration": 2.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "가게 벽걸이 TV에 같은 뉴스, 카메라가 빠지며 가게 안으로",
+  "그림": "`[STYLE], [SHOP], small wall-mounted TV showing a news broadcast glow, shop interior around it`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, small wall-mounted TV showing a news broadcast glow, shop interior around it",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C007",
+  "start": 19,
+  "duration": 4.0,
+  "method": "입",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "계산기를 두드리는 아버지, 한숨",
+  "그림": "`[STYLE], [SHOP], [FATHER] at the counter tapping a calculator, sighing, invoices with dollar amounts scattered`",
+  "소리": "**아버지** \"원두값 또 오르겠네…\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, Seojin's father, Korean man in his early 50s, short graying hair, reading glasses pushed up on his forehead, brown canvas apron with coffee stains over a navy knit sweater, weary kind face at the counter tapping a calculator, sighing, invoices with dollar amounts scattered",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "아버지",
+    "note": "",
+    "text": "원두값 또 오르겠네…"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C008",
+  "start": 23,
+  "duration": 5.0,
+  "method": "입",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "카운터에 엎드려 있던 서진이 고개를 들어 TV를 봄",
+  "그림": "`[STYLE], [SHOP], [SEOJIN] lifting his head from the counter, phone in hand, looking up at the TV with a puzzled frown`",
+  "소리": "**서진** \"전쟁은 이란에서 났는데, 왜 우리 가게 원가가 올라?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt lifting his head from the counter, phone in hand, looking up at the TV with a puzzled frown",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "전쟁은 이란에서 났는데, 왜 우리 가게 원가가 올라?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C009",
+  "start": 28,
+  "duration": 6.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "서진 얼굴에서 정지, 채도가 빠짐",
+  "그림": "C008과 같은 그림 사용",
+  "편집": "정지 + 흑백 전환",
+  "소리": "**N** \"이 이야기는 그 질문에서 시작합니다. 왜 하필 지금인가.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt lifting his head from the counter, phone in hand, looking up at the TV with a puzzled frown",
+  "prompt_note": "C008과 같은 그림 사용",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "이 이야기는 그 질문에서 시작합니다. 왜 하필 지금인가."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C010",
+  "start": 34,
+  "duration": 6.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "콜드 오픈",
+  "화면": "0.5초짜리 컷 6개를 빠르게. C026(절벽), C048(빛나는 눈), C052(명예 게이지), C066(항공모함), C085(찢어지는 코트), C081(모이는 실)",
+  "편집": "뒤에서 만든 컷을 잘라 씀. 컷마다 짧은 타격음",
+  "소리": "**N** \"그리고 이 전쟁이 끝난 뒤, 돈은 어디로 흘러가는가.\"",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "그리고 이 전쟁이 끝난 뒤, 돈은 어디로 흘러가는가."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C011",
+  "start": 40,
+  "duration": 10.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "타이틀",
+  "화면": "금·주황·청록 세 가닥 실이 한 점으로 모이며 로고가 나타남",
+  "편집": "오버레이 01 (로고). 실은 편집 도구의 선 그리기로 움직이거나, C081의 실을 재사용",
+  "소리": "메인 테마 5초",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "01"
+  ]
+ },
+ {
+  "id": "C012",
+  "start": 50,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "화면": "창고 겸 뒷방. 녹슨 금고 위에 멈춘 달력. 문간 빛 속에 서진의 실루엣",
+  "그림": "`[STYLE], [BACKROOM], [SAFE] on the floor with an old wall calendar above it, [SEOJIN] silhouetted in the bright doorway`",
+  "소리": "문 삐걱",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, small rusty green metal safe with a brass dial, chipped paint on the floor with an old wall calendar above it, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt silhouetted in the bright doorway",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C013",
+  "start": 55,
+  "duration": 4.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "화면": "달력 초근접",
+  "그림": "`[STYLE], [BACKROOM], close-up of an old yellowed paper wall calendar page, blank, curled edges, dust`",
+  "편집": "오버레이 11 (1997 / 12)",
+  "소리": "**서진** \"아빠, 이 금고 뭐야? 달력이 97년이네.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, close-up of an old yellowed paper wall calendar page, blank, curled edges, dust",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "아빠, 이 금고 뭐야? 달력이 97년이네."
+   }
+  ],
+  "overlays": [
+   "11"
+  ]
+ },
+ {
+  "id": "C014",
+  "start": 59,
+  "duration": 5.0,
+  "method": "입",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [SHOP], [FATHER] seen through the backroom doorway, turning his head over his shoulder`",
+  "소리": "**아버지** \"할아버지 거. 공장 문 닫던 해 달력이야. 버리지 말라고 하셨어.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, Seojin's father, Korean man in his early 50s, short graying hair, reading glasses pushed up on his forehead, brown canvas apron with coffee stains over a navy knit sweater, weary kind face seen through the backroom doorway, turning his head over his shoulder",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "아버지",
+    "note": "",
+    "text": "할아버지 거. 공장 문 닫던 해 달력이야. 버리지 말라고 하셨어."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C015",
+  "start": 64,
+  "duration": 3.0,
+  "method": "입",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [BACKROOM], [SEOJIN] crouching beside [SAFE], looking back toward the door`",
+  "소리": "**서진** \"공장이 왜 망했는데?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt crouching beside small rusty green metal safe with a brass dial, chipped paint, looking back toward the door",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "공장이 왜 망했는데?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C016",
+  "start": 67,
+  "duration": 7.0,
+  "method": "입",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [SHOP], close-up of [FATHER], shop light reflecting in his glasses, serious quiet expression`",
+  "소리": "**아버지** \"IMF. 달러 빚이 있었는데, 환율이 두 배가 되니까 빚도 두 배가 됐지.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, close-up of Seojin's father, Korean man in his early 50s, short graying hair, reading glasses pushed up on his forehead, brown canvas apron with coffee stains over a navy knit sweater, weary kind face, shop light reflecting in his glasses, serious quiet expression",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "아버지",
+    "note": "",
+    "text": "IMF. 달러 빚이 있었는데, 환율이 두 배가 되니까 빚도 두 배가 됐지."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C017",
+  "start": 74,
+  "duration": 3.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "화면": "빛바랜 기억. 멈춘 재봉틀이 늘어선 빈 공장",
+  "그림": "`[STYLE], sepia faded memory, empty 1990s textile factory, rows of idle sewing machines, dust, late afternoon light`",
+  "편집": "가장자리 흐림, 필름 잡티",
+  "소리": "**아버지** \"일은 똑같이 했는데.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, sepia faded memory, empty 1990s textile factory, rows of idle sewing machines, dust, late afternoon light",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "아버지",
+    "note": "",
+    "text": "일은 똑같이 했는데."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C018",
+  "start": 77,
+  "duration": 5.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [BACKROOM], [SEOJIN]'s hand turning the brass dial and pulling open [SAFE]`",
+  "움직임": "`safe door swings open slowly, dust particles drift through the light beam`",
+  "소리": "금속 삐걱, 먼지 날리는 소리",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt's hand turning the brass dial and pulling open small rusty green metal safe with a brass dial, chipped paint",
+  "motion": "safe door swings open slowly, dust particles drift through the light beam",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C019",
+  "start": 82,
+  "duration": 4.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [BACKROOM], inside the open safe, [BOOK] wrapped in faded cloth, red ribbon bookmark sticking out`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, inside the open safe, old worn cloth-bound hardcover book, faded dark blue cloth, frayed corners, blank gold-stamped cover, red ribbon bookmark wrapped in faded cloth, red ribbon bookmark sticking out",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C020",
+  "start": 86,
+  "duration": 4.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], top-down close-up of [BOOK] cover in [SEOJIN]'s hands, worn cloth texture`",
+  "편집": "오버레이 12 (펠로폰네소스 전쟁사 / 투키디데스)를 표지에 얹기",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, top-down close-up of old worn cloth-bound hardcover book, faded dark blue cloth, frayed corners, blank gold-stamped cover, red ribbon bookmark cover in Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt's hands, worn cloth texture",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "12"
+  ]
+ },
+ {
+  "id": "C021",
+  "start": 90,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], close-up of an open old book page with the red ribbon bookmark, wide blank margin, soft bulb light`",
+  "편집": "오버레이 10 (손글씨 메모)을 여백에 얹고 천천히 확대. 음악 한 번 '둥'",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, close-up of an open old book page with the red ribbon bookmark, wide blank margin, soft bulb light",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "10"
+  ]
+ },
+ {
+  "id": "C022",
+  "start": 95,
+  "duration": 3.0,
+  "method": "입",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [BACKROOM], extreme close-up of [SEOJIN]'s eyes reading, bulb reflection in his pupils`",
+  "소리": "**서진** (속삭이듯) \"…멜로스?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, extreme close-up of Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt's eyes reading, bulb reflection in his pupils",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "속삭이듯",
+    "text": "…멜로스?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C023",
+  "start": 98,
+  "duration": 4.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [BACKROOM], close-up of the book page beginning to turn by itself`",
+  "움직임": "`page flips, paper fibers lift off and swirl into the air like wind`",
+  "소리": "바람이 일기 시작",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, close-up of the book page beginning to turn by itself",
+  "motion": "page flips, paper fibers lift off and swirl into the air like wind",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C024",
+  "start": 102,
+  "duration": 5.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [BACKROOM] walls dissolving into flowing sand, bright sunlight pouring through the gaps, [SEOJIN] shielding his eyes`",
+  "움직임": "`walls crumble into sand and blow away, sunlight floods the room`",
+  "소리": "모래바람, 멀리서 파도",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves walls dissolving into flowing sand, bright sunlight pouring through the gaps, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt shielding his eyes",
+  "motion": "walls crumble into sand and blow away, sunlight floods the room",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C025",
+  "start": 107,
+  "duration": 3.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "1막 · 할아버지의 금고",
+  "그림": "`[STYLE], [AEGEAN], white flash fading into a bright sea horizon, seagulls`",
+  "움직임": "`white flash fades, seagulls fly across`",
+  "소리": "파도, 갈매기",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, white flash fading into a bright sea horizon, seagulls",
+  "motion": "white flash fades, seagulls fly across",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C026",
+  "start": 110,
+  "duration": 7.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "1막 · 멜로스의 절벽",
+  "화면": "흰 석회암 절벽 위에 선 서진, 발아래 코발트빛 바다",
+  "그림": "`[STYLE], [AEGEAN], epic wide shot, [SEOJIN] standing on a white limestone cliff edge above a vast cobalt sea, olive trees, wind`",
+  "움직임": "`wind blows his hair and hoodie, slow crane up revealing the sea`",
+  "편집": "오버레이 07 (BC 416 · 멜로스 섬)",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, epic wide shot, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt standing on a white limestone cliff edge above a vast cobalt sea, olive trees, wind",
+  "motion": "wind blows his hair and hoodie, slow crane up revealing the sea",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "07"
+  ]
+ },
+ {
+  "id": "C027",
+  "start": 117,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 멜로스의 절벽",
+  "그림": "`[STYLE], [AEGEAN], telephoto view of the horizon, dozens of ancient Greek triremes with square sails, sunlight glinting on bronze rams and oars`",
+  "편집": "천천히 확대",
+  "소리": "멀리서 북소리",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, telephoto view of the horizon, dozens of ancient Greek triremes with square sails, sunlight glinting on bronze rams and oars",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C028",
+  "start": 122,
+  "duration": 3.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 멜로스의 절벽",
+  "그림": "`[STYLE], extreme close-up of a bronze stylus carving into [TABLET], semi-transparent glowing hand`",
+  "소리": "밀랍 긁는 소리",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, extreme close-up of a bronze stylus carving into ancient Greek wooden wax writing tablet with a dark wax surface, bronze stylus, semi-transparent glowing hand",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C029",
+  "start": 125,
+  "duration": 6.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "1막 · 멜로스의 절벽",
+  "화면": "서진 뒤에 반투명한 투키디데스가 나타남",
+  "그림": "`[STYLE], [AEGEAN], [THUC] appearing behind [SEOJIN] on the cliff, holding [TABLET], cloak fluttering, glowing edges`",
+  "움직임": "`ghost fades in from light particles, cloak flutters in the wind`",
+  "소리": "**투키디데스** \"늦었군. 협상은 이미 시작됐다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch appearing behind Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt on the cliff, holding ancient Greek wooden wax writing tablet with a dark wax surface, bronze stylus, cloak fluttering, glowing edges",
+  "motion": "ghost fades in from light particles, cloak flutters in the wind",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "늦었군. 협상은 이미 시작됐다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C030",
+  "start": 131,
+  "duration": 3.0,
+  "method": "입",
+  "hero": 0,
+  "section": "1막 · 멜로스의 절벽",
+  "그림": "`[STYLE], [AEGEAN], [SEOJIN] turning around startled, stepping back`",
+  "소리": "**서진** \"누, 누구세요?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt turning around startled, stepping back",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "누, 누구세요?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C031",
+  "start": 134,
+  "duration": 8.0,
+  "method": "입",
+  "hero": 0,
+  "section": "1막 · 멜로스의 절벽",
+  "그림": "`[STYLE], [AEGEAN], medium shot of [THUC], calm cold expression, sea behind him`",
+  "편집": "오버레이 16 (투키디데스 이름 자막 바)",
+  "소리": "**투키디데스** \"투키디데스. 아테네의 장군이었다. 작전에 실패해 20년간 추방당했지.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, medium shot of Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch, calm cold expression, sea behind him",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "투키디데스. 아테네의 장군이었다. 작전에 실패해 20년간 추방당했지."
+   }
+  ],
+  "overlays": [
+   "16"
+  ]
+ },
+ {
+  "id": "C032",
+  "start": 142,
+  "duration": 2.0,
+  "method": "입",
+  "hero": 0,
+  "section": "1막 · 멜로스의 절벽",
+  "그림": "C030과 같은 그림",
+  "소리": "**서진** \"추방이요?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt turning around startled, stepping back",
+  "prompt_note": "C030과 같은 그림",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "추방이요?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C033",
+  "start": 144,
+  "duration": 8.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "1막 · 멜로스의 절벽",
+  "그림": "`[STYLE], [AEGEAN], [THUC] in profile gazing at the distant fleet, wind in his beard`",
+  "소리": "**투키디데스** \"덕분에 양쪽 진영을 다 볼 수 있었다. 승자의 선전이 아니라, 양쪽의 민낯을.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch in profile gazing at the distant fleet, wind in his beard",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "덕분에 양쪽 진영을 다 볼 수 있었다. 승자의 선전이 아니라, 양쪽의 민낯을."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C034",
+  "start": 152,
+  "duration": 9.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "1막 · 멜로스의 절벽",
+  "그림": "`[STYLE], [AEGEAN], [THUC] raising [TABLET] toward the camera, the wax surface glowing faintly`",
+  "움직임": "`tablet rises, wax glows brighter, slow push-in on his eyes`",
+  "소리": "**투키디데스** \"규칙은 하나다. 기록되지 않은 것은 보여줄 수 없다. 기록된 것은, 전부 보여주겠다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch raising ancient Greek wooden wax writing tablet with a dark wax surface, bronze stylus toward the camera, the wax surface glowing faintly",
+  "motion": "tablet rises, wax glows brighter, slow push-in on his eyes",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "규칙은 하나다. 기록되지 않은 것은 보여줄 수 없다. 기록된 것은, 전부 보여주겠다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C035",
+  "start": 161,
+  "duration": 6.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], wide shot of a stone table under an old olive tree, [ENVOY] with armored guards on one side, [ELDER] and Melian leaders on the other, [SEOJIN] and [THUC] standing unseen beside a column`",
+  "움직임": "`leaves sway, slow dolly toward the table`",
+  "소리": "**N** \"그때 지중해 세계는 아테네와 스파르타의 전쟁 한가운데 있었습니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, wide shot of a stone table under an old olive tree, Athenian envoy, clean-shaven stern middle-aged man, emotionless eyes, white chiton with a blue border, bronze Corinthian helmet held under one arm with armored guards on one side, Melian elder, old man with a long white beard, simple undyed wool robe, olive wreath, dignified but frightened eyes and Melian leaders on the other, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt and Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch standing unseen beside a column",
+  "motion": "leaves sway, slow dolly toward the table",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "그때 지중해 세계는 아테네와 스파르타의 전쟁 한가운데 있었습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C036",
+  "start": 167,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], ancient parchment map of the Aegean, a blue fleet emblem over Athens, a red spear emblem over Sparta, a tiny island between them`",
+  "편집": "'아테네', '스파르타', '멜로스' 글자를 편집에서 얹기",
+  "소리": "**N** \"멜로스는 어느 편에도 서지 않았습니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient parchment map of the Aegean, a blue fleet emblem over Athens, a red spear emblem over Sparta, a tiny island between them",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "멜로스는 어느 편에도 서지 않았습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C037",
+  "start": 172,
+  "duration": 6.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "C036과 같은 지도, 작은 섬 부분 확대",
+  "편집": "확대하면서 지도 잉크가 물결처럼 번지는 효과",
+  "소리": "**N** \"그리고 이 대화는, 2,400년 뒤 전혀 다른 바다에서 다시 반복됩니다.\" (새 대사)",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient parchment map of the Aegean, a blue fleet emblem over Athens, a red spear emblem over Sparta, a tiny island between them",
+  "prompt_note": "C036과 같은 지도, 작은 섬 부분 확대",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "그리고 이 대화는, 2,400년 뒤 전혀 다른 바다에서 다시 반복됩니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C038",
+  "start": 178,
+  "duration": 7.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], [ELDER] leaning forward over the stone table, pleading with dignity`",
+  "소리": "**멜로스 원로** \"우리가 중립을 지키면 안 됩니까. 우리는 누구의 적도 아닙니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Melian elder, old man with a long white beard, simple undyed wool robe, olive wreath, dignified but frightened eyes leaning forward over the stone table, pleading with dignity",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "멜로스 원로",
+    "note": "",
+    "text": "우리가 중립을 지키면 안 됩니까. 우리는 누구의 적도 아닙니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C039",
+  "start": 185,
+  "duration": 3.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], close-up of [ENVOY] slowly raising his head, no expression`",
+  "소리": "정적",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, close-up of Athenian envoy, clean-shaven stern middle-aged man, emotionless eyes, white chiton with a blue border, bronze Corinthian helmet held under one arm slowly raising his head, no expression",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C040",
+  "start": 188,
+  "duration": 8.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "C039와 같은 인물, 정면",
+  "소리": "**아테네 사절** \"우리는 여러분이 원하는 것을 얻지 못하리라고 생각하기 때문에 이 협상에 임하고 있습니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, close-up of Athenian envoy, clean-shaven stern middle-aged man, emotionless eyes, white chiton with a blue border, bronze Corinthian helmet held under one arm slowly raising his head, no expression",
+  "prompt_note": "C039와 같은 인물, 정면",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "아테네 사절",
+    "note": "",
+    "text": "우리는 여러분이 원하는 것을 얻지 못하리라고 생각하기 때문에 이 협상에 임하고 있습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C041",
+  "start": 196,
+  "duration": 3.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], olive leaves and ocean spray frozen in mid-air around the stone table`",
+  "움직임": "`everything freezes, particles hang in the air, subtle slow drift`",
+  "소리": "**모든 소리가 끊김**",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, olive leaves and ocean spray frozen in mid-air around the stone table",
+  "motion": "everything freezes, particles hang in the air, subtle slow drift",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C042",
+  "start": 199,
+  "duration": 7.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], extreme close-up of [ENVOY]'s cold eyes, harsh sunlight, frozen leaves in the foreground`",
+  "움직임": "`very slow push-in, eyes narrow slightly`",
+  "편집": "오버레이 09 (투키디데스 · 5권 89절)",
+  "소리": "**아테네 사절** \"강자는 할 수 있는 것을 하고, 약자는 당해야 하는 것을 당합니다.\" 대사가 끝나면 파도 소리가 돌아옴",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, extreme close-up of Athenian envoy, clean-shaven stern middle-aged man, emotionless eyes, white chiton with a blue border, bronze Corinthian helmet held under one arm's cold eyes, harsh sunlight, frozen leaves in the foreground",
+  "motion": "very slow push-in, eyes narrow slightly",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "아테네 사절",
+    "note": "",
+    "text": "강자는 할 수 있는 것을 하고, 약자는 당해야 하는 것을 당합니다."
+   }
+  ],
+  "overlays": [
+   "09"
+  ]
+ },
+ {
+  "id": "C043",
+  "start": 206,
+  "duration": 3.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], the Melian leaders' pale shocked faces, a clay cup tipping over on the stone table`",
+  "움직임": "`cup falls and wine spills slowly`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, the Melian leaders' pale shocked faces, a clay cup tipping over on the stone table",
+  "motion": "cup falls and wine spills slowly",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C044",
+  "start": 209,
+  "duration": 3.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], [SEOJIN] whispering to [THUC] beside the column, disbelief`",
+  "소리": "**서진** \"…저렇게까지 대놓고 말해요?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt whispering to Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch beside the column, disbelief",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "…저렇게까지 대놓고 말해요?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C045",
+  "start": 212,
+  "duration": 9.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], [AEGEAN], [THUC] with arms crossed, faint bitter smile`",
+  "소리": "**투키디데스** \"그래서 2,400년째 읽히는 거다. 보통 강대국은 명분을 댄다. 신의 뜻, 문명, 평화. 여기서만은 포장이 벗겨졌지.\"",
+  "편집": "\"신의 뜻, 문명, 평화\"에 맞춰 C046을 끼워 넣음",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch with arms crossed, faint bitter smile",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "그래서 2,400년째 읽히는 거다. 보통 강대국은 명분을 댄다. 신의 뜻, 문명, 평화. 여기서만은 포장이 벗겨졌지."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C046",
+  "start": 218,
+  "duration": 4.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "2막 · 멜로스 대화",
+  "그림": "`[STYLE], three draped objects on pedestals: a golden temple model, a torch, a white dove, the silk drapes being pulled away to reveal a bronze spearhead underneath each`",
+  "움직임": "`drapes slide off one by one`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, three draped objects on pedestals: a golden temple model, a torch, a white dove, the silk drapes being pulled away to reveal a bronze spearhead underneath each",
+  "motion": "drapes slide off one by one",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C047",
+  "start": 225,
+  "duration": 4.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], [AEGEAN], side close-up, [THUC]'s glowing semi-transparent palm covering [SEOJIN]'s eyes`",
+  "움직임": "`hand slowly lifts away`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, side close-up, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch's glowing semi-transparent palm covering Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt's eyes",
+  "motion": "hand slowly lifts away",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C048",
+  "start": 229,
+  "duration": 4.0,
+  "method": "영상",
+  "hero": 2,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], extreme close-up of [SEOJIN]'s eye opening, three small lights reflected in the iris: red, gold, green, the background drained of color`",
+  "움직임": "`eye opens, iris lights ignite, color drains from the world`",
+  "소리": "낮은 공명음",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, extreme close-up of Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt's eye opening, three small lights reflected in the iris: red, gold, green, the background drained of color",
+  "motion": "eye opens, iris lights ignite, color drains from the world",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C049",
+  "start": 233,
+  "duration": 6.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], [AEGEAN] desaturated, [ENVOY] standing still, empty space above his head`",
+  "편집": "오버레이 02 (빈 게이지) → 03 (기본값)으로 차오름. 차오를 때 짧은 전자음",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows desaturated, Athenian envoy, clean-shaven stern middle-aged man, emotionless eyes, white chiton with a blue border, bronze Corinthian helmet held under one arm standing still, empty space above his head",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "02",
+   "03"
+  ]
+ },
+ {
+  "id": "C050",
+  "start": 239,
+  "duration": 2.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "C044와 같은 구도, 놀란 얼굴",
+  "소리": "**서진** \"이게… 뭐예요?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt whispering to Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch beside the column, disbelief",
+  "prompt_note": "C044와 같은 구도, 놀란 얼굴",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "이게… 뭐예요?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C051",
+  "start": 241,
+  "duration": 5.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], [AEGEAN] desaturated, [THUC] pointing at the envoy`",
+  "편집": "\"두려움, 명예, 이익\"에 맞춰 게이지가 한 줄씩 빛남",
+  "소리": "**투키디데스** \"제국을 움직이는 세 가지. 두려움, 명예, 이익.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows desaturated, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch pointing at the envoy",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "제국을 움직이는 세 가지. 두려움, 명예, 이익."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C052",
+  "start": 246,
+  "duration": 4.0,
+  "method": "그래픽",
+  "hero": 1,
+  "section": "2막 · 투키디데스의 눈",
+  "편집": "오버레이 04 (명예 최대). 금색 게이지가 끝까지 차면서 화면 가장자리에 금빛이 번짐",
+  "소리": "강한 타격음",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "04"
+  ]
+ },
+ {
+  "id": "C053",
+  "start": 250,
+  "duration": 7.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], [AEGEAN], high aerial view of the Aegean with many small islands, the Athenian fleet surrounding one tiny island`",
+  "소리": "**투키디데스** \"멜로스는 군사적으로 아무 위협도 아니다. 그런데도 왔지.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, high aerial view of the Aegean with many small islands, the Athenian fleet surrounding one tiny island",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "멜로스는 군사적으로 아무 위협도 아니다. 그런데도 왔지."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C054",
+  "start": 257,
+  "duration": 8.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], [AEGEAN], silhouettes of people standing on distant neighboring islands, all watching toward one island, dusk light`",
+  "소리": "**투키디데스** \"작은 섬 하나의 중립을 내버려 두면, 다른 동맹들도 같은 생각을 하기 시작하니까.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, silhouettes of people standing on distant neighboring islands, all watching toward one island, dusk light",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "작은 섬 하나의 중립을 내버려 두면, 다른 동맹들도 같은 생각을 하기 시작하니까."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C055",
+  "start": 265,
+  "duration": 4.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], [AEGEAN], close-up of [THUC], cold eyes`",
+  "소리": "**투키디데스** \"패권은 예외를 허용하지 않는다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, close-up of Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch, cold eyes",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "패권은 예외를 허용하지 않는다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C056",
+  "start": 269,
+  "duration": 2.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "C050과 같은 그림",
+  "소리": "**서진** \"명예 때문에요?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt whispering to Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch beside the column, disbelief",
+  "prompt_note": "C050과 같은 그림",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "명예 때문에요?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C057",
+  "start": 271,
+  "duration": 10.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "C049와 같은 그림",
+  "편집": "오버레이 03. 대사에 맞춰 두려움 → 명예 → 이익 순서로 게이지가 한 번씩 번쩍",
+  "소리": "**투키디데스** \"두려움이 움직이게 하고, 명예가 그걸 정당화하고, 이익이 방향을 정한다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows desaturated, Athenian envoy, clean-shaven stern middle-aged man, emotionless eyes, white chiton with a blue border, bronze Corinthian helmet held under one arm standing still, empty space above his head",
+  "prompt_note": "C049와 같은 그림",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "두려움이 움직이게 하고, 명예가 그걸 정당화하고, 이익이 방향을 정한다."
+   }
+  ],
+  "overlays": [
+   "03"
+  ]
+ },
+ {
+  "id": "C058",
+  "start": 281,
+  "duration": 6.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 투키디데스의 눈",
+  "그림": "`[STYLE], [AEGEAN], [THUC] turning away toward the sea, cloak moving`",
+  "소리": "**투키디데스** \"그리고 어떤 제국도 '이익 때문에 왔다'고는 말하지 않는다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch turning away toward the sea, cloak moving",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "그리고 어떤 제국도 '이익 때문에 왔다'고는 말하지 않는다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C059",
+  "start": 287,
+  "duration": 7.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "2막 · 그해 겨울",
+  "그림": "`[STYLE], [AEGEAN] city walls on the island seen from the cliff at sunset`",
+  "움직임": "`time-lapse, sun sets fast, colors shift from gold to cold slate blue, clouds race`",
+  "소리": "**N** \"협상은 결렬됐습니다. 멜로스는 항전을 택했고,\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows city walls on the island seen from the cliff at sunset",
+  "motion": "time-lapse, sun sets fast, colors shift from gold to cold slate blue, clouds race",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "협상은 결렬됐습니다. 멜로스는 항전을 택했고,"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C060",
+  "start": 294,
+  "duration": 6.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 그해 겨울",
+  "그림": "`[STYLE], [WINTER], empty hillside, a bare olive tree, a torn cloth fluttering on a broken spear shaft stuck in the ground, no people`",
+  "소리": "찬바람 · **N** \"그해 겨울 함락됐습니다.\"",
+  "수위": "사람, 피, 시신은 절대 그리지 않음",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, the same island in winter, desaturated slate blue and ash grey, cold low sun, bare olive trees, light snow flurries, empty hillside, a bare olive tree, a torn cloth fluttering on a broken spear shaft stuck in the ground, no people",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "그해 겨울 함락됐습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C061",
+  "start": 300,
+  "duration": 7.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 그해 겨울",
+  "그림": "`[STYLE], [WINTER], close-up of a stylus carving into [TABLET], snowflakes landing on the wax`",
+  "소리": "**N** \"투키디데스는 그 결과를, 차갑게, 끝까지 기록했습니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, the same island in winter, desaturated slate blue and ash grey, cold low sun, bare olive trees, light snow flurries, close-up of a stylus carving into ancient Greek wooden wax writing tablet with a dark wax surface, bronze stylus, snowflakes landing on the wax",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "투키디데스는 그 결과를, 차갑게, 끝까지 기록했습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C062",
+  "start": 307,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "2막 · 그해 겨울",
+  "그림": "`[STYLE], [WINTER], close-up of [SEOJIN]'s clenched fist trembling`",
+  "편집": "오버레이 10 (메모)을 반투명하게 겹침",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, the same island in winter, desaturated slate blue and ash grey, cold low sun, bare olive trees, light snow flurries, close-up of Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt's clenched fist trembling",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "10"
+  ]
+ },
+ {
+  "id": "C063",
+  "start": 312,
+  "duration": 5.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 그해 겨울",
+  "그림": "`[STYLE], [WINTER], [SEOJIN] looking up at [THUC], eyes wet but angry`",
+  "소리": "**서진** \"할아버지가… 이걸 보고 우리가 멜로스라고 쓴 거예요?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, the same island in winter, desaturated slate blue and ash grey, cold low sun, bare olive trees, light snow flurries, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt looking up at Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch, eyes wet but angry",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "할아버지가… 이걸 보고 우리가 멜로스라고 쓴 거예요?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C064",
+  "start": 317,
+  "duration": 6.0,
+  "method": "입",
+  "hero": 0,
+  "section": "2막 · 그해 겨울",
+  "그림": "`[STYLE], [WINTER], [THUC] with a softer expression, snow passing through his translucent body`",
+  "소리": "**투키디데스** \"작은 섬은 어느 시대에나 있다. 이름만 바뀔 뿐이지.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, the same island in winter, desaturated slate blue and ash grey, cold low sun, bare olive trees, light snow flurries, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch with a softer expression, snow passing through his translucent body",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "작은 섬은 어느 시대에나 있다. 이름만 바뀔 뿐이지."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C065",
+  "start": 323,
+  "duration": 5.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "`[STYLE], [VOID], [THUC] carving into [TABLET], the grooves glowing gold`",
+  "움직임": "`stylus moves, carved lines ignite with light`",
+  "편집": "빛나는 홈 위에 '2026' 숫자를 얹기",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch carving into ancient Greek wooden wax writing tablet with a dark wax surface, bronze stylus, the grooves glowing gold",
+  "motion": "stylus moves, carved lines ignite with light",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C066",
+  "start": 328,
+  "duration": 7.0,
+  "method": "영상",
+  "hero": 2,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "`[STYLE], ocean-level shot, the bronze ram of an ancient trireme cutting through waves`",
+  "움직임": "`the wooden trireme bow morphs into the massive steel bow of a modern aircraft carrier, spray explodes, camera pulls back`",
+  "소리": "음악이 크게 고조",
+  "팁": "이미지→영상 도구의 '시작 프레임 + 끝 프레임' 기능을 쓰면 변신이 자연스럽습니다. 끝 프레임은 `[STYLE], ocean-level shot, massive steel bow of a modern aircraft carrier cutting through waves`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ocean-level shot, the bronze ram of an ancient trireme cutting through waves",
+  "motion": "the wooden trireme bow morphs into the massive steel bow of a modern aircraft carrier, spray explodes, camera pulls back",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C067",
+  "start": 335,
+  "duration": 7.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "`[STYLE], [MAP], top-down view of a narrow sea strait between two coastlines, dozens of orange tanker lights moving in a line`",
+  "편집": "오버레이 08 (호르무즈 해협 자막 바). 천천히 확대",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, stylized satellite map at night, dark ocean, softly glowing coastlines, tiny orange ship lights, infographic mood, top-down view of a narrow sea strait between two coastlines, dozens of orange tanker lights moving in a line",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "08"
+  ]
+ },
+ {
+  "id": "C068",
+  "start": 342,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "`[STYLE], [MAP], closer top-down view of oil tankers crowded in the narrow strait, wakes glowing`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, stylized satellite map at night, dark ocean, softly glowing coastlines, tiny orange ship lights, infographic mood, closer top-down view of oil tankers crowded in the narrow strait, wakes glowing",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C069",
+  "start": 347,
+  "duration": 6.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "`[STYLE], [MAP], a colossal shadowy silhouette of a man in a suit standing over the glowing map like a giant, face in darkness`",
+  "편집": "오버레이 02 (빈 게이지)를 실루엣 머리 위에",
+  "소리": "**투키디데스** \"같은 렌즈로 보자. 두려움.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, stylized satellite map at night, dark ocean, softly glowing coastlines, tiny orange ship lights, infographic mood, a colossal shadowy silhouette of a man in a suit standing over the glowing map like a giant, face in darkness",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "같은 렌즈로 보자. 두려움."
+   }
+  ],
+  "overlays": [
+   "02"
+  ]
+ },
+ {
+  "id": "C070",
+  "start": 353,
+  "duration": 4.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "편집": "붉은 게이지 상승 + 원자 모양 아이콘 번쩍",
+  "소리": "**서진** \"이란의 핵.\"",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "이란의 핵."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C071",
+  "start": 357,
+  "duration": 2.0,
+  "method": "입",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "C055와 같은 그림",
+  "소리": "**투키디데스** \"명예.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, close-up of Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch, cold eyes",
+  "prompt_note": "C055와 같은 그림",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "명예."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C072",
+  "start": 359,
+  "duration": 5.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "편집": "금색 게이지 상승 + 붉은 선을 긋는 손 아이콘",
+  "소리": "**서진** \"레드라인을 말로만 긋는 나라가 아니다… 신뢰성?\"",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "레드라인을 말로만 긋는 나라가 아니다… 신뢰성?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C073",
+  "start": 364,
+  "duration": 3.0,
+  "method": "입",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "C071과 같은 그림, 더 가까이",
+  "소리": "**투키디데스** \"그리고, 이익.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, ancient Aegean island, sun-bleached white limestone, deep cobalt sea, olive trees, bright Mediterranean sun, crisp shadows, close-up of Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch, cold eyes",
+  "prompt_note": "C071과 같은 그림, 더 가까이",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "그리고, 이익."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C074",
+  "start": 367,
+  "duration": 4.0,
+  "method": "그래픽",
+  "hero": 1,
+  "section": "3막 · 2026, 호르무즈",
+  "편집": "오버레이 05 (안개 게이지). 안개가 천천히 흐르게 좌우로 살짝 이동",
+  "소리": "바람 소리",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "05"
+  ]
+ },
+ {
+  "id": "C075",
+  "start": 371,
+  "duration": 3.0,
+  "method": "입",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "`[STYLE], [VOID], [SEOJIN] squinting in confusion`",
+  "소리": "**서진** \"어? 이건 왜 안 보여요?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt squinting in confusion",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "어? 이건 왜 안 보여요?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C076",
+  "start": 374,
+  "duration": 8.0,
+  "method": "입",
+  "hero": 0,
+  "section": "3막 · 2026, 호르무즈",
+  "그림": "`[STYLE], [VOID], close-up of [THUC], eyes glowing faintly blue`",
+  "소리": "**투키디데스** \"아직 기록되지 않았으니까. 설계는 언제나, 한참 뒤에야 문서로 드러난다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, close-up of Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch, eyes glowing faintly blue",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "아직 기록되지 않았으니까. 설계는 언제나, 한참 뒤에야 문서로 드러난다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C077",
+  "start": 382,
+  "duration": 7.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "3막 · 실",
+  "그림": "`[STYLE], dark room, a glowing oil price line chart on a monitor`",
+  "움직임": "`the chart line peels off the screen and becomes a glowing amber thread floating into the air`",
+  "소리": "**서진** (천천히) \"유가는… 미국 셰일 기업들의 손익분기점 위로 올라가고.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dark room, a glowing oil price line chart on a monitor",
+  "motion": "the chart line peels off the screen and becomes a glowing amber thread floating into the air",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "천천히",
+    "text": "유가는… 미국 셰일 기업들의 손익분기점 위로 올라가고."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C078",
+  "start": 389,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 실",
+  "그림": "`[STYLE], Texas plains at dusk, oil pump jacks and a shale drilling rig, a glowing amber thread passing through the sky`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, Texas plains at dusk, oil pump jacks and a shale drilling rig, a glowing amber thread passing through the sky",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C079",
+  "start": 394,
+  "duration": 7.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 실",
+  "그림": "`[STYLE], an oil tanker in a narrow strait at night, a giant blank insurance certificate with a red wax seal hovering over the water like a gate`",
+  "소리": "**서진** \"해협을 지나는 배는… 보험증서가 결정하고.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, an oil tanker in a narrow strait at night, a giant blank insurance certificate with a red wax seal hovering over the water like a gate",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "해협을 지나는 배는… 보험증서가 결정하고."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C080",
+  "start": 401,
+  "duration": 7.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "3막 · 실",
+  "그림": "`[STYLE], an LNG carrier ship with round tanks sailing toward an East Asian harbor at night, gold, amber and teal threads trailing behind it`",
+  "움직임": "`ship sails forward, threads ripple in the wind`",
+  "소리": "**서진** \"한국이랑 일본이랑 유럽은… 미국산 에너지를 달러로 사고.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, an LNG carrier ship with round tanks sailing toward an East Asian harbor at night, gold, amber and teal threads trailing behind it",
+  "motion": "ship sails forward, threads ripple in the wind",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "한국이랑 일본이랑 유럽은… 미국산 에너지를 달러로 사고."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C081",
+  "start": 408,
+  "duration": 8.0,
+  "method": "영상",
+  "hero": 2,
+  "section": "3막 · 실",
+  "그림": "`[STYLE], [NIGHT], hundreds of glowing gold, amber and teal threads flying across a dark ocean, converging on a distant white-domed building glowing on the horizon`",
+  "움직임": "`threads rush toward the horizon and converge, the dome glows brighter`",
+  "소리": "**N** \"그리고 그 달러는, 언제나 그랬듯…\" → 실이 모이는 순간 **암전**",
+  "주의": "건물은 멀리 작게, 이름은 밝히지 않음",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, pre-dawn darkness, deep navy and black, burning amber glow on the horizon, hundreds of glowing gold, amber and teal threads flying across a dark ocean, converging on a distant white-domed building glowing on the horizon",
+  "motion": "threads rush toward the horizon and converge, the dome glows brighter",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "그리고 그 달러는, 언제나 그랬듯…"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C082",
+  "start": 416,
+  "duration": 3.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "3막 · 달러의 옷",
+  "화면": "검은 화면",
+  "소리": "심장 박동 두 번",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C083",
+  "start": 419,
+  "duration": 6.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 달러의 옷",
+  "그림": "`[STYLE], [VOID], [DOLLAR] standing with his back turned in a black trench coat, single spotlight`",
+  "편집": "아주 천천히 확대",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, towering faceless figure, face always hidden in deep shadow, slender elegant silhouette, long tailored coat standing with his back turned in a black trench coat, single spotlight",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C084",
+  "start": 425,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 달러의 옷",
+  "그림": "`[STYLE], [VOID], a torn golden coat lying crumpled on the floor at the figure's feet, gold dust scattered`",
+  "소리": "**투키디데스** \"저 녀석은 한 번도 진 적이 없다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, a torn golden coat lying crumpled on the floor at the figure's feet, gold dust scattered",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "저 녀석은 한 번도 진 적이 없다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C085",
+  "start": 430,
+  "duration": 5.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "3막 · 달러의 옷",
+  "그림": "`[STYLE], [VOID], close-up of the shoulder seam of [DOLLAR]'s black oil-sheen trench coat`",
+  "움직임": "`the seam slowly tears open, threads snapping one by one`",
+  "소리": "실 끊어지는 소리 · **투키디데스** \"다만 옷을 갈아입을 뿐이지.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, close-up of the shoulder seam of towering faceless figure, face always hidden in deep shadow, slender elegant silhouette, long tailored coat's black oil-sheen trench coat",
+  "motion": "the seam slowly tears open, threads snapping one by one",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "다만 옷을 갈아입을 뿐이지."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C086",
+  "start": 435,
+  "duration": 0.041666666666666664,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 달러의 옷",
+  "그림": "`[STYLE], [VOID], extreme close-up of a deep navy coat lining with a subtle repeating geometric pattern, faint glow`",
+  "편집": "1프레임(약 0.04초)만 끼워 넣기. 떡밥이니 절대 늘리지 않음",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, extreme close-up of a deep navy coat lining with a subtle repeating geometric pattern, faint glow",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C087",
+  "start": 436,
+  "duration": 10.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "3막 · 달러의 옷",
+  "그림": "C083과 같은 그림, 더 가까이",
+  "편집": "\"금 / 석유 / 지금\"에 맞춰 금빛 → 검은빛 → 청록빛 조명이 한 번씩 스침",
+  "소리": "**N** \"첫 번째 옷은 금이었습니다. 두 번째 옷은 석유였습니다. 세 번째 옷은 지금 재단되고 있습니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, towering faceless figure, face always hidden in deep shadow, slender elegant silhouette, long tailored coat standing with his back turned in a black trench coat, single spotlight",
+  "prompt_note": "C083과 같은 그림, 더 가까이",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "첫 번째 옷은 금이었습니다. 두 번째 옷은 석유였습니다. 세 번째 옷은 지금 재단되고 있습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C088",
+  "start": 446,
+  "duration": 7.0,
+  "method": "영상",
+  "hero": 1,
+  "section": "3막 · 달러의 옷",
+  "그림": "`[STYLE], [VOID], [DOLLAR] beginning to turn his head toward the camera, face still in shadow`",
+  "움직임": "`head turns slowly, light creeps toward his face`",
+  "소리": "**N** \"그러나 옷 안쪽의 안감은, 한 번도 바뀌지 않았습니다.\" → 얼굴이 보이기 직전 **암전**",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, towering faceless figure, face always hidden in deep shadow, slender elegant silhouette, long tailored coat beginning to turn his head toward the camera, face still in shadow",
+  "motion": "head turns slowly, light creeps toward his face",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "그러나 옷 안쪽의 안감은, 한 번도 바뀌지 않았습니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C089",
+  "start": 453,
+  "duration": 9.0,
+  "method": "입",
+  "hero": 0,
+  "section": "3막 · 달러의 옷",
+  "그림": "`[STYLE], [VOID], [THUC] standing alone in the spotlight, grave expression`",
+  "소리": "**투키디데스** \"잊지 마라. 핵의 위협은 실재했다. 전쟁의 비극은 어떤 분석으로도 덮을 수 없다. 이건 하나의 시선이지, 판결이 아니다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, infinite black void, single hard spotlight from above, faint haze, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch standing alone in the spotlight, grave expression",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "잊지 마라. 핵의 위협은 실재했다. 전쟁의 비극은 어떤 분석으로도 덮을 수 없다. 이건 하나의 시선이지, 판결이 아니다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C090",
+  "start": 462,
+  "duration": 6.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "엔딩",
+  "그림": "`[STYLE], [BACKROOM] in the evening, [SEOJIN] sitting on a sack with [BOOK] closed on his lap, blue TV glow from the shop doorway`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves in the evening, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt sitting on a sack with old worn cloth-bound hardcover book, faded dark blue cloth, frayed corners, blank gold-stamped cover, red ribbon bookmark closed on his lap, blue TV glow from the shop doorway",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C091",
+  "start": 468,
+  "duration": 5.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "엔딩",
+  "그림": "`[STYLE], [SHOP], TV screen showing an oil price graph, [SEOJIN] watching from the doorway`",
+  "움직임": "`faint glowing threads drift out of the TV screen, he rubs his eyes`",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, small Seoul coffee bean shop interior, warm tungsten light, burlap coffee sacks, cramped wooden shelves, cozy but tired mood, TV screen showing an oil price graph, Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt watching from the doorway",
+  "motion": "faint glowing threads drift out of the TV screen, he rubs his eyes",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C092",
+  "start": 473,
+  "duration": 5.0,
+  "method": "입",
+  "hero": 0,
+  "section": "엔딩",
+  "그림": "`[STYLE], [BACKROOM], close-up of [SEOJIN], quiet determined face`",
+  "소리": "**서진** \"할아버지… 우리가 멜로스였으면, 이번엔 뭐가 다른데?\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, close-up of Seojin, 20-year-old Korean male university student, slim, messy black hair with long bangs, sharp tired dark eyes, faint dark circles, oversized charcoal hoodie over a white t-shirt, quiet determined face",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "서진",
+    "note": "",
+    "text": "할아버지… 우리가 멜로스였으면, 이번엔 뭐가 다른데?"
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C093",
+  "start": 478,
+  "duration": 6.0,
+  "method": "입",
+  "hero": 0,
+  "section": "엔딩",
+  "그림": "`[STYLE], [BACKROOM], [THUC] leaning against a metal shelf behind Seojin, translucent, faint smile`",
+  "소리": "**투키디데스** \"멜로스 사람들은 문장을 듣기만 했다. 너는 읽을 수 있게 될 거다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, dim storage backroom, single bare bulb, dust floating in light beams, stacked burlap sacks, old metal shelves, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch leaning against a metal shelf behind Seojin, translucent, faint smile",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "멜로스 사람들은 문장을 듣기만 했다. 너는 읽을 수 있게 될 거다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C094",
+  "start": 484,
+  "duration": 9.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "엔딩",
+  "편집": "오버레이 13 (오늘의 한 문장 카드) + 마지막 3초에 오버레이 14 (고지)",
+  "소리": "**N** \"강자는 할 수 있는 것을 하고, 약자는 당해야 하는 것을 당한다.\" (새로 읽는 대사)",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "N",
+    "note": "",
+    "text": "강자는 할 수 있는 것을 하고, 약자는 당해야 하는 것을 당한다."
+   }
+  ],
+  "overlays": [
+   "13",
+   "14"
+  ]
+ },
+ {
+  "id": "C095",
+  "start": 493,
+  "duration": 5.0,
+  "method": "정지",
+  "hero": 0,
+  "section": "쿠키와 엔드 화면",
+  "그림": "`[STYLE], [LECTURE], green chalkboard with two large chalk-drawn numbers area left blank`",
+  "편집": "칠판에 '16'과 '12'를 분필 글씨로 얹기",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, empty modern university lecture hall at dusk, green chalkboard, rows of wooden seats, warm window light, green chalkboard with two large chalk-drawn numbers area left blank",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C096",
+  "start": 498,
+  "duration": 8.0,
+  "method": "입",
+  "hero": 0,
+  "section": "쿠키와 엔드 화면",
+  "그림": "`[STYLE], [LECTURE], [THUC] standing at the chalkboard holding chalk`",
+  "소리": "**투키디데스** \"지난 500년, 기존 패권국과 신흥 강국이 마주친 게 열여섯 번. 그중 열두 번이 전쟁이었다.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, empty modern university lecture hall at dusk, green chalkboard, rows of wooden seats, warm window light, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch standing at the chalkboard holding chalk",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "지난 500년, 기존 패권국과 신흥 강국이 마주친 게 열여섯 번. 그중 열두 번이 전쟁이었다."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C097",
+  "start": 506,
+  "duration": 2.0,
+  "method": "영상",
+  "hero": 0,
+  "section": "쿠키와 엔드 화면",
+  "그림": "`[STYLE], [LECTURE], close-up of chalk in [THUC]'s fingers`",
+  "움직임": "`chalk snaps in half, dust bursts`",
+  "소리": "딱",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, empty modern university lecture hall at dusk, green chalkboard, rows of wooden seats, warm window light, close-up of chalk in Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch's fingers",
+  "motion": "chalk snaps in half, dust bursts",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": []
+ },
+ {
+  "id": "C098",
+  "start": 508,
+  "duration": 6.0,
+  "method": "입",
+  "hero": 0,
+  "section": "쿠키와 엔드 화면",
+  "그림": "C096과 같은 그림, 카메라 쪽을 봄",
+  "소리": "**투키디데스** \"다음엔 내가 왜 추방당했는지 말해 주지. 그리고 이 함정에 내 이름이 붙은 이유도.\"",
+  "prompt": "anime style, Japanese TV animation look, 2D cel shading, clean confident lineart, painterly detailed background art, cinematic composition, dramatic lighting, subtle film grain, no text, 16:9, empty modern university lecture hall at dusk, green chalkboard, rows of wooden seats, warm window light, Thucydides, ghostly ancient Greek general in his fifties, semi-transparent body with a faint blue-white glow at the edges, short grey beard, deep-set piercing grey eyes, old scar through the left eyebrow, worn dark crimson wool cloak over a plain tunic, bronze brooch standing at the chalkboard holding chalk",
+  "prompt_note": "C096과 같은 그림, 카메라 쪽을 봄",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [
+   {
+    "speaker": "투키디데스",
+    "note": "",
+    "text": "다음엔 내가 왜 추방당했는지 말해 주지. 그리고 이 함정에 내 이름이 붙은 이유도."
+   }
+  ],
+  "overlays": []
+ },
+ {
+  "id": "C099",
+  "start": 514,
+  "duration": 6.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "쿠키와 엔드 화면",
+  "편집": "오버레이 15 (다음 화 예고 카드)",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "15"
+  ]
+ },
+ {
+  "id": "C100",
+  "start": 520,
+  "duration": 15.0,
+  "method": "그래픽",
+  "hero": 0,
+  "section": "쿠키와 엔드 화면",
+  "편집": "오버레이 01 (로고)을 어두운 배경에 깔고, 오른쪽 절반은 비워 둠. YouTube 스튜디오에서 이 자리에 '구독' 버튼과 '재생목록'을 배치 (최종 화면은 영상 마지막 5~20초에만 넣을 수 있음)",
+  "소리": "메인 테마",
+  "prompt": "",
+  "motion": "",
+  "negative": "text, letters, words, numbers, watermark, logo, signature, subtitles, speech bubble, extra fingers, deformed hands, distorted face, 3D render, photorealistic, low resolution, blurry",
+  "lines": [],
+  "overlays": [
+   "01"
+  ]
+ }
+]

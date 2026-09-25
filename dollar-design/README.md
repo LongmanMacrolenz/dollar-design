@@ -12,8 +12,11 @@
 | [upload/업로드_키트.md](upload/업로드_키트.md) | 채널 개설 순서, 채널 설명, 1화 제목·설명란·태그·고정 댓글, 업로드 체크리스트 |
 | `upload/channel/` | 채널 프로필 사진, 배너 |
 | `upload/ep01/` | 1화 썸네일 A·B, 자막 자동 동기화용 원고 |
+| [episodes/ep01/README.md](episodes/ep01/README.md) | **1화 제작 순서와 파일 넣는 곳** (여기서 시작) |
+| [episodes/ep01/production/](episodes/ep01/production/) | 붙여넣기용 지시문, 캐릭터 시트 지시문, 배역별 녹음 대본, 컷 관리표(prompts.csv) |
 | [episodes/ep01/컷_지시서.md](episodes/ep01/컷_지시서.md) | 1화 100컷 작화 지시서: 흥행 설계, 스타일 바이블, 캐릭터 시트, 컷별 AI 그림·움직임 지시문, 음악·녹음 디렉션 |
 | `episodes/ep01/overlays/` | 1화 편집용 그래픽 16장 (게이지, 메모, 자막 바, 카드) |
+| `tools/` | `cutlist.py` (컷 지시서 → 제작 시트), `assemble.py` (그림·영상·녹음 → 가편집본 자동 조립) |
 | `upload/_src/` | 썸네일·채널 아트 원본 HTML과 렌더링 스크립트 (`python3 render.py thumb_a.html 1280x720 출력.png`) |
 
 > 원고 전문은 이 저장소에 넣지 않았습니다. 이 저장소는 공개(public)이므로, 원고는 비공개 저장소에 보관하세요.
