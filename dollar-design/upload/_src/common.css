@@ -3,6 +3,8 @@
 @font-face { font-family: 'Noto Sans KR'; font-weight: 800 900; src: url(fonts/NotoSansKR-900.ttf); }
 @font-face { font-family: 'Noto Serif KR'; font-weight: 700; src: url(fonts/NotoSerifKR-700.ttf); }
 @font-face { font-family: 'Noto Serif KR'; font-weight: 800 900; src: url(fonts/NotoSerifKR-900.ttf); }
+@font-face { font-family: 'Nanum Pen Script'; src: url(fonts/NanumPenScript.ttf); }
+@font-face { font-family: 'Noto Serif'; font-weight: 900; src: url(fonts/NotoSerif-900.ttf); }
 
 :root {
   --ink: #06080e;

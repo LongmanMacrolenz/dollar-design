@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<!--
+  편집용 오버레이 한 장짜리 템플릿. ?kind= 로 종류를 고른다.
+    logo                         타이틀 로고 (투명)
+    gauges&state=base|honor|fog|empty   투키디데스의 눈 게이지 (투명)
+    lower&t=제목&s=보조           하단 자막 바 (투명, 1920x1080 전체 프레임)
+    memo&t=문구                   손글씨 메모 (투명)
+    calendar&y=1997&m=12          달력 숫자 (투명)
+    book                          책 표지 세로 제목 (투명)
+    sentence&t=문장&s=출처         오늘의 한 문장 카드
+    next&n=2&t=제목               다음 화 예고 카드
+    notice                        해석·투자 고지 (투명)
+-->
+<style>
+  html, body { background: transparent; }
+  body { margin: 0; }
+  #root { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+
+  /* 로고 */
+  .logo { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .logo .t { font-family: 'Noto Serif KR'; font-weight: 900; font-size: 190px; color: var(--gold); letter-spacing: 8px;
+             text-shadow: 0 10px 0 var(--gold-deep), 0 0 80px rgba(232,184,74,.45); }
+
+  /* 게이지 */
+  .gauges { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 22px; padding: 0 40px; }
+  .g { display: grid; grid-template-columns: 170px 1fr; align-items: center; gap: 22px; }
+  .g .lab { text-align: right; line-height: 1.05; }
+  .g .gr { font-family: 'Noto Serif', serif; font-weight: 900; font-size: 42px; color: var(--c); text-shadow: 0 0 2px #000, 0 2px 6px rgba(0,0,0,.85), 0 0 18px var(--c); }
+  .g .ko { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 25px; color: var(--paper); text-shadow: 0 0 2px #000, 0 1px 5px rgba(0,0,0,.9); }
+  .bar { position: relative; height: 46px; border-radius: 6px; border: 3px solid var(--c);
+         background: rgba(6,8,14,.55); box-shadow: 0 0 22px color-mix(in srgb, var(--c) 55%, transparent), inset 0 0 12px rgba(0,0,0,.6); overflow: hidden; }
+  .fill { position: absolute; left: 0; top: 0; bottom: 0; width: var(--v);
+          background: linear-gradient(90deg, color-mix(in srgb, var(--c) 55%, #000), var(--c)); box-shadow: 0 0 30px var(--c); }
+  .ticks { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 58px, rgba(0,0,0,.35) 58px 61px); }
+  .fog { position: absolute; inset: -20px; filter: blur(10px);
+         background:
+           radial-gradient(circle at 12% 50%, rgba(220,226,235,.95) 0 16%, transparent 32%),
+           radial-gradient(circle at 34% 40%, rgba(200,208,220,.9) 0 18%, transparent 36%),
+           radial-gradient(circle at 58% 60%, rgba(228,232,240,.95) 0 17%, transparent 35%),
+           radial-gradient(circle at 80% 45%, rgba(205,212,224,.9) 0 18%, transparent 36%),
+           radial-gradient(circle at 97% 55%, rgba(225,230,238,.9) 0 14%, transparent 30%); }
+
+  /* 하단 자막 바 */
+  .lower { position: absolute; left: 96px; bottom: 120px; padding: 18px 180px 20px 30px; border-left: 8px solid var(--gold);
+           background: linear-gradient(90deg, rgba(6,8,14,.88) 0, rgba(6,8,14,.8) calc(100% - 160px), rgba(6,8,14,0)); }
+  .lower .t { font-family: 'Noto Sans KR'; font-weight: 900; font-size: 54px; color: var(--paper); letter-spacing: 2px; }
+  .lower .s { margin-top: 6px; font-family: 'Noto Sans KR'; font-weight: 700; font-size: 32px; color: var(--amber); letter-spacing: 1px; }
+
+  /* 손글씨 메모 */
+  .memo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .memo .t { font-family: 'Nanum Pen Script'; font-size: 150px; color: #1d2f6b; transform: rotate(-4deg); opacity: .92; letter-spacing: 2px; }
+
+  /* 달력 */
+  .cal { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #1a1a1a; }
+  .cal .y { font-family: 'Noto Sans KR'; font-weight: 900; font-size: 64px; letter-spacing: 12px; }
+  .cal .m { font-family: 'Noto Sans KR'; font-weight: 900; font-size: 360px; line-height: .95; color: #b3261e; }
+  .cal .w { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 38px; letter-spacing: 18px; }
+
+  /* 책 제목 */
+  .book { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+  .book .t { writing-mode: vertical-rl; font-family: 'Noto Serif KR'; font-weight: 900; font-size: 92px; letter-spacing: 10px;
+             color: #d9b45a; text-shadow: 0 2px 0 #4a3206, 0 -1px 0 #f5dfa0; }
+  .book .a { writing-mode: vertical-rl; font-family: 'Noto Serif KR'; font-weight: 700; font-size: 44px; color: #c9a44f; letter-spacing: 8px; }
+
+  /* 카드 */
+  .card { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #141c30 0%, var(--ink) 75%);
+          display: flex; align-items: center; justify-content: center; }
+  .paper { width: 1320px; padding: 90px 110px 80px; background: #f4efe3; border-radius: 4px; text-align: center;
+           box-shadow: 0 30px 80px rgba(0,0,0,.6), inset 0 0 90px rgba(120,90,40,.18); }
+  .paper .h { font-family: 'Noto Sans KR'; font-weight: 700; font-size: 30px; color: #8a6a2a; letter-spacing: 12px; }
+  .paper .t { margin-top: 36px; font-family: 'Noto Serif KR'; font-weight: 900; font-size: 64px; line-height: 1.5; color: #1a1712; word-break: keep-all; }
+  .paper .s { margin-top: 40px; font-family: 'Noto Serif KR'; font-weight: 700; font-size: 32px; color: #5b5244; }
+  .next { text-align: center; }
+  .next .n { font-family: 'Noto Sans KR'; font-weight: 900; font-size: 44px; color: var(--amber); letter-spacing: 14px; }
+  .next .t { margin-top: 26px; font-family: 'Noto Serif KR'; font-weight: 900; font-size: 92px; color: var(--paper); line-height: 1.3; word-break: keep-all; max-width: 1500px; }
+  .next .b { margin-top: 44px; font-family: 'Noto Serif KR'; font-weight: 900; font-size: 40px; color: var(--gold); }
+
+  /* 고지 */
+  .notice { position: absolute; left: 0; right: 0; bottom: 60px; text-align: center; font-family: 'Noto Sans KR'; font-weight: 700;
+            font-size: 30px; line-height: 1.6; color: rgba(243,239,230,.88); text-shadow: 0 2px 8px rgba(0,0,0,.9); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const q = new URLSearchParams(location.search);
+const get = (k, d = '') => q.get(k) ?? d;
+const root = document.getElementById('root');
+const esc = s => s.replace(/[&<>]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;'}[c]));
+
+const views = {
+  logo: () => `<div class="logo"><div class="t">달러의 설계</div>
+    <svg width="760" height="120" viewBox="0 0 760 120">
+      <path d="M 20 80 C 200 40, 300 70, 380 60" stroke="#e8b84a" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M 740 80 C 560 40, 460 70, 380 60" stroke="#27c2b4" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M 380 118 C 360 100, 400 80, 380 60" stroke="#e08a1e" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <circle cx="380" cy="60" r="11" fill="#fff6dc"/></svg></div>`,
+
+  gauges: () => {
+    const states = {
+      empty: [0, 0, 0], base: [62, 70, 48], honor: [40, 100, 55], fog: [82, 76, null],
+    };
+    const [fear, honor, gain] = states[get('state', 'base')] ?? states.base;
+    const row = (gr, ko, c, v) => `<div class="g" style="--c:${c}; --v:${v ?? 0}%">
+      <div class="lab"><div class="gr">${gr}</div><div class="ko">${ko}</div></div>
+      <div class="bar"><div class="fill"></div><div class="ticks"></div>${v === null ? '<div class="fog"></div>' : ''}</div></div>`;
+    return `<div class="gauges">${row('δέος', '두려움', '#e5484d', fear)}${row('τιμή', '명예', '#e8b84a', honor)}${row('ὠφελία', '이익', '#3fbf6f', gain)}</div>`;
+  },
+
+  lower: () => `<div class="lower"><div class="t">${esc(get('t'))}</div>${get('s') ? `<div class="s">${esc(get('s'))}</div>` : ''}</div>`,
+  memo: () => `<div class="memo"><div class="t">${esc(get('t', '우리는 멜로스였다.'))}</div></div>`,
+  calendar: () => `<div class="cal"><div class="y">${esc(get('y', '1997'))}</div><div class="m">${esc(get('m', '12'))}</div><div class="w">일월화수목금토</div></div>`,
+  book: () => `<div class="book"><div class="t">펠로폰네소스 전쟁사</div><div class="a">투키디데스</div></div>`,
+  sentence: () => `<div class="card"><div class="paper"><div class="h">오늘의 한 문장</div>
+    <div class="t">${esc(get('t'))}</div><div class="s">${esc(get('s'))}</div></div></div>`,
+  next: () => `<div class="card"><div class="next"><div class="n">제${esc(get('n', '2'))}화</div>
+    <div class="t">${esc(get('t'))}</div><div class="b">달러의 설계</div></div></div>`,
+  notice: () => `<div class="notice">이 시리즈는 원작자의 해석입니다. 같은 사실을 다르게 읽을 수 있습니다.<br>특정 자산의 매수·매도를 권하지 않습니다.</div>`,
+};
+
+root.innerHTML = (views[get('kind', 'logo')] ?? views.logo)();
+</script>
+</body>
+</html>

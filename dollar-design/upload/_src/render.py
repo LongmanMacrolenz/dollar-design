@@ -3,7 +3,9 @@
 
 사용법:
     python3 render.py thumb_a.html 1280x720 ../ep01/thumbnail_A.png
+    python3 render.py "ov.html?kind=memo" 1200x400 memo.png --transparent
 
+--transparent 를 붙이면 배경이 투명한 PNG(편집용 오버레이)가 나온다.
 처음 실행할 때 Google Fonts에서 폰트(OFL)를 fonts/ 에 내려받는다.
 헤드리스 크롬 경로는 CHROME 환경 변수로 바꿀 수 있다.
 """
@@ -22,6 +24,7 @@ CHROME = os.environ.get(
 CSS_URL = (
     "https://fonts.googleapis.com/css2?family=Black+Han+Sans"
     "&family=Noto+Serif+KR:wght@700;900&family=Noto+Sans+KR:wght@700;900"
+    "&family=Nanum+Pen+Script&family=Noto+Serif:wght@900"
 )
 # (패밀리, 굵기) → common.css 가 참조하는 파일 이름
 FILES = {
@@ -30,6 +33,8 @@ FILES = {
     ("Noto Sans KR", "900"): "NotoSansKR-900.ttf",
     ("Noto Serif KR", "700"): "NotoSerifKR-700.ttf",
     ("Noto Serif KR", "900"): "NotoSerifKR-900.ttf",
+    ("Nanum Pen Script", "400"): "NanumPenScript.ttf",
+    ("Noto Serif", "900"): "NotoSerif-900.ttf",
 }
 
 
@@ -48,24 +53,28 @@ def ensure_fonts():
             urllib.request.urlretrieve(url, FONTS / name)
 
 
-def render(html, size, out):
+def render(html, size, out, transparent=False):
     width, height = size.lower().split("x")
+    page, _, query = html.partition("?")
+    url = (HERE / page).resolve().as_uri() + (f"?{query}" if query else "")
     out = Path(out).resolve()
     out.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run(
-        [
-            CHROME, "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
-            "--force-device-scale-factor=1", "--allow-file-access-from-files",
-            "--virtual-time-budget=20000", f"--window-size={width},{height}",
-            f"--screenshot={out}", (HERE / html).resolve().as_uri(),
-        ],
-        check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-    )
+    args = [
+        CHROME, "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
+        "--force-device-scale-factor=1", "--allow-file-access-from-files",
+        "--virtual-time-budget=20000", f"--window-size={width},{height}",
+        f"--screenshot={out}",
+    ]
+    if transparent:
+        args.append("--default-background-color=00000000")
+    subprocess.run(args + [url], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     print(out)
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    flags = [a for a in sys.argv[1:] if a.startswith("--")]
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if len(args) != 3 or set(flags) - {"--transparent"}:
         sys.exit(__doc__)
     ensure_fonts()
-    render(*sys.argv[1:])
+    render(*args, transparent="--transparent" in flags)
