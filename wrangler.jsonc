@@ -1,0 +1,11 @@
+// Cloudflare Workers 정적 사이트 설정: docs/ 폴더만 공개합니다.
+// Worker 이름은 Cloudflare 대시보드의 Worker 이름(boltnote)과 같아야 합니다.
+{
+  "name": "boltnote",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./docs"
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}
