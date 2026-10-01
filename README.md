@@ -15,21 +15,25 @@
 | `site/page.html` | 사이트 원본. 한 파일로 된 웹앱(HTML·CSS·JS)이며 글꼴만 Google Fonts에서 불러옵니다. |
 | `site/build.py` | `page.html`을 완전한 HTML 문서로 감싸 `docs/index.html`을 만듭니다. |
 | `docs/index.html` | 배포본. 직접 고치지 말고 `python3 site/build.py`로 다시 만듭니다. |
-| `docs/_headers` | Cloudflare Pages 응답 헤더(보안 헤더, 캐시) |
+| `docs/_headers` | 응답 헤더(보안 헤더, 캐시) |
+| `wrangler.jsonc` | Cloudflare Workers 배포 설정 (`docs/`만 공개) |
+| `docs/robots.txt` | 검색 로봇 허용 |
 
 ## 배포
 
-Cloudflare Pages(무료)가 `main` 브랜치의 `docs/` 폴더를 배포합니다.
+Cloudflare Workers(정적 파일, 무료)가 `main` 브랜치의 `docs/` 폴더를 배포합니다. 설정은 `wrangler.jsonc`에 있습니다.
 
-| 설정 | 값 |
+| 설정 (Cloudflare 대시보드 → Worker `boltnote` → Settings → Build) | 값 |
 |---|---|
+| Git 저장소 | `LongmanMacrolenz/dollar-design` |
 | 프로덕션 브랜치 | `main` |
-| 프레임워크 프리셋 | 없음 |
 | 빌드 명령 | `exit 0` |
-| 빌드 출력 디렉터리 | `docs` |
-| 미리보기 배포 | 끔 (작업 중인 브랜치가 공개되지 않게) |
+| 배포 명령 | `npx wrangler deploy` |
+| 미리보기 빌드 (Branch control → Enable Preview Builds) | 끔 (이 저장소에서는 PR 미리보기 빌드가 실패해서 쓰지 않습니다. 공개 배포는 main 빌드만 사용) |
 
-GitHub Pages는 약관상 온라인 사업·전자상거래 사이트에 쓸 수 없으므로, Cloudflare Pages가 공개되면 저장소 Settings → Pages에서 게시를 끕니다.
+`wrangler.jsonc`의 `name`은 대시보드의 Worker 이름과 같아야 합니다. `docs/_headers`의 보안·캐시 헤더도 함께 적용됩니다.
+
+GitHub Pages는 약관상 온라인 사업·전자상거래 사이트에 쓸 수 없으므로 게시를 끕니다.
 
 ## 공개 전에 바꿔야 할 것
 
