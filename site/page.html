@@ -1,0 +1,1598 @@
+<title>볼트노트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: 부품 카운터 — 위는 검색과 분류, 아래는 규격표와 견적. 도면의 치수선을 장식 대신 정보로 쓴다. */
+:root {
+  --bg: #f1f2ef;
+  --surface: #ffffff;
+  --sunk: #e8eae6;
+  --ink: #161a1d;
+  --muted: #59626a;
+  --line: #d4d8d9;
+  --line-strong: #b5bcc1;
+  --accent: #e2a92c;          /* 황색 아연도금 */
+  --accent-ink: #6f4b00;
+  --accent-soft: #fbf0d4;
+  --steel: #232c33;           /* 흑착색 */
+  --steel-ink: #eef1f3;
+  --steel-muted: #a9b4bc;
+  --ok: #2d7448;
+  --ok-soft: #e1f0e6;
+  --warn: #8a5a00;
+  --warn-soft: #fbefd6;
+  --crit: #a8261d;
+  --crit-soft: #f8e1df;
+  --info: #2b5878;
+  --info-soft: #e1ecf4;
+  --draw: #3d4a54;
+  --font-sans: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --radius: 6px;
+  --gutter: clamp(16px, 3vw, 32px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1214; --surface: #161a1d; --sunk: #1c2125; --ink: #e6e9eb; --muted: #9aa3ab; --line: #2a3036; --line-strong: #3b444b;
+    --accent: #e8b94a; --accent-ink: #f1cd73; --accent-soft: #2c2412; --steel: #0a0d0f; --steel-ink: #e6e9eb; --steel-muted: #8e99a2;
+    --ok: #6cc08e; --ok-soft: #13271b; --warn: #e5ad4f; --warn-soft: #2b2210; --crit: #f0857c; --crit-soft: #2e1513;
+    --info: #86b6dc; --info-soft: #132430; --draw: #b9c3ca; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1214; --surface: #161a1d; --sunk: #1c2125; --ink: #e6e9eb; --muted: #9aa3ab; --line: #2a3036; --line-strong: #3b444b;
+  --accent: #e8b94a; --accent-ink: #f1cd73; --accent-soft: #2c2412; --steel: #0a0d0f; --steel-ink: #e6e9eb; --steel-muted: #8e99a2;
+  --ok: #6cc08e; --ok-soft: #13271b; --warn: #e5ad4f; --warn-soft: #2b2210; --crit: #f0857c; --crit-soft: #2e1513;
+  --info: #86b6dc; --info-soft: #132430; --draw: #b9c3ca; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-sans); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: break-word; }
+a { color: inherit; }
+h1, h2, h3, h4 { line-height: 1.3; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.num { font-variant-numeric: tabular-nums; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: var(--gutter); }
+.eyebrow { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* 상단 */
+.util { background: var(--steel); color: var(--steel-muted); font-size: 12.5px; }
+.util .wrap { display: flex; flex-wrap: wrap; gap: 6px 20px; padding-block: 7px; align-items: center; }
+.util b { color: var(--steel-ink); font-weight: 600; }
+.util .sp { flex: 1; }
+.util button { background: none; border: 1px solid #ffffff2e; color: var(--steel-ink); border-radius: 4px; padding: 1px 8px; cursor: pointer; font-size: 12px; }
+header.top { background: var(--steel); color: var(--steel-ink); position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; border-bottom: 1px solid #00000040; }
+header.top .wrap { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px 24px; align-items: center; padding-block: 12px; }
+.logo { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--steel-ink); white-space: nowrap; }
+.logo .mark { width: 30px; height: 30px; align-self: center; }
+.logo strong { font-size: 21px; font-weight: 700; letter-spacing: -.01em; }
+.logo span { font-size: 12px; color: var(--steel-muted); }
+.search { position: relative; min-width: 0; }
+.search input { width: 100%; height: 44px; border-radius: var(--radius); border: 1px solid transparent; background: #ffffff; color: #161a1d; padding: 0 116px 0 14px; font-size: 15px; }
+.search input::placeholder { color: #6b747b; }
+.search .go { position: absolute; right: 4px; top: 4px; height: 36px; border: 0; border-radius: 4px; background: var(--accent); color: #241800; font-weight: 700; padding: 0 16px; cursor: pointer; }
+.suggest { position: absolute; left: 0; right: 0; top: calc(100% + 6px); background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong); border-radius: var(--radius); box-shadow: 0 18px 40px #00000033; max-height: 70vh; overflow: auto; z-index: 40; }
+.suggest .grp { padding: 8px 14px 4px; font-size: 11.5px; color: var(--muted); letter-spacing: .06em; font-weight: 600; }
+.suggest button { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; width: 100%; text-align: left; padding: 8px 14px; border: 0; background: none; cursor: pointer; }
+.suggest button:hover, .suggest button.on { background: var(--sunk); }
+.suggest .s1 { font-weight: 600; }
+.suggest .s2 { font-size: 12.5px; color: var(--muted); }
+.suggest .empty { padding: 14px; color: var(--muted); }
+.cartbtn { display: flex; align-items: center; gap: 8px; color: var(--steel-ink); text-decoration: none; border: 1px solid #ffffff33; border-radius: var(--radius); padding: 8px 12px; white-space: nowrap; }
+.cartbtn .n { background: var(--accent); color: #241800; border-radius: 999px; font-size: 12px; font-weight: 700; min-width: 22px; text-align: center; padding: 0 6px; }
+nav.cats { background: var(--surface); border-bottom: 1px solid var(--line); }
+nav.cats .wrap { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+nav.cats a { padding: 12px 14px; text-decoration: none; color: var(--muted); font-weight: 600; white-space: nowrap; border-bottom: 2px solid transparent; }
+nav.cats a:hover { color: var(--ink); }
+nav.cats a.on { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* 공통 */
+main { padding-block: 28px 64px; min-height: 60vh; }
+section + section { margin-top: 44px; }
+.sec-h { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; margin-bottom: 16px; }
+.sec-h h2 { font-size: 22px; font-weight: 700; }
+.sec-h p { color: var(--muted); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 40px; padding: 0 16px; border-radius: var(--radius); border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); font-weight: 600; cursor: pointer; text-decoration: none; white-space: nowrap; }
+.btn:hover { border-color: var(--ink); }
+.btn.pri { background: var(--accent); border-color: var(--accent); color: #241800; }
+.btn.pri:hover { filter: brightness(.96); }
+.btn.dark { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+.btn.sm { height: 32px; padding: 0 10px; font-size: 13.5px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line-strong); border-radius: 999px; padding: 2px 10px; font-size: 12.5px; background: var(--surface); white-space: nowrap; }
+.tag { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 7px; border-radius: 4px; white-space: nowrap; }
+.tag.ok { background: var(--ok-soft); color: var(--ok); }
+.tag.warn { background: var(--warn-soft); color: var(--warn); }
+.tag.info { background: var(--info-soft); color: var(--info); }
+.tag.acc { background: var(--accent-soft); color: var(--accent-ink); }
+.tag.crit { background: var(--crit-soft); color: var(--crit); }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field label { font-size: 13px; font-weight: 600; color: var(--muted); }
+.field input, .field select, .field textarea { width: 100%; min-width: 0; height: 40px; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--surface); padding: 0 10px; }
+.field textarea { height: auto; min-height: 92px; padding: 8px 10px; resize: vertical; }
+.field .hint { font-size: 12px; color: var(--muted); }
+.grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 14px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 14px; }
+.tbl-wrap { position: relative; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+table.t { border-collapse: collapse; width: 100%; font-size: 14px; }
+table.t th, table.t td { padding: 9px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+table.t th { background: var(--sunk); font-size: 12.5px; color: var(--muted); font-weight: 600; white-space: nowrap; position: sticky; top: 0; }
+table.t td.r, table.t th.r { text-align: right; }
+table.t td.mono { white-space: nowrap; }
+.cart table.t td:first-child { min-width: 200px; }
+table.t tr:last-child td { border-bottom: 0; }
+table.t tbody tr:hover td { background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.note { border-left: 3px solid var(--line-strong); padding: 8px 12px; background: var(--sunk); border-radius: 0 var(--radius) var(--radius) 0; font-size: 13.5px; }
+.note.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+.note.crit { border-left-color: var(--crit); background: var(--crit-soft); }
+.note.ok { border-left-color: var(--ok); background: var(--ok-soft); }
+.note.info { border-left-color: var(--info); background: var(--info-soft); }
+.crumbs { font-size: 13px; color: var(--muted); margin-bottom: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.crumbs a { color: var(--muted); }
+.toast { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 10px 16px; border-radius: var(--radius); font-weight: 600; z-index: 60; box-shadow: 0 10px 30px #0004; max-width: calc(100vw - 32px); }
+
+/* 홈 */
+.hero { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 28px; align-items: stretch; }
+.hero-copy { padding-block: 8px; display: flex; flex-direction: column; gap: 16px; }
+.hero-copy h1 { font-size: clamp(28px, 4.2vw, 44px); font-weight: 700; letter-spacing: -.02em; }
+.hero-copy h1 em { font-style: normal; background: linear-gradient(transparent 62%, var(--accent-soft) 62%); }
+.hero-copy .lead { font-size: 16.5px; color: var(--muted); max-width: 60ch; }
+.hero-copy .ctas { display: flex; flex-wrap: wrap; gap: 10px; }
+.promise { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 6px; }
+.promise div { border-top: 2px solid var(--ink); padding-top: 8px; font-size: 13.5px; }
+.promise b { display: block; font-size: 15px; }
+.finder { padding: 18px; display: grid; gap: 12px; align-content: start; }
+.finder h2 { font-size: 17px; }
+.finder .out { border: 1px dashed var(--line-strong); border-radius: var(--radius); padding: 12px; display: grid; gap: 6px; background: var(--sunk); }
+.pn { font-family: var(--font-mono); font-weight: 600; font-size: 17px; letter-spacing: .01em; word-break: break-all; }
+.price { font-size: 22px; font-weight: 700; }
+.price small { font-size: 13px; color: var(--muted); font-weight: 500; }
+.stds { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.stds > div { padding: 14px 16px; border-right: 1px solid var(--line); min-width: 0; }
+.stds > div:last-child { border-right: 0; }
+.stds h3 { font-size: 14px; margin-bottom: 6px; }
+.stds ul { margin: 0; padding-left: 16px; color: var(--muted); font-size: 13px; display: grid; gap: 2px; }
+.cats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.cat { display: grid; grid-template-rows: 92px auto; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.cat:hover { border-color: var(--ink); }
+.cat .pic { background: var(--sunk); display: grid; place-items: center; border-bottom: 1px solid var(--line); }
+.cat .pic svg { width: 100%; height: 100%; }
+.cat .tx { padding: 10px 12px 12px; display: grid; gap: 2px; }
+.cat .tx b { font-size: 15px; }
+.cat .tx span { font-size: 12.5px; color: var(--muted); }
+.callout { padding: 22px; display: grid; gap: 18px; }
+.co-line { font-family: var(--font-mono); font-size: clamp(15px, 2.2vw, 21px); display: flex; flex-wrap: wrap; gap: 10px 6px; align-items: flex-start; }
+.co-seg { display: grid; gap: 4px; justify-items: start; }
+.co-seg code { font-family: var(--font-mono); padding: 2px 6px; border-radius: 4px; background: var(--sunk); border-bottom: 2px solid var(--seg, var(--line-strong)); }
+.co-seg span { font-family: var(--font-sans); font-size: 11.5px; color: var(--muted); border-top: 1px solid var(--seg, var(--line-strong)); padding-top: 2px; white-space: nowrap; }
+.decoder { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+.decoder input { height: 44px; border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 0 12px; background: var(--surface); font-family: var(--font-mono); min-width: 0; }
+.steps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; counter-reset: st; }
+.steps li { list-style: none; border-top: 2px solid var(--line-strong); padding-top: 10px; font-size: 13.5px; counter-increment: st; }
+.steps li::before { content: counter(st, decimal-leading-zero); font-family: var(--font-mono); font-size: 12px; color: var(--muted); display: block; }
+.steps b { display: block; font-size: 14.5px; }
+.steps { padding: 0; margin: 0; }
+.tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.tool { padding: 16px; display: grid; gap: 10px; align-content: start; }
+.tool h3 { font-size: 16px; }
+.qo textarea { width: 100%; min-height: 110px; border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 8px 10px; font-family: var(--font-mono); font-size: 13.5px; background: var(--surface); resize: vertical; }
+.faq details { border-bottom: 1px solid var(--line); padding: 12px 2px; }
+.faq summary { cursor: pointer; font-weight: 600; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; }
+.faq summary::after { content: "+"; font-family: var(--font-mono); color: var(--muted); }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin-top: 8px; color: var(--muted); max-width: 75ch; }
+
+/* 목록 */
+.listing { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 22px; align-items: start; }
+.filters { position: sticky; top: calc(84px + env(safe-area-inset-top, 0px)); display: grid; gap: 14px; padding: 16px; max-height: calc(100vh - 110px); overflow: auto; }
+.filters h3 { font-size: 13px; color: var(--muted); letter-spacing: .04em; }
+.fgrp { display: grid; gap: 6px; }
+.fopts { display: flex; flex-wrap: wrap; gap: 6px; }
+.fopts label { display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line-strong); border-radius: 4px; padding: 2px 8px; font-size: 13px; cursor: pointer; user-select: none; }
+.fopts input { margin: 0; accent-color: var(--accent); }
+.fopts label:has(input:checked) { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-ink); }
+.fam-head { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 20px; align-items: start; margin-bottom: 18px; }
+.fam-head h1 { font-size: 26px; }
+.fam-head .stdline { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.fam-head .pic { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); height: 120px; }
+.listbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.qty { width: 84px; height: 32px; border: 1px solid var(--line-strong); border-radius: 4px; padding: 0 6px; text-align: right; background: var(--surface); }
+.pager { display: flex; gap: 6px; justify-content: center; margin-top: 14px; flex-wrap: wrap; }
+.mfilter { display: none; }
+
+/* 상세 */
+.detail { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.drawing { padding: 12px; }
+.drawing svg { width: 100%; height: auto; display: block; }
+.cfg { padding: 18px; display: grid; gap: 14px; position: sticky; top: calc(84px + env(safe-area-inset-top, 0px)); }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { border: 1px solid var(--line-strong); background: var(--surface); border-radius: 4px; padding: 5px 10px; cursor: pointer; font-family: var(--font-mono); font-size: 13.5px; }
+.seg button.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.seg button:disabled { opacity: .35; cursor: not-allowed; }
+.tiers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.tiers div { padding: 8px 10px; border-right: 1px solid var(--line); font-size: 12.5px; }
+.tiers div:last-child { border-right: 0; }
+.tiers div.on { background: var(--accent-soft); }
+.tiers b { display: block; font-size: 15px; font-variant-numeric: tabular-nums; }
+.kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 16px; font-size: 14px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; }
+
+/* 주문제작 */
+.custom { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 22px; align-items: start; }
+fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin: 0; background: var(--surface); display: grid; gap: 12px; min-width: 0; }
+legend { font-weight: 700; padding: 0 6px; font-size: 15px; }
+legend small { color: var(--muted); font-weight: 500; margin-left: 6px; }
+.summary { position: sticky; top: calc(84px + env(safe-area-inset-top, 0px)); padding: 16px; display: grid; gap: 12px; }
+.spec-out { font-family: var(--font-mono); font-size: 14px; background: var(--sunk); border-radius: var(--radius); padding: 10px 12px; word-break: break-word; }
+.checks { display: grid; gap: 8px; }
+.radios { display: flex; flex-wrap: wrap; gap: 6px; }
+.radios label { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line-strong); border-radius: 4px; padding: 5px 10px; cursor: pointer; font-size: 14px; }
+.radios label:has(input:checked) { border-color: var(--ink); background: var(--sunk); font-weight: 600; }
+.radios input { accent-color: var(--ink); margin: 0; }
+.files { font-size: 13px; color: var(--muted); }
+
+/* 견적함 */
+.cart { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 22px; align-items: start; }
+.totals { padding: 16px; display: grid; gap: 10px; position: sticky; top: calc(84px + env(safe-area-inset-top, 0px)); }
+.totals .row { display: flex; justify-content: space-between; gap: 10px; font-variant-numeric: tabular-nums; }
+.totals .grand { font-size: 20px; font-weight: 700; border-top: 1px solid var(--line); padding-top: 10px; }
+.empty-state { padding: 36px; text-align: center; display: grid; gap: 10px; justify-items: center; }
+.doc { padding: 22px; font-size: 13.5px; display: grid; gap: 12px; }
+.doc h2 { font-size: 20px; letter-spacing: .3em; text-align: center; }
+
+/* 도구 */
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tabs button { border: 1px solid var(--line-strong); background: var(--surface); padding: 6px 12px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: 13.5px; }
+.tabs button.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.marks { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.marks figure { margin: 0; padding: 10px; text-align: center; }
+.marks svg { width: 86px; height: 86px; }
+.marks figcaption { font-size: 12.5px; color: var(--muted); }
+
+/* 바닥글 */
+footer.foot { background: var(--steel); color: var(--steel-muted); font-size: 13px; padding-block: 34px 40px; }
+footer.foot .cols { display: grid; grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr)); gap: 24px; }
+footer.foot h4 { color: var(--steel-ink); font-size: 14px; margin-bottom: 8px; }
+footer.foot ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+footer.foot a { color: var(--steel-muted); text-decoration: none; }
+footer.foot a:hover { color: var(--steel-ink); }
+footer.foot .biz { margin-top: 22px; border-top: 1px solid #ffffff1f; padding-top: 16px; display: grid; gap: 4px; line-height: 1.7; }
+footer.foot .ph { color: var(--accent); }
+
+@media (max-width: 1020px) {
+  .hero, .detail, .custom, .cart { grid-template-columns: minmax(0, 1fr); }
+  .cfg, .summary, .totals { position: static; }
+  .stds { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stds > div:nth-child(2) { border-right: 0; }
+  .stds > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tools { grid-template-columns: minmax(0, 1fr); }
+  .listing { grid-template-columns: minmax(0, 1fr); }
+  .filters { position: static; max-height: none; }
+  .filters[data-open="0"] { display: none; }
+  .mfilter { display: inline-flex; }
+  footer.foot .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  header.top .wrap { grid-template-columns: minmax(0, 1fr) auto; }
+  .search { grid-column: 1 / -1; grid-row: 2; }
+  .logo span { display: none; }
+  .promise { grid-template-columns: minmax(0, 1fr); }
+  .grid2, .grid3, .grid4 { grid-template-columns: minmax(0, 1fr); }
+  .stds { grid-template-columns: minmax(0, 1fr); }
+  .stds > div { border-right: 0; border-bottom: 1px solid var(--line); }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fam-head { grid-template-columns: minmax(0, 1fr); }
+  .fam-head .pic { display: none; }
+  .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tiers div:nth-child(2) { border-right: 0; }
+  .tiers div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .decoder { grid-template-columns: minmax(0, 1fr); }
+  footer.foot .cols { grid-template-columns: minmax(0, 1fr); }
+  .util .hide-s { display: none; }
+  .cats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .cat { grid-template-rows: 64px auto; }
+  .cat .tx { padding: 8px 10px 10px; }
+  .cat .tx b { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="util" role="note">
+  <div class="wrap">
+    <span><b>평일 09:00–18:00</b> 운영 · 견적 1차 회신 <b>1영업일 이내</b></span>
+    <span class="hide-s">재고품 <b>14시</b> 이전 결제 시 당일 출고</span>
+    <span class="hide-s">사업자·개인 모두 구매 · 세금계산서 발행</span>
+    <span class="sp"></span>
+    <button type="button" id="theme-btn" aria-label="화면 테마 바꾸기">테마</button>
+  </div>
+</div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home" data-go="home" aria-label="볼트노트 홈">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 28 9v14L16 30 4 23V9z" fill="#e2a92c"/><circle cx="16" cy="16" r="5.5" fill="#232c33"/><path d="M16 9.5v-3M16 25.5v-3" stroke="#232c33" stroke-width="2"/></svg>
+      <strong>볼트노트</strong><span>엔지니어가 읽는 체결부품</span>
+    </a>
+    <div class="search" role="search">
+      <label class="sr" for="q">형번, 규격, 품명 검색</label>
+      <input id="q" type="search" autocomplete="off" placeholder="M10×30, 렌치볼트 M8, ISO 4762, 1/2-13 B7, HBF-M10-30-88-ZW">
+      <button class="go" type="button" id="q-go">검색</button>
+      <div class="suggest" id="suggest" hidden></div>
+    </div>
+    <a class="cartbtn" href="#cart" data-go="cart">견적함 <span class="n" id="cart-n">0</span></a>
+  </div>
+</header>
+<nav class="cats" aria-label="주요 메뉴">
+  <div class="wrap" id="nav">
+    <a href="#home" data-go="home">홈</a>
+    <a href="#metric" data-go="metric">미터 규격품</a>
+    <a href="#inch" data-go="inch">인치·플랜트 볼트</a>
+    <a href="#custom" data-go="custom">주문제작·해외규격 견적</a>
+    <a href="#tools" data-go="tools">규격 도구</a>
+    <a href="#help" data-go="help">고객지원</a>
+  </div>
+</nav>
+<main id="view" class="wrap" tabindex="-1"></main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <h4>볼트노트 (가칭)</h4>
+        <p>기계엔지니어 출신 대표가 직접 사양을 검토하는 체결부품 전문점입니다. KS·ISO·DIN·JIS 미터 규격품과 ASME·ASTM·SAE 인치·플랜트 볼트를 공급합니다.</p>
+      </div>
+      <div>
+        <h4>쇼핑</h4>
+        <ul><li><a href="#metric" data-go="metric">미터 규격품</a></li><li><a href="#inch" data-go="inch">인치·플랜트 볼트</a></li><li><a href="#custom" data-go="custom">주문제작·해외규격 견적</a></li><li><a href="#tools" data-go="tools">규격 도구</a></li></ul>
+      </div>
+      <div>
+        <h4>고객지원</h4>
+        <ul><li><a href="#help" data-go="help">주문·출고 안내</a></li><li><a href="#help" data-go="help">교환·반품</a></li><li><a href="#help" data-go="help">세금계산서</a></li><li><a href="#help" data-go="help">자주 묻는 질문</a></li></ul>
+      </div>
+      <div>
+        <h4>정책</h4>
+        <ul><li><a href="#help" data-go="help">이용약관</a></li><li><a href="#help" data-go="help"><b>개인정보처리방침</b></a></li><li><a href="#help" data-go="help">사업자정보 확인</a></li></ul>
+      </div>
+    </div>
+    <div class="biz">
+      <div>상호 <span class="ph">볼트노트(가칭)</span> · 대표 <span class="ph">홍길동</span> · 사업자등록번호 <span class="ph">000-00-00000</span> · 통신판매업 신고 <span class="ph">제0000-지역-0000호</span></div>
+      <div>주소 <span class="ph">사업장 주소 입력 예정</span> · 전화 <span class="ph">000-0000-0000</span> · 이메일 <span class="ph">hello@example.com</span> · 개인정보 보호책임자 <span class="ph">홍길동</span></div>
+      <div>노란색 항목은 사업자 등록 후 실제 정보로 바꿔야 하는 자리표시입니다. 이 페이지의 가격·재고·출고일은 예시입니다. 표시 가격은 VAT 별도입니다.</div>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" hidden role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+'use strict';
+
+/* ───────── 데이터 ───────── */
+// 미터 규격 치수 (ISO 4017/4014, 4762, 4032, 7089, 10642, DIN 127 B). 단위 mm
+const DIM = {
+  pitch:   { M3: .5, M4: .7, M5: .8, M6: 1, M8: 1.25, M10: 1.5, M12: 1.75, M14: 2, M16: 2, M20: 2.5, M22: 2.5, M24: 3 },
+  hexS:    { M3: 5.5, M4: 7, M5: 8, M6: 10, M8: 13, M10: 16, M12: 18, M14: 21, M16: 24, M20: 30, M22: 34, M24: 36 },
+  hexK:    { M3: 2, M4: 2.8, M5: 3.5, M6: 4, M8: 5.3, M10: 6.4, M12: 7.5, M14: 8.8, M16: 10, M20: 12.5, M22: 14, M24: 15 },
+  dinS:    { M10: 17, M12: 19, M14: 22, M22: 32 },
+  scsDk:   { M3: 5.5, M4: 7, M5: 8.5, M6: 10, M8: 13, M10: 16, M12: 18, M14: 21, M16: 24, M20: 30, M22: 33, M24: 36 },
+  scsK:    { M3: 3, M4: 4, M5: 5, M6: 6, M8: 8, M10: 10, M12: 12, M14: 14, M16: 16, M20: 20, M22: 22, M24: 24 },
+  scsS:    { M3: 2.5, M4: 3, M5: 4, M6: 5, M8: 6, M10: 8, M12: 10, M14: 12, M16: 14, M20: 17, M22: 17, M24: 19 },
+  cskDk:   { M3: 6.72, M4: 8.96, M5: 11.2, M6: 13.44, M8: 17.92, M10: 22.4, M12: 26.88, M16: 33.6 },
+  cskS:    { M3: 2, M4: 2.5, M5: 3, M6: 4, M8: 5, M10: 6, M12: 8, M16: 10 },
+  nutM:    { M3: 2.4, M4: 3.2, M5: 4.7, M6: 5.2, M8: 6.8, M10: 8.4, M12: 10.8, M14: 12.8, M16: 14.8, M20: 18, M22: 19.4, M24: 21.5 },
+  pwD1:    { M3: 3.2, M4: 4.3, M5: 5.3, M6: 6.4, M8: 8.4, M10: 10.5, M12: 13, M14: 15, M16: 17, M20: 21, M22: 23, M24: 25 },
+  pwD2:    { M3: 7, M4: 9, M5: 10, M6: 12, M8: 16, M10: 20, M12: 24, M14: 28, M16: 30, M20: 37, M22: 39, M24: 44 },
+  pwH:     { M3: .5, M4: .8, M5: 1, M6: 1.6, M8: 1.6, M10: 2, M12: 2.5, M14: 2.5, M16: 3, M20: 3, M22: 3, M24: 4 },
+  swD1:    { M3: 3.1, M4: 4.1, M5: 5.1, M6: 6.1, M8: 8.1, M10: 10.2, M12: 12.2, M14: 14.2, M16: 16.2, M20: 20.2, M24: 24.5 },
+  swD2:    { M3: 6.2, M4: 7.6, M5: 9.2, M6: 11.8, M8: 14.8, M10: 18.1, M12: 21.1, M14: 24.1, M16: 27.4, M20: 33.6, M24: 40 },
+  swS:     { M3: .8, M4: .9, M5: 1.2, M6: 1.6, M8: 2, M10: 2.2, M12: 2.5, M14: 3, M16: 3.5, M20: 4, M24: 5 },
+};
+const dnum = s => parseFloat(String(s).replace('M', ''));
+const ISO_LEN = [6, 8, 10, 12, 16, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 180, 200];
+const lensFor = (size, min, max) => ISO_LEN.filter(l => l >= min && l <= max);
+
+const GRADE = {
+  '48':  { label: '4.8', desc: '탄소강 (SWRCH 계열, 열처리 안 함)', mult: .82, std: 'ISO 898-1' },
+  '88':  { label: '8.8', desc: '중탄소강·붕소강 (소입·소려)', mult: 1, std: 'ISO 898-1' },
+  '109': { label: '10.9', desc: 'SCM435 계열 합금강 (소입·소려)', mult: 1.28, std: 'ISO 898-1' },
+  '129': { label: '12.9', desc: 'SCM435 계열 합금강 (소입·소려)', mult: 1.42, std: 'ISO 898-1' },
+  'A2':  { label: 'A2-70', desc: 'SUS304 스테인리스', mult: 2.7, std: 'ISO 3506-1' },
+  'A4':  { label: 'A4-80', desc: 'SUS316 스테인리스', mult: 4.1, std: 'ISO 3506-1' },
+  'N8':  { label: '강도 8', desc: '탄소강 너트 (8.8 볼트용)', mult: 1, std: 'ISO 898-2' },
+  'N10': { label: '강도 10', desc: '열처리 너트 (10.9 볼트용)', mult: 1.3, std: 'ISO 898-2' },
+  'NA2': { label: 'A2-70', desc: 'SUS304 스테인리스', mult: 2.7, std: 'ISO 3506-2' },
+  'NA4': { label: 'A4-80', desc: 'SUS316 스테인리스', mult: 4.1, std: 'ISO 3506-2' },
+  'H200':{ label: '200 HV', desc: '연강 와셔 (8.8 이하 볼트용)', mult: 1, std: 'ISO 7089' },
+  'H300':{ label: '300 HV', desc: '열처리 와셔 (10.9까지)', mult: 1.45, std: 'ISO 7089' },
+  'WA2': { label: 'A2', desc: 'SUS304', mult: 2.7, std: 'ISO 7089' },
+  'WA4': { label: 'A4', desc: 'SUS316', mult: 4.1, std: 'ISO 7089' },
+  'SPR': { label: '스프링강', desc: '스프링강 (열처리)', mult: 1, std: 'DIN 127 B' },
+  'SA2': { label: 'A2', desc: 'SUS304', mult: 2.7, std: 'DIN 127 B' },
+};
+const FINISH = {
+  ZW: { label: '백색아연 (3가)', mult: 1, lead: 0 },
+  ZB: { label: '흑색아연 (3가)', mult: 1.08, lead: 0 },
+  BO: { label: '흑착색 (흑색 산화피막)', mult: .97, lead: 0 },
+  PL: { label: '무처리 (생지)', mult: .9, lead: 0 },
+  HD: { label: '용융아연도금 (ISO 10684)', mult: 1.38, lead: 5 },
+  GM: { label: '아연 플레이크 (지오메트계)', mult: 1.55, lead: 6 },
+  PA: { label: '무처리 (스테인리스)', mult: 1, lead: 0 },
+};
+
+// 미터 규격품: combos = [강도, 표면처리, 재고 여부]
+const METRIC = [
+  { id: 'hbf', code: 'HBF', name: '육각볼트 (온나사)', en: 'Hex bolt, full thread', kind: 'bolt', draw: 'hex',
+    std: { KS: 'KS B 1002', ISO: 'ISO 4017', DIN: 'DIN 933', JIS: 'JIS B 1180' },
+    sizes: ['M5', 'M6', 'M8', 'M10', 'M12', 'M14', 'M16', 'M20', 'M22', 'M24'],
+    len: s => lensFor(s, Math.max(8, dnum(s) * 1.6), dnum(s) <= 8 ? 80 : dnum(s) <= 12 ? 120 : 150),
+    combos: [['48', 'ZW', 1], ['88', 'ZW', 1], ['88', 'ZB', 1], ['88', 'HD', 0], ['109', 'BO', 1], ['109', 'GM', 0], ['A2', 'PA', 1], ['A4', 'PA', 0]],
+    use: '기계 조립, 설비 프레임, 일반 구조물. 머리 밑부터 끝까지 전부 나사인 볼트입니다.', pair: ['hn', 'pw', 'sw'] },
+  { id: 'hbp', code: 'HBP', name: '육각볼트 (반나사)', en: 'Hex bolt, partial thread', kind: 'bolt', draw: 'hexp',
+    std: { KS: 'KS B 1002', ISO: 'ISO 4014', DIN: 'DIN 931', JIS: 'JIS B 1180' },
+    sizes: ['M8', 'M10', 'M12', 'M14', 'M16', 'M20', 'M22', 'M24'],
+    len: s => lensFor(s, dnum(s) * 2 + 6 + 10, dnum(s) <= 12 ? 150 : 200),
+    combos: [['88', 'ZW', 1], ['88', 'HD', 0], ['109', 'BO', 1], ['A2', 'PA', 0]],
+    use: '전단 하중을 받는 연결부, 축·힌지처럼 몸통(원통부)이 필요한 곳. 나사부 길이 b는 ISO 4014 공식(L ≤ 125: 2d+6)으로 정해집니다.', pair: ['hn', 'pw'] },
+  { id: 'scs', code: 'SCS', name: '렌치볼트 (육각 구멍붙이)', en: 'Socket head cap screw', kind: 'bolt', draw: 'scs',
+    std: { KS: 'KS B 1003', ISO: 'ISO 4762', DIN: 'DIN 912', JIS: 'JIS B 1176' },
+    sizes: ['M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M16', 'M20', 'M24'],
+    len: s => lensFor(s, Math.max(6, dnum(s) * 1.6), dnum(s) <= 5 ? 50 : dnum(s) <= 10 ? 100 : 160),
+    combos: [['129', 'BO', 1], ['109', 'BO', 0], ['129', 'GM', 0], ['A2', 'PA', 1], ['A4', 'PA', 0]],
+    use: '금형, 지그, 자동화 설비. 머리가 작아 카운터보어 안에 묻을 수 있습니다.', pair: ['pw', 'sw'] },
+  { id: 'csk', code: 'CSK', name: '접시머리 렌치볼트', en: 'Countersunk socket screw', kind: 'bolt', draw: 'csk',
+    std: { KS: 'KS B 1003 부속', ISO: 'ISO 10642', DIN: 'DIN 7991', JIS: 'JIS B 1194' },
+    sizes: ['M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M16'],
+    len: s => lensFor(s, Math.max(8, dnum(s) * 1.6), dnum(s) <= 6 ? 50 : 90),
+    combos: [['109', 'BO', 1], ['A2', 'PA', 1]],
+    use: '표면을 평평하게 마감해야 하는 커버, 가이드, 판재 고정. 길이는 머리 윗면부터 잽니다.', pair: [] },
+  { id: 'hn', code: 'HN', name: '육각너트 (1종)', en: 'Hex nut, style 1', kind: 'nut', draw: 'nut',
+    std: { KS: 'KS B 1012', ISO: 'ISO 4032', DIN: 'DIN 934', JIS: 'JIS B 1181' },
+    sizes: ['M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M14', 'M16', 'M20', 'M22', 'M24'],
+    combos: [['N8', 'ZW', 1], ['N8', 'ZB', 1], ['N8', 'HD', 0], ['N10', 'BO', 0], ['NA2', 'PA', 1], ['NA4', 'PA', 0]],
+    use: '볼트 강도에 맞춰 고릅니다. 8.8 볼트에는 강도 8 이상, 10.9 볼트에는 강도 10 너트를 씁니다. 용융아연도금 볼트에는 오버탭 너트가 짝입니다.', pair: ['hbf', 'pw'] },
+  { id: 'pw', code: 'PW', name: '평와셔', en: 'Plain washer', kind: 'washer', draw: 'washer',
+    std: { KS: 'KS B 1326', ISO: 'ISO 7089', DIN: 'DIN 125', JIS: 'JIS B 1256' },
+    sizes: ['M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M14', 'M16', 'M20', 'M22', 'M24'],
+    combos: [['H200', 'ZW', 1], ['H200', 'HD', 0], ['H300', 'BO', 0], ['WA2', 'PA', 1], ['WA4', 'PA', 0]],
+    use: '좌면 압력을 넓게 나누고 표면 손상을 막습니다. 10.9 볼트에는 300 HV 와셔를 씁니다.', pair: ['hbf', 'hn'] },
+  { id: 'sw', code: 'SW', name: '스프링와셔', en: 'Spring lock washer', kind: 'washer', draw: 'spring',
+    std: { KS: 'KS B 1324', ISO: '해당 없음', DIN: 'DIN 127 B', JIS: 'JIS B 1251' },
+    sizes: ['M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M14', 'M16', 'M20', 'M24'],
+    combos: [['SPR', 'ZW', 1], ['SPR', 'BO', 1], ['SA2', 'PA', 1]],
+    use: '진동이 적은 일반 체결의 보조 풀림 방지. 치수는 DIN 127 B 기준이며 KS B 1324와 약간 다릅니다.', pair: ['hbf', 'pw'] },
+  { id: 'tr', code: 'TR', name: '전산볼트 (1m)', en: 'Threaded rod, 1 m', kind: 'rod', draw: 'rod',
+    std: { KS: '—', ISO: '—', DIN: 'DIN 975', JIS: '—' },
+    sizes: ['M6', 'M8', 'M10', 'M12', 'M16', 'M20', 'M24'],
+    combos: [['48', 'ZW', 1], ['48', 'HD', 0], ['88', 'ZW', 0], ['A2', 'PA', 1]],
+    use: '배관·덕트 행거, 앵커 연결, 현장 절단용. 길이 1,000 mm 단위로 판매합니다.', pair: ['hn', 'pw'] },
+];
+
+// 인치·플랜트: 견적형 (엔지니어 검토 후 회신)
+const UNC = ['1/4-20', '5/16-18', '3/8-16', '7/16-14', '1/2-13', '9/16-12', '5/8-11', '3/4-10', '7/8-9', '1-8', '1-1/8-7', '1-1/4-7', '1-3/8-6', '1-1/2-6', '1-3/4-5', '2-4-1/2', '2-1/2-4', '3-4', '3-1/2-4', '4-4'];
+const STUD = ['1/2-13', '5/8-11', '3/4-10', '7/8-9', '1-8', '1-1/8-8', '1-1/4-8', '1-3/8-8', '1-1/2-8', '1-5/8-8', '1-3/4-8', '1-7/8-8', '2-8', '2-1/4-8', '2-1/2-8', '2-3/4-8', '3-8', '3-1/4-8', '3-1/2-8', '3-3/4-8', '4-8'];
+const uncUpTo = max => UNC.slice(0, UNC.indexOf(max) + 1);
+const studUpTo = max => STUD.slice(0, STUD.indexOf(max) + 1);
+const INCH = [
+  { id: 'b7', code: 'B7', name: '스터드볼트 B7 + 2H 헤비너트', en: 'ASTM A193 B7 stud / A194 2H heavy hex nut', draw: 'stud', stud: true,
+    std: ['ASTM A193 B7', 'ASTM A194 2H', 'ASME B16.5 / B16.47', 'ASME B18.2.2', 'ASME B1.1'],
+    sizes: STUD, grades: ['A193 B7 / A194 2H'], finishes: ['무도금 (방청유)', 'PTFE 코팅', '용융아연도금 (너트 오버탭)', '아연-니켈 도금', '아연 플레이크 (ASTM F1136)'],
+    docs: 'EN 10204 3.1 (스터드·너트 각각 히트번호)', use: '정유·석유화학·발전·조선 배관 플랜지, 밸브·압력용기 노즐. B7 인장강도 125 ksi (2-1/2" 이하).' },
+  { id: 'b7m', code: 'B7M', name: '사워 서비스용 스터드 B7M + 2HM', en: 'ASTM A193 B7M / A194 2HM (NACE MR0175)', draw: 'stud', stud: true,
+    std: ['ASTM A193 B7M', 'ASTM A194 2HM', 'NACE MR0175 / ISO 15156', 'ASME B16.5'],
+    sizes: STUD, grades: ['A193 B7M / A194 2HM'], finishes: ['무도금', 'PTFE 코팅', '아연-니켈 도금'],
+    docs: 'EN 10204 3.1 + 전수 경도시험 기록', use: '황화수소(H2S)가 있는 사워 가스·원유 배관. 경도 235 HBW 이하로 관리되어 B7보다 강도는 낮습니다 (100 ksi).' },
+  { id: 'b8', code: 'B8', name: '스테인리스 스터드 B8·B8M + 8·8M', en: 'ASTM A193 B8/B8M Class 1·2 / A194 8/8M', draw: 'stud', stud: true,
+    std: ['ASTM A193 B8 · B8M (Class 1, 2)', 'ASTM A194 8 · 8M', 'ASME B16.5'],
+    sizes: studUpTo('1-1/2-8'), grades: ['B8 Class 1 (304) / 8', 'B8M Class 1 (316) / 8M', 'B8 Class 2 (304, 가공경화) / 8', 'B8M Class 2 (316, 가공경화) / 8M'], finishes: ['무처리 (산세·패시베이션)', 'PTFE 코팅', '갈링 방지 윤활'],
+    docs: 'EN 10204 3.1, PMI (요청 시)', use: '부식성 공정, 화학·식품 플랜트, 해수 환경. Class 2는 지름에 따라 강도가 크게 달라 1" 초과 시 설계 하중을 다시 확인합니다.' },
+  { id: 'l7', code: 'L7', name: '저온용 스터드 A320 L7 + A194 7L', en: 'ASTM A320 L7 / L43 / A194 7L', draw: 'stud', stud: true,
+    std: ['ASTM A320 L7 · L7M · L43', 'ASTM A194 7 · 7M + S3 충격시험 (7L · 7ML)', 'ASME B16.5'],
+    sizes: STUD, grades: ['A320 L7 / A194 7L (2-1/2" 이하)', 'A320 L7M / A194 7ML (2-1/2" 이하, 사워 겸용)', 'A320 L43 / A194 7L (2-1/2" 초과 ~ 4")'], finishes: ['무도금', 'PTFE 코팅', '아연-니켈 도금'],
+    docs: 'EN 10204 3.1 + 샤르피 충격시험 (−101 °C)', use: 'LNG·LPG, 에틸렌, 냉동 공정 등 저온 플랜지. L7·L7M은 2-1/2" 이하만 규정되므로 그보다 크면 L43으로 지정합니다.' },
+  { id: 'hh', code: 'HH', name: '플랜트용 헤비 육각너트 (단품)', en: 'ASTM A194 heavy hex nut', draw: 'nut', stud: false, nut: true,
+    std: ['ASTM A194', 'ASME B18.2.2 Heavy Hex', 'ASME B1.1 (1" 이하 UNC-2B, 1-1/8" 이상 8UN-2B)'],
+    sizes: STUD, grades: ['2H (B7·B16용)', '2HM (B7M·사워)', '7 / 7L (L7·L43·B16용)', '7M / 7ML (L7M용)', '8 (304)', '8M (316)'], finishes: ['무도금', 'PTFE 코팅', '용융아연도금 (오버탭)', '아연-니켈 도금'],
+    docs: 'EN 10204 3.1, 경도 성적서', use: '정비 셧다운 때 너트 교체, 해외 사양서의 너트 등급 맞춤. A194 Grade 4는 2017년 삭제되어 Grade 7로 공급합니다.' },
+  { id: 'a325', code: 'SB', name: '고장력 구조용 볼트 세트 (A325·A490)', en: 'ASTM F3125 A325/A490 + A563 DH + F436', draw: 'hex', stud: false,
+    std: ['ASTM F3125 (Grade A325 · A490)', 'ASME B18.2.6', 'ASTM A563 DH 너트', 'ASTM F436 와셔'],
+    sizes: uncUpTo('1-1/2-6').slice(4), grades: ['F3125 A325 Type 1 + A563 DH + F436', 'F3125 A490 Type 1 + A563 DH + F436', 'F3125 A325 Type 3 (내후성) + A563 DH3 + F436 Type 3'], finishes: ['무도금', '용융아연도금 ASTM F2329 (A325만, 너트 오버탭)', '아연 플레이크 ASTM F3393 (A325·A490)'],
+    docs: '로트별 EN 10204 3.1, 아연도금 세트 회전능력 시험', use: '미국 설계 철골 접합부. 머리 2면폭이 일반 볼트보다 1/8" 큰 헤비헥스입니다. A490은 용융·기계적 아연도금을 쓸 수 없습니다.' },
+  { id: 'j429', code: 'HCS', name: '인치 육각볼트 SAE Grade 5·8', en: 'SAE J429 hex cap screw (ASME B18.2.1)', draw: 'hex', stud: false,
+    std: ['SAE J429 Grade 2 · 5 · 8', 'ASME B18.2.1', 'ASME B1.1 (UNC / UNF, 2A)'],
+    sizes: uncUpTo('1-1/2-6'), grades: ['SAE J429 Grade 5 (머리 방사선 3줄)', 'SAE J429 Grade 8 (머리 방사선 6줄)', 'SAE J429 Grade 2 (6" 이하)'], finishes: ['무도금', '전기아연 클리어·옐로우 (ASTM F1941)', '흑착색·인산염', '용융아연도금 (Grade 2·5만)'],
+    docs: 'CoC, EN 10204 3.1 (요청 시)', use: '미국산 장비·차량 정비, 인치 도면 장비. 같은 호칭이라도 UNC와 UNF는 서로 맞지 않습니다.' },
+  { id: 'a574', code: 'SHC', name: '인치 렌치볼트 (A574)', en: 'ASME B18.3 socket head cap screw, ASTM A574', draw: 'scs', stud: false,
+    std: ['ASME B18.3', 'ASTM A574 (합금강)', 'ASTM F837 (스테인리스)'],
+    sizes: ['#10-24', '#10-32'].concat(uncUpTo('1-8')), grades: ['ASTM A574 합금강', 'ASTM F837 스테인리스 (304·316)'], finishes: ['흑착색 + 방청유', '전기아연 (베이킹 필수)', '무처리 (스테인리스)'],
+    docs: 'CoC, 경도 성적서', use: '미국산 금형·자동화 장비. A574는 1/2" 이하 180 ksi, 초과 170 ksi로 미터 12.9급에 가깝습니다.' },
+  { id: 'f593', code: 'SS', name: '인치 스테인리스 볼트·너트 (F593·F594)', en: 'ASTM F593 / F594', draw: 'hex', stud: false,
+    std: ['ASTM F593 (볼트)', 'ASTM F594 (너트)', 'ASME B18.2.1 · B18.2.2'],
+    sizes: uncUpTo('1-1/2-6'), grades: ['F593 Group 1 (304) CW', 'F593 Group 2 (316) CW', 'F593 Condition A (고용화처리)'], finishes: ['무처리 (패시베이션)', '갈링 방지 왁스'],
+    docs: 'CoC, EN 10204 3.1, PMI (요청 시)', use: '식품·해양·옥외 인치 장비. CW1은 5/8" 이하, CW2는 3/4"~1-1/2"에 적용됩니다.' },
+  { id: 'f1554', code: 'AR', name: '기초 앵커볼트 (F1554)', en: 'ASTM F1554 anchor rod', draw: 'rod', stud: false,
+    std: ['ASTM F1554 Grade 36 · 55 · 105', 'ASTM A563 / F436', 'ASTM F2329 (용융아연)'],
+    sizes: uncUpTo('4-4').slice(4), grades: ['Grade 36 (청색 표시)', 'Grade 55 (황색, 용접 시 S1)', 'Grade 105 (적색, 3" 이하)'], finishes: ['무도금', '용융아연도금 (ASTM F2329)', '나사부만 아연도금 (협의)'],
+    docs: 'EN 10204 3.1, 형상·치수 검사 기록', use: '미국 설계 기초·설비 앵커. L형·J형·헤드형·직선형 형상은 도면으로 받습니다. Grade 105 짝 너트는 A563 DH입니다.' },
+];
+
+// ASME B16.5 Class 150 플랜지 볼팅 (스터드 길이: 너트 2개 포함, 포인트 제외, in)
+const B165 = [["1/2",4,"1/2-13","2.25",null],["3/4",4,"1/2-13","2.50",null],["1",4,"1/2-13","2.50","3.00"],["1-1/4",4,"1/2-13","2.75","3.25"],["1-1/2",4,"1/2-13","2.75","3.25"],["2",4,"5/8-11","3.25","3.75"],["2-1/2",4,"5/8-11","3.50","4.00"],["3",4,"5/8-11","3.50","4.00"],["3-1/2",8,"5/8-11","3.50","4.00"],["4",8,"5/8-11","3.50","4.00"],["5",8,"3/4-10","3.75","4.25"],["6",8,"3/4-10","4.00","4.50"],["8",8,"3/4-10","4.25","4.75"],["10",12,"7/8-9","4.50","5.00"],["12",12,"7/8-9","4.75","5.25"],["14",12,"1-8","5.25","5.75"],["16",16,"1-8","5.25","5.75"],["18",16,"1-1/8-8","5.75","6.25"],["20",20,"1-1/8-8","6.25","6.75"],["24",20,"1-1/4-8","6.75","7.25"]];
+
+const TIERS = [[1, 1], [100, .88], [500, .78], [2000, .7]];
+const FREE_SHIP = 50000, SHIP_FEE = 4000, CUTOFF = 14;
+
+/* ───────── 계산 ───────── */
+const won = n => Math.round(n).toLocaleString('ko-KR') + '원';
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const STEEL = 7.85e-3;
+function weightG(f, size, L) {
+  const d = dnum(size), shank = Math.PI / 4 * d * d * (L || 0) * STEEL * .93;
+  switch (f.kind) {
+    case 'bolt':
+      if (f.id === 'scs') return shank + Math.PI / 4 * DIM.scsDk[size] ** 2 * DIM.scsK[size] * STEEL * .85;
+      if (f.id === 'csk') return shank * .9 + Math.PI / 12 * DIM.cskDk[size] ** 2 * DIM.cskDk[size] * .3 * STEEL;
+      return shank + .866 * DIM.hexS[size] ** 2 * DIM.hexK[size] * STEEL;
+    case 'nut': return (.866 * DIM.hexS[size] ** 2 - Math.PI / 4 * d * d) * DIM.nutM[size] * STEEL;
+    case 'washer':
+      if (f.id === 'sw') return Math.PI * ((DIM.swD1[size] + DIM.swD2[size]) / 2) * ((DIM.swD2[size] - DIM.swD1[size]) / 2) * DIM.swS[size] * STEEL;
+      return Math.PI / 4 * (DIM.pwD2[size] ** 2 - DIM.pwD1[size] ** 2) * DIM.pwH[size] * STEEL;
+    case 'rod': return Math.PI / 4 * d * d * 1000 * STEEL * .86;
+  }
+  return 10;
+}
+function unitPrice(f, size, L, g, fin, qty = 1) {
+  const base = f.kind === 'bolt' ? 18 : f.kind === 'rod' ? 600 : 7;
+  const raw = (base + 6.2 * weightG(f, size, L)) * GRADE[g].mult * FINISH[fin].mult;
+  const tier = TIERS.filter(t => qty >= t[0]).pop()[1];
+  const p = raw * tier;
+  return p < 100 ? Math.max(5, Math.round(p)) : Math.round(p / 10) * 10;
+}
+function pnOf(f, size, L, g, fin) { return [f.code, size, ...(L ? [L] : []), g, fin].join('-'); }
+const packOf = (f, size) => { const d = dnum(size); if (f.kind === 'rod') return 1; if (f.kind === 'washer' || f.kind === 'nut') return d <= 8 ? 200 : d <= 16 ? 100 : 50; return d <= 6 ? 100 : d <= 12 ? 50 : 25; };
+
+function shipDate(stock, extra = 0) {
+  const now = new Date();
+  let days = stock ? 0 : 2;
+  days += extra;
+  const d = new Date(now);
+  const isWk = x => x.getDay() === 0 || x.getDay() === 6;
+  if (isWk(d) || d.getHours() >= CUTOFF) { do { d.setDate(d.getDate() + 1); } while (isWk(d)); }
+  while (days > 0) { d.setDate(d.getDate() + 1); if (!isWk(d)) days--; }
+  const today = new Date(now); today.setHours(0, 0, 0, 0);
+  const dd = new Date(d); dd.setHours(0, 0, 0, 0);
+  const label = `${d.getMonth() + 1}/${d.getDate()}(${'일월화수목금토'[d.getDay()]})`;
+  return { label, today: +dd === +today };
+}
+function variantInfo(f, size, L, g, fin, qty = 100) {
+  const combo = f.combos.find(c => c[0] === g && c[1] === fin);
+  const stock = !!(combo && combo[2]) && dnum(size) <= 16 && (!L || L <= 100);
+  const ship = shipDate(stock, FINISH[fin].lead);
+  return { pn: pnOf(f, size, L, g, fin), price: unitPrice(f, size, L, g, fin, qty), stock, ship, pack: packOf(f, size) };
+}
+function parsePn(pn) {
+  const parts = String(pn).trim().toUpperCase().split('-');
+  const f = METRIC.find(m => m.code === parts[0]);
+  if (!f) return null;
+  const size = parts[1];
+  if (!f.sizes.includes(size)) return null;
+  let i = 2, L = null;
+  if (f.len) { L = +parts[i++]; if (!f.len(size).includes(L)) return null; }
+  const g = parts[i++], fin = parts[i++];
+  if (!f.combos.some(c => c[0] === g && c[1] === fin)) return null;
+  return { f, size, L, g, fin };
+}
+const inchToMm = s => { // "1-1/4" → 31.75
+  const m = String(s).trim().match(/^(\d+(?:\.\d+)?)?(?:[- ]?(\d+)\/(\d+))?$/);
+  if (!m) return NaN;
+  return ((+m[1] || 0) + (m[2] ? m[2] / m[3] : 0)) * 25.4;
+};
+
+/* ───────── 상태 ───────── */
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('bn.' + k); return v ? JSON.parse(v) : d; } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('bn.' + k, JSON.stringify(v)); } catch {} },
+};
+const state = {
+  cart: store.get('cart', null),
+  vat: store.get('vat', 'excl'),
+  listing: {},
+};
+if (!Array.isArray(state.cart)) {
+  // 처음 방문: 견적함이 어떻게 보이는지 예시 두 줄
+  state.cart = [
+    { type: 'item', pn: 'HBF-M10-30-88-ZW', qty: 200, sample: true },
+    { type: 'quote', fam: 'b7', title: '스터드볼트 B7 + 2H 헤비너트', spec: '7/8"-9 UNC-2A × 5" (포인트 제외) / A193 B7 / A194 2H × 2 / PTFE 코팅 / EN 10204 3.1', qty: 48, unit: '세트', sample: true },
+  ];
+}
+const saveCart = () => { store.set('cart', state.cart); document.getElementById('cart-n').textContent = state.cart.length; };
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.hidden = false;
+  clearTimeout(toast.h); toast.h = setTimeout(() => (t.hidden = true), 2400);
+}
+function addItem(pn, qty) {
+  const p = parsePn(pn); if (!p) return false;
+  const ex = state.cart.find(l => l.type === 'item' && l.pn === pn);
+  if (ex) ex.qty += qty; else state.cart.push({ type: 'item', pn, qty });
+  saveCart(); return true;
+}
+function addQuote(line) { state.cart.push({ type: 'quote', ...line }); saveCart(); }
+
+/* ───────── 도면 (SVG) ───────── */
+function dimLine(x1, y1, x2, y2, label, side = 'top', off = 18) {
+  const horiz = y1 === y2;
+  const ox = horiz ? 0 : (side === 'left' ? -off : off), oy = horiz ? (side === 'top' ? -off : off) : 0;
+  const a = [x1 + ox, y1 + oy], b = [x2 + ox, y2 + oy];
+  const tx = (a[0] + b[0]) / 2 + (horiz ? 0 : (side === 'left' ? -6 : 6)), ty = (a[1] + b[1]) / 2 + (horiz ? (side === 'top' ? -6 : 14) : 4);
+  return `<g class="dim"><line x1="${x1}" y1="${y1}" x2="${a[0]}" y2="${a[1]}" /><line x1="${x2}" y1="${y2}" x2="${b[0]}" y2="${b[1]}" />
+    <line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" marker-start="url(#ar)" marker-end="url(#ar)" />
+    <text x="${tx}" y="${ty}" text-anchor="${horiz ? 'middle' : side === 'left' ? 'end' : 'start'}">${label}</text></g>`;
+}
+const SVG_DEFS = `<defs><marker id="ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 1 10 5 0 9z" fill="var(--draw)"/></marker></defs>
+<style>.ol{fill:var(--surface);stroke:var(--ink);stroke-width:1.6}.th{stroke:var(--draw);stroke-width:.8}.cl{stroke:var(--draw);stroke-width:.8;stroke-dasharray:10 3 2 3}.dim line{stroke:var(--draw);stroke-width:.9}.dim text{fill:var(--draw);font:12px var(--font-mono)}.cap{fill:var(--muted);font:12px var(--font-sans)}</style>`;
+function drawing(f, size, L) {
+  const d = dnum(size), W = 560, H = 260;
+  let body = '';
+  const cy = 130;
+  if (['hex', 'hexp', 'scs', 'csk'].includes(f.draw)) {
+    const isHex = f.draw.startsWith('hex');
+    const headLen = f.draw === 'scs' ? DIM.scsK[size] : f.draw === 'csk' ? DIM.cskDk[size] * .3 : DIM.hexK[size];
+    const headH = f.draw === 'scs' ? DIM.scsDk[size] : f.draw === 'csk' ? DIM.cskDk[size] : DIM.hexS[size] * 1.1547;
+    const total = (L || d * 4) + (f.draw === 'csk' ? 0 : headLen);
+    const sc = Math.min(380 / total, 150 / Math.max(headH, d * 1.6));
+    const x0 = 80, hl = headLen * sc, hh = headH * sc, dd = d * sc, ll = ((L || d * 4) - (f.draw === 'csk' ? headLen : 0)) * sc;
+    const b = f.draw === 'hexp' ? Math.min(L, (L <= 125 ? 2 * d + 6 : L <= 200 ? 2 * d + 12 : 2 * d + 25)) * sc : ll;
+    if (f.draw === 'csk') body += `<path class="ol" d="M${x0} ${cy - hh / 2} L${x0 + hl} ${cy - dd / 2} L${x0 + hl} ${cy + dd / 2} L${x0} ${cy + hh / 2} Z"/>`;
+    else body += `<rect class="ol" x="${x0}" y="${cy - hh / 2}" width="${hl}" height="${hh}" rx="${f.draw === 'scs' ? 2 : 1}"/>`;
+    if (isHex) body += `<line class="th" x1="${x0}" y1="${cy - hh / 4}" x2="${x0 + hl}" y2="${cy - hh / 4}"/><line class="th" x1="${x0}" y1="${cy + hh / 4}" x2="${x0 + hl}" y2="${cy + hh / 4}"/>`;
+    const sx = x0 + hl;
+    body += `<rect class="ol" x="${sx}" y="${cy - dd / 2}" width="${ll}" height="${dd}"/>`;
+    const tStart = sx + ll - b;
+    for (let x = tStart + 3; x < sx + ll - 1; x += Math.max(3, DIM.pitch[size] * sc)) body += `<line class="th" x1="${x}" y1="${cy - dd / 2}" x2="${x + DIM.pitch[size] * sc * .5}" y2="${cy + dd / 2}"/>`;
+    body += `<line class="cl" x1="${x0 - 14}" y1="${cy}" x2="${sx + ll + 14}" y2="${cy}"/>`;
+    body += dimLine(f.draw === 'csk' ? x0 : sx, cy - hh / 2, sx + ll, cy - hh / 2, `L = ${L} mm`, 'top', 22);
+    body += dimLine(sx + ll, cy - dd / 2, sx + ll, cy + dd / 2, `d = M${d}`, 'right', 18);
+    if (f.draw === 'hexp') body += dimLine(tStart, cy + dd / 2, sx + ll, cy + dd / 2, `b = ${Math.round(b / sc)}`, 'bottom', 26);
+    if (isHex) body += dimLine(x0, cy - hh / 2, x0, cy + hh / 2, `s = ${DIM.hexS[size]}`, 'left', 18) + dimLine(x0, cy + hh / 2, x0 + hl, cy + hh / 2, `k = ${DIM.hexK[size]}`, 'bottom', 26);
+    if (f.draw === 'scs') body += dimLine(x0, cy - hh / 2, x0, cy + hh / 2, `dk = ${DIM.scsDk[size]}`, 'left', 18) + dimLine(x0, cy + hh / 2, x0 + hl, cy + hh / 2, `k = ${DIM.scsK[size]}`, 'bottom', 26);
+    if (f.draw === 'csk') body += dimLine(x0, cy - hh / 2, x0, cy + hh / 2, `dk = ${DIM.cskDk[size]}`, 'left', 18);
+  } else if (f.draw === 'nut') {
+    const s = DIM.hexS[size], m = DIM.nutM[size], sc = 150 / (s * 1.1547);
+    const ex = 150 + 40, R = s * 1.1547 / 2 * sc;
+    let pts = ''; for (let i = 0; i < 6; i++) { const a = Math.PI / 6 + i * Math.PI / 3; pts += `${ex + R * Math.cos(a)},${cy + R * Math.sin(a)} `; }
+    body += `<polygon class="ol" points="${pts}"/><circle class="ol" cx="${ex}" cy="${cy}" r="${d / 2 * sc}"/><circle class="th" fill="none" cx="${ex}" cy="${cy}" r="${d / 2 * sc * .85}"/>`;
+    body += dimLine(ex - s / 2 * sc, cy + R, ex + s / 2 * sc, cy + R, `s = ${s}`, 'bottom', 20);
+    const sx = 360, w = m * sc, h = R * 2;
+    body += `<rect class="ol" x="${sx}" y="${cy - h / 2}" width="${w}" height="${h}"/><line class="th" x1="${sx}" y1="${cy - h / 4}" x2="${sx + w}" y2="${cy - h / 4}"/><line class="th" x1="${sx}" y1="${cy + h / 4}" x2="${sx + w}" y2="${cy + h / 4}"/>`;
+    body += dimLine(sx, cy - h / 2, sx + w, cy - h / 2, `m = ${m}`, 'top', 18);
+  } else if (f.draw === 'washer' || f.draw === 'spring') {
+    const sp = f.draw === 'spring';
+    const d1 = sp ? DIM.swD1[size] : DIM.pwD1[size], d2 = sp ? DIM.swD2[size] : DIM.pwD2[size], h = sp ? DIM.swS[size] : DIM.pwH[size];
+    const sc = 160 / d2, ex = 190;
+    body += `<circle class="ol" cx="${ex}" cy="${cy}" r="${d2 / 2 * sc}"/><circle class="ol" cx="${ex}" cy="${cy}" r="${d1 / 2 * sc}"/>`;
+    if (sp) body += `<line class="ol" x1="${ex + d1 / 2 * sc - 2}" y1="${cy - 4}" x2="${ex + d2 / 2 * sc + 2}" y2="${cy + 4}"/>`;
+    body += dimLine(ex - d2 / 2 * sc, cy + d2 / 2 * sc, ex + d2 / 2 * sc, cy + d2 / 2 * sc, `d2 = ${d2}`, 'bottom', 18) + dimLine(ex - d1 / 2 * sc, cy - d2 / 2 * sc, ex + d1 / 2 * sc, cy - d2 / 2 * sc, `d1 = ${d1}`, 'top', 14);
+    const sx = 400, hh = Math.max(4, h * sc), w = d2 * sc;
+    body += `<rect class="ol" x="${sx}" y="${cy - w / 2}" width="${hh}" height="${w}"/>` + dimLine(sx, cy - w / 2, sx + hh, cy - w / 2, `${sp ? 's' : 'h'} = ${h}`, 'top', 14);
+  } else if (f.draw === 'rod') {
+    const sc = 1.4, dd = Math.min(60, d * 3);
+    body += `<rect class="ol" x="40" y="${cy - dd / 2}" width="480" height="${dd}"/>`;
+    for (let x = 44; x < 520; x += 6) body += `<line class="th" x1="${x}" y1="${cy - dd / 2}" x2="${x + 3}" y2="${cy + dd / 2}"/>`;
+    body += dimLine(40, cy - dd / 2, 520, cy - dd / 2, 'L = 1,000 mm', 'top', 22) + dimLine(520, cy - dd / 2, 520, cy + dd / 2, `M${d}`, 'right', 14);
+  }
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(f.name)} ${size} 치수 도면">${SVG_DEFS}${body}<text class="cap" x="${W - 8}" y="${H - 8}" text-anchor="end">${esc(f.std.ISO || '')} 기준 · 단위 mm · 축척 없음</text></svg>`;
+}
+function icon(kind) {
+  const c = 'fill="none" stroke="var(--ink)" stroke-width="2"';
+  const m = {
+    hex: `<rect x="34" y="28" width="16" height="36" ${c}/><rect x="50" y="38" width="80" height="16" ${c}/><path d="M60 38v16M68 38v16M76 38v16M84 38v16M92 38v16M100 38v16M108 38v16M116 38v16M124 38v16" stroke="var(--draw)"/>`,
+    hexp: `<rect x="34" y="28" width="16" height="36" ${c}/><rect x="50" y="38" width="80" height="16" ${c}/><path d="M96 38v16M104 38v16M112 38v16M120 38v16" stroke="var(--draw)"/>`,
+    scs: `<rect x="32" y="30" width="20" height="32" rx="3" ${c}/><rect x="52" y="39" width="76" height="14" ${c}/><path d="M64 39v14M72 39v14M80 39v14M88 39v14M96 39v14M104 39v14M112 39v14M120 39v14" stroke="var(--draw)"/>`,
+    csk: `<path d="M36 26 50 39v14L36 66z" ${c}/><rect x="50" y="39" width="74" height="14" ${c}/><path d="M62 39v14M70 39v14M78 39v14M86 39v14M94 39v14M102 39v14M110 39v14" stroke="var(--draw)"/>`,
+    nut: `<path d="M80 22 104 36v24L80 74 56 60V36z" ${c}/><circle cx="80" cy="48" r="11" ${c}/>`,
+    washer: `<circle cx="80" cy="46" r="26" ${c}/><circle cx="80" cy="46" r="11" ${c}/>`,
+    spring: `<circle cx="80" cy="46" r="24" ${c}/><circle cx="80" cy="46" r="13" ${c}/><path d="M92 44 106 50" ${c}/>`,
+    rod: `<rect x="20" y="38" width="120" height="16" ${c}/><path d="M28 38v16M36 38v16M44 38v16M52 38v16M60 38v16M68 38v16M76 38v16M84 38v16M92 38v16M100 38v16M108 38v16M116 38v16M124 38v16M132 38v16" stroke="var(--draw)"/>`,
+    stud: `<rect x="26" y="40" width="108" height="12" ${c}/><path d="M34 40v12M42 40v12M50 40v12M58 40v12M66 40v12M74 40v12M82 40v12M90 40v12M98 40v12M106 40v12M114 40v12M122 40v12" stroke="var(--draw)"/><rect x="40" y="30" width="16" height="32" ${c} fill="var(--surface)"/><rect x="104" y="30" width="16" height="32" ${c}/>`,
+  };
+  return `<svg viewBox="0 0 160 92" aria-hidden="true">${m[kind] || m.hex}</svg>`;
+}
+
+/* ───────── 화면 ───────── */
+const V = {};
+const view = () => document.getElementById('view');
+function setNav(r) {
+  const key = r.startsWith('m-') ? 'metric' : r.startsWith('i-') ? 'inch' : r;
+  document.querySelectorAll('#nav a').forEach(a => a.classList.toggle('on', a.dataset.go === key));
+}
+function go(route, push = true) {
+  state.route = route;
+  if (push) { try { if (location.hash.slice(1) !== route) history.pushState(null, '', '#' + route); } catch {} }
+  const [name, arg] = route.includes('-') && !['home'].includes(route) ? [route.split('-')[0], route.slice(route.indexOf('-') + 1)] : [route, null];
+  const fn = { home: V.home, metric: V.metric, inch: V.inch, m: V.family, i: V.inchFam, custom: V.custom, tools: V.tools, cart: V.cart, help: V.help }[name] || V.home;
+  view().innerHTML = fn(arg);
+  setNav(route);
+  (V.after[name] || (() => {}))(arg);
+  window.scrollTo(0, 0);
+}
+V.after = {};
+
+/* 홈 */
+V.home = () => `
+<section class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">기계엔지니어가 직접 운영하는 체결부품 전문점</span>
+    <h1>도면에 적힌 규격 <em>그대로</em> 맞춥니다</h1>
+    <p class="lead">KS·ISO·DIN·JIS 미터 규격품은 바로 주문하고, ASME·ASTM·SAE 인치·플랜트 볼트와 주문제작품은 사양을 보내 주세요. 대표가 도면과 사양서를 직접 읽고, 빠진 항목은 질문으로, 바로 구하기 어려운 사양은 대체안과 근거를 함께 드립니다. 대체품은 승인하신 뒤에만 진행합니다.</p>
+    <div class="ctas"><a class="btn pri" href="#metric" data-go="metric">미터 규격품 보기</a><a class="btn" href="#custom" data-go="custom">도면·사양서로 견적 받기</a></div>
+    <div class="promise">
+      <div><b>1영업일 이내</b>견적 1차 회신. 확인이 더 필요하면 무엇을 확인 중인지 알려 드립니다.</div>
+      <div><b>14시 마감 당일 출고</b>재고 표시 품목을 평일 14시 전에 결제하면 오늘 보냅니다.</div>
+      <div><b>모든 주문 사양 검토</b>나사 계열, 등급, 표면처리, 길이 기준, 짝 부품, 서류를 확인합니다.</div>
+    </div>
+  </div>
+  <div class="panel finder" id="finder">
+    <h2>규격으로 바로 찾기</h2>
+    <p class="small muted">종류와 치수를 고르면 형번, 수량별 단가, 출고 예정일이 바로 나옵니다.</p>
+    <div class="grid2">
+      <div class="field"><label for="f-fam">종류</label><select id="f-fam">${METRIC.map(f => `<option value="${f.id}">${esc(f.name)}</option>`).join('')}</select></div>
+      <div class="field"><label for="f-size">나사 호칭</label><select id="f-size"></select></div>
+      <div class="field"><label for="f-len">길이 (mm)</label><select id="f-len"></select></div>
+      <div class="field"><label for="f-combo">강도·표면처리</label><select id="f-combo"></select></div>
+    </div>
+    <div class="out" id="f-out"></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>지원 규격</h2><p>규격 번호로 검색하거나, 사양서에 적힌 그대로 보내 주세요.</p></div>
+  <div class="stds">
+    <div><h3>국내 KS</h3><ul><li>KS B 1002 육각볼트</li><li>KS B 1003 육각 구멍붙이 볼트</li><li>KS B 1012 육각너트</li><li>KS B 1326 평와셔 · 1324 스프링와셔</li><li>KS B 1010 마찰 접합용 고장력 세트</li></ul></div>
+    <div><h3>국제 ISO · DIN · JIS</h3><ul><li>ISO 4014 · 4017 · 4762 · 4032 · 7089</li><li>ISO 898-1 · 898-2 강도 등급</li><li>ISO 3506 스테인리스 A2 · A4</li><li>DIN 931 · 933 · 934 · 912 · 125 · 127 · 975</li><li>JIS B 1180 · 1176 · 1181</li></ul></div>
+    <div><h3>미국 ASME · ASTM · SAE</h3><ul><li>ASME B1.1 UNC · UNF · 8UN</li><li>ASME B18.2.1 · B18.2.2 · B18.3 · B18.2.6</li><li>SAE J429 Grade 2 · 5 · 8</li><li>ASTM F3125 A325 · A490, A563, F436</li><li>ASTM A307, F593 · F594, F1554</li></ul></div>
+    <div><h3>플랜트 · 배관</h3><ul><li>ASME B16.5 · B16.47 플랜지 스터드</li><li>ASTM A193 B7 · B7M · B8 · B8M · B16</li><li>ASTM A194 2H · 2HM · 7 · 7M · 8 · 8M</li><li>ASTM A320 L7 · L7M · L43</li><li>NACE MR0175 / ISO 15156 경도 관리</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>미터 규격품</h2><a class="small" href="#metric" data-go="metric">전체 보기</a></div>
+  <div class="cats-grid">${METRIC.map(f => `<a class="cat" href="#m-${f.id}" data-go="m-${f.id}"><div class="pic">${icon(f.draw)}</div><div class="tx"><b>${esc(f.name)}</b><span>${esc(f.std.ISO !== '—' && f.std.ISO !== '해당 없음' ? f.std.ISO : f.std.DIN)} · ${f.sizes[0]}–${f.sizes[f.sizes.length - 1]}</span></div></a>`).join('')}</div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>인치·플랜트 볼트</h2><a class="small" href="#inch" data-go="inch">전체 보기</a></div>
+  <div class="cats-grid">${INCH.slice(0, 8).map(f => `<a class="cat" href="#i-${f.id}" data-go="i-${f.id}"><div class="pic">${icon(f.draw)}</div><div class="tx"><b>${esc(f.name)}</b><span>${esc(f.std[0])}</span></div></a>`).join('')}</div>
+</section>
+
+<section class="panel callout">
+  <div class="sec-h" style="margin:0"><h2>사양 표기, 이렇게 읽습니다</h2><p>해외 도면의 한 줄에 필요한 정보가 다 들어 있습니다. 빠진 칸이 있으면 견적 전에 질문으로 돌려 드립니다.</p></div>
+  <div class="co-line" aria-label="사양 표기 예시">
+    ${[['7/8"', '호칭경', '#2b5878'], ['-9', '인치당 산 수', '#2b5878'], ['UNC', '나사 계열', '#2b5878'], ['-2A', '공차 등급', '#2b5878'], ['× 5"', '길이 (포인트 제외)', '#8a5a00'], ['ASTM A193 B7', '볼트 재질·등급', '#2d7448'], ['c/w 2 × A194 2H', '짝 헤비너트', '#2d7448'], ['PTFE', '표면처리', '#a8261d'], ['3.1 MTC', '성적서', '#59626a']]
+      .map(([c, l, col]) => `<div class="co-seg" style="--seg:${col}"><code>${esc(c)}</code><span>${l}</span></div>`).join('')}
+  </div>
+  <div class="decoder">
+    <label class="sr" for="dec-in">사양 표기 붙여넣기</label>
+    <input id="dec-in" value='M16x2.0-6g x 80 ISO 4014 10.9 흑색아연' spellcheck="false">
+    <button class="btn dark" type="button" id="dec-go">해석하기</button>
+  </div>
+  <div id="dec-out"></div>
+</section>
+
+<section>
+  <div class="sec-h"><h2>주문제작·해외규격 견적은 이렇게 진행합니다</h2><a class="small" href="#custom" data-go="custom">견적 요청서 쓰기</a></div>
+  <ol class="steps">
+    <li><b>사양 접수</b>도면·사양서·BOM, 수량, 납기, 필요한 서류</li>
+    <li><b>엔지니어 검토</b>빠지거나 맞지 않는 항목을 질문 목록으로 회신</li>
+    <li><b>견적·대체안</b>원 사양품, 또는 대체 규격과 차이 비교표</li>
+    <li><b>승인 후 수배</b>서면 승인한 사양으로만 제작·수배</li>
+    <li><b>입고 검사</b>마킹·치수·나사 게이지·외관, 성적서 히트번호 대조</li>
+    <li><b>출고</b>라벨에 규격·등급·히트번호, 서류 동봉</li>
+  </ol>
+</section>
+
+<section>
+  <div class="sec-h"><h2>도구</h2></div>
+  <div class="tools">
+    <div class="panel tool qo">
+      <h3>형번으로 한 번에 담기</h3>
+      <p class="small muted">한 줄에 형번과 수량을 적으세요. 견적서·BOM에서 붙여넣어도 됩니다.</p>
+      <label class="sr" for="qo-in">형번 목록</label>
+      <textarea id="qo-in" spellcheck="false">HBF-M8-25-88-ZW 300
+HN-M8-N8-ZW 300
+PW-M8-H200-ZW 300</textarea>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri sm" type="button" id="qo-go">견적함에 담기</button><span class="small muted" id="qo-msg"></span></div>
+    </div>
+    <div class="panel tool">
+      <h3>플랜지 스터드 길이 찾기</h3>
+      <p class="small muted">ASME B16.5 Class 150 플랜지의 볼트 수, 호칭, 스터드 길이를 찾아 세트로 담습니다.</p>
+      <a class="btn sm" href="#tools" data-go="tools" data-tab="flange">열기</a>
+    </div>
+    <div class="panel tool">
+      <h3>규격·재질·강도 대조표</h3>
+      <p class="small muted">KS·ISO·DIN·JIS와 ASME·ASTM·SAE를 나란히 비교합니다. 머리 마킹 읽는 법도 있습니다.</p>
+      <a class="btn sm" href="#tools" data-go="tools" data-tab="std">열기</a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="sec-h"><h2>자주 묻는 질문</h2><a class="small" href="#help" data-go="help">전체 보기</a></div>
+  ${FAQ.slice(0, 5).map(q => `<details><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join('')}
+</section>`;
+
+V.after.home = () => {
+  const $ = id => document.getElementById(id);
+  const fill = () => {
+    const f = METRIC.find(m => m.id === $('f-fam').value);
+    const curS = $('f-size').value;
+    $('f-size').innerHTML = f.sizes.map(s => `<option ${s === (f.sizes.includes(curS) ? curS : (f.sizes.includes('M10') ? 'M10' : f.sizes[2])) ? 'selected' : ''}>${s}</option>`).join('');
+    fillLen();
+    $('f-combo').innerHTML = f.combos.map(c => `<option value="${c[0]}|${c[1]}">${GRADE[c[0]].label} · ${FINISH[c[1]].label}</option>`).join('');
+    out();
+  };
+  const fillLen = () => {
+    const f = METRIC.find(m => m.id === $('f-fam').value);
+    const lens = f.len ? f.len($('f-size').value) : [];
+    $('f-len').disabled = !f.len;
+    $('f-len').innerHTML = f.len ? lens.map(l => `<option ${l === 30 ? 'selected' : ''}>${l}</option>`).join('') : '<option>해당 없음</option>';
+  };
+  const out = () => {
+    const f = METRIC.find(m => m.id === $('f-fam').value), size = $('f-size').value;
+    const L = f.len ? +$('f-len').value : null; const [g, fin] = $('f-combo').value.split('|');
+    const v = variantInfo(f, size, L, g, fin, 100), v1 = variantInfo(f, size, L, g, fin, 1);
+    $('f-out').innerHTML = `<div class="pn">${v.pn}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline">
+        <span class="price num">${won(v1.price)}<small> /EA · 1–99개</small></span>
+        <span class="small muted num">100개 이상 ${won(v.price)}</span>
+      </div>
+      <div class="small">${v.stock ? '<span class="tag ok">재고</span>' : '<span class="tag warn">수배</span>'} ${v.ship.today ? '오늘 출고' : v.ship.label + ' 출고 예정'} · 포장 ${v.pack}EA (낱개 주문 가능)</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px"><button class="btn pri sm" type="button" data-add="${v.pn}" data-qty="${v.pack}">${v.pack}개 담기</button><a class="btn sm" href="#m-${f.id}" data-go="m-${f.id}" data-preset="${v.pn}">상세 사양</a></div>`;
+  };
+  $('f-fam').addEventListener('change', fill);
+  $('f-size').addEventListener('change', () => { fillLen(); out(); });
+  $('f-len').addEventListener('change', out);
+  $('f-combo').addEventListener('change', out);
+  fill();
+  const dec = () => { $('dec-out').innerHTML = renderDecoded(decode($('dec-in').value)); };
+  $('dec-go').addEventListener('click', dec);
+  $('dec-in').addEventListener('keydown', e => { if (e.key === 'Enter') dec(); });
+  dec();
+  $('qo-go').addEventListener('click', () => {
+    const lines = $('qo-in').value.split(/\n+/).map(s => s.trim()).filter(Boolean);
+    let ok = 0; const bad = [];
+    lines.forEach(line => { const m = line.match(/^(\S+)\s+(\d+)/); if (m && addItem(m[1].toUpperCase(), +m[2])) ok++; else bad.push(line.split(/\s+/)[0]); });
+    $('qo-msg').textContent = `${ok}줄 담음` + (bad.length ? ` · 형번 확인 필요: ${bad.join(', ')}` : '');
+    if (ok) toast(`견적함에 ${ok}개 품목을 담았습니다`);
+  });
+};
+
+/* 사양 표기 해석기 */
+function decode(src) {
+  const s = ' ' + String(src).replace(/[×*]/g, 'x').replace(/\s+/g, ' ') + ' ';
+  const out = [];
+  const push = (label, value, tone = 'info') => out.push({ label, value, tone });
+  let m;
+  let rest = '', inch = false;
+  const mm = s.match(/(?<![\w.])M(\d{1,2}(?:\.\d)?)(?!\d)(?:\s*x\s*(\d(?:\.\d{1,2})?)(?![\d.]))?(?:\s*-\s*(\d[gGhHeEfF]))?/i);
+  if (mm) {
+    const size = 'M' + mm[1], d = parseFloat(mm[1]);
+    let pitch = mm[2] && parseFloat(mm[2]) <= Math.min(6, d * 0.25 + 0.5) ? mm[2] : null;
+    rest = s.slice(mm.index + (pitch ? mm[0].length : mm[0].indexOf(mm[1]) + mm[1].length));
+    push('나사', `미터 ${size}`, 'info');
+    if (pitch) push('피치', `${pitch} mm${DIM.pitch[size] && +pitch !== DIM.pitch[size] ? ' (가는나사)' : DIM.pitch[size] ? ' (보통나사)' : ''}`, 'info');
+    else if (DIM.pitch[size]) push('피치', `표기 없음 → 보통나사 ${DIM.pitch[size]} mm로 가정 (확인 필요)`, 'warn');
+    if (pitch && mm[3]) push('공차 등급', mm[3].toLowerCase(), 'info');
+    else if ((m = rest.match(/^\s*-\s*(\d[gGhH])\b/))) push('공차 등급', m[1].toLowerCase(), 'info');
+  }
+  const im = s.match(/(?<![\w.\/-])(\d(?:-\d{1,2}\/\d{1,2})?|\d{1,2}\/\d{1,2})"?\s*-\s*(\d{1,2}(?:-1\/2)?)(?![\d\/])\s*(UNC|UNF|UNEF|8UN|UNS|UN)?(?:\s*-?\s*([123][AB]))?/i);
+  if (im && (!mm || /UN|"/i.test(im[0]))) {
+    inch = true;
+    rest = s.slice(im.index + im[0].length);
+    push('나사', `인치 ${im[1]}" 인치당 ${im[2]}산${im[3] ? ' ' + im[3].toUpperCase() : ''}`, 'info');
+    if (im[4]) push('공차 등급', im[4].toUpperCase(), 'info');
+    const dia = inchToMm(im[1]) / 25.4;
+    if (dia > 1 && im[3] && im[3].toUpperCase() === 'UNC' && /B7|B16|L7|B8/i.test(s)) push('확인', '1" 초과 플랜트 스터드는 8UN이 관례입니다. UNC가 맞는지 확인합니다.', 'warn');
+  }
+  const lm = rest.match(/^\s*(?:x|L\s*=?)\s*(\d+(?:\.\d+)?(?:-\d{1,2}\/\d{1,2})?|\d{1,2}\/\d{1,2})(?![\d.\/])\s*(mm|"|in(?:ch)?\b)?/i)
+    || s.match(/(?:\bL\s*=\s*|길이\s*)(\d+(?:\.\d+)?)\s*(mm)?/i);
+  if (lm) {
+    const unit = (lm[2] || '').toLowerCase();
+    if (unit === '"' || unit.startsWith('in') || (inch && unit !== 'mm')) push('길이', `${lm[1]}" (${inchToMm(lm[1]).toFixed(1)} mm)`, 'info');
+    else push('길이', `${lm[1]} mm`, 'info');
+  }
+  [...s.matchAll(/\b(ISO \d{3,5}|DIN \d{2,4}|KS B \d{4}|JIS B \d{4}|ASME B\d+(?:\.\d+)*|ASTM [A-F]\d{2,4}M?|SAE J\d{3,4}|NACE MR0175)\b/gi)].forEach(x => push('규격', x[1].toUpperCase(), 'ok'));
+  const g = s.match(/\b(4\.6|4\.8|5\.8|8\.8|10\.9|12\.9|A[24]-(?:50|70|80)|B7M?|B8M?|B16|L7M?|L43|2HM?|7[ML]|8M|A325|A490|Gr(?:ade)?\.?\s?[258])\b/gi);
+  if (g) push('강도·등급', [...new Set(g.map(x => /^gr/i.test(x) ? 'SAE Grade ' + x.slice(-1) : x.toUpperCase()))].join(', '), 'ok');
+  const coats = [['PTFE|테프론|XYLAN|불소', 'PTFE 코팅'], ['HDG|용융아연|HOT.?DIP', '용융아연도금'], ['ZN-?NI|아연.?니켈', '아연-니켈'], ['흑색아연|삼가흑|BLACK ZINC', '흑색아연'], ['백색아연|ZINC|아연도금', '아연도금'], ['흑착색|BLACK OXIDE|흑염', '흑착색'], ['지오메트|다크로|GEOMET|DACROMET|F1136|F3393', '아연 플레이크']];
+  const up = s.toUpperCase();
+  for (const [re, label] of coats) if (new RegExp(re).test(up)) { push('표면처리', label, 'info'); break; }
+  if (/3\.1|MTC|밀시트|MILL/i.test(s)) push('서류', 'EN 10204 3.1 성적서', 'ok');
+  // 엔지니어 확인 포인트
+  if (/10\.9|12\.9|GR(ADE)?\.?\s?8|A490/i.test(s) && /아연|ZINC|ZN/i.test(up) && !/플레이크|지오메트|GEOMET|F1136|F3393/i.test(up)) push('확인', '고강도 볼트 전기도금은 수소취성 관리(도금 후 베이킹)가 필요합니다.', 'warn');
+  if (/A490/i.test(s) && /HDG|용융/i.test(up)) push('확인', 'A490은 용융아연도금이 허용되지 않습니다. 아연 플레이크(F3393)를 제안합니다.', 'crit');
+  if (/HDG|용융/i.test(up)) push('확인', '용융아연도금 볼트에는 오버탭 너트를 짝지어 출고합니다.', 'warn');
+  if (/DIN 933|DIN 931/i.test(s) && /\bM(10|12|14|22)\b/.test(s)) push('확인', 'DIN과 ISO는 M10·M12·M14·M22에서 머리 2면폭이 다릅니다. 어느 쪽인지 확인합니다.', 'warn');
+  if (!out.some(o => o.label === '길이') && out.some(o => o.label === '나사') && !/너트|NUT|ISO 403[2-6]|DIN 93[46]|A194|A563|와셔|WASHER/i.test(s)) push('빠진 항목', '길이', 'warn');
+  if (!out.some(o => o.label === '강도·등급') && out.length) push('빠진 항목', '강도 등급 또는 재질', 'warn');
+  return out;
+}
+function renderDecoded(items) {
+  if (!items.length) return '<p class="note">읽을 수 있는 규격 표기가 없습니다. 예: <span class="mono">M12x1.25 x 40 ISO 4017 8.8 아연</span> 또는 <span class="mono">1/2-13 UNC-2A x 3-1/2" A193 B7</span></p>';
+  const tone = { info: 'info', ok: 'ok', warn: 'warn', crit: 'crit' };
+  return `<div class="tbl-wrap"><table class="t"><thead><tr><th>항목</th><th>읽은 내용</th></tr></thead><tbody>${items.map(i => `<tr><td><span class="tag ${tone[i.tone]}">${esc(i.label)}</span></td><td>${esc(i.value)}</td></tr>`).join('')}</tbody></table></div>
+  <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" type="button" data-go="custom" data-prefill="1">이 사양으로 견적 요청</button></div>`;
+}
+
+/* 미터 규격품 목록 */
+V.metric = () => `
+<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><span>미터 규격품</span></div>
+<div class="sec-h"><h1 style="font-size:26px">미터 규격품</h1><p>KS·ISO·DIN·JIS 규격. 가격은 VAT 별도, 수량이 많을수록 단가가 내려갑니다.</p></div>
+<div class="cats-grid">${METRIC.map(f => `<a class="cat" href="#m-${f.id}" data-go="m-${f.id}"><div class="pic">${icon(f.draw)}</div><div class="tx"><b>${esc(f.name)}</b><span>${Object.values(f.std).filter(x => x !== '—' && x !== '해당 없음').slice(0, 3).join(' · ')}</span><span>${f.sizes[0]}–${f.sizes[f.sizes.length - 1]} · 강도·표면처리 ${f.combos.length}종</span></div></a>`).join('')}</div>
+<section>
+  <div class="note info">찾는 규격이 목록에 없나요? 길이·재질·나사 사양이 규격 밖이어도 <a href="#custom" data-go="custom">주문제작 견적</a>으로 받습니다.</div>
+</section>`;
+
+/* 품목 상세 (목록 + 선택기) */
+function rowsFor(f) {
+  const rows = [];
+  f.sizes.forEach(size => {
+    const lens = f.len ? f.len(size) : [null];
+    lens.forEach(L => f.combos.forEach(([g, fin]) => rows.push({ size, L, g, fin })));
+  });
+  return rows;
+}
+V.family = id => {
+  const f = METRIC.find(m => m.id === id);
+  if (!f) return V.metric();
+  const L0 = state.listing[f.id] || (state.listing[f.id] = { sel: null, filt: {}, page: 0, open: '0' });
+  const pre = L0.sel || { size: f.sizes.includes('M10') ? 'M10' : f.sizes[Math.min(3, f.sizes.length - 1)], L: null, g: f.combos[0][0], fin: f.combos[0][1], qty: packOf(f, 'M10') };
+  if (f.len && !pre.L) { const ls = f.len(pre.size); pre.L = ls.includes(30) ? 30 : ls[Math.floor(ls.length / 3)]; }
+  L0.sel = pre;
+  const stdTags = Object.entries(f.std).map(([k, v]) => `<span class="chip"><b class="small">${k}</b> ${esc(v)}</span>`).join('');
+  return `
+<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><a href="#metric" data-go="metric">미터 규격품</a><span>›</span><span>${esc(f.name)}</span></div>
+<div class="fam-head">
+  <div><h1>${esc(f.name)}</h1><p class="muted">${esc(f.en)} · ${esc(f.use)}</p><div class="stdline">${stdTags}</div></div>
+  <div class="pic" aria-hidden="true">${icon(f.draw)}</div>
+</div>
+<div class="detail">
+  <div style="display:grid;gap:16px;min-width:0">
+    <div class="panel drawing" id="fam-draw"></div>
+    <div class="panel" style="padding:16px;display:grid;gap:10px" id="fam-spec"></div>
+  </div>
+  <div class="panel cfg" id="cfg"></div>
+</div>
+<section>
+  <div class="listbar"><h2 style="font-size:19px">전체 규격표</h2><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="btn sm mfilter" type="button" id="ftoggle">필터</button><span class="small muted" id="count"></span></div></div>
+  <div class="listing">
+    <aside class="panel filters" id="filters" data-open="${L0.open}"></aside>
+    <div style="min-width:0"><div class="tbl-wrap" id="rows"></div><div class="pager" id="pager"></div></div>
+  </div>
+</section>`;
+};
+V.after.m = id => {
+  const f = METRIC.find(m => m.id === id); if (!f) return;
+  const L0 = state.listing[f.id];
+  const $ = s => document.getElementById(s);
+  const renderCfg = () => {
+    const s = L0.sel;
+    const v = variantInfo(f, s.size, s.L, s.g, s.fin, s.qty);
+    const tiers = TIERS.map(([q], i) => { const p = unitPrice(f, s.size, s.L, s.g, s.fin, q); const next = TIERS[i + 1]; return `<div class="${s.qty >= q && (!next || s.qty < next[0]) ? 'on' : ''}"><span>${q.toLocaleString()}${next ? '–' + (next[0] - 1).toLocaleString() : '+'}개</span><b>${won(p)}</b></div>`; }).join('');
+    const lens = f.len ? f.len(s.size) : [];
+    $('cfg').innerHTML = `
+      <div><span class="eyebrow">형번</span><div class="pn">${v.pn}</div></div>
+      <div class="field"><label>나사 호칭</label><div class="seg" role="group" aria-label="나사 호칭">${f.sizes.map(z => `<button type="button" class="${z === s.size ? 'on' : ''}" data-cfg="size" data-v="${z}">${z}</button>`).join('')}</div></div>
+      ${f.len ? `<div class="field"><label>길이 L (mm)</label><div class="seg" role="group" aria-label="길이">${lens.map(l => `<button type="button" class="${l === s.L ? 'on' : ''}" data-cfg="L" data-v="${l}">${l}</button>`).join('')}</div></div>` : ''}
+      <div class="field"><label>강도·재질 · 표면처리</label><div class="seg" role="group" aria-label="강도와 표면처리">${f.combos.map(([g, fin]) => `<button type="button" style="font-family:var(--font-sans)" class="${g === s.g && fin === s.fin ? 'on' : ''}" data-cfg="combo" data-v="${g}|${fin}">${GRADE[g].label} · ${FINISH[fin].label}</button>`).join('')}</div></div>
+      <div class="tiers" aria-label="수량별 단가">${tiers}</div>
+      <div class="grid2" style="align-items:end">
+        <div class="field"><label for="cfg-qty">수량 (EA)</label><input id="cfg-qty" type="number" min="1" step="1" value="${s.qty}" inputmode="numeric"></div>
+        <div><div class="price num">${won(v.price * s.qty)}<small> VAT 별도</small></div><div class="small muted num">${won(v.price)} × ${s.qty.toLocaleString()}EA</div></div>
+      </div>
+      <div class="small">${v.stock ? '<span class="tag ok">재고</span>' : '<span class="tag warn">수배</span>'} ${v.ship.today ? '<b>오늘 출고</b> (14시 전 결제)' : `<b>${v.ship.label}</b> 출고 예정`} · 포장 ${v.pack}EA</div>
+      ${s.fin === 'HD' ? '<div class="note warn small">용융아연도금 볼트에는 오버탭 너트(ISO 10684)를 짝지어야 합니다. 같은 규격 너트를 함께 담아 주시면 오버탭품으로 맞춰 보냅니다.</div>' : ''}
+      ${s.g === '109' && s.fin === 'ZW' ? '<div class="note warn small">10.9 전기도금품은 도금 후 베이킹으로 수소취성을 관리합니다.</div>' : ''}
+      ${f.id.startsWith('hb') && DIM.dinS[s.size] ? `<div class="note info small">${s.size}는 ISO와 DIN의 머리 2면폭이 다릅니다. 이 품목은 ISO 기준 s = ${DIM.hexS[s.size]} mm입니다 (DIN ${DIM.dinS[s.size]} mm). DIN 치수가 필요하면 견적 요청에 적어 주세요.</div>` : ''}
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" type="button" data-add="${v.pn}" data-qty="${s.qty}">견적함에 담기</button><button class="btn" type="button" data-go="custom" data-prefill-pn="${v.pn}">이 사양으로 변형 견적</button></div>`;
+    $('fam-draw').innerHTML = drawing(f, s.size, s.L);
+    const d = dnum(s.size);
+    const kv = [
+      ['나사', `${s.size} × ${DIM.pitch[s.size]} (보통나사) · 6g`],
+      ...(f.len ? [['길이', `${s.L} mm${f.id === 'csk' ? ' (머리 윗면부터)' : ' (머리 밑부터)'}`]] : []),
+      ...(f.id === 'hbp' ? [['나사부 길이 b', `${s.L <= 125 ? 2 * d + 6 : s.L <= 200 ? 2 * d + 12 : 2 * d + 25} mm (참고값)`]] : []),
+      ...(f.kind === 'bolt' && f.draw.startsWith('hex') ? [['머리', `2면폭 s ${DIM.hexS[s.size]} · 높이 k ${DIM.hexK[s.size]} mm`]] : []),
+      ...(f.id === 'scs' ? [['머리', `지름 dk ${DIM.scsDk[s.size]} · 높이 k ${DIM.scsK[s.size]} · 육각 구멍 s ${DIM.scsS[s.size]} mm`]] : []),
+      ...(f.id === 'csk' ? [['머리', `지름 dk ${DIM.cskDk[s.size]} (이론값) · 육각 구멍 s ${DIM.cskS[s.size]} mm · 90°`]] : []),
+      ...(f.id === 'hn' ? [['치수', `2면폭 s ${DIM.hexS[s.size]} · 높이 m ${DIM.nutM[s.size]} mm`]] : []),
+      ...(f.id === 'pw' ? [['치수', `안지름 ${DIM.pwD1[s.size]} · 바깥지름 ${DIM.pwD2[s.size]} · 두께 ${DIM.pwH[s.size]} mm`]] : []),
+      ...(f.id === 'sw' ? [['치수', `안지름 ${DIM.swD1[s.size]} · 바깥지름 ${DIM.swD2[s.size]} · 두께 ${DIM.swS[s.size]} mm (DIN 127 B)`]] : []),
+      ['강도·재질', `${GRADE[s.g].label} — ${GRADE[s.g].desc} (${GRADE[s.g].std})`],
+      ['표면처리', FINISH[s.fin].label],
+      ['규격', Object.entries(f.std).map(([k, v]) => `${k} ${v}`).join(' · ')],
+      ['서류', '규격 적합 확인서(CoC) 기본 · EN 10204 3.1은 견적 시 가능 여부 안내'],
+      ['단중', `약 ${weightG(f, s.size, s.L).toFixed(1)} g/EA (계산값)`],
+    ];
+    $('fam-spec').innerHTML = `<h2 style="font-size:17px">사양</h2><dl class="kv">${kv.map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('')}</dl>
+      ${f.pair.length ? `<div class="small">함께 쓰는 부품: ${f.pair.map(pid => { const pf = METRIC.find(m => m.id === pid); return `<a href="#m-${pid}" data-go="m-${pid}">${esc(pf.name)} ${s.size}</a>`; }).join(' · ')}</div>` : ''}`;
+  };
+  const all = rowsFor(f);
+  const renderList = () => {
+    const F = L0.filt;
+    const keep = r => (!F.size?.length || F.size.includes(r.size)) && (!F.L?.length || F.L.includes(String(r.L))) && (!F.combo?.length || F.combo.includes(r.g + '|' + r.fin));
+    const rows = all.filter(keep);
+    const per = 40, pages = Math.max(1, Math.ceil(rows.length / per));
+    L0.page = Math.min(L0.page, pages - 1);
+    const slice = rows.slice(L0.page * per, L0.page * per + per);
+    $('count').textContent = `${rows.length.toLocaleString()}개 규격`;
+    $('rows').innerHTML = `<table class="t"><thead><tr><th>형번</th><th>호칭</th>${f.len ? '<th class="r">L (mm)</th>' : ''}<th>강도·재질</th><th>표면처리</th><th class="r">단가 (1–99)</th><th>출고</th><th class="r">수량</th><th></th></tr></thead><tbody>${slice.map(r => {
+      const v = variantInfo(f, r.size, r.L, r.g, r.fin, 1);
+      return `<tr><td class="mono"><a href="#m-${f.id}" data-sel="${r.size}|${r.L}|${r.g}|${r.fin}">${v.pn}</a></td><td class="mono">${r.size}</td>${f.len ? `<td class="r mono">${r.L}</td>` : ''}<td>${GRADE[r.g].label}</td><td>${FINISH[r.fin].label}</td><td class="r num">${won(v.price)}</td><td>${v.stock ? '<span class="tag ok">재고</span>' : '<span class="tag warn">' + v.ship.label + '</span>'}</td><td class="r"><label class="sr" for="q-${v.pn}">${v.pn} 수량</label><input class="qty" id="q-${v.pn}" type="number" min="1" value="${v.pack}"></td><td><button class="btn sm" type="button" data-add="${v.pn}" data-qty-from="q-${v.pn}">담기</button></td></tr>`;
+    }).join('') || `<tr><td colspan="9" class="muted">조건에 맞는 규격이 없습니다. 필터를 줄이거나 주문제작으로 요청하세요.</td></tr>`}</tbody></table>`;
+    $('pager').innerHTML = pages > 1 ? Array.from({ length: pages }, (_, i) => `<button class="btn sm ${i === L0.page ? 'dark' : ''}" type="button" data-page="${i}">${i + 1}</button>`).join('') : '';
+  };
+  const renderFilters = () => {
+    const F = L0.filt;
+    const grp = (key, title, opts) => `<div class="fgrp"><h3>${title}</h3><div class="fopts">${opts.map(([v, l]) => `<label><input type="checkbox" data-f="${key}" value="${v}" ${(F[key] || []).includes(v) ? 'checked' : ''}>${l}</label>`).join('')}</div></div>`;
+    const lens = [...new Set(all.map(r => r.L).filter(Boolean))].sort((a, b) => a - b);
+    $('filters').innerHTML = grp('size', '나사 호칭', f.sizes.map(s => [s, s]))
+      + (f.len ? grp('L', '길이 (mm)', lens.map(l => [String(l), l])) : '')
+      + grp('combo', '강도·표면처리', f.combos.map(([g, fin]) => [g + '|' + fin, `${GRADE[g].label} ${FINISH[fin].label}`]))
+      + `<button class="btn sm" type="button" id="freset">필터 지우기</button>`;
+  };
+  renderCfg(); renderFilters(); renderList();
+  view().addEventListener('click', e => {
+    const b = e.target.closest('[data-cfg]');
+    if (b) {
+      const s = L0.sel;
+      if (b.dataset.cfg === 'size') { s.size = b.dataset.v; if (f.len) { const ls = f.len(s.size); if (!ls.includes(s.L)) s.L = ls.reduce((a, c) => Math.abs(c - s.L) < Math.abs(a - s.L) ? c : a, ls[0]); } }
+      if (b.dataset.cfg === 'L') s.L = +b.dataset.v;
+      if (b.dataset.cfg === 'combo') [s.g, s.fin] = b.dataset.v.split('|');
+      renderCfg(); return;
+    }
+    const sel = e.target.closest('[data-sel]');
+    if (sel) { e.preventDefault(); const [size, L, g, fin] = sel.dataset.sel.split('|'); Object.assign(L0.sel, { size, L: L === 'null' ? null : +L, g, fin }); renderCfg(); document.getElementById('cfg').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+    const pg = e.target.closest('[data-page]');
+    if (pg) { L0.page = +pg.dataset.page; renderList(); return; }
+    if (e.target.id === 'freset') { L0.filt = {}; L0.page = 0; renderFilters(); renderList(); }
+    if (e.target.id === 'ftoggle') { const el = $('filters'); el.dataset.open = L0.open = el.dataset.open === '1' ? '0' : '1'; }
+  });
+  view().addEventListener('change', e => {
+    if (e.target.dataset.f) { const k = e.target.dataset.f; L0.filt[k] = [...view().querySelectorAll(`[data-f="${k}"]:checked`)].map(x => x.value); L0.page = 0; renderList(); }
+    if (e.target.id === 'cfg-qty') { L0.sel.qty = Math.max(1, Math.round(+e.target.value || 1)); renderCfg(); }
+  });
+};
+
+/* 인치·플랜트 목록 */
+V.inch = () => `
+<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><span>인치·플랜트 볼트</span></div>
+<div class="sec-h"><h1 style="font-size:26px">인치·플랜트 볼트</h1><p>ASME·ASTM·SAE 규격품은 사양을 확인한 뒤 견적으로 드립니다. 1영업일 안에 1차 회신합니다.</p></div>
+<div class="note info" style="margin-bottom:16px">같은 1-1/4"라도 구조용 볼트(UNC 7산)와 플랜지 스터드(8UN 8산)는 서로 맞지 않습니다. 사양서의 지름·산 수·계열·등급을 그대로 고르시면 됩니다.</div>
+<div class="cats-grid">${INCH.map(f => `<a class="cat" href="#i-${f.id}" data-go="i-${f.id}"><div class="pic">${icon(f.draw)}</div><div class="tx"><b>${esc(f.name)}</b><span>${esc(f.std.slice(0, 2).join(' · '))}</span><span>${esc(f.sizes[0])}" – ${esc(f.sizes[f.sizes.length - 1])}"</span></div></a>`).join('')}</div>
+<section><div class="sec-h"><h2>플랜지 스터드를 한 번에</h2></div><div class="note">플랜지 호칭 크기와 면 형식만 알면 볼트 수·호칭·길이를 찾아 세트로 담을 수 있습니다. <a href="#tools" data-go="tools" data-tab="flange">플랜지 스터드 길이 찾기</a></div></section>`;
+
+V.inchFam = id => {
+  const f = INCH.find(m => m.id === id);
+  if (!f) return V.inch();
+  return `
+<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><a href="#inch" data-go="inch">인치·플랜트 볼트</a><span>›</span><span>${esc(f.name)}</span></div>
+<div class="fam-head">
+  <div><h1>${esc(f.name)}</h1><p class="muted">${esc(f.en)}</p><div class="stdline">${f.std.map(s => `<span class="chip">${esc(s)}</span>`).join('')}</div></div>
+  <div class="pic" aria-hidden="true">${icon(f.draw)}</div>
+</div>
+<div class="detail">
+  <div style="display:grid;gap:16px;min-width:0">
+    <div class="panel" style="padding:16px;display:grid;gap:10px">
+      <h2 style="font-size:17px">이 품목에 대해</h2>
+      <p>${esc(f.use)}</p>
+      <dl class="kv"><dt>등급</dt><dd>${f.grades.map(esc).join('<br>')}</dd><dt>표면처리</dt><dd>${f.finishes.map(esc).join(' · ')}</dd><dt>서류</dt><dd>${esc(f.docs)}</dd><dt>나사</dt><dd>${f.stud || f.nut ? '1" 이하 UNC, 1-1/8" 이상 8UN (ASME B1.1, 2A/2B)' : 'UNC (ASME B1.1, Class 2A). UNF는 견적 시 지정'}</dd></dl>
+    </div>
+    <div class="panel" style="padding:16px;display:grid;gap:8px">
+      <h2 style="font-size:17px">견적 전에 확인하는 것</h2>
+      <ul style="margin:0;padding-left:18px;display:grid;gap:4px" class="small">${CHECKS.map(c => `<li><b>${esc(c[0])}</b> — ${esc(c[1])}</li>`).join('')}</ul>
+    </div>
+  </div>
+  <div class="panel cfg" id="icfg">
+    <span class="eyebrow">견적 사양</span>
+    <div class="field"><label for="i-size">호칭 (in) - 인치당 산 수</label><select id="i-size">${f.sizes.map(s => `<option value="${s}">${s.replace(/^(.+?)-(\d+(?:-1\/2)?)$/, '$1"-$2')}</option>`).join('')}</select></div>
+    ${f.nut ? '' : `<div class="field"><label for="i-len">길이 (in)</label><input id="i-len" value="${f.stud ? '4-1/2' : '2'}" inputmode="decimal"><span class="hint" id="i-len-mm"></span></div>`}
+    <div class="field"><label for="i-grade">등급</label><select id="i-grade">${f.grades.map(g => `<option>${esc(g)}</option>`).join('')}</select></div>
+    <div class="field"><label for="i-fin">표면처리</label><select id="i-fin">${f.finishes.map(g => `<option>${esc(g)}</option>`).join('')}</select></div>
+    <div class="grid2"><div class="field"><label for="i-qty">수량 (${f.stud ? '세트' : 'EA'})</label><input id="i-qty" type="number" min="1" value="${f.stud ? 16 : 50}"></div>
+      <div class="field"><label for="i-doc">서류</label><select id="i-doc"><option>EN 10204 3.1</option><option>CoC (적합 확인서)</option><option>EN 10204 3.2 (협의)</option><option>필요 없음</option></select></div></div>
+    <div class="spec-out" id="i-spec"></div>
+    <div id="i-warn" class="checks"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" type="button" id="i-add">견적함에 담기</button><button class="btn" type="button" data-go="custom">도면 첨부해 요청</button></div>
+    <p class="small muted">인치·플랜트 품목은 사양 확인 후 단가와 납기를 회신합니다.</p>
+  </div>
+</div>`;
+};
+V.after.i = id => {
+  const f = INCH.find(m => m.id === id); if (!f) return;
+  const $ = s => document.getElementById(s);
+  const calc = () => {
+    const size = $('i-size').value, [dia, tpi] = [size.replace(/-(\d+(?:-1\/2)?)$/, ''), size.match(/-(\d+(?:-1\/2)?)$/)[1]];
+    const d = inchToMm(dia.replace('#10', '0.19')) / 25.4;
+    const series = size.startsWith('#') ? (tpi === '32' ? 'UNF' : 'UNC') : (f.stud || f.nut) && d > 1 ? '8UN' : 'UNC';
+    const cls = f.nut ? '2B' : '2A';
+    const len = $('i-len') ? $('i-len').value.trim() : '';
+    if ($('i-len-mm')) $('i-len-mm').textContent = len ? (isNaN(inchToMm(len)) ? '예: 4-1/2, 3-3/4, 6' : `${inchToMm(len).toFixed(1)} mm${f.stud ? ' · 양끝 포인트 제외 길이' : ' · 머리 밑부터'}`) : '';
+    const grade = $('i-grade').value, fin = $('i-fin').value;
+    const nutTxt = f.stud ? ` / 헤비너트 2개 (${grade.split('/')[1] ? grade.split('/')[1].trim() : 'A194'})` : '';
+    const spec = `${dia.startsWith('#') ? dia : dia + '"'}-${tpi} ${series}-${cls}${len && !f.nut ? ` × ${len}"` : ''} / ${grade.split('/')[0].trim()}${nutTxt} / ${fin} / ${$('i-doc').value}`;
+    $('i-spec').textContent = spec;
+    const w = [];
+    if (f.id === 'l7' && d > 2.5 && !/L43/.test(grade)) w.push(['crit', 'A320 L7·L7M은 2-1/2" 이하만 규정됩니다. 이 지름은 L43으로 바꿔 주세요.']);
+    if (f.id === 'l7' && d <= 2.5 && /L43/.test(grade)) w.push(['info', 'L43은 2-1/2" 초과 지름에 쓰는 등급입니다. 이 지름은 L7으로도 충분한지 확인합니다.']);
+    if (f.id === 'f1554' && /105/.test(grade) && d > 3) w.push(['crit', 'F1554 Grade 105는 3" 이하만 규정됩니다.']);
+    if (f.id === 'a325' && /A490/.test(grade) && /용융/.test(fin)) w.push(['crit', 'A490은 용융아연도금을 쓸 수 없습니다. 아연 플레이크(F3393)를 고르세요.']);
+    if (/용융|HDG/.test(fin)) w.push(['warn', '용융아연도금은 너트를 오버탭해서 짝지어 보냅니다.']);
+    if (f.id === 'j429' && /Grade 8/.test(grade) && /전기아연|용융/.test(fin)) w.push(['warn', 'Grade 8 도금품은 수소취성 관리(베이킹) 조건을 확인합니다. 용융아연은 권하지 않습니다.']);
+    if (f.id === 'j429' && /Grade 2/.test(grade) && len && inchToMm(len) / 25.4 > 6) w.push(['info', 'Grade 2는 길이 6" 초과 볼트에서 Grade 1 강도(60 ksi)로 내려갑니다.']);
+    if (f.id === 'b8' && /Class 2/.test(grade) && d > 1) w.push(['info', 'Class 2는 1" 초과에서 강도가 크게 낮아집니다. 설계 하중을 다시 확인합니다.']);
+    if (f.id === 'f593' && /CW/.test(grade)) w.push(['info', d <= .625 ? 'CW1 (5/8" 이하) 적용 지름입니다.' : 'CW2 (3/4"~1-1/2") 적용 지름입니다.']);
+    if (f.stud) w.push(['info', 'ASME B16.5 스터드 길이는 너트 2개 두께를 포함하고 양끝 포인트를 뺀 값입니다. 개스킷·와셔를 바꾸면 다시 계산합니다.']);
+    $('i-warn').innerHTML = w.map(([t, m]) => `<div class="note ${t} small">${esc(m)}</div>`).join('');
+    return spec;
+  };
+  ['i-size', 'i-len', 'i-grade', 'i-fin', 'i-doc', 'i-qty'].forEach(k => $(k) && $(k).addEventListener('input', calc));
+  calc();
+  $('i-add').addEventListener('click', () => { addQuote({ fam: f.id, title: f.name, spec: calc(), qty: Math.max(1, +$('i-qty').value || 1), unit: f.stud ? '세트' : 'EA' }); toast('견적함에 담았습니다'); });
+};
+
+/* 주문제작·해외규격 견적 */
+const CHECKS = [
+  ['나사 계열·공차', '미터(피치)인지 인치(UNC·UNF·8UN, 산 수)인지, 6g/6H·2A/2B 등급까지 맞춥니다. 피치가 빠진 도면은 질문부터 보냅니다.'],
+  ['강도 등급·재질', '규격 번호와 등급을 함께 봅니다. 사용 온도(저온·고온)와 사워 환경(NACE 경도 제한)도 확인합니다.'],
+  ['표면처리·수소취성', '고강도 볼트 전기도금은 베이킹 조건을, 용융아연도금은 오버탭 너트를 확인합니다.'],
+  ['길이 기준', '육각볼트는 머리 밑부터, 접시머리는 전장, B16.5 스터드는 양끝 포인트를 뺀 길이로 잽니다.'],
+  ['너트·와셔 짝', 'B7 ↔ 2H, B7M ↔ 2HM, 8.8 ↔ 강도 8 너트, A325 ↔ A563 DH + F436처럼 맞춥니다.'],
+  ['서류·검사', 'EN 10204 2.1·2.2·3.1, 도금 성적서, 원산지 증명을 주문 전에 확정하고, 입고 때 히트번호를 대조합니다.'],
+];
+V.custom = () => `
+<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><span>주문제작·해외규격 견적</span></div>
+<div class="sec-h"><h1 style="font-size:26px">주문제작·해외규격 견적 요청</h1><p>아는 칸만 채우셔도 됩니다. 빠진 항목은 엔지니어가 질문으로 정리해 회신합니다.</p></div>
+<form class="custom" id="cform" novalidate>
+  <div style="display:grid;gap:16px;min-width:0">
+    <fieldset><legend>1. 요청 구분</legend>
+      <div class="radios" role="radiogroup" aria-label="요청 구분">${['신규 제작 (도면품)', '해외규격 수배', '기존 품목 대체품 찾기', '플랜지 스터드 세트'].map((t, i) => `<label><input type="radio" name="kind" value="${t}" ${i === 0 ? 'checked' : ''}>${t}</label>`).join('')}</div>
+      <div class="field"><label for="c-shape">품명·형상</label><select id="c-shape"><option>육각볼트</option><option>렌치볼트 (육각 구멍붙이)</option><option>접시머리 볼트</option><option>스터드볼트 (양나사·전산)</option><option>헤비 육각볼트 (구조용)</option><option>육각너트 / 헤비너트</option><option>와셔</option><option>앵커볼트 (L·J·헤드형)</option><option>특수 형상 (도면 참조)</option></select></div>
+    </fieldset>
+    <fieldset><legend>2. 나사 <small>표기 그대로 적어도 됩니다</small></legend>
+      <div class="radios" role="radiogroup" aria-label="나사 체계"><label><input type="radio" name="sys" value="metric" checked>미터</label><label><input type="radio" name="sys" value="inch">인치</label></div>
+      <div class="grid4">
+        <div class="field"><label for="c-d">호칭경</label><input id="c-d" placeholder="M16 / 7/8"></div>
+        <div class="field"><label for="c-p">피치·산 수</label><input id="c-p" placeholder="2.0 / 9"></div>
+        <div class="field"><label for="c-series">계열</label><select id="c-series"><option value="">보통나사</option><option>가는나사</option><option>UNC</option><option>UNF</option><option>8UN</option><option>기타 (도면)</option></select></div>
+        <div class="field"><label for="c-cls">공차 등급</label><select id="c-cls"><option value="">기본 6g·6H / 2A·2B</option><option>4h · 4H</option><option>6g · 6H</option><option>2A · 2B</option><option>3A · 3B</option></select></div>
+      </div>
+      <div class="radios"><label><input type="radio" name="hand" value="오른나사" checked>오른나사</label><label><input type="radio" name="hand" value="왼나사">왼나사</label></div>
+    </fieldset>
+    <fieldset><legend>3. 치수 <small>단위: 미터 mm · 인치 in</small></legend>
+      <div class="grid4">
+        <div class="field"><label for="c-L">길이 L</label><input id="c-L" placeholder="80 / 5-1/2"></div>
+        <div class="field"><label for="c-lref">길이 기준</label><select id="c-lref"><option>머리 밑부터</option><option>전장 (접시머리)</option><option>포인트 제외 (B16.5 스터드)</option><option>끝에서 끝 (전장)</option></select></div>
+        <div class="field"><label for="c-b">나사부 길이 b</label><input id="c-b" placeholder="온나사면 비움"></div>
+        <div class="field"><label for="c-s">머리 2면폭 s</label><input id="c-s" placeholder="ISO/DIN 차이 시"></div>
+      </div>
+    </fieldset>
+    <fieldset><legend>4. 재질·강도</legend>
+      <div class="grid3">
+        <div class="field"><label for="c-grade">강도 등급·규격</label><input id="c-grade" list="grades" placeholder="10.9 / A193 B7 / A4-80"><datalist id="grades">${['4.8', '8.8', '10.9', '12.9', 'A2-70', 'A4-80', 'A193 B7', 'A193 B7M', 'A193 B8 Class 1', 'A193 B8M Class 2', 'A193 B16', 'A320 L7', 'A320 L43', 'F3125 A325', 'F3125 A490', 'SAE J429 Grade 5', 'SAE J429 Grade 8', 'A574', 'F593 CW', 'F1554 Grade 36', 'F1554 Grade 105'].map(g => `<option value="${g}">`).join('')}</datalist></div>
+        <div class="field"><label for="c-mat">재질 (직접 지정 시)</label><input id="c-mat" placeholder="SCM435, SUS316, AISI 4140"></div>
+        <div class="field"><label for="c-env">사용 환경</label><select id="c-env"><option value="">일반</option><option>저온 (−29 °C 미만)</option><option>고온 (400 °C 이상)</option><option>사워 (H2S, NACE)</option><option>해수·염해</option><option>식품·위생</option></select></div>
+      </div>
+    </fieldset>
+    <fieldset><legend>5. 표면처리</legend>
+      <div class="grid2">
+        <div class="field"><label for="c-fin">처리</label><select id="c-fin"><option value="">무처리</option><option>백색아연 (3가)</option><option>흑색아연 (3가)</option><option>아연-니켈</option><option>용융아연도금</option><option>아연 플레이크 (지오메트계)</option><option>PTFE 코팅</option><option>흑착색</option><option>무전해 니켈</option><option>패시베이션 (스테인리스)</option></select></div>
+        <div class="field"><label for="c-fin2">색상·두께·추가 조건</label><input id="c-fin2" placeholder="PTFE 청색, 도금 두께 8 μm 이상 등"></div>
+      </div>
+    </fieldset>
+    <fieldset><legend>6. 수량·짝 부품·납기</legend>
+      <div class="grid4">
+        <div class="field"><label for="c-qty">수량</label><input id="c-qty" type="number" min="1" value="500"></div>
+        <div class="field"><label for="c-nut">볼트 1개당 너트</label><select id="c-nut"><option value="0">없음</option><option value="1">1개</option><option value="2">2개 (스터드)</option></select></div>
+        <div class="field"><label for="c-wsh">볼트 1개당 와셔</label><select id="c-wsh"><option value="0">없음</option><option value="1">1개</option><option value="2">2개</option></select></div>
+        <div class="field"><label for="c-due">희망 납기</label><input id="c-due" type="date"></div>
+      </div>
+    </fieldset>
+    <fieldset><legend>7. 서류·검사</legend>
+      <div class="radios">${['CoC (적합 확인서)', 'EN 10204 2.2', 'EN 10204 3.1', 'EN 10204 3.2 (협의)', '도금 성적서', 'PMI 성분 확인', '원산지 증명', '포장 라벨에 히트번호'].map(t => `<label><input type="checkbox" name="docs" value="${t}" ${t === 'EN 10204 3.1' ? 'checked' : ''}>${t}</label>`).join('')}</div>
+    </fieldset>
+    <fieldset><legend>8. 도면·사진 첨부</legend>
+      <div class="field"><label for="c-files">도면, 사양서, BOM, 기존 볼트 머리 마킹 사진</label><input id="c-files" type="file" multiple accept=".pdf,.dwg,.dxf,.step,.stp,.png,.jpg,.jpeg,.xlsx,.csv"></div>
+      <div class="files" id="c-flist">첨부한 파일이 여기에 표시됩니다.</div>
+      <div class="field"><label for="c-memo">추가 설명</label><textarea id="c-memo" placeholder="사용 위치, 상대 부품, 기존 품번, 이미 확인된 사항 등"></textarea></div>
+    </fieldset>
+    <fieldset><legend>9. 연락처</legend>
+      <div class="grid2">
+        <div class="field"><label for="c-co">회사명 (개인은 비움)</label><input id="c-co" autocomplete="organization"></div>
+        <div class="field"><label for="c-name">담당자</label><input id="c-name" autocomplete="name" required></div>
+        <div class="field"><label for="c-mail">이메일</label><input id="c-mail" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="c-tel">전화</label><input id="c-tel" type="tel" autocomplete="tel"></div>
+      </div>
+      <label class="small" style="display:flex;gap:8px;align-items:flex-start"><input type="checkbox" id="c-agree" required style="margin-top:4px"> 견적 회신을 위한 개인정보(이름, 이메일, 전화) 수집·이용에 동의합니다. 보관 기간은 견적 회신 후 1년입니다.</label>
+      <label class="small" style="display:flex;gap:8px;align-items:flex-start"><input type="checkbox" id="c-custom-ok" style="margin-top:4px"> 주문제작품은 제작에 들어간 뒤에는 단순 변심에 의한 청약철회가 제한된다는 안내를 확인했습니다. (전자상거래법 제17조 제2항)</label>
+    </fieldset>
+  </div>
+  <aside class="panel summary" aria-live="polite">
+    <span class="eyebrow">사양 요약</span>
+    <div class="spec-out" id="c-out"></div>
+    <div><span class="eyebrow">엔지니어 확인 포인트</span><div class="checks" id="c-checks" style="margin-top:6px"></div></div>
+    <button class="btn pri" type="submit">견적 요청 보내기</button>
+    <p class="small muted">회신은 영업일 1일 이내에 이메일로 드립니다. 대체 규격을 제안할 때는 차이 비교표를 함께 보내고, 서면 승인 후에만 진행합니다.</p>
+    <div id="c-done"></div>
+  </aside>
+</form>
+<section style="margin-top:36px"><div class="sec-h"><h2>모든 견적에 확인하는 6가지</h2></div><div class="grid3">${CHECKS.map(c => `<div class="panel" style="padding:14px"><b>${esc(c[0])}</b><p class="small muted" style="margin-top:4px">${esc(c[1])}</p></div>`).join('')}</div></section>`;
+
+V.after.custom = () => {
+  const $ = s => document.getElementById(s);
+  const form = $('cform');
+  const val = n => (form.querySelector(`[name="${n}"]:checked`) || {}).value;
+  if (state.prefill) {
+    const p = state.prefill; state.prefill = null;
+    Object.entries(p).forEach(([k, v]) => { if ($(k)) $(k).value = v; else if (k === 'sys') form.querySelector(`[name="sys"][value="${v}"]`).checked = true; });
+  }
+  const summarize = () => {
+    const sys = val('sys');
+    const d = $('c-d').value.trim(), p = $('c-p').value.trim(), ser = $('c-series').value, cls = $('c-cls').value;
+    const L = $('c-L').value.trim(), g = $('c-grade').value.trim(), fin = $('c-fin').value, env = $('c-env').value;
+    const docs = [...form.querySelectorAll('[name="docs"]:checked')].map(x => x.value);
+    const nut = +$('c-nut').value, wsh = +$('c-wsh').value, qty = +$('c-qty').value || 0;
+    let thread = '';
+    if (sys === 'metric') thread = d ? `${/^M/i.test(d) ? d.toUpperCase() : 'M' + d}${p ? '×' + p : ''}${cls ? '-' + cls.split(' ')[0] : ''}` : '';
+    else thread = d ? `${d.replace(/"$/, '')}"${p ? '-' + p : ''}${ser && /UN/.test(ser) ? ' ' + ser : ''}${cls ? '-' + (cls.includes('2A') ? '2A' : cls.includes('3A') ? '3A' : cls.split(' ')[0]) : ''}` : '';
+    const lenTxt = L ? ` × ${L}${sys === 'metric' ? ' mm' : '"'} (${$('c-lref').value})` : '';
+    const parts = [
+      $('c-shape').value, thread + lenTxt, $('c-b').value && `b = ${$('c-b').value}`, $('c-s').value && `s = ${$('c-s').value}`,
+      g, $('c-mat').value, fin && fin + ($('c-fin2').value ? ` (${$('c-fin2').value})` : ''), env && `환경: ${env}`, val('hand') === '왼나사' && '왼나사',
+      qty && `${qty.toLocaleString()}개`, nut && `너트 ${nut}개/볼트`, wsh && `와셔 ${wsh}개/볼트`, docs.length && docs.join(', '),
+    ].filter(Boolean);
+    $('c-out').textContent = parts.join(' / ') || '왼쪽에 사양을 입력하면 표준 표기로 정리됩니다.';
+    const w = [];
+    const dia = sys === 'inch' ? inchToMm(d.replace(/"/g, '')) / 25.4 : dnum(d.replace(/^m/i, 'M'));
+    if (!d) w.push(['warn', '호칭경이 비어 있습니다.']);
+    if (d && !p && sys === 'metric' && !DIM.pitch['M' + String(dia)]) w.push(['warn', '피치를 적어 주세요. 비표준 호칭은 보통나사 피치를 가정할 수 없습니다.']);
+    if (d && !p && sys === 'inch') w.push(['warn', '인치 나사는 산 수(TPI)가 필요합니다. 예: 7/8" → 9 (UNC) 또는 14 (UNF).']);
+    if (sys === 'inch' && dia > 1 && /B7|B16|L7|B8|L43/i.test(g) && ser !== '8UN') w.push(['warn', '1" 초과 플랜트 스터드는 8UN이 관례입니다. 계열을 확인합니다.']);
+    if (/10\.9|12\.9|GRADE 8|A490|A574/i.test(g) && /백색아연|흑색아연|아연-니켈/.test(fin)) w.push(['warn', '고강도 볼트 전기도금: 도금 후 베이킹(수소취성 관리)을 조건에 넣습니다.']);
+    if (/A490/i.test(g) && /용융/.test(fin)) w.push(['crit', 'A490은 용융아연도금 불가. 아연 플레이크(F3393)로 바꾸기를 제안합니다.']);
+    if (/용융/.test(fin)) w.push(['info', '용융아연도금 볼트에는 오버탭 너트를 짝지어 출고합니다.']);
+    if (/사워/.test(env) && /\bB7\b(?!M)/i.test(g)) w.push(['warn', '사워 환경이면 B7M + 2HM(경도 235 HB 이하)을 검토합니다.']);
+    if (/저온/.test(env) && /B7(?!M)/i.test(g)) w.push(['warn', '저온 사용이면 A320 L7 (충격시험 −101 °C)을 검토합니다.']);
+    if (/L7/i.test(g) && dia > 2.5) w.push(['crit', 'A320 L7·L7M은 2-1/2" 이하만 규정됩니다. L43으로 지정합니다.']);
+    if (/포인트/.test($('c-lref').value) && sys === 'metric') w.push(['info', '포인트 제외 길이는 주로 ASME B16.5 인치 스터드에 쓰는 기준입니다.']);
+    if (/육각볼트/.test($('c-shape').value) && sys === 'metric' && [10, 12, 14, 22].includes(dia) && !$('c-s').value) w.push(['info', `M${dia}는 ISO와 DIN의 2면폭이 다릅니다 (ISO ${DIM.hexS['M' + dia]} / DIN ${DIM.dinS['M' + dia]} mm). 어느 쪽인지 적어 주세요.`]);
+    if (/3\.2/.test(docs.join())) w.push(['info', 'EN 10204 3.2는 제3자 검사기관 일정이 필요해 주문 전에 따로 협의합니다.']);
+    if (!g && !$('c-mat').value) w.push(['warn', '강도 등급이나 재질을 적어 주세요.']);
+    if (!L && !/너트|와셔/.test($('c-shape').value)) w.push(['warn', '길이와 길이 기준을 적어 주세요.']);
+    $('c-checks').innerHTML = w.length ? w.map(([t, m]) => `<div class="note ${t} small">${esc(m)}</div>`).join('') : '<div class="note ok small">기본 항목이 모두 채워졌습니다. 나머지는 견적 회신에서 확인합니다.</div>';
+  };
+  form.addEventListener('input', summarize);
+  form.addEventListener('change', e => {
+    if (e.target.id === 'c-files') $('c-flist').textContent = [...e.target.files].map(f => `${f.name} (${Math.ceil(f.size / 1024).toLocaleString()} KB)`).join(' · ') || '첨부한 파일이 없습니다.';
+    summarize();
+  });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const miss = [];
+    if (!$('c-name').value.trim()) miss.push('담당자');
+    if (!/^\S+@\S+\.\S+$/.test($('c-mail').value)) miss.push('이메일');
+    if (!$('c-agree').checked) miss.push('개인정보 수집·이용 동의');
+    if (miss.length) { $('c-done').innerHTML = `<div class="note crit small">${miss.join(', ')}을(를) 확인해 주세요.</div>`; return; }
+    const no = 'Q' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + String(Math.floor(Math.random() * 900) + 100);
+    $('c-done').innerHTML = `<div class="note ok small"><b>견적 요청 미리보기 ${no}</b><br>시안 페이지라 실제로 전송되지는 않습니다. 운영 시에는 이 내용이 대표 이메일로 접수되고, 1영업일 안에 회신합니다.</div>`;
+    addQuote({ fam: 'custom', title: $('c-shape').value + ' (주문제작)', spec: $('c-out').textContent, qty: +$('c-qty').value || 1, unit: 'EA' });
+    toast('견적함에도 담아 두었습니다');
+  });
+  summarize();
+};
+
+/* 규격 도구 */
+const STD_ROWS = [
+  ['육각볼트', 'KS B 1002', 'ISO 4014 (반나사) · 4017 (온나사)', 'DIN 931 · 933', 'JIS B 1180', 'ASME B18.2.1 (hex cap screw) · SAE J429'],
+  ['렌치볼트', 'KS B 1003', 'ISO 4762', 'DIN 912 (EN ISO 4762로 대체)', 'JIS B 1176', 'ASME B18.3 · ASTM A574'],
+  ['접시머리 렌치볼트', '—', 'ISO 10642', 'DIN 7991', 'JIS B 1194', 'ASME B18.3 · ASTM F835'],
+  ['육각너트', 'KS B 1012', 'ISO 4032 (1종) · 8673 (가는나사)', 'DIN 934 (대체)', 'JIS B 1181', 'ASME B18.2.2 · SAE J995'],
+  ['헤비 육각너트', 'KS B 1010 (구조용 세트)', 'ISO 4775 (구조용)', 'DIN 6915', 'JIS B 1186 (구조용 세트)', 'ASME B18.2.2 heavy hex · ASTM A194 · A563'],
+  ['평와셔', 'KS B 1326', 'ISO 7089 · 7090', 'DIN 125', 'JIS B 1256', 'ASME B18.22.1 · ASTM F436 (경화)'],
+  ['스프링와셔', 'KS B 1324', '해당 없음', 'DIN 127 (폐지, 유통 중)', 'JIS B 1251', 'ASME B18.21.1'],
+  ['스터드볼트', '—', '—', 'DIN 976 (전산 스터드)', 'JIS B 1173 (심는 볼트)', 'ASME B18.31.2 · ASTM A193 · A320'],
+];
+const MAT_ROWS = [
+  ['SWRCH10A (KS D 3592 · JIS G 3507-1)', '1010', 'SAE J429 Gr 1 · ASTM A307 Gr A', 'C10C (1.0214)', '4.6·4.8급 냉간압조용. 열처리하지 않음. C가 낮아 J429 Gr 2 성분에는 들지 않음.'],
+  ['SWRCH18A (KS D 3592 · JIS G 3507-1)', '1018', 'SAE J429 Gr 2 · ASTM A307 Gr A', 'C17C (근사)', 'C와 Mn이 모두 10A보다 높아 강도가 높음. 4.8·5.8급.'],
+  ['붕소강 SWRCHB 계열 (JIS G 3508)', '10B21 등', 'SAE J429 Gr 5.2 · 8.2 (저탄소 마르텐사이트강)', '20MnB4 (1.5525)', '8.8·10.9 대량 생산 볼트. J429 Gr 5·A325 Type 1은 C 0.28% 이상이 필요해 해당하지 않음.'],
+  ['SM45C (KS D 3752) · S45C (JIS G 4051)', '1045', 'SAE J429 Gr 5 · ASTM A449 · A194 2H 너트', 'C45 (1.0503)', '8.8급, 2H 너트. 큰 지름은 경화능 확인.'],
+  ['SCM435 (KS D 3867 · JIS G 4053)', '4135에 가장 가까움', 'ASTM A574 · SAE J429 Gr 8 · F3125 A490 소재', '34CrMo4 (1.7220)', 'C 범위는 4135와 같고 Cr이 약간 높음. 10.9·12.9급, 렌치볼트.'],
+  ['SCM440 (KS D 3867 · JIS G 4053)', '4140', 'ASTM A193 B7 · A320 L7 소재', '42CrMo4 (1.7225)', '성분 범위가 B7과 완전히 같지 않아 히트별 밀시트로 B7 범위 만족 여부를 확인.'],
+  ['SNB7 (KS D 3755 · JIS G 4107)', '4140 · 4142 계열', 'ASTM A193 B7 해당', '42CrMo4 (EN 10269, 근사)', '플랜지 스터드·밸브 볼팅. SNB16은 A193 B16에 해당.'],
+  ['SUS304', '304', 'ASTM A193 B8 · F593 Group 1 · ISO A2', 'X5CrNi18-10 (1.4301)', 'B8 Class 1은 고용화처리(75 ksi), Class 2는 가공경화.'],
+  ['SUS316', '316', 'ASTM A193 B8M · F593 Group 2 · ISO A4', 'X5CrNiMo17-12-2 (1.4401)', 'B8M Class 2는 3/4" 이하 110 ksi로 B8 Class 2(125 ksi)보다 낮음.'],
+  ['SS275 · SS400 (구조 강재)', 'A36 근사', '볼트 강도 보장 안 됨', 'S235JR 근사', '강재 최소 인장값이 A307 Gr A(414 MPa)·4.6급에 약간 못 미칠 수 있어 볼트 소재로 대응시키지 않음.'],
+];
+const STR_ROWS = [
+  ['4.6', 'Grade 1 (근사)', 'A307 Grade A', '400 · J429 Gr1 414 · A307 414', '저탄소강, 열처리 안 함.'],
+  ['4.8', 'Grade 1 (근사)', '직접 대응 없음', '420', '냉간압조 가공경화.'],
+  ['5.8', 'Grade 2 (근사)', '직접 대응 없음', '520 · J429 Gr2 510 (1/4~3/4", 길이 6" 이하)', 'Grade 2는 길이 6" 초과 볼트에서 Grade 1 값으로 내려감.'],
+  ['8.8', 'Grade 5 (방사선 3줄)', 'F3125 A325 (1/2~1-1/2")', '800 (d ≤ 16) · 830 (d > 16) · Gr5 827 (≤1") · 724 (1~1-1/2") · A325 827', 'A449는 1-1/2" 초과에서 621 MPa로 8.8보다 약 25% 낮아 대응시키지 않음.'],
+  ['10.9', 'Grade 8 (방사선 6줄)', 'F3125 A490 · A354 BD', '1040 · Gr8 1034 · A490 1034~1193', 'A490은 인장 상한이 있음.'],
+  ['12.9', '해당 없음', 'A574 (인치 렌치볼트)', '1220 · A574 1241 (≤1/2") · 1172 (>1/2")', '렌치볼트 대표 등급.'],
+  ['참고: 플랜트', '해당 없음', 'A193 B7 · A320 L7', 'B7 860 (125 ksi, ≤2-1/2") — A193M 규정값', 'ISO 898-1 대상 아님. 지름이 커지면 기준이 낮아짐.'],
+  ['참고: 스테인리스', '해당 없음', 'A193 B8·B8M · F593', 'A2·A4-70: 700 · -80: 800 · B8/B8M Cl.1 515 (75 ksi) · B8 Cl.2 860 (125 ksi, ≤3/4") · B8M Cl.2 758 (110 ksi, ≤3/4")', '1 ksi = 6.895 MPa. A193M SI판 규정값과 약간 다를 수 있음.'],
+];
+V.tools = () => `
+<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><span>규격 도구</span></div>
+<div class="sec-h"><h1 style="font-size:26px">규격 도구</h1><p>견적 전에 스스로 확인할 수 있는 표와 계산기입니다.</p></div>
+<div class="tabs" role="tablist">${[['flange', '플랜지 스터드 길이'], ['std', '규격 대조'], ['mat', '재질 대조'], ['str', '강도 등급 대조'], ['din', 'DIN·ISO 2면폭 차이'], ['conv', '인치↔mm'], ['mark', '머리 마킹']].map(([k, l]) => `<button type="button" role="tab" data-tab="${k}">${l}</button>`).join('')}</div>
+<div id="tool-body"></div>`;
+const TOOL = {
+  flange: () => `<div class="detail"><div class="panel" style="padding:18px;display:grid;gap:12px">
+      <h2 style="font-size:18px">ASME B16.5 Class 150 플랜지 볼팅</h2>
+      <div class="grid3"><div class="field"><label for="fl-nps">플랜지 호칭 (NPS)</label><select id="fl-nps">${B165.map(r => `<option ${r[0] === '4' ? 'selected' : ''}>${r[0]}</option>`).join('')}</select></div>
+      <div class="field"><label for="fl-face">면 형식</label><select id="fl-face"><option value="3">RF (0.06" 돌출면)</option><option value="4">RTJ (링 조인트)</option></select></div>
+      <div class="field"><label for="fl-n">플랜지 조인트 수</label><input id="fl-n" type="number" min="1" value="4"></div></div>
+      <div id="fl-out"></div>
+      <p class="small muted">스터드 길이는 헤비너트 2개 두께를 포함하고 양끝 포인트를 뺀 값입니다 (B16.5 Table 8 기준). Class 300 이상, B16.47 대구경은 견적으로 받습니다. 게시 전 최신판(B16.5-2020)과 대조가 필요합니다.</p>
+    </div>
+    <div class="panel" style="padding:18px;display:grid;gap:10px"><h2 style="font-size:16px">세트 구성</h2><div class="field"><label for="fl-grade">볼트·너트 등급</label><select id="fl-grade"><option>A193 B7 / A194 2H</option><option>A193 B7M / A194 2HM</option><option>A320 L7 / A194 7L</option><option>A193 B8M Class 2 / A194 8M</option></select></div><div class="field"><label for="fl-fin">표면처리</label><select id="fl-fin"><option>무도금 (방청유)</option><option>PTFE 코팅</option><option>용융아연도금 (너트 오버탭)</option></select></div><div class="spec-out" id="fl-spec"></div><button class="btn pri" type="button" id="fl-add">세트 견적함에 담기</button></div></div>`,
+  std: () => table(['부품', 'KS', 'ISO', 'DIN', 'JIS', 'ASME · ASTM'], STD_ROWS) + '<p class="small muted" style="margin-top:8px">대응 규격이라도 치수·강도·시험 요건이 모두 같지는 않습니다. 대체할 때는 차이 비교표를 함께 드립니다.</p>',
+  mat: () => table(['KS · JIS 강종', 'AISI · SAE', 'ASTM 체결재 (대표 적용)', 'DIN · EN', '비고'], MAT_ROWS) + '<p class="note warn small" style="margin-top:10px">재질 대응은 근사치입니다. 성분 범위가 겹치지 않는 부분이 있으므로 규격품 대체는 히트별 밀시트로 확인합니다.</p>',
+  str: () => table(['ISO 898-1', 'SAE J429', 'ASTM', '최소 인장강도 (MPa)', '비고'], STR_ROWS) + '<p class="note warn small" style="margin-top:10px">미터 나사와 인치 나사는 서로 맞지 않습니다. 강도 대응은 같은 나사 체계 안에서 재질·등급을 바꿀 때만 의미가 있습니다.</p>',
+  din: () => table(['호칭', 'ISO 4014 · 4017 (mm)', 'DIN 931 · 933 · 구 JIS (mm)', '비고'], Object.keys(DIM.dinS).map(k => [k, DIM.hexS[k], DIM.dinS[k], k === 'M22' ? 'ISO가 더 큼' : 'ISO가 1 mm 작음'])) + '<p class="small muted" style="margin-top:8px">공구나 주변 부품 간섭이 걱정되면 주문할 때 기준을 알려 주세요. 나머지 호칭은 두 규격의 2면폭이 같습니다.</p>',
+  conv: () => `<div class="panel" style="padding:18px;display:grid;gap:12px;max-width:640px"><div class="grid2"><div class="field"><label for="cv-in">인치 (분수 가능)</label><input id="cv-in" value="1-1/4"></div><div class="field"><label for="cv-mm">mm</label><input id="cv-mm" value="31.75"></div></div><div id="cv-out" class="note"></div></div>`,
+  mark: () => `<div class="marks">${[['8.8', 'ISO 898-1 8.8', 'txt'], ['10.9', 'ISO 898-1 10.9', 'txt'], ['12.9', 'ISO 898-1 12.9', 'txt'], ['g5', 'SAE Grade 5 (방사선 3줄)', 3], ['g8', 'SAE Grade 8 (방사선 6줄)', 6], ['B7', 'ASTM A193 B7', 'txt'], ['2H', 'ASTM A194 2H (너트)', 'nut'], ['A325', 'ASTM F3125 A325', 'txt'], ['A2-70', 'ISO 3506 A2-70', 'txt']]
+    .map(([t, cap, kind]) => `<figure class="panel">${headMark(t, kind)}<figcaption>${esc(cap)}</figcaption></figure>`).join('')}</div><p class="small muted" style="margin-top:10px">실제 마킹에는 제조사 식별 기호가 함께 들어갑니다. 마킹 사진을 보내 주시면 규격과 등급을 확인해 드립니다.</p>`,
+};
+function table(head, rows) { return `<div class="tbl-wrap"><table class="t"><thead><tr>${head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
+function headMark(t, kind) {
+  let pts = ''; const R = 38, cx = 43, cy = 43; for (let i = 0; i < 6; i++) { const a = i * Math.PI / 3; pts += `${cx + R * Math.cos(a)},${cy + R * Math.sin(a)} `; }
+  let inner = '';
+  if (kind === 3 || kind === 6) { const n = kind, step = n === 3 ? 120 : 60; for (let i = 0; i < n; i++) { const a = (i * step - 90) * Math.PI / 180; inner += `<line x1="${cx + 8 * Math.cos(a)}" y1="${cy + 8 * Math.sin(a)}" x2="${cx + 28 * Math.cos(a)}" y2="${cy + 28 * Math.sin(a)}" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>`; } }
+  else if (kind === 'nut') inner = `<circle cx="${cx}" cy="${cy}" r="14" fill="var(--bg)" stroke="var(--ink)" stroke-width="1.5"/><text x="${cx}" y="${cy - 19}" text-anchor="middle" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)">${t}</text>`;
+  else inner = `<text x="${cx}" y="${cy + 6}" text-anchor="middle" font-family="var(--font-mono)" font-size="${t.length > 4 ? 13 : 17}" font-weight="600" fill="var(--ink)">${t}</text>`;
+  return `<svg viewBox="0 0 86 86" role="img" aria-label="${esc(t)} 머리 마킹"><polygon points="${pts}" fill="var(--sunk)" stroke="var(--ink)" stroke-width="2"/>${kind === 'nut' ? '' : `<circle cx="${cx}" cy="${cy}" r="31" fill="none" stroke="var(--line-strong)"/>`}${inner}</svg>`;
+}
+V.after.tools = () => {
+  const show = k => {
+    document.querySelectorAll('[data-tab]').forEach(b => { if (b.closest('.tabs')) { b.classList.toggle('on', b.dataset.tab === k); b.setAttribute('aria-selected', b.dataset.tab === k); } });
+    document.getElementById('tool-body').innerHTML = TOOL[k]();
+    state.tab = k;
+    if (k === 'flange') flangeInit();
+    if (k === 'conv') convInit();
+  };
+  document.querySelector('.tabs').addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) show(b.dataset.tab); });
+  show(state.tab || 'flange');
+};
+function flangeInit() {
+  const $ = s => document.getElementById(s);
+  const calc = () => {
+    const r = B165.find(x => x[0] === $('fl-nps').value), face = +$('fl-face').value, n = Math.max(1, +$('fl-n').value || 1);
+    const len = r[face];
+    $('fl-out').innerHTML = len ? `<div class="tbl-wrap"><table class="t"><tbody><tr><td>볼트 수 (플랜지 1조)</td><td class="mono">${r[1]}</td></tr><tr><td>스터드 호칭</td><td class="mono">${r[2].replace(/^(.+?)-(\d+)$/, '$1"-$2')} ${dnumIn(r[2]) > 1 ? '8UN' : 'UNC'}-2A</td></tr><tr><td>스터드 길이 L</td><td class="mono">${len}" (${(len * 25.4).toFixed(1)} mm)</td></tr><tr><td>필요 수량</td><td class="mono">스터드 ${r[1] * n} · 헤비너트 ${r[1] * n * 2}</td></tr></tbody></table></div>`
+      : `<div class="note warn small">Class 150 NPS ${r[0]}에는 링 조인트(RTJ) 규격이 없습니다. RF를 고르세요.</div>`;
+    $('fl-add').disabled = !len;
+    const g = $('fl-grade').value.split('/');
+    $('fl-spec').textContent = len ? `${r[2].replace(/^(.+?)-(\d+)$/, '$1"-$2')} ${dnumIn(r[2]) > 1 ? '8UN' : 'UNC'}-2A × ${len}" (포인트 제외) / ${g[0].trim()} / ${g[1].trim()} × 2 / ${$('fl-fin').value} / EN 10204 3.1 / NPS ${r[0]} Class 150 ${face === 3 ? 'RF' : 'RTJ'} × ${n}조` : '';
+    return { r, len, n };
+  };
+  ['fl-nps', 'fl-face', 'fl-n', 'fl-grade', 'fl-fin'].forEach(k => $(k).addEventListener('input', calc));
+  calc();
+  $('fl-add').addEventListener('click', () => { const { r, len, n } = calc(); if (!len) return; addQuote({ fam: 'b7', title: `플랜지 스터드 세트 NPS ${r[0]} Class 150`, spec: $('fl-spec').textContent, qty: r[1] * n, unit: '세트' }); toast('스터드 세트를 견적함에 담았습니다'); });
+}
+const dnumIn = s => inchToMm(String(s).replace(/-\d+$/, '')) / 25.4;
+function convInit() {
+  const $ = s => document.getElementById(s);
+  const out = (inch) => {
+    const mm = inch * 25.4;
+    const metric = Object.keys(DIM.pitch).map(k => [k, dnum(k)]).sort((a, b) => Math.abs(a[1] - mm) - Math.abs(b[1] - mm))[0];
+    $('cv-out').innerHTML = isFinite(mm) && mm > 0 ? `<b class="mono">${inch.toFixed(4)}" = ${mm.toFixed(2)} mm</b><br>가장 가까운 미터 호칭은 <span class="mono">${metric[0]}</span>이지만, 나사산 모양과 피치가 달라 <b>서로 맞지 않습니다</b>. 인치 부품에는 인치 나사를 쓰세요.` : '숫자를 입력하세요. 예: 1-1/4, 7/8, 0.75';
+  };
+  $('cv-in').addEventListener('input', e => { const v = inchToMm(e.target.value.trim()) / 25.4; if (isFinite(v)) { $('cv-mm').value = (v * 25.4).toFixed(2); } out(v); });
+  $('cv-mm').addEventListener('input', e => { const v = parseFloat(e.target.value) / 25.4; if (isFinite(v)) $('cv-in').value = v.toFixed(4); out(v); });
+  out(1.25);
+}
+
+/* 견적함 */
+V.cart = () => {
+  const lines = state.cart;
+  if (!lines.length) return `<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><span>견적함</span></div><div class="panel empty-state"><h1 style="font-size:22px">견적함이 비어 있습니다</h1><p class="muted">규격품은 바로 담고, 인치·플랜트·주문제작품은 사양을 정해 담을 수 있습니다.</p><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><a class="btn pri" href="#metric" data-go="metric">미터 규격품</a><a class="btn" href="#custom" data-go="custom">주문제작 견적</a></div></div>`;
+  return `<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><span>견적함</span></div>
+<div class="sec-h"><h1 style="font-size:26px">견적함</h1><p>규격품은 바로 주문하고, 견적 품목은 한 번에 요청합니다.</p></div>
+${lines.some(l => l.sample) ? '<div class="note info" style="margin-bottom:14px">처음 오셔서 예시 두 줄을 넣어 두었습니다. <button class="btn sm" type="button" id="clear-sample">예시 지우기</button></div>' : ''}
+<div class="cart"><div style="display:grid;grid-template-columns:minmax(0,1fr);gap:16px;min-width:0" id="cart-lines"></div><aside class="panel totals" id="totals"></aside></div>
+<section id="doc-sec" hidden></section>`;
+};
+V.after.cart = () => {
+  const $ = s => document.getElementById(s);
+  if (!$('cart-lines')) return;
+  const render = () => {
+    const items = state.cart.map((l, i) => ({ ...l, i })).filter(l => l.type === 'item');
+    const quotes = state.cart.map((l, i) => ({ ...l, i })).filter(l => l.type === 'quote');
+    let sub = 0;
+    const itemRows = items.map(l => { const p = parsePn(l.pn); if (!p) return ''; const v = variantInfo(p.f, p.size, p.L, p.g, p.fin, l.qty); sub += v.price * l.qty;
+      return `<tr><td><div class="mono"><b>${l.pn}</b></div><div class="small muted">${esc(p.f.name)} · ${GRADE[p.g].label} · ${FINISH[p.fin].label}</div></td><td>${v.stock ? '<span class="tag ok">재고</span>' : '<span class="tag warn">수배</span>'} <span class="small">${v.ship.today ? '오늘' : v.ship.label}</span></td><td class="r"><label class="sr" for="cq-${l.i}">수량</label><input class="qty" id="cq-${l.i}" data-cq="${l.i}" type="number" min="1" value="${l.qty}"></td><td class="r num">${won(v.price)}</td><td class="r num"><b>${won(v.price * l.qty)}</b></td><td><button class="btn sm" type="button" data-rm="${l.i}" aria-label="${l.pn} 빼기">빼기</button></td></tr>`; }).join('');
+    const quoteRows = quotes.map(l => `<tr><td><b>${esc(l.title)}</b><div class="small mono" style="margin-top:2px">${esc(l.spec)}</div></td><td class="r"><label class="sr" for="cq-${l.i}">수량</label><input class="qty" id="cq-${l.i}" data-cq="${l.i}" type="number" min="1" value="${l.qty}"> <span class="small">${esc(l.unit || 'EA')}</span></td><td><span class="tag info">견적 후 확정</span></td><td><button class="btn sm" type="button" data-rm="${l.i}" aria-label="빼기">빼기</button></td></tr>`).join('');
+    $('cart-lines').innerHTML = (items.length ? `<div><h2 style="font-size:17px;margin-bottom:8px">바로 주문 (규격품)</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>형번</th><th>출고</th><th class="r">수량</th><th class="r">단가</th><th class="r">금액</th><th></th></tr></thead><tbody>${itemRows}</tbody></table></div></div>` : '')
+      + (quotes.length ? `<div><h2 style="font-size:17px;margin-bottom:8px">견적 요청 (인치·플랜트·주문제작)</h2><div class="tbl-wrap"><table class="t"><thead><tr><th>사양</th><th class="r">수량</th><th>단가</th><th></th></tr></thead><tbody>${quoteRows}</tbody></table></div></div>` : '');
+    const ship = sub === 0 ? 0 : sub >= FREE_SHIP ? 0 : SHIP_FEE;
+    const vat = Math.round((sub + ship) * .1);
+    const incl = state.vat === 'incl';
+    $('totals').innerHTML = `<h2 style="font-size:17px">합계</h2>
+      <div class="radios" role="radiogroup" aria-label="부가세 표시"><label><input type="radio" name="vat" value="excl" ${!incl ? 'checked' : ''}>VAT 별도</label><label><input type="radio" name="vat" value="incl" ${incl ? 'checked' : ''}>VAT 포함</label></div>
+      <div class="row"><span>규격품 ${items.length}종</span><span>${won(sub)}</span></div>
+      <div class="row"><span>배송비 ${sub && sub < FREE_SHIP ? `<span class="small muted">(${won(FREE_SHIP)} 이상 무료)</span>` : ''}</span><span>${won(ship)}</span></div>
+      ${incl ? `<div class="row"><span>부가세 10%</span><span>${won(vat)}</span></div>` : ''}
+      <div class="row grand"><span>결제 예정</span><span>${won(sub + ship + (incl ? vat : 0))}</span></div>
+      ${quotes.length ? `<div class="small muted">견적 품목 ${quotes.length}건은 회신 후 금액이 정해집니다.</div>` : ''}
+      <button class="btn pri" type="button" id="order" ${items.length ? '' : 'disabled'}>규격품 주문하기</button>
+      <button class="btn" type="button" id="ask" ${quotes.length || items.length ? '' : 'disabled'}>전체를 견적서로 받기</button>
+      <p class="small muted">결제: 카드·계좌이체·무통장·법인카드 · 사업자 회원은 세금계산서 발행</p>
+      <div id="order-msg"></div>`;
+  };
+  render();
+  view().addEventListener('click', e => {
+    const rm = e.target.closest('[data-rm]');
+    if (rm) { state.cart.splice(+rm.dataset.rm, 1); saveCart(); state.cart.length ? render() : go('cart', false); return; }
+    if (e.target.id === 'clear-sample') { state.cart = state.cart.filter(l => !l.sample); saveCart(); go('cart', false); return; }
+    if (e.target.id === 'order') { $('order-msg').innerHTML = '<div class="note info small">시안 페이지라 결제는 연결되어 있지 않습니다. 운영 시에는 PG 결제창(카드·계좌이체·에스크로)과 무통장 입금 안내로 이어집니다.</div>'; return; }
+    if (e.target.id === 'ask') showDoc();
+  });
+  view().addEventListener('change', e => {
+    if (e.target.dataset.cq) { const l = state.cart[+e.target.dataset.cq]; if (l) { l.qty = Math.max(1, Math.round(+e.target.value || 1)); delete l.sample; saveCart(); render(); } }
+    if (e.target.name === 'vat') { state.vat = e.target.value; store.set('vat', state.vat); render(); }
+  });
+  function showDoc() {
+    const sec = $('doc-sec'); sec.hidden = false;
+    const today = new Date(); const ds = `${today.getFullYear()}. ${today.getMonth() + 1}. ${today.getDate()}.`;
+    let sub = 0;
+    const rows = state.cart.map((l, n) => {
+      if (l.type === 'item') { const p = parsePn(l.pn); const v = variantInfo(p.f, p.size, p.L, p.g, p.fin, l.qty); sub += v.price * l.qty; return [n + 1, `${p.f.name} ${l.pn}`, l.qty.toLocaleString() + ' EA', won(v.price), won(v.price * l.qty)]; }
+      return [n + 1, `${l.title} — ${l.spec}`, l.qty.toLocaleString() + ' ' + (l.unit || 'EA'), '회신 예정', '회신 예정'];
+    });
+    sec.innerHTML = `<div class="panel doc" id="doc"><h2>견 적 요 청 서</h2><div class="grid2 small"><div>요청일 ${ds}<br>유효기간 회신일로부터 14일</div><div style="text-align:right">공급자 볼트노트(가칭)<br>사업자등록번호 000-00-00000</div></div>${table(['No', '품명·사양', '수량', '단가', '금액'], rows)}<div style="text-align:right" class="num">규격품 공급가액 ${won(sub)} · 부가세 별도</div><p class="small muted">견적 품목의 단가와 납기는 사양 확인 후 회신합니다. 시안 페이지라 실제로 전송되지 않으며, 아래 버튼으로 내용을 복사해 메일에 붙여 넣을 수 있습니다.</p><div><button class="btn sm" type="button" id="copy-doc">내용 복사</button> <span class="small muted" id="copy-msg"></span></div></div>`;
+    $('copy-doc').addEventListener('click', () => {
+      const txt = rows.map(r => r.join('\t')).join('\n');
+      const done = () => ($('copy-msg').textContent = '복사했습니다');
+      try { navigator.clipboard.writeText(txt).then(done, () => { selectDoc(); $('copy-msg').textContent = '자동 복사가 막혀 있어 표를 선택해 두었습니다. 직접 복사하세요.'; }); } catch { selectDoc(); }
+    });
+    sec.scrollIntoView({ behavior: 'smooth' });
+  }
+  function selectDoc() { const r = document.createRange(); r.selectNodeContents(document.getElementById('doc')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); }
+};
+
+/* 고객지원 */
+const FAQ = [
+  ['해외 도면에 "1/2-13 UNC-2A, ASTM A193 B7"만 적혀 있어요. 견적이 되나요?', '됩니다. 이 표기로 지름, 산 수, 나사 공차, 재질·등급이 정해집니다. 길이, 수량, 너트·와셔 필요 여부, 표면처리, 필요한 성적서만 더 알려 주세요. 빠진 항목은 견적 회신 때 질문으로 정리해 드립니다.'],
+  ['ASTM 규격품 대신 KS·ISO 제품으로 바꿔도 되나요?', '상대 부품(너트, 탭 구멍)이 인치 나사라면 미터 나사로 바꿀 수 없습니다. 같은 나사 체계 안에서 재질·강도를 동등 이상으로 맞추는 대체는 가능한 경우가 많지만, 충격시험이나 경도 상한처럼 원 규격에만 있는 요구가 빠질 수 있습니다. 차이를 표로 정리해 드리고, 설계 담당자가 승인한 뒤에 진행합니다.'],
+  ['DIN 933과 ISO 4017은 같은 볼트 아닌가요?', '대부분 같지만 M10, M12, M14, M22는 머리 2면폭이 다릅니다. DIN은 17·19·22·32 mm, ISO는 16·18·21·34 mm입니다. 기존 공구나 주변 부품 간섭이 걱정되면 어느 쪽인지 알려 주세요.'],
+  ['플랜지 스터드볼트 길이는 어떻게 정하나요?', 'ASME B16.5 표의 스터드 길이는 너트 2개 두께를 포함하고 양끝 포인트를 뺀 길이입니다. 플랜지 호칭 크기, 압력 등급, 면 형식(RF·RTJ)을 알려 주시면 표 기준 길이를 찾아 드립니다. 개스킷이 두껍거나 와셔를 넣으면 다시 계산합니다.'],
+  ['밀시트(EN 10204 3.1)도 받을 수 있나요?', '품목에 따라 다릅니다. 제조사가 3.1 성적서를 발행하는 품목은 견적서에 표시해 드리고, 받은 성적서의 히트번호를 제품과 대조해 함께 보냅니다. 3.1은 제조사가 발행하는 문서라 저희가 대신 발행하지 않습니다. 제3자 입회가 필요한 3.2는 주문 전에 따로 협의합니다.'],
+  ['고강도 볼트를 아연도금해서 받을 수 있나요?', '10.9, 12.9, SAE Grade 8처럼 경도가 높은 볼트는 전기도금 과정의 수소취성 때문에 도금 후 베이킹 같은 관리가 필요합니다. ASTM F3125 A490은 용융아연도금 자체가 허용되지 않습니다. 사용 환경을 알려 주시면 맞는 코팅을 제안합니다.'],
+  ['규격에 없는 길이나 재질, 한두 개만 필요해도 제작되나요?', '협력 가공업체를 통해 제작을 수배합니다. 제작 사양 정리와 입고 검수는 대표가 직접 합니다. 단품 제작은 단가가 높고 납기가 걸려서, 규격품으로 해결할 방법이 있는지도 함께 비교해 드립니다.'],
+  ['견적 요청에는 무엇을 보내면 되나요? 회신은 얼마나 걸리나요?', '도면의 해당 부분이나 사양서·BOM, 수량, 희망 납기, 필요한 서류를 보내 주세요. 교체품이라면 기존 볼트의 머리 마킹 사진과 대략의 치수가 큰 도움이 됩니다. 1차 회신은 영업일 기준 1일 이내입니다.'],
+];
+V.help = () => `
+<div class="crumbs"><a href="#home" data-go="home">홈</a><span>›</span><span>고객지원</span></div>
+<div class="sec-h"><h1 style="font-size:26px">고객지원</h1><p>혼자 운영하는 가게라 전화보다 견적 요청서와 이메일이 가장 빠릅니다.</p></div>
+<div class="grid2">
+  <div class="panel" style="padding:18px;display:grid;gap:8px"><h2 style="font-size:17px">주문·출고</h2><ul class="small" style="margin:0;padding-left:18px;display:grid;gap:4px"><li>재고 표시 품목은 평일 14시 이전 결제 시 당일 출고합니다.</li><li>수배 품목은 표시된 출고 예정일을 따릅니다. 도금·열처리 추가 품목은 영업일 5–7일이 더 걸립니다.</li><li>인치·플랜트·주문제작품은 견적 회신 때 납기를 확정합니다.</li><li>주말·공휴일은 출고하지 않습니다.</li></ul></div>
+  <div class="panel" style="padding:18px;display:grid;gap:8px"><h2 style="font-size:17px">결제·세금계산서</h2><ul class="small" style="margin:0;padding-left:18px;display:grid;gap:4px"><li>카드, 실시간 계좌이체, 무통장 입금, 법인카드로 결제할 수 있습니다.</li><li>현금 결제는 구매안전서비스(에스크로)를 이용할 수 있습니다.</li><li>사업자 회원은 주문 시 사업자 정보를 입력하면 전자세금계산서를 발행합니다.</li><li>표시 가격은 VAT 별도입니다. 견적함에서 VAT 포함 금액으로 바꿔 볼 수 있습니다.</li></ul></div>
+  <div class="panel" style="padding:18px;display:grid;gap:8px"><h2 style="font-size:17px">배송비</h2><ul class="small" style="margin:0;padding-left:18px;display:grid;gap:4px"><li>규격품 ${won(FREE_SHIP)} 이상(VAT 별도) 무료, 미만은 ${won(SHIP_FEE)}입니다.</li><li>장척물(전산볼트 1 m)이나 대량 주문은 화물 운임을 따로 안내합니다.</li></ul></div>
+  <div class="panel" style="padding:18px;display:grid;gap:8px"><h2 style="font-size:17px">교환·반품</h2><ul class="small" style="margin:0;padding-left:18px;display:grid;gap:4px"><li>규격품은 받은 날부터 7일 안에 교환·반품을 신청할 수 있습니다. 단순 변심의 반송비는 고객 부담입니다.</li><li>주문 사양과 다르거나 불량이면 반송비를 저희가 부담하고 바로 교환합니다.</li><li>주문제작품과 고객 사양으로 수배한 품목은 제작·발주 전에 그 사실을 따로 알리고 동의를 받은 경우 청약철회가 제한됩니다 (전자상거래법 제17조 제2항).</li></ul></div>
+</div>
+<section class="faq"><div class="sec-h"><h2>자주 묻는 질문</h2></div>${FAQ.map(q => `<details><summary>${esc(q[0])}</summary><p>${esc(q[1])}</p></details>`).join('')}</section>
+<section><div class="sec-h"><h2>문의</h2></div><div class="panel" style="padding:18px;display:grid;gap:8px;max-width:640px"><div class="kv"><dt>이메일</dt><dd><span class="mono" id="mail">hello@example.com</span> <button class="btn sm" type="button" id="copy-mail">복사</button></dd><dt>전화</dt><dd class="mono">000-0000-0000 (평일 09–18시, 회의·검수 중에는 회신 전화)</dd><dt>정책 문서</dt><dd>이용약관 · <b>개인정보처리방침</b> · 사업자정보 확인 링크는 사업자 등록 후 연결합니다.</dd></div></div></section>`;
+V.after.help = () => {
+  const b = document.getElementById('copy-mail');
+  b.addEventListener('click', () => { const t = document.getElementById('mail').textContent; try { navigator.clipboard.writeText(t).then(() => toast('이메일 주소를 복사했습니다'), () => toast('복사가 막혀 있습니다. 주소를 직접 선택하세요')); } catch { toast('복사가 막혀 있습니다. 주소를 직접 선택하세요'); } });
+};
+
+/* 검색 */
+const INDEX = [];
+METRIC.forEach(f => INDEX.push({ t: f.name, s: Object.values(f.std).join(' · '), k: [f.name, f.en, f.code, ...Object.values(f.std)].join(' ').toLowerCase(), go: 'm-' + f.id, g: '미터 규격품' }));
+INCH.forEach(f => INDEX.push({ t: f.name, s: f.std.slice(0, 3).join(' · '), k: [f.name, f.en, f.code, ...f.std, ...f.grades].join(' ').toLowerCase(), go: 'i-' + f.id, g: '인치·플랜트' }));
+[['플랜지 스터드 길이 찾기', 'ASME B16.5 Class 150', 'flange 플랜지 b16.5 스터드 길이 nps', 'tools', 'flange'], ['재질 대조표', 'SCM435 · SUS304 · AISI 4140', '재질 scm435 scm440 sus304 sus316 4140 4135 1045 snb7', 'tools', 'mat'], ['강도 등급 대조표', '8.8 · 10.9 · Grade 5 · A325', '강도 grade 8.8 10.9 12.9 a325 a490 j429', 'tools', 'str'], ['DIN·ISO 2면폭 차이', 'M10 · M12 · M14 · M22', 'din iso 2면폭 대변 933 4017', 'tools', 'din'], ['주문제작·해외규격 견적', '도면·사양서 첨부', '주문제작 견적 도면 특수 비규격', 'custom'], ['교환·반품, 세금계산서', '고객지원', '반품 교환 세금계산서 배송 결제', 'help']]
+  .forEach(([t, s, k, go, tab]) => INDEX.push({ t, s, k, go, tab, g: '도구·안내' }));
+function search(q) {
+  const raw = q.trim(); if (!raw) return [];
+  const res = [];
+  const pn = parsePn(raw.split(/\s+/)[0]);
+  if (pn) res.push({ t: raw.split(/\s+/)[0].toUpperCase(), s: `${pn.f.name} · 형번`, go: 'm-' + pn.f.id, preset: raw.split(/\s+/)[0].toUpperCase(), g: '형번' });
+  const m = raw.replace(/[×*]/g, 'x').match(/M\s?(\d{1,2})(?:\s*x\s*(\d{1,3})(?!\.))?(?:\s*x\s*(\d{1,3}))?/i);
+  if (m) {
+    const size = 'M' + m[1], L = +(m[3] || (m[2] && +m[2] > 4 ? m[2] : 0)) || null;
+    const want = raw.toLowerCase();
+    METRIC.filter(f => f.sizes.includes(size)).filter(f => !/렌치|소켓|4762|912/.test(want) || f.id === 'scs').filter(f => !/너트|nut/.test(want) || f.id === 'hn').slice(0, 5).forEach(f => {
+      const Ls = f.len ? f.len(size) : [];
+      const LL = f.len ? (L && Ls.includes(L) ? L : Ls.reduce((a, c) => (L && Math.abs(c - L) < Math.abs(a - L) ? c : a), Ls[0])) : null;
+      const [g, fin] = f.combos[0];
+      const v = variantInfo(f, size, LL, g, fin, 1);
+      res.push({ t: v.pn, s: `${f.name} ${size}${LL ? ' × ' + LL : ''} · ${won(v.price)}/EA`, go: 'm-' + f.id, preset: v.pn, g: '규격품' });
+    });
+  }
+  const terms = raw.toLowerCase().split(/\s+/);
+  INDEX.forEach(e => { if (terms.every(t => e.k.includes(t) || e.t.toLowerCase().includes(t))) res.push(e); });
+  if (/\d+\/\d+|unc|unf|8un|b7|2h|a193|a194|a320|a325|a490|f3125|j429|astm|asme/i.test(raw) && !res.some(r => r.go && r.go.startsWith('i-'))) INCH.slice(0, 3).forEach(f => res.push({ t: f.name, s: f.std[0], go: 'i-' + f.id, g: '인치·플랜트' }));
+  const seen = new Set();
+  return res.filter(r => { const k = r.t + r.go; if (seen.has(k)) return false; seen.add(k); return true; }).slice(0, 12);
+}
+function initSearch() {
+  const q = document.getElementById('q'), box = document.getElementById('suggest');
+  let items = [], idx = -1;
+  const pick = it => {
+    box.hidden = true; q.blur();
+    if (it.preset) { const p = parsePn(it.preset); if (p) { state.listing[p.f.id] = { sel: { size: p.size, L: p.L, g: p.g, fin: p.fin, qty: packOf(p.f, p.size) }, filt: {}, page: 0, open: '0' }; } }
+    if (it.tab) state.tab = it.tab;
+    go(it.go);
+  };
+  const render = () => {
+    items = search(q.value); idx = -1;
+    if (!q.value.trim()) { box.hidden = true; return; }
+    let html = '', last = '';
+    items.forEach((it, i) => { if (it.g !== last) { html += `<div class="grp">${it.g}</div>`; last = it.g; } html += `<button type="button" data-i="${i}"><span><span class="s1 ${/^[A-Z]{1,3}-/.test(it.t) ? 'mono' : ''}">${esc(it.t)}</span><br><span class="s2">${esc(it.s || '')}</span></span><span class="s2">›</span></button>`; });
+    box.innerHTML = html || `<div class="empty">맞는 품목이 없습니다. 사양 그대로 <a href="#custom" data-go="custom">견적 요청</a>을 보내 주세요.</div>`;
+    box.hidden = false;
+  };
+  q.addEventListener('input', render);
+  q.addEventListener('focus', () => q.value && render());
+  q.addEventListener('keydown', e => {
+    const bs = [...box.querySelectorAll('button')];
+    if (e.key === 'ArrowDown') { e.preventDefault(); idx = Math.min(bs.length - 1, idx + 1); bs.forEach((b, i) => b.classList.toggle('on', i === idx)); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); idx = Math.max(0, idx - 1); bs.forEach((b, i) => b.classList.toggle('on', i === idx)); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (items.length) pick(items[idx >= 0 ? idx : 0]); }
+    else if (e.key === 'Escape') box.hidden = true;
+  });
+  box.addEventListener('mousedown', e => e.preventDefault());
+  box.addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) pick(items[+b.dataset.i]); });
+  document.getElementById('q-go').addEventListener('click', () => { render(); if (items.length) pick(items[0]); });
+  document.addEventListener('click', e => { if (!e.target.closest('.search')) box.hidden = true; });
+}
+
+/* 전역 이벤트 */
+document.addEventListener('click', e => {
+  const add = e.target.closest('[data-add]');
+  if (add) {
+    const qty = add.dataset.qtyFrom ? +document.getElementById(add.dataset.qtyFrom).value : +add.dataset.qty;
+    if (addItem(add.dataset.add, Math.max(1, Math.round(qty || 1)))) toast(`${add.dataset.add} ${Math.max(1, Math.round(qty || 1)).toLocaleString()}개를 견적함에 담았습니다`);
+    return;
+  }
+  const g = e.target.closest('[data-go]');
+  if (g) {
+    e.preventDefault();
+    if (g.dataset.tab) state.tab = g.dataset.tab;
+    if (g.dataset.preset) { const p = parsePn(g.dataset.preset); if (p) state.listing[p.f.id] = { sel: { size: p.size, L: p.L, g: p.g, fin: p.fin, qty: packOf(p.f, p.size) }, filt: {}, page: 0, open: '0' }; }
+    if (g.dataset.prefill) {
+      const dec = decode(document.getElementById('dec-in')?.value || '');
+      const val = l => (dec.find(x => x.label === l) || {}).value || '';
+      const nut = val('나사'), metric = /미터/.test(nut);
+      state.prefill = { sys: metric ? 'metric' : 'inch', 'c-d': metric ? nut.replace('미터 ', '') : (nut.match(/인치 (\S+)"/) || [])[1] || '', 'c-p': (val('피치').match(/^[\d.]+/) || [])[0] || (nut.match(/(\d+)산/) || [])[1] || '', 'c-L': (val('길이').match(/^[\d.\-\/]+/) || [])[0] || '', 'c-grade': val('강도·등급').split(',')[0] || '', 'c-memo': '원문 표기: ' + (document.getElementById('dec-in')?.value || '') };
+    }
+    if (g.dataset.prefillPn) { const p = parsePn(g.dataset.prefillPn); if (p) state.prefill = { sys: 'metric', 'c-d': p.size, 'c-p': String(DIM.pitch[p.size]), 'c-L': p.L ? String(p.L) : '', 'c-grade': GRADE[p.g].label, 'c-memo': `${g.dataset.prefillPn} 기준 변형 요청: ` }; }
+    go(g.dataset.go);
+  }
+});
+window.addEventListener('popstate', () => go(location.hash.slice(1) || 'home', false));
+document.getElementById('theme-btn').addEventListener('click', () => {
+  const r = document.documentElement, cur = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark'; r.setAttribute('data-theme', next); store.set('theme', next);
+});
+{ const t = store.get('theme', null); if (t) document.documentElement.setAttribute('data-theme', t); }
+
+initSearch();
+saveCart();
+const start = location.hash.slice(1);
+go(/^[a-z][a-z0-9-]*$/.test(start) ? start : 'home', false);
+})();
+</script>
