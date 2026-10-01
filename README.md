@@ -29,7 +29,7 @@ Cloudflare Workers(정적 파일, 무료)가 `main` 브랜치의 `docs/` 폴더�
 | 프로덕션 브랜치 | `main` |
 | 빌드 명령 | `exit 0` |
 | 배포 명령 | `npx wrangler deploy` |
-| 미리보기 빌드 (Branch control → Enable Preview Builds) | 끔 (정적 파일만 있는 Worker는 미리보기 빌드가 실패합니다) |
+| 미리보기 빌드 (Branch control → Enable Preview Builds) | 끔 (이 저장소에서는 PR 미리보기 빌드가 실패해서 쓰지 않습니다. 공개 배포는 main 빌드만 사용) |
 
 `wrangler.jsonc`의 `name`은 대시보드의 Worker 이름과 같아야 합니다. `docs/_headers`의 보안·캐시 헤더도 함께 적용됩니다.
 
