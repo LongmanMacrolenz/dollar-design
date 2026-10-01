@@ -8569,7 +8569,7 @@ function loadXLSX() {
 // CSV·TSV·TXT: UTF-8로 읽고 깨진 글자(U+FFFD)가 1% 넘으면 EUC-KR(CP949)로 다시 읽는다
 async function bomReadText(file) {
   const buf = await file.arrayBuffer(); let t = new TextDecoder('utf-8').decode(buf);
-  const bad = (t.match(/�/g) || []).length;
+  const bad = (t.match(/\uFFFD/g) || []).length;
   if (bad && bad / Math.max(1, t.length) > .01) { try { t = new TextDecoder('euc-kr').decode(buf); } catch {} }
   return t.replace(/^﻿/, '');
 }
