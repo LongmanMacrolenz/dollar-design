@@ -21,8 +21,9 @@ def build(out: pathlib.Path) -> None:
         "<!doctype html>\n"
         '<html lang="ko">\n<head>\n'
         '<meta charset="utf-8">\n'
-        '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
         f"<title>{title}</title>\n"
+        "<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>\n"
         '<meta name="description" content="KS·ISO·DIN·JIS 미터 체결부품 즉시 견적과 ASME·ASTM 플랜트 볼팅 사양 검토 주문제작.">\n'
         "</head>\n<body>\n"
         f"{body}\n"
