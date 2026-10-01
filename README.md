@@ -28,7 +28,7 @@ Cloudflare Workers(정적 파일, 무료)가 `main` 브랜치의 `docs/` 폴더�
 | 프로덕션 브랜치 | `main` |
 | 빌드 명령 | `exit 0` |
 | 배포 명령 | `npx wrangler deploy` |
-| 미리보기 빌드 | 끔 (작업 중인 브랜치가 공개되지 않게) |
+| 미리보기 빌드 | 켬 (PR마다 미리보기 주소가 생기고 PR에 빌드 결과가 표시됨) |
 
 `wrangler.jsonc`의 `name`은 대시보드의 Worker 이름과 같아야 합니다. `docs/_headers`의 보안·캐시 헤더도 함께 적용됩니다.
 
