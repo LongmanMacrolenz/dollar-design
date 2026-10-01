@@ -17,6 +17,7 @@
 | `docs/index.html` | 배포본. 직접 고치지 말고 `python3 site/build.py`로 다시 만듭니다. |
 | `docs/_headers` | 응답 헤더(보안 헤더, 캐시) |
 | `wrangler.jsonc` | Cloudflare Workers 배포 설정 (`docs/`만 공개) |
+| `docs/robots.txt` | 검색 로봇 허용 |
 
 ## 배포
 
@@ -28,7 +29,7 @@ Cloudflare Workers(정적 파일, 무료)가 `main` 브랜치의 `docs/` 폴더�
 | 프로덕션 브랜치 | `main` |
 | 빌드 명령 | `exit 0` |
 | 배포 명령 | `npx wrangler deploy` |
-| 미리보기 빌드 | 켬 (PR마다 미리보기 주소가 생기고 PR에 빌드 결과가 표시됨) |
+| 미리보기 빌드 (Branch control → Enable Preview Builds) | 끔 (정적 파일만 있는 Worker는 미리보기 빌드가 실패합니다) |
 
 `wrangler.jsonc`의 `name`은 대시보드의 Worker 이름과 같아야 합니다. `docs/_headers`의 보안·캐시 헤더도 함께 적용됩니다.
 
