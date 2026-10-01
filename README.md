@@ -21,6 +21,7 @@
 | `docs/_headers` | 응답 헤더(보안 헤더, 캐시) |
 | `wrangler.jsonc` | Cloudflare Workers 배포 설정 (`docs/`만 공개) |
 | `docs/robots.txt` | 검색 로봇 허용 |
+| `docs/og.png` | 링크 미리보기 이미지(카카오톡·메신저·SNS 공유 시 표시, 1280×720) |
 
 ## 배포
 
@@ -35,6 +36,8 @@ Cloudflare Workers(정적 파일, 무료)가 `main` 브랜치의 `docs/` 폴더�
 | 미리보기 빌드 | 쓰지 않음. 이 저장소에서는 PR 미리보기 빌드가 실패하지만 공개 배포에는 영향이 없습니다. 공개 배포는 main 빌드만 사용합니다. |
 
 `wrangler.jsonc`의 `name`은 대시보드의 Worker 이름과 같아야 합니다. `docs/_headers`의 보안·캐시 헤더도 함께 적용됩니다.
+
+검색 제목·설명과 링크 미리보기(og 태그)는 `site/build.py` 맨 위의 `SITE_URL`, `SEO_TITLE`, `SEO_DESC`에서 바꿉니다. 도메인을 사면 `SITE_URL`만 고치면 됩니다.
 
 GitHub Pages는 약관상 온라인 사업·전자상거래 사이트에 쓸 수 없으므로 게시를 끕니다.
 
