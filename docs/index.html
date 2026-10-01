@@ -1423,12 +1423,12 @@ footer.foot { padding-block: 0 48px; }
 <footer class="foot">
   <div class="wrap">
     <div class="ftb">
-      <div><h4>볼트노트 (가칭)</h4><p>기계엔지니어 출신 대표가 직접 사양을 검토하는 체결부품 전문점입니다. KS·ISO·DIN·JIS 미터 규격품과 ASME·ASTM·SAE 인치·플랜트 볼트를 공급합니다.</p></div>
+      <div><h4>볼트노트</h4><p>기계엔지니어 출신 대표가 직접 사양을 검토하는 체결부품 전문점입니다. KS·ISO·DIN·JIS 미터 규격품과 ASME·ASTM·SAE 인치·플랜트 볼트를 공급합니다.</p></div>
       <div><span class="lab">쇼핑</span><ul><li><a href="#metric" data-go="metric">미터 규격품</a></li><li><a href="#inch" data-go="inch">인치·플랜트 볼트</a></li><li><a href="#custom" data-go="custom">주문제작·해외규격 견적</a></li><li><a href="#tools" data-go="tools">규격 도구</a></li></ul></div>
       <div><span class="lab">고객지원</span><ul><li><a href="#help" data-go="help">주문·출고 안내</a></li><li><a href="#help" data-go="help">교환·반품</a></li><li><a href="#help" data-go="help">세금계산서</a></li><li><a href="#help" data-go="help">자주 묻는 질문</a></li></ul></div>
       <div class="e"><span class="lab">정책</span><ul><li><a href="#help" data-go="help">이용약관</a></li><li><a href="#help" data-go="help"><b>개인정보처리방침</b></a></li><li><a href="#help" data-go="help">사업자정보 확인</a></li></ul></div>
       <div class="biz">
-        <div><span class="lab">상호</span><span class="ph">볼트노트(가칭)</span></div>
+        <div><span class="lab">상호</span>볼트노트</div>
         <div><span class="lab">대표</span><span class="ph">홍길동</span></div>
         <div><span class="lab">사업자등록번호</span><span class="ph mono">000-00-00000</span></div>
         <div><span class="lab">통신판매업 신고</span><span class="ph">제0000-지역-0000호</span></div>
@@ -3307,7 +3307,7 @@ V.after.cart = () => {
     sec.innerHTML = `<div class="doc" id="doc"><div class="doc-in"><h2 id="h-z-c" tabindex="-1">견적 요청서</h2>
       <div class="tblw bare"><table class="tbl mid6"><thead><tr><th>No</th><th>품명·사양</th><th class="r">수량</th><th class="r">단가</th><th class="r">금액</th></tr></thead><tbody>${rows.map(r => `<tr><td class="mono">${r[0]}</td><td>${esc(r[1])}</td><td class="r mono">${esc(r[2])}</td><td class="r mono">${esc(r[3])}</td><td class="r mono">${esc(r[4])}</td></tr>`).join('')}</tbody></table></div>
       <p class="r num">규격품 공급가액 ${won(sub)} · 부가세 별도</p>
-      <div class="doc-tb"><div><span class="lab">요청일</span><b>${ds}</b></div><div><span class="lab">유효기간</span><b>회신일부터 14일</b></div><div><span class="lab">장</span><b>1 / 1</b></div><div class="lr"><span class="lab">공급자</span><b><span class="ph">볼트노트(가칭)</span></b></div><div class="lr"><span class="lab">사업자등록번호</span><b><span class="ph">000-00-00000</span></b></div><div class="lr"><span class="lab">검토</span><b><span class="ph">홍길동</span></b></div></div>
+      <div class="doc-tb"><div><span class="lab">요청일</span><b>${ds}</b></div><div><span class="lab">유효기간</span><b>회신일부터 14일</b></div><div><span class="lab">장</span><b>1 / 1</b></div><div class="lr"><span class="lab">공급자</span><b>볼트노트</b></div><div class="lr"><span class="lab">사업자등록번호</span><b><span class="ph">000-00-00000</span></b></div><div class="lr"><span class="lab">검토</span><b><span class="ph">홍길동</span></b></div></div>
       <p class="small muted">견적 품목의 단가와 납기는 사양 확인 후 회신합니다. 시안 페이지라 실제로 전송되지 않으며, 아래 버튼으로 내용을 복사해 메일에 붙여 넣을 수 있습니다. 견적함을 고치면 이 요청서도 함께 바뀝니다.</p>
       <div class="actions"><button class="btn sm" type="button" id="copy-doc">내용 복사</button><span class="small muted" id="copy-msg" aria-live="polite"></span></div></div></div>`;
     showDoc.rows = rows;
