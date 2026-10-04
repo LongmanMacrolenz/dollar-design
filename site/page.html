@@ -3435,7 +3435,7 @@ const SHOP_TERMS = {
 };
 // 견적 요청 통로 (Phase 1, b2b_site_changes.json channel.config). 운영자가 채움. 빈 값 = 미설정: 화면에는 .ph 자리표시를 보여 주고,
 // 그 값에 의존하는 버튼은 disabled + title='운영 정보 등록 후 사용'. href·mailto는 값이 있을 때만 만든다 (v5_rfq.js rfqC).
-const CONTACT = { rfq: '', tel: '', fax: '', kakaoChat: '' };
+const CONTACT = { rfq: 'a8wlhg942@naver.com', tel: '', fax: '', kakaoChat: '' };
 
 /* ── 사이트 스위치 (IA 명세 2장, 한 곳). 기본값 = 근거 쪽. 대표만 바꾼다 ──
    ORDER_LIVE: 통신판매업 신고 뒤 ordersOpen + 신고번호 + 사업자번호가 모두 있어야 켜진다 (하나라도 비면 '주문 요청서 (확인 후 진행)').
@@ -3443,8 +3443,8 @@ const CONTACT = { rfq: '', tel: '', fax: '', kakaoChat: '' };
 const SHOP = {
   ordersOpen: false,        // 통신판매업 신고 뒤 true. 아래 두 값이 다 있어야 실제로 켜짐
   mailOrderNo: '',          // 통신판매업 신고번호
-  bizNo: '',                // 사업자등록번호. 빈 값이면 .ph '000-00-00000'
-  ownerName: '',            // 대표 실명. 빈 값이면 .ph '대표 이름'
+  bizNo: '456-19-02858',    // 사업자등록번호 (등록증 발급 2026-10, 대표 확인). 빈 값이면 .ph '000-00-00000'
+  ownerName: '박세중',       // 대표 실명 (대표 확인 2026-10-04). 빈 값이면 .ph '대표 이름'
   ownerYears: '7',          // 회전기기 분야 경력 연수 (대표 확인 2026-10-01). 직장 이름은 쓰지 않음
   hero: 'special',          // 'special' | 'general'
   listPrimary: 'send',      // 'send' 파일 그대로 먼저 | 'paste' 붙여넣기 먼저
@@ -6742,7 +6742,7 @@ function cdBuildPass(itemsIn, rfq, prev, firm) {
     basis: [{ doc: rfq.clientRef?.bomFile || '붙여넣은 BOM', rev: '-', received: true, reviewed: true }, ...(rfq.basis || []).map(b => ({ doc: b.doc, rev: b.rev || '-', received: b.received !== false, date: b.date || null, reviewed: b.received !== false }))],
     submission: { priced: rfq.submission?.unpriced ? '가격 포함 + 가격 없는 기술본 / Priced + Unpriced' : '가격 포함 / Priced', split: rfq.submission?.splitTechComm ? '기술·상업 분리 / Technical & Commercial' : '통합 / Combined' },
     offerType: firm ? { code: 'firm', ko: '정식 견적', en: 'Firm' } : { code: 'indicative', ko: '자동 견적', en: 'Indicative' },
-    quoteNo, applicableSpecs: ap, supplier: { name: '볼트노트', bizNo: null, ph: true },
+    quoteNo, applicableSpecs: ap, supplier: { name: '볼트노트', bizNo: SHOP.bizNo || null, ph: !SHOP.bizNo },
     preparedBy: rfq.preparedBy || null, checkedBy: firm ? (rfq.review.checkedBy || '자체 검토 / Self-checked') : null, approvedBy: firm ? rfq.review.by : null, clientReview: null,
   };
   /* 9) 준수 요약 (3.11절) */
@@ -9981,6 +9981,7 @@ V.after.bom = () => {
 const QD_DOCS = [['quote', '견적서', 'A4 세로'], ['cd', 'C&D 시트', 'A4 가로'], ['comp', '준수 요약', 'A4 세로'], ['na', '공급 불가 목록', 'A4 세로'], ['dwg', '도면 묶음', 'A4 가로'], ['diff', '개정 비교', '화면']];
 const QD_CANPRINT = (() => { try { return window.top === window.self; } catch { return false; } })();
 const qdPh = t => `<span class="ph">${esc(t)}</span>`;
+const qdBiz = () => SHOP.bizNo ? esc(SHOP.bizNo) : qdPh('000-00-00000');
 // 인쇄: 문서마다 이름 붙인 쪽(@page) — 방향과 쪽 아래 문서 번호 · Rev · 쪽 번호 (모든 쪽에 반복)
 const QD_PG = { quote: ['qdq', 'portrait', '견적서', ''], cd: ['qdc', 'landscape', 'C&D 시트', '-CD'], comp: ['qds', 'portrait', '준수 요약', '-CS'], na: ['qdn', 'portrait', '공급 불가 목록', '-NA'], dwg: ['qdd', 'landscape', '도면 묶음', '-D'], diff: ['qdf', 'portrait', '개정 비교', ''] };
 const qdCssStr = t => '"' + String(t).replace(/[\\"]/g, '\\$&').replace(/\n/g, ' ') + '"';
@@ -9993,7 +9994,7 @@ const qdSpecOf = q => `${threadTxt(q)}${q.lengthLabel ? ' × ' + q.lengthLabel.r
 // 문서 앞 공통: 워터마크(자동 견적)와 인쇄 바닥 줄(문서 번호 · Rev)
 const qdWm = d => d.offerType !== 'firm' ? `<div class="qd-wm" aria-hidden="true"><span>${esc(d.watermark?.ko || '자동 견적 · 운영자 검토 전')}</span></div><p class="qd-stamp"><b>${esc(d.watermark?.ko || '자동 견적 · 운영자 검토 전')}</b> ${esc(d.watermark?.en || 'Indicative – not reviewed')}</p>` : '';
 const qdSupplier = (firm, cls = '') => `<table class="qd-sup ${cls}"><colgroup><col class="k0"><col class="k1"><col><col class="k1"><col></colgroup><tbody>
-  <tr><th rowspan="6" class="qd-vl" scope="rowgroup"><span aria-hidden="true">공<br>급<br>자</span><span class="sr">공급자</span></th><th scope="row">등록번호</th><td colspan="3" class="mono">${qdPh('000-00-00000')}</td></tr>
+  <tr><th rowspan="6" class="qd-vl" scope="rowgroup"><span aria-hidden="true">공<br>급<br>자</span><span class="sr">공급자</span></th><th scope="row">등록번호</th><td colspan="3" class="mono">${qdBiz()}</td></tr>
   <tr><th scope="row">상호</th><td>볼트노트</td><th scope="row">성명</th><td class="qd-sign">${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} ${firm ? '<span class="qd-seal" role="img" aria-label="직인 자리">(인)</span>' : '<span class="faint">(서명 없음 · 자동 견적)</span>'}</td></tr>
   <tr><th scope="row">사업장 주소</th><td colspan="3">${qdPh('사업장 주소 입력 예정')}</td></tr>
   <tr><th scope="row">업태</th><td>${qdPh('도매 및 소매업')}</td><th scope="row">종목</th><td>${qdPh('볼트·너트 등 체결부품')}</td></tr>
@@ -10062,7 +10063,7 @@ function qdQuoteHtml(c, unp) {
   <section class="qd-sec qd-att"><h3>첨부서류</h3><ol>${att.map(a => `<li><span>${a}</span></li>`).join('')}</ol></section>
   <dl class="qd-foot"><dt>입금계좌</dt><dd>${qdPh('은행명 · 계좌번호 · 예금주')}</dd><dt>담당자</dt><dd>${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} · ${qdPh('000-0000-0000')}</dd></dl>
   ${qdRevTable(d)}
-  <p class="qd-line">볼트노트 · 사업자등록번호 ${qdPh('000-00-00000')} · ${qdPh('사업장 주소')}</p>
+  <p class="qd-line">볼트노트 · 사업자등록번호 ${qdBiz()} · ${qdPh('사업장 주소')}</p>
 </article>`;
 }
 const qdRevTable = d => `<table class="qd-rev"><caption>개정 이력 Revision History</caption><thead><tr><th>Rev</th><th>날짜 Date</th><th>내용 Description</th><th>작성 By</th><th>검토 Chk'd</th></tr></thead><tbody>${d.revision.history.map(h => `<tr><td class="mono">${esc(h.rev)}</td><td class="mono">${esc(h.date || '')}</td><td>${esc(h.desc || '')}</td><td>${h.by ? esc(h.by) : qdPh('작성자')}</td><td>${h.chk ? esc(h.chk) : '—'}</td></tr>`).join('')}</tbody></table>`;
@@ -10082,7 +10083,7 @@ function qdCdHtml(c, unp) {
     ${hb('문서 번호', 'Sheet No.', `<span class="mono">${esc(H.sheetNo)}</span>`)}${hb('개정', 'Rev.', esc(H.rev))}${hb('발행일', 'Date', esc(H.date))}${hb('견적번호', 'Quotation No.', `<span class="mono">${esc(H.quoteNo)} Rev ${esc(H.rev)}</span>`, 'e')}
     ${hb('프로젝트', 'Project', esc(H.project))}${hb('발주처', 'Client', esc(H.client))}${hb('고객 RFQ', 'Client RFQ No. / Rev.', `${esc(H.rfqNo)} / ${esc(H.rfqRev)}`)}${hb('대상 BOM', 'BOM Ref.', `${esc(H.bomRef.file)} · ${H.bomRef.rows}줄 · <span class="mono">${esc(H.bomRef.hash)}</span>`, 'e')}
     ${hb('제출 구분', 'Submission', `${esc(unp ? '가격 없는 기술본 / Unpriced' : H.submission.priced)} · ${part === 'tech' ? '기술 C&amp;D / Technical' : part === 'comm' ? '상업 C&amp;D / Commercial' : esc(H.submission.split)}`)}${hb('견적 구분', 'Offer Type', `${esc(H.offerType.ko)} ${esc(H.offerType.en)}`)}${hb('적용 사양', 'Applicable Specs', H.applicableSpecs.length ? esc(H.applicableSpecs.join(' · ')) : '—', 's2 e')}
-    ${hb('공급자', 'Supplier', `볼트노트 · ${qdPh('000-00-00000')}`)}${hb('작성', 'Prepared by', H.preparedBy ? esc(H.preparedBy) : qdPh('작성자'))}${hb('검토', 'Checked by', H.checkedBy ? esc(H.checkedBy) : '—')}${hb('승인', 'Approved by', H.approvedBy ? esc(H.approvedBy) : '—', 'e')}
+    ${hb('공급자', 'Supplier', `볼트노트 · ${qdBiz()}`)}${hb('작성', 'Prepared by', H.preparedBy ? esc(H.preparedBy) : qdPh('작성자'))}${hb('검토', 'Checked by', H.checkedBy ? esc(H.checkedBy) : '—')}${hb('승인', 'Approved by', H.approvedBy ? esc(H.approvedBy) : '—', 'e')}
     <div class="s4 e lr"><span class="lab">검토 문서 Basis of Offer (Documents Reviewed)</span><span class="val small">${H.basis.map(b => `<span class="nw">${esc(b.doc)}${b.rev && b.rev !== '-' ? ' Rev ' + esc(b.rev) : ''} · ${b.received ? '받음 · 검토함' : '<b class="redp">받지 못함 · 검토 안 함</b>'}</span>`).join(' / ')}</span></div>
   </div>
   <div class="qd-stmt ${stmt.kind}">${qdBi({ ko: stmt.ko, en: stmt.en }, lang)}<p class="qd-stmt-s">${qdBi(stmt.summary, lang)}</p></div>
@@ -10972,7 +10973,8 @@ const iaBizNo = () => SHOP.bizNo ? `<span class="mono">${esc(SHOP.bizNo)}</span>
 const iaMailOrder = () => ORDER_LIVE ? `통신판매업 ${esc(SHOP.mailOrderNo)}` : '통신판매업 신고 전 (검증 운영 중)';
 function iaBizLink() {
   const d = String(SHOP.bizNo || '').replace(/\D/g, '');
-  return d.length === 10 ? `<a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=${d}" target="_blank" rel="noopener">사업자 정보 확인</a>` : `사업자정보 확인 <span class="ph">등록 후 연결</span>`;
+  // 공정위 사업자정보 공개 페이지는 통신판매업 신고 뒤에 조회되므로 ORDER_LIVE일 때만 연결한다
+  return d.length === 10 && ORDER_LIVE ? `<a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=${d}" target="_blank" rel="noopener">사업자 정보 확인</a>` : `사업자정보 확인 <span class="ph">통신판매업 신고 후 연결</span>`;
 }
 // 서류 칸 (cadTrustGroupsBy: 공급처가 확인한 품목군만 이름을 적는다. 기본은 모두 확인 중)
 function iaDocsLine(short) {
