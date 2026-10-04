@@ -1,6 +1,7 @@
 """체결부품 규격 사전의 정적 페이지를 만든다 (검색엔진·링크 공유용).
 
 사용법: python3 site/build_lib.py            (site/lib.json → docs/lib/*.html, docs/sitemap.xml, docs/robots.txt)
+- 주소는 확장자 없이 쓴다(/lib/<id>). Cloudflare 정적 배포가 .html 주소를 확장자 없는 주소로 307 이동시키므로, 표준 주소·사이트맵·내부 링크를 처음부터 그 주소로 둔다.
 - 사이트 안의 사전(#lib)과 같은 데이터(site/lib.json)를 쓴다. 데이터는 검토를 마친 항목만 들어 있다.
 - 사업자 정보(상호·대표·사업자등록번호·연락처)는 site/page.html의 SHOP·CONTACT 값을 그대로 읽어 바닥글에 넣는다.
 - 규격 원문은 싣지 않는다. 항목은 사실과 값을 우리 말로 정리한 것이다.
@@ -129,14 +130,14 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
             + f'<p class="src">근거: {e(" · ".join(x.get("src", [])))} · 확인 {CHECKED}. 규격 원문을 옮긴 것이 아니라 요점을 정리한 것입니다.</p>'
             + "</article><aside>"
-            + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}.html">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
+            + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
             + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="/#c-{e(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
             + '<div class="box dark"><h2>이 규격이 들어간 BOM이 있으신가요?</h2><p>표기 그대로 보내 주시면 줄마다 규격·등급과 필요한 서류를 맞춰 견적합니다.</p><a class="cta" href="/#list">목록 견적으로 →</a></div>'
             + "</aside></div></div></main>" + footer(info))
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": x["t"], "alternateName": [x.get("ko", "")] + x.get("aka", [])[:6],
-          "description": x.get("sum", ""), "url": f"{SITE_URL}lib/{x['id']}.html",
+          "description": x.get("sum", ""), "url": f"{SITE_URL}lib/{x['id']}",
           "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "볼트노트 체결부품 규격 사전", "url": f"{SITE_URL}lib/"}}
-    return page(f'{x["t"]} · {x.get("ko", "")} | 볼트노트 규격 사전', x.get("sum", ""), f'lib/{x["id"]}.html', body, ld)
+    return page(f'{x["t"]} · {x.get("ko", "")} | 볼트노트 규격 사전', x.get("sum", ""), f'lib/{x["id"]}', body, ld)
 
 
 def index_html(L: list, info: dict) -> str:
@@ -145,7 +146,7 @@ def index_html(L: list, info: dict) -> str:
         xs = [x for x in L if x["kind"] == k]
         if not xs: continue
         secs.append(f'<section class="sec" data-k="{k}"><h2>{e(KIND[k])} <small>{len(xs)}개</small></h2><div class="cards">'
-                    + "".join(f'<a class="card" href="/lib/{x["id"]}.html" data-s="{e((x["t"] + " " + x.get("ko", "") + " " + " ".join(x.get("aka", []))).lower())}"><b>{e(x["t"])}</b><span>{e(x.get("ko", ""))}</span></a>' for x in xs)
+                    + "".join(f'<a class="card" href="/lib/{x["id"]}" data-s="{e((x["t"] + " " + x.get("ko", "") + " " + " ".join(x.get("aka", []))).lower())}"><b>{e(x["t"])}</b><span>{e(x.get("ko", ""))}</span></a>' for x in xs)
                     + "</div></section>")
     js = ("<script>(()=>{const q=document.getElementById('q');q.addEventListener('input',()=>{const v=q.value.trim().toLowerCase().replace(/\\s+/g,'');"
           "document.querySelectorAll('.card').forEach(c=>{c.hidden=v&&!c.dataset.s.replace(/\\s+/g,'').includes(v)});"
@@ -155,7 +156,7 @@ def index_html(L: list, info: dict) -> str:
             + '<label for="q" style="position:absolute;left:-9999px">사전에서 찾기</label><input class="q" id="q" type="search" placeholder="예: B7M, 2H, 8.8, EN 10204 3.1, 렌치볼트" autocomplete="off">'
             + "".join(secs) + "</div></main>" + footer(info) + js)
     ld = {"@context": "https://schema.org", "@type": "DefinedTermSet", "name": "볼트노트 체결부품 규격 사전", "url": f"{SITE_URL}lib/",
-          "hasDefinedTerm": [{"@type": "DefinedTerm", "name": x["t"], "url": f"{SITE_URL}lib/{x['id']}.html"} for x in L]}
+          "hasDefinedTerm": [{"@type": "DefinedTerm", "name": x["t"], "url": f"{SITE_URL}lib/{x['id']}"} for x in L]}
     return page("체결부품 규격 사전 | 볼트노트", f"ASTM·ASME·ISO·EN·DIN·KS·JIS 체결부품 규격과 등급, 나사, 서류·시험, 코팅 {len(L)}개 항목을 엔지니어가 정리한 사전", "lib/", body, ld)
 
 
@@ -170,7 +171,7 @@ def main() -> None:
     for x in L:
         (out / f'{x["id"]}.html').write_text(entry_html(x, by, info), encoding="utf-8")
     (out / "index.html").write_text(index_html(L, info), encoding="utf-8")
-    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}.html' for x in L]
+    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L]
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
