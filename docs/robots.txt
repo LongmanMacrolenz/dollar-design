@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://boltnote.boltnote.workers.dev/sitemap.xml
