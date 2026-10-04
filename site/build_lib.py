@@ -101,7 +101,7 @@ def footer(info: dict) -> str:
     r2.append("호스팅 Cloudflare, Inc. (미국)")
     r3 = ['<a href="/#privacy"><b>개인정보 처리방침</b></a>', '<a href="/#terms">이용약관</a>', '<a href="/#about">회사 소개</a>']
     return ('<footer><div class="w">' + "".join(f'<div class="r">{" ".join(f"<span>{x}</span>" for x in row)}</div>' for row in (r1, r2, r3))
-            + f'<div class="r"><span>규격 사전은 각 규격의 현행판을 기준으로 요점을 정리한 것입니다 (확인 {CHECKED}). 계약·설계에는 규격 원문을 확인하세요.</span></div></div></footer>')
+            + f'<div class="r"><span>규격 사전은 발행 기관 공개 자료·공식 미리보기·공공 문서와, 일부 값은 제조·유통사 공개 기술자료 3곳 이상을 대조해 요점을 정리한 것입니다 (확인 {CHECKED}). 계약·설계에는 규격 원문을 확인하세요.</span></div></div></footer>')
 
 
 def badges(x: dict) -> str:
@@ -127,7 +127,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + '<h2>핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl
             + ('<section class="watch"><h2>BOM·구매 때 주의</h2><ul class="f">' + "".join(f"<li>{e(w)}</li>" for w in x["watch"]) + "</ul></section>" if x.get("watch") else "")
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
-            + f'<p class="src">근거: {e(" · ".join(x.get("src", [])))} · 현행판 기준, 확인 {CHECKED}. 규격 원문을 옮긴 것이 아니라 요점을 정리한 것입니다.</p>'
+            + f'<p class="src">근거: {e(" · ".join(x.get("src", [])))} · 확인 {CHECKED}. 규격 원문을 옮긴 것이 아니라 요점을 정리한 것입니다.</p>'
             + "</article><aside>"
             + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}.html">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
             + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="/#c-{e(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
