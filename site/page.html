@@ -2418,10 +2418,10 @@ footer.foot { padding-block: 0 48px; }
   <div class="wrap">
     <div class="foot-g">
       <div><b>볼트노트 · 체결부품 견적·공급</b><span>상호 볼트노트</span><span>대표 <span class="ph" data-ia="owner">대표 이름</span></span><span>사업자등록번호 <span class="ph mono" data-ia="bizno">000-00-00000</span></span><span data-ia="mailorder">통신판매업 신고 전 (검증 운영 중)</span></div>
-      <div><span>사업장 주소 <span class="ph">사업장 주소</span></span><span>전화 <span class="ph mono" data-contact="tel">000-0000-0000</span></span><span>견적 메일 <span class="ph mono" data-contact="rfq">견적 메일 주소</span></span><span>카카오톡 <span class="ph" data-contact="kakaoChat">카카오톡 채널</span></span><span>호스팅 Cloudflare, Inc. (미국)</span><span>개인정보 보호책임자 <span class="ph" data-ia="owner">대표 이름</span></span></div>
+      <div><span data-ia="addr" hidden>사업장 주소 <span></span></span><span>전화 <span class="ph mono" data-contact="tel">000-0000-0000</span></span><span>견적 메일 <span class="ph mono" data-contact="rfq">견적 메일 주소</span></span><span>카카오톡 <span class="ph" data-contact="kakaoChat">카카오톡 채널</span></span><span>호스팅 Cloudflare, Inc. (미국)</span><span>개인정보 보호책임자 <span class="ph" data-ia="owner">대표 이름</span></span></div>
       <div><span><b>대금</b> <span data-pc="footPay">계좌이체(확인 메일을 받은 뒤) · 카드는 요청하시면 결제 링크를 보내 드립니다</span></span><span><b>증빙</b> <span data-pc="footEvid">전자세금계산서 · 카드 매출전표</span></span><span data-pc-row="footEsc" hidden><b>구매안전서비스</b> <span data-pc="footEsc"></span></span></div>
       <div class="ia-fl"><a href="#privacy" data-go="privacy"><b>개인정보 처리방침</b></a><a href="#terms" data-go="terms">이용약관</a><a href="#about" data-go="about">회사 소개</a><a href="#about" data-go="about" data-ia-fix="1">틀린 곳 알리기</a><span class="sp"></span><span class="ia-th-l" id="ia-th-l">화면</span><span class="themes" role="group" aria-labelledby="ia-th-l"><button type="button" data-theme-set="auto" aria-pressed="false">자동</button><button type="button" data-theme-set="light" aria-pressed="true">밝게</button><button type="button" data-theme-set="dark" aria-pressed="false">어둡게</button></span></div>
-      <div class="xs faint">형광펜 칸은 등록을 마치는 대로 채웁니다. 가격은 공급처 단가를 확인한 품목에만 표시합니다 (VAT 별도).</div>
+      <div class="xs faint">가격은 공급처 단가를 확인한 품목에만 표시합니다 (VAT 별도).</div>
     </div>
   </div>
 </footer>
@@ -3435,7 +3435,8 @@ const SHOP_TERMS = {
 };
 // 견적 요청 통로 (Phase 1, b2b_site_changes.json channel.config). 운영자가 채움. 빈 값 = 미설정: 화면에는 .ph 자리표시를 보여 주고,
 // 그 값에 의존하는 버튼은 disabled + title='운영 정보 등록 후 사용'. href·mailto는 값이 있을 때만 만든다 (v5_rfq.js rfqC).
-const CONTACT = { rfq: 'a8wlhg942@naver.com', tel: '', fax: '', kakaoChat: '' };
+// kakaoName: 채널 이름(대표 확인 2026-10-04). kakaoChat(URL)은 채널을 공개한 날 넣는다. 그 전에는 이름만 보이고 링크·버튼은 만들지 않는다
+const CONTACT = { rfq: 'a8wlhg942@naver.com', tel: '010-2093-0196', fax: '', kakaoChat: '', kakaoName: '볼트노트' };
 
 /* ── 사이트 스위치 (IA 명세 2장, 한 곳). 기본값 = 근거 쪽. 대표만 바꾼다 ──
    ORDER_LIVE: 통신판매업 신고 뒤 ordersOpen + 신고번호 + 사업자번호가 모두 있어야 켜진다 (하나라도 비면 '주문 요청서 (확인 후 진행)').
@@ -3445,6 +3446,7 @@ const SHOP = {
   mailOrderNo: '',          // 통신판매업 신고번호
   bizNo: '456-19-02858',    // 사업자등록번호 (등록증 발급 2026-10, 대표 확인). 빈 값이면 .ph '000-00-00000'
   ownerName: '박세중',       // 대표 실명 (대표 확인 2026-10-04). 빈 값이면 .ph '대표 이름'
+  addr: '',                 // 사업장 주소. 자택이라 공개하지 않음 (대표 결정 2026-10-04). 빈 값이면 바닥글·견적서에서 주소 칸을 숨김. 통신판매업 신고 때 다시 정함
   ownerYears: '7',          // 회전기기 분야 경력 연수 (대표 확인 2026-10-01). 직장 이름은 쓰지 않음
   hero: 'special',          // 'special' | 'general'
   listPrimary: 'send',      // 'send' 파일 그대로 먼저 | 'paste' 붙여넣기 먼저
@@ -3467,8 +3469,8 @@ const PRICE_ANY = () => /^\d{4}-\d\d-\d\d$/.test(SHOP.priceBasis) && Array.isArr
 const PRICE_LAB = () => ORDER_LIVE ? '판매가' : '참고가';
 const ORDER_DOC = () => ORDER_LIVE ? '발주서' : '주문 요청서';
 const SLA_COPY = {
-  parttime: { box: '평일 19시 전 접수 → 당일 21시까지 접수 확인 · 20줄 이하 견적 2영업일', recv: '평일 19시 전에 받은 요청은 당일 21시까지 접수 확인 메일을 드립니다', days: 2 },
-  fulltime: { box: '접수 확인 4영업시간 이내 · 20줄 이하 견적 1영업일', recv: '받은 요청은 4영업시간 안에 접수 확인 메일을 드립니다', days: 1 },
+  parttime: { box: '평일 19시 전 접수 → 당일 21시까지 접수 확인 · 20줄 이하 견적 2영업일', recv: '평일 19시 전에 받은 요청은 당일 21시까지 접수 확인 메일을 드립니다', days: 2, tel: '평일 19~21시', telSub: '평일 19~21시에 받습니다. 못 받으면 다시 걸어 드립니다' },
+  fulltime: { box: '접수 확인 4영업시간 이내 · 20줄 이하 견적 1영업일', recv: '받은 요청은 4영업시간 안에 접수 확인 메일을 드립니다', days: 1, tel: '평일 09–18시', telSub: '평일 09–18시, 회의·검수 중에는 회신 전화' },
 };
 const SLA = () => SLA_COPY[SHOP.sla] || SLA_COPY.parttime;
 
@@ -8937,9 +8939,9 @@ V.help = () => sheet(
   + zone('F', 'z-f', zh('F', 'z-f', '자주 묻는 질문', '해외 사양서, 규격 대체, 성적서, 도금, 사워·저온 볼팅에 대해 자주 받는 질문입니다.') + `<div class="faq">${FAQ.map((q, i) => `<details${i === 0 ? ' open' : ''}><summary>${esc(q[0])}</summary><p>${esc(q[1])}${/3\.1/.test(q[0]) ? FAQ_31_LINK : ''}</p></details>`).join('')}</div>`)
   + zone('G', 'z-g', zh('G', 'z-g', '문의') + `<div class="tblock contact">
     <div class="s2"><span class="lab">이메일</span><span class="val">${rfqC('rfq', { id: 'mail' })}</span><span class="row-wrap"><button class="btn sm" type="button" id="copy-mail"${rfqOk('rfq') ? '' : ` disabled title="${RFQ_UNSET}"`}>복사</button><span class="sub">요청서 파일을 첨부해 보내 주시면 가장 빠릅니다</span></span></div>
-    <div class="s2 e"><span class="lab">전화</span><span class="val">${rfqC('tel', { link: true })}</span><span class="sub">평일 09–18시, 회의·검수 중에는 회신 전화</span></div>
+    <div class="s2 e"><span class="lab">전화</span><span class="val">${rfqC('tel', { link: true })}</span><span class="sub">${esc(SLA().telSub)}</span></div>
     <div class="s2"><span class="lab">카카오톡</span><span class="val">${rfqC('kakaoChat')}</span><span class="sub">사진·간단 문의. 정식 견적서는 메일로 드립니다</span></div>
-    <div class="s2 e"><span class="lab">팩스</span><span class="val">${rfqC('fax')}</span><span class="sub">기관 서식 견적 요청·발주서</span></div>
+    ${rfqOk('fax') ? `<div class="s2 e"><span class="lab">팩스</span><span class="val">${rfqC('fax')}</span><span class="sub">기관 서식 견적 요청·발주서</span></div>` : ''}
     <div class="s4 e lr"><span class="lab">정책 문서</span><span><a href="#terms" data-go="terms">이용약관</a> · <a href="#privacy" data-go="privacy"><b>개인정보 처리방침</b></a> · ${iaBizLink()}</span></div>
   </div>`));
 V.after.help = () => {
@@ -9994,11 +9996,11 @@ const qdSpecOf = q => `${threadTxt(q)}${q.lengthLabel ? ' × ' + q.lengthLabel.r
 // 문서 앞 공통: 워터마크(자동 견적)와 인쇄 바닥 줄(문서 번호 · Rev)
 const qdWm = d => d.offerType !== 'firm' ? `<div class="qd-wm" aria-hidden="true"><span>${esc(d.watermark?.ko || '자동 견적 · 운영자 검토 전')}</span></div><p class="qd-stamp"><b>${esc(d.watermark?.ko || '자동 견적 · 운영자 검토 전')}</b> ${esc(d.watermark?.en || 'Indicative – not reviewed')}</p>` : '';
 const qdSupplier = (firm, cls = '') => `<table class="qd-sup ${cls}"><colgroup><col class="k0"><col class="k1"><col><col class="k1"><col></colgroup><tbody>
-  <tr><th rowspan="6" class="qd-vl" scope="rowgroup"><span aria-hidden="true">공<br>급<br>자</span><span class="sr">공급자</span></th><th scope="row">등록번호</th><td colspan="3" class="mono">${qdBiz()}</td></tr>
+  <tr><th rowspan="${SHOP.addr ? 6 : 5}" class="qd-vl" scope="rowgroup"><span aria-hidden="true">공<br>급<br>자</span><span class="sr">공급자</span></th><th scope="row">등록번호</th><td colspan="3" class="mono">${qdBiz()}</td></tr>
   <tr><th scope="row">상호</th><td>볼트노트</td><th scope="row">성명</th><td class="qd-sign">${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} ${firm ? '<span class="qd-seal" role="img" aria-label="직인 자리">(인)</span>' : '<span class="faint">(서명 없음 · 자동 견적)</span>'}</td></tr>
-  <tr><th scope="row">사업장 주소</th><td colspan="3">${qdPh('사업장 주소 입력 예정')}</td></tr>
+  ${SHOP.addr ? `<tr><th scope="row">사업장 주소</th><td colspan="3">${esc(SHOP.addr)}</td></tr>` : ''}
   <tr><th scope="row">업태</th><td>${qdPh('도매 및 소매업')}</td><th scope="row">종목</th><td>${qdPh('볼트·너트 등 체결부품')}</td></tr>
-  <tr><th scope="row">전화·팩스</th><td colspan="3" class="mono">${rfqC('tel')} · ${rfqC('fax')}</td></tr>
+  <tr><th scope="row">${rfqOk('fax') ? '전화·팩스' : '전화'}</th><td colspan="3" class="mono">${rfqC('tel')}${rfqOk('fax') ? ' · ' + rfqC('fax') : ''}</td></tr>
   <tr><th scope="row">전자우편</th><td class="mono">${rfqC('rfq')}</td><th scope="row">통신판매업</th><td>${qdPh('제0000-지역-0000호')}</td></tr></tbody></table>`;
 
 /* ── 1. 견적서 (A4 세로) ── */
@@ -10061,9 +10063,9 @@ function qdQuoteHtml(c, unp) {
   ${PRICE_ANY() && t.reference && t.reference.supplyMax > t.reference.supplyMin ? `<p class="qd-ref">참고 총액 (확정 + 회신 예정 줄 참고가): ${won(t.reference.supplyMin)} ~ ${won(t.reference.supplyMax)} · VAT 별도${t.reference.noRef ? ` · 참고가 없음 ${t.reference.noRef}줄` : ''} · 합계금액과 한글 금액에는 넣지 않았습니다</p>` : ''}`}
   <section class="qd-sec qd-notes"><h3>특기사항</h3><ol>${notes.map(n => `<li><span>${n}</span></li>`).join('')}</ol></section>
   <section class="qd-sec qd-att"><h3>첨부서류</h3><ol>${att.map(a => `<li><span>${a}</span></li>`).join('')}</ol></section>
-  <dl class="qd-foot"><dt>입금계좌</dt><dd>${qdPh('은행명 · 계좌번호 · 예금주')}</dd><dt>담당자</dt><dd>${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} · ${qdPh('000-0000-0000')}</dd></dl>
+  <dl class="qd-foot"><dt>입금계좌</dt><dd>${qdPh('은행명 · 계좌번호 · 예금주')}</dd><dt>담당자</dt><dd>${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} · ${rfqOk('tel') ? esc(CONTACT.tel) : qdPh('000-0000-0000')}</dd></dl>
   ${qdRevTable(d)}
-  <p class="qd-line">볼트노트 · 사업자등록번호 ${qdBiz()} · ${qdPh('사업장 주소')}</p>
+  <p class="qd-line">볼트노트 · 사업자등록번호 ${qdBiz()}${SHOP.addr ? ' · ' + esc(SHOP.addr) : ''}</p>
 </article>`;
 }
 const qdRevTable = d => `<table class="qd-rev"><caption>개정 이력 Revision History</caption><thead><tr><th>Rev</th><th>날짜 Date</th><th>내용 Description</th><th>작성 By</th><th>검토 Chk'd</th></tr></thead><tbody>${d.revision.history.map(h => `<tr><td class="mono">${esc(h.rev)}</td><td class="mono">${esc(h.date || '')}</td><td>${esc(h.desc || '')}</td><td>${h.by ? esc(h.by) : qdPh('작성자')}</td><td>${h.chk ? esc(h.chk) : '—'}</td></tr>`).join('')}</tbody></table>`;
@@ -10485,6 +10487,7 @@ function rfqOk(k) {
 // 연락처 한 칸: 값이 있으면 값(카카오는 새 창 링크, 전화는 link:true일 때 tel:), 없으면 형광 자리표시
 function rfqC(k, o = {}) {
   const id = o.id ? ` id="${o.id}"` : '';
+  if (k === 'kakaoChat' && !rfqOk(k) && CONTACT.kakaoName) return `<span${id} data-contact="kakaoChat">${esc(CONTACT.kakaoName)} <span class="small muted">(채널 공개 준비 중)</span></span>`;
   if (!rfqOk(k)) return `<span class="ph${k === 'kakaoChat' ? '' : ' mono'}"${id} data-contact="${k}">${RFQ_PH[k]}</span>`;
   const v = String(CONTACT[k]).trim();
   if (k === 'kakaoChat') return `<a${id} href="${esc(v)}" target="_blank" rel="noopener">${o.label || '볼트노트 채널 1:1 채팅'}</a>`;
@@ -10492,7 +10495,7 @@ function rfqC(k, o = {}) {
   return `<span class="mono"${id}>${esc(v)}</span>`;
 }
 // 바닥글은 정적 마크업: 값이 정해졌으면 여기서 자리표시를 바꿔 끼운다
-document.querySelectorAll('footer [data-contact]').forEach(el => { const k = el.dataset.contact; if (rfqOk(k)) el.outerHTML = rfqC(k, { link: true }); });
+document.querySelectorAll('footer [data-contact]').forEach(el => { const k = el.dataset.contact; if (rfqOk(k) || (k === 'kakaoChat' && CONTACT.kakaoName)) el.outerHTML = rfqC(k, { link: true }) + (k === 'tel' && rfqOk(k) ? ` <span class="small">(${esc(SLA().tel)})</span>` : ''); });
 
 // 요청번호 (날짜는 KST): Q-YYMMDD-XXXX 요청 · BO-YYMMDD-XXXX 발주. 끝 4자리는 헷갈리는 글자(0 O 1 I L)를 뺀 31자 중 무작위
 // (하루 31⁴ ≈ 92만 가지: 하루 10건이면 겹칠 확률 약 0.005 %). 내려받은 뒤 내용이 바뀌면 같은 번호에 -R1, -R2 …를 붙인다 (rfqCartPaint)
@@ -10850,7 +10853,7 @@ V.privacy = () => sheet(
     ]), 'tight')
   + zone('F', 'z-f', zh('F', 'z-f', '정보주체의 권리와 행사 방법') + helpList([
       '언제든지 개인정보의 열람, 정정·삭제, 처리정지를 요구하실 수 있고, 소식 메일 동의는 언제든 철회하실 수 있습니다 (개인정보 보호법 제35조~제37조).',
-      `메일(${rfqC('rfq')}), 전화(${rfqC('tel', { link: true })}), 팩스(${rfqC('fax')})로 요청해 주세요. 받은 날부터 10일 안에 조치하고 결과를 알려 드립니다.`,
+      `메일(${rfqC('rfq')}), 전화(${rfqC('tel', { link: true })})${rfqOk('fax') ? `, 팩스(${rfqC('fax')})` : ''}로 요청해 주세요. 받은 날부터 10일 안에 조치하고 결과를 알려 드립니다.`,
       '법정대리인이나 위임을 받은 분도 요청하실 수 있습니다. 이때는 위임장을 함께 보내 주세요.',
       '법령에서 보관하도록 정한 거래 기록은 그 기간 동안 삭제할 수 없습니다. 이 경우 이유를 알려 드립니다.',
     ]), 'tight')
@@ -11715,6 +11718,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('ia-men
 // 바닥글·상태 칸: 스위치 값으로 채운다 (빈 값이면 .ph 그대로)
 if (SHOP.ownerName) document.querySelectorAll('[data-ia="owner"]').forEach(el => { el.outerHTML = esc(SHOP.ownerName); });
 if (SHOP.bizNo) document.querySelectorAll('[data-ia="bizno"]').forEach(el => { el.outerHTML = `<span class="mono">${esc(SHOP.bizNo)}</span>`; });
+if (SHOP.addr) document.querySelectorAll('[data-ia="addr"]').forEach(el => { el.lastElementChild.textContent = SHOP.addr; el.hidden = false; });
 document.querySelectorAll('[data-ia="mailorder"]').forEach(el => { el.innerHTML = iaMailOrder() + (ORDER_LIVE ? ` · ${iaBizLink()}` : ''); });
 if (ORDER_LIVE) { const st = $('ia-stc'); if (st) st.hidden = true; }
 // 검색 색인: 옛 홈 구역 항목을 새 경로로, 165종 품목·칸·모음·새 페이지를 더한다
