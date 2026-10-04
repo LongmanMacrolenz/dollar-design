@@ -46,7 +46,7 @@ h1{margin:0;font-size:clamp(26px,3.2vw,40px);line-height:1.2;letter-spacing:-.03
 .bd{display:flex;flex-wrap:wrap;gap:4px;margin:12px 0 6px}.org,.kind,.st{display:inline-flex;align-items:center;height:22px;padding:0 8px;border-radius:5px;font-size:11.5px;font-weight:800}.org{background:var(--ink);color:var(--sheet)}.kind{border:1px solid var(--hair);color:var(--ink-2)}.st{background:var(--red-soft);color:var(--red)}
 .ko{font-size:17px;font-weight:800;color:var(--ink-2);margin:0}.en{font-size:13.5px;color:var(--ink-3);margin:4px 0 0}
 .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:28px 40px;align-items:start;margin-top:18px}
-.lead{font-size:17px;line-height:1.75;margin:0}.stl{color:var(--red);font-size:14px}
+.lead{font-size:17px;line-height:1.75;margin:0}.stl{color:var(--red);font-size:14px}.stl.ok{color:var(--ink-2)}
 ul.f{margin:0;padding:0;list-style:none;display:grid;gap:8px}ul.f li{position:relative;padding-left:18px}ul.f li:before{content:"";position:absolute;left:2px;top:.72em;width:7px;height:7px;border-radius:2px;background:var(--ink-3)}
 .watch{margin-top:24px;padding:4px 18px 14px;border-left:4px solid var(--acc);border-radius:0 12px 12px 0;background:var(--hl-soft)}
 table{border-collapse:collapse;width:100%;background:var(--sheet);font-size:14px}th,td{border:1px solid var(--hair-2);padding:7px 10px;text-align:left;vertical-align:top}th{background:#F5F7F3}.tw{overflow-x:auto}
@@ -78,6 +78,7 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None) ->
 
 
 ON = ' class="on" aria-current="page"'
+STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉은색
 
 
 def header(on: str = "lib") -> str:
@@ -122,7 +123,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + f'<p class="crumbs"><a href="/">홈</a> › <a href="/lib/">규격 사전</a> › {e(x["t"])}</p><h1>{e(x["t"])}</h1>'
             + f'<p class="bd">{badges(x)}</p><p class="ko">{e(x.get("ko", ""))}</p>' + (f'<p class="en" lang="en">{e(x["en"])}</p>' if x.get("en") else "")
             + '<div class="grid"><article>'
-            + f'<p class="lead">{e(x.get("sum", ""))}</p>' + (f'<p class="stl">상태: {e(x["status"])}</p>' if x.get("status") else "")
+            + f'<p class="lead">{e(x.get("sum", ""))}</p>' + (f'<p class="{STL[x["status"].startswith("현행")]}">상태: {e(x["status"])}</p>' if x.get("status") else "")
             + '<h2>핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl
             + ('<section class="watch"><h2>BOM·구매 때 주의</h2><ul class="f">' + "".join(f"<li>{e(w)}</li>" for w in x["watch"]) + "</ul></section>" if x.get("watch") else "")
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
