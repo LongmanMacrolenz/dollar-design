@@ -28,7 +28,7 @@ function bnOpenFind() {
 bnFindDialog.querySelector('.bn-find-close').addEventListener('click',()=>bnFindDialog.close());
 bnFindDialog.addEventListener('click',e=> { if(e.target === bnFindDialog) bnFindDialog.close(); });
 bnFindDialog.addEventListener('keydown',e=> { if(e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); bnFindDialog.close(); } });
-bnFindDialog.addEventListener('close',()=>clearTimeout(bnFindTimer));
+bnFindDialog.addEventListener('close',()=> { if(!bnFindDialog.open) clearTimeout(bnFindTimer); });
 bnFindInput.addEventListener('input',()=> { clearTimeout(bnFindTimer); bnFindTimer=setTimeout(bnRenderFind,120); });
 bnFindDialog.querySelector('form').addEventListener('submit',e=> { e.preventDefault(); clearTimeout(bnFindTimer); bnRenderFind(); bnFindDialog.querySelector('.bn-find-results a')?.click(); });
 bnFindInput.addEventListener('keydown',e=> { if(e.key==='ArrowDown') { e.preventDefault(); bnFindDialog.querySelector('.bn-find-results a')?.focus(); } });
