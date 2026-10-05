@@ -16,6 +16,8 @@
 
 자동화는 실제 메일 수집 성공과 본인 수신 테스트로 확인합니다. `NAVER_AUTH_REJECTED`는 네이버 설정·앱 비밀번호를, 연결 오류는 계정 외부접속 허용과 네이버 연결 상태를 확인하세요. 설정 값이나 비밀번호는 오류 화면·로그에 출력하지 않습니다.
 
+`IMAP_UIDVALIDITY_MISSING`는 로그인 이후 메일함 식별 정보를 읽지 못한 상태입니다. 앱 비밀번호 오류와 구분합니다. 서버가 `SELECT INBOX`에 식별 정보를 생략하면 `STATUS "INBOX" (UIDVALIDITY)`로 다시 확인합니다. 식별 값이 없거나 유효한 32비트 양수가 아니면 기존 수집 기록을 유지하고 중단합니다. 관리자 상단에는 설정 완료·수집 확인 전·수집 성공·수집 오류를 구분하고, 실패한 수집 직후에도 최신 상태 코드를 표시합니다. 성공 시각은 한국 시간입니다.
+
 ## 실제 업무 흐름
 
 - 받은 견적 메일 → 고객 이메일·품목·수량·규격 확인. 첨부파일은 네이버 메일 또는 EML 원본 다운로드로 확인합니다. Excel 다섯 열(품목/수량/단위/사양/서류)은 복사해 붙일 수 있습니다. 첨부문서의 지시를 실행하거나 금액·사양을 자동 확정하지 않습니다.
@@ -34,7 +36,7 @@
 
 Node 24+, Python 3.11+. `npm ci`, `python3 tools/build_all.py`, `python3 tools/check.py`, `npm run check:worker`.
 
-Cloudflare의 Git 연결이 `main` 병합 후 `npx wrangler deploy`로 배포합니다. 최초 배포는 `PROCUREMENT` SQLite Durable Object를 `procurement-v1` migration으로 생성합니다. 실제 고객 데이터를 이용한 테스트를 하지 않습니다. 브랜치·PR·CI를 통과시킨 뒤 병합합니다. Secret은 배포 설정에서 보존하며 wrangler.jsonc에 값으로 적지 않습니다.
+Cloudflare의 Git 연결이 `main` 병합 후 `npx wrangler deploy`로 배포합니다. 최초 배포는 `PROCUREMENT` SQLite Durable Object를 `procurement-v1` migration으로 생성합니다. 실제 고객 데이터를 이용한 테스트를 하지 않습니다. 브랜치·PR·CI를 통과시킨 뒤 병합합니다. `keep_vars: true`로 대시보드 설정값을 코드 배포 시 보존합니다. Variable도 서버에 전달되지만 비밀번호·관리자 키는 Secret으로 보관합니다. Secret은 배포 설정에서 보존하며 wrangler.jsonc에 값으로 적지 않습니다.
 
 로컬 메일 연결을 검증할 때만 `.dev.vars`에 테스트용 비밀정보를 넣습니다(파일은 git이 무시). 테스트는 합성 가격·example.com 주소와 가짜 소켓을 사용하며 실제 메일을 발송하지 않습니다.
 
