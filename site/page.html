@@ -1,7 +1,7 @@
 <title>볼트노트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Barlow+Condensed:wght@600&family=Gothic+A1:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Barlow+Condensed:wght@600&family=Manrope:wght@400;500;600;700;800&family=Gothic+A1:wght@400;700;800&display=swap">
 <style>
 /* =====================================================================
    볼트노트 base.css — 방향: 도면 (Engineering drawing sheet)
@@ -3128,6 +3128,412 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
 @media (max-width: 1100px) { .tb.ia-tb .brand { flex-basis: 205px; } .tb .bn-logo { width: 188px; } }
 @media (max-width: 860px) { .tb.ia-tb .brand { flex-basis: 180px; } .tb .bn-logo { width: 174px; } }
 @media (max-width: 680px) { .tb .bn-logo { width: 164px; } .tb.ia-tb .brand { flex: 1; } .tb-mini .bn-logo { width: 118px; } }
+/* ── zzz_experience.css ── */
+/* Boltnote's editorial site: bold typography, tactile controls, clear engineering paths. */
+:root { --paper:#f4f3ef; --sheet:#fffdf9; --sheet-2:#eeede8; --ink:#1d2529; --ink-2:#4c575c; --ink-3:#687277; --hair:#bfc4c3; --hair-2:#dddfda; --bn-orange:#f15a38; --bn-orange-ink:#a6351d; --bn-navy:#142234; --bn-en:'Manrope',sans-serif; }
+:root[data-theme="dark"] { --paper:#111a23; --sheet:#16212d; --sheet-2:#1d2a37; --ink:#f2f3ef; --ink-2:#c0cad2; --ink-3:#9daab6; --hair:#596571; --hair-2:#34414e; --bn-orange-ink:#ff967c; }
+@media(prefers-color-scheme:dark) {
+  :root[data-theme="auto"] { --paper:#111a23; --sheet:#16212d; --sheet-2:#1d2a37; --ink:#f2f3ef; --ink-2:#c0cad2; --ink-3:#9daab6; --hair:#596571; --hair-2:#34414e; --bn-orange-ink:#ff967c; }
+  :root[data-theme="auto"] .bn-logo-ink { display:none; }
+  :root[data-theme="auto"] .bn-logo-white { display:block; }
+}
+::selection { background:#f15a3840; }
+button,a,input,summary { -webkit-tap-highlight-color:transparent; }
+button,a { touch-action:manipulation; }
+:focus-visible { outline:2px solid var(--bn-orange); outline-offset:5px; }
+.tb.ia-tb { background:var(--paper); border-color:var(--hair-2); }
+.tb.ia-tb .wrap { max-width:1520px; padding-inline:40px; }
+.tb.ia-tb .tb-grid { display:flex; flex-wrap:nowrap; min-height:88px; align-items:center; gap:12px; }
+.tb.ia-tb .brand { flex-basis:225px; }
+.tb.ia-tb .brand small { display:none; }
+.tb.ia-tb .ia-nav { justify-content:center; }
+.tb.ia-tb .ia-nav a { min-height:48px; padding-inline:14px; font-size:13px; }
+.tb.ia-tb .ia-grid > .find,.tb.ia-tb .ia-grid > .stc { display:none; }
+.tb.ia-tb .ia-grid > .bn-open-find { display:grid; place-items:center; width:44px; height:44px; padding:0; border:0; border-radius:50%; background:transparent; color:var(--ink); }
+.bn-open-find svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.6; }
+.tb.ia-tb .bn-header-rfq { display:flex; align-items:center; gap:17px; min-height:44px; padding:0 19px; border-radius:999px; background:var(--bn-orange); color:#142234; font-size:12px; font-weight:800; text-decoration:none; }
+.tb.ia-tb .ia-grid > .cartc { flex-basis:auto; width:45px; height:44px; padding:0; background:transparent; border:1px solid var(--hair); border-radius:50%; justify-content:center; }
+.tb.ia-tb .ia-grid > .cartc b { display:none; }
+.tb.ia-tb .ia-grid > .cartc .cart-n { border:0; color:var(--ink); min-width:24px; font-family:var(--bn-en); }
+.tb.ia-tb .ia-grid > .ia-menu-b { display:flex; align-items:center; justify-content:center; gap:10px; height:44px; padding:0 4px 0 10px; border:0; background:transparent; color:var(--ink); }
+.ia-menu-b i { width:23px; display:grid; gap:6px; }
+.ia-menu-b i b { height:1.5px; background:currentColor; transition:transform .25s; }
+.tb.ia-tb .bn-header-rfq:hover { background:#ff7656; }
+.tb.ia-tb .bn-open-find:hover { background:var(--sheet-2); }
+.tb.ia-tb .ia-menu-b:hover i b:first-child { transform:translateX(4px); }
+.bn-reading-progress { position:fixed; left:0; right:0; top:0; height:2px; z-index:60; pointer-events:none; }
+.bn-reading-progress i { display:block; background:var(--bn-orange); height:100%; width:var(--bn-read,0%); }
+.bn-top { position:fixed; right:24px; bottom:24px; z-index:25; width:48px; height:48px; border:1px solid #ffffff40; border-radius:50%; background:#142234; color:white; box-shadow:0 4px 24px #0002; font-size:24px; }
+.bn-top:hover { background:var(--bn-orange); color:#142234; }
+.bn-studio { background:var(--paper); }
+.bn-studio .bn-wrap { max-width:1440px; padding-inline:48px; }
+.bn-studio .bn-section { padding-block:112px; }
+.bn-studio .bn-eyebrow { font-family:var(--bn-en); font-size:11px; letter-spacing:.10em; font-weight:700; color:var(--ink-3); margin-bottom:24px; }
+.bn-studio .bn-section-head { align-items:end; margin-bottom:48px; gap:40px; }
+.bn-studio h2 { font-size:clamp(32px,3.8vw,52px); font-weight:700; line-height:1.28; letter-spacing:-.065em; }
+.bn-studio .bn-section-aside { display:flex; flex-direction:column; align-items:start; gap:20px; padding-bottom:4px; }
+.bn-studio .bn-section-head p:not(.bn-eyebrow) { color:var(--ink-2); font-size:14px; line-height:1.9; }
+.bn-studio .bn-text-link { min-height:40px; border-color:var(--hair); gap:30px; font-size:12px; }
+.bn-studio .bn-text-link span { transition:transform .25s; }
+.bn-studio .bn-text-link:hover span { transform:translate(3px,-3px); }
+.bn-studio .bn-cinema { background:var(--paper); color:var(--ink); border:0; }
+.bn-studio .bn-cinema::before { display:none; }
+.bn-studio .bn-hero-grid { max-width:1520px; grid-template-columns:.95fr 1.05fr; min-height:640px; gap:28px; }
+.bn-studio .bn-hero-copy { padding:60px 0 46px; }
+.bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em { font-size:clamp(42px,4.9vw,74px); color:var(--ink); line-height:1.24; white-space:normal; font-weight:700; letter-spacing:-.07em; }
+.bn-studio .bn-cinema h1 em { color:var(--bn-orange); }
+.bn-studio .bn-hero-lead { color:var(--ink-2); font-size:14px; line-height:1.9; margin:28px 0 32px; }
+.bn-studio .bn-btn { position:relative; overflow:hidden; isolation:isolate; min-height:52px; padding-inline:24px; border-radius:999px; background:var(--bn-orange); border-color:var(--bn-orange); color:#142234; gap:26px; font-size:13px; }
+.bn-studio .bn-btn::before { content:""; position:absolute; inset:0; z-index:-1; background:#142234; transform:translateY(110%); transition:transform .35s cubic-bezier(.22,1,.36,1); border-radius:50%; }
+.bn-studio .bn-btn:hover { background:var(--bn-orange); color:white; border-color:#142234; }
+.bn-studio .bn-btn:hover::before { transform:translateY(0); border-radius:0; }
+.bn-studio .bn-btn > span { transition:transform .3s; }
+.bn-studio .bn-btn:hover > span { transform:translate(3px,-3px); }
+.bn-studio .bn-btn:active { transform:scale(.97); }
+.bn-studio .bn-btn-outline { color:var(--ink); border-color:var(--hair); background:transparent; }
+.bn-studio .bn-hero-standards { color:var(--ink-3); font-family:var(--bn-en); font-size:10px; gap:6px 10px; margin-top:40px; }
+.bn-studio .bn-hero-standards span + span::before { margin-right:10px; color:var(--hair); }
+.bn-scroll-cue { display:flex; align-items:center; gap:12px; font-size:11px; color:var(--ink-2); background:transparent; border:0; padding:0; margin-top:40px; }
+.bn-scroll-cue > span { display:grid; place-items:center; border:1px solid var(--hair); border-radius:50%; width:34px; height:34px; font-size:18px; transition:transform .3s,background .3s; }
+.bn-scroll-cue:hover > span { transform:translateY(4px); background:var(--bn-orange); border-color:var(--bn-orange); color:#142234; }
+.bn-studio .bn-film { margin:32px 0; align-self:center; overflow:hidden; border-radius:18px; background:#0d1620; }
+.bn-studio .bn-film video { height:auto; max-height:none; aspect-ratio:4/3; object-fit:contain; }
+.bn-studio .bn-film-stage::after { background:linear-gradient(0deg,#0d1620,transparent 14%); }
+.bn-studio .bn-film-badge { top:22px; left:26px; font-family:var(--bn-en); color:#bbc7d1; font-size:10px; }
+.bn-studio .bn-film-corner { display:none; }
+.bn-studio .bn-film-caption { min-height:100px; padding:5px 26px 24px; gap:14px; }
+.bn-studio .bn-film-caption::before { display:none; }
+.bn-studio .bn-film-number { font-family:var(--bn-en); font-size:10px; padding-top:3px; }
+.bn-studio .bn-film-caption > div > span { font-family:var(--bn-en); font-size:9px; }
+.bn-studio .bn-film-caption strong { font-size:18px; font-weight:700; }
+.bn-studio .bn-film-caption p { font-size:11px; color:#b4c0cc; }
+.bn-studio .bn-film-navigation { padding-top:20px; padding-bottom:30px; border-color:var(--hair-2); grid-template-columns:1fr auto; gap:20px; }
+.bn-studio .bn-film-chapters { grid-template-columns:repeat(var(--bn-chapter-count,5),minmax(0,1fr)); gap:16px; grid-column:1; grid-row:1; }
+.bn-studio .bn-film-chapters button { color:var(--ink-2); font-size:11px; gap:8px; min-height:48px; padding-bottom:12px; }
+.bn-studio .bn-film-chapters button[aria-pressed="true"],.bn-studio .bn-film-chapters button:hover { color:var(--ink); }
+.bn-studio .bn-film-chapter-no { color:var(--ink-3); font-family:var(--bn-en); font-size:10px; }
+.bn-studio .bn-film-chapters button[aria-pressed="true"] .bn-film-chapter-no { color:var(--bn-orange-ink); }
+.bn-studio .bn-film-track { background:var(--hair-2); }
+.bn-studio .bn-film-track i { background:var(--bn-orange); }
+.bn-studio .bn-film-play { grid-column:2; grid-row:1; align-self:start; background:var(--paper); color:var(--ink); border:1px solid var(--hair); border-radius:999px; font-size:11px; }
+.bn-studio .bn-film-play:hover { background:var(--sheet-2); }
+.bn-film-check { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:20px; grid-column:1/-1; grid-row:2; border-radius:10px; padding:19px 24px; background:#142234; color:white; text-decoration:none; }
+.bn-film-check > span { color:#ff9479; font-size:11px; }
+.bn-film-check b { font-weight:500; font-size:12px; line-height:1.8; }
+.bn-film-check i { font-style:normal; font-size:22px; transition:transform .3s; }
+.bn-film-check:hover i { transform:translate(3px,-3px); }
+.bn-studio .bn-film-note { color:var(--ink-3); font-size:10px; grid-column:1/-1; grid-row:3; max-width:none; line-height:1.7; }
+.bn-studio .bn-facts { padding-block:32px; }
+.bn-studio .bn-facts > * { padding-inline:30px; }
+.bn-studio .bn-facts > :first-child { padding-left:0; }
+.bn-studio .bn-facts b { font-family:var(--bn-en); font-size:38px; font-weight:600; }
+.bn-studio .bn-facts small { display:block; margin:9px 0 0; font-family:var(--bn-en); font-size:9px; font-weight:700; letter-spacing:.08em; }
+.bn-studio .bn-facts span { font-size:11px; margin-top:10px; }
+.bn-carousel { margin-inline:-6px; }
+.bn-studio .bn-products { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scroll-padding-inline:6px; scrollbar-width:none; gap:22px; padding:6px; scroll-behavior:smooth; overscroll-behavior-x:contain; cursor:grab; }
+.bn-studio .bn-products::-webkit-scrollbar { display:none; }
+.bn-studio .bn-products > li { flex:0 0 calc((100% - 44px)/3); scroll-snap-align:start; }
+.bn-studio .bn-products.bn-dragging { scroll-snap-type:none; scroll-behavior:auto; cursor:grabbing; }
+.bn-studio .bn-product { background:transparent; border:0; border-radius:0; box-shadow:none; }
+.bn-studio .bn-product-visual { border-radius:12px; border:0; background-color:#f3f4f4; }
+.bn-studio .bn-product-info { padding:24px 2px 0; }
+.bn-studio .bn-product-info h3 { font-size:26px; line-height:1.35; font-weight:700; }
+.bn-studio .bn-product-en { font-family:var(--bn-en); font-size:11px; letter-spacing:.025em; margin-top:5px; }
+.bn-studio .bn-product-count { background:var(--sheet); padding:5px 9px; border-radius:999px; font-size:10px; color:var(--ink-2); }
+.bn-studio .bn-product-desc { font-size:11px; margin-top:17px; }
+.bn-studio .bn-product-link { font-size:11px; padding-top:18px; margin-top:20px; border-top:1px solid var(--hair-2); }
+.bn-studio .bn-product-link > span { transition:transform .3s; font-size:22px; }
+.bn-studio .bn-product:hover { box-shadow:none; }
+.bn-studio .bn-product:hover h3 { color:var(--bn-orange-ink); }
+.bn-studio .bn-product:hover .bn-product-link > span { transform:translate(3px,-3px); }
+.bn-carousel-bar { display:flex; align-items:center; justify-content:space-between; gap:25px; margin-top:38px; }
+.bn-studio .bn-catalog-note { margin:0; font-size:10px; line-height:1.8; max-width:500px; }
+.bn-carousel-controls { display:flex; align-items:center; gap:9px; flex:none; }
+.bn-carousel-controls > span { margin-right:15px; font-family:var(--bn-en); font-size:11px; }
+.bn-carousel-controls button { width:44px; height:44px; border:1px solid var(--hair); border-radius:50%; background:transparent; color:var(--ink); font-size:19px; transition:background .25s; }
+.bn-carousel-controls button:hover:enabled { background:var(--bn-orange); color:#142234; border-color:var(--bn-orange); }
+.bn-carousel-controls button:disabled { opacity:.3; cursor:default; }
+.bn-studio .bn-applications { background:#142234; color:white; }
+.bn-studio .bn-applications .bn-eyebrow { color:#d7a18f; }
+.bn-studio .bn-applications .bn-section-head p:not(.bn-eyebrow) { color:#bbc5d0; }
+.bn-application-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.bn-application { min-width:0; color:white; text-decoration:none; }
+.bn-application-image { position:relative; overflow:hidden; border-radius:12px; background:#0d1620; aspect-ratio:4/3; }
+.bn-application-image img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .6s cubic-bezier(.22,1,.36,1); }
+.bn-application-image > span { position:absolute; left:20px; top:20px; color:#f5f6f4; font-size:11px; font-family:var(--bn-en); }
+.bn-application:hover img { transform:scale(1.045); }
+.bn-application-body { padding:26px 0 0; }
+.bn-application-body h3 { font-size:24px; font-weight:700; letter-spacing:-.045em; }
+.bn-application-body p { color:#bbc5d0; font-size:12px; line-height:1.9; margin:13px 0 24px; }
+.bn-application-link { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #ffffff30; padding-top:18px; font-size:11px; }
+.bn-application-link i { font-style:normal; font-size:23px; transition:transform .3s; }
+.bn-application:hover i { transform:translate(3px,-3px); color:#ff9479; }
+.bn-spec-grid { display:grid; grid-template-columns:1fr 1.12fr; gap:100px; }
+.bn-spec-lead { font-size:14px; color:var(--ink-2); line-height:1.9; margin:28px 0 26px; }
+.bn-spec { border-top:1px solid var(--hair); }
+.bn-spec:last-child { border-bottom:1px solid var(--hair); }
+.bn-spec summary { list-style:none; cursor:pointer; display:flex; align-items:center; gap:20px; padding:27px 0; }
+.bn-spec summary::-webkit-details-marker { display:none; }
+.bn-spec summary > span { font:11px var(--bn-en); color:var(--ink-3); }
+.bn-spec summary h3 { flex:1; font-size:19px; font-weight:700; }
+.bn-spec summary > i { display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--hair); border-radius:50%; font-size:21px; font-style:normal; transition:transform .3s,background .3s; }
+.bn-spec[open] summary > i { transform:rotate(45deg); background:var(--bn-orange); color:#142234; border-color:var(--bn-orange); }
+.bn-spec > div { padding:0 0 27px 34px; }
+.bn-spec > div p { font-size:13px; line-height:1.9; color:var(--ink-2); margin-bottom:18px; }
+.bn-spec > div a { font-size:11px; color:var(--bn-orange-ink); text-underline-offset:5px; }
+.bn-studio .bn-resources { background:var(--sheet); }
+.bn-knowledge-head { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:60px; align-items:center; padding:32px 0 48px; }
+.bn-knowledge-head > * { min-width:0; }
+.bn-knowledge-head > p { font-size:15px; line-height:1.8; color:var(--ink-2); }
+.bn-knowledge-head > p b { color:var(--ink); font-weight:700; }
+.bn-knowledge-head form { display:flex; border-bottom:1px solid var(--hair); padding-bottom:12px; }
+.bn-knowledge-head input { flex:1; min-width:0; min-height:45px; background:transparent; border:0; font-size:15px; color:var(--ink); padding:0; }
+.bn-knowledge-head input::placeholder { color:var(--ink-3); }
+.bn-knowledge-head button { width:45px; height:45px; border:0; border-radius:50%; background:var(--bn-orange); color:#142234; font-size:23px; }
+.bn-topic-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 60px; }
+.bn-topic { display:flex; align-items:center; gap:25px; border-top:1px solid var(--hair-2); padding:26px 0; text-decoration:none; color:var(--ink); min-width:0; }
+.bn-topic-no { color:var(--ink-3); font:11px var(--bn-en); }
+.bn-topic > span:nth-child(2) { flex:1; min-width:0; }
+.bn-topic b { display:block; font-size:19px; font-weight:700; }
+.bn-topic small { display:block; margin-top:8px; font-family:var(--bn-en); font-size:10px; color:var(--ink-3); }
+.bn-topic i { font-style:normal; font-size:25px; transition:transform .3s; }
+.bn-topic:hover b { color:var(--bn-orange-ink); }
+.bn-topic:hover i { transform:translate(3px,-3px); }
+.bn-reading-paths { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:35px; }
+.bn-reading-paths > span { font-size:11px; color:var(--ink-3); margin-right:10px; }
+.bn-reading-paths a { display:flex; gap:18px; padding:11px 15px; border:1px solid var(--hair-2); border-radius:999px; font-size:11px; text-decoration:none; }
+.bn-reading-paths a:hover { border-color:var(--bn-orange); }
+.bn-reading-paths i { font-style:normal; }
+.bn-resource-shortcuts { display:grid; grid-template-columns:1fr 1fr; gap:25px; margin-top:56px; }
+.bn-resource-shortcuts a { position:relative; padding:32px; border-radius:12px; background:var(--paper); text-decoration:none; color:var(--ink); }
+.bn-resource-shortcuts span { display:block; font:10px var(--bn-en); color:var(--ink-3); letter-spacing:.08em; margin-bottom:20px; }
+.bn-resource-shortcuts h3 { font-size:23px; font-weight:700; }
+.bn-resource-shortcuts p { font-size:11px; color:var(--ink-2); margin-top:10px; }
+.bn-resource-shortcuts i { position:absolute; right:32px; top:50%; font-style:normal; font-size:26px; transition:transform .3s; }
+.bn-resource-shortcuts a:hover i { transform:translate(3px,-3px); }
+.bn-studio .bn-rfq { background:var(--paper); color:var(--ink); }
+.bn-studio .bn-rfq-grid { grid-template-columns:1fr 1.06fr; align-items:start; gap:90px; }
+.bn-studio .bn-rfq-copy h2 { font-size:clamp(32px,3.8vw,52px); color:var(--ink); }
+.bn-studio .bn-rfq-copy p:not(.bn-eyebrow) { font-size:13px; line-height:1.9; color:var(--ink-2); }
+.bn-studio .bn-rfq-points { display:grid; padding:0; list-style:none; margin:30px 0; gap:15px; }
+.bn-studio .bn-rfq-points li { font-size:12px; }
+.bn-studio .bn-rfq-points span { font:10px var(--bn-en); margin-right:17px; color:var(--bn-orange-ink); }
+.bn-studio .bn-rfq-foot { font-size:11px; }
+.bn-studio .bn-rfq-foot a,.bn-studio .bn-rfq-foot button { color:var(--ink); border-color:var(--hair); }
+.bn-studio .bn-rfq-input { border:1px solid var(--hair-2); border-radius:14px; overflow:hidden; padding:0 25px 25px; box-shadow:0 15px 35px #14223408; background:var(--sheet); }
+.bn-studio .bn-input-heading { margin:0 -25px 24px; padding:18px 25px; background:#142234; color:white; border:0; font-size:11px; }
+.bn-studio .bn-input-heading small { color:#aebbc7; font-size:9px; }
+.bn-studio .bn-input-dot { background:var(--bn-orange); }
+.bn-studio .ia-qgo { border-radius:0 6px 6px 0; background:var(--bn-orange); color:#142234; }
+.bn-studio .bn-rfq-notice { font-size:10px; }
+.bn-studio .bn-cta { padding:90px 0; border:0; background:var(--bn-orange); color:#142234; }
+.bn-studio .bn-cta h2 { font-size:clamp(32px,4.1vw,60px); font-weight:700; line-height:1.3; }
+.bn-studio .bn-cta .bn-eyebrow { color:#612b1f; }
+.bn-cta-circle { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:16px; width:176px; height:176px; flex:none; border-radius:50%; background:#142234; color:white; text-decoration:none; transition:transform .35s; }
+.bn-cta-circle > span { font-size:43px; font-weight:400; transition:transform .35s; }
+.bn-cta-circle b { font-size:13px; font-weight:700; }
+.bn-cta-circle:hover { transform:rotate(-5deg); }
+.bn-cta-circle:hover > span { transform:translate(6px,-6px); }
+.bn-footer-sign { padding:56px 0 52px; border-bottom:1px solid #ffffff28; }
+.bn-footer-sign img { width:100%; height:auto; opacity:.96; }
+footer.foot.ia-foot { background:#142234; }
+.pm-ft { padding-top:44px; }
+.pm-ft-brand .bn-logo { width:180px; }
+.shd h1 { font-size:clamp(30px,3.3vw,46px); }
+.lib-topic-card,.lib-path,.lib-card,.ia-fam { transition:transform .3s,border-color .3s,box-shadow .3s; }
+.btn { border-radius:999px; }
+.btn:active { transform:scale(.98); }
+
+/* Native modal search; focus and background inertness are provided by <dialog>. */
+.bn-find { padding:0; width:min(780px,calc(100vw - 32px)); max-height:calc(100svh - 64px); border:0; border-radius:16px; background:var(--sheet); color:var(--ink); box-shadow:0 40px 100px #0004; }
+.bn-find::backdrop { background:#101c2bd9; backdrop-filter:blur(6px); }
+.bn-find-head { display:flex; justify-content:space-between; align-items:center; padding:26px 28px 10px; }
+.bn-find-head h2 { font-size:18px; font-weight:700; }
+.bn-find-close { width:36px; height:36px; border:1px solid var(--hair-2); border-radius:50%; color:var(--ink); background:transparent; font-size:22px; }
+.bn-find-form { display:flex; gap:16px; margin:10px 28px 0; padding-bottom:15px; border-bottom:1px solid var(--hair); }
+.bn-find-form input { min-width:0; flex:1; border:0; background:transparent; color:var(--ink); font-size:20px; min-height:44px; }
+.bn-find-form button { flex:none; width:44px; height:44px; border-radius:50%; background:var(--bn-orange); border:0; color:#142234; font-size:24px; }
+.bn-find-count { color:var(--ink-3); font-size:11px; padding:15px 28px 4px; }
+.bn-find-results { padding:0 28px 22px; }
+.bn-find-results a { display:flex; align-items:center; gap:18px; padding:15px 0; border-bottom:1px solid var(--hair-2); color:var(--ink); text-decoration:none; }
+.bn-find-results a > span:first-child { flex:1; min-width:0; }
+.bn-find-results b { display:block; font-size:15px; font-weight:700; overflow-wrap:anywhere; }
+.bn-find-results small { display:block; margin-top:5px; font-size:11px; color:var(--ink-3); overflow-wrap:anywhere; }
+.bn-find-results i { font-size:10px; color:var(--ink-3); font-style:normal; }
+.bn-find-results a:hover b { color:var(--bn-orange-ink); }
+.bn-find-foot { padding:16px 28px; background:var(--paper); display:flex; justify-content:space-between; gap:20px; color:var(--ink-3); font-size:10px; }
+.bn-find-foot a { color:var(--ink); text-underline-offset:3px; }
+.bn-find-empty { padding:22px 0; font-size:14px; color:var(--ink-2); line-height:1.8; }
+
+/* Full-screen menu, with a focus trap and preserved underlying page state. */
+.tb .ia-menu { position:fixed; inset:0; z-index:70; background:var(--paper); border:0; overflow-y:auto; padding:0; display:block; overscroll-behavior:contain; }
+.bn-menu-head { max-width:1440px; margin:auto; padding:30px 48px; display:flex; justify-content:space-between; align-items:center; }
+.bn-menu-head .bn-logo { width:200px; }
+.bn-menu-close { display:flex; align-items:center; gap:16px; background:transparent; color:var(--ink); border:0; font-size:12px; }
+.bn-menu-close > span { display:grid; place-items:center; border-radius:50%; border:1px solid var(--hair); width:44px; height:44px; font-size:24px; }
+.bn-menu-body { display:grid; grid-template-columns:1.2fr 1fr; gap:90px; max-width:1440px; margin:auto; padding:35px 48px 60px; }
+.bn-menu-links { display:grid; }
+.bn-menu-links a { display:flex; align-items:center; gap:24px; color:var(--ink); text-decoration:none; border-bottom:1px solid var(--hair-2); padding:22px 0; }
+.bn-menu-links a > span { color:var(--ink-3); font:11px var(--bn-en); }
+.bn-menu-links b { flex:1; font-size:clamp(28px,3.8vw,50px); line-height:1.2; font-weight:700; letter-spacing:-.05em; }
+.bn-menu-links i { font-size:30px; font-style:normal; transition:transform .3s; }
+.bn-menu-links a:hover b,.bn-menu-links a[aria-current="page"] b { color:var(--bn-orange-ink); }
+.bn-menu-links a:hover i { transform:translate(5px,-5px); }
+.bn-menu-caption { font:11px var(--bn-en); letter-spacing:.1em; color:var(--ink-3); margin:10px 0 24px; }
+.bn-menu-products { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.bn-menu-products a { display:flex; align-items:center; justify-content:space-between; padding:20px; border:1px solid var(--hair-2); border-radius:10px; font-size:14px; font-weight:700; color:var(--ink); text-decoration:none; }
+.bn-menu-products a small { font:10px var(--bn-en); color:var(--ink-3); }
+.bn-menu-products a:hover { border-color:var(--bn-orange); }
+.bn-menu-knowledge { margin-top:36px; }
+.bn-menu-knowledge a { display:flex; justify-content:space-between; color:var(--ink-2); text-decoration:none; padding:12px 0; font-size:12px; border-bottom:1px solid var(--hair-2); }
+.bn-menu-contact { max-width:1440px; padding:25px 48px 40px; margin:auto; border-top:1px solid var(--hair-2); font-size:12px; line-height:1.8; color:var(--ink-2); display:flex; gap:24px; flex-wrap:wrap; }
+.bn-menu-contact a { color:var(--ink); text-underline-offset:4px; }
+
+@media(max-width:1120px) {
+ .tb.ia-tb .ia-nav { display:none; }
+ .tb.ia-tb .brand { flex:1; }
+ .bn-studio .bn-wrap { padding-inline:32px; }
+ .bn-studio .bn-hero-grid { gap:24px; min-height:560px; }
+ .bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em { font-size:clamp(40px,4.8vw,62px); }
+ .bn-studio .bn-actions { flex-direction:row; }
+ .bn-studio .bn-hero-standards { max-width:none; }
+ .bn-spec-grid,.bn-studio .bn-rfq-grid { gap:50px; }
+ .bn-studio .bn-film-chapters { gap:10px; }
+ .bn-studio .bn-film-chapters button { gap:5px; font-size:10px; }
+ .bn-studio .bn-section { padding-block:88px; }
+ .bn-menu-body { gap:50px; }
+}
+@media(max-width:800px) {
+ .tb.ia-tb .wrap { padding-inline:24px; }
+ .tb.ia-tb .tb-grid { min-height:76px; gap:10px; }
+ .tb.ia-tb .bn-header-rfq { display:none; }
+ .bn-studio .bn-hero-grid { grid-template-columns:1fr; gap:0; }
+ .bn-studio .bn-hero-copy { padding:48px 0 30px; }
+ .bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em { font-size:clamp(42px,8vw,64px); }
+ .bn-studio .bn-hero-lead { font-size:14px; }
+ .bn-studio .bn-hero-standards { display:flex; }
+ .bn-scroll-cue { margin-top:25px; }
+ .bn-studio .bn-film { margin:0 0 28px; }
+ .bn-studio .bn-film video { max-height:550px; }
+ .bn-studio .bn-film-chapters { grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px 18px; }
+ .bn-studio .bn-film-chapters button { flex-direction:row; font-size:11px; min-height:40px; gap:10px; }
+ .bn-studio .bn-film-navigation { grid-template-columns:1fr; gap:18px; }
+ .bn-studio .bn-film-play { grid-column:1; grid-row:2; justify-self:end; }
+ .bn-studio .bn-film-check { grid-row:3; }
+ .bn-studio .bn-film-note { grid-row:4; }
+ .bn-studio .bn-facts { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 0; }
+ .bn-studio .bn-facts > :nth-child(3) { padding-left:0; border-left:0; }
+ .bn-studio .bn-facts b { font-size:33px; }
+ .bn-studio .bn-section-head { align-items:start; }
+ .bn-studio .bn-products > li { flex-basis:calc((100% - 22px)/2); }
+ .bn-application-grid { gap:18px; }
+ .bn-application-body h3 { font-size:19px; }
+ .bn-spec-grid,.bn-studio .bn-rfq-grid { grid-template-columns:1fr; gap:42px; }
+ .bn-knowledge-head { gap:35px; }
+ .bn-topic-grid { column-gap:30px; }
+ .bn-topic { gap:15px; }
+ .bn-topic b { font-size:16px; }
+ .bn-topic small { font-size:9px; }
+ .bn-resource-shortcuts a { padding:25px; }
+ .bn-resource-shortcuts h3 { font-size:19px; }
+ .bn-resource-shortcuts i { right:22px; }
+ .bn-menu-body { grid-template-columns:1fr; gap:40px; padding-top:10px; }
+ .bn-menu-products { grid-template-columns:repeat(3,1fr); }
+ .bn-menu-head,.bn-menu-body,.bn-menu-contact { padding-inline:30px; }
+}
+@media(max-width:520px) {
+ .tb.ia-tb .wrap { padding-inline:20px; }
+ .tb.ia-tb .tb-grid { min-height:72px; gap:6px; }
+ .tb.ia-tb .brand { min-width:0; }
+ .tb .bn-logo { width:150px; }
+ .tb.ia-tb .ia-grid > .cartc { width:36px; height:36px; }
+ .tb.ia-tb .ia-grid > .bn-open-find { width:36px; height:36px; }
+ .tb.ia-tb .ia-grid > .ia-menu-b { width:35px; padding:0; }
+ .ia-menu-b > span { display:none; }
+ .bn-studio .bn-wrap { padding-inline:20px; }
+ .bn-studio .bn-section { padding-block:64px; }
+ .bn-studio .bn-hero-copy { padding-top:36px; }
+ .bn-studio .bn-eyebrow { font-size:9px; margin-bottom:20px; }
+ .bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em { font-size:clamp(38px,10.5vw,52px); }
+ .bn-studio .bn-hero-lead { font-size:12px; margin:23px 0 26px; }
+ .bn-studio .bn-hero-lead br { display:none; }
+ .bn-studio .bn-btn { padding-inline:18px; min-height:48px; gap:18px; font-size:11px; }
+ .bn-studio .bn-hero-standards { margin-top:28px; font-size:9px; }
+ .bn-studio .bn-film-badge { font-size:9px; left:20px; top:18px; }
+ .bn-studio .bn-film-caption { padding:5px 20px 22px; min-height:104px; }
+ .bn-studio .bn-film-caption strong { font-size:17px; }
+ .bn-studio .bn-film-caption p { font-size:10px; }
+ .bn-studio .bn-film-check { padding:18px; gap:8px 16px; grid-template-columns:1fr auto; }
+ .bn-film-check > span { grid-column:1; font-size:10px; }
+ .bn-film-check b { grid-column:1; grid-row:2; font-size:11px; }
+ .bn-film-check i { grid-column:2; grid-row:1/3; }
+ .bn-studio .bn-film-note { font-size:9px; }
+ .bn-studio .bn-facts > * { padding-inline:18px; }
+ .bn-studio .bn-facts span { font-size:10px; }
+ .bn-studio .bn-facts small { font-size:8px; }
+ .bn-studio .bn-section-head { flex-direction:column; gap:24px; margin-bottom:32px; }
+ .bn-studio .bn-section-head h2,.bn-studio .bn-rfq-copy h2 { font-size:34px; }
+ .bn-studio .bn-section-head p:not(.bn-eyebrow) { font-size:12px; }
+ .bn-studio .bn-products { gap:16px; }
+ .bn-studio .bn-products > li { flex-basis:84%; }
+ .bn-studio .bn-product-info h3 { font-size:25px; }
+ .bn-carousel-bar { flex-direction:column-reverse; align-items:start; gap:20px; margin-top:28px; }
+ .bn-carousel-controls { align-self:end; }
+ .bn-application-grid { grid-template-columns:1fr; gap:38px; }
+ .bn-application-body h3 { font-size:25px; }
+ .bn-application-body p { font-size:12px; }
+ .bn-spec summary { gap:15px; padding:22px 0; }
+ .bn-spec summary h3 { font-size:17px; }
+ .bn-spec > div { padding-left:28px; }
+ .bn-knowledge-head { grid-template-columns:minmax(0,1fr); gap:26px; padding:0 0 30px; }
+ .bn-knowledge-head > p { font-size:13px; }
+ .bn-knowledge-head input { font-size:13px; }
+ .bn-topic-grid { grid-template-columns:1fr; }
+ .bn-topic { padding:23px 0; gap:23px; }
+ .bn-topic b { font-size:18px; }
+ .bn-topic small { font-size:10px; }
+ .bn-reading-paths { gap:10px; margin-top:30px; }
+ .bn-reading-paths > span { flex-basis:100%; margin-bottom:4px; }
+ .bn-reading-paths a { font-size:10px; padding:10px 12px; gap:10px; }
+ .bn-resource-shortcuts { grid-template-columns:1fr; gap:16px; margin-top:36px; }
+ .bn-resource-shortcuts a { padding:28px; }
+ .bn-studio .bn-rfq-copy p:not(.bn-eyebrow) { font-size:12px; }
+ .bn-studio .bn-rfq-points { display:grid; gap:16px; }
+ .bn-studio .bn-rfq-input { padding:0 18px 18px; }
+ .bn-studio .bn-input-heading { margin-inline:-18px; padding-inline:18px; }
+ .bn-studio .bn-input-heading small { display:none; }
+ .bn-studio .bn-cta { padding:64px 0; }
+ .bn-studio .bn-cta > .bn-wrap { align-items:start; gap:32px; }
+ .bn-studio .bn-cta h2 { font-size:32px; }
+ .bn-cta-circle { width:115px; height:115px; gap:8px; align-self:end; }
+ .bn-cta-circle > span { font-size:32px; }
+ .bn-cta-circle b { font-size:11px; }
+ .bn-footer-sign { padding:40px 0; }
+ .bn-top { width:42px; height:42px; right:16px; bottom:16px; }
+ .bn-menu-head { padding:22px 20px; }
+ .bn-menu-head .bn-logo { width:160px; }
+ .bn-menu-close { font-size:0; }
+ .bn-menu-body { padding:10px 20px 40px; }
+ .bn-menu-links a { padding:21px 0; gap:20px; }
+ .bn-menu-links b { font-size:34px; }
+ .bn-menu-products { grid-template-columns:1fr 1fr; }
+ .bn-menu-products a { padding:18px 14px; font-size:12px; }
+ .bn-menu-contact { padding-inline:20px; gap:12px; font-size:11px; }
+ .bn-find { max-height:calc(100svh - 32px); }
+ .bn-find-head { padding:20px 20px 10px; }
+ .bn-find-form { margin-inline:20px; gap:10px; }
+ .bn-find-form input { font-size:16px; }
+ .bn-find-count,.bn-find-results,.bn-find-foot { padding-inline:20px; }
+ .bn-find-results a { gap:12px; }
+ .bn-find-results b { font-size:13px; }
+ .bn-find-results small { font-size:10px; }
+ .bn-find-results i { font-size:9px; }
+ .bn-find-foot { flex-wrap:wrap; gap:10px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ .bn-studio .bn-products { scroll-behavior:auto; }
+ .bn-studio *, .bn-menu-links *, .bn-top { transition:none!important; }
+}
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -3359,11 +3765,13 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
         <div class="suggest" id="suggest" hidden></div>
       </div>
       <a class="tb-c stc" id="ia-stc" href="#about" data-go="about"><span class="lab">상태</span><b>검증 운영 중</b><span class="v">참고 견적 →</span></a>
-      <button type="button" class="tb-c ia-menu-b" id="ia-menu-b" aria-expanded="false" aria-controls="ia-menu">메뉴</button>
+      <button type="button" class="tb-c bn-open-find" data-bn-find aria-label="제품·규격 통합 검색"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg></button>
+      <a class="tb-c bn-header-rfq" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a>
+      <button type="button" class="tb-c ia-menu-b" id="ia-menu-b" aria-expanded="false" aria-controls="ia-menu"><span>메뉴</span><i aria-hidden="true"><b></b><b></b></i></button>
       <a class="tb-c cartc cartbtn" href="#cart" data-go="cart"><span class="cart-n" id="cart-n">0</span><b>견적함</b></a>
       <span class="ia-sheet" hidden><b id="sheet-no">1 / 8</b><span id="sheet-nm">홈</span></span>
     </div>
-    <div class="ia-menu" id="ia-menu" hidden></div>
+    <div class="ia-menu" id="ia-menu" role="dialog" aria-modal="true" aria-label="사이트 전체 메뉴" hidden></div>
   </div>
 </header>
 <div class="tb-mini" id="tb-mini" inert>
@@ -3377,6 +3785,7 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
 
 <footer class="foot ia-foot">
   <div class="wrap">
+    <div class="bn-footer-sign" aria-hidden="true"><img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="" loading="lazy"></div>
     <div class="pm-ft">
       <a class="pm-ft-brand" href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><span><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"><small>체결부품 목록 견적 · 엔지니어가 줄마다 읽습니다</small></span></a>
       <nav class="pm-ft-nav" aria-label="바닥글 메뉴">
@@ -11860,63 +12269,60 @@ function pmMail() {
 }
 /* 홈은 제품 탐색 → 목록 견적 → 현장별 볼팅 → 기술자료 순서로 연결한다.
    이미지에는 규격값을 넣지 않고, 품목 수와 사전 수는 공개 데이터에서 계산한다. */
-V.home = () => `<div class="bn-home" id="z-a">
+V.home = () => `<div class="bn-home bn-studio" id="z-a">
   <section class="bn-hero bn-cinema" aria-labelledby="h-z-a">
     <div class="bn-wrap bn-hero-grid">
       <div class="bn-hero-copy">
-        <p class="bn-eyebrow" lang="en"><span></span> ENGINEERED CONNECTIONS</p>
-        <h1 id="h-z-a" tabindex="-1">작은 부품이,<br><em>큰 설비를 잇습니다.</em></h1>
-        <p class="bn-hero-lead">플랜지부터 하우징, 회전축까지.<br>연결마다 필요한 체결부품을 찾고,<br>BOM 그대로 견적을 요청하세요.</p>
-        <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 라인업 보기 <span aria-hidden="true">→</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">BOM 견적 요청 <span aria-hidden="true">↗</span></a></div>
+        <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
+        <h1 id="h-z-a" tabindex="-1">정확한 부품.<br><em>견고한 연결.</em></h1>
+        <p class="bn-hero-lead">플랜지에서 회전축까지, 연결의 시작은 사양입니다.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
+        <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 살펴보기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
+        <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>
       </div>
       ${bnFilmMarkup()}
     </div>
     ${bnFilmNavigation()}
   </section>
   <div class="bn-facts bn-wrap" aria-label="카탈로그 안내">
-    <div><b>${CAT_TILES.length}<small> CATEGORIES</small></b><span>품목별로 정리한 제품군</span></div>
-    <div><b>${pmCatN()}<small> TYPES</small></b><span>미터·인치 체결부품 품목</span></div>
-    <div><b>CAD<small> &amp; DRAWINGS</small></b><span>제공 품목의 도면 · STEP · DXF</span></div>
-    <a href="#lib" data-go="lib"><b>${typeof LIB !== 'undefined' ? LIB.length : 0}<small> NOTES</small></b><span>규격과 재질을 찾는 사전 <i aria-hidden="true">↗</i></span></a>
+    <div><b>${CAT_TILES.length}<small> PRODUCT CATEGORIES</small></b><span>품목별로 찾는 제품군</span></div>
+    <div><b>${pmCatN()}<small> FASTENER TYPES</small></b><span>미터·인치 체결부품</span></div>
+    <div><b>CAD<small> STEP &amp; DXF</small></b><span>제공 품목의 도면과 모델</span></div>
+    <a href="#lib" data-go="lib"><b>${LIB.length}<small> ENGINEERING NOTES</small></b><span>판단의 근거를 찾는 사전 <i aria-hidden="true">↗</i></span></a>
   </div>
   <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
     <div class="bn-wrap">
-      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / PRODUCT LINEUP</p><h2 id="bn-h-products">제품부터, 찾아보세요.</h2><p>볼트 하나부터 플랜트 볼팅 세트까지. 필요한 품목의 규격과 치수를 확인하세요.</p></div><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div>
-      ${hmTiles()}
-      <p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별 상세에서 확인하세요.</p>
+      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / THE PRODUCT COLLECTION</p><h2 id="bn-h-products">작지만,<br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><p>볼트 하나부터 플랜트 볼팅 세트까지.<br>형상과 용도에 맞는 제품을 살펴보세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
+      <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요.</p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
     </div>
-  </section>
-  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq">
-    <div class="bn-wrap bn-rfq-grid">
-      <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">02 / ENGINEERING RFQ</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>이 사이트의 품번을 몰라도 됩니다.<br>엑셀이나 부품표의 표기를 그대로 붙여 넣으면<br>규격·등급·수량을 읽고, 확인할 항목을 보여 드립니다.</p><ul class="bn-rfq-points"><li><span>01</span> BOM · 엑셀 · CSV 붙여넣기</li><li><span>02</span> 규격 · 치수 · 필요한 서류 확인</li><li><span>03</span> 견적 요청서 · C&amp;D로 연결</li></ul><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
-      <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 규격 확인</span><small>브라우저 안에서 읽습니다</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE ? '단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.' : '<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">→</span></a>'}</div></div>
-    </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div>
   </section>
   <section class="bn-section bn-applications" aria-labelledby="bn-h-applications">
-    <div class="bn-wrap">
-      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">03 / APPLICATIONS</p><h2 id="bn-h-applications">현장의 언어로, 연결합니다.</h2><p>자주 함께 쓰는 체결부품을 설비와 용도별로 모았습니다.</p></div></div>
-      <div class="bn-plant">
-        <div class="bn-plant-copy"><span class="bn-pill" lang="en">PLANT BOLTING</span><h3>플랜지 하나에도,<br>확인할 기준이 있습니다.</h3><p>스터드의 재질·나사·길이와 짝이 되는 너트.<br>조인트 조건을 확인하고 필요한 서류까지 함께 검토합니다.</p><div class="bn-plant-specs"><span>ASTM A193</span><span>ASTM A194</span><span>ASTM A320</span></div><a class="bn-btn bn-btn-light" href="#k-plant" data-go="k-plant">플랜트 볼팅 제품 보기 <span aria-hidden="true">→</span></a><a class="bn-plant-tool" href="#tools" data-go="tools" data-tab="flange">B16.5 스터드 길이 계산 <span aria-hidden="true">↗</span></a></div>
-        <figure class="bn-plant-visual">${pmVideo('hero-flange', '플랜지 조인트의 스터드와 너트를 보여 주는 3D 참고 장면', 1280, 960)}<figcaption>FLANGE JOINT / STUDS &amp; HEAVY HEX NUTS</figcaption></figure>
-      </div>
-      <div class="bn-application-links">${Object.entries(PM_COLL).map(([k, [spec, d]], i) => `<a href="#k-${k}" data-go="k-${k}"><span class="bn-index">0${i + 1}</span><div><b>${esc(CAT_COLL[k].ko)}</b><p>${esc(d)}</p></div><span class="bn-link-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>
+    <div class="bn-wrap"><div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">02 / CONNECTIONS IN CONTEXT</p><h2 id="bn-h-applications">설비는 달라도,<br>체결에는 기준이 있습니다.</h2></div><p>함께 쓰는 부품을 용도별로 모았습니다.<br>조인트 조건과 도면을 함께 확인하세요.</p></div>
+      <div class="bn-application-grid">${Object.entries(PM_COLL).map(([k,[spec,d]],i)=>`<a class="bn-application" href="#k-${k}" data-go="k-${k}"><div class="bn-application-image"><img src="media/boltnote-application-${['flange','shaft','flange'][i]}.webp" alt="${['플랜지의 스터드와 헤비 육각너트','키·멈춤링을 사용하는 회전축','플랜지 조인트의 체결부품 구성'][i]}" width="600" height="450" loading="lazy" decoding="async"><span>0${i+1}</span></div><div class="bn-application-body"><h3>${esc(CAT_COLL[k].ko)}</h3><p>${esc(d)}</p><span class="bn-application-link">제품 모아 보기 <i aria-hidden="true">↗</i></span></div></a>`).join('')}</div>
     </div>
   </section>
-  <section class="bn-section bn-resources" aria-labelledby="bn-h-resources">
-    <div class="bn-wrap"><div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">04 / ENGINEERING RESOURCES</p><h2 id="bn-h-resources">제품을 넘어, 판단의 근거까지.</h2><p>엔지니어와 구매 담당자가 같은 규격을 확인할 수 있도록.</p></div></div>
-      <div class="bn-resource-grid">
-        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('set')}</span><span class="bn-resource-label" lang="en">STANDARDS LIBRARY</span><h3>체결부품 규격 사전</h3><p>형상·나사·재질부터 체결과 검사까지.<br>8개 주제와 목적별 읽기 경로로 살펴보세요.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 2H, ISO 4017" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">→</button></form><a href="#lib" data-go="lib">지식 지도 전체 보기 <span aria-hidden="true">↗</span></a><div class="bn-library-doors">${LIB_PATHS.map(p => `<a href="#lib?path=${p.id}" data-go="lib?path=${p.id}">${esc(p.title)} <span aria-hidden="true">→</span></a>`).join('')}</div></article>
-        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('bolt')}</span><span class="bn-resource-label" lang="en">DRAWINGS &amp; CAD</span><h3>치수 도면 · CAD</h3><p>형상과 치수를 먼저 확인하세요.<br>제공되는 품목은 STEP·DXF를 받을 수 있습니다.</p><div class="bn-resource-tags"><span>DIMENSIONS</span><span>STEP</span><span>DXF</span></div><a href="#ref" data-go="ref">도면·규격 보기 <span aria-hidden="true">↗</span></a></article>
-        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('stud')}</span><span class="bn-resource-label" lang="en">ENGINEERING TOOLS</span><h3>볼팅 검토 도구</h3><p>플랜지 스터드 길이, 재질 대조,<br>각인·규격 표기를 확인하는 도구를 모았습니다.</p><div class="bn-resource-tags"><span>B16.5</span><span>MATERIAL</span><span>MARKING</span></div><a href="#tools" data-go="tools">계산·대조표 열기 <span aria-hidden="true">↗</span></a></article>
-      </div>
-    </div>
-  </section>
-  <section class="bn-section bn-process" aria-labelledby="bn-h-process"><div class="bn-wrap">
-    <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-process">요청부터 견적까지, 명확하게.</h2></div><a class="bn-text-link" href="#about" data-go="about">볼트노트의 운영 원칙 <span aria-hidden="true">↗</span></a></div>
-    <ol class="bn-process-grid">${[['목록을 보냅니다', 'BOM을 붙여 넣거나 엑셀·PDF·도면을 보내 주세요.'], ['사양을 확인합니다', '규격·치수·재질과 필요한 서류를 줄마다 검토합니다.'], ['빠진 조건을 묻습니다', '확인이 필요한 사양을 모아 질문합니다.'], ['견적서로 답합니다', '공급처 확인 뒤 단가·납기와 서류 제공 여부를 적습니다.']].map(([t, d], i) => `<li><span>0${i + 1}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+  <section class="bn-section bn-specs" aria-labelledby="bn-h-specs"><div class="bn-wrap bn-spec-grid">
+    <div><p class="bn-eyebrow" lang="en">03 / BEFORE YOU BUY</p><h2 id="bn-h-specs">비슷한 모양.<br>다른 사양.</h2><p class="bn-spec-lead">외형만으로 정하지 않습니다.<br>구매 전에 확인할 기준을 한 번 더 살펴보세요.</p><a class="bn-text-link" href="#lib?path=purchase" data-go="lib?path=purchase">구매·입고 확인 경로 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-spec-list">${[
+      ['호칭과 피치','M16과 5/8", UNC와 8UN. 비슷한 굵기여도 나사는 호환되지 않습니다. 미터·인치, 피치·산 수, 나사 공차를 함께 확인합니다.','thread-fit'],
+      ['머리 형상과 길이 기준','머리 모양에 따라 길이를 재는 기준과 공구가 달라집니다. 스터드 포인트 포함 여부, 나사부 길이, 좌면과 체결 깊이를 도면으로 확인합니다.','bolt-nut-washer'],
+      ['재질·등급과 너트 조합','재질 규격과 강도 등급은 각각 확인합니다. 플랜트 볼팅은 온도·사용 환경을 보고 스터드와 짝이 되는 너트 등급을 함께 정합니다.','material-grade'],
+      ['표면처리와 필요한 서류','코팅 조건과 조립 시 나사 끼워맞춤, 추적·검사 서류를 함께 확인합니다. 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.','inspection-documents']
+    ].map(([t,d,id],i)=>`<details class="bn-spec"><summary><span>0${i+1}</span><h3>${t}</h3><i aria-hidden="true">+</i></summary><div><p>${d}</p><a href="#lib?topic=${id}" data-go="lib?topic=${id}">관련 지식 살펴보기 <span aria-hidden="true">↗</span></a></div></details>`).join('')}</div>
   </div></section>
-  <section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET'S CONNECT YOUR NEXT PROJECT</p><h2 id="bn-h-cta">다음 목록의 시작은,<br class="ia-m"> 볼트노트에서.</h2><p>필요한 체결부품과 조건을 알려 주세요. 확인할 내용부터 함께 정리합니다.</p></div><a class="bn-btn" href="#list" data-go="list">견적 요청 시작하기 <span aria-hidden="true">→</span></a></div></section>
+  <section class="bn-section bn-resources" aria-labelledby="bn-h-resources"><div class="bn-wrap">
+    <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">04 / KNOWLEDGE, CONNECTED</p><h2 id="bn-h-resources">규격을 알고,<br>판단의 근거를 찾습니다.</h2></div><a class="bn-text-link" href="#lib" data-go="lib">지식 지도 전체 보기 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-knowledge-head"><p><b>${LIB.length}</b>개의 항목을 <b>${LIB_TOPICS.length}</b>개 주제로.<br>품목부터 찾아도, 목적부터 읽어도 됩니다.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 나사 공차, 3.1" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">↗</button></form></div>
+    <div class="bn-topic-grid">${LIB_TOPICS.map((t,i)=>`<a class="bn-topic" href="#lib?topic=${t.id}" data-go="lib?topic=${t.id}"><span class="bn-topic-no">0${i+1}</span><span><b>${esc(t.title)}</b><small>${esc(t.en)} · ${t.entries.length}개 항목</small></span><i aria-hidden="true">↗</i></a>`).join('')}</div>
+    <div class="bn-reading-paths"><span>목적별로 읽기</span>${LIB_PATHS.map(p=>`<a href="#lib?path=${p.id}" data-go="lib?path=${p.id}">${esc(p.title)} <i aria-hidden="true">↗</i></a>`).join('')}</div>
+    <div class="bn-resource-shortcuts"><a href="#ref" data-go="ref"><span>DRAWINGS &amp; CAD</span><h3>형상과 치수를 먼저.</h3><p>제공 품목의 도면 · STEP · DXF</p><i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools"><span>ENGINEERING TOOLS</span><h3>계산과 대조를 함께.</h3><p>스터드 길이 · 재질 · 각인 표기</p><i aria-hidden="true">↗</i></a></div>
+  </div></section>
+  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-rfq-grid">
+    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>엑셀이나 부품표의 표기를 그대로 붙여 넣으세요.<br>규격·등급·수량을 읽고, 확인할 내용을 보여 드립니다.</p><ol class="bn-rfq-points"><li><span>01</span> 목록과 도면을 보냅니다</li><li><span>02</span> 빠진 사양을 함께 확인합니다</li><li><span>03</span> 공급처 확인 뒤 견적서로 답합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
+    <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 사양 확인</span><small>BOM · 엑셀 · CSV</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE?'단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.':'<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">↗</span></a>'}</div></div>
+  </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div></section>
+  <section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET’S MAKE THE CONNECTION.</p><h2 id="bn-h-cta">목록 하나로,<br>다음 연결을 시작하세요.</h2></div><a class="bn-cta-circle" href="#list" data-go="list"><span aria-hidden="true">↗</span><b>견적 요청</b></a></div></section>
 </div>`;
 
 V.after.home = () => {
@@ -12627,9 +13033,9 @@ function bnFilmMarkup() {
 }
 function bnFilmNavigation() {
   return `<div class="bn-wrap bn-film-navigation">
-    <div class="bn-film-chapters" role="group" aria-label="체결부품 영상 장면 선택">${BN_FILM_CHAPTERS.map((chapter, i) => `<button type="button" data-bn-scene="${i}" aria-pressed="false" aria-controls="bn-film-video"><span class="bn-film-chapter-no" aria-hidden="true">0${i+1}</span><span>${chapter.label}</span><span class="bn-film-track" aria-hidden="true"><i></i></span></button>`).join('')}</div>
+    <div class="bn-film-chapters" style="--bn-chapter-count:${BN_FILM_CHAPTERS.length}" role="group" aria-label="체결부품 영상 장면 선택">${BN_FILM_CHAPTERS.map((chapter, i) => `<button type="button" data-bn-scene="${i}" aria-pressed="false" aria-controls="bn-film-video"><span class="bn-film-chapter-no" aria-hidden="true">0${i+1}</span><span>${chapter.label}</span><span class="bn-film-track" aria-hidden="true"><i></i></span></button>`).join('')}</div>
     <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="조립 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
-    <p class="bn-film-note">체결부품 적용을 보여 주는 3D 이미지입니다.</p>
+    <p class="bn-film-note">체결부품 적용을 보여 주는 3D 이미지입니다.</p><a class="bn-film-check" href="#lib?path=purchase" data-go="lib?path=purchase"><span>구매 전 확인</span><b>호칭 · 피치 · 길이 · 등급을 함께 확인하세요.</b><i aria-hidden="true">↗</i></a>
   </div>`;
 }
 let bnFilmCleanup = null;
@@ -12954,6 +13360,136 @@ for (const name of ['m', 'i']) {
 if (!LIB_BY || !Object.keys(LIB_BY).length) document.querySelectorAll('[data-lib]').forEach(a => a.remove());
 // 검색 색인: 머리글 찾기에서도 사전 항목이 나오게
 (typeof LIB !== 'undefined' ? LIB : []).forEach(e => INDEX.push({ t: `${e.t} · ${e.ko || ''}`, s: e.sum ? e.sum.slice(0, 60) : '', k: [e.t, e.ko, e.en, ...(e.aka || [])].join(' ').toLowerCase(), go: 'lib-' + e.id, g: '규격 사전' }));
+/* ── v9_experience.js ── */
+/* Synchronous routing, native modal search and progressive motion enhancements.
+   Product data and the quotation engine remain authoritative. No remote UI dependency. */
+const bnNormalize = text => String(text || '').normalize('NFKC').toLowerCase().replace(/[×*]/g, 'x').replace(/\s+/g, ' ').trim();
+const bnFindRecords = [
+  ...CAT_TILES.map(t => ({title:t.ko, sub:`${t.en} · ${iaTileN(t)}종`, route:`t-${t.id}`, kind:'제품군', text:bnNormalize(`${t.ko} ${t.en} ${t.subs.map(x => x.ko).join(' ')}`)})),
+  ...Object.values(CAT_F).map(f => ({title:f.ko, sub:`${f.en} · ${f.std.map(x => x[1]).join(' · ')}`, route:f.route || `c-${f.id}`, kind:'제품', text:bnNormalize(JSON.stringify(f))})),
+  ...LIB.map(x => ({title:x.t, sub:x.ko || x.en || '', route:`lib-${x.id}`, kind:'규격 사전', text:bnNormalize([x.t,x.ko,x.en,x.facts,x.watch].flat(2).join(' '))}))
+];
+document.body.insertAdjacentHTML('beforeend', `<div class="bn-reading-progress" aria-hidden="true"><i></i></div><button class="bn-top" type="button" aria-label="페이지 맨 위로" hidden>↑</button>
+  <dialog class="bn-find" id="bn-find" aria-labelledby="bn-find-title"><div class="bn-find-head"><h2 id="bn-find-title">제품과 규격을 찾습니다.</h2><button class="bn-find-close" type="button" aria-label="검색 닫기">×</button></div><form class="bn-find-form"><label class="sr" for="bn-find-q">제품·규격 통합 검색</label><input id="bn-find-q" type="search" placeholder="예: 육각볼트, ISO 4017, A193 B7" autocomplete="off" spellcheck="false"><button type="submit" aria-label="첫 번째 검색 결과 열기">↗</button></form><p class="bn-find-count" id="bn-find-count" role="status" aria-live="polite" aria-atomic="true"></p><div class="bn-find-results" id="bn-find-results"></div><div class="bn-find-foot"><span>Esc 닫기 · Ctrl / ⌘ K 검색</span><a id="bn-find-all" href="#lib" data-go="lib">규격 사전에서 더 찾기 ↗</a></div></dialog>`);
+const bnFindDialog = $('bn-find'), bnFindInput = $('bn-find-q');
+let bnFindTimer;
+function bnRenderFind() {
+  const query=bnNormalize(bnFindInput.value), terms=query.split(' ').filter(Boolean);
+  const records=query ? bnFindRecords.filter(r => terms.every(t => r.text.includes(t)))
+    .sort((a,b) => Number(bnNormalize(b.title) === query)-Number(bnNormalize(a.title) === query)) : bnFindRecords.slice(0,CAT_TILES.length);
+  const results=records.slice(0,12);
+  $('bn-find-count').textContent=query ? `${records.length}개 결과${records.length>12?' · 먼저 12개를 보여 드립니다':''}` : '제품군부터 살펴보세요.';
+  $('bn-find-results').innerHTML=results.length ? results.map(r=>`<a href="#${esc(r.route)}" data-go="${esc(r.route)}"><span><b>${esc(r.title)}</b><small>${esc(r.sub)}</small></span><i>${esc(r.kind)}</i><span aria-hidden="true">↗</span></a>`).join('') : '<p class="bn-find-empty">일치하는 항목이 없습니다.<br>규격 번호나 품목 이름을 바꿔 보거나, BOM 그대로 견적을 요청하세요.</p><a href="#list" data-go="list">목록 견적 요청 ↗</a>';
+  const route=libURL({q:bnFindInput.value.trim(),topic:'',path:'',kind:'all',org:'all'});
+  $('bn-find-all').href='#'+route; $('bn-find-all').dataset.go=route;
+}
+function bnOpenFind() {
+  iaMenu(false);
+  if (!bnFindDialog.open) { bnRenderFind(); bnFindDialog.showModal(); }
+  bnFindInput.focus(); bnFindInput.select();
+}
+bnFindDialog.querySelector('.bn-find-close').addEventListener('click',()=>bnFindDialog.close());
+bnFindDialog.addEventListener('click',e=> { if(e.target === bnFindDialog) bnFindDialog.close(); });
+bnFindDialog.addEventListener('keydown',e=> { if(e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); bnFindDialog.close(); } });
+bnFindDialog.addEventListener('close',()=>clearTimeout(bnFindTimer));
+bnFindInput.addEventListener('input',()=> { clearTimeout(bnFindTimer); bnFindTimer=setTimeout(bnRenderFind,120); });
+bnFindDialog.querySelector('form').addEventListener('submit',e=> { e.preventDefault(); clearTimeout(bnFindTimer); bnRenderFind(); bnFindDialog.querySelector('.bn-find-results a')?.click(); });
+bnFindInput.addEventListener('keydown',e=> { if(e.key==='ArrowDown') { e.preventDefault(); bnFindDialog.querySelector('.bn-find-results a')?.focus(); } });
+document.addEventListener('keydown',e=> { if((e.ctrlKey || e.metaKey) && !e.altKey && e.key.toLowerCase()==='k') { e.preventDefault(); bnOpenFind(); } });
+document.addEventListener('click',e=> { if(e.target.closest('[data-bn-find]')) bnOpenFind(); });
+$('mini-find').addEventListener('click',e=> { e.stopImmediatePropagation(); bnOpenFind(); });
+
+let bnMenuSession=null;
+iaMenuHTML = () => `<div class="bn-menu-head"><span><img class="bn-logo bn-logo-ink" src="/brand/boltnote-logo.svg" width="632" height="104" alt="boltnote"><img class="bn-logo bn-logo-white" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="" aria-hidden="true"></span><button class="bn-menu-close" type="button" data-bn-menu-close>메뉴 닫기 <span aria-hidden="true">×</span></button></div>
+  <div class="bn-menu-body"><nav class="bn-menu-links" aria-label="전체 메뉴">${[['products','제품 라인업'],['lib','규격 사전'],['ref','도면·규격'],['list','목록 견적'],['about','회사 소개']].map(([route,title],i)=>`<a href="#${route}" data-go="${route}"${iaNavKey(state.route)===route?' aria-current="page"':''}><span>0${i+1}</span><b>${title}</b><i aria-hidden="true">↗</i></a>`).join('')}</nav><div><p class="bn-menu-caption" lang="en">EXPLORE THE COLLECTION</p><nav class="bn-menu-products" aria-label="제품군">${CAT_TILES.map(t=>`<a href="#t-${t.id}" data-go="t-${t.id}">${esc(t.ko)}<small>${iaTileN(t)}종</small></a>`).join('')}</nav><div class="bn-menu-knowledge"><p class="bn-menu-caption" lang="en">ENGINEERING PATHS</p>${LIB_PATHS.map(p=>`<a href="#lib?path=${p.id}" data-go="lib?path=${p.id}">${esc(p.title)}<span aria-hidden="true">↗</span></a>`).join('')}</div></div></div><div class="bn-menu-contact"><span>볼트노트 · 체결부품 견적·공급</span>${rfqOk('rfq')?`<a href="mailto:${esc(CONTACT.rfq)}">${esc(CONTACT.rfq)}</a>`:''}<a href="#list" data-go="list">BOM 그대로 견적 요청 ↗</a></div>`;
+iaMenu = (open, restore=true) => {
+  const button=$('ia-menu-b'), menu=$('ia-menu');
+  if(open && !bnMenuSession) {
+    menu.innerHTML=iaMenuHTML(); menu.hidden=false;
+    const locked=[$('view'),document.querySelector('footer.foot'),$('tb-mini'),document.querySelector('#tb .tb-grid')].filter(Boolean);
+    bnMenuSession={focus:document.activeElement,overflow:document.documentElement.style.overflow,locked:locked.map(el=>[el,el.inert])};
+    locked.forEach(el=> { el.inert=true; }); document.documentElement.style.overflow='hidden';
+    button.setAttribute('aria-expanded','true'); button.setAttribute('aria-label','전체 메뉴 닫기');
+    menu.querySelector('[data-bn-menu-close]').addEventListener('click',()=>iaMenu(false));
+    menu.querySelector('[data-bn-menu-close]').focus();
+    if(!reduced()) menu.animate([{opacity:0,transform:'translateY(-12px)'},{opacity:1,transform:'translateY(0)'}],{duration:280,easing:'cubic-bezier(.22,1,.36,1)'});
+  } else if(!open) {
+    menu.hidden=true; button.setAttribute('aria-expanded','false'); button.setAttribute('aria-label','전체 메뉴 열기');
+    if(bnMenuSession) {
+      const session=bnMenuSession; bnMenuSession=null;
+      session.locked.forEach(([el,inert])=> { el.inert=inert; });
+      document.documentElement.style.overflow=session.overflow;
+      if(restore && session.focus?.isConnected) session.focus.focus({preventScroll:true});
+    }
+  }
+};
+document.addEventListener('keydown',e=> {
+  if(!bnMenuSession || e.key!=='Tab') return;
+  const links=[...$('ia-menu').querySelectorAll('a,button')],first=links[0],last=links.at(-1);
+  if(e.shiftKey && document.activeElement===first) { e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey && document.activeElement===last) { e.preventDefault(); first.focus(); }
+});
+$('ia-menu-b').setAttribute('aria-label','전체 메뉴 열기');
+document.querySelector('.cartbtn').setAttribute('aria-label','견적함 열기');
+
+let bnPageAbort=null, bnRevealObserver=null, bnPageAnimation=null;
+function bnEnhancePage() {
+  bnPageAbort?.abort(); bnRevealObserver?.disconnect(); bnPageAnimation?.cancel();
+  bnPageAbort=new AbortController(); const eventOptions={signal:bnPageAbort.signal};
+  const root=view();
+  if(!reduced()) {
+    bnPageAnimation=root.animate([{opacity:.25,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],{duration:420,easing:'cubic-bezier(.22,1,.36,1)'});
+    bnRevealObserver=new IntersectionObserver(entries=>entries.forEach(entry=> {
+      if(!entry.isIntersecting) return;
+      if(!reduced()) entry.target.animate([{opacity:.35,transform:'translateY(20px)'},{opacity:1,transform:'translateY(0)'}],{duration:650,easing:'cubic-bezier(.22,1,.36,1)'});
+      bnRevealObserver.unobserve(entry.target);
+    }),{threshold:.12});
+    root.querySelectorAll('.bn-section-head,.bn-application,.bn-topic,.bn-rfq-input').forEach(el=>bnRevealObserver.observe(el));
+  }
+  root.querySelectorAll('[data-bn-scroll]').forEach(b=>b.addEventListener('click',()=> {
+    const target=$(b.dataset.bnScroll); if(!target) return;
+    target.setAttribute('tabindex','-1'); target.focus({preventScroll:true});
+    target.scrollIntoView({block:'start',behavior:reduced()?'instant':'smooth'});
+  },eventOptions));
+  const track=root.querySelector('.bn-carousel .bn-products');
+  if(track) {
+    track.id='bn-product-track'; const prev=root.querySelector('[data-bn-products-step="-1"]'),next=root.querySelector('[data-bn-products-step="1"]');
+    prev.setAttribute('aria-controls',track.id); next.setAttribute('aria-controls',track.id);
+    const step=()=>track.firstElementChild.getBoundingClientRect().width+parseFloat(getComputedStyle(track).gap);
+    const status=()=> { const i=Math.max(1,Math.min(CAT_TILES.length,Math.round(track.scrollLeft/step())+1)); $('bn-product-position').textContent=`${String(i).padStart(2,'0')} / ${String(CAT_TILES.length).padStart(2,'0')}`; prev.disabled=track.scrollLeft<2; next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2; };
+    for(const button of [prev,next]) button.addEventListener('click',()=>track.scrollBy({left:Number(button.dataset.bnProductsStep)*step(),behavior:reduced()?'instant':'smooth'}),eventOptions);
+    track.addEventListener('scroll',status,{...eventOptions,passive:true});
+    window.addEventListener('resize',status,eventOptions); status();
+    let drag=null,dragged=false;
+    track.addEventListener('pointerdown',e=> { if(e.pointerType!=='mouse' || e.button!==0) return; drag={id:e.pointerId,x:e.clientX,left:track.scrollLeft}; dragged=false; },eventOptions);
+    track.addEventListener('pointermove',e=> {
+      if(!drag) return; const distance=e.clientX-drag.x;
+      if(Math.abs(distance)>8) { dragged=true; track.classList.add('bn-dragging'); track.setPointerCapture(drag.id); }
+      if(dragged) { e.preventDefault(); track.scrollLeft=drag.left-distance; }
+    },eventOptions);
+    const finish=()=> { if(!drag) return; if(track.hasPointerCapture(drag.id)) track.releasePointerCapture(drag.id); drag=null; track.classList.remove('bn-dragging'); };
+    track.addEventListener('pointerup',finish,eventOptions); track.addEventListener('pointercancel',finish,eventOptions);
+    track.addEventListener('click',e=> { if(dragged) { e.preventDefault(); e.stopImmediatePropagation(); dragged=false; } },{...eventOptions,capture:true});
+    track.addEventListener('dragstart',e=>e.preventDefault(),eventOptions);
+  }
+  bnUpdateReading();
+}
+const bnOriginalGo=go;
+go = (route,push=true) => {
+  if(bnFindDialog.open) bnFindDialog.close();
+  iaMenu(false,false);
+  // Keep routing synchronous: tool tabs, presets and BOM handlers use the new DOM immediately.
+  bnOriginalGo(route,push); bnEnhancePage();
+};
+let bnReadingFrame=0;
+function bnUpdateReading() {
+  const extent=document.documentElement.scrollHeight-innerHeight;
+  document.querySelector('.bn-reading-progress').style.setProperty('--bn-read',`${extent>0?Math.min(100,Math.max(0,scrollY/extent*100)):0}%`);
+  document.querySelector('.bn-top').hidden=scrollY<innerHeight;
+}
+window.addEventListener('scroll',()=> { if(!bnReadingFrame) bnReadingFrame=requestAnimationFrame(()=> { bnReadingFrame=0; bnUpdateReading(); }); },{passive:true});
+window.addEventListener('resize',bnUpdateReading);
+document.querySelector('.bn-top').addEventListener('click',()=> { const h=view().querySelector('h1'); h?.focus({preventScroll:true}); scrollTo({top:0,behavior:reduced()?'instant':'smooth'}); });
 /* ── t_api610.js ── */
 /* 5장 규격 도구 · 상세 11: API 610 재질 클래스 → 볼팅
    - 데이터와 판별은 엔진 트랙의 e0_api610.js(API610, API610_ALIASES, parseApi610)를 읽기만 한다. 다시 선언하지 않는다.
