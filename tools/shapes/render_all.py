@@ -90,6 +90,9 @@ def write_manifest():
     for i in ordered:
         want = L.family_looks(F[i])
         ordered[i] = [k for k in want if k in ordered[i]] + [k for k in ordered[i] if k not in want]
+    from PIL import Image        # 목록 카드 썸네일(<id>-s.webp)은 대표(첫째) 마감 이미지에서 만든다
+    for i, lk in ordered.items():
+        Image.open(MEDIA / f'{i}-{lk[0]}.webp').convert('RGB').resize((240, 180), Image.LANCZOS).save(MEDIA / f'{i}-s.webp', 'WEBP', quality=72, method=6)
     body = 'const SHAPE_IMG = ' + json.dumps(ordered, ensure_ascii=False, separators=(',', ':')) + ';'
     s = MANIFEST_JS.read_text(encoding='utf-8')
     new = re.sub(r'(/\* SHAPE_IMG:BEGIN[^\n]*\*/\n).*?(\n/\* SHAPE_IMG:END \*/)', lambda m: m.group(1) + body + m.group(2), s, flags=re.S)
