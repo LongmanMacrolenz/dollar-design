@@ -1,0 +1,10 @@
+import {build} from 'esbuild';
+import {mkdir,copyFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const out=process.argv.includes('--out')?process.argv[process.argv.indexOf('--out')+1]:path.join(root,'docs/admin');
+await mkdir(out,{recursive:true});
+await build({entryPoints:[path.join(root,'worker/client/admin.mjs')],outfile:path.join(out,'admin.js'),bundle:true,format:'esm',minify:true,target:['es2022'],legalComments:'eof',logLevel:'warning'});
+for(const [from,to] of [['worker/client/index.html','index.html'],['worker/client/admin.css','admin.css'],['worker/assets/GothicA1-Regular.ttf','GothicA1-Regular.ttf'],['worker/assets/OFL.txt','OFL.txt']])await copyFile(path.join(root,from),path.join(out,to));
+console.log('견적 관리자 빌드 완료');

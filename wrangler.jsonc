@@ -1,12 +1,18 @@
-// Cloudflare Workers 정적 사이트 설정: docs/ 폴더만 공개합니다.
-// Worker 이름은 Cloudflare 대시보드의 Worker 이름(boltnote)과 같아야 합니다.
-// PR 미리보기 빌드(wrangler preview, 베타)는 이 Worker에서 실패하므로 쓰지 않습니다. 대시보드에서 미리보기 빌드를 끕니다.
+// Static public site + authenticated procurement API. No credentials in this file.
 {
   "name": "boltnote",
+  "main": "worker/index.mjs",
   "compatibility_date": "2025-09-01",
   "assets": {
-    "directory": "./docs"
+    "directory": "./docs",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/admin", "/admin/"]
   },
+  "durable_objects": {
+    "bindings": [{"name": "PROCUREMENT", "class_name": "ProcurementStore"}]
+  },
+  "migrations": [{"tag": "procurement-v1", "new_sqlite_classes": ["ProcurementStore"]}],
+  "triggers": {"crons": ["*/5 * * * *"]},
   "workers_dev": true,
   "preview_urls": true
 }

@@ -34,12 +34,17 @@ def build(root: pathlib.Path):
     print(run("site/build.py", cwd=root))
     print(run("site/build_lib.py", cwd=root))
     print(run("site/build_brand.py", cwd=root))
+    r = subprocess.run(["node", str(ROOT / "tools/build_admin.mjs"), "--out", str(root / "docs/admin")], capture_output=True, text=True)
+    if r.returncode:
+        sys.exit(r.stdout + r.stderr)
+    print(r.stdout.strip())
 
 
 def tree(root: pathlib.Path):
     keep = [root / "site" / "page.html", root / "docs" / "index.html", root / "docs" / "sitemap.xml", root / "docs" / "robots.txt"]
     keep += sorted((root / "docs" / "lib").glob("*.html"))
     keep += sorted((root / "docs" / "brand").glob("*"))
+    keep += sorted((root / "docs" / "admin").glob("*"))
     return keep
 
 
