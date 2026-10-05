@@ -1,6 +1,6 @@
 import {DurableObject} from 'cloudflare:workers';
 import {connect} from 'cloudflare:sockets';
-import {DomainError,text,email,cleanLines,optimizeOffers,createQuote,customerQuote,DEFAULT_MARKUP_PCT} from './domain.mjs';
+import {DomainError,text,email,cleanLines,lineConditions,optimizeOffers,createQuote,customerQuote,DEFAULT_MARKUP_PCT} from './domain.mjs';
 import {SUPPLIERS} from './suppliers.mjs';
 import {authorized,assertSameOrigin,jsonBody,json} from './security.mjs';
 import {MAIL_ACCOUNT,MAX_MAIL_BYTES,MailError,mailErrorMessage,ImapClient,parseMail,quotationSubject,buildMessage,sendSMTP,base64,unbase64} from './mail.mjs';
@@ -87,7 +87,15 @@ export class ProcurementStore extends DurableObject {
         const id=body.id?text(body.id,80):crypto.randomUUID();const old=this.get('request',id);
         if(body.id&&!old)throw new DomainError('요청을 찾을 수 없습니다.',404);
         const value={...old,number:old?.number||'BNQ-'+id.slice(0,8).toUpperCase(),subject:text(body.subject,1000),customerName:text(body.customerName,200),customerEmail:email(body.customerEmail),lines:cleanLines(body.lines),status:'review',mailId:old?.mailId||'',createdAt:old?.createdAt||new Date().toISOString()};
-        return json(this.put('request',id,value,old?expectedRevision(body,old):undefined));
+        const revision=old?expectedRevision(body,old):undefined;
+        return json(this.ctx.storage.transactionSync(()=>{
+          const saved=this.put('request',id,value,revision);
+          if(old)for(const offer of this.list('offer').filter(o=>o.requestId===id)){
+            const before=old.lines.find(l=>l.id===offer.lineId),after=saved.lines.find(l=>l.id===offer.lineId);
+            if(lineConditions(before)!==lineConditions(after))this.put('offer',offer.id,{...offer,checks:{},confirmedAt:'',evidenceType:'',confirmationReset:'고객 사양·수량·서류 요구가 변경되었습니다. 공급처 조건을 다시 확인하세요.'},offer.revision);
+          }
+          return saved;
+        }));
       }
       if(path==='/api/offers') {
         const req=this.required('request',text(body.requestId,80));if(!req.lines.some(l=>l.id===body.lineId))throw new DomainError('품목을 확인하세요.');
