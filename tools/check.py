@@ -59,6 +59,8 @@ def main():
 
     node = shutil.which("node")
     if node:
+        r = run(["node", "tools/build_bom_reader.mjs", "--check"])
+        step("BOM 표 읽기 원본 일치", r.returncode == 0, "" if r.returncode == 0 else r.stderr[-600:])
         r = run(["npm", "run", "test:procurement"])
         step("견적·메일·접근 제어 점검", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-1000:])
     page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
