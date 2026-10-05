@@ -2604,6 +2604,319 @@ footer.foot.ia-foot { background: var(--pm-night); color: var(--pm-tx-2); paddin
 .ia-q .ia-fh { margin: 8px 0 0; line-height: 1.5; }
 /* 목록 견적: 칸 제목(h2)과 겹치는 판 제목은 화면에서만 숨긴다 (읽기 프로그램용 이름은 남김) */
 .ia-two .ia-filep > h3 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* ── zz_site.css ── */
+/* 제품 카탈로그 중심의 사이트 디자인. 엔진과 규격 데이터는 변경하지 않는다. */
+:root {
+  --paper: #f5f7f9;
+  --sheet: #ffffff;
+  --sheet-2: #f0f3f6;
+  --ink: #17263b;
+  --ink-2: #526073;
+  --ink-3: #626f80;
+  --hair: #b9c3cf;
+  --hair-2: #dfe5eb;
+  --bn-orange: #e8683e;
+  --bn-orange-ink: #a83f20;
+  --bn-navy: #17263b;
+  --bn-max: 1280px;
+}
+
+/* 공통 머리글: 검색·모바일 메뉴·견적함의 기존 동작을 유지한다. */
+.tb.ia-tb { background: var(--sheet); color: var(--ink); border-bottom: 1px solid var(--hair-2); }
+.tb.ia-tb .wrap { max-width: var(--bn-max); }
+.tb.ia-tb .tb-grid { min-height: 84px; }
+.tb.ia-tb .brand { flex-basis: 234px; gap: 11px; }
+.tb.ia-tb .brand .mark { color: var(--bn-orange); width: 39px; height: 39px; }
+.tb.ia-tb .brand strong { color: var(--ink); font-size: 24px; font-weight: 800; letter-spacing: -.055em; }
+.tb.ia-tb .brand small { color: var(--ink-3); font-size: 12px; margin-top: 4px; }
+.tb.ia-tb .ia-nav a { color: var(--ink-2); padding-inline: 15px; font-size: 14px; }
+.tb.ia-tb .ia-nav a:hover, .tb.ia-tb .ia-nav a.on { color: var(--ink); }
+.tb.ia-tb .ia-nav a::after { background: var(--bn-orange); height: 2px; }
+.tb.ia-tb .ia-grid > .stc { border: 0; padding: 4px 9px; margin: 0; background: var(--sheet-2); border-radius: 3px; }
+.tb.ia-tb .stc b { color: var(--ink-2); font-size: 12px; }
+.tb.ia-tb .stc .v { display: none; }
+.tb.ia-tb .ia-grid > .cartc { background: var(--bn-navy); color: #fff; border-radius: 4px; height: 42px; padding-inline: 10px 14px; }
+.tb.ia-tb .ia-grid > .cartc:hover { background: #2a405d; }
+.tb.ia-tb .ia-grid > .cartc .cart-n { min-width: 24px; height: 24px; border-color: #5c6c82; color: #fff; background: transparent; font-size: 12px; }
+.tb.ia-tb .ia-grid > .cartc b { font-size: 13px; }
+.tb.ia-tb .ia-grid > .ia-menu-b { color: var(--ink); }
+.tb.ia-tb .find .sbox { background: var(--sheet-2); border-color: var(--hair-2); border-radius: 4px; }
+.tb.ia-tb .find input { color: var(--ink); }
+.tb.ia-tb .find input::placeholder { color: var(--ink-3); }
+.tb.ia-tb .sgo { background: var(--bn-navy); color: #fff; border-radius: 3px; }
+.tb.ia-tb .sgo:hover { background: #2a405d; }
+.tb.ia-tb :focus-visible { outline-color: var(--blue); }
+footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033; }
+.pm-ft-brand .mark { color: var(--bn-orange); }
+.ia-foot .themes button[aria-pressed="true"] { background: #f1f3f5; color: #17263b; }
+
+/* 공통 홈 배치 */
+.bn-home { background: var(--sheet); color: var(--ink); }
+.bn-wrap { width: 100%; max-width: var(--bn-max); margin-inline: auto; padding-inline: 36px; }
+.bn-section { padding-block: 88px; }
+.bn-home h1, .bn-home h2, .bn-home h3 { word-break: keep-all; letter-spacing: -.055em; }
+.bn-home p { word-break: keep-all; }
+.bn-eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 19px; font-family: var(--f-mono); font-size: 12px; line-height: 1.5; letter-spacing: .12em; color: var(--ink-3); font-weight: 700; }
+.bn-eyebrow > span { width: 7px; height: 7px; background: var(--bn-orange); }
+.bn-section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 38px; }
+.bn-section-head h2 { font-size: clamp(28px, 3vw, 38px); line-height: 1.35; font-weight: 800; }
+.bn-section-head p:not(.bn-eyebrow) { margin-top: 14px; color: var(--ink-2); font-size: 15px; line-height: 1.8; }
+.bn-text-link { display: inline-flex; align-items: center; gap: 24px; min-height: 44px; border-bottom: 1px solid var(--ink); font-size: 13px; font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.bn-text-link:hover { color: var(--bn-orange-ink); border-color: currentColor; }
+.bn-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.bn-btn { display: inline-flex; align-items: center; justify-content: space-between; gap: 30px; min-height: 52px; padding: 0 22px; background: var(--bn-navy); border: 1px solid var(--bn-navy); border-radius: 3px; font-size: 14px; font-weight: 700; color: #fff; text-decoration: none; transition: background .18s, border-color .18s; }
+.bn-btn:hover { background: #2a405d; border-color: #2a405d; }
+.bn-btn > span { font-size: 18px; line-height: 1; }
+.bn-btn-outline { background: transparent; border-color: var(--hair); color: var(--ink); }
+.bn-btn-outline:hover { background: var(--sheet); color: var(--ink); border-color: var(--ink); }
+.bn-btn-light { background: #fff; color: #17263b; border-color: #fff; }
+.bn-btn-light:hover { background: #e7edf3; color: #17263b; border-color: #e7edf3; }
+
+/* 첫 화면: 제품 사진과 간결한 제품·견적 진입 */
+.bn-hero { overflow: hidden; background: var(--sheet-2); }
+.bn-hero-grid { display: grid; grid-template-columns: .94fr 1.06fr; gap: 0; align-items: center; min-height: 555px; }
+.bn-hero-copy { position: relative; z-index: 1; padding-block: 55px 48px; }
+.bn-hero h1 { font-size: clamp(36px, 3.9vw, 55px); line-height: 1.32; font-weight: 800; }
+.bn-hero h1 em { color: var(--ink); font-style: normal; }
+.bn-hero-lead { margin: 24px 0 30px; font-size: 16px; color: var(--ink-2); line-height: 1.85; }
+.bn-hero-standards { display: flex; flex-wrap: wrap; gap: 8px 15px; margin-top: 37px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .025em; color: var(--ink-3); }
+.bn-hero-standards span + span::before { content: "/"; margin-right: 15px; color: var(--hair); }
+.bn-hero-visual { position: relative; min-width: 0; margin: 0 -80px 0 -5px; align-self: stretch; display: flex; align-items: center; }
+.bn-hero-visual > img { width: 100%; height: auto; max-height: 555px; object-fit: contain; mix-blend-mode: multiply; }
+.bn-hero-visual figcaption { position: absolute; bottom: 30px; left: 38px; right: 70px; display: flex; align-items: center; gap: 10px; font-size: 12px; line-height: 1.7; color: #4d5a69; }
+.bn-visual-mark { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid #aab4bf; border-radius: 50%; color: #17263b; font-size: 23px; font-weight: 400; }
+.bn-visual-no { margin-left: auto; font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; text-align: right; }
+.bn-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding-block: 30px; border-bottom: 1px solid var(--hair-2); }
+.bn-facts > * { min-width: 0; padding-inline: 26px; border-left: 1px solid var(--hair-2); text-decoration: none; color: var(--ink); }
+.bn-facts > :first-child { border-left: 0; padding-left: 0; }
+.bn-facts b { display: block; font-family: var(--f-cond); font-size: 30px; line-height: 1.2; font-weight: 600; }
+.bn-facts small { margin-left: 6px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; color: var(--ink-3); }
+.bn-facts span { display: block; margin-top: 8px; font-size: 12px; color: var(--ink-2); }
+.bn-facts i { margin-left: 8px; font-style: normal; }
+.bn-facts a:hover span { color: var(--bn-orange-ink); }
+
+/* 같은 제품 카드가 홈과 제품 목록 모두에 쓰인다. CSS로 사진 시트의 여섯 칸을 표시한다. */
+.bn-products { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.bn-products > li { display: flex; min-width: 0; }
+.bn-product { width: 100%; display: flex; flex-direction: column; min-width: 0; text-decoration: none; color: var(--ink); border: 1px solid var(--hair-2); background: var(--sheet); border-radius: 4px; overflow: hidden; transition: border-color .2s, box-shadow .2s; }
+.bn-product:hover { border-color: var(--hair); box-shadow: 0 9px 24px -15px #17263b66; }
+.bn-product-visual { display: block; aspect-ratio: 1; background-color: #f3f4f4; background-image: url('media/boltnote-lineup.webp'); background-size: 300% 200%; background-repeat: no-repeat; border-bottom: 1px solid var(--hair-2); }
+.bn-product-bolt { background-position: 0 0; }
+.bn-product-nut { background-position: 50% 0; }
+.bn-product-washer { background-position: 100% 0; }
+.bn-product-stud { background-position: 0 100%; }
+.bn-product-pin { background-position: 50% 100%; }
+.bn-product-rivet { background-position: 100% 100%; }
+.bn-product-info { display: flex; flex-direction: column; flex: 1; padding: 21px 24px 22px; }
+.bn-product-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.bn-index { font-family: var(--f-mono); color: var(--ink-3); font-size: 12px; letter-spacing: .1em; }
+.bn-product-count { color: var(--ink-2); font-size: 12px; }
+.bn-product-info > h3 { font-size: 21px; letter-spacing: -.045em; line-height: 1.45; font-weight: 800; }
+.bn-product-en { margin-top: 3px; font-size: 12px; color: var(--ink-3); letter-spacing: .01em; }
+.bn-product-desc { margin: 14px 0 22px; color: var(--ink-2); font-size: 12px; line-height: 1.75; min-height: 42px; word-break: keep-all; }
+.bn-product-link { display: flex; justify-content: space-between; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--hair-2); font-size: 12px; font-weight: 700; }
+.bn-product-link > span { font-size: 18px; color: var(--ink-3); }
+.bn-product:hover .bn-product-link { color: var(--bn-orange-ink); }
+.bn-catalog-note { margin-top: 18px; color: var(--ink-3); font-size: 12px; text-align: right; line-height: 1.7; }
+
+/* 목록 견적: 입력 동작과 id를 유지한 채 독립된 서비스 영역으로 배치 */
+.bn-rfq { background: #17263b; color: #fff; }
+.bn-rfq-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 75px; align-items: start; }
+.bn-rfq .bn-eyebrow { color: #a7b7cc; }
+.bn-rfq-copy h2 { font-size: clamp(31px, 3vw, 42px); line-height: 1.4; font-weight: 700; }
+.bn-rfq-copy > p:not(.bn-eyebrow) { margin-top: 23px; font-size: 14px; line-height: 1.9; color: #bac6d7; }
+.bn-rfq-points { margin: 27px 0 0; padding: 0; list-style: none; display: grid; gap: 15px; font-size: 13px; }
+.bn-rfq-points span { margin-right: 12px; font-family: var(--f-mono); font-size: 12px; color: #ffa17c; }
+.bn-rfq-foot { display: flex; flex-direction: column; align-items: start; gap: 10px; margin-top: 29px; }
+.bn-rfq-foot a, .bn-rfq-foot button { display: inline-flex; align-items: center; gap: 15px; min-height: 36px; padding: 0; border: 0; border-bottom: 1px solid #6d7f98; color: #fff; background: transparent; font-size: 12px; text-decoration: none; }
+.bn-rfq-input { border-radius: 5px; background: var(--sheet); color: var(--ink); padding: 24px; min-width: 0; }
+.bn-input-heading { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px; font-weight: 700; }
+.bn-input-heading small { margin-left: auto; font-size: 12px; font-weight: 400; color: var(--ink-3); }
+.bn-input-dot { width: 6px; height: 6px; background: var(--bn-orange); border-radius: 50%; }
+.bn-rfq-input .ia-q { margin: 0; padding: 0; border: 0; background: transparent; }
+.bn-rfq-input .ia-q > .lab { color: var(--ink-2); font-size: 12px; text-transform: none; letter-spacing: 0; margin-bottom: 8px; }
+.bn-rfq-input .ia-qrow { display: flex; flex-direction: column; border: 1px solid var(--hair); border-radius: 3px; overflow: hidden; }
+.bn-rfq-input #sb { width: 100%; min-height: 150px; border: 0; background: var(--sheet-2); color: var(--ink); padding: 16px; font-family: var(--f-mono); font-size: 12px; line-height: 1.9; resize: vertical; }
+.bn-rfq-input #sb-go { min-height: 47px; width: 100%; border: 0; border-top: 1px solid var(--hair); border-radius: 0; background: var(--bn-navy); color: #fff; font-size: 13px; }
+.bn-rfq-input #sb-go:hover { background: #2a405d; }
+.bn-rfq-input .ia-qhelp { padding-top: 12px; gap: 7px; }
+.bn-rfq-input .btn, .bn-rfq-input .chipbtn { border-radius: 3px; min-height: 34px; font-size: 12px; }
+.bn-rfq-input .ia-fh { font-size: 12px; color: var(--ink-3); line-height: 1.8; }
+.bn-rfq-notice { margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--hair-2); font-size: 12px; line-height: 1.7; }
+.bn-rfq-notice .ia-status { display: flex; justify-content: space-between; gap: 12px; color: var(--ink-2); border: 0; padding: 0; background: transparent; text-decoration: none; }
+.bn-rfq .ia-filep-w:not([hidden]) { margin-top: 24px; color: var(--ink); }
+.bn-rfq .ia-filep { background: var(--sheet); }
+.bn-rfq-input .ia-res { margin-top: 12px; }
+
+/* 현장별 제품: 기존 플랜지 3D와 정확한 카탈로그 연결을 사용 */
+.bn-plant { display: grid; grid-template-columns: 1fr 1fr; background: #0d141a; color: #eef3f7; border-radius: 5px; overflow: hidden; }
+.bn-plant-copy { padding: 42px 44px; position: relative; z-index: 1; }
+.bn-pill { display: inline-flex; padding: 6px 9px; border: 1px solid #6d7e8a; font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; color: #fbb693; }
+.bn-plant h3 { margin-top: 21px; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.45; font-weight: 700; }
+.bn-plant-copy > p { color: #adbbc8; font-size: 13px; line-height: 1.85; margin-top: 19px; }
+.bn-plant-specs { display: flex; flex-wrap: wrap; gap: 15px; margin: 24px 0; font-family: var(--f-mono); font-size: 12px; color: #c9d3dc; }
+.bn-plant-tool { display: block; width: fit-content; padding: 13px 0 4px; margin-top: 5px; text-decoration: none; color: #b8c9d8; font-size: 12px; }
+.bn-plant-tool:hover { color: #fff; text-decoration: underline; }
+.bn-plant-tool span { margin-left: 15px; }
+.bn-plant-visual { display: flex; flex-direction: column; justify-content: center; min-width: 0; margin: 0; padding: 20px 30px 20px 0; }
+.bn-plant-visual .pm-video { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+.bn-plant-visual figcaption { text-align: center; font-family: var(--f-mono); font-size: 12px; letter-spacing: .07em; color: #a4b3c0; margin: 10px 0 0; }
+.bn-application-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 24px; border: 1px solid var(--hair-2); border-radius: 4px; }
+.bn-application-links > a { display: flex; gap: 16px; align-items: start; padding: 26px 23px; color: var(--ink); text-decoration: none; border-left: 1px solid var(--hair-2); }
+.bn-application-links > a:first-child { border-left: 0; }
+.bn-application-links > a:hover { background: var(--sheet-2); }
+.bn-application-links .bn-index { margin-top: 4px; color: var(--bn-orange-ink); }
+.bn-application-links b { font-size: 15px; }
+.bn-application-links p { margin-top: 8px; color: var(--ink-2); font-size: 12px; line-height: 1.8; }
+.bn-link-arrow { margin-left: auto; color: var(--ink-3); font-size: 18px; }
+
+/* 기술 자료: 검색과 제품 도면의 실질적인 진입점 */
+.bn-resources { background: var(--paper); border-block: 1px solid var(--hair-2); }
+.bn-resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.bn-resource { display: flex; flex-direction: column; min-width: 0; padding: 29px; border: 1px solid var(--hair-2); background: var(--sheet); border-radius: 4px; }
+.bn-resource-icon { display: block; width: 62px; color: var(--ink-2); margin-bottom: 22px; }
+.bn-resource-icon svg { width: 62px; height: 42px; }
+.bn-resource-label { font-family: var(--f-mono); font-size: 12px; letter-spacing: .08em; color: var(--ink-3); }
+.bn-resource h3 { margin-top: 10px; font-size: 21px; line-height: 1.5; }
+.bn-resource > p { margin: 14px 0 22px; font-size: 12px; line-height: 1.9; color: var(--ink-2); }
+.bn-resource > a { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 19px; border-top: 1px solid var(--hair-2); color: var(--ink); font-weight: 700; font-size: 12px; text-decoration: none; }
+.bn-resource > a:hover { color: var(--bn-orange-ink); }
+.bn-resource form { display: flex; gap: 0; border: 1px solid var(--hair); border-radius: 3px; margin-bottom: 22px; }
+.bn-resource input { min-width: 0; flex: 1; background: transparent; color: var(--ink); border: 0; padding: 0 10px; font-size: 12px; min-height: 42px; }
+.bn-resource input::placeholder { color: var(--ink-3); }
+.bn-resource form button { border: 0; background: var(--sheet-2); color: var(--ink); padding-inline: 14px; }
+.bn-resource-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+.bn-resource-tags span { padding: 5px 7px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .025em; border: 1px solid var(--hair-2); color: var(--ink-3); }
+.bn-process-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0; margin: 0; list-style: none; gap: 28px; }
+.bn-process-grid li { border-top: 1px solid var(--hair); padding-top: 20px; }
+.bn-process-grid li > span { font-family: var(--f-mono); font-size: 12px; color: var(--bn-orange-ink); }
+.bn-process-grid h3 { margin-top: 23px; font-size: 17px; }
+.bn-process-grid p { margin-top: 11px; color: var(--ink-2); font-size: 12px; line-height: 1.85; }
+.bn-cta { background: var(--sheet-2); padding-block: 54px; border-top: 1px solid var(--hair-2); }
+.bn-cta > .bn-wrap { display: flex; justify-content: space-between; align-items: center; gap: 25px; }
+.bn-cta .bn-eyebrow { margin-bottom: 13px; }
+.bn-cta h2 { font-size: clamp(24px, 2.5vw, 31px); line-height: 1.5; }
+.bn-cta p:not(.bn-eyebrow) { margin-top: 11px; color: var(--ink-2); font-size: 12px; line-height: 1.85; }
+
+/* 밝기 설정을 유지하면서 제품 사진에는 같은 배경을 사용한다. */
+:root[data-theme="dark"] .bn-hero-visual > img { mix-blend-mode: normal; border-radius: 4px; }
+:root[data-theme="dark"] .bn-hero-visual figcaption { background: #eff2f4e8; padding: 8px; border-radius: 3px; }
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] .bn-hero-visual > img { mix-blend-mode: normal; border-radius: 4px; }
+  :root[data-theme="auto"] .bn-hero-visual figcaption { background: #eff2f4e8; padding: 8px; border-radius: 3px; }
+}
+
+@media (max-width: 1200px) {
+  .tb.ia-tb .brand { flex-basis: 190px; }
+  .tb.ia-tb .ia-nav a { padding-inline: 11px; font-size: 13px; }
+  .tb.ia-tb .ia-grid > .stc { display: none; }
+  .bn-rfq-grid { gap: 40px; }
+}
+@media (max-width: 1020px) {
+  .bn-wrap { padding-inline: 26px; }
+  .tb.ia-tb .brand { flex-basis: 165px; }
+  .bn-hero-grid { min-height: 500px; }
+  .bn-hero h1 { font-size: 38px; }
+  .bn-hero-visual { margin-right: -45px; }
+  .bn-product-info { padding: 19px; }
+  .bn-product-info > h3 { font-size: 18px; }
+  .bn-plant-copy { padding: 33px; }
+  .bn-resource { padding: 23px; }
+  .bn-resource h3 { font-size: 18px; }
+}
+@media (max-width: 800px) {
+  .bn-section { padding-block: 62px; }
+  .bn-hero-grid { grid-template-columns: 1fr 1fr; }
+  .bn-hero h1 { font-size: 32px; }
+  .bn-hero-copy { padding-block: 38px; }
+  .bn-hero-lead { font-size: 14px; }
+  .bn-hero .bn-actions { flex-direction: column; align-items: start; }
+  .bn-hero-standards { gap: 7px 10px; margin-top: 25px; }
+  .bn-hero-standards span + span::before { margin-right: 10px; }
+  .bn-facts > * { padding-inline: 15px; }
+  .bn-facts small { display: block; margin: 4px 0 0; }
+  .bn-products { gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bn-rfq-grid { grid-template-columns: 1fr; gap: 32px; }
+  .bn-rfq-copy h2 br { display: none; }
+  .bn-rfq-points { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+  .bn-rfq-foot { flex-direction: row; flex-wrap: wrap; gap: 14px 24px; }
+  .bn-plant { grid-template-columns: 1fr; }
+  .bn-plant-visual { padding: 0 40px 24px; max-width: 550px; justify-self: center; }
+  .bn-plant-visual .pm-video { max-height: 330px; }
+  .bn-application-links { grid-template-columns: 1fr; }
+  .bn-application-links > a { border-left: 0; border-top: 1px solid var(--hair-2); }
+  .bn-application-links > a:first-child { border-top: 0; }
+  .bn-resource-grid { grid-template-columns: 1fr; gap: 16px; }
+  .bn-resource { padding: 27px; }
+  .bn-resource h3 { font-size: 22px; }
+  .bn-resource > p { font-size: 14px; }
+  .bn-resource-icon { margin-bottom: 16px; }
+  .bn-process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; }
+}
+@media (max-width: 680px) {
+  .tb.ia-tb .tb-grid { min-height: 64px; }
+  .tb.ia-tb .brand { flex: 1 1 auto; }
+  .tb.ia-tb .brand .mark { width: 31px; height: 31px; }
+  .tb.ia-tb .brand strong { font-size: 21px; }
+  .tb.ia-tb .ia-grid > .cartc { margin-left: 0; height: 36px; padding-inline: 8px; }
+  .tb.ia-tb .ia-grid > .ia-menu-b { padding-inline: 14px; font-size: 12px; }
+  .bn-wrap { padding-inline: 20px; }
+  .bn-section { padding-block: 50px; }
+  .bn-eyebrow { font-size: 12px; letter-spacing: .085em; margin-bottom: 16px; }
+  .bn-hero-grid { grid-template-columns: 1fr; min-height: 0; }
+  .bn-hero-copy { padding-block: 40px 22px; }
+  .bn-hero h1 { font-size: clamp(32px, 8.5vw, 45px); line-height: 1.35; }
+  .bn-hero-lead { margin: 20px 0 25px; font-size: 13px; }
+  .bn-hero .bn-actions { flex-direction: row; gap: 8px; align-items: stretch; }
+  .bn-btn { min-height: 47px; font-size: 12px; padding-inline: 15px; gap: 13px; }
+  .bn-hero-standards { font-size: 12px; margin-top: 23px; gap: 7px 9px; }
+  .bn-hero-visual { margin: 0 -20px; padding-bottom: 48px; }
+  .bn-hero-visual > img { width: 100%; max-height: 310px; }
+  .bn-hero-visual figcaption { bottom: 21px; left: 24px; right: 24px; font-size: 12px; }
+  .bn-visual-no { font-size: 12px; }
+  .bn-facts { grid-template-columns: 1fr 1fr; gap: 23px 0; padding-block: 24px; }
+  .bn-facts > * { padding-inline: 18px; }
+  .bn-facts > :nth-child(3) { border-left: 0; padding-left: 0; }
+  .bn-facts b { font-size: 27px; }
+  .bn-facts small { display: inline; margin-left: 5px; font-size: 12px; }
+  .bn-facts span { font-size: 12px; }
+  .bn-section-head { flex-direction: column; align-items: start; gap: 13px; margin-bottom: 24px; }
+  .bn-section-head h2 { font-size: 27px; }
+  .bn-section-head p:not(.bn-eyebrow) { font-size: 13px; margin-top: 10px; }
+  .bn-text-link { font-size: 12px; min-height: 35px; }
+  .bn-products { gap: 12px; }
+  .bn-product-info { padding: 14px 12px; }
+  .bn-product-top { margin-bottom: 8px; }
+  .bn-index, .bn-product-count { font-size: 12px; }
+  .bn-product-info > h3 { font-size: 15px; min-height: 44px; }
+  .bn-product-en { font-size: 12px; min-height: 29px; line-height: 1.6; }
+  .bn-product-desc { font-size: 12px; min-height: 54px; margin: 9px 0 13px; line-height: 1.8; }
+  .bn-product-link { font-size: 12px; padding-top: 11px; }
+  .bn-catalog-note { font-size: 12px; text-align: left; }
+  .bn-rfq-copy h2 { font-size: 29px; }
+  .bn-rfq-copy > p:not(.bn-eyebrow) { font-size: 13px; }
+  .bn-rfq-points { flex-direction: column; font-size: 12px; }
+  .bn-rfq-input { padding: 18px; }
+  .bn-input-heading { font-size: 12px; }
+  .bn-input-heading small { font-size: 12px; }
+  .bn-rfq-input #sb { min-height: 160px; padding: 12px; font-size: 12px; }
+  .bn-plant-copy { padding: 29px 25px; }
+  .bn-plant h3 { font-size: 27px; }
+  .bn-plant-copy > p { font-size: 12px; }
+  .bn-plant-visual { padding-inline: 12px; padding-bottom: 21px; }
+  .bn-plant-visual figcaption { font-size: 12px; }
+  .bn-application-links > a { padding: 23px 19px; }
+  .bn-resource { padding: 24px; }
+  .bn-process-grid { gap: 26px 17px; }
+  .bn-process-grid h3 { font-size: 15px; }
+  .bn-process-grid p { font-size: 12px; }
+  .bn-cta { padding-block: 38px; }
+  .bn-cta > .bn-wrap { flex-direction: column; align-items: start; }
+  .bn-cta h2 { font-size: 25px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bn-btn, .bn-product { transition: none; }
+}
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -11263,7 +11576,8 @@ function hmTrust() {
     <div class="ia-tc no"><span class="lab">하지 않습니다</span>당일 출고 약속 · 승인 없는 대체품<br><span class="ia-d">3.1 직접 발행 · 받은 도면 공개</span></div>
   </div><p class="ia-bizline">사업자 ${iaBizNo()} · ${ORDER_LIVE ? '통신판매업 신고' : '신고 전'} · <a href="#about" data-go="about">회사 소개 →</a></p><p class="ia-trust-f"><a href="#about" data-go="about">회사 소개 →</a></p></section>`;
 }
-const hmTiles = () => `<div class="ia-tiles" role="list">${CAT_TILES.map(t => `<a class="ia-tile" role="listitem" href="#t-${t.id}" data-go="t-${t.id}">${iaTh(IA_TH_TILE[t.id])}<b>${esc(t.ko)}</b><span class="en" lang="en">${esc(t.en)}</span><span class="cnt">${iaTileN(t)}종</span></a>`).join('')}</div>`;
+// 홈과 제품 목록에서 같은 제품군 이미지·실제 카탈로그 수를 사용한다.
+const hmTiles = () => `<ul class="bn-products" role="list">${CAT_TILES.map((t, i) => `<li><a class="bn-product" href="#t-${t.id}" data-go="t-${t.id}"><span class="bn-product-visual bn-product-${t.id}" aria-hidden="true"></span><span class="bn-product-info"><span class="bn-product-top"><span class="bn-index">0${i + 1}</span><span class="bn-product-count">${iaTileN(t)}종</span></span><h3>${esc(t.ko)}</h3><span class="bn-product-en" lang="en">${esc(t.en)}</span><span class="bn-product-desc">${t.subs.slice(0, 3).map(s => esc(s.ko.replace(/ \(.*?\)/g, ''))).join(' · ')}</span><span class="bn-product-link">제품 살펴보기 <span aria-hidden="true">↗</span></span></span></a></li>`).join('')}</ul>`;
 const hmColls = home => `<div class="ia-colls"><span class="lab">모아 보기</span><a class="hi" href="#k-plant" data-go="k-plant">${esc(CAT_COLL.plant.ko)} →</a><a class="ia-d" href="#k-pump" data-go="k-pump">${esc(CAT_COLL.pump.ko)} →</a><a class="ia-d" href="#k-flange" data-go="k-flange">${esc(CAT_COLL.flange.ko)} →</a>${home ? '<a class="ia-m" href="#products" data-go="products">모아 보기 전체 →</a>' : ''}</div>`;
 function sbBox(where) {
   const lg = where === 'list';
@@ -11329,78 +11643,69 @@ function pmMail() {
   const subj = '[목록견적] ', body = ['볼트노트 견적 담당자님께', '목록 파일을 첨부합니다.', '필요한 날짜·납품지:', '필요한 서류(3.1, CoC):'].join('\r\n');
   return `<a class="pm-btn ghost" href="${esc('mailto:' + String(CONTACT.rfq).trim() + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body))}">견적 메일 보내기</a>`;
 }
-V.home = () => {
-  const h = hmH1();
-  return `<div class="pm-home" id="z-a">
-  <section class="pm-hero" aria-labelledby="h-z-a">
-    <div class="pm-w pm-hero-in">
-      <div class="pm-hero-tx">
-        ${ORDER_LIVE ? '' : '<a class="ia-status pm-status" href="#about" data-go="about"><i aria-hidden="true"></i>검증 운영 중: 참고 견적을 드립니다 <span aria-hidden="true">→</span></a>'}
-        <p class="pm-eye" lang="en">BOM → ASTM / ASME specs → quality docs</p>
-        <div class="ia-hero"><h1 id="h-z-a" tabindex="-1">${h.h1}</h1><p>${h.sub}</p></div>
-        ${sbBox('home')}
+/* 홈은 제품 탐색 → 목록 견적 → 현장별 볼팅 → 기술자료 순서로 연결한다.
+   이미지에는 규격값을 넣지 않고, 품목 수와 사전 수는 공개 데이터에서 계산한다. */
+V.home = () => `<div class="bn-home" id="z-a">
+  <section class="bn-hero" aria-labelledby="h-z-a">
+    <div class="bn-wrap bn-hero-grid">
+      <div class="bn-hero-copy">
+        <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS / BOLTNOTE</p>
+        <h1 id="h-z-a" tabindex="-1">필요한 체결부품,<br><em>정확한 규격으로.</em></h1>
+        <p class="bn-hero-lead">미터·인치 규격품부터 플랜트 볼팅까지.<br>제품을 찾고, 도면을 확인하고,<br class="ia-m"> BOM 그대로 견적을 요청하세요.</p>
+        <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 라인업 보기 <span aria-hidden="true">→</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">BOM 견적 요청 <span aria-hidden="true">↗</span></a></div>
+        <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
       </div>
-      <figure class="pm-hero-fig">
-        <div class="pm-hero-media pm-3d">${pmVideo('hero-flange', 'ASME B16.5 NPS 4 Class 300 플랜지 이음을 돌려 보며, 스터드볼트 8개의 너트를 1-5-3-7-2-6-4-8 순서로 조이는 3D 장면', 1280, 960)}</div>
-        <figcaption><span class="mono">ASME B16.5 · NPS 4 · Class 300</span><span>스터드 8개 · 조임 순서 1-5-3-7-2-6-4-8</span></figcaption>
+      <figure class="bn-hero-visual">
+        <img src="media/boltnote-hero.webp" width="1536" height="1024" alt="육각볼트, 렌치볼트, 스터드와 너트·와셔를 모은 체결부품 제품군 이미지" fetchpriority="high" decoding="async">
+        <figcaption><span class="bn-visual-mark" aria-hidden="true">+</span><span>작은 부품부터<br><b>설비의 연결까지.</b></span><span class="bn-visual-no" lang="en">BOLTNOTE<br>PRODUCT COLLECTION</span></figcaption>
       </figure>
     </div>
-    <div class="pm-w">${pmFacts()}</div>
   </section>
-  <div class="pm-w pm-doors-w">${hmDoors()}<div id="ia-filep" class="ia-filep-w" hidden></div></div>
-  <section class="pm-sec" aria-labelledby="pm-h-match">
-    <div class="pm-w pm-split rev">
-      <div class="pm-split-tx">${pmHead('What we match', 'pm-h-match', '줄마다 세 가지를 맞춥니다', '구매 담당자가 가진 것은 이 사이트의 품번이 아니라 BOM과 단면도의 표기입니다. 그 표기를 규격, 치수, 서류로 나눠 맞추고, 맞지 않는 곳은 질문으로 돌려 드립니다.')}
-        <ol class="pm-match">${PM_MATCH.map(([t, d], i) => `<li><span class="pm-no">0${i + 1}</span><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ol>
-        <ul class="pm-tools">${[['ref', '표기·사양 읽기', ''], ['tools', '플랜지 스터드 길이 (B16.5)', 'flange'], ['tools', '3.1 성적서 읽는 법', 'cert'], ['tools', '재질 대조', 'mat']].map(([g, t, k]) => `<li><a href="#${g}" data-go="${g}"${k ? ` data-tab="${k}"` : ''}>${t}<span aria-hidden="true">→</span></a></li>`).join('')}</ul>
+  <div class="bn-facts bn-wrap" aria-label="카탈로그 안내">
+    <div><b>${CAT_TILES.length}<small> CATEGORIES</small></b><span>품목별로 정리한 제품군</span></div>
+    <div><b>${pmCatN()}<small> TYPES</small></b><span>미터·인치 체결부품 품목</span></div>
+    <div><b>CAD<small> &amp; DRAWINGS</small></b><span>제공 품목의 도면 · STEP · DXF</span></div>
+    <a href="#lib" data-go="lib"><b>${typeof LIB !== 'undefined' ? LIB.length : 0}<small> NOTES</small></b><span>규격과 재질을 찾는 사전 <i aria-hidden="true">↗</i></span></a>
+  </div>
+  <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
+    <div class="bn-wrap">
+      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / PRODUCT LINEUP</p><h2 id="bn-h-products">제품부터, 찾아보세요.</h2><p>볼트 하나부터 플랜트 볼팅 세트까지. 필요한 품목의 규격과 치수를 확인하세요.</p></div><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div>
+      ${hmTiles()}
+      <p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별 상세에서 확인하세요.</p>
+    </div>
+  </section>
+  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq">
+    <div class="bn-wrap bn-rfq-grid">
+      <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">02 / ENGINEERING RFQ</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>이 사이트의 품번을 몰라도 됩니다.<br>엑셀이나 부품표의 표기를 그대로 붙여 넣으면<br>규격·등급·수량을 읽고, 확인할 항목을 보여 드립니다.</p><ul class="bn-rfq-points"><li><span>01</span> BOM · 엑셀 · CSV 붙여넣기</li><li><span>02</span> 규격 · 치수 · 필요한 서류 확인</li><li><span>03</span> 견적 요청서 · C&amp;D로 연결</li></ul><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
+      <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 규격 확인</span><small>브라우저 안에서 읽습니다</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE ? '단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.' : '<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">→</span></a>'}</div></div>
+    </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div>
+  </section>
+  <section class="bn-section bn-applications" aria-labelledby="bn-h-applications">
+    <div class="bn-wrap">
+      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">03 / APPLICATIONS</p><h2 id="bn-h-applications">현장의 언어로, 연결합니다.</h2><p>자주 함께 쓰는 체결부품을 설비와 용도별로 모았습니다.</p></div></div>
+      <div class="bn-plant">
+        <div class="bn-plant-copy"><span class="bn-pill" lang="en">PLANT BOLTING</span><h3>플랜지 하나에도,<br>확인할 기준이 있습니다.</h3><p>스터드의 재질·나사·길이와 짝이 되는 너트.<br>조인트 조건을 확인하고 필요한 서류까지 함께 검토합니다.</p><div class="bn-plant-specs"><span>ASTM A193</span><span>ASTM A194</span><span>ASTM A320</span></div><a class="bn-btn bn-btn-light" href="#k-plant" data-go="k-plant">플랜트 볼팅 제품 보기 <span aria-hidden="true">→</span></a><a class="bn-plant-tool" href="#tools" data-go="tools" data-tab="flange">B16.5 스터드 길이 계산 <span aria-hidden="true">↗</span></a></div>
+        <figure class="bn-plant-visual">${pmVideo('hero-flange', '플랜지 조인트의 스터드와 너트를 보여 주는 3D 참고 장면', 1280, 960)}<figcaption>FLANGE JOINT / STUDS &amp; HEAVY HEX NUTS</figcaption></figure>
       </div>
-      <figure class="pm-shot">${pmImg('match-docs', 'BOM 세 줄을 차례로 읽어 ASTM·ASME 규격과 등급, 조건, 필요한 서류(제조사 3.1, 경도 기록, 충격시험, 코팅 성적서, CoC)로 맞추는 장면', 640, 480)}</figure>
+      <div class="bn-application-links">${Object.entries(PM_COLL).map(([k, [spec, d]], i) => `<a href="#k-${k}" data-go="k-${k}"><span class="bn-index">0${i + 1}</span><div><b>${esc(CAT_COLL[k].ko)}</b><p>${esc(d)}</p></div><span class="bn-link-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>
     </div>
   </section>
-  ${typeof LIB !== 'undefined' && LIB.length ? `<section class="pm-sec pm-sec-2" aria-labelledby="pm-h-lib">
-    <div class="pm-w pm-lib">
-      <div>${pmHead('Library', 'pm-h-lib', '체결부품 규격 사전', `ASTM·ASME·ISO·EN·DIN·KS·JIS 규격과 등급, 나사, 서류·시험, 코팅, 부품 용어 ${LIB.length}개를 엔지니어가 정리했습니다. BOM의 표기를 사전처럼 찾아보세요.`, '<a class="pm-link" href="#lib" data-go="lib">사전 전체 보기 <span aria-hidden="true">→</span></a>')}</div>
-      <div class="pm-lib-f"><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: B7M, 2H, EN 10204 3.1, 렌치볼트" autocomplete="off" spellcheck="false"><button type="submit">사전 찾기</button></form><div class="lib-pop"><span class="lab">자주 찾는 항목</span>${LIB_POP.slice(0, 8).map(libLink).join('')}</div></div>
-    </div>
-  </section>` : ''}
-  <section class="pm-sec" aria-labelledby="pm-h-prod">
-    <div class="pm-w">${pmHead('Products', 'pm-h-prod', '품목으로 찾기', '미터 KS·ISO·DIN·JIS 규격품부터 인치 ASME·ASTM 플랜트 볼트까지, 품목마다 규격표와 치수 도면을 붙였습니다.', '<a class="pm-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">→</span></a>')}
-    ${pmTiles()}</div>
-  </section>
-  <section class="pm-band pm-plant" aria-labelledby="pm-h-plant">
-    <div class="pm-w pm-split">
-      ${pmB165()}
-      <div class="pm-split-tx">${pmHead('Plant bolting', 'pm-h-plant', '플랜지 볼팅은 세트로 봅니다', '압력 등급과 호칭으로 스터드 지름·길이·개수를 계산하고, 재질에 맞는 A194 너트와 필요한 서류를 함께 정합니다.')}
-        <ul class="pm-checks">${PM_PLANT.map(t => `<li>${t}</li>`).join('')}</ul>
-        <div class="pm-acts"><a class="pm-btn" href="#tools" data-go="tools" data-tab="flange">플랜지 스터드 길이 계산 <span aria-hidden="true">→</span></a><a class="pm-btn ghost" href="#k-plant" data-go="k-plant">플랜트 볼팅 모아 보기</a></div>
-      </div>
-    </div>
-  </section>
-  <section class="pm-sec" aria-labelledby="pm-h-coll">
-    <div class="pm-w">${pmHead('Collections', 'pm-h-coll', '현장별로 모아 보기', '자주 함께 나오는 줄을 현장 기준으로 묶었습니다.')}
-    ${pmColls()}</div>
-  </section>
-  <section class="pm-band" aria-labelledby="pm-h-proc">
-    <div class="pm-w pm-split">
-      <figure class="pm-shot">${pmImg('proc-list', '받은 목록 여섯 줄을 한 줄씩 읽어 견적, 질문, 공급 불가로 나누고 견적서·C&D·공급 불가 목록을 만드는 과정', 720, 450)}</figure>
-      <div class="pm-split-tx">${pmHead('How it works', 'pm-h-proc', '목록이 견적서가 되기까지')}
-        <ol class="pm-steps">${PM_STEPS.map(([t, d], i) => `<li><span class="pm-no">0${i + 1}</span><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ol>
-        <div class="pm-acts"><a class="pm-btn" href="#list" data-go="list">목록 견적 시작 <span aria-hidden="true">→</span></a></div>
+  <section class="bn-section bn-resources" aria-labelledby="bn-h-resources">
+    <div class="bn-wrap"><div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">04 / ENGINEERING RESOURCES</p><h2 id="bn-h-resources">제품을 넘어, 판단의 근거까지.</h2><p>엔지니어와 구매 담당자가 같은 규격을 확인할 수 있도록.</p></div></div>
+      <div class="bn-resource-grid">
+        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('set')}</span><span class="bn-resource-label" lang="en">STANDARDS LIBRARY</span><h3>체결부품 규격 사전</h3><p>규격 번호, 재질과 등급, 나사 표기.<br>필요한 용어와 규격의 관계를 찾아보세요.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 2H, ISO 4017" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">→</button></form><a href="#lib" data-go="lib">사전 전체 보기 <span aria-hidden="true">↗</span></a></article>
+        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('bolt')}</span><span class="bn-resource-label" lang="en">DRAWINGS &amp; CAD</span><h3>치수 도면 · CAD</h3><p>형상과 치수를 먼저 확인하세요.<br>제공되는 품목은 STEP·DXF를 받을 수 있습니다.</p><div class="bn-resource-tags"><span>DIMENSIONS</span><span>STEP</span><span>DXF</span></div><a href="#ref" data-go="ref">도면·규격 보기 <span aria-hidden="true">↗</span></a></article>
+        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('stud')}</span><span class="bn-resource-label" lang="en">ENGINEERING TOOLS</span><h3>볼팅 검토 도구</h3><p>플랜지 스터드 길이, 재질 대조,<br>각인·규격 표기를 확인하는 도구를 모았습니다.</p><div class="bn-resource-tags"><span>B16.5</span><span>MATERIAL</span><span>MARKING</span></div><a href="#tools" data-go="tools">계산·대조표 열기 <span aria-hidden="true">↗</span></a></article>
       </div>
     </div>
   </section>
-  <section class="pm-sec pm-sec-2" aria-labelledby="pm-h-trust">
-    <div class="pm-w">${pmHead('How we work', 'pm-h-trust', '운영 원칙', '혼자 운영하는 곳이라 할 수 있는 일과 하지 않는 일을 먼저 적어 둡니다.')}
-    ${hmTrust()}</div>
-  </section>
-  <section class="pm-cta" aria-labelledby="pm-h-cta">
-    <div class="pm-w pm-cta-in">
-      <div><h2 id="pm-h-cta">다음 정비 목록, 한 번 보내 보세요</h2><p>급한 건이 아니어도 괜찮습니다. 견적서를 보고 판단하시면 됩니다.</p></div>
-      <div class="pm-acts"><a class="pm-btn" href="#list" data-go="list">목록 견적 시작 <span aria-hidden="true">→</span></a>${pmMail()}</div>
-    </div>
-  </section>
+  <section class="bn-section bn-process" aria-labelledby="bn-h-process"><div class="bn-wrap">
+    <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-process">요청부터 견적까지, 명확하게.</h2></div><a class="bn-text-link" href="#about" data-go="about">볼트노트의 운영 원칙 <span aria-hidden="true">↗</span></a></div>
+    <ol class="bn-process-grid">${[['목록을 보냅니다', 'BOM을 붙여 넣거나 엑셀·PDF·도면을 보내 주세요.'], ['사양을 확인합니다', '규격·치수·재질과 필요한 서류를 줄마다 검토합니다.'], ['빠진 조건을 묻습니다', '확인이 필요한 사양을 모아 질문합니다.'], ['견적서로 답합니다', '공급처 확인 뒤 단가·납기와 서류 제공 여부를 적습니다.']].map(([t, d], i) => `<li><span>0${i + 1}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+  </div></section>
+  <section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET'S CONNECT YOUR NEXT PROJECT</p><h2 id="bn-h-cta">다음 목록의 시작은,<br class="ia-m"> 볼트노트에서.</h2><p>필요한 체결부품과 조건을 알려 주세요. 확인할 내용부터 함께 정리합니다.</p></div><a class="bn-btn" href="#list" data-go="list">견적 요청 시작하기 <span aria-hidden="true">→</span></a></div></section>
 </div>`;
-};
+
 V.after.home = () => {
   sbInit('home'); hmBind();
   const vid = view().querySelector('.pm-video');
