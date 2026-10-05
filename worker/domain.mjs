@@ -1,3 +1,4 @@
+import {referenceDateTime} from './dates.mjs';
 export const DEFAULT_MARKUP_PCT=20;
 export class DomainError extends Error { constructor(message,status=400){super(message);this.status=status;} }
 export const text=(v,max=1000)=>String(v??'').trim().slice(0,max);
@@ -43,7 +44,8 @@ export function assessOffer(line,offer,supplier,settings,now=new Date()) {
   if(text(line.requiredDocs)&&!text(offer.documents))reasons.push('요청한 서류의 공급 조건');
   const currency=text(offer.currency,3).toUpperCase();
   let fx=currency==='KRW'?1:Number(settings.fx?.[currency]?.rate);
-  if(currency!=='KRW' && (!Number.isFinite(fx)||fx<=0||!text(settings.fx?.[currency]?.source)||!Number.isFinite(Date.parse(settings.fx?.[currency]?.date))||Date.parse(settings.fx?.[currency]?.date)>now.getTime()+60000)) reasons.push('환율·출처·기준일');
+  const fxDate=referenceDateTime(settings.fx?.[currency]?.date);
+  if(currency!=='KRW' && (!Number.isFinite(fx)||fx<=0||!text(settings.fx?.[currency]?.source)||!Number.isFinite(fxDate)||fxDate>now.getTime()+60000)) reasons.push('환율·출처·기준일');
   if(supplier.country!=='KR' && (offer.importCostKRW==null || offer.importCostKRW==='' || !text(offer.importBasis))) reasons.push('통관 비용·근거');
   const logistics=settings.logistics?.[supplier.id];
   if(!logistics || logistics.shippingKRW==null || logistics.shippingKRW==='' || !text(logistics.evidence)) reasons.push('운송비·근거');

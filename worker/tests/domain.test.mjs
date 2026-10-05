@@ -26,7 +26,14 @@ test('email HTML escapes externally supplied customer text',()=>{const f=fixture
 test('invalid quantities and duplicate line identities are rejected',()=>{assert.throws(()=>cleanLines([{description:'시험',qty:'10EA'}]));assert.throws(()=>cleanLines([{id:'same',description:'시험',qty:1},{id:'same',description:'시험',qty:2}]));});
 test('product fetch only allows exact registered HTTPS supplier hosts',()=>{const s={domains:['www.example.com']};assert.equal(allowedProductURL('https://www.example.com/p#one',s),'https://www.example.com/p');for(const u of ['http://www.example.com/p','https://www.example.com.evil.test/p','https://user:pass@www.example.com/p','https://127.0.0.1/p','https://www.example.com:8080/p'])assert.throws(()=>allowedProductURL(u,s));});
 test('repeated lines cannot spend the same supplier stock twice',()=>{const f=fixture();f.request.lines.push({...f.line,id:'L2',no:2});f.offer.availableQty=15;assert.equal(optimizeOffers(f.request,[f.offer,{...f.offer,id:'O2',lineId:'L2'}],[f.supplier],f.settings,now).ready,false);});
-import {businessDate,businessTime} from '../dates.mjs';
+import {businessDate,businessTime,referenceDateTime} from '../dates.mjs';
 test('customer dates preserve the exact expiry in Korean time across UTC midnight',()=>{assert.equal(businessDate('2026-10-05T16:00:00Z'),'2026-10-06');assert.equal(businessTime('2026-10-05T23:05:00Z'),'2026-10-06 08:05 KST');});
 test('requested documents cannot be empty in an eligible supplier offer',()=>{const f=fixture();f.line.requiredDocs='MTR';f.offer.documents='';assert.equal(assessOffer(f.line,f.offer,f.supplier,f.settings,now).eligible,false);});
 test('unthreaded parts can omit pitch; document and delivery checks cannot be removed',()=>{const f=fixture();const line=cleanLines([{...f.line,checksRequired:['standard','diameter','grade','finish']}])[0];assert(line.checksRequired.includes('documents'));assert(line.checksRequired.includes('delivery'));f.offer.checks.pitch='pending';assert.equal(assessOffer(line,f.offer,f.supplier,f.settings,now).eligible,true);f.offer.checks.documents='pending';assert.equal(assessOffer(line,f.offer,f.supplier,f.settings,now).eligible,false);});
+test('FX reference dates follow the Korean calendar, retain exact timestamps and reject invalid dates',()=>{
+  const f=fixture();f.offer.currency='USD';f.settings.fx.USD={rate:1300,source:'시험 환율 근거',date:'2026-10-06'};
+  assert.equal(assessOffer(f.line,f.offer,f.supplier,f.settings,new Date('2026-10-05T15:30:00Z')).eligible,true);
+  assert.equal(assessOffer(f.line,f.offer,f.supplier,f.settings,new Date('2026-10-05T14:55:00Z')).eligible,false);
+  f.settings.fx.USD.date='2026-10-07';assert.equal(assessOffer(f.line,f.offer,f.supplier,f.settings,new Date('2026-10-05T15:30:00Z')).eligible,false);
+  assert(Number.isNaN(referenceDateTime('2026-02-30')));assert.equal(referenceDateTime('2026-10-06T00:00:00Z'),Date.parse('2026-10-06T00:00:00Z'));
+});
