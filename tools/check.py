@@ -8,6 +8,7 @@
 3. 사이트 스크립트에 문법 오류가 없는가                                             (Node가 있을 때)
 4. 사이트·사전 페이지에 금지어가 없는가 (재고·출고 약속, 서비스 약속, 가격 표시 등)
 5. app/tests의 엔진 점검 3종이 통과하는가                                          (playwright 크로미움이 있을 때)
+6. 홈페이지 체결 영상의 피치·좌면·공구 복귀 동작이 맞는가                          (Python 표준 라이브러리)
 하나라도 실패하면 종료 코드 1. 브라우저 경로는 환경 변수 BN_CHROMIUM(없으면 playwright 기본).
 직장 이름 같은 비공개 금지어는 환경 변수 BN_PRIVATE_BANNED('이름1|이름2') 또는 app/tests/private_banned.txt에서 읽는다.
 """
@@ -51,6 +52,10 @@ def main():
 
     r = run([PY, "tools/build_all.py", "--check"])
     step("결과물이 원본과 같음", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
+
+    r = run([PY, "tools/test_precision.py"])
+    step("체결 영상의 피치·좌면·공구 동작", r.returncode == 0,
+         "6종 물리 조건" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
 
     node = shutil.which("node")
     if node:
