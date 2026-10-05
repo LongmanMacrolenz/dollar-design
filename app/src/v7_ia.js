@@ -189,7 +189,9 @@ const PM_MEDIA = 'media/';
 const pmImg = (n, alt, w, h, eager = false) => `<picture><source srcset="${PM_MEDIA}${n}.png" media="(prefers-reduced-motion: reduce)"><img src="${PM_MEDIA}${n}.gif" alt="${esc(alt)}" width="${w}" height="${h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"></picture>`;
 // 첫 화면 3D: 소리 없는 반복 동영상. 움직임 줄이기 설정이면 멈춘 첫 장면(poster)만 보인다 (V.after.home에서 처리)
 const pmVideo = (n, label, w, h) => `<video class="pm-video" width="${w}" height="${h}" autoplay muted loop playsinline preload="auto" poster="${PM_MEDIA}${n}-poster.jpg" aria-label="${esc(label)}"><source src="${PM_MEDIA}${n}.webm" type="video/webm"><source src="${PM_MEDIA}${n}.mp4" type="video/mp4"></video>`;
-const PM_TILE_IMG = { bolt: 'p-bolt', nut: 'p-nut', washer: 'p-washer', stud: 'p-stud', pin: 'p-pin', rivet: 'p-rivet' };
+// 품목 타일 사진(ChatGPT로 만든 예시 이미지, 512×512). 실제 공급 제품의 사진이 아니라 화면 아래에 예시라고 밝힌다
+const PM_TILE_IMG = { bolt: 't-bolt', nut: 't-nut', washer: 't-washer', stud: 't-stud', pin: 't-pin', rivet: 't-rivet' };
+const pmPhoto = (n, w, h) => `<img src="${PM_MEDIA}${n}.webp" alt="" width="${w}" height="${h}" loading="lazy" decoding="async">`;
 const PM_COLL = {
   plant: ['A193 B7 · B7M · B8M · B16 · A320 L7', '스터드볼트와 헤비 육각너트. 고온·저온·사워 조건의 플랜지 볼팅'],
   pump: ['평행 키 · 다웰핀 · 멈춤링 · 플러그', '펌프·회전기기 정비 때 볼트와 함께 나오는 줄'],
@@ -203,7 +205,7 @@ const pmFacts = () => `<ul class="pm-facts" aria-label="볼트노트 한눈에">
   [`${iaYears()}<small>년</small>`, '회전기기 분야 기계엔지니어'],
   [`${SLA().days}<small>영업일</small>`, '20줄 이하 목록 견적 회신'],
 ].map(([b, t]) => `<li><b>${b}</b><span>${t}</span></li>`).join('')}</ul>`;
-const pmTiles = () => `<div class="ia-tiles pm-tiles" role="list">${CAT_TILES.map(t => `<a class="ia-tile pm-tile" role="listitem" href="#t-${t.id}" data-go="t-${t.id}"><span class="pm-media">${pmImg(PM_TILE_IMG[t.id] || 'p-bolt', '', 480, 360)}</span><span class="pm-tile-b"><b>${esc(t.ko)}</b><span class="en" lang="en">${esc(t.en)}</span><span class="cnt">${iaTileN(t)}종</span><span class="pm-arr" aria-hidden="true">→</span></span></a>`).join('')}</div>`;
+const pmTiles = () => `<div class="ia-tiles pm-tiles" role="list">${CAT_TILES.map(t => `<a class="ia-tile pm-tile" role="listitem" href="#t-${t.id}" data-go="t-${t.id}"><span class="pm-media">${pmPhoto(PM_TILE_IMG[t.id] || 't-bolt', 512, 512)}</span><span class="pm-tile-b"><b>${esc(t.ko)}</b><span class="en" lang="en">${esc(t.en)}</span><span class="cnt">${iaTileN(t)}종</span><span class="pm-arr" aria-hidden="true">→</span></span></a>`).join('')}</div>`;
 const pmColls = () => `<div class="pm-colls" role="list">${Object.entries(PM_COLL).map(([k, [spec, d]], i) => `<a class="pm-coll${k === 'plant' ? ' hi' : ''}" role="listitem" href="#k-${k}" data-go="k-${k}"><span class="pm-no">0${i + 1}</span><b>${esc(CAT_COLL[k].ko)}</b><span class="pm-spec">${esc(spec)}</span><span class="pm-d">${esc(d)}</span><span class="pm-more">${CAT_COLL[k].f.length}종 보기 <span aria-hidden="true">→</span></span></a>`).join('')}</div>`;
 const PM_MATCH = [
   ['규격·등급', 'A193 B7·B7M·B16, A320 L7, A453 660처럼 재질 규격과 등급을 정하고, 짝이 되는 A194 너트 등급까지 맞춥니다. KS·ISO·DIN·JIS 미터 규격도 대응을 봅니다.'],
@@ -271,7 +273,8 @@ V.home = () => {
   </section>` : ''}
   <section class="pm-sec" aria-labelledby="pm-h-prod">
     <div class="pm-w">${pmHead('Products', 'pm-h-prod', '품목으로 찾기', '미터 KS·ISO·DIN·JIS 규격품부터 인치 ASME·ASTM 플랜트 볼트까지, 품목마다 규격표와 치수 도면을 붙였습니다.', '<a class="pm-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">→</span></a>')}
-    ${pmTiles()}</div>
+    ${pmTiles()}
+    <p class="small muted pm-imgnote">품목 이미지는 이해를 돕는 예시이며, 실제 공급 제품의 사진이 아닙니다.</p></div>
   </section>
   <section class="pm-band pm-plant" aria-labelledby="pm-h-plant">
     <div class="pm-w pm-split">
