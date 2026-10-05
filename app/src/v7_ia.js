@@ -189,7 +189,7 @@ function sbBox(where) {
 const PM_MEDIA = 'media/';
 const pmImg = (n, alt, w, h, eager = false) => `<picture><source srcset="${PM_MEDIA}${n}.png" media="(prefers-reduced-motion: reduce)"><img src="${PM_MEDIA}${n}.gif" alt="${esc(alt)}" width="${w}" height="${h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"></picture>`;
 // 첫 화면 3D: 소리 없는 반복 동영상. 움직임 줄이기 설정이면 멈춘 첫 장면(poster)만 보인다 (V.after.home에서 처리)
-const pmVideo = (n, label, w, h) => `<video class="pm-video" width="${w}" height="${h}" autoplay muted loop playsinline preload="auto" poster="${PM_MEDIA}${n}-poster.jpg" aria-label="${esc(label)}"><source src="${PM_MEDIA}${n}.webm" type="video/webm"><source src="${PM_MEDIA}${n}.mp4" type="video/mp4"></video>`;
+const pmVideo = (n, label, w, h) => `<video class="pm-video" width="${w}" height="${h}" muted loop playsinline preload="none" poster="${PM_MEDIA}${n}-poster.jpg" aria-label="${esc(label)}"><source src="${PM_MEDIA}${n}.webm" type="video/webm"><source src="${PM_MEDIA}${n}.mp4" type="video/mp4"></video>`;
 const PM_TILE_IMG = { bolt: 'p-bolt', nut: 'p-nut', washer: 'p-washer', stud: 'p-stud', pin: 'p-pin', rivet: 'p-rivet' };
 const PM_COLL = {
   plant: ['A193 B7 · B7M · B8M · B16 · A320 L7', '스터드볼트와 헤비 육각너트. 고온·저온·사워 조건의 플랜지 볼팅'],
@@ -239,20 +239,18 @@ function pmMail() {
 /* 홈은 제품 탐색 → 목록 견적 → 현장별 볼팅 → 기술자료 순서로 연결한다.
    이미지에는 규격값을 넣지 않고, 품목 수와 사전 수는 공개 데이터에서 계산한다. */
 V.home = () => `<div class="bn-home" id="z-a">
-  <section class="bn-hero" aria-labelledby="h-z-a">
+  <section class="bn-hero bn-cinema" aria-labelledby="h-z-a">
     <div class="bn-wrap bn-hero-grid">
       <div class="bn-hero-copy">
-        <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS / BOLTNOTE</p>
-        <h1 id="h-z-a" tabindex="-1">필요한 체결부품,<br><em>정확한 규격으로.</em></h1>
-        <p class="bn-hero-lead">미터·인치 규격품부터 플랜트 볼팅까지.<br>제품을 찾고, 도면을 확인하고,<br class="ia-m"> BOM 그대로 견적을 요청하세요.</p>
+        <p class="bn-eyebrow" lang="en"><span></span> ENGINEERED CONNECTIONS</p>
+        <h1 id="h-z-a" tabindex="-1">작은 부품이,<br><em>큰 설비를 잇습니다.</em></h1>
+        <p class="bn-hero-lead">플랜지부터 하우징, 회전축까지.<br>연결마다 필요한 체결부품을 찾고,<br>BOM 그대로 견적을 요청하세요.</p>
         <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 라인업 보기 <span aria-hidden="true">→</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">BOM 견적 요청 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
       </div>
-      <figure class="bn-hero-visual">
-        <img src="media/boltnote-hero.webp" width="1536" height="1024" alt="육각볼트, 렌치볼트, 스터드와 너트·와셔를 모은 체결부품 제품군 이미지" fetchpriority="high" decoding="async">
-        <figcaption><span class="bn-visual-mark" aria-hidden="true">+</span><span>작은 부품부터<br><b>설비의 연결까지.</b></span><span class="bn-visual-no" lang="en">BOLTNOTE<br>PRODUCT COLLECTION</span></figcaption>
-      </figure>
+      ${bnFilmMarkup()}
     </div>
+    ${bnFilmNavigation()}
   </section>
   <div class="bn-facts bn-wrap" aria-label="카탈로그 안내">
     <div><b>${CAT_TILES.length}<small> CATEGORIES</small></b><span>품목별로 정리한 제품군</span></div>
@@ -301,8 +299,7 @@ V.home = () => `<div class="bn-home" id="z-a">
 
 V.after.home = () => {
   sbInit('home'); hmBind();
-  const vid = view().querySelector('.pm-video');
-  if (vid) { try { if (reduced()) { vid.removeAttribute('autoplay'); vid.pause(); } else { const pr = vid.play(); if (pr && pr.catch) pr.catch(() => {}); } } catch (e) {} }
+  bnFilmInit();
   const f = $('pm-lib-form');
   if (f) f.addEventListener('submit', e => { e.preventDefault(); state.lib = { q: $('pm-lib-q').value.trim(), kind: '', org: '' }; go('lib'); });
 };

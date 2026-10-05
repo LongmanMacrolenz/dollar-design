@@ -2917,6 +2917,99 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
 @media (prefers-reduced-motion: reduce) {
   .bn-btn, .bn-product { transition: none; }
 }
+/* ── zz_site_motion.css ── */
+/* Cinematic home hero; its dark studio stays consistent in either site theme. */
+.bn-cinema {
+  position: relative;
+  isolation: isolate;
+  background: #080e16;
+  color: #f4f7fa;
+  border-bottom: 1px solid #23303f;
+}
+.bn-cinema::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: -1; background: radial-gradient(ellipse at 60% 35%, #26354755, transparent 60%); }
+.bn-cinema .bn-hero-grid { max-width: 1520px; grid-template-columns: .85fr 1.3fr; min-height: 610px; gap: 0; }
+.bn-cinema .bn-hero-copy { padding: 64px 0 46px; z-index: 2; }
+.bn-cinema .bn-eyebrow { color: #a5b5c5; font-size: 12px; letter-spacing: .18em; }
+.bn-cinema h1 { font-size: clamp(34px, 3.5vw, 53px); color: #f4f7fa; line-height: 1.38; white-space: nowrap; }
+.bn-cinema h1 em { color: #f4f7fa; }
+.bn-cinema .bn-hero-lead { color: #b0becd; font-size: 15px; line-height: 1.9; margin: 25px 0 30px; }
+.bn-cinema .bn-actions { gap: 10px; }
+.bn-cinema .bn-btn { background: #ef754c; border-color: #ef754c; color: #0b1420; font-size: 13px; padding-inline: 18px; gap: 22px; }
+.bn-cinema .bn-btn:hover { background: #ff936c; border-color: #ff936c; }
+.bn-cinema .bn-btn-outline { color: #f4f7fa; background: transparent; border-color: #657182; }
+.bn-cinema .bn-btn-outline:hover { background: #1d2b3b; border-color: #abb6c3; }
+.bn-cinema .bn-hero-standards { color: #8f9fad; font-size: 12px; line-height: 1.7; gap: 7px 12px; margin-top: 36px; }
+.bn-cinema .bn-hero-standards span + span::before { color: #526579; margin-right: 12px; }
+.bn-film { position: relative; align-self: stretch; margin: 0 -36px 0 -25px; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.bn-film-stage { position: relative; min-width: 0; overflow: hidden; }
+.bn-film-stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, #080e16 0, transparent 13%, transparent 92%, #080e1633), linear-gradient(0deg, #080e16, transparent 16%); }
+.bn-film video { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #080e16; }
+.bn-film-badge { position: absolute; z-index: 1; top: 30px; left: 35px; display: flex; align-items: center; gap: 8px; font-family: var(--f-mono); color: #b2c0d0; font-size: 12px; line-height: 1.5; letter-spacing: .10em; }
+.bn-film-badge > span:first-child { width: 5px; height: 5px; background: #ed7a51; border-radius: 50%; }
+.bn-film-corner { position: absolute; z-index: 1; bottom: 29px; right: 36px; font-family: var(--f-mono); color: #7e91a4; font-size: 12px; line-height: 1.7; letter-spacing: .1em; text-align: right; }
+.bn-film-caption { display: flex; align-items: start; gap: 18px; padding: 0 38px 22px; min-height: 95px; position: relative; }
+.bn-film-caption::before { content: ""; position: absolute; top: 2px; left: 19px; height: 57px; width: 1px; background: #f0845d; }
+.bn-film-number { font-family: var(--f-mono); color: #ef8a65; font-size: 12px; line-height: 1.7; white-space: nowrap; padding-top: 2px; }
+.bn-film-caption > div > span { font-family: var(--f-mono); display: block; color: #7e95aa; font-size: 12px; line-height: 1.6; letter-spacing: .12em; }
+.bn-film-caption strong { display: block; margin-top: 5px; color: #eaf0f7; font-size: 19px; line-height: 1.45; letter-spacing: -.025em; }
+.bn-film-caption p { margin: 6px 0 0; color: #95a8bc; font-size: 12px; line-height: 1.7; }
+.bn-film-navigation { display: grid; grid-template-columns: 1fr auto; gap: 16px 30px; padding-top: 20px; padding-bottom: 18px; border-top: 1px solid #253142; }
+.bn-film-chapters { min-width: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 22px; }
+.bn-film-chapters button { position: relative; display: flex; align-items: center; justify-content: start; gap: 11px; min-height: 44px; padding: 0 0 14px; border: 0; border-radius: 0; background: transparent; color: #91a2b5; font-family: var(--f-sans); font-size: 13px; white-space: nowrap; text-align: left; cursor: pointer; }
+.bn-film-chapters button:hover, .bn-film-chapters button[aria-pressed="true"] { color: #fff; }
+.bn-film-chapter-no { color: #65798f; font-family: var(--f-mono); font-size: 12px; }
+.bn-film-chapters button[aria-pressed="true"] .bn-film-chapter-no { color: #f08964; }
+.bn-film-track { position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: #2d3b4c; }
+.bn-film-track i { display: block; width: var(--film-progress, 0%); height: 100%; background: #ed7c54; }
+.bn-film-play { display: inline-flex; justify-content: center; align-items: center; gap: 9px; min-height: 44px; min-width: 100px; background: #172435; border: 1px solid #405169; border-radius: 3px; color: #e7eff8; font-size: 12px; cursor: pointer; }
+.bn-film-play:hover { background: #24354b; }
+.bn-film-play > span:first-child { width: 15px; font-size: 14px; }
+.bn-cinema :focus-visible { outline: 2px solid #ff9c75; outline-offset: 5px; }
+.bn-film-note { grid-column: 1 / -1; margin: 0; color: #8fa0b2; font-size: 12px; line-height: 1.5; }
+@media (min-width: 1520px) { .bn-cinema .bn-hero-grid { min-height: 650px; } }
+@media (min-width: 761px) and (max-height: 860px) {
+  .bn-cinema .bn-hero-grid { min-height: 0; }
+  .bn-cinema .bn-hero-copy { padding-block: 35px; }
+  .bn-cinema .bn-hero-lead { margin: 20px 0 25px; font-size: 14px; line-height: 1.8; }
+  .bn-cinema .bn-hero-standards { margin-top: 25px; }
+  .bn-film video { height: min(550px, calc(100svh - 290px)); aspect-ratio: auto; object-fit: contain; }
+}
+@media (max-width: 1100px) {
+  .bn-cinema .bn-hero-grid { grid-template-columns: .9fr 1.2fr; min-height: 540px; }
+  .bn-cinema h1 { font-size: 36px; }
+  .bn-cinema .bn-hero-lead { font-size: 13px; }
+  .bn-cinema .bn-actions { flex-direction: column; align-items: start; }
+  .bn-cinema .bn-hero-standards { max-width: 300px; margin-top: 25px; }
+  .bn-film { margin-left: -15px; }
+  .bn-film-chapters { gap: 15px; }
+  .bn-film-chapters button { gap: 7px; font-size: 12px; }
+  .bn-film-navigation { gap: 15px; }
+}
+@media (max-width: 760px) {
+  .bn-cinema .bn-hero-grid { grid-template-columns: 1fr; min-height: 0; }
+  .bn-cinema .bn-hero-copy { padding: 34px 0 5px; }
+  .bn-cinema .bn-eyebrow { margin-bottom: 17px; }
+  .bn-cinema h1 { font-size: clamp(29px, 7.3vw, 43px); line-height: 1.35; }
+  .bn-cinema .bn-hero-lead { font-size: 13px; margin: 17px 0 22px; }
+  .bn-cinema .bn-actions { flex-direction: row; align-items: stretch; gap: 8px; }
+  .bn-cinema .bn-btn { font-size: 12px; min-height: 46px; padding-inline: 14px; gap: 15px; }
+  .bn-cinema .bn-hero-standards { display: none; }
+  .bn-film { margin: 0 -20px; }
+  .bn-film video { max-height: 460px; object-fit: contain; }
+  .bn-film-stage::after { background: linear-gradient(0deg, #080e16, transparent 14%), linear-gradient(180deg, #080e16, transparent 14%); }
+  .bn-film-badge { top: 15px; left: 23px; font-size: 12px; }
+  .bn-film-corner { bottom: 15px; right: 22px; font-size: 12px; }
+  .bn-film-caption { min-height: 94px; padding: 0 24px 20px; gap: 13px; }
+  .bn-film-caption::before { display: none; }
+  .bn-film-caption strong { font-size: 17px; }
+  .bn-film-caption > div > span { letter-spacing: .07em; }
+  .bn-film-navigation { padding-top: 14px; padding-bottom: 16px; gap: 15px 10px; grid-template-columns: 1fr; }
+  .bn-film-chapters { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 7px; }
+  .bn-film-chapters button { flex-direction: column; align-items: start; gap: 4px; padding-bottom: 12px; font-size: 12px; white-space: normal; word-break: keep-all; min-height: 66px; }
+  .bn-film-play { justify-self: end; min-width: 100px; grid-column: 1; grid-row: 2; }
+  .bn-film-note { max-width: calc(100% - 112px); align-self: center; grid-column: 1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: reduce) { .bn-film-track i { transition: none; } }
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -11596,7 +11689,7 @@ function sbBox(where) {
 const PM_MEDIA = 'media/';
 const pmImg = (n, alt, w, h, eager = false) => `<picture><source srcset="${PM_MEDIA}${n}.png" media="(prefers-reduced-motion: reduce)"><img src="${PM_MEDIA}${n}.gif" alt="${esc(alt)}" width="${w}" height="${h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"></picture>`;
 // 첫 화면 3D: 소리 없는 반복 동영상. 움직임 줄이기 설정이면 멈춘 첫 장면(poster)만 보인다 (V.after.home에서 처리)
-const pmVideo = (n, label, w, h) => `<video class="pm-video" width="${w}" height="${h}" autoplay muted loop playsinline preload="auto" poster="${PM_MEDIA}${n}-poster.jpg" aria-label="${esc(label)}"><source src="${PM_MEDIA}${n}.webm" type="video/webm"><source src="${PM_MEDIA}${n}.mp4" type="video/mp4"></video>`;
+const pmVideo = (n, label, w, h) => `<video class="pm-video" width="${w}" height="${h}" muted loop playsinline preload="none" poster="${PM_MEDIA}${n}-poster.jpg" aria-label="${esc(label)}"><source src="${PM_MEDIA}${n}.webm" type="video/webm"><source src="${PM_MEDIA}${n}.mp4" type="video/mp4"></video>`;
 const PM_TILE_IMG = { bolt: 'p-bolt', nut: 'p-nut', washer: 'p-washer', stud: 'p-stud', pin: 'p-pin', rivet: 'p-rivet' };
 const PM_COLL = {
   plant: ['A193 B7 · B7M · B8M · B16 · A320 L7', '스터드볼트와 헤비 육각너트. 고온·저온·사워 조건의 플랜지 볼팅'],
@@ -11646,20 +11739,18 @@ function pmMail() {
 /* 홈은 제품 탐색 → 목록 견적 → 현장별 볼팅 → 기술자료 순서로 연결한다.
    이미지에는 규격값을 넣지 않고, 품목 수와 사전 수는 공개 데이터에서 계산한다. */
 V.home = () => `<div class="bn-home" id="z-a">
-  <section class="bn-hero" aria-labelledby="h-z-a">
+  <section class="bn-hero bn-cinema" aria-labelledby="h-z-a">
     <div class="bn-wrap bn-hero-grid">
       <div class="bn-hero-copy">
-        <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS / BOLTNOTE</p>
-        <h1 id="h-z-a" tabindex="-1">필요한 체결부품,<br><em>정확한 규격으로.</em></h1>
-        <p class="bn-hero-lead">미터·인치 규격품부터 플랜트 볼팅까지.<br>제품을 찾고, 도면을 확인하고,<br class="ia-m"> BOM 그대로 견적을 요청하세요.</p>
+        <p class="bn-eyebrow" lang="en"><span></span> ENGINEERED CONNECTIONS</p>
+        <h1 id="h-z-a" tabindex="-1">작은 부품이,<br><em>큰 설비를 잇습니다.</em></h1>
+        <p class="bn-hero-lead">플랜지부터 하우징, 회전축까지.<br>연결마다 필요한 체결부품을 찾고,<br>BOM 그대로 견적을 요청하세요.</p>
         <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 라인업 보기 <span aria-hidden="true">→</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">BOM 견적 요청 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
       </div>
-      <figure class="bn-hero-visual">
-        <img src="media/boltnote-hero.webp" width="1536" height="1024" alt="육각볼트, 렌치볼트, 스터드와 너트·와셔를 모은 체결부품 제품군 이미지" fetchpriority="high" decoding="async">
-        <figcaption><span class="bn-visual-mark" aria-hidden="true">+</span><span>작은 부품부터<br><b>설비의 연결까지.</b></span><span class="bn-visual-no" lang="en">BOLTNOTE<br>PRODUCT COLLECTION</span></figcaption>
-      </figure>
+      ${bnFilmMarkup()}
     </div>
+    ${bnFilmNavigation()}
   </section>
   <div class="bn-facts bn-wrap" aria-label="카탈로그 안내">
     <div><b>${CAT_TILES.length}<small> CATEGORIES</small></b><span>품목별로 정리한 제품군</span></div>
@@ -11708,8 +11799,7 @@ V.home = () => `<div class="bn-home" id="z-a">
 
 V.after.home = () => {
   sbInit('home'); hmBind();
-  const vid = view().querySelector('.pm-video');
-  if (vid) { try { if (reduced()) { vid.removeAttribute('autoplay'); vid.pause(); } else { const pr = vid.play(); if (pr && pr.catch) pr.catch(() => {}); } } catch (e) {} }
+  bnFilmInit();
   const f = $('pm-lib-form');
   if (f) f.addEventListener('submit', e => { e.preventDefault(); state.lib = { q: $('pm-lib-q').value.trim(), kind: '', org: '' }; go('lib'); });
 };
@@ -12384,6 +12474,190 @@ CAT_TILES.forEach(t => INDEX.push({ t: t.ko, s: `제품 · ${iaTileN(t)}종`, k:
 Object.entries(CAT_COLL).forEach(([k, c]) => INDEX.push({ t: c.ko, s: '모아 보기', k: `${c.ko} ${c.en} 모음`.toLowerCase(), go: 'k-' + k, g: '도구·안내' }));
 [['목록 보내고 견적 받기', '엑셀·PDF·사진 그대로', '목록 견적 엑셀 파일 사진 보내기 bom 리스트 부품표', 'list'], ['도면·규격 보기', '도면 · 표기 읽기 · 계산', '도면 cad step dxf 데이터시트 규격 표기 읽기', 'ref'], ['규격 노트', '바뀐 규격과 자주 틀리는 표기', '규격 노트 개정 변경', 'notes'], ['회사 소개', '누가 · 운영 방식 · 사업자 서류', '회사 소개 사업자 서류 사업자등록증 통장 사본 대표', 'about'], ['규격품 바로 주문', '주문 요청서', '바로 주문 주문 요청서 발주', 'buy']]
   .forEach(([t, s, k, go]) => INDEX.push({ t, s, k, go, g: '도구·안내' }));
+/* ── v7_motion.js ── */
+/* Original pre-rendered assemblies. No remote player, tracking, or 3D dependency.
+   The film is an illustration of applications, not a tightening procedure. */
+const BN_FILM_CHAPTERS = [
+  {start: 0, still: .3, label: '주요 체결부품', en: 'FASTENER COLLECTION', title: '규격을 넘어, 연결의 형태로.', parts: '육각볼트 · 렌치볼트 · 스터드 · 너트 · 와셔 · 핀 · 키 · 멈춤링'},
+  {start: 6.5, still: 12.7, label: '플랜지', en: 'FLANGE CONNECTION', title: '플랜지를 잇는 볼팅.', parts: '스터드 · 헤비 육각너트 · 와셔 / 콤비네이션 렌치'},
+  {start: 14.5, still: 19.7, label: '보울 하우징', en: 'BOWL HOUSING', title: '하우징을 닫는 체결부품.', parts: '렌치볼트 · 평와셔 / 라쳇 · 육각 비트 소켓'},
+  {start: 21.5, still: 27.7, label: '샤프트', en: 'SHAFT & HUB', title: '회전축의 위치를 잡는 부품.', parts: '평행 키 · 멈춤링 · 렌치볼트 / 육각 렌치'},
+  {start: 28.5, still: 34, label: '대형 볼팅', en: 'HYDRAULIC TORQUE', title: '큰 볼팅에는, 다른 접근.', parts: '스터드 · 헤비 육각너트 / 유압 토크렌치 · 반력암'}
+];
+const BN_FILM_PARTS = [
+  ['육각볼트', 'HEX BOLT'], ['렌치볼트', 'SOCKET-HEAD CAP SCREW'], ['스터드볼트', 'STUD BOLT'],
+  ['헤비 육각너트', 'HEAVY HEX NUT'], ['평와셔', 'FLAT WASHER'], ['다웰핀', 'DOWEL PIN'],
+  ['평행 키', 'PARALLEL KEY'], ['축용 멈춤링', 'EXTERNAL RETAINING RING']
+];
+function bnFilmMarkup() {
+  return `<figure class="bn-film">
+    <div class="bn-film-stage">
+      <video id="bn-film-video" width="1152" height="864" muted loop playsinline preload="none" poster="media/boltnote-assembly-poster.webp" aria-label="주요 체결부품과 플랜지·보울 하우징·샤프트 조립, 렌치·라쳇·유압 토크렌치의 3D 적용 장면">
+        <source data-src="media/boltnote-assembly-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
+        <source data-src="media/boltnote-assembly.webm" type="video/webm">
+        <source data-src="media/boltnote-assembly.mp4" type="video/mp4">
+      </video>
+      <div class="bn-film-badge"><span aria-hidden="true"></span><span lang="en">FASTENERS IN MOTION</span></div>
+      <div class="bn-film-corner" aria-hidden="true">BOLTNOTE<br>APPLICATION SERIES</div>
+    </div>
+    <figcaption class="bn-film-caption"><span class="bn-film-number" id="bn-film-number" aria-hidden="true">01 / 05</span><div><span id="bn-film-en" lang="en">ENGINEERED CONNECTIONS</span><strong id="bn-film-title">플랜지 · 보울 · 샤프트</strong><p id="bn-film-parts">체결부품과 공구의 적용 장면</p></div></figcaption>
+  </figure>`;
+}
+function bnFilmNavigation() {
+  return `<div class="bn-wrap bn-film-navigation">
+    <div class="bn-film-chapters" role="group" aria-label="체결부품 영상 장면 선택">${BN_FILM_CHAPTERS.map((chapter, i) => `<button type="button" data-bn-scene="${i}" aria-pressed="false" aria-controls="bn-film-video"><span class="bn-film-chapter-no" aria-hidden="true">0${i+1}</span><span>${chapter.label}</span><span class="bn-film-track" aria-hidden="true"><i></i></span></button>`).join('')}</div>
+    <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="조립 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
+    <p class="bn-film-note">체결부품 적용을 보여 주는 3D 이미지입니다.</p>
+  </div>`;
+}
+let bnFilmCleanup = null;
+function bnFilmInit() {
+  if (bnFilmCleanup) bnFilmCleanup();
+  const root = view().querySelector('.bn-cinema');
+  if (!root) return;
+  const video = root.querySelector('#bn-film-video'), toggle = root.querySelector('#bn-film-play');
+  const buttons = [...root.querySelectorAll('[data-bn-scene]')];
+  const preference = matchMedia('(prefers-reduced-motion: reduce)');
+  const plantVideo = view().querySelector('.pm-video');
+  const abort = new AbortController(), eventOptions = {signal: abort.signal};
+  let desired = !preference.matches && !navigator.connection?.saveData;
+  let visible = true, plantVisible = false, attached = false, pendingSeek = null;
+  let filePromise = null, fileURL = null;
+  const updateToggle = () => {
+    const playing = !video.paused && !video.ended;
+    root.dataset.playing = String(playing);
+    toggle.setAttribute('aria-label', `조립 영상 ${playing ? '일시정지' : '재생'}`);
+    toggle.innerHTML = `<span aria-hidden="true">${playing ? 'Ⅱ' : '▶'}</span><span>${playing ? '일시정지' : '재생'}</span>`;
+  };
+  const updateScene = () => {
+    const time = video.currentTime;
+    const index = BN_FILM_CHAPTERS.reduce((current, chapter, i) => time >= chapter.start ? i : current, 0);
+    const chapter = BN_FILM_CHAPTERS[index];
+    root.dataset.scene = String(index);
+    root.querySelector('#bn-film-number').textContent = `0${index+1} / 05`;
+    const part = BN_FILM_PARTS[Math.min(7, Math.floor(time / (6.5 / 8)))];
+    root.querySelector('#bn-film-en').textContent = index === 0 ? part[1] : chapter.en;
+    root.querySelector('#bn-film-title').textContent = index === 0 ? part[0] : chapter.title;
+    root.querySelector('#bn-film-parts').textContent = index === 0 ? '주요 품목을 하나씩 살펴보세요.' : chapter.parts;
+    buttons.forEach((button, i) => {
+      button.setAttribute('aria-pressed', String(i === index));
+      const end = BN_FILM_CHAPTERS[i+1]?.start || video.duration || 36;
+      const progress = Math.max(0, Math.min(1, (time - BN_FILM_CHAPTERS[i].start)/(end-BN_FILM_CHAPTERS[i].start)));
+      button.style.setProperty('--film-progress', `${progress*100}%`);
+    });
+  };
+  const play = () => {
+    if (!desired || !visible || document.hidden || abort.signal.aborted) return;
+    const promise = video.play();
+    if (promise) promise.catch(error => {
+      if (!abort.signal.aborted && !(error.name === 'AbortError' && (!visible || document.hidden))) { desired = false; updateToggle(); }
+    });
+  };
+  const attach = () => {
+    if (attached) return;
+    attached = true;
+    video.querySelectorAll('source').forEach(source => {
+      if (!source.media || matchMedia(source.media).matches) source.src = source.dataset.src;
+    });
+    video.preload = 'metadata';
+    video.load();
+  };
+  const loading = active => {
+    video.setAttribute('aria-busy', String(active));
+    const badge = root.querySelector('.bn-film-badge > span:last-child');
+    badge.lang = active ? 'ko' : 'en';
+    badge.textContent = active ? '선택한 장면을 불러옵니다' : 'FASTENERS IN MOTION';
+  };
+  const loadFile = () => {
+    if (filePromise || fileURL) return;
+    // A complete local media object supports seeking even on static hosts
+    // that do not serve HTTP byte ranges. Fetch only after a scene is chosen.
+    const source = [...video.querySelectorAll('source')].find(item =>
+      (!item.media || matchMedia(item.media).matches) && video.canPlayType(item.type));
+    if (!source) return;
+    const url = new URL(source.dataset.src, document.baseURI).href;
+    video.dataset.fileSrc = url;
+    video.pause(); loading(true);
+    filePromise = fetch(url, {signal: abort.signal, cache: 'force-cache'}).then(response => {
+      if (!response.ok) throw new Error('Film unavailable');
+      return response.blob();
+    }).then(file => {
+      if (abort.signal.aborted) return;
+      fileURL = URL.createObjectURL(file);
+      attached = true;
+      video.src = fileURL;
+      video.load();
+    }).catch(error => {
+      if (abort.signal.aborted || error.name === 'AbortError') return;
+      filePromise = null; pendingSeek = null; desired = false;
+      loading(false); updateToggle();
+      root.querySelector('#bn-film-parts').textContent = '장면을 불러오지 못했습니다. 장면 버튼을 다시 눌러 주세요.';
+    });
+  };
+  video.addEventListener('loadedmetadata', () => {
+    if (pendingSeek !== null) {
+      if (!fileURL || video.currentSrc !== fileURL) { loadFile(); return; }
+      video.currentTime = pendingSeek; pendingSeek = null;
+    }
+    loading(false);
+    updateScene(); play();
+  }, eventOptions);
+  video.addEventListener('timeupdate', updateScene, eventOptions);
+  video.addEventListener('seeked', updateScene, eventOptions);
+  video.addEventListener('play', updateToggle, eventOptions);
+  video.addEventListener('pause', updateToggle, eventOptions);
+  video.addEventListener('error', () => { desired = false; updateToggle(); }, eventOptions);
+  toggle.addEventListener('click', () => {
+    desired = video.paused;
+    if (desired) { attach(); play(); } else { video.pause(); }
+  }, eventOptions);
+  buttons.forEach((button, index) => button.addEventListener('click', () => {
+    // A paused/reduced-motion visitor gets a representative tool/assembly still.
+    pendingSeek = desired ? BN_FILM_CHAPTERS[index].start + .1 : BN_FILM_CHAPTERS[index].still;
+    if (fileURL && video.currentSrc === fileURL && video.readyState >= 1) {
+      video.currentTime = pendingSeek; pendingSeek = null; play();
+    } else loadFile();
+  }, eventOptions));
+  preference.addEventListener('change', () => {
+    if (preference.matches) { desired = false; video.pause(); plantVideo?.pause(); }
+  }, eventOptions);
+  const playPlant = () => {
+    if (!plantVideo) return;
+    if (plantVisible && !preference.matches && !navigator.connection?.saveData && !document.hidden) {
+      const promise = plantVideo.play();
+      if (promise) promise.catch(() => {});
+    } else plantVideo.pause();
+  };
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) video.pause(); else play();
+    playPlant();
+  }, eventOptions);
+  const intersection = new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (visible) { if (desired) attach(); play(); } else video.pause();
+  }, {threshold: .08});
+  intersection.observe(video);
+  const plantIntersection = new IntersectionObserver(entries => {
+    plantVisible = entries[0].isIntersecting;
+    playPlant();
+  }, {threshold: .15});
+  if (plantVideo) plantIntersection.observe(plantVideo);
+  const cleanup = () => {
+    abort.abort(); intersection.disconnect(); plantIntersection.disconnect(); removed.disconnect();
+    plantVideo?.pause();
+    video.pause();
+    video.removeAttribute('src');
+    video.querySelectorAll('source').forEach(source => source.removeAttribute('src'));
+    video.load();
+    if (fileURL) URL.revokeObjectURL(fileURL);
+    if (bnFilmCleanup === cleanup) bnFilmCleanup = null;
+  };
+  const removed = new MutationObserver(() => { if (!root.isConnected) cleanup(); });
+  // Navigation replaces the #view element itself, so watch its stable parent.
+  removed.observe(view().parentNode, {childList: true});
+  bnFilmCleanup = cleanup;
+  updateToggle();
+}
 /* ── v8_lib.js ── */
 /* ── v8_lib.js: 체결부품 규격 사전 (2026-10, 대표 요청: 엔지니어 고객이 믿고 찾아오는 사전) ──
    경로: lib (첫 화면: 찾기 · 분류 · 기관) · lib-<id> (항목). 데이터는 ea_lib.js의 LIB (검토를 마친 항목만).
