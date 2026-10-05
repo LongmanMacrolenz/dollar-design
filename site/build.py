@@ -17,7 +17,7 @@ SEO_DESC = (
     "컴프레서·블로워·펌프 등 산업기계·설비 체결부품의 BOM을 줄마다 읽어 사양 확인 사항과 견적 조건을 정리합니다. "
     "인치 ASTM·플랜트 볼팅 견적과 도면·규격 정보."
 )
-OG_IMAGE = "og.png"  # docs/og.png, 1280x720
+OG_IMAGE = "brand/boltnote-social.png"  # docs/brand/boltnote-social.png, 1280x720
 OG_W, OG_H = 1280, 720
 
 
@@ -26,6 +26,7 @@ def head_meta() -> str:
     img = SITE_URL + OG_IMAGE
     return (
         f'<meta name="description" content="{d}">\n'
+        '<link rel="icon" href="/brand/boltnote-mark.svg" type="image/svg+xml">\n'
         f'<link rel="canonical" href="{SITE_URL}">\n'
         '<meta property="og:type" content="website">\n'
         '<meta property="og:locale" content="ko_KR">\n'

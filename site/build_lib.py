@@ -40,7 +40,7 @@ CSS = """
 a{color:inherit}.w{max-width:1180px;margin:0 auto;padding:0 clamp(16px,2.4vw,32px)}
 header{background:var(--night);color:var(--tx);border-bottom:1px solid rgba(255,255,255,.07)}
 header .w{display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.03em}.brand svg{width:30px;height:30px;color:var(--acc)}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.03em}.brand img{width:190px;height:auto;display:block}
 nav.top{display:flex;gap:4px;flex:1;flex-wrap:wrap}nav.top a{color:var(--tx-2);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}nav.top a:hover,nav.top a.on{color:#fff;background:rgba(255,255,255,.06)}
 .cta{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:9px;background:var(--acc);color:var(--ink);font-weight:800;text-decoration:none}
 main{padding:28px 0 64px}.crumbs{font-size:13px;color:var(--ink-3);margin-bottom:10px}.crumbs a{color:var(--ink-2)}
@@ -70,7 +70,7 @@ footer{background:var(--night);color:var(--tx-2);font-size:13px;padding:36px 0}f
 @media(max-width:480px){.library-paths{grid-template-columns:minmax(0,1fr)}.topic{padding:18px 14px}.topic b{font-size:15px}.library-search{padding:18px}.brand{font-size:18px}nav.top a{padding:10px 8px}}
 @media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}nav.top{order:3;flex-basis:100%}}
 """
-MARK = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'
+MARK = '<img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote">'
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700;800&display=swap" rel="stylesheet">'
 
 
@@ -78,10 +78,11 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None) ->
     url = SITE_URL + path
     return (
         '<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        '<link rel="icon" href="/brand/boltnote-mark.svg" type="image/svg+xml">\n'
         f"<title>{e(title)}</title>\n<meta name=\"description\" content=\"{e(desc)}\">\n<link rel=\"canonical\" href=\"{url}\">\n"
         f'<meta property="og:type" content="article"><meta property="og:site_name" content="볼트노트"><meta property="og:locale" content="ko_KR">'
         f'<meta property="og:url" content="{url}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
-        f'<meta property="og:image" content="{SITE_URL}og.png"><meta name="twitter:card" content="summary_large_image">\n'
+        f'<meta property="og:image" content="{SITE_URL}brand/boltnote-social.png"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
         + f"{FONTS}\n<style>{CSS}</style>\n</head>\n<body>\n{body}\n</body>\n</html>\n"
     )
@@ -93,7 +94,7 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 def header(on: str = "lib") -> str:
     nav = [("/#products", "제품", ""), ("/#list", "목록 견적", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
-    return ('<header><div class="w"><a class="brand" href="/">' + MARK + '볼트노트</a><nav class="top" aria-label="주 메뉴">'
+    return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
             + '</nav><a class="cta" href="/#list">목록 견적 →</a></div></header>')
 
@@ -110,7 +111,7 @@ def footer(info: dict) -> str:
     elif info["kakao"]: r2.append(f"카카오톡 {e(info['kakao'])} (채널 공개 준비 중)")
     r2.append("호스팅 Cloudflare, Inc. (미국)")
     r3 = ['<a href="/#privacy"><b>개인정보 처리방침</b></a>', '<a href="/#terms">이용약관</a>', '<a href="/#about">회사 소개</a>']
-    return ('<footer><div class="w">' + "".join(f'<div class="r">{" ".join(f"<span>{x}</span>" for x in row)}</div>' for row in (r1, r2, r3))
+    return ('<footer><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a>' + "".join(f'<div class="r">{" ".join(f"<span>{x}</span>" for x in row)}</div>' for row in (r1, r2, r3))
             + f'<div class="r"><span>규격 사전은 발행 기관 공개 자료·공식 미리보기·공공 문서와, 일부 값은 제조·유통사 공개 기술자료 3곳 이상을 대조해 요점을 정리한 것입니다 (확인 {CHECKED}). 계약·설계에는 규격 원문을 확인하세요.</span></div></div></footer>')
 
 

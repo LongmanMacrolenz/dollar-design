@@ -3113,6 +3113,21 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
   .bn-film-note { max-width: calc(100% - 112px); align-self: center; grid-column: 1; grid-row: 2; }
 }
 @media (prefers-reduced-motion: reduce) { .bn-film-track i { transition: none; } }
+/* ── zzz_brand.css ── */
+/* Original Boltnote identity. Outlined lettering stays consistent on every device. */
+.bn-logo { display: block; width: 210px; height: auto; max-width: 100%; flex: none; }
+.bn-identity { display: flex; flex-direction: column; gap: 5px; }
+.tb.ia-tb .brand { flex-basis: 234px; }
+.tb.ia-tb .brand small { margin: 0 0 0 1px; font-size: 11px; letter-spacing: .025em; }
+.bn-logo-white { display: none; }
+:root[data-theme="dark"] .bn-logo-ink { display: none; }
+:root[data-theme="dark"] .bn-logo-white { display: block; }
+.pm-ft-brand .bn-logo { width: 238px; margin-bottom: 12px; }
+.pm-ft-brand small { font-size: 12px; }
+.tb-mini .bn-logo { width: 139px; }
+@media (max-width: 1100px) { .tb.ia-tb .brand { flex-basis: 205px; } .tb .bn-logo { width: 188px; } }
+@media (max-width: 860px) { .tb.ia-tb .brand { flex-basis: 180px; } .tb .bn-logo { width: 174px; } }
+@media (max-width: 680px) { .tb .bn-logo { width: 164px; } .tb.ia-tb .brand { flex: 1; } .tb-mini .bn-logo { width: 118px; } }
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -3336,10 +3351,7 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
 <header class="tb ia-tb" id="tb">
   <div class="wrap">
     <div class="tb-grid ia-grid">
-      <a class="tb-c brand" href="#home" data-go="home" aria-label="볼트노트 홈">
-        <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 20h7m3 0h2m14 0h2m3 0h7M20 1v7m0 3v2m0 14v2m0 3v7" stroke="currentColor" stroke-width=".9"/></svg>
-        <span><strong>볼트노트</strong><small>체결부품 · 엔지니어 검토</small></span>
-      </a>
+      <a class="tb-c brand" href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><span class="bn-identity"><img class="bn-logo bn-logo-ink" src="/brand/boltnote-logo.svg" width="632" height="104" alt="boltnote"><img class="bn-logo bn-logo-white" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="" aria-hidden="true"><small>체결부품 · 엔지니어 검토</small></span></a>
       <nav class="tb-c ia-nav" id="nav" aria-label="주 메뉴"><a href="#products" data-go="products">제품</a><a href="#list" data-go="list">목록 견적</a><a href="#ref" data-go="ref">도면·규격</a><a href="#lib" data-go="lib" data-lib>규격 사전</a><a href="#about" data-go="about">회사 소개</a></nav>
       <div class="tb-c find" role="search">
         <label class="sr" for="q">규격 · 표기 · 각인으로 찾기</label>
@@ -3355,7 +3367,7 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
   </div>
 </header>
 <div class="tb-mini" id="tb-mini" inert>
-  <a href="#home" data-go="home" aria-label="볼트노트 홈"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><strong>볼트노트</strong></a>
+  <a href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"></a>
   <button type="button" id="mini-find">찾기</button>
   <a href="#list" data-go="list" class="ia-mini-list">목록 보내기</a>
   <a href="#cart" data-go="cart">견적함 <span class="cart-n">0</span></a>
@@ -3366,7 +3378,7 @@ footer.foot.ia-foot { --pm-acc: #c45630; --pm-acc-ink: #fff; background: #122033
 <footer class="foot ia-foot">
   <div class="wrap">
     <div class="pm-ft">
-      <a class="pm-ft-brand" href="#home" data-go="home" aria-label="볼트노트 홈"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 20h7m3 0h2m14 0h2m3 0h7M20 1v7m0 3v2m0 14v2m0 3v7" stroke="currentColor" stroke-width=".9"/></svg><span><strong>볼트노트</strong><small>체결부품 목록 견적 · 엔지니어가 줄마다 읽습니다</small></span></a>
+      <a class="pm-ft-brand" href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><span><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"><small>체결부품 목록 견적 · 엔지니어가 줄마다 읽습니다</small></span></a>
       <nav class="pm-ft-nav" aria-label="바닥글 메뉴">
         <div><b>견적</b><a href="#list" data-go="list">목록 견적</a><a href="#cart" data-go="cart">견적함</a><a href="#products" data-go="products">제품</a></div>
         <div><b>모아 보기</b><a href="#k-plant" data-go="k-plant">플랜트 볼팅</a><a href="#k-pump" data-go="k-pump">펌프 정비 볼트</a><a href="#k-flange" data-go="k-flange">KS·JIS 플랜지 세트</a></div>
