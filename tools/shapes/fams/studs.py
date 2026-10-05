@@ -42,6 +42,23 @@ def _drop(m, zf=0.0):
     return m.move(z=zf - lo[2])
 
 
+def _rest_tilt(m, yaw, big, small, max_deg=8.0):
+    """누운 부품이 공중에 뜨지 않게: 굵은 쪽(너트·와셔·머리, 부품 번호 big)과 가는 몸통(small)이 함께 바닥에 닿도록
+    봉 방향에 수직인 수평축으로 살짝(수 도) 기울인다. yaw = m.lie()에 준 방위"""
+    A = np.vstack([m.parts[i]['mesh'].V for i in big])
+    B = np.vstack([m.parts[i]['mesh'].V for i in small])
+    a = math.radians(yaw)
+    n = np.array([-math.sin(a), math.cos(a), 0.0])
+    K = np.array([[0, -n[2], n[1]], [n[2], 0, -n[0]], [-n[1], n[0], 0]])
+
+    def rot(th):
+        return np.eye(3) + math.sin(th) * K + (1 - math.cos(th)) * (K @ K)
+    ths = np.radians(np.linspace(-max_deg, max_deg, 641))
+    th = min(ths, key=lambda t: abs((A @ rot(t).T)[:, 2].min() - (B @ rot(t).T)[:, 2].min()))
+    R3 = rot(th)
+    return m.tf(lambda mesh: mesh.tf(R3))
+
+
 def _slots(ro, z_bot, z_top, w=1.5, n=2):
     """슬리브 아래쪽 쪼갬(슬릿) 커터: 지름 방향으로 긴 상자 n개를 돌려 가며"""
     h = z_top - z_bot + 1.0
@@ -125,7 +142,7 @@ def reduced_shank_stud(fid):
 
 
 # ── 탭엔드 스터드 ────────────────────────────────────────────────────────────
-def _te_stud(fid, d, Pt, b1, shank, b, rot_name=None):
+def _te_stud(fid, d, Pt, b1, shank, b):
     """박힘쪽 b1(짧음) + 나사 없는 몸통 + 너트쪽 b(김). z=0이 박힘쪽 끝"""
     R = d / 2
     r_sh = (d - 0.65 * Pt) / 2             # 나사 없는 몸통 ≈ 유효지름
@@ -202,7 +219,8 @@ def inch_threaded_rod(fid):
     m = bl.Model(fid)
     _rod(m, d, Pt, 0.0, L, rootr=d / 2 - 0.25 * Pt)
     _nut(m, d, Pt, s, mh, L - 3.0 * Pt - mh, 14)
-    return m.lie(70)
+    m.lie(70)
+    return _rest_tilt(m, 70, [1], [0])
 
 
 @family('rod-hanger')
@@ -217,7 +235,8 @@ def hanger_rod(fid):
     _rod(m, d, Pt, 0.0, L, rootr=d / 2 - 0.25 * Pt)
     _nut(m, d, Pt, s, mh, L - ext - mh, 18)
     _washer(m, w1, w2, wt, L - ext - mh - wt - 0.05)
-    return m.lie(70).view(el=28)
+    m.lie(70)
+    return _rest_tilt(m, 70, [1, 2], [0]).view(el=28)
 
 
 # ══ 3. KS·JIS 관 플랜지용 볼트 · 너트 · 와셔 세트 ═════════════════════════════
@@ -232,6 +251,7 @@ def ks_flange_set(fid):
     bolt.add(cyl(d / 2 * 0.99, -(L - tl) - 1.0, 0.3, N=64), 'body', sharp=40)
     bolt.add(thread_rod(d, Pt, -L, -(L - tl), tip1=False), 'body', sharp=40)
     bolt.lie(70)
+    _rest_tilt(bolt, 70, [0], [1, 2])
     lo = bolt.bbox()[0][2]
     az = math.radians(-38.0)
     tc = np.array([math.cos(az), math.sin(az)])             # 카메라 쪽
@@ -267,12 +287,14 @@ def _bent_bolt(m, d, Pt, Lt, Ls, rb, leg, kind, nut, washer, nut_rot=0.0, rootr=
     """나사 끝(z=0) · 나사부 Lt · 매끈한 몸통 · 굽힘. nut=(s, m), washer=(d1, d2, t) — 너트가 바깥, 와셔가 굽은 쪽"""
     R = d / 2
     ext = 2.6 * Pt
+    i0 = len(m.parts)
     _rod(m, d, Pt, 0.0, Lt, tip1=False, rootr=rootr)
     m.add(wire(_bend_path(Lt - 1.0, Ls, rb, leg, kind), R * 0.985, n=40), 'body', sharp=40)
     s, mh = nut
     _nut(m, d, Pt, s, mh, ext, nut_rot)
     if washer:
         _washer(m, *washer, ext + mh + 0.05)
+    m.bolt_idx = dict(small=[i0, i0 + 1], big=[i0 + 2, i0 + 3] if washer else [i0 + 2])
     if paint:
         rt = (rootr if rootr is not None else (R - 0.6 * Pt) - 0.12 * Pt)
         k = 0.5 * Pt
@@ -287,7 +309,9 @@ def anchor_bolt_f1554(fid):
     d, Pt, s, mh = IN_HEAVY['3/4']
     m = bl.Model(fid)
     _bent_bolt(m, d, Pt, Lt=4.6 * d, Ls=8.4 * d, rb=2.0 * d, leg=2.8 * d, kind='L', nut=(s, mh), washer=(20.6, 38.0, 4.5), nut_rot=12, paint='blue')
-    return m.lie(15).view(el=26)
+    bi = m.bolt_idx
+    m.lie(15)
+    return _rest_tilt(m, 15, bi['big'], bi['small']).view(el=26)
 
 
 @family('fbolt')
@@ -302,8 +326,12 @@ def foundation_bolt(fid):
     mJ = bl.Model(fid)
     _bent_bolt(mJ, kind='J', leg=3.0 * d, nut_rot=27, **kw)
     mJ.move(y=3.9 * d, z=0.0)
+    n0 = len(mL.parts)
+    big = mL.bolt_idx['big'] + [n0 + i for i in mJ.bolt_idx['big']]
+    small = mL.bolt_idx['small'] + [n0 + i for i in mJ.bolt_idx['small']]
     mL.extend(mJ)
-    return mL.lie(24).view(el=30)
+    mL.lie(24)
+    return _rest_tilt(mL, 24, big, small).view(el=30)
 
 
 # ══ 5. 후설치 앵커 ═══════════════════════════════════════════════════════════
@@ -329,7 +357,8 @@ def wedge_anchor(fid):
     ext = 2.8 * Pt
     _nut(m, d, Pt, nut_s, nut_m, L - ext - nut_m, 7)
     _washer(m, w1, w2, wt, L - ext - nut_m - wt - 0.05)
-    return m.lie(70).view(el=26)
+    m.lie(70)
+    return _rest_tilt(m, 70, [3, 4], [0, 1, 2]).view(el=26)
 
 
 @family('stronganchor')
@@ -350,7 +379,8 @@ def set_anchor(fid):
     m.add(tube(ro, ri, z_s0, z_s1, N=96, ch=0.5), 'body', sharp=35, cut=_slots(ro, z_s0, z_s0 + 18.0, 1.5, 2))
     _washer(m, w1, w2, wt, z_s1 + 0.05)
     _nut(m, d, Pt, ns, nm, z_s1 + wt + 0.1, 13)
-    return m.lie(70).view(el=28)
+    m.lie(70)
+    return _rest_tilt(m, 70, [3, 4], [0, 1, 2]).view(el=28)
 
 
 @family('sleeve')
@@ -373,7 +403,8 @@ def sleeve_anchor(fid):
     m.add(sl, 'body', sharp=35, cut=_slots(ro + 1.8, z_s0, z_s0 + 26.0, 2.2, 2))
     _washer(m, w1, w2, wt, z_s1 + 1.05)
     _nut(m, d, Pt, ns, nm, z_s1 + 1.1 + wt, 9)
-    return m.lie(70).view(el=28)
+    m.lie(70)
+    return _rest_tilt(m, 70, [3, 4], [0, 1, 2]).view(el=28)
 
 
 @family('dropin')

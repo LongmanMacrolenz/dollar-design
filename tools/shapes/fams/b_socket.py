@@ -43,14 +43,6 @@ def put(m, items, x=0.0, y=0.0, z=0.0, rz=0.0):
     return m
 
 
-def row(m, builds, pitch, rest=True):
-    """builds = [(items, 반지름)]: 축(+Z)과 직각인 Y 방향으로 나란히. 눕힌 뒤 모두 바닥에 닿도록 X(=위)를 반지름만큼 올린다"""
-    n = len(builds)
-    for i, (items, r) in enumerate(builds):
-        put(m, items, x=r if rest else 0.0, y=((n - 1) / 2 - i) * pitch)
-    return m
-
-
 def place(m, items, L, r, yaw, sx=0.0, sd=0.0, az=-38.0):
     """부품(축 +Z, 머리 쪽 끝이 z=0, 길이 L, 반지름 r)을 눕혀서 놓는다. yaw = 머리 쪽 방위(lie와 같음),
     sx = 화면 오른쪽으로, sd = 화면 안쪽(카메라 반대)으로 옮긴 거리. 바닥에 닿도록 높이는 반지름"""
@@ -266,7 +258,7 @@ def cup_tip(rb, rin, depth, z0, teeth=0, ta=0.5, N=96):
     return grid(np.stack(rows, 1), wrap=True)
 
 
-def set_screw(d, Pt, L, point, s=None, slot=None, t=None, dim=None, tipmat='nylonw', teeth=0, N=96):
+def set_screw(d, Pt, L, point, s=None, slot=None, t=None, tipmat='nylonw', teeth=0, N=96):
     """멈춤나사 하나. 축 +Z, 공구 쪽 끝 z=0, 끝 모양 쪽 z=-L. point: cup flat cone dog hdog oval soft knurl
     육각 구멍 s (맞변) 또는 일자 홈 slot=(폭, 길이)  ·  t = 구멍 깊이"""
     R = d / 2
@@ -381,7 +373,7 @@ def slotted_set_screws(fid):
 
 
 # ── 사각머리 멈춤나사 ────────────────────────────────────────────────────
-def square_head_set_screw(d, Pt, L, F, H, rz=15.0, N=96):
+def square_head_set_screw(d, Pt, L, F, H, N=96):
     """사각 머리(맞변 F, 높이 H) + 전체 나사 + 컵 끝. 머리 밑면 z=0"""
     R = d / 2
     rroot = R - 0.6 * Pt

@@ -244,6 +244,7 @@ def _to_object(part, name, mat_obj, collection):
             md.object = co
             md.operation = 'DIFFERENCE'
             md.solver = 'EXACT'
+            md.use_self = True            # 커터가 스스로 겹쳐도 몸체가 사라지지 않게
             dg = bpy.context.evaluated_depsgraph_get()
             ev = ob.evaluated_get(dg)
             nm = bpy.data.meshes.new_from_object(ev)

@@ -48,22 +48,19 @@ def cut_torx(d_out, depth, z_top=0.0, lobes=6, extra=1.0):
     return extrude(outline, z_top - depth, z_top + extra)
 
 
-def cut_cross(size, z_top=0.0, depth=None, extra=1.0):
-    """십자홈(필립스) 커터: size = 날개 끝 사이 길이. 테이퍼 진 날개 두 개 + 가운데 원뿔"""
+def cut_cross(size, z_top=0.0, depth=None, extra=1.0, wr=0.19, taper=0.42):
+    """십자홈(필립스) 커터: size = 날개 끝 사이 길이. 윤곽 하나로 이어진 12각 십자를 아래로 갈수록 오므려 판다
+    (날개 두 개를 겹쳐 한 메시에 넣으면 자기교차 메시가 되어 불리언이 몸체를 지워 버린다)"""
     depth = depth or size * 0.55
-    w = size * 0.16
-    L = size / 2
-    wing = []
-    for a in (0, 90):
-        # 윗면에서 길이 L, 아래로 갈수록 좁아지는 쐐기 (윗단 폭 w, 아랫단 폭 w*0.5)
-        top = [(-L, -w / 2), (L, -w / 2), (L, w / 2), (-L, w / 2)]
-        bot = [(-L * 0.35, -w * 0.25), (L * 0.35, -w * 0.25), (L * 0.35, w * 0.25), (-L * 0.35, w * 0.25)]
-        V = np.array([(x, y, z_top + extra) for x, y in top] + [(x, y, z_top) for x, y in top] + [(x, y, z_top - depth) for x, y in bot])
-        Q = [[0, 1, 2, 3], [0, 1, 5, 4], [1, 2, 6, 5], [2, 3, 7, 6], [3, 0, 4, 7], [4, 5, 9, 8], [5, 6, 10, 9], [6, 7, 11, 10], [7, 4, 8, 11], [8, 9, 10, 11]]
-        m = Mesh(V, Q)
-        wing.append(m.rotz(a))
-    center = lathe([(0, z_top - depth * 0.9), (w * 0.9, z_top - depth * 0.2), (w * 0.9, z_top + extra), (0, z_top + extra)], 16)
-    return join(*wing, center)
+    L, w = size / 2, size * wr / 2
+    o = np.array([(L, -w), (L, w), (w, w), (w, L), (-w, L), (-w, w), (-L, w), (-L, -w), (-w, -w), (-w, -L), (w, -L), (w, -w)])
+    zs = [z_top + extra, z_top, z_top - depth]
+    sc = [1.0, 1.0, taper]
+    side = geo.grid(np.stack([np.c_[o * k, np.full(len(o), z)] for z, k in zip(zs, sc)], 1), wrap=True)
+    pts, tri = geo._tess(o)
+    top = Mesh(np.c_[pts, np.full(len(pts), zs[0])], None, tri)
+    bot = Mesh(np.c_[pts * taper, np.full(len(pts), zs[-1])], None, tri)
+    return (side + top + bot).weld(1e-7)
 
 
 def cut_slot(width, depth, length, z_top=0.0, extra=1.0):
@@ -105,9 +102,10 @@ def hex_bolt(d, L, s=None, k=None, P=None, thread_len=None):
     P = P or pitch(d)
     parts = [(hex_head(s, k, z0=0.0), dict(sharp=24))]
     tl = L if thread_len is None else min(thread_len, L)
-    if tl < L:
-        parts.append((cyl(d / 2 * 0.99, -(L - tl) - 0.5, 0.2, N=64, cap=False), dict()))
-        parts.append((thread_rod(d, P, -L, -(L - tl)), dict(sharp=40)))
+    if tl < L:   # 민 몸통 끝을 45° 원뿔로 나사 골 지름까지 좁히고, 나사 봉은 그 안에 묻는다 (계단처럼 끊기지 않게)
+        zb, r, rr = -(L - tl), d / 2 * 0.99, d / 2 - 0.6 * P
+        parts.append((lathe([(0, 0.2), (r, 0.2), (r, zb), (rr, zb - (r - rr)), (0, zb - (r - rr))], 64), dict(sharp=40)))
+        parts.append((thread_rod(d, P, -L, zb - (r - rr) * 0.5, tip1=False), dict(sharp=40)))
     else:
         parts.append((thread_rod(d, P, -L, 0.0, tip1=False), dict(sharp=40)))
     return parts

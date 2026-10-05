@@ -126,18 +126,6 @@ def e_crown(sag, e=0.0, n=8):
     return f
 
 
-def e_dome(h, n=12):
-    """둥근 머리: 높이 h, 가장자리에서 수직 (타원 지붕)"""
-    def f(r):
-        pts = []
-        for a in np.linspace(0, math.pi / 2, n):
-            pts.append((r * math.sin(a), -(h * math.cos(a)) + 0.0))
-        pts[0] = (0, -h)
-        pts[-1] = (r, 0)
-        return pts
-    return f
-
-
 def lathe_pin(r0, r1, L, end0, end1, z0=0.0, N=96, rmod=None, extra=None):
     """회전체 핀. z0(아래 끝, 반지름 r0) → z0+L(위 끝, 반지름 r1). end0/end1 = e_*() 끝 모양"""
     b = [(r, z0 + dz) for r, dz in end0(r0)]
@@ -590,7 +578,7 @@ def c_ring(kind, r, a_back, a_top, gx, lug_r, lug_h, hole_r, s, n_arc=120):
     return extrude(np.array(pts), 0, s, holes=holes)
 
 
-def e_ring(rg, Ro, s, wp=10.0, tw=6.0, relief=2.0, off=120.0):
+def e_ring(rg, Ro, s, wp=9.0, tw=6.0, relief=2.7, off=120.0):
     """E형 멈춤링 (DIN 6799). rg = 홈 지름/2 (발 접촉 반지름), Ro = 바깥 반지름. 열림은 +x쪽, 발 3개(뒤 1 + 열림 가장자리 2)"""
     cents = (180.0, 180.0 - off, 180.0 + off)
     a0 = (180.0 - off) - wp
@@ -647,10 +635,6 @@ def wire_ring_path(R, gap_deg, leg, z):
     return chaikin(path, 2)
 
 
-def ring_rot(mesh, deg):
-    return mesh.rotz(deg)
-
-
 @family('ring-ext', looks=['PH', 'BO', 'SS'])
 def f_ring_ext(fid):
     m = bl.Model(fid)
@@ -674,8 +658,8 @@ def f_ring_int(fid):
 @family('ering', looks=['PH', 'BO', 'ZW', 'SS'])
 def f_ering(fid):
     m = bl.Model(fid)
-    big = e_ring(4.0, 7.8, 0.8)
-    small = e_ring(2.5, 4.9, 0.6)
+    big = e_ring(4.0, 8.0, 0.8, relief=2.7)
+    small = e_ring(2.5, 5.0, 0.6, relief=1.8)
     m.add(at(big, -5, 3, 0, yaw=165), 'body', sharp=30, bevel=0.08)
     m.add(at(small, 10, -4, 0, yaw=135), 'body', sharp=30, bevel=0.06)
     return m.view(el=46)
@@ -735,7 +719,7 @@ def gib_key(b, h, L, H, hl, slope=0.01, ch=0.8):
     return extrude(np.array(pts), -b / 2, b / 2)
 
 
-def flatten(mesh):
+def upright(mesh):
     """xy 윤곽을 z 방향으로 압출한 메시를 서 있게 (y→z 위로, 두께는 y)"""
     return mesh.rotx(90)
 
@@ -755,7 +739,7 @@ def f_key_par(fid):
 @family('key-wood', looks=['PL', 'SS'])
 def f_key_wood(fid):
     m = bl.Model(fid)
-    big = flatten(woodruff(6, 22, 9.0))
+    big = upright(woodruff(6, 22, 9.0))
     m.add(at(big, -8, 4, 0, yaw=28), 'body', sharp=30, bevel=0.4)
     sm = woodruff(3, 13, 5.2)                    # 누운 작은 키 (반달 면이 위)
     m.add(at(sm, 12, -7, 0, yaw=30).move(z=1.5), 'body', sharp=30, bevel=0.3)
@@ -783,8 +767,8 @@ def f_keystock(fid):
 @family('key-gib', looks=['PL', 'SS'])
 def f_key_gib(fid):
     m = bl.Model(fid)
-    g = flatten(gib_key(8, 7, 56, 11, 4))
+    g = upright(gib_key(8, 7, 56, 11, 4))
     m.add(at(g, -20, 0, 0, yaw=10), 'body', sharp=30, bevel=0.3)
-    g2 = flatten(gib_key(5, 5, 36, 8, 3))
+    g2 = upright(gib_key(5, 5, 36, 8, 3))
     m.add(at(g2, 8, -14, 0, yaw=4), 'body', sharp=30, bevel=0.25)
     return m.view(el=30)

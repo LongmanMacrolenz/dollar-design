@@ -13,7 +13,7 @@ import numpy as np
 import bl
 import parts as P
 from fams import family
-from geo import (Mesh, TAU, arc3, box, circle2d, cyl, extrude, grid, join, lathe, polybody, rect2d, sweep, theta, thread_rod, torus, tube, wire)
+from geo import Mesh, TAU, box, circle2d, cyl, extrude, grid, lathe, sweep, theta, thread_rod, torus, wire
 
 
 # ═════════════════════════════ 공통 도우미 ═════════════════════════════
