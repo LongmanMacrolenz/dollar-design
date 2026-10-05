@@ -62,6 +62,7 @@ def srgb2lin(c):
 
 
 _MATS = {}
+TEX = dict(bump=0.035, scale=8.0, rscale=1.0, rvar=0.035)   # 표면 요철: 범프 세기·크기, 거칠기 얼룩 크기·폭
 
 
 def material(key, look=None):
@@ -91,12 +92,12 @@ def material(key, look=None):
     # 미세한 표면 요철 (CG 같은 완벽한 매끈함을 없앰)
     tc = nt.nodes.new('ShaderNodeTexCoord')
     noise = nt.nodes.new('ShaderNodeTexNoise')
-    noise.inputs['Scale'].default_value = 3.0 if spec.get('m', 0) > 0.5 else 1.5
+    noise.inputs['Scale'].default_value = TEX['scale'] if spec.get('m', 0) > 0.5 else TEX['scale'] / 2
     noise.inputs['Detail'].default_value = 8.0
     noise.inputs['Roughness'].default_value = 0.7
     nt.links.new(tc.outputs['Object'], noise.inputs['Vector'])
     bump = nt.nodes.new('ShaderNodeBump')
-    bump.inputs['Strength'].default_value = 0.10
+    bump.inputs['Strength'].default_value = TEX['bump']
     bump.inputs['Distance'].default_value = 0.05
     nt.links.new(noise.outputs['Fac'], bump.inputs['Height'])
     nt.links.new(bump.outputs['Normal'], bsdf.inputs['Normal'])
@@ -104,10 +105,10 @@ def material(key, look=None):
     rmix = nt.nodes.new('ShaderNodeMapRange')
     rmix.inputs['From Min'].default_value = 0.3
     rmix.inputs['From Max'].default_value = 0.7
-    rmix.inputs['To Min'].default_value = max(spec['r'] - 0.07, 0.04)
-    rmix.inputs['To Max'].default_value = min(spec['r'] + 0.07, 1.0)
+    rmix.inputs['To Min'].default_value = max(spec['r'] - TEX['rvar'], 0.04)
+    rmix.inputs['To Max'].default_value = min(spec['r'] + TEX['rvar'], 1.0)
     noise2 = nt.nodes.new('ShaderNodeTexNoise')
-    noise2.inputs['Scale'].default_value = 0.35
+    noise2.inputs['Scale'].default_value = TEX['rscale']
     noise2.inputs['Detail'].default_value = 3.0
     nt.links.new(tc.outputs['Object'], noise2.inputs['Vector'])
     nt.links.new(noise2.outputs['Fac'], rmix.inputs['Value'])
@@ -118,12 +119,12 @@ def material(key, look=None):
         vor.feature = 'F1'
         nt.links.new(tc.outputs['Object'], vor.inputs['Vector'])
         ramp = nt.nodes.new('ShaderNodeValToRGB')
-        ramp.color_ramp.elements[0].color = (*srgb2lin((0.42, 0.44, 0.45)), 1)
-        ramp.color_ramp.elements[1].color = (*srgb2lin((0.68, 0.70, 0.70)), 1)
+        ramp.color_ramp.elements[0].color = (*srgb2lin((0.47, 0.49, 0.50)), 1)
+        ramp.color_ramp.elements[1].color = (*srgb2lin((0.64, 0.66, 0.66)), 1)
         nt.links.new(vor.outputs['Distance'], ramp.inputs['Fac'])
         nt.links.new(ramp.outputs['Color'], bsdf.inputs['Base Color'])
-        bump.inputs['Strength'].default_value = 0.3
-        noise.inputs['Scale'].default_value = 1.2
+        bump.inputs['Strength'].default_value = 0.10     # 꽃무늬는 색 얼룩 위주, 요철은 약하게 (세게 하면 망치 자국처럼 보임)
+        noise.inputs['Scale'].default_value = 4.0
     _MATS[ck] = mat
     return mat
 
@@ -163,10 +164,26 @@ class Model:
     def rotz(self, d):
         return self.tf(lambda m: m.rotz(d))
 
-    def lie(self, yaw=70.0):
+    def lie(self, yaw=70.0, tilt=True, lim=12.0):
         """머리가 위(+Z), 몸통이 아래(−Z)인 부품을 눕힌다 (머리가 왼쪽, 끝이 오른쪽). yaw = 바닥 위 방위(도).
-        기본 70° = 머리가 화면 왼쪽 앞, 끝이 오른쪽 뒤 (카메라 기본 방위 −38° 기준)"""
-        return self.roty(-90).rotz(yaw)
+        기본 70° = 머리가 화면 왼쪽 앞, 끝이 오른쪽 뒤 (카메라 기본 방위 −38° 기준).
+        tilt: 머리가 몸통보다 굵으면 머리 모서리만 바닥에 닿고 끝이 뜨므로, 머리 쪽과 끝 쪽의 최저점이 같아지게 몇 도(±lim) 기울인다"""
+        self.roty(-90)
+        if tilt:
+            V = np.vstack([p['mesh'].V for p in self.parts])
+            V = V[:: max(1, len(V) // 40000)]
+            a, bb = V[V[:, 0] < 0], V[V[:, 0] > 0.85 * V[:, 0].max()]
+            if len(a) and len(bb):
+                def f(deg):
+                    c, s = math.cos(math.radians(deg)), math.sin(math.radians(deg))
+                    return (-s * a[:, 0] + c * a[:, 2]).min() - (-s * bb[:, 0] + c * bb[:, 2]).min()
+                if f(-lim) < 0 < f(lim):
+                    lo, hi = -lim, lim
+                    for _ in range(40):
+                        mid = (lo + hi) / 2
+                        lo, hi = (mid, hi) if f(mid) < 0 else (lo, mid)
+                    self.roty(hi)
+        return self.rotz(yaw)
 
     def view(self, **cam):
         """카메라 힌트 (az 방위, el 고도, fill 화면 채움)"""
