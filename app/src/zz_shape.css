@@ -15,6 +15,13 @@
 .ia-fam .th.ph { width: 96px; height: 72px; padding: 0; overflow: hidden; background: #E9ECEF; }
 .ia-fam .th.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .ia-fam:has(.th.ph) { grid-template-columns: 96px minmax(0, 1fr); }
+/* 좁은 화면: 사양 칸(.fam-r)이 먼저 오는 기존 배치에서, 형상 이미지가 있으면 이미지를 맨 위로 */
+@media (max-width: 1020px) {
+  .fam:has(> .fam-l > #shp-slot:not(:empty)) { gap: 20px; }
+  .fam-l:has(> #shp-slot:not(:empty)) { display: contents; }
+  .fam-l > #shp-slot:not(:empty) { order: -2; }
+  .shp { max-width: none; }
+}
 @media (max-width: 680px) {
   .shp figcaption { font-size: var(--fs-cap); }
 }

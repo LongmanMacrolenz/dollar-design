@@ -9,6 +9,7 @@ docs/ 를 임시 서버로 띄워 연다. 이미지 로딩 실패(404)·콘솔 �
 """
 import argparse
 import http.server
+import os
 import pathlib
 import socketserver
 import sys
@@ -42,7 +43,7 @@ def main():
     srv, port = serve()
     bad = []
     with sync_playwright() as p:
-        b = p.chromium.launch()
+        b = p.chromium.launch(executable_path=os.environ.get('BN_CHROMIUM') or None)   # 환경 변수 BN_CHROMIUM = 크로미움 실행 파일 (check.py와 같음)
         sizes = [('d', 1280, 900)] + ([('m', 390, 844)] if a.mobile else [])
         for tag, w, h in sizes:
             ctx = b.new_context(viewport={'width': w, 'height': h}, device_scale_factor=1)

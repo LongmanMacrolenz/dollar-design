@@ -5,7 +5,7 @@
    쓰는 곳: 품목 페이지 c-<id> (v7_ia.js), 기존 장 m-·i- (src/shape.hooks.json), 품목 카드 썸네일 (iaFamCard). 이름 접두사 shape…/SHAPE_ */
 
 /* SHAPE_IMG:BEGIN (tools/shapes/render_all.py --manifest 가 만듭니다. 손으로 고치지 않습니다) */
-const SHAPE_IMG = {};
+const SHAPE_IMG = {"hbf":["ZW","ZB","BO","PL","HD","GM","SS"]};
 /* SHAPE_IMG:END */
 const SHAPE_DIR = 'media/shape/';
 const SHAPE_NAME = { ZW: '백색아연', ZY: '황색아연', ZB: '흑색아연', BO: '흑착색', PL: '무처리(생지)', HD: '용융아연', GM: '아연 플레이크', ZN: '아연-니켈', NI: '니켈', PT: 'PTFE 코팅', PH: '인산염', MZ: '기계 아연', SS: '스테인리스', BR: '황동', CU: '구리', AL: '알루미늄', NIA: '니켈합금' };
