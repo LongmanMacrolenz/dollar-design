@@ -64,4 +64,7 @@ def family_looks(f, override=None):
         k = look_of_mat(mat)
         if k and k not in out:
             out.append(k)
+    if 'PH' in out and len(out) > 1:     # 인산염은 짙은 무광이라 모양이 안 읽힌다: 대표(첫째) 이미지에서는 뒤로
+        out.remove('PH')
+        out.append('PH')
     return out or ['ZW']
