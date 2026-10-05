@@ -1,0 +1,3886 @@
+{
+ "lines": [
+  {
+   "raw": "SCR, SET, SKT, CUP PT, 3/8-16 UNC X 1/2 LG, ALLOY STL, BLK OX, ASTM F912",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "3/8 in (0.375)",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "1/2 in (12.7 mm)",
+    "point": "cup",
+    "drive": "hex socket, 3/16 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912 alloy steel, 45-53 HRC",
+    "finish": "black oxide + oil",
+    "status": "catalog",
+    "why": "Standard B18.3 cup-point set screw, alloy/black oxide, standard length."
+   }
+  },
+  {
+   "raw": "SET SCREW SOCKET 1/4-20 X 3/8 CUP PT 18-8 SST",
+   "qty": "100 EA",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "20 TPI",
+    "series": "UNC (1/4-20 is coarse)",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "3/8 in (9.5 mm)",
+    "point": "cup",
+    "drive": "hex socket, 1/8 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F880 stainless 18-8 (304 type)",
+    "finish": "plain / passivated (default for stainless)",
+    "status": "catalog",
+    "why": "Standard stainless socket set screw; spec not written, so F880 is the matching material spec."
+   }
+  },
+  {
+   "raw": "0.375-16 UNC-3A X 0.75 SKT SET SCR, CUP PT, 316 SS, ASTM F880",
+   "qty": "20",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "3/8 in (0.375 decimal)",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A (stated)",
+    "length": "3/4 in (0.75, 19.05 mm)",
+    "point": "cup",
+    "drive": "hex socket, 3/16 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F880 stainless 316",
+    "finish": "plain / passivated",
+    "status": "catalog",
+    "why": "Decimal notation of standard 3/8-16 x 3/4 316 cup point set screw."
+   }
+  },
+  {
+   "raw": "SCR SET SKT FLAT PT #10-32 UNF X 1/4 ALLOY BO",
+   "qty": "200",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "#10 (0.190 in)",
+    "pitchOrTpi": "32 TPI",
+    "series": "UNF",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "1/4 in (6.35 mm)",
+    "point": "flat",
+    "drive": "hex socket, 3/32 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "#10-32 is a standard set screw thread; flat point standard."
+   }
+  },
+  {
+   "raw": "SCR SET SKT CONE PT 1/2-13 X 1 ALLOY, ASME B18.3",
+   "qty": "16",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "1 in (25.4 mm)",
+    "point": "cone",
+    "drive": "hex socket, 1/4 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912 alloy steel",
+    "finish": "not stated: black oxide (default for alloy socket products)",
+    "status": "catalog",
+    "why": "Standard cone point set screw; finish defaulted to black oxide."
+   }
+  },
+  {
+   "raw": "SCREW, SET, 5/16-18 X 5/16, SOC, CUP, ALLOY, ASTM F912",
+   "qty": "30",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "5/16 in",
+    "pitchOrTpi": "18 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "5/16 in (7.9 mm)",
+    "point": "cup",
+    "drive": "hex socket, 5/32 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912 alloy steel",
+    "finish": "not stated: black oxide (default)",
+    "status": "catalog",
+    "why": "Standard size and length. Diameter and length are both 5/16; do not confuse them."
+   }
+  },
+  {
+   "raw": "SCR SET SKT CUP PT 5/8-11 X 3/4\" F912 BO",
+   "qty": "10",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "3/4 in (19.05 mm)",
+    "point": "cup",
+    "drive": "hex socket, 5/16 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Standard; length written with inch mark."
+   }
+  },
+  {
+   "raw": "SET SCR HALF DOG PT 3/8-16 X 1 ALLOY BO",
+   "qty": "12",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "1 in (25.4 mm)",
+    "point": "half dog",
+    "drive": "hex socket, 3/16 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Half dog is one of the B18.3 standard point styles (cup, flat, oval, cone, half dog)."
+   }
+  },
+  {
+   "raw": "무두볼트 M6x8 컵포인트 흑색",
+   "qty": "100개",
+   "expect": {
+    "type": "Hex socket set screw (무두볼트)",
+    "system": "mm",
+    "size": "M6",
+    "pitchOrTpi": "1.0 mm (coarse, not stated: default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default, ISO 4029)",
+    "length": "8 mm",
+    "point": "cup",
+    "drive": "hex socket, 3 mm key",
+    "dimStd": "ISO 4029 (= DIN 916, KS B 1028)",
+    "material": "steel 45H (default when not stated, ISO 898-5)",
+    "finish": "black oxide (흑색)",
+    "status": "catalog",
+    "why": "Korean shop-floor name for a cup point socket set screw; standard size."
+   }
+  },
+  {
+   "raw": "SET SCREW DIN 916 M8x10 45H",
+   "qty": "200",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default, ISO 4029)",
+    "length": "10 mm",
+    "point": "cup",
+    "drive": "hex socket, 4 mm key",
+    "dimStd": "ISO 4029 (DIN 916 superseded)",
+    "material": "steel 45H (ISO 898-5)",
+    "finish": "not stated: plain/oiled or black oxide as supplied",
+    "status": "catalog",
+    "why": "DIN 916 maps 1:1 to ISO 4029."
+   }
+  },
+  {
+   "raw": "ISO 4026 M5x6 A2",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M5",
+    "pitchOrTpi": "0.8 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "6 mm",
+    "point": "flat",
+    "drive": "hex socket, 2.5 mm key",
+    "dimStd": "ISO 4026 (= DIN 913)",
+    "material": "stainless A2 (304), ISO 3506-3, 21H typical",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "ISO 4026 is the flat point set screw."
+   }
+  },
+  {
+   "raw": "DIN 913 M10x12 45H BLK",
+   "qty": "25",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "12 mm",
+    "point": "flat",
+    "drive": "hex socket, 5 mm key",
+    "dimStd": "ISO 4026 (DIN 913 superseded)",
+    "material": "steel 45H",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "DIN 913 = flat point = ISO 4026."
+   }
+  },
+  {
+   "raw": "ISO 4028 M8x16 45H",
+   "qty": "20",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "16 mm",
+    "point": "dog",
+    "drive": "hex socket, 4 mm key",
+    "dimStd": "ISO 4028 (= DIN 915)",
+    "material": "steel 45H",
+    "finish": "not stated: plain/oiled",
+    "status": "catalog",
+    "why": "ISO 4028 is the dog point set screw."
+   }
+  },
+  {
+   "raw": "六角穴付止めねじ くぼみ先 M5×8 SCM435 黒染め JIS B 1177",
+   "qty": "50本",
+   "expect": {
+    "type": "Hex socket set screw (六角穴付止めねじ)",
+    "system": "mm",
+    "size": "M5",
+    "pitchOrTpi": "0.8 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "8 mm",
+    "point": "cup (くぼみ先)",
+    "drive": "hex socket, 2.5 mm key",
+    "dimStd": "JIS B 1177 (ISO 4029 equivalent)",
+    "material": "SCM435 alloy steel, class 45H",
+    "finish": "black oxide (黒染め)",
+    "status": "catalog",
+    "why": "Japanese name for an ISO 4029 cup point set screw."
+   }
+  },
+  {
+   "raw": "六角穴付止めねじ 平先 M3×4 SUS304",
+   "qty": "100個",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M3",
+    "pitchOrTpi": "0.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "4 mm",
+    "point": "flat (平先)",
+    "drive": "hex socket, 1.5 mm key",
+    "dimStd": "JIS B 1177 (ISO 4026 equivalent)",
+    "material": "SUS304 = stainless A2, ISO 3506-3",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "M3 is the smallest size in catalog range."
+   }
+  },
+  {
+   "raw": "세트스크류 M10x16 컵 SUS304",
+   "qty": "40",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "16 mm",
+    "point": "cup",
+    "drive": "hex socket, 5 mm key",
+    "dimStd": "ISO 4029",
+    "material": "SUS304 = stainless A2",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard stainless cup point set screw."
+   }
+  },
+  {
+   "raw": "KS B 1028 6각 구멍붙이 멈춤나사 M12x20 오목끝 흑색",
+   "qty": "30",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "20 mm",
+    "point": "cup (오목끝)",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "KS B 1028 (ISO 4029 MOD)",
+    "material": "steel 45H (default)",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "KS set screw standard, which adopts ISO 4026-4029; 오목끝 = cup point."
+   }
+  },
+  {
+   "raw": "렌치볼트 M10x30 12.9",
+   "qty": "200",
+   "expect": {
+    "type": "Hex socket head cap screw (렌치볼트)",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default, ISO 4762 for 12.9)",
+    "length": "30 mm",
+    "drive": "hex socket, 8 mm key",
+    "dimStd": "ISO 4762 (= KS B 1003, DIN 912)",
+    "material": "12.9 alloy steel (SCM435), ISO 898-1",
+    "finish": "not stated: black oxide + oil (default for 12.9)",
+    "status": "catalog",
+    "why": "Most common SHCS; stocked."
+   }
+  },
+  {
+   "raw": "SHCS M8x1.25x20 DIN 912 12.9",
+   "qty": "500",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (stated, coarse)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default, ISO 4762 for 12.9)",
+    "length": "20 mm",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "ISO 4762 (DIN 912 superseded)",
+    "material": "12.9 alloy steel",
+    "finish": "not stated: black oxide (default)",
+    "status": "catalog",
+    "why": "Format size x pitch x length; 1.25 is the coarse pitch, not a length."
+   }
+  },
+  {
+   "raw": "M6-1.0 x 16LG SOC HD CAP SCR, A2-70, ISO 4762",
+   "qty": "40",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M6",
+    "pitchOrTpi": "1.0 mm",
+    "series": "metric coarse",
+    "tolClass": "6g (default, ISO 4762)",
+    "length": "16 mm",
+    "drive": "hex socket, 5 mm key",
+    "dimStd": "ISO 4762",
+    "material": "stainless A2-70 (ISO 3506-1)",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard stainless SHCS; 'LG' = length."
+   }
+  },
+  {
+   "raw": "SCREW, CAP, SOCKET HEAD, M12 X 50, CL 12.9, BLACK OXIDE",
+   "qty": "24",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default, ISO 4762 for 12.9)",
+    "length": "50 mm",
+    "drive": "hex socket, 10 mm key",
+    "dimStd": "ISO 4762",
+    "material": "12.9 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "六角穴付ボルト M8×25 強度区分12.9 黒染め JIS B 1176",
+   "qty": "200本",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "25 mm",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "JIS B 1176 (= ISO 4762)",
+    "material": "12.9 (強度区分) alloy steel",
+    "finish": "black oxide (黒染め)",
+    "status": "catalog",
+    "why": "Japanese name for an ISO 4762 SHCS."
+   }
+  },
+  {
+   "raw": "SHCS M16x60 A4-80",
+   "qty": "16",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M16",
+    "pitchOrTpi": "2.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "60 mm",
+    "drive": "hex socket, 14 mm key",
+    "dimStd": "ISO 4762",
+    "material": "stainless A4-80 (316)",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Catalog combination, ordered on request (not stocked) with longer lead time."
+   }
+  },
+  {
+   "raw": "SHCS M20x80 10.9",
+   "qty": "8",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M20",
+    "pitchOrTpi": "2.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default for 10.9)",
+    "length": "80 mm",
+    "drive": "hex socket, 17 mm key",
+    "dimStd": "ISO 4762",
+    "material": "10.9 alloy steel",
+    "finish": "not stated: black oxide (default)",
+    "status": "catalog",
+    "why": "Catalog combination (10.9 BO), ordered on request."
+   }
+  },
+  {
+   "raw": "SHCS M24x100 12.9 BO",
+   "qty": "8",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M24",
+    "pitchOrTpi": "3.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "100 mm",
+    "drive": "hex socket, 19 mm key",
+    "dimStd": "ISO 4762",
+    "material": "12.9 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Largest size in catalog range."
+   }
+  },
+  {
+   "raw": "6각 구멍붙이 볼트 KS B 1003 M6x20 12.9",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M6",
+    "pitchOrTpi": "1.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "20 mm",
+    "drive": "hex socket, 5 mm key",
+    "dimStd": "KS B 1003 (= ISO 4762)",
+    "material": "12.9 alloy steel",
+    "finish": "not stated: black oxide (default)",
+    "status": "catalog",
+    "why": "Formal KS name of 렌치볼트."
+   }
+  },
+  {
+   "raw": "ISO 4762 M12x40 - 12.9 - flZnnc-480h-L",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "40 mm",
+    "drive": "hex socket, 10 mm key",
+    "dimStd": "ISO 4762",
+    "material": "12.9 alloy steel",
+    "finish": "zinc flake, Cr(VI)-free, 480 h neutral salt spray, with lubricant (ISO 10683 code)",
+    "status": "catalog",
+    "why": "European ISO 10683 finish code. Zinc flake is the catalog 12.9 coating option and avoids electroplating embrittlement."
+   }
+  },
+  {
+   "raw": "FHSCS M6x20 ISO 10642 10.9",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket countersunk (flat) head screw",
+    "system": "mm",
+    "size": "M6",
+    "pitchOrTpi": "1.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "20 mm (overall, including head)",
+    "drive": "hex socket, 4 mm key",
+    "dimStd": "ISO 10642",
+    "material": "010.9 alloy steel (reduced loadability head)",
+    "finish": "not stated: black oxide (default)",
+    "status": "catalog",
+    "why": "Standard; class written as 10.9, marked 010.9 for countersunk."
+   }
+  },
+  {
+   "raw": "접시머리 렌치볼트 M8x30 SUS304",
+   "qty": "30",
+   "expect": {
+    "type": "Hex socket countersunk head screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "30 mm (overall)",
+    "drive": "hex socket, 5 mm key",
+    "dimStd": "ISO 10642",
+    "material": "SUS304 = A2-70",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Korean name for the ISO 10642 countersunk socket screw."
+   }
+  },
+  {
+   "raw": "DIN 7991 M10x40 10.9 BO",
+   "qty": "20",
+   "expect": {
+    "type": "Hex socket countersunk head screw",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "40 mm (overall)",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "ISO 10642 (DIN 7991 superseded; head dims differ slightly)",
+    "material": "010.9 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "ISO 10642 is supplied for DIN 7991. Flag the small head geometry difference."
+   }
+  },
+  {
+   "raw": "HEX BOLT M12x40 ISO 4017 8.8 ZP",
+   "qty": "100",
+   "expect": {
+    "type": "Hex head screw, full thread",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "40 mm",
+    "drive": "external hex, 18 mm A/F",
+    "dimStd": "ISO 4017",
+    "material": "8.8 carbon steel Q&T",
+    "finish": "zinc electroplated, trivalent clear (ZP)",
+    "status": "catalog",
+    "why": "Stocked."
+   }
+  },
+  {
+   "raw": "육각볼트 M16x60 8.8 용융아연",
+   "qty": "50",
+   "expect": {
+    "type": "Hex head bolt/screw",
+    "system": "mm",
+    "size": "M16",
+    "pitchOrTpi": "2.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g before galvanizing; mating nut tapped oversize 6AZ (ISO 10684)",
+    "length": "60 mm",
+    "drive": "external hex, 24 mm A/F",
+    "dimStd": "ISO 4017 (full thread: L=60 is below ISO 4014 M16 range)",
+    "material": "8.8",
+    "finish": "hot-dip galvanized (ISO 10684)",
+    "status": "catalog",
+    "why": "Catalog 8.8 HDG, ordered on request. Pair with overtapped nuts."
+   }
+  },
+  {
+   "raw": "HHCS M10x1.5x30 CL 8.8 ZN",
+   "qty": "200",
+   "expect": {
+    "type": "Hex head screw, full thread",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "30 mm",
+    "drive": "external hex, 16 mm A/F (ISO)",
+    "dimStd": "ISO 4017 (L=30 is below the ISO 4014 M10 range)",
+    "material": "8.8",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "why": "Standard. ISO width across flats is 16 mm (DIN 933 is 17)."
+   }
+  },
+  {
+   "raw": "HEX HD BOLT M20 X 100 DIN 931 8.8 HDG",
+   "qty": "24",
+   "expect": {
+    "type": "Hex head bolt, partial thread",
+    "system": "mm",
+    "size": "M20",
+    "pitchOrTpi": "2.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g before galvanizing; nut tapped oversize 6AZ (ISO 10684)",
+    "length": "100 mm (thread length b = 46 mm)",
+    "drive": "external hex, 30 mm A/F",
+    "dimStd": "ISO 4014 (DIN 931 superseded; M20 A/F identical)",
+    "material": "8.8",
+    "finish": "hot-dip galvanized",
+    "status": "catalog",
+    "why": "Catalog partial-thread 8.8 HDG; supply overtapped nuts."
+   }
+  },
+  {
+   "raw": "六角ボルト M12×50 強度区分8.8 三価ユニクロ JIS B 1180",
+   "qty": "100本",
+   "expect": {
+    "type": "Hex head bolt",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "50 mm",
+    "drive": "external hex, 18 mm A/F (ISO-type body of JIS B 1180)",
+    "dimStd": "JIS B 1180 (= ISO 4014/4017); full or partial thread not stated",
+    "material": "8.8",
+    "finish": "trivalent bright zinc (三価ユニクロ)",
+    "status": "catalog",
+    "why": "Catalog item. Confirm full vs partial thread, and that the old JIS annex head (19 mm A/F) is not required."
+   }
+  },
+  {
+   "raw": "DIN 933 M10x25 8.8 verzinkt",
+   "qty": "500 Stk.",
+   "expect": {
+    "type": "Hex head screw, full thread",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "25 mm",
+    "drive": "external hex: DIN 933 = 17 mm A/F, ISO 4017 = 16 mm A/F",
+    "dimStd": "DIN 933 → supplied as ISO 4017",
+    "material": "8.8",
+    "finish": "zinc electroplated (verzinkt)",
+    "status": "catalog",
+    "why": "Supplied as ISO 4017. M10 width across flats differs (16 vs 17 mm), so confirm the wrench size with the buyer."
+   }
+  },
+  {
+   "raw": "Sechskantschraube ISO 4014 M24x150 10.9 schwarz",
+   "qty": "12 Stk.",
+   "expect": {
+    "type": "Hex head bolt, partial thread",
+    "system": "mm",
+    "size": "M24",
+    "pitchOrTpi": "3.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "150 mm (b = 2d+12 = 60 mm)",
+    "drive": "external hex, 36 mm A/F",
+    "dimStd": "ISO 4014",
+    "material": "10.9",
+    "finish": "black / black oxide (schwarz)",
+    "status": "catalog",
+    "why": "Catalog partial-thread 10.9 BO, within length range."
+   }
+  },
+  {
+   "raw": "HEX BOLT M16x70 10.9 GEOMET",
+   "qty": "40",
+   "expect": {
+    "type": "Hex head screw",
+    "system": "mm",
+    "size": "M16",
+    "pitchOrTpi": "2.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "70 mm",
+    "drive": "external hex, 24 mm A/F",
+    "dimStd": "ISO 4017 assumed (thread length not stated, confirm)",
+    "material": "10.9",
+    "finish": "zinc flake (Geomet type, ISO 10683)",
+    "status": "catalog",
+    "why": "Catalog 10.9 zinc flake combination, ordered on request."
+   }
+  },
+  {
+   "raw": "ISO 4017 M16x50 - 8.8 - tZn",
+   "qty": "60",
+   "expect": {
+    "type": "Hex head screw, full thread",
+    "system": "mm",
+    "size": "M16",
+    "pitchOrTpi": "2.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g before galvanizing; nut overtapped (ISO 10684)",
+    "length": "50 mm",
+    "drive": "external hex, 24 mm A/F",
+    "dimStd": "ISO 4017",
+    "material": "8.8",
+    "finish": "hot-dip galvanized (tZn = ISO 10684 code)",
+    "status": "catalog",
+    "why": "ISO finish code tZn means hot-dip galvanized."
+   }
+  },
+  {
+   "raw": "M8-1.25 x 20LG SHCS 12.9 BO",
+   "qty": "150",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "20 mm",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "ISO 4762",
+    "material": "12.9 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Dash-pitch notation of a standard SHCS."
+   }
+  },
+  {
+   "raw": "볼트 M8 x 25 육각 SUS304",
+   "qty": "100",
+   "expect": {
+    "type": "Hex head screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "25 mm",
+    "drive": "external hex, 13 mm A/F",
+    "dimStd": "ISO 4017 (full thread: L=25 is below the ISO 4014 M8 range)",
+    "material": "SUS304 = A2-70",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Informal Korean description of a stocked item."
+   }
+  },
+  {
+   "raw": "HEX NUT M12 ISO 4032 CL 8 ZP",
+   "qty": "200",
+   "expect": {
+    "type": "Hex nut, style 1",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6H (default)",
+    "drive": "external hex, 18 mm A/F",
+    "dimStd": "ISO 4032",
+    "material": "property class 8",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "why": "Stocked."
+   }
+  },
+  {
+   "raw": "NUT HEX DIN 934 M16 A4-80",
+   "qty": "50",
+   "expect": {
+    "type": "Hex nut",
+    "system": "mm",
+    "size": "M16",
+    "pitchOrTpi": "2.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6H (default)",
+    "drive": "external hex, 24 mm A/F (same in DIN and ISO)",
+    "dimStd": "ISO 4032 supplied for DIN 934 (height 14.8 vs 13 mm)",
+    "material": "stainless A4-80 (316)",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "DIN 934 superseded; M16 width across flats identical, nut slightly taller."
+   }
+  },
+  {
+   "raw": "육각너트 M20 8 HDG",
+   "qty": "24",
+   "expect": {
+    "type": "Hex nut, style 1",
+    "system": "mm",
+    "size": "M20",
+    "pitchOrTpi": "2.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "tapped oversize 6AZ after galvanizing (ISO 10684)",
+    "drive": "external hex, 30 mm A/F",
+    "dimStd": "ISO 4032",
+    "material": "property class 8",
+    "finish": "hot-dip galvanized",
+    "status": "catalog",
+    "why": "Catalog HDG nut (overtapped), ordered on request."
+   }
+  },
+  {
+   "raw": "六角ナット 1種 M8 SUS304",
+   "qty": "200個",
+   "expect": {
+    "type": "Hex nut",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6H (default)",
+    "drive": "external hex, 13 mm A/F",
+    "dimStd": "JIS B 1181 (1種 = annex style; M8 width across flats same as ISO 4032)",
+    "material": "SUS304 = A2-70",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Width across flats is the same for M8; supply as ISO 4032."
+   }
+  },
+  {
+   "raw": "平座金 M10 SUS304 JIS B 1256",
+   "qty": "200",
+   "expect": {
+    "type": "Plain washer",
+    "system": "mm",
+    "size": "M10 (ID 10.5 mm)",
+    "dimStd": "JIS B 1256 (series not stated); ISO 7089 offered",
+    "material": "SUS304 = A2",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard flat washer. Confirm the JIS series if the outer diameter matters."
+   }
+  },
+  {
+   "raw": "FLAT WASHER ISO 7089 M16 200HV ZP",
+   "qty": "100",
+   "expect": {
+    "type": "Plain washer",
+    "system": "mm",
+    "size": "M16 (ID 17, OD 30, t 3 mm)",
+    "dimStd": "ISO 7089",
+    "material": "steel 200 HV",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "why": "Stocked."
+   }
+  },
+  {
+   "raw": "LKWASH M8 DIN 127B ZP",
+   "qty": "300",
+   "expect": {
+    "type": "Spring lock washer",
+    "system": "mm",
+    "size": "M8 (ID 8.1 mm)",
+    "dimStd": "DIN 127 B",
+    "material": "spring steel",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "why": "Stocked."
+   }
+  },
+  {
+   "raw": "스프링와셔 M12 SUS304",
+   "qty": "200",
+   "expect": {
+    "type": "Spring lock washer",
+    "system": "mm",
+    "size": "M12",
+    "dimStd": "DIN 127 B",
+    "material": "SUS304 = A2",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Stocked."
+   }
+  },
+  {
+   "raw": "전산볼트 M12 x 1M 아연",
+   "qty": "10",
+   "expect": {
+    "type": "Threaded rod (전산볼트)",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "1000 mm",
+    "dimStd": "DIN 975",
+    "material": "4.8 steel (default)",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "why": "Sold in 1 m lengths."
+   }
+  },
+  {
+   "raw": "SHCS 1/2-13 X 2 A574 BO",
+   "qty": "25",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "2 in (50.8 mm)",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574 alloy steel (180 ksi min at 1/2 in and under)",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Standard inch SHCS."
+   }
+  },
+  {
+   "raw": "SCR CAP SKT HD 3/8-16UNC-3A X 1-1/4, ALLOY STL, BLK OX, ASME B18.3",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A (stated)",
+    "length": "1-1/4 in (31.75 mm)",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Fully specified standard item."
+   }
+  },
+  {
+   "raw": "SHCS #10-24 X 3/4 ALLOY BO",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "#10 (0.190 in)",
+    "pitchOrTpi": "24 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "3/4 in (19.05 mm)",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "SHCS 1/4-20 x 1\" 18-8 SS ASTM F837",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "20 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "1 in (25.4 mm)",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F837 stainless 18-8 (304 type)",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard stainless inch SHCS."
+   }
+  },
+  {
+   "raw": "SOC HD CAP SCR 5/8-11 X 2-1/2 A574",
+   "qty": "20",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "2-1/2 in (63.5 mm)",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574 alloy steel (170 ksi min above 1/2 in)",
+    "finish": "not stated: black oxide (default)",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "SHCS 3/4-10 x 3 ASTM A574 BO",
+   "qty": "12",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "3 in (76.2 mm)",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "FHSCS 1/4-20 X 3/4 ALLOY BO ASTM F835",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket flat countersunk head cap screw (82 deg)",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "20 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "3/4 in (overall, including head)",
+    "drive": "hex socket, 5/32 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F835 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Standard; F835 covers alloy button and flat socket screws."
+   }
+  },
+  {
+   "raw": "FHSCS 3/8-16 x 1 18-8 SS",
+   "qty": "25",
+   "expect": {
+    "type": "Hex socket flat countersunk head cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "1 in (overall)",
+    "drive": "hex socket, 7/32 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F879 stainless 18-8",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "BHSCS #10-32 X 1/2 ALLOY BO",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket button head cap screw",
+    "system": "inch",
+    "size": "#10 (0.190 in)",
+    "pitchOrTpi": "32 TPI",
+    "series": "UNF",
+    "tolClass": "3A (default)",
+    "length": "1/2 in",
+    "drive": "hex socket, 1/8 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F835 alloy steel",
+    "finish": "black oxide",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "BHSCS 5/16-18 X 3/4 SST 316 ASTM F879",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket button head cap screw",
+    "system": "inch",
+    "size": "5/16 in",
+    "pitchOrTpi": "18 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "3/4 in",
+    "drive": "hex socket, 3/16 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F879 stainless 316",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "HHCS 1/2-13 X 2 GR5 ZP",
+   "qty": "100",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default, ASME B1.1)",
+    "length": "2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc electroplated clear (ASTM F1941)",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "BOLT HEX HD 3/8-16 X 1-1/2\" GR 8 YZ",
+   "qty": "200",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "1-1/2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 8",
+    "finish": "yellow zinc (trivalent yellow, ASTM F1941; hydrogen embrittlement relief)",
+    "status": "catalog",
+    "why": "Standard Gr8 yellow zinc."
+   }
+  },
+  {
+   "raw": "CAP SCR HEX 5/8-11UNC-2A X 3 GR5 PLAIN ASME B18.2.1",
+   "qty": "40",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "series": "UNC",
+    "tolClass": "2A (stated)",
+    "length": "3 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 5",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "HHCS 3/4-10 x 2-1/2 SAE GR 8 PLAIN",
+   "qty": "24",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "2-1/2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 8",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "HHCS 1/4-20 X 3/4 18-8 SS",
+   "qty": "200",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "20 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "3/4 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "ASTM F593 Group 1 (18-8/304), condition CW1",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard stainless inch hex cap screw."
+   }
+  },
+  {
+   "raw": "HHCS 1/2-13 x 1-1/2 316 SS ASTM F593",
+   "qty": "50",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "1-1/2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "ASTM F593 Group 2 (316), condition CW1",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "HHCS 1-8 X 4 GR5 HDG",
+   "qty": "16",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "UNC",
+    "tolClass": "2A before galvanizing; mating nut overtapped",
+    "length": "4 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 5",
+    "finish": "hot-dip galvanized (ASTM F2329)",
+    "status": "catalog",
+    "why": "Gr5 may be hot-dip galvanized (Gr8 may not). Pair with overtapped nuts."
+   }
+  },
+  {
+   "raw": "STUD B7 W/2 NUTS 3/4-10 X 4-3/4",
+   "qty": "32",
+   "expect": {
+    "type": "Stud bolt (full thread) + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A stud / 2B nut (default, ASME B1.1)",
+    "length": "4-3/4 in (ASME B16.5 convention: excluding points)",
+    "drive": "nuts: heavy hex 1-1/4 in A/F",
+    "dimStd": "ASME B18.31.2 stud / ASME B18.2.2 heavy hex nut",
+    "material": "ASTM A193 B7 + 2 x ASTM A194 2H (default nut for B7)",
+    "finish": "not stated: plain, oiled (default)",
+    "status": "catalog",
+    "why": "Standard flange stud in catalog range (to 1-1/2 in). Nut grade defaulted to 2H."
+   }
+  },
+  {
+   "raw": "STUD BOLT 5/8-11UNC-2A X 3-1/2 A193-B7 W/ 2 HVY HEX NUTS A194-2H",
+   "qty": "16 SETS",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "series": "UNC",
+    "tolClass": "2A (stated) / nuts 2B (default)",
+    "length": "3-1/2 in (excluding points)",
+    "drive": "nuts: heavy hex 1-1/16 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "STUD, CONT THD, ASME B18.31.2, 1-8UNC-2A X 6, A193 B7, W/2 A194 2H",
+   "qty": "24",
+   "expect": {
+    "type": "Continuous-thread stud + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "1 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "UNC (1-8 UNC = 8UN at 1 in)",
+    "tolClass": "2A (stated) / nuts 2B",
+    "length": "6 in",
+    "drive": "nuts: heavy hex 1-5/8 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "STUD 1-1/8-8UN X 6-1/2 ASTM A193 B7, 2H HVY HEX NUTS (2)",
+   "qty": "16",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "1-1/8 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2A / 2B (default)",
+    "length": "6-1/2 in (excluding points)",
+    "drive": "nuts: heavy hex 1-13/16 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Over 1 in uses the 8UN series (not UNC 7 TPI), per ASME B16.5 practice."
+   }
+  },
+  {
+   "raw": "스터드볼트 7/8-9UNC x 5-1/2 B7/2H",
+   "qty": "48 SET",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "7/8 in",
+    "pitchOrTpi": "9 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "5-1/2 in (excluding points)",
+    "drive": "nuts: heavy hex 1-7/16 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Korean BOM line; 'SET' = 1 stud + 2 nuts."
+   }
+  },
+  {
+   "raw": "STUD 1-1/4-8UN x 7-1/4 B7/2H",
+   "qty": "12",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "1-1/4 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2A / 2B (default)",
+    "length": "7-1/4 in (excluding points)",
+    "drive": "nuts: heavy hex 2 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Within catalog stud range."
+   }
+  },
+  {
+   "raw": "スタッドボルト 3/4-10UNC×4-1/4 A193 B7 ナット A194 2H 2個付",
+   "qty": "40本",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "4-1/4 in (confirm whether overall or excluding points)",
+    "drive": "nuts: heavy hex 1-1/4 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Japanese BOM; 2個付 = with 2 nuts."
+   }
+  },
+  {
+   "raw": "NUT HVY HEX 7/8-9 A194 2H ASME B18.2.2",
+   "qty": "96",
+   "expect": {
+    "type": "Heavy hex nut",
+    "system": "inch",
+    "size": "7/8 in",
+    "pitchOrTpi": "9 TPI",
+    "series": "UNC",
+    "tolClass": "2B (default)",
+    "drive": "external hex, 1-7/16 in A/F",
+    "dimStd": "ASME B18.2.2",
+    "material": "ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "NUT, HVY HEX, 1-1/4-8UN-2B, A194 GR 2H",
+   "qty": "24",
+   "expect": {
+    "type": "Heavy hex nut",
+    "system": "inch",
+    "size": "1-1/4 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2B (stated)",
+    "drive": "external hex, 2 in A/F",
+    "dimStd": "ASME B18.2.2",
+    "material": "ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "NUT HEX 1/2-13 GR8 ZP",
+   "qty": "100",
+   "expect": {
+    "type": "Hex nut (finished)",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2B (default)",
+    "dimStd": "ASME B18.2.2",
+    "material": "SAE J995 Grade 8",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "NUT HEX 3/8-16 18-8 SS ASTM F594",
+   "qty": "200",
+   "expect": {
+    "type": "Hex nut",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "2B (default)",
+    "dimStd": "ASME B18.2.2",
+    "material": "ASTM F594 Group 1 (18-8)",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "FW 1/2 F436 THRU HARD",
+   "qty": "100",
+   "expect": {
+    "type": "Hardened flat washer",
+    "system": "inch",
+    "size": "1/2 in (ID 17/32, OD 1-1/16 in)",
+    "dimStd": "ASTM F436",
+    "material": "ASTM F436 Type 1, through-hardened 38-45 HRC",
+    "finish": "plain (default)",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "WASHER, FLAT, HARDENED, 3/4, ASTM F436, PLAIN",
+   "qty": "64",
+   "expect": {
+    "type": "Hardened flat washer",
+    "system": "inch",
+    "size": "3/4 in (ID 13/16, OD 1.469 in)",
+    "dimStd": "ASTM F436",
+    "material": "ASTM F436 Type 1",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "LKWASH 3/8 REG 18-8 SS",
+   "qty": "200",
+   "expect": {
+    "type": "Helical spring lock washer, regular",
+    "system": "inch",
+    "size": "3/8 in",
+    "dimStd": "ASME B18.21.1",
+    "material": "18-8 stainless",
+    "finish": "plain",
+    "status": "catalog",
+    "why": "Standard."
+   }
+  },
+  {
+   "raw": "NUT HVY HEX 3/4-10 A563 DH HDG",
+   "qty": "50",
+   "expect": {
+    "type": "Heavy hex nut",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "tapped oversize after galvanizing (ASTM A563)",
+    "drive": "external hex, 1-1/4 in A/F",
+    "dimStd": "ASME B18.2.2",
+    "material": "ASTM A563 Grade DH",
+    "finish": "hot-dip galvanized (ASTM F2329)",
+    "status": "catalog",
+    "why": "Standard structural/anchor nut in the A325 set family."
+   }
+  },
+  {
+   "raw": "STUD 3/4-10UNC-2A X 4-3/4 A193 B7M / A194 2HM NACE MR0175",
+   "qty": "20",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts (sour service)",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B",
+    "length": "4-3/4 in (excluding points)",
+    "drive": "nuts: heavy hex 1-1/4 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7M (max 235 HBW, 100% hardness tested) / ASTM A194 2HM; NACE MR0175 / ISO 15156",
+    "finish": "plain (default)",
+    "status": "engineer-quote",
+    "why": "NACE sour service needs B7M/2HM with hardness records and 3.1 certs; heat lot sourced per order."
+   }
+  },
+  {
+   "raw": "STUD L7/7 5/8-11 X 3-1/2, IMPACT TESTED -101C",
+   "qty": "32",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts (low temperature)",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "3-1/2 in (excluding points)",
+    "drive": "nuts: heavy hex 1-1/16 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A320 L7 (Charpy at -101 C / -150 F) + ASTM A194 Grade 7 with S3 impact test (7L)",
+    "finish": "plain (default)",
+    "status": "engineer-quote",
+    "why": "Impact-tested low-temperature bolting needs a test lot and certs. Nuts must also be impact tested."
+   }
+  },
+  {
+   "raw": "STUD B8M CL2 1/2-13 X 3 W/2 8M HVY HEX NUTS",
+   "qty": "16",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "3 in (excluding points)",
+    "drive": "nuts: heavy hex 7/8 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B8M Class 2 (316 strain-hardened, 110 ksi min up to 3/4 in) / ASTM A194 8M",
+    "finish": "plain / passivated",
+    "status": "engineer-quote",
+    "why": "Class 2 strength depends on diameter and is sourced per lot. Quoted alloy we can supply."
+   }
+  },
+  {
+   "raw": "STUD 7/8-9 x 5-1/2 B7/2H XYLAN 1424 BLUE",
+   "qty": "48",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts, coated",
+    "system": "inch",
+    "size": "7/8 in",
+    "pitchOrTpi": "9 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "5-1/2 in (excluding points)",
+    "drive": "nuts: heavy hex 1-7/16 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "Xylan 1424 fluoropolymer (PTFE-filled), blue, over phosphate pretreatment",
+    "status": "engineer-quote",
+    "why": "Proprietary coating applied by a coater per lot; adds cost and lead time."
+   }
+  },
+  {
+   "raw": "STUD 1-5/8-8UN X 12 B7 W/2 HVY HEX 2H",
+   "qty": "8",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "1-5/8 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2A / 2B (default)",
+    "length": "12 in (excluding points)",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "engineer-quote",
+    "why": "Large stud above the 1-1/2 in catalog limit, made per order."
+   }
+  },
+  {
+   "raw": "STUD 2-1/4-8UN-2A X 18-1/2 A193 B7/A194 2H HDG",
+   "qty": "8",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "2-1/4 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2A before galvanizing; nuts overtapped",
+    "length": "18-1/2 in (excluding points)",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 (125 ksi up to 2-1/2 in) / ASTM A194 2H",
+    "finish": "hot-dip galvanized; nuts overtapped",
+    "status": "engineer-quote",
+    "why": "Large stud plus galvanizing; needs nut overtap matching."
+   }
+  },
+  {
+   "raw": "HHCS 1/2-13 X 2 MONEL ASTM F468 ALLOY 400 W/ F467 NUTS",
+   "qty": "12",
+   "expect": {
+    "type": "Hex cap screw + hex nut",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "2 in",
+    "dimStd": "ASME B18.2.1 / ASME B18.2.2",
+    "material": "ASTM F468 / F467 nickel-copper alloy 400 (UNS N04400)",
+    "finish": "plain",
+    "status": "engineer-quote",
+    "why": "Exotic alloy we can supply, sourced per order with 3.1 cert."
+   }
+  },
+  {
+   "raw": "SHCS M10x35 12.9 NYLOK PATCH",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket head cap screw with nylon locking patch",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "35 mm",
+    "drive": "hex socket, 8 mm key",
+    "dimStd": "ISO 4762",
+    "material": "12.9 alloy steel",
+    "finish": "black oxide + nylon patch (secondary process)",
+    "status": "engineer-quote",
+    "why": "Base screw is catalog. The patch is an outside secondary process with a minimum lot."
+   }
+  },
+  {
+   "raw": "HHCS 3/4-10 X 3-1/2 GR8 DRILLED HEAD (SAFETY WIRE)",
+   "qty": "8",
+   "expect": {
+    "type": "Hex cap screw, drilled head",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "3-1/2 in",
+    "dimStd": "ASME B18.2.1 + drilled head",
+    "material": "SAE J429 Grade 8",
+    "finish": "not stated: plain",
+    "status": "engineer-quote",
+    "why": "Drilling the head for safety wire is a secondary operation."
+   }
+  },
+  {
+   "raw": "HEX NUT M20 LH 8 ZP",
+   "qty": "10",
+   "expect": {
+    "type": "Hex nut, left-hand thread",
+    "system": "mm",
+    "size": "M20",
+    "pitchOrTpi": "2.5 mm (coarse, default) LH",
+    "series": "metric coarse, left-hand",
+    "tolClass": "6H (default)",
+    "drive": "external hex, 30 mm A/F",
+    "dimStd": "ISO 4032 (LH)",
+    "material": "property class 8",
+    "finish": "zinc electroplated",
+    "status": "engineer-quote",
+    "why": "Left-hand thread is not stocked; special order."
+   }
+  },
+  {
+   "raw": "HEX BOLT M30x3.5x150 8.8 HDG ISO 4014",
+   "qty": "16",
+   "expect": {
+    "type": "Hex head bolt, partial thread",
+    "system": "mm",
+    "size": "M30",
+    "pitchOrTpi": "3.5 mm",
+    "series": "metric coarse",
+    "tolClass": "6g before galvanizing; nut overtapped (ISO 10684)",
+    "length": "150 mm (b = 72 mm)",
+    "drive": "external hex, 46 mm A/F",
+    "dimStd": "ISO 4014",
+    "material": "8.8",
+    "finish": "hot-dip galvanized",
+    "status": "engineer-quote",
+    "why": "Above the M24 catalog limit."
+   }
+  },
+  {
+   "raw": "SHCS M10x37 12.9",
+   "qty": "40",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "37 mm (non-standard; standard 35/40)",
+    "drive": "hex socket, 8 mm key",
+    "dimStd": "ISO 4762",
+    "material": "12.9 alloy steel",
+    "finish": "not stated: black oxide",
+    "status": "engineer-quote",
+    "why": "Special length. Offer 35 or 40 mm if the design allows, or quote a special."
+   }
+  },
+  {
+   "raw": "HHCS 1/2-13 X 2-3/8 GR5 ZP",
+   "qty": "50",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "2-3/8 in (non-standard; standard 1/4 in steps)",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc electroplated",
+    "status": "engineer-quote",
+    "why": "Special length. Offer 2-1/4 or 2-1/2 in, or quote a special."
+   }
+  },
+  {
+   "raw": "ATR B7 1-8UNC X 12 FT",
+   "qty": "4",
+   "expect": {
+    "type": "Threaded rod (all-thread)",
+    "system": "inch",
+    "size": "1 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "12 ft (3658 mm)",
+    "dimStd": "ASME B18.31.3",
+    "material": "ASTM A193 B7",
+    "finish": "plain (default)",
+    "status": "engineer-quote",
+    "why": "Inch B7 rod in full lengths is not a catalog family."
+   }
+  },
+  {
+   "raw": "ANCHOR BOLT F1554 GR55 1-8UNC X 36 L-TYPE 6\" HOOK, HDG, W/ HVY HEX NUT & F436 WASHER",
+   "qty": "8",
+   "expect": {
+    "type": "Anchor rod, L-bent, with nut and washer",
+    "system": "inch",
+    "size": "1 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "UNC",
+    "tolClass": "2A before galvanizing; nut overtapped",
+    "length": "36 in overall, 6 in hook",
+    "dimStd": "ASTM F1554 (shape per drawing)",
+    "material": "ASTM F1554 Grade 55 (yellow end color) + heavy hex nut + F436 washer",
+    "finish": "hot-dip galvanized (ASTM F2329)",
+    "status": "engineer-quote",
+    "why": "Formed anchor rod needs drawing confirmation (thread length, bend)."
+   }
+  },
+  {
+   "raw": "STUD 1-1/8-8UN X 7 A193 B16 W/ 2 A194 GR 7 NUTS",
+   "qty": "16",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts (high temperature)",
+    "system": "inch",
+    "size": "1-1/8 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2A / 2B (default)",
+    "length": "7 in (excluding points)",
+    "drive": "nuts: heavy hex 1-13/16 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B16 (Cr-Mo-V) / ASTM A194 Grade 7",
+    "finish": "plain",
+    "status": "engineer-quote",
+    "why": "High-temperature grade not stocked; mill-sourced."
+   }
+  },
+  {
+   "raw": "SHCS 1/2-13 X 1-1/2 A574, NACE MR0175",
+   "qty": "8",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "1-1/2 in",
+    "dimStd": "ASME B18.3",
+    "material": "conflict: ASTM A574 (39-45 HRC) cannot meet the NACE MR0175 22 HRC max for low-alloy steel",
+    "finish": "not stated",
+    "status": "engineer-quote",
+    "why": "Specification conflict. Engineer must propose a NACE-compliant alternative (special B7M-equivalent socket screw or solution-annealed 316) and get approval."
+   }
+  },
+  {
+   "raw": "SCR SET SKT CUP PT 3/8-16 X 1/2 F912 W/ NYLOK PATCH",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket set screw with nylon patch",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default)",
+    "length": "1/2 in",
+    "point": "cup",
+    "drive": "hex socket, 3/16 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912 alloy steel",
+    "finish": "black oxide + nylon patch",
+    "status": "engineer-quote",
+    "why": "Patch is a secondary process."
+   }
+  },
+  {
+   "raw": "DIN 916 M8x12 45H mit Rändel",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket set screw, knurled cup point",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "12 mm",
+    "point": "knurled cup (self-locking)",
+    "drive": "hex socket, 4 mm key",
+    "dimStd": "ISO 4029 / DIN 916 with knurled cup",
+    "material": "steel 45H",
+    "finish": "not stated: plain/black oxide",
+    "status": "engineer-quote",
+    "why": "Knurled cup is a non-standard point variant."
+   }
+  },
+  {
+   "raw": "SET SCREW M16x25 ISO 4029 45H ZINC",
+   "qty": "20",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M16",
+    "pitchOrTpi": "2.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default; plating allowance needed)",
+    "length": "25 mm",
+    "point": "cup",
+    "drive": "hex socket, 8 mm key",
+    "dimStd": "ISO 4029",
+    "material": "steel 45H (min 450 HV)",
+    "finish": "zinc electroplated requested",
+    "status": "engineer-quote",
+    "why": "Electroplating 45H set screws carries a high hydrogen embrittlement risk. Propose zinc flake, black oxide or stainless."
+   }
+  },
+  {
+   "raw": "SHCS 1/4-28 UNF X 3/4 A574",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "28 TPI",
+    "series": "UNF",
+    "tolClass": "3A (default)",
+    "length": "3/4 in",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574",
+    "finish": "not stated: black oxide",
+    "status": "engineer-quote",
+    "why": "Fine-thread inch SHCS (other than #10-32) is not a catalog item."
+   }
+  },
+  {
+   "raw": "SHCS M12x1.25x40 12.9",
+   "qty": "30",
+   "expect": {
+    "type": "Hex socket head cap screw, fine pitch",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.25 mm (fine)",
+    "series": "metric fine",
+    "tolClass": "5g6g (default for 12.9)",
+    "length": "40 mm",
+    "drive": "hex socket, 10 mm key",
+    "dimStd": "ISO 12474 (fine-pitch SHCS)",
+    "material": "12.9 alloy steel",
+    "finish": "not stated: black oxide",
+    "status": "engineer-quote",
+    "why": "Fine pitch is not in catalog. Confirm that 1.25 mm is really the pitch (it is not a length)."
+   }
+  },
+  {
+   "raw": "HEX BOLT M10x1.25x30 8.8 ZP",
+   "qty": "100",
+   "expect": {
+    "type": "Hex head screw, fine pitch",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.25 mm (fine)",
+    "series": "metric fine",
+    "tolClass": "6g (default)",
+    "length": "30 mm",
+    "drive": "external hex, 16 mm A/F",
+    "dimStd": "ISO 8676 (fine pitch, full thread)",
+    "material": "8.8",
+    "finish": "zinc electroplated",
+    "status": "engineer-quote",
+    "why": "Fine-pitch hex screws are not in catalog."
+   }
+  },
+  {
+   "raw": "HEX BOLT 1/2-13 X 2 A307 GR A HDG",
+   "qty": "50",
+   "expect": {
+    "type": "Hex bolt",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A before galvanizing",
+    "length": "2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "ASTM A307 Grade A (60 ksi)",
+    "finish": "hot-dip galvanized (ASTM F2329)",
+    "status": "engineer-quote",
+    "why": "A307 not stocked. Substituting SAE J429 Gr5 HDG needs buyer approval."
+   }
+  },
+  {
+   "raw": "SHCS M8x25 A4-80 W/ EN 10204 3.1",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "25 mm",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "ISO 4762",
+    "material": "stainless A4-80 (316)",
+    "finish": "plain",
+    "status": "engineer-quote",
+    "why": "Catalog part, but a 3.1 inspection certificate requires heat-lot traceability from the mill."
+   }
+  },
+  {
+   "raw": "NUT HVY HEX 2-1/2-8UN A194 2H",
+   "qty": "16",
+   "expect": {
+    "type": "Heavy hex nut",
+    "system": "inch",
+    "size": "2-1/2 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2B (default)",
+    "dimStd": "ASME B18.2.2",
+    "material": "ASTM A194 2H",
+    "finish": "plain (default)",
+    "status": "engineer-quote",
+    "why": "Large nut above the 1-1/2 in catalog limit."
+   }
+  },
+  {
+   "raw": "HHCS 5/8-11 X 2-1/2 SST 316 F593 W/ PMI & 3.1",
+   "qty": "24",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "2-1/2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "ASTM F593 Group 2 (316), condition CW1",
+    "finish": "plain",
+    "status": "engineer-quote",
+    "why": "PMI testing and a 3.1 certificate add inspection cost; quote per lot."
+   }
+  },
+  {
+   "raw": "STUD 3/4-10 X 5 B7/2H ZN-NI PLATED + 3.1",
+   "qty": "40",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts, plated",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "5 in (excluding points)",
+    "drive": "nuts: heavy hex 1-1/4 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "zinc-nickel electroplated",
+    "status": "engineer-quote",
+    "why": "Zn-Ni plating is subcontracted; lot lead time."
+   }
+  },
+  {
+   "raw": "STUD L7M/7ML 1-8 X 6 NACE + IMPACT",
+   "qty": "16",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts (low temperature, sour)",
+    "system": "inch",
+    "size": "1 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "UNC",
+    "tolClass": "2A / 2B (default)",
+    "length": "6 in (excluding points)",
+    "drive": "nuts: heavy hex 1-5/8 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A320 L7M (max 235 HBW, Charpy at -73 C / -100 F) / ASTM A194 7ML; NACE MR0175",
+    "finish": "plain",
+    "status": "engineer-quote",
+    "why": "Combined sour-service and impact requirements; sourced per lot with test certs."
+   }
+  },
+  {
+   "raw": "SHCS 3/8-16 X 1-1/4 A574 ZINC PLATED, BAKED",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default; no plating allowance per B18.3)",
+    "length": "1-1/4 in",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574",
+    "finish": "zinc electroplated + hydrogen embrittlement relief bake",
+    "status": "engineer-quote",
+    "why": "Plating high-hardness socket screws needs baking and thread allowance control."
+   }
+  },
+  {
+   "raw": "HEX BOLT M24x120 10.9 HDG",
+   "qty": "20",
+   "expect": {
+    "type": "Hex head bolt",
+    "system": "mm",
+    "size": "M24",
+    "pitchOrTpi": "3.0 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g before galvanizing; nut overtapped (ISO 10684)",
+    "length": "120 mm",
+    "drive": "external hex, 36 mm A/F",
+    "dimStd": "ISO 4014/4017 (thread length not stated)",
+    "material": "10.9",
+    "finish": "hot-dip galvanized",
+    "status": "engineer-quote",
+    "why": "10.9 HDG needs special process control (ISO 10684) and is not a catalog combination."
+   }
+  },
+  {
+   "raw": "HEX HD BOLT 7/8-9 X 6 A193 B7 HVY HEX",
+   "qty": "16",
+   "expect": {
+    "type": "Heavy hex bolt",
+    "system": "inch",
+    "size": "7/8 in",
+    "pitchOrTpi": "9 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "6 in",
+    "dimStd": "ASME B18.2.1 (heavy hex)",
+    "material": "ASTM A193 B7",
+    "finish": "plain (default)",
+    "status": "engineer-quote",
+    "why": "Headed B7 bolts are made to order (studs are the stocked form)."
+   }
+  },
+  {
+   "raw": "STUD 1-1/2-8UN X 10-1/4 B7/2H PTFE COATED",
+   "qty": "24",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts, coated",
+    "system": "inch",
+    "size": "1-1/2 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "tolClass": "2A / 2B (default)",
+    "length": "10-1/4 in (excluding points)",
+    "drive": "nuts: heavy hex 2-3/8 in A/F",
+    "dimStd": "ASME B18.31.2 / ASME B18.2.2",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "finish": "PTFE (fluoropolymer) coating",
+    "status": "engineer-quote",
+    "why": "Size is catalog, but the coating is a per-lot outside process."
+   }
+  },
+  {
+   "raw": "DOUBLE END STUD DIN 938 M12x50 8.8",
+   "qty": "20",
+   "expect": {
+    "type": "Tap-end stud (screw-in end about 1d)",
+    "system": "mm",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm (coarse, default)",
+    "series": "metric coarse",
+    "tolClass": "6g (default)",
+    "length": "50 mm (excluding the 12 mm screw-in end)",
+    "dimStd": "DIN 938",
+    "material": "8.8",
+    "finish": "not stated: plain",
+    "status": "engineer-quote",
+    "why": "Tap-end studs are not a catalog family."
+   }
+  },
+  {
+   "raw": "SCREW, CAP, SKT HD, NAS1352C4-8, CRES",
+   "qty": "25",
+   "expect": {
+    "type": "Socket head cap screw (aerospace NAS)",
+    "system": "inch",
+    "size": "per NAS1352 dash number (not decoded)",
+    "dimStd": "NAS1352",
+    "material": "CRES per BOM text",
+    "status": "not-available",
+    "why": "Aerospace standard part needing qualified-source traceability. Source this line from an aerospace distributor."
+   }
+  },
+  {
+   "raw": "MS24693-C274",
+   "qty": "50",
+   "expect": {
+    "type": "Flat countersunk 100 deg machine screw (military standard)",
+    "system": "inch",
+    "size": "per MS24693 dash number (not decoded)",
+    "dimStd": "MS24693",
+    "material": "C = corrosion-resistant steel",
+    "status": "not-available",
+    "why": "Military/aerospace standard part. Source this line from a qualified MS-parts distributor."
+   }
+  },
+  {
+   "raw": "AN960-416 WASHER",
+   "qty": "100",
+   "expect": {
+    "type": "Flat washer (aerospace AN)",
+    "system": "inch",
+    "size": "1/4 in (AN960 dash 416)",
+    "dimStd": "AN960",
+    "status": "not-available",
+    "why": "Aerospace AN part; not supplied. Source this line elsewhere."
+   }
+  },
+  {
+   "raw": "BOLT 1/2-20 UNJF-3A X 2.5 INCONEL 718 PER AMS 5662",
+   "qty": "12",
+   "expect": {
+    "type": "Bolt, aerospace thread",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "20 TPI",
+    "series": "UNJF",
+    "tolClass": "3A (stated)",
+    "length": "2-1/2 in (2.5)",
+    "material": "Inconel 718 per AMS 5662",
+    "status": "not-available",
+    "why": "AMS nickel superalloy with a UNJ thread is outside our supply range."
+   }
+  },
+  {
+   "raw": "PEM CLS-832-2 SELF-CLINCHING NUT",
+   "qty": "500",
+   "expect": {
+    "type": "Self-clinching nut (proprietary)",
+    "system": "inch",
+    "size": "#8-32",
+    "pitchOrTpi": "32 TPI",
+    "series": "UNC",
+    "material": "per manufacturer catalog",
+    "status": "engineer-quote",
+    "why": "Proprietary clinch hardware. Buy from the manufacturer or its distributor.",
+    "family": "clinch"
+   }
+  },
+  {
+   "raw": "HELICOIL INSERT M10x1.5 x 1.5D SST",
+   "qty": "50",
+   "expect": {
+    "type": "Wire thread insert",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm",
+    "series": "metric coarse",
+    "length": "1.5D (15 mm)",
+    "material": "stainless",
+    "status": "engineer-quote",
+    "why": "Thread insert: extended catalog (rivets & inserts tile); quoted after spec check. Taps and insertion tools still not supplied.",
+    "family": "wti"
+   }
+  },
+  {
+   "raw": "BLIND RIVET 4.8 x 12 AL/STEEL",
+   "qty": "1000",
+   "expect": {
+    "type": "Blind rivet",
+    "system": "mm",
+    "size": "4.8 mm",
+    "length": "12 mm",
+    "material": "aluminium body / steel mandrel",
+    "status": "engineer-quote",
+    "why": "Blind rivet: extended catalog (rivets & inserts tile); quoted after spec check.",
+    "family": "blindrivet"
+   }
+  },
+  {
+   "raw": "스냅링 축용 DIN 471 Ø32",
+   "qty": "20",
+   "expect": {
+    "type": "Retaining ring for shaft (external)",
+    "system": "mm",
+    "size": "32 mm shaft",
+    "dimStd": "DIN 471",
+    "material": "spring steel",
+    "status": "engineer-quote",
+    "why": "Retaining ring: extended catalog (pins, rings & keys tile); quoted after spec check.",
+    "family": "ring-ext"
+   }
+  },
+  {
+   "raw": "DOWEL PIN 8 m6 x 30 ISO 8734",
+   "qty": "20",
+   "expect": {
+    "type": "Dowel pin, hardened",
+    "system": "mm",
+    "size": "8 mm (m6 tolerance)",
+    "length": "30 mm",
+    "dimStd": "ISO 8734",
+    "status": "engineer-quote",
+    "why": "Dowel pin: extended catalog (pins, rings & keys tile); quoted after spec check.",
+    "family": "dowel-h"
+   }
+  },
+  {
+   "raw": "O-RING AS568-214 VITON",
+   "qty": "10",
+   "expect": {
+    "type": "O-ring (seal, not a fastener)",
+    "system": "inch",
+    "size": "AS568-214",
+    "material": "FKM (Viton)",
+    "status": "not-available",
+    "why": "Not a fastener. Source from a seal supplier."
+   }
+  },
+  {
+   "raw": "GASKET SPW 4\" CL300 316/GRAPHITE ASME B16.20",
+   "qty": "2",
+   "expect": {
+    "type": "Spiral wound gasket (not a fastener)",
+    "system": "inch",
+    "size": "NPS 4, Class 300",
+    "dimStd": "ASME B16.20",
+    "material": "316 winding / flexible graphite filler",
+    "status": "not-available",
+    "why": "Gasket, not a fastener. Source this line from a gasket supplier. Its flange studs can be quoted here."
+   }
+  },
+  {
+   "raw": "KEY, PARALLEL, DIN 6885 A 10x8x50",
+   "qty": "2",
+   "expect": {
+    "type": "Parallel key",
+    "system": "mm",
+    "size": "10 x 8 mm",
+    "length": "50 mm",
+    "dimStd": "DIN 6885 form A",
+    "status": "engineer-quote",
+    "why": "Parallel key: extended catalog (pins, rings & keys tile); quoted after spec check.",
+    "family": "key-par"
+   }
+  },
+  {
+   "raw": "OEM P/N 3A5214-07 SCREW, CAP (NO SPEC)",
+   "qty": "6",
+   "expect": {
+    "type": "Cap screw, proprietary part number",
+    "system": "unknown",
+    "size": "unknown (no spec given)",
+    "status": "not-available",
+    "why": "Manufacturer part number with no dimensions or material. Ask the OEM or customer for the spec, or buy this line from the OEM."
+   }
+  },
+  {
+   "raw": "SHCS M8x25 TITANIUM GR5",
+   "qty": "20",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "mm",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm (coarse, default)",
+    "series": "metric coarse",
+    "length": "25 mm",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "ISO 4762",
+    "material": "titanium Grade 5 (Ti-6Al-4V)",
+    "status": "not-available",
+    "why": "Titanium is outside our material range."
+   }
+  },
+  {
+   "raw": "STUD 4-1/2-8UN X 30 B7/2H",
+   "qty": "8",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "4-1/2 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "length": "30 in",
+    "material": "ASTM A193 B7 / ASTM A194 2H",
+    "status": "not-available",
+    "why": "Above our 4 in size limit."
+   }
+  },
+  {
+   "raw": "なべ小ねじ M1.6×4 SUS",
+   "qty": "100",
+   "expect": {
+    "type": "Pan head machine screw (micro)",
+    "system": "mm",
+    "size": "M1.6",
+    "pitchOrTpi": "0.35 mm (coarse, default)",
+    "series": "metric coarse",
+    "length": "4 mm",
+    "material": "stainless",
+    "status": "not-available",
+    "why": "Micro screw below M2 is outside our range."
+   }
+  },
+  {
+   "raw": "SCR SET SKT CUP PT #0-80 X 1/8",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket set screw (micro)",
+    "system": "inch",
+    "size": "#0 (0.060 in)",
+    "pitchOrTpi": "80 TPI",
+    "series": "UNF",
+    "length": "1/8 in",
+    "point": "cup",
+    "dimStd": "ASME B18.3",
+    "status": "not-available",
+    "why": "Below #2 is outside our range."
+   }
+  },
+  {
+   "raw": "SPRING PIN ISO 8752 6x30",
+   "qty": "50",
+   "expect": {
+    "type": "Slotted spring (roll) pin",
+    "system": "mm",
+    "size": "6 mm",
+    "length": "30 mm",
+    "dimStd": "ISO 8752",
+    "status": "engineer-quote",
+    "why": "Spring pin: extended catalog (pins, rings & keys tile); quoted after spec check.",
+    "family": "spring-sl"
+   }
+  },
+  {
+   "raw": "EXPANSION ANCHOR 1/2 X 5-1/2 (ICC-ES LISTED)",
+   "qty": "40",
+   "expect": {
+    "type": "Post-installed expansion anchor (proprietary, listed)",
+    "system": "inch",
+    "size": "1/2 in",
+    "length": "5-1/2 in",
+    "status": "not-available",
+    "why": "Listed anchors must be the specific manufacturer's product. Source this line from that manufacturer."
+   }
+  },
+  {
+   "raw": "DISC SPRING DIN 2093 A40",
+   "qty": "30",
+   "expect": {
+    "type": "Disc spring (Belleville)",
+    "system": "mm",
+    "size": "40 mm OD, series A",
+    "dimStd": "DIN 2093",
+    "status": "engineer-quote",
+    "why": "Disc spring: extended catalog (washers tile); quoted after spec check.",
+    "family": "disc"
+   }
+  },
+  {
+   "raw": "HEX HD BOLT 1/2-13 X 2 GR5 ZINC",
+   "qty": "1,000",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default)",
+    "length": "2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "qty": "1000 EA"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SHCS M10x30 12.9",
+   "qty": "2,500 EA",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "metric",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm",
+    "series": "metric coarse",
+    "tolClass": "5g6g",
+    "length": "30 mm",
+    "drive": "hex socket, 8 mm key",
+    "dimStd": "ISO 4762",
+    "material": "12.9 alloy steel",
+    "finish": "not stated: black oxide",
+    "status": "catalog",
+    "qty": "2500 EA"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SHCS 6-32 X 1/2 ALLOY BO",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "#6 (0.138 in)",
+    "pitchOrTpi": "32 TPI",
+    "series": "UNC",
+    "tolClass": "3A",
+    "length": "1/2 in",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574",
+    "finish": "black oxide",
+    "status": "catalog",
+    "spec": "#6-32 UNC"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SHCS 4-40 X 1/4",
+   "qty": "10",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "#4 (0.112 in)",
+    "pitchOrTpi": "40 TPI",
+    "series": "UNC",
+    "tolClass": "3A",
+    "length": "1/4 in",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574 (default)",
+    "finish": "not stated: black oxide",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HHCS 8-32 X 1/2 GR5",
+   "qty": "10",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "#8 (0.164 in)",
+    "pitchOrTpi": "32 TPI",
+    "series": "UNC",
+    "tolClass": "2A",
+    "length": "1/2 in",
+    "material": "SAE J429 Grade 5",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SET SCREW, SOCKET, 10-32 X 3/16, CUP, ALLOY",
+   "qty": "200",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "#10 (0.190 in)",
+    "pitchOrTpi": "32 TPI",
+    "series": "UNF",
+    "tolClass": "3A",
+    "length": "3/16 in",
+    "point": "cup",
+    "drive": "hex socket, 3/32 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912",
+    "finish": "not stated: black oxide",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": ".500-13UNC-2A X 2.00 HHCS GR8",
+   "qty": "25",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A",
+    "length": "2 in",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 8",
+    "finish": "not stated: plain",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": ".375-16 X .500 SKT SET SCR CUP PT ALLOY BO",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "3A",
+    "length": "1/2 in",
+    "point": "cup",
+    "drive": "hex socket, 3/16 in key",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM F912",
+    "finish": "black oxide",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "STUD BOLT 3/4\"-10UNC x 120mm B7/2H",
+   "qty": "16 SETS",
+   "expect": {
+    "type": "Stud bolt + 2 heavy hex nuts",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A",
+    "length": "120 mm (4.72 in)",
+    "material": "ASTM A193 B7 / A194 2H",
+    "status": "engineer-quote",
+    "qty": "16 SET"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "1/2-13UNC-2A X 50.8MM HHCS GR5 ZP",
+   "qty": "50",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A",
+    "length": "50.8 mm (2 in)",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc electroplated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "렌치볼트 M8x25 STS316",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "metric",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm",
+    "series": "metric coarse",
+    "tolClass": "6g",
+    "length": "25 mm",
+    "drive": "hex socket, 6 mm key",
+    "dimStd": "ISO 4762",
+    "material": "stainless A4 (STS316 = SUS316)",
+    "finish": "plain / passivated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "육각너트 M12 STS",
+   "qty": "100",
+   "expect": {
+    "type": "Hex nut",
+    "system": "metric",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm",
+    "tolClass": "6H",
+    "drive": "hex, 18 mm A/F",
+    "dimStd": "ISO 4032",
+    "material": "stainless A2 (STS, grade assumed SUS304)",
+    "finish": "plain",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "육각볼트 M12x40 STS304",
+   "qty": "50",
+   "expect": {
+    "type": "Hex head screw",
+    "system": "metric",
+    "size": "M12",
+    "pitchOrTpi": "1.75 mm",
+    "tolClass": "6g",
+    "length": "40 mm",
+    "drive": "hex, 18 mm A/F",
+    "dimStd": "ISO 4017",
+    "material": "A2 (STS304 = SUS304)",
+    "finish": "plain",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "WASHER, LOCK, M10, SPRING STEEL, ZP",
+   "qty": "300",
+   "expect": {
+    "type": "Spring lock washer",
+    "system": "metric",
+    "size": "M10",
+    "dimStd": "DIN 127 B",
+    "material": "spring steel (stated)",
+    "finish": "zinc electroplated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "WASHER, SPRING LOCK, 1/2, ZINC",
+   "qty": "100",
+   "expect": {
+    "type": "Helical spring lock washer",
+    "system": "inch",
+    "size": "1/2 in",
+    "dimStd": "ASME B18.21.1",
+    "material": "spring steel",
+    "finish": "zinc electroplated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "나비너트 M8 SUS304",
+   "qty": "100",
+   "expect": {
+    "type": "Wing nut (DIN 315)",
+    "system": "metric",
+    "size": "M8",
+    "dimStd": "DIN 315",
+    "material": "A2 (SUS304)",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "FLANGE NUT M10 SERRATED ZP",
+   "qty": "200",
+   "expect": {
+    "type": "Flange nut, serrated (ISO 4161)",
+    "system": "metric",
+    "size": "M10",
+    "dimStd": "ISO 4161",
+    "finish": "zinc electroplated",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "ACORN NUT M10 A2",
+   "qty": "50",
+   "expect": {
+    "type": "Acorn (cap) nut, DIN 1587",
+    "system": "metric",
+    "size": "M10",
+    "dimStd": "DIN 1587",
+    "material": "A2",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "COUPLING NUT 1/2-13 X 1-3/4 ZP",
+   "qty": "20",
+   "expect": {
+    "type": "Coupling nut (DIN 6334)",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "length": "1-3/4 in",
+    "finish": "zinc electroplated",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX FLANGE BOLT M8x20 8.8 ZP",
+   "qty": "200",
+   "expect": {
+    "type": "Hex bolt, flange head (ISO 4162)",
+    "system": "metric",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm",
+    "length": "20 mm",
+    "dimStd": "ISO 4162",
+    "material": "8.8",
+    "finish": "zinc electroplated",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SOCKET SET SCREW 1/4-20 X 1/4 NYLON TIP",
+   "qty": "100",
+   "expect": {
+    "type": "Nylon-tip set screw",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "20 TPI",
+    "series": "UNC",
+    "length": "1/4 in",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SET SCREW SQ HD 3/8-16 X 1 CUP PT",
+   "qty": "20",
+   "expect": {
+    "type": "Square head set screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "length": "1 in",
+    "dimStd": "ASME B18.6.2",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SLOTTED SET SCREW M4x6 DIN 551",
+   "qty": "100",
+   "expect": {
+    "type": "Slotted set screw",
+    "system": "metric",
+    "size": "M4",
+    "pitchOrTpi": "0.7 mm",
+    "length": "6 mm",
+    "dimStd": "DIN 551",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX BOLT M16x60 8.8 GALV",
+   "qty": "40",
+   "expect": {
+    "type": "Hex head screw, full thread",
+    "system": "metric",
+    "size": "M16",
+    "pitchOrTpi": "2 mm",
+    "series": "metric coarse",
+    "tolClass": "6g",
+    "length": "60 mm",
+    "drive": "hex, 24 mm A/F",
+    "dimStd": "ISO 4017",
+    "material": "8.8",
+    "finish": "hot-dip galvanized (GALV)",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "THREADED ROD M16 X 3M HDG",
+   "qty": "5",
+   "expect": {
+    "type": "Threaded rod",
+    "system": "metric",
+    "size": "M16",
+    "pitchOrTpi": "2 mm",
+    "length": "3000 mm",
+    "dimStd": "DIN 975",
+    "material": "4.8 (default)",
+    "finish": "hot-dip galvanized",
+    "status": "engineer-quote",
+    "qty": "5 EA"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HHCS 3/8-16 X 1 GR5 CAD PLT",
+   "qty": "100",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "2A",
+    "length": "1 in",
+    "material": "SAE J429 Grade 5",
+    "finish": "cadmium plated",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HHCS 1/2-13 X 2 GR5 YEL ZN",
+   "qty": "100",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "tolClass": "2A",
+    "length": "2 in",
+    "material": "SAE J429 Grade 5",
+    "finish": "yellow zinc",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX BOLT M10-30 8.8 ZP",
+   "qty": "100",
+   "expect": {
+    "type": "Hex head screw",
+    "system": "metric",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm",
+    "series": "metric coarse",
+    "tolClass": "6g",
+    "length": "30 mm",
+    "dimStd": "ISO 4017",
+    "material": "8.8",
+    "finish": "zinc electroplated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SHCS M8-1.25-25 12.9",
+   "qty": "200",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "metric",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm",
+    "series": "metric coarse",
+    "length": "25 mm",
+    "dimStd": "ISO 4762",
+    "material": "12.9",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "육각볼트 M10 30L 8.8 아연",
+   "qty": "100",
+   "expect": {
+    "type": "Hex head screw",
+    "system": "metric",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm",
+    "length": "30 mm",
+    "dimStd": "ISO 4017",
+    "material": "8.8",
+    "finish": "zinc electroplated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HHCS 3/4-10 UCN X 3 GR5 HDG",
+   "qty": "20",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "2A",
+    "length": "3 in",
+    "material": "SAE J429 Grade 5",
+    "finish": "hot-dip galvanized",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "셋트스크류 M8*10 컵 흑색",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "metric",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm",
+    "length": "10 mm",
+    "point": "cup",
+    "drive": "hex socket, 4 mm key",
+    "dimStd": "ISO 4029",
+    "material": "45H (default)",
+    "finish": "black oxide",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "와샤 M12 평 아연",
+   "qty": "200",
+   "expect": {
+    "type": "Plain washer",
+    "system": "metric",
+    "size": "M12",
+    "dimStd": "ISO 7089",
+    "material": "200 HV (default)",
+    "finish": "zinc electroplated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "스프링와샤 M10 아연",
+   "qty": "200",
+   "expect": {
+    "type": "Spring lock washer",
+    "system": "metric",
+    "size": "M10",
+    "dimStd": "DIN 127 B",
+    "material": "spring steel (default)",
+    "finish": "zinc electroplated",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HARDENED WASHER F436 1\"",
+   "qty": "50",
+   "expect": {
+    "type": "Hardened flat washer",
+    "system": "inch",
+    "size": "1 in",
+    "dimStd": "ASTM F436",
+    "material": "ASTM F436 Type 1",
+    "finish": "not stated: plain",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "NUT,HEX,1\"-8 UNC,2H,HVY",
+   "qty": "32",
+   "expect": {
+    "type": "Heavy hex nut",
+    "system": "inch",
+    "size": "1 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "UNC",
+    "tolClass": "2B",
+    "drive": "hex, 1-5/8 in A/F",
+    "dimStd": "ASME B18.2.2",
+    "material": "ASTM A194 2H",
+    "finish": "not stated: plain",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX NUT 3/4-10 A194 2H",
+   "qty": "40",
+   "expect": {
+    "type": "Heavy hex nut (A194 nuts are heavy hex by practice)",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "dimStd": "ASME B18.2.2",
+    "material": "ASTM A194 2H",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "PIPE NIPPLE 1/2-14 NPT SCH80 A106",
+   "qty": "10",
+   "expect": {
+    "type": "Pipe fitting, nipple (not a fastener)",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "BALL VALVE 1/2\" NPT SS316",
+   "qty": "2",
+   "expect": {
+    "type": "Ball valve (not a fastener)",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX PLUG 1/2\" NPT 316",
+   "qty": "6",
+   "expect": {
+    "type": "Pipe fitting, hex plug (not a fastener)",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "ALLEN KEY 3/16",
+   "qty": "5",
+   "expect": {
+    "type": "Hex key, hand tool",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "MOTOR M3AA 132 7.5KW",
+   "qty": "1",
+   "expect": {
+    "type": "Electric motor (not a fastener)",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "BEARING 6205-2RS C3",
+   "qty": "4",
+   "expect": {
+    "type": "Ball bearing (not a fastener)",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "BRACKET, MOTOR MOUNT, DWG 1234-567 REV C",
+   "qty": "2",
+   "expect": {
+    "type": "Bracket, drawing part (not a fastener)",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SHCS #10-24 X .75 ALLOY BO",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "#10 (0.190 in)",
+    "pitchOrTpi": "24 TPI",
+    "series": "UNC",
+    "tolClass": "3A",
+    "length": "3/4 in",
+    "material": "ASTM A574",
+    "finish": "black oxide",
+    "status": "catalog",
+    "spec": "#10-24 UNC-3A"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "M16 STUD x 150 B7",
+   "qty": "8",
+   "expect": {
+    "type": "Stud (metric)",
+    "system": "metric",
+    "size": "M16",
+    "pitchOrTpi": "2 mm",
+    "length": "150 mm",
+    "material": "ASTM A193 B7",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX BOLT 1/4 NF X 1 GR8",
+   "qty": "100",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "28 TPI",
+    "series": "UNF (NF = legacy fine)",
+    "tolClass": "2A",
+    "length": "1 in",
+    "material": "SAE J429 Grade 8",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HHCS 3/8-16UNC-2B X 1 GR5 ZP",
+   "qty": "100",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "tolClass": "2A (2B written; internal class on a bolt)",
+    "length": "1 in",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "ask": "2B"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SCHS M8x25 12.9",
+   "qty": "50",
+   "expect": {
+    "type": "Hex socket head cap screw (SCHS typo)",
+    "system": "metric",
+    "size": "M8",
+    "pitchOrTpi": "1.25 mm",
+    "length": "25 mm",
+    "dimStd": "ISO 4762",
+    "material": "12.9",
+    "status": "catalog"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX NUT M12 8 ZP",
+   "qty": "1 BOX (100)",
+   "expect": {
+    "type": "Hex nut",
+    "system": "metric",
+    "size": "M12",
+    "material": "property class 8",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "qty": "100 EA",
+    "ask": "입수"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX NUT M12 8 ZP",
+   "qty": "2 BOX",
+   "expect": {
+    "type": "Hex nut",
+    "size": "M12",
+    "status": "catalog",
+    "qty": "2 EA",
+    "ask": "입수"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX NUT M12 8 ZP",
+   "qty": "2/SET",
+   "expect": {
+    "type": "Hex nut",
+    "size": "M12",
+    "status": "catalog",
+    "qty": "2 EA",
+    "ask": "총수량"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX NUT M12 8 ZP",
+   "qty": "0",
+   "expect": {
+    "type": "Hex nut",
+    "size": "M12",
+    "status": "catalog",
+    "qty": "0 EA",
+    "ask": "수량이 0"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX NUT M12 8 ZP",
+   "qty": "-5",
+   "expect": {
+    "type": "Hex nut",
+    "size": "M12",
+    "status": "catalog",
+    "qty": "0 EA",
+    "ask": "음수"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HEX NUT M12 8 ZP",
+   "qty": "A/R",
+   "expect": {
+    "type": "Hex nut",
+    "size": "M12",
+    "status": "catalog",
+    "qty": "1 EA",
+    "ask": "필요량"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "SCREW,CAP,SOC HD,1/2\"-13 X 2-1/4\",ALLOY,BLK OX",
+   "qty": "4 EA",
+   "expect": {
+    "type": "Hex socket head cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "series": "UNC",
+    "length": "2-1/4 in",
+    "material": "ASTM A574",
+    "finish": "black oxide",
+    "status": "catalog",
+    "qty": "4 EA"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "THREADED ROD M12 ZP",
+   "qty": "3 M",
+   "expect": {
+    "type": "Threaded rod",
+    "system": "metric",
+    "size": "M12",
+    "length": "1000 mm",
+    "finish": "zinc electroplated",
+    "status": "catalog",
+    "qty": "3 EA"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "LOW HEAD SHCS M8x16 DIN 7984 8.8",
+   "qty": "50",
+   "expect": {
+    "type": "Low head socket head cap screw (DIN 7984)",
+    "system": "metric",
+    "size": "M8",
+    "length": "16 mm",
+    "dimStd": "DIN 7984",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "FENDER WASHER 3/8 ZINC",
+   "qty": "100",
+   "expect": {
+    "type": "Fender washer (large OD)",
+    "system": "inch",
+    "size": "3/8 in",
+    "finish": "zinc electroplated",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "NORD-LOCK NL10 WASHER",
+   "qty": "50",
+   "expect": {
+    "type": "Wedge-lock washer, proprietary",
+    "status": "not-available"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "EYE BOLT M12 DIN 580",
+   "qty": "4",
+   "expect": {
+    "type": "Eye bolt (DIN 580)",
+    "system": "metric",
+    "size": "M12",
+    "dimStd": "DIN 580",
+    "status": "engineer-quote"
+   },
+   "src": "adversarial-2"
+  },
+  {
+   "raw": "HHCS 1 3/8-6 UNC X 4 GR5 ZINC",
+   "qty": "4",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1-3/8 in (1.375)",
+    "pitchOrTpi": "6 TPI",
+    "series": "UNC",
+    "tolClass": "2A (default, ASME B1.1)",
+    "length": "4 in (101.6 mm)",
+    "dimStd": "ASME B18.2.1",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc",
+    "status": "engineer-quote",
+    "qty": "4 EA",
+    "why": "Mixed number written with a space: 1-3/8-6 UNC, not 3/8-6 (which does not exist). 1-3/8 is outside the inch cap screw catalog."
+   }
+  },
+  {
+   "raw": "HHCS 1.1/8-7 UNC X 3-1/2 GR5 ZINC",
+   "qty": "4",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1-1/8 in (1.125)",
+    "pitchOrTpi": "7 TPI",
+    "series": "UNC",
+    "length": "3-1/2 in (88.9 mm)",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc",
+    "status": "catalog",
+    "why": "Dot used as the mixed-number separator (1.1/8 = 1-1/8); 1-1/8-7 is the UNC pitch."
+   }
+  },
+  {
+   "raw": "SHCS .750-10 X 2.00 A574",
+   "qty": "10",
+   "expect": {
+    "type": "Socket head cap screw",
+    "system": "inch",
+    "size": "3/4 in (0.750)",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "tolClass": "3A (default, ASME B18.3)",
+    "length": "2 in (50.8 mm)",
+    "dimStd": "ASME B18.3",
+    "material": "ASTM A574",
+    "finish": "not stated: black oxide default",
+    "status": "catalog",
+    "why": "Decimal size without leading zero."
+   }
+  },
+  {
+   "raw": "HHCS 7/16-14 X 1 1/2 GR5 ZINC",
+   "qty": "50",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "7/16 in",
+    "pitchOrTpi": "14 TPI",
+    "series": "UNC",
+    "length": "1-1/2 in (38.1 mm)",
+    "material": "SAE J429 Grade 5",
+    "finish": "zinc",
+    "status": "catalog",
+    "why": "Length written as a mixed number with a space."
+   }
+  },
+  {
+   "raw": "SHCS 1/4-20 X 15/16 A574",
+   "qty": "100",
+   "expect": {
+    "type": "Socket head cap screw",
+    "system": "inch",
+    "size": "1/4 in",
+    "pitchOrTpi": "20 TPI",
+    "length": "15/16 in (23.81 mm)",
+    "material": "ASTM A574",
+    "status": "engineer-quote",
+    "ask": "15/16\"는 비표준",
+    "why": "15/16 must read as 0.9375 in, not 1-5/16. Non-standard length."
+   }
+  },
+  {
+   "raw": "HHCS 3/8-16 X 11/16 GR5 ZINC",
+   "qty": "100",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "length": "11/16 in (17.46 mm)",
+    "material": "SAE J429 Grade 5",
+    "status": "engineer-quote",
+    "ask": "11/16\"는 비표준",
+    "why": "Two-digit numerator fraction as length."
+   }
+  },
+  {
+   "raw": "F436 WASHER 1 1/2\"",
+   "qty": "20",
+   "expect": {
+    "type": "Washer, hardened (ASTM F436)",
+    "system": "inch",
+    "size": "1-1/2 in",
+    "dimStd": "ASTM F436",
+    "material": "ASTM F436 Type 1",
+    "finish": "not stated",
+    "status": "catalog",
+    "why": "1 1/2\" is 1-1/2 in, not a 1/2 in washer."
+   }
+  },
+  {
+   "raw": "SHCS 3/4\"-10 X 2\" A574",
+   "qty": "10",
+   "expect": {
+    "type": "Socket head cap screw",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "length": "2 in (50.8 mm)",
+    "material": "ASTM A574",
+    "status": "catalog",
+    "why": "Inch marks on size and length."
+   }
+  },
+  {
+   "raw": "HEX NUT 2 3/8-16 UNC",
+   "qty": "5",
+   "expect": {
+    "type": "Hex nut",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "series": "UNC",
+    "status": "engineer-quote",
+    "why": "2-3/8 has no 16 TPI UNC thread, so the leading 2 is not part of the size; reads 3/8-16 UNC."
+   }
+  },
+  {
+   "raw": "STUD 1½-8UN X 9 B7/2H",
+   "qty": "8",
+   "expect": {
+    "type": "Stud",
+    "system": "inch",
+    "size": "1-1/2 in",
+    "pitchOrTpi": "8 TPI",
+    "series": "8UN",
+    "length": "9 in (228.6 mm)",
+    "material": "ASTM A193 B7",
+    "status": "catalog",
+    "qty": "8 SET",
+    "why": "Unicode fraction ½ after a whole number (1½ = 1-1/2)."
+   }
+  },
+  {
+   "raw": "HHCS 1/2-13 2 1/2 LG GR5 ZINC",
+   "qty": "10",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "1/2 in",
+    "pitchOrTpi": "13 TPI",
+    "length": "2-1/2 in (63.5 mm)",
+    "material": "SAE J429 Grade 5",
+    "status": "catalog",
+    "why": "Loose length '2 1/2 LG' is 2-1/2 in, not 1/2 in."
+   }
+  },
+  {
+   "raw": "HHCS 5/8-11 X 1.1/2 GR5 ZINC",
+   "qty": "25",
+   "expect": {
+    "type": "Hex cap screw",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "length": "1-1/2 in (38.1 mm)",
+    "status": "catalog",
+    "why": "Dot as mixed-number separator in the length."
+   }
+  },
+  {
+   "raw": "HEX NUT 15/16-12 UN",
+   "qty": "10",
+   "expect": {
+    "type": "Hex nut",
+    "system": "inch",
+    "size": "15/16 in (0.9375)",
+    "pitchOrTpi": "12 TPI",
+    "status": "engineer-quote",
+    "why": "15/16 is 0.9375 in (12-UN series), not 1-5/16."
+   }
+  },
+  {
+   "raw": "SHCS 3/8-16 X .750 A574",
+   "qty": "50",
+   "expect": {
+    "type": "Socket head cap screw",
+    "system": "inch",
+    "size": "3/8 in",
+    "pitchOrTpi": "16 TPI",
+    "length": "3/4 in (19.05 mm)",
+    "material": "ASTM A574",
+    "status": "catalog",
+    "why": "Decimal length without leading zero."
+   }
+  },
+  {
+   "raw": "육각너트 3종 M10 SUS304",
+   "qty": "200",
+   "expect": {
+    "type": "Hex nut",
+    "system": "mm",
+    "size": "M10",
+    "pitchOrTpi": "1.5 mm",
+    "series": "metric coarse",
+    "tolClass": "6H",
+    "dimStd": "ISO 4035",
+    "material": "A2-70 stainless (SUS304)",
+    "finish": "not stated",
+    "status": "engineer-quote",
+    "spec": "A2-70",
+    "why": "KS '3종' is a thin nut: ISO 4035, not ISO 4032. Property class not stated: A2-70 default."
+   }
+  },
+  {
+   "raw": "박형 너트 M16 8",
+   "qty": "50",
+   "expect": {
+    "type": "Hex nut",
+    "system": "mm",
+    "size": "M16",
+    "dimStd": "ISO 4035",
+    "material": "property class 8 (ISO 898-2)",
+    "status": "engineer-quote",
+    "why": "박형 = thin nut."
+   }
+  },
+  {
+   "raw": "HEX THIN NUT M12",
+   "qty": "100",
+   "expect": {
+    "type": "Hex nut",
+    "system": "mm",
+    "size": "M12",
+    "dimStd": "ISO 4035",
+    "status": "engineer-quote",
+    "why": "Thin nut."
+   }
+  },
+  {
+   "raw": "M8 六角ナット 3種 ユニクロ",
+   "qty": "500",
+   "expect": {
+    "type": "Hex nut",
+    "system": "mm",
+    "size": "M8",
+    "dimStd": "ISO 4035",
+    "finish": "zinc (trivalent)",
+    "status": "engineer-quote",
+    "why": "JIS 3種 = thin nut."
+   }
+  },
+  {
+   "raw": "HEX BOLT M10X30 A2",
+   "qty": "100",
+   "expect": {
+    "type": "Hex bolt",
+    "system": "mm",
+    "size": "M10",
+    "length": "30 mm",
+    "dimStd": "ISO 4017",
+    "material": "A2-70 stainless",
+    "status": "catalog",
+    "spec": "A2-70",
+    "why": "ISO 3506 property class not stated: bolts default to 70."
+   }
+  },
+  {
+   "raw": "SHCS M8X25 A4",
+   "qty": "100",
+   "expect": {
+    "type": "Socket head cap screw",
+    "system": "mm",
+    "size": "M8",
+    "length": "25 mm",
+    "dimStd": "ISO 4762",
+    "material": "A4-70 stainless",
+    "status": "catalog",
+    "spec": "A4-70",
+    "why": "ISO 3506 property class not stated: 70."
+   }
+  },
+  {
+   "raw": "SET SCREW M6X10 CUP SUS304",
+   "qty": "100",
+   "expect": {
+    "type": "Hex socket set screw",
+    "system": "mm",
+    "size": "M6",
+    "length": "10 mm",
+    "point": "cup",
+    "dimStd": "ISO 4029",
+    "material": "A2 stainless",
+    "status": "catalog",
+    "spec": "A2-21H",
+    "why": "ISO 3506-3 set screws default to 21H."
+   }
+  },
+  {
+   "raw": "STUD 3/4-10 UNC X 4-1/2 W/2 NUTS API 610 C-6",
+   "qty": "16",
+   "expect": {
+    "type": "Stud",
+    "system": "inch",
+    "size": "3/4 in",
+    "pitchOrTpi": "10 TPI",
+    "series": "UNC",
+    "length": "4-1/2 in (114.3 mm)",
+    "material": "ASTM A193 B7",
+    "status": "engineer-quote",
+    "qty": "16 SET",
+    "ask": "API 610 C-6는 자동으로 매핑하지 않습니다",
+    "why": "C-6 without edition: API 610 class data removed (2026-10 audit, INTEGRATE F) — material assumed B7 (A-GRADE), engineer quote."
+   }
+  },
+  {
+   "raw": "STUD 7/8-9 UNC X 5 W/2 NUTS API 610 12TH ED S-6",
+   "qty": "16",
+   "expect": {
+    "type": "Stud",
+    "system": "inch",
+    "size": "7/8 in",
+    "pitchOrTpi": "9 TPI",
+    "length": "5 in (127 mm)",
+    "material": "ASTM A193 B7",
+    "status": "engineer-quote",
+    "qty": "16 SET",
+    "why": "12th edition S-6: class data removed (2026-10 audit, INTEGRATE F) — engineer quote, material assumed B7."
+   }
+  },
+  {
+   "raw": "API 610 13th C-6 STUD 3/4-10 X 4-1/2 W/2 NUTS",
+   "qty": "8",
+   "expect": {
+    "type": "Stud",
+    "system": "inch",
+    "size": "3/4 in",
+    "status": "engineer-quote",
+    "ask": "13판 재질 클래스 볼팅 자료 확인 중",
+    "why": "13th edition: no class data, engineer quote."
+   }
+  },
+  {
+   "raw": "STUD 1-1/8-7 UNC X 7 W/2 NUTS API 610 12th S-6",
+   "qty": "8",
+   "expect": {
+    "type": "Stud",
+    "system": "inch",
+    "size": "1-1/8 in",
+    "pitchOrTpi": "7 TPI",
+    "series": "UNC",
+    "material": "ASTM A193 B7",
+    "status": "engineer-quote",
+    "ask": "8UN",
+    "why": "12th edition uses 8UN above 1 in: UNC needs confirmation."
+   }
+  },
+  {
+   "raw": "STUD 3/4-10 UNC X 4-1/2 B7M/2HM W/2 NUTS API 610 11TH ED C-6",
+   "qty": "8",
+   "expect": {
+    "type": "Stud",
+    "system": "inch",
+    "size": "3/4 in",
+    "material": "ASTM A193 B7M",
+    "status": "engineer-quote",
+    "ask": "API 610 11판 C-6는 자동으로 매핑하지 않습니다",
+    "why": "Stated grade kept as buyer-specified; class data removed (INTEGRATE F) so the line goes to engineer quote."
+   }
+  },
+  {
+   "raw": "Class S-5 per API 610 11th, STUD 5/8-11 X 4 W/2 NUTS",
+   "qty": "8",
+   "expect": {
+    "type": "Stud",
+    "system": "inch",
+    "size": "5/8 in",
+    "pitchOrTpi": "11 TPI",
+    "length": "4 in (101.6 mm)",
+    "material": "ASTM A193 B7",
+    "status": "engineer-quote",
+    "qty": "8 SET",
+    "why": "'Class S-5 per API 610 11th' header form; class data removed (INTEGRATE F) — engineer quote."
+   }
+  }
+ ],
+ "tables": [
+  {
+   "name": "korean name + spec columns",
+   "text": "품번\t품명\t규격\t수량\t단위\nA1\t육각볼트\tM10x30 8.8 아연\t100\tEA\nA2\t스터드볼트\t3/4-10 x 4-3/4 B7/2H\t16\tSET",
+   "expect": [
+    {
+     "no": "1",
+     "pn": "A1",
+     "has": "M10X30",
+     "qty": "100",
+     "status": "catalog"
+    },
+    {
+     "no": "2",
+     "pn": "A2",
+     "has": "3/4-10",
+     "qty": "16",
+     "status": "catalog"
+    }
+   ]
+  },
+  {
+   "name": "type/size/length columns",
+   "text": "Item\tType\tSize\tLength\tMaterial\tFinish\tQty\n1\tSHCS\tM10\t30\t12.9\tBO\t100\n2\tHHCS\t1/2-13\t2\tGR5\tZP\t50",
+   "expect": [
+    {
+     "no": "1",
+     "has": "M10",
+     "qty": "100",
+     "status": "catalog"
+    },
+    {
+     "no": "2",
+     "has": "1/2-13",
+     "qty": "50",
+     "status": "catalog"
+    }
+   ]
+  },
+  {
+   "name": "merged (empty) description cell",
+   "text": "No\tDescription\tQty\n1\tSHCS M8x25 12.9 BO\t10\n2\t\t20\n3\tHHCS 1/2-13 X 2 GR5 ZP\t30",
+   "expect": [
+    {
+     "no": "1",
+     "qty": "10"
+    },
+    {
+     "no": "2",
+     "has": "SHCS M8X25",
+     "qty": "20",
+     "ask": "위 줄"
+    },
+    {
+     "no": "3",
+     "qty": "30"
+    }
+   ]
+  },
+  {
+   "name": "excel cell with line break",
+   "text": "No\tDescription\tQty\n1\t\"SHCS M8x25\n12.9 BO\"\t10\n2\tHHCS 1/2-13 X 2 GR5 ZP\t20",
+   "expect": [
+    {
+     "no": "1",
+     "has": "12.9 BO",
+     "qty": "10",
+     "status": "catalog"
+    },
+    {
+     "no": "2",
+     "qty": "20",
+     "status": "catalog"
+    }
+   ]
+  },
+  {
+   "name": "semicolon CSV (EU Excel)",
+   "text": "Pos;Description;Qty\n1;SHCS M8x25 12.9;10\n2;HHCS 1/2-13 X 2 GR5 ZP;20",
+   "expect": [
+    {
+     "no": "1",
+     "qty": "10",
+     "status": "catalog"
+    },
+    {
+     "no": "2",
+     "qty": "20",
+     "status": "catalog"
+    }
+   ]
+  },
+  {
+   "name": "customer P/N header",
+   "text": "Item\tCust P/N\tDescription\tQty\n10\tCP-1\tSHCS M8x25 12.9\t5",
+   "expect": [
+    {
+     "no": "10",
+     "pn": "CP-1",
+     "qty": "5"
+    }
+   ]
+  },
+  {
+   "name": "mfr part number header",
+   "text": "Line\tMfr Part Number\tDesc.\tReq Qty\n1\tXYZ-1\tSHCS M8x25 12.9\t5",
+   "expect": [
+    {
+     "no": "1",
+     "pn": "XYZ-1",
+     "qty": "5"
+    }
+   ]
+  },
+  {
+   "name": "free text qty forms",
+   "text": "SHCS M8x20 12.9 x 50ea\nHHCS 1/2-13 X 2 GR5 ZP QTY: 25\n1) 렌치볼트 M10x30 12.9 200개\nNUT M12 8 ZP (4 EA)\nHHCS 1/2-13 X 2 GR5 ZINC 1,000 EA",
+   "expect": [
+    {
+     "qty": "50"
+    },
+    {
+     "qty": "25"
+    },
+    {
+     "no": "1",
+     "qty": "200"
+    },
+    {
+     "qty": "4"
+    },
+    {
+     "qty": "1000"
+    }
+   ]
+  },
+  {
+   "name": "thousands separator in qty column",
+   "text": "No\tDescription\tQty\n1\tHEX HD BOLT 1/2-13 X 2 GR5 ZINC\t\"1,000\"\n2\tSHCS M10x30 12.9\t2,500",
+   "expect": [
+    {
+     "no": "1",
+     "qty": "1000"
+    },
+    {
+     "no": "2",
+     "qty": "2500"
+    }
+   ]
+  }
+ ]
+}

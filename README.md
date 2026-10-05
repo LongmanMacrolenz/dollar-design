@@ -14,14 +14,16 @@
 
 | 경로 | 내용 |
 |---|---|
-| `site/page.html` | 사이트 원본. 한 파일로 된 웹앱(HTML·CSS·JS)이며 글꼴만 Google Fonts에서 불러옵니다. |
+| `app/` | **사이트 편집 원본.** `base.html`(바탕)과 `src/`(엔진·화면·도구 모듈), `build.py`, 점검 `tests/`. 설명은 `AGENTS.md`. |
+| `tools/` | `build_all.py`(전체 빌드), `sync_lib.py`(규격 사전 반영), `check.py`(올리기 전 점검 한 번에) |
+| `site/page.html` | `python3 tools/build_all.py`가 `app/`에서 만드는 사이트 본문(한 파일 웹앱). 글꼴만 Google Fonts에서 불러옵니다. 직접 고치지 않습니다. |
 | `site/build.py` | `page.html`을 완전한 HTML 문서로 감싸 `docs/index.html`을 만듭니다. |
-| `docs/index.html` | 배포본. 직접 고치지 말고 `python3 site/build.py`로 다시 만듭니다. |
+| `docs/index.html` | 배포본. 직접 고치지 말고 `python3 tools/build_all.py`로 다시 만듭니다. |
 | `docs/_headers` | 응답 헤더(보안 헤더, 캐시) |
 | `wrangler.jsonc` | Cloudflare Workers 배포 설정 (`docs/`만 공개) |
 | `docs/robots.txt` | 검색 로봇 허용, 사이트맵 위치 |
 | `docs/media/` | 첫 화면 동영상·GIF와 움직임 줄이기용 정지 이미지 |
-| `site/lib.json` | 규격 사전 데이터(검토를 마친 항목만) |
+| `site/lib.json` | **규격 사전 원본**(검토를 마친 항목만). 고친 뒤 `python3 tools/sync_lib.py` |
 | `site/build_lib.py` | `site/lib.json`으로 `docs/lib/*.html`, `docs/sitemap.xml`을 만들고 `docs/robots.txt`에 사이트맵 줄을 넣습니다. |
 | `docs/lib/`, `docs/sitemap.xml` | 규격 사전 정적 페이지와 사이트맵. 직접 고치지 말고 `python3 site/build_lib.py`로 다시 만듭니다. |
 | `docs/og.png` | 링크 미리보기 이미지(카카오톡·메신저·SNS 공유 시 표시, 1280×720) |
@@ -52,3 +54,14 @@ GitHub Pages는 약관상 온라인 사업·전자상거래 사이트에 쓸 수
 - 통신판매업 신고번호가 들어가면 주문 접수와 공정위 사업자정보 확인 링크가 켜집니다. 팩스는 없어서 숨겼습니다.
 - 공급처 단가가 확인되면 품목군별로 가격을 켭니다. 납기 범위는 자리표시입니다.
 - 견적 요청은 사이트가 요청서 파일을 만들고 고객이 메일·카카오톡으로 보내는 방식입니다. 메일·전화는 반영했고 카카오톡 채팅 주소만 남았습니다.
+
+## 작업 방법 (사람·ChatGPT·Claude 공통)
+
+`AGENTS.md`에 저장소 지도, 고치는 순서, 사이트 글 규칙, **값의 출처 규칙**이 있습니다. 요약:
+
+```bash
+python3 tools/build_all.py   # app/ → site/page.html → docs/
+python3 tools/check.py       # 빌드 일치 · 문법 · 금지어 · 엔진 점검 (pip install playwright, python -m playwright install chromium)
+```
+
+브랜치를 따로 만들어 Pull Request로 올립니다. PR마다 같은 점검(GitHub Actions)이 돕니다. `main`에 합치면 Cloudflare가 곧바로 배포하므로 병합은 대표가 합니다.

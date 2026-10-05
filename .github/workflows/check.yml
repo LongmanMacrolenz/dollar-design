@@ -1,0 +1,22 @@
+name: check
+
+# Pull Request마다 빌드 일치·문법·금지어·엔진 점검을 돌린다 (tools/check.py). main에 합치기 전 관문이다.
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install playwright
+      - run: python -m playwright install --with-deps chromium
+      - run: python tools/check.py

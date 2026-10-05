@@ -1,0 +1,21 @@
+/* ── CAD · 데이터시트 칸 (cad/src/t_cad.css) ── 2-n·3-n 품목 장의 그림(.dbox) 바로 아래. base 토큰·클래스만 씀 (.btn.sm .tag.doc .note .small .muted --f-mono).
+   데이터시트 인쇄 CSS는 t_datasheet.js(CAD_DS_CSS)가 인쇄할 때만 붙인다. */
+.cad-blk { min-width: 0; }
+.cad-blk-in { border: 1px solid var(--hair); background: var(--sheet); padding: 12px 14px 14px; display: grid; gap: 8px; min-width: 0; }
+.cad-hd { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.cad-hd h3 { margin: 0; font-size: 15px; font-weight: 800; letter-spacing: -.01em; }
+.cad-blk p { margin: 0; }
+.cad-files { display: flex; flex-wrap: wrap; gap: 2px 6px; font-size: var(--fs-sm); min-width: 0; }
+.cad-files .mono, .cad-spec { font-family: var(--f-mono); overflow-wrap: anywhere; }
+.cad-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.cad-btns .btn[disabled] { opacity: .55; cursor: not-allowed; }
+.cad-model b { font-weight: 700; }
+.cad-msg:empty { display: none; }
+.cad-ta { width: 100%; font-family: var(--f-mono); font-size: 12px; }
+.cad-why { margin: 0; }
+.cad-ds-print { display: none; }
+.cad-trust-strip { margin-top: 12px; }
+@media (max-width: 680px) {
+  .cad-blk-in { padding: 10px 12px 12px; }
+  .cad-btns .btn { flex: 1 1 calc(50% - 8px); white-space: normal; text-align: center; }
+}

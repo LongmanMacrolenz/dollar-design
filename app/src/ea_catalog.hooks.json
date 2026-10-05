@@ -1,0 +1,27 @@
+[
+ {
+  "anchor": "const NA_TYPE = {\n",
+  "replace": "/* 카탈로그 확장 (DECISIONS 8 · catalog/spec.md 4.6 P1 · 오너 승인 2026-10-01): 엔진이 핀·멈춤링·키·리벳·나사 인서트·접시 스프링·클린칭(압입) 부품·리벳 너트로\n   읽은 줄은 '공급 불가'가 아니라 엔지니어 견적이다. 견적 사유는 '카탈로그 품목 · 사양 확인 후 견적' 하나로 적고, 무엇을 확인하는지는 info 줄로 붙인다.\n   맞는 카탈로그 품목군(CAT_F = catalog/taxonomy.json 품목군 id)을 찾으면 m.catFam·m.family에 적는다: 견적 줄 품명이 그 품목군의 한국어 이름 / 공식 영문명이 된다\n   (bomEnLine·bomEnMatch). 오링·개스킷·배관·밸브·공구·비체결품과 제조사 전용 쐐기 와셔는 그대로 공급 불가 (src/ea_catalog.hooks.json, out_i/work/ed_i.py) */\nconst BOM_CAT_WHY = '카탈로그 품목 · 사양 확인 후 견적';\nconst BOM_CAT_EXT = {\n  pin: '확인할 것: 규격·지름×길이·재질.',\n  ring: '확인할 것: 규격(DIN 471·472 등)과 축·구멍 지름.',\n  key: '확인할 것: 규격과 폭×높이×길이.',\n  rivet: '확인할 것: 종류·지름×길이(그립)·재질.',\n  insert: '확인할 것: 규격·호칭·길이(×D). 전용 탭·삽입 공구는 취급하지 않습니다.',\n  discspring: '확인할 것: 규격(DIN 2093 등)·계열·치수.',\n  clinch: '확인할 것: 종류(너트·스터드·스탠드오프)·나사·판 두께·재질. 제조사가 지정된 줄은 그 제조사 제품으로 견적합니다.',\n  'v:rivetnut': '확인할 것: 나사·머리 모양·그립(판 두께)·재질.',\n};\n// 줄 → 카탈로그 품목군 id (taxonomy engineRules·품목군 규격 번호). 처음 맞는 규칙. 못 고르면 null (품명은 엔진이 읽은 품목 이름 그대로)\nfunction bomCatFamOf(q, k) {\n  const U = String(q.text || q.raw || '').toUpperCase(), has = rx => rx.test(U);\n  const inch = q.system === 'inch' || has(/\\d\\/\\d|\\d\\s*\"|#\\d|\\bINCH\\b|인치|ASME\\s*B1[78]\\.|ANSI\\s*B1[78]\\./);\n  const aust = /^(?:A[124]|304|316)/.test(String(q.mat?.code || '')) || has(/SUS\\s*3\\d\\d|\\b30[34]L?\\b|\\b316L?\\b|\\bA[124](?:-\\d+)?\\b/);   // 오스테나이트계 = 비경화 평행핀 쪽\n  let id = null;\n  if (k === 'pin') id = has(/SPLIT\\s*TAPER|분할\\s*테이퍼/) ? 'splittaper'\n    : has(/CLEVIS|클레비스|크레비스|ISO\\s*2341|DIN\\s*14(?:33|34|44)\\b/) ? 'clevis'\n    : has(/\\bR[\\s-]?(?:CLIP|PIN)S?\\b|HAIR\\s*PIN|LINCH|R\\s*핀|알\\s*핀|DIN\\s*11024/) ? 'rclip'\n    : has(/COTTER|SPLIT\\s*PIN|ISO\\s*1234|DIN\\s*94\\b|분할\\s*핀|할\\s*핀|와리\\s*핀|코터/) ? 'cotter'\n    : has(/GROOVED|그루브|ISO\\s*87(?:39|4[0-5])|DIN\\s*147[0-6]/) ? 'grooved'\n    : inch ? 'ipin'\n    : has(/TAPER|테이퍼|ISO\\s*2339|DIN\\s*1\\b|ISO\\s*873[67]|DIN\\s*797[78]/) ? (has(/ISO\\s*873[67]|DIN\\s*797[78]|THREAD|\\bTHD\\b|TAPPED|암나사|수나사/) ? 'taper-th' : 'taper')\n    : has(/COIL|SPIRAL|코일|스파이럴|ISO\\s*87(?:48|50|51)|DIN\\s*7343/) ? 'spring-co'\n    : has(/SPRING\\s*PIN|ROLL\\s*PIN|SLOTTED|스프링\\s*핀|롤\\s*핀|ISO\\s*8752|ISO\\s*13337|DIN\\s*1481/) ? 'spring-sl'\n    : has(/ISO\\s*873[35]|DIN\\s*7979|INT(?:ERNAL)?\\.?\\s*(?:THREAD|THD)|TAPPED|PULL[\\s-]*OUT|암나사/) ? 'dowel-it'\n    : has(/ISO\\s*2338|DIN\\s*7\\b|UN[\\s-]?HARDENED|비경화|\\bH8\\b/) ? 'dowel-u'\n    : has(/ISO\\s*8734|DIN\\s*6325|HARDENED|경화/) ? 'dowel-h'\n    : has(/DOWEL|다웰|도웰|노크/) ? (aust ? 'dowel-u' : 'dowel-h')\n    : has(/PARALLEL\\s*PIN|PIN\\s*PARALLEL|STRAIGHT\\s*PIN|평행\\s*핀/) ? 'dowel-u' : null;\n  else if (k === 'ring') id = has(/\\bE[\\s-]?(?:RING|CLIP)S?\\b|E\\s*링|E형|DIN\\s*6799/) ? 'ering'\n    : has(/WIRE|SPIRAL|\\bLUG|와이어|스파이럴|러그/) || inch ? 'ring-misc'\n    : has(/DIN\\s*472|\\bBORE\\b|HOUSING|INTERNAL|\\bINT\\b|구멍|내경|\\bR-?\\d/) ? 'ring-int'\n    : has(/DIN\\s*471|SHAFT|EXTERNAL|\\bEXT\\b|축|외경|\\bS-?\\d/) ? 'ring-ext' : null;\n  else if (k === 'key') id = has(/KEY\\s*STOCK|KEYSTOCK|키\\s*스톡|DIN\\s*6880|KEY\\s*STEEL/) ? 'keystock'\n    : has(/WOODRUFF|반달|DIN\\s*6888|ISO\\s*3912/) ? 'key-wood'\n    : has(/\\bGIB|경사\\s*키|DIN\\s*6887|TAPER/) ? 'key-gib'\n    : inch ? 'key-inch' : 'key-par';\n  else if (k === 'rivet') id = has(/RIVET\\s*(?:STUD|BOLT)|리벳\\s*(?:볼트|스터드)|볼트\\s*리벳/) ? 'rivstud'\n    : has(/LOCK\\s*BOLT|LOCKBOLT|스웨이지/) ? 'lockbolt'\n    : has(/SOLID|DIN\\s*(?:660|661|124|302)\\b|ISO\\s*1051|A502|KS\\s*B\\s*1101|솔리드|냉간|둥근\\s*머리/) ? 'solidrivet'\n    : has(/COUNTERSUNK|\\bCSK\\b|CLOSED[\\s-]*END|SEALED|접시|밀폐|ISO\\s*15978|ISO\\s*1598[34]/) ? 'blindrivet-csk' : 'blindrivet';\n  else if (k === 'insert') id = has(/NYLON|NYLOC|LOCK\\s*NUT|LOCKNUT|나일론|나이롱/) ? 'nyloc'   // 'NYLON INSERT LOCKNUT'을 엔진이 인서트로 읽은 줄\n    : has(/KEY[\\s-]*LOCK|키\\s*(?:잠금|인서트)|SELF[\\s-]*TAP|자체\\s*탭|셀프\\s*태핑/) ? 'keyinsert'\n    : has(/WOOD|PLASTIC|HEAT[\\s-]*SET|PRESS[\\s-]*(?:IN|FIT)|MOLD|목재|플라스틱|열\\s*압입|가시\\s*너트/) ? 'woodinsert'\n    : has(/HELI|WIRE|COIL|DIN\\s*8140|NASM|와이어|코일|헬리|\\d\\s*D\\b|THREAD(?:ED)?\\s*INSERT|나사\\s*인서트/) ? 'wti' : null;\n  else if (k === 'discspring') id = has(/WASHER|와셔|와샤|DIN\\s*6796|\\bM\\d+\\b/) ? 'conical' : 'disc';   // 볼트용 접시형 스프링 와셔 (DIN 6796) / 접시 스프링 (DIN 2093)\n  else id = { clinch: 'clinch', 'v:rivetnut': 'rivnut' }[k] || null;\n  try { return id && CAT_F[id] ? id : null; } catch { return null; }\n}\nconst NA_TYPE = {\n",
+  "count": 1
+ },
+ {
+  "anchor": "  if (NA_TYPE[t]) NA(NA_TYPE[t] + (t === 'pipe'",
+  "replace": "  if (NA_TYPE[t] && !BOM_CAT_EXT[t]) NA(NA_TYPE[t] + (t === 'pipe'",
+  "count": 1
+ },
+ {
+  "anchor": "  else if (q.variant?.na) NA(",
+  "replace": "  else if (q.variant?.na && !BOM_CAT_EXT['v:' + q.variant.k]) NA(",
+  "count": 1
+ },
+ {
+  "anchor": "  // 2) 엔지니어 견적 사유\n",
+  "replace": "  // 2) 엔지니어 견적 사유\n  // 카탈로그 확장 품목 (ea_catalog.hooks.json): 사유 하나 + 확인할 것(info) + 맞는 카탈로그 품목군 (m.catFam)\n  const catK = BOM_CAT_EXT[t] ? t : q.variant && BOM_CAT_EXT['v:' + q.variant.k] ? 'v:' + q.variant.k : null;\n  if (catK) { EQ(BOM_CAT_WHY, 'check', 'other', ['K-EQ', { why: 'item', item: 'cat-' + catK.replace('v:', '') }]); R.push({ tone: 'info', text: BOM_CAT_EXT[catK] });\n    const cf = bomCatFamOf(q, catK); if (cf) { res.catFam = cf; res.family = CAT_F[cf].ko; } }\n",
+  "count": 1
+ },
+ {
+  "anchor": "  if (q.variant) EQ(`카탈로그 품목이 아닙니다: ",
+  "replace": "  if (q.variant && !catK) EQ(`카탈로그 품목이 아닙니다: ",
+  "count": 1
+ }
+]
