@@ -1,5 +1,5 @@
 /* ── v9_shape.js: 품목 형상 이미지 (현실 같은 참고용 렌더링) ──
-   이미지: docs/media/shape/<품목군id>-<룩>.webp (640×480), 목록 썸네일 docs/media/shape/<id>-s.webp (240×180).
+   이미지: docs/media/shape/<품목군id>-<룩>.webp (576×432), 목록 썸네일 docs/media/shape/<id>-s.webp (240×180).
    만드는 법: tools/shapes/README.md (Blender 렌더). 규격 공칭 치수 기준 대표 호칭으로 그린 그림이며 실제 공급품 사진이 아니다 — 화면에도 그렇게 적는다.
    룩(마감 색) 규칙은 tools/shapes/looks.py 와 같게 둔다. 이미지가 없는 품목은 아무것도 보이지 않는다.
    쓰는 곳: 품목 페이지 c-<id> (v7_ia.js), 기존 장 m-·i- (src/shape.hooks.json), 품목 카드 썸네일 (iaFamCard). 이름 접두사 shape…/SHAPE_ */
@@ -35,7 +35,7 @@ const shapeThumb = (id, w = 96, h = 72) => shapeHas(id) ? `<img src="${SHAPE_DIR
 state.shapePick = state.shapePick || {};   // 품목군 id → 고객이 칩으로 고른 룩 (재질·표면처리 칸을 바꾸면 지운다)
 function shapeFigHtml(id, name, look) {
   const list = SHAPE_IMG[id], nm = SHAPE_NAME[look] || look;
-  return `<figure class="shp"><div class="shp-img"><img src="${SHAPE_DIR}${id}-${look}.webp" width="640" height="480" alt="${esc(name)} 형상 렌더링 · ${esc(nm)}" decoding="async" onerror="this.closest('.shp').hidden=true"></div>
+  return `<figure class="shp"><div class="shp-img"><img src="${SHAPE_DIR}${id}-${look}.webp" width="576" height="432" alt="${esc(name)} 형상 렌더링 · ${esc(nm)}" decoding="async" onerror="this.closest('.shp').hidden=true"></div>
     ${list.length > 1 ? `<div class="shp-looks" role="group" aria-label="마감 색 미리보기"><span class="lab">마감 색</span>${list.map(k => `<button type="button" class="chipbtn${k === look ? ' on' : ''}" data-shp="${k}" aria-pressed="${k === look}">${esc(SHAPE_NAME[k] || k)}</button>`).join('')}</div>` : ''}
     <figcaption><b>형상 · ${esc(nm)}</b><span>참고용 렌더링입니다. 규격 공칭 형상의 대표 호칭 그림이며 실제 제품 사진이 아닙니다. 색은 도금·로트에 따라 다릅니다.</span></figcaption></figure>`;
 }

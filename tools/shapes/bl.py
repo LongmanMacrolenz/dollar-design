@@ -271,11 +271,18 @@ def _to_object(part, name, mat_obj, collection):
 _SETUP = {}
 
 
+_KEEP = set()     # 마감만 바꿔 다시 그릴 때 재사용하는(불리언까지 끝낸) 메시 이름
+_CONV = {}        # 모델 번호 → [(메시, 재질 키)]
+THREADS = None    # 렌더 스레드 수 (None = 자동). 여러 프로세스를 동시에 돌리면 고정하는 편이 빠르다
+_UID = [0]
+
+
 def _reset_scene():
     for ob in list(bpy.data.objects):
         bpy.data.objects.remove(ob, do_unlink=True)
     for me in list(bpy.data.meshes):
-        bpy.data.meshes.remove(me)
+        if me.name not in _KEEP:
+            bpy.data.meshes.remove(me)
     for l in list(bpy.data.lights):
         bpy.data.lights.remove(l)
     for c in list(bpy.data.cameras):
@@ -290,8 +297,8 @@ def _setup_render(sc, w, h, samples):
     cy.use_denoising = True
     cy.denoiser = 'OPENIMAGEDENOISE'
     cy.use_adaptive_sampling = True
-    cy.adaptive_threshold = 0.03
-    cy.adaptive_min_samples = 12
+    cy.adaptive_threshold = 0.05
+    cy.adaptive_min_samples = 8
     cy.use_light_tree = False
     cy.max_bounces = 6
     cy.diffuse_bounces = 2
@@ -310,7 +317,11 @@ def _setup_render(sc, w, h, samples):
         sc.view_settings.look = 'None'
     except Exception:
         pass
-    sc.render.threads_mode = 'AUTO'
+    if THREADS:
+        sc.render.threads_mode = 'FIXED'
+        sc.render.threads = THREADS
+    else:
+        sc.render.threads_mode = 'AUTO'
     sc.render.use_persistent_data = False
 
 
@@ -369,9 +380,29 @@ def render(model, path, look='ZW', size=(640, 480), samples=64, az=-38.0, el=24.
     _setup_render(sc, size[0], size[1], samples)
     _world(sc, bg)
     col = sc.collection
+    if not hasattr(model, '_uid'):
+        _UID[0] += 1
+        model._uid = _UID[0]
+    if model._uid not in _CONV:                 # 같은 모델을 다른 마감으로 다시 그릴 때는 변환(불리언·모따기)을 건너뛴다
+        for me, _ in sum(_CONV.values(), []):
+            _KEEP.discard(me.name)
+            bpy.data.meshes.remove(me)
+        _CONV.clear()
+        conv = []
+        for i, p in enumerate(model.parts):
+            ob = _to_object(p, f'{model.name}-{i}', material(p['mat'], look), col)
+            me = ob.data
+            me.name = f'keep-{model._uid}-{i}'
+            _KEEP.add(me.name)
+            conv.append((me, p['mat']))
+            bpy.data.objects.remove(ob, do_unlink=True)
+        _CONV[model._uid] = conv
     objs = []
-    for i, p in enumerate(model.parts):
-        ob = _to_object(p, f'{model.name}-{i}', material(p['mat'], look), col)
+    for i, (me, mk) in enumerate(_CONV[model._uid]):
+        ob = bpy.data.objects.new(f'{model.name}-{i}', me)
+        col.objects.link(ob)
+        me.materials.clear()
+        me.materials.append(material(mk, look))
         objs.append(ob)
     # 위치: 바닥(z=0)에 올려놓고, 가로세로 중심은 원점
     lo, hi = model.bbox()
@@ -455,4 +486,5 @@ def render(model, path, look='ZW', size=(640, 480), samples=64, az=-38.0, el=24.
     _area('top', (0, 0, k * 3.2), (0, 0, 0), k * 3.5, P(RIG['top']), shape='SQUARE')
     sc.render.filepath = str(path)
     bpy.ops.render.render(write_still=True)
+    bpy.data.materials.remove(gmat)
     return path

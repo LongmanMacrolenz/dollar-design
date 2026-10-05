@@ -117,6 +117,7 @@ def main():
     ap.add_argument('--manifest', action='store_true')
     ap.add_argument('--skip-existing', action='store_true')
     ap.add_argument('--quality', type=int, default=78)
+    ap.add_argument('--threads', type=int, help='렌더 스레드 수 (여러 프로세스를 동시에 돌릴 때: 4코어면 2개 × 2스레드)')
     a = ap.parse_args()
 
     if a.manifest:
@@ -147,10 +148,11 @@ def main():
     if not jobs:
         sys.exit('할 일이 없습니다 (--ids 또는 --all)')
     import bl
+    bl.THREADS = a.threads
     from PIL import Image
     prev = a.preview or not a.final
-    size = tuple(map(int, (a.size or ('320x240' if prev else '640x480')).split('x')))
-    samples = a.samples or (24 if prev else 72)
+    size = tuple(map(int, (a.size or ('320x240' if prev else '576x432')).split('x')))
+    samples = a.samples or (24 if prev else 36)
     out = pathlib.Path(a.out) if a.out else (ROOT / 'out' / 'shapes-preview' if prev else MEDIA)
     out.mkdir(parents=True, exist_ok=True)
     built, sheet, t0 = {}, [], time.time()
