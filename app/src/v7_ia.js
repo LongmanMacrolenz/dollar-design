@@ -284,7 +284,7 @@ V.home = () => `<div class="bn-home" id="z-a">
   <section class="bn-section bn-resources" aria-labelledby="bn-h-resources">
     <div class="bn-wrap"><div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">04 / ENGINEERING RESOURCES</p><h2 id="bn-h-resources">제품을 넘어, 판단의 근거까지.</h2><p>엔지니어와 구매 담당자가 같은 규격을 확인할 수 있도록.</p></div></div>
       <div class="bn-resource-grid">
-        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('set')}</span><span class="bn-resource-label" lang="en">STANDARDS LIBRARY</span><h3>체결부품 규격 사전</h3><p>규격 번호, 재질과 등급, 나사 표기.<br>필요한 용어와 규격의 관계를 찾아보세요.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 2H, ISO 4017" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">→</button></form><a href="#lib" data-go="lib">사전 전체 보기 <span aria-hidden="true">↗</span></a></article>
+        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('set')}</span><span class="bn-resource-label" lang="en">STANDARDS LIBRARY</span><h3>체결부품 규격 사전</h3><p>형상·나사·재질부터 체결과 검사까지.<br>8개 주제와 목적별 읽기 경로로 살펴보세요.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 2H, ISO 4017" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">→</button></form><a href="#lib" data-go="lib">지식 지도 전체 보기 <span aria-hidden="true">↗</span></a><div class="bn-library-doors">${LIB_PATHS.map(p => `<a href="#lib?path=${p.id}" data-go="lib?path=${p.id}">${esc(p.title)} <span aria-hidden="true">→</span></a>`).join('')}</div></article>
         <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('bolt')}</span><span class="bn-resource-label" lang="en">DRAWINGS &amp; CAD</span><h3>치수 도면 · CAD</h3><p>형상과 치수를 먼저 확인하세요.<br>제공되는 품목은 STEP·DXF를 받을 수 있습니다.</p><div class="bn-resource-tags"><span>DIMENSIONS</span><span>STEP</span><span>DXF</span></div><a href="#ref" data-go="ref">도면·규격 보기 <span aria-hidden="true">↗</span></a></article>
         <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('stud')}</span><span class="bn-resource-label" lang="en">ENGINEERING TOOLS</span><h3>볼팅 검토 도구</h3><p>플랜지 스터드 길이, 재질 대조,<br>각인·규격 표기를 확인하는 도구를 모았습니다.</p><div class="bn-resource-tags"><span>B16.5</span><span>MATERIAL</span><span>MARKING</span></div><a href="#tools" data-go="tools">계산·대조표 열기 <span aria-hidden="true">↗</span></a></article>
       </div>
@@ -301,7 +301,7 @@ V.after.home = () => {
   sbInit('home'); hmBind();
   bnFilmInit();
   const f = $('pm-lib-form');
-  if (f) f.addEventListener('submit', e => { e.preventDefault(); state.lib = { q: $('pm-lib-q').value.trim(), kind: '', org: '' }; go('lib'); });
+  if (f) f.addEventListener('submit', e => { e.preventDefault(); go(libURL({ q: $('pm-lib-q').value.trim() })); });
 };
 function hmBind() {
   const v = view();
@@ -771,7 +771,7 @@ V.c = id => {
   const safety = f.safety ? note(f.safety[0], esc(f.safety[1]), f.safety[0] === 'crit' ? '불가' : '안전') : '';
   // naText는 조건부 안내(제조사 품번·상표가 지정된 줄): 품목 자체는 사양을 적어 견적 요청할 수 있다
   const na = f.naText ? note('warn', esc(f.naText), '안내') : '';
-  const notes = f.notes.length ? `<div class="fnote"><h3>이 품목에서 자주 확인하는 것</h3><dl>${f.notes.map(n => `<dt${n.red ? ' class="redp"' : ''}>${esc(n.t || '확인')}</dt><dd>${esc(n.d)}</dd>`).join('')}</dl></div>` : '';
+  const notes = (f.notes.length ? `<div class="fnote"><h3>이 품목에서 자주 확인하는 것</h3><dl>${f.notes.map(n => `<dt${n.red ? ' class="redp"' : ''}>${esc(n.t || '확인')}</dt><dd>${esc(n.d)}</dd>`).join('')}</dl></div>` : '') + libProductLinks(f.id);
   const docs = (() => { try { return cadTrustLine({ fam: f.id, cat: f.g, system: f.sys === 'inch' ? 'inch' : 'metric' }); } catch { return '제조사 MTR(EN 10204 3.1) 제공 여부: 공급처 확인 중 — 견적 시 회신'; } })();
   const kv = [['규격', f.std.map(x => x[1]).join(' · ')], ['체계', f.sys === 'inch' ? '인치' : f.sys === 'both' ? '미터·인치' : '미터'], ['공급 구분', f.tier || '견적 문의'], ['서류', `CoC 기본 · ${docs}`], ...(f.use ? [['용도', f.use]] : []), ...(f.quoteNote ? [['견적', f.quoteNote]] : [])];
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';

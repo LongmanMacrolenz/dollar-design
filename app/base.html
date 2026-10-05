@@ -2563,12 +2563,16 @@ function setNav(r) {
   iaAfterNav(r, nm);
 }
 function go(route, push = true) {
+  const libraryInput = /^lib(?:\?|$)/.test(String(route || ''));
+  if (libraryInput) libReadRoute(String(route));
+  if (libraryInput) route = 'lib';
   route = normRoute(route);
   state.route = route;
+  const address = route === 'lib' ? libURL() : route;
   try {
     const cur = location.hash.slice(1);
-    if (push && cur !== route) history.pushState(null, '', '#' + route);
-    else if (!push && cur && cur !== route) history.replaceState(null, '', '#' + route);   // 없는 장(#m-xyz)은 고친 주소로
+    if (push && cur !== address) history.pushState(null, '', '#' + address);
+    else if (!push && cur && cur !== address) history.replaceState(null, '', '#' + address);   // 없는 장(#m-xyz)은 고친 주소로
   } catch {}
   const [name, arg] = route.includes('-') ? [route.split('-')[0], route.slice(route.indexOf('-') + 1)] : [route, null];
   const fn = { home: V.home, metric: V.metric, inch: V.inch, m: V.family, i: V.inchFam, custom: V.custom, tools: V.tools, cart: V.cart, help: V.help }[name] || V.home;
@@ -4136,7 +4140,7 @@ themeApply(themePref());
   setH();
   if ('ResizeObserver' in window) new ResizeObserver(setH).observe(tb); else window.addEventListener('resize', setH);
   if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { const on = !en.isIntersecting; mini.classList.toggle('on', on); mini.inert = !on; }).observe(tb);
-  $('mini-find').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' }); ($('sb') || $('q')).focus({ preventScroll: true }); });
+  $('mini-find').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' }); ($('sb') || $('lib-q') || $('q'))?.focus({ preventScroll: true }); });
 }
 try { matchMedia('(max-width: 680px)').addEventListener('change', () => { syncDet(); if (state.redraw) state.redraw(); const fb = $('fl-dbox'); if (fb) { fb.innerHTML = flangeSvg(); if (flangeInit.calc) flangeInit.calc(); } }); } catch {}
 
@@ -4151,6 +4155,6 @@ initSearch();
 saveCart();
 revCell();
 const start = location.hash.slice(1);
-go(/^[a-z][a-z0-9-]*$/.test(start) ? start : 'home', false);
+go(/^[a-z][a-z0-9-]*$/.test(start) || start.startsWith('lib?') ? start : 'home', false);
 })();
 </script>
