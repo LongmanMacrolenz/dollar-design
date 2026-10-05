@@ -26,6 +26,15 @@ test('real Worker SQLite flow: authentication, stale revisions, supplier gating,
     assert.equal((await send('sync',{})).httpStatus,503);
     const changed=await send('offers',{...offer,price:120});assert.equal(changed.httpStatus,200);
     assert.equal((await send('quotes/send',{id:q.id,revision:q.revision,reviewed:true,pdf:'not-a-pdf'})).httpStatus,409);
+    const renamed=await send('requests',{...req,customerName:'연락처 표시명 변경'});
+    assert.equal((await send('requests/'+req.id)).plan.ready,true);
+    const revised=await send('requests',{...renamed,lines:[{...renamed.lines[0],spec:'변경된 고객 사양 M16',qty:20}]});assert.equal(revised.httpStatus,200);
+    const review=await send('requests/'+req.id);assert.equal(review.plan.ready,false);assert.equal(review.offers[0].confirmedAt,'');assert.deepEqual(review.offers[0].checks,{});assert.match(review.offers[0].confirmationReset,/다시 확인/);
+    assert.equal((await send('quotes',{requestId:req.id,validUntil:new Date(Date.now()+86400000).toISOString(),notes:'변경 조건'})).httpStatus,409);
+    const reconfirmed=await send('offers',{...review.offers[0],confirmedAt:new Date().toISOString(),evidenceType:'supplier_reply',checks:Object.fromEntries(CHECKS.map(k=>[k,'confirmed']))});assert.equal(reconfirmed.httpStatus,200);
+    assert.equal((await send('requests/'+req.id)).plan.ready,true);
+    await send('requests',{...revised,lines:[{...revised.lines[0],qty:30}]});
+    const quantityChange=await send('requests/'+req.id);assert.equal(quantityChange.plan.ready,false);assert.deepEqual(quantityChange.offers[0].checks,{});
     const badOrigin=await mf.dispatchFetch('https://example.com/api/settings',{method:'POST',headers:{Origin:'https://evil.example',Authorization:'Bearer '+LOCAL_KEY}});assert.equal(badOrigin.status,403);
     const admin=await mf.dispatchFetch('https://example.com/admin');assert.match(admin.headers.get('content-security-policy'),/frame-ancestors 'none'/);assert.match(admin.headers.get('x-robots-tag'),/noindex/);
   }finally{await mf.dispose();}

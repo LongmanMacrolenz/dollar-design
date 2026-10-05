@@ -18,9 +18,13 @@ export function email(value) {
 }
 export function cleanLines(lines) {
   if(!Array.isArray(lines) || !lines.length || lines.length>200) throw new DomainError('품목을 1–200줄 등록하세요.');
-  const result=lines.map((l,i)=>({id:text(l.id,80)||crypto.randomUUID(),no:i+1,description:text(l.description,2000),qty:quantity(l.qty),unit:text(l.unit,12)||'EA',spec:text(l.spec,3000),requiredDocs:text(l.requiredDocs,1000),checksRequired:Array.isArray(l.checksRequired)?l.checksRequired.filter(k=>CHECKS.includes(k)):CHECKS.slice(),unresolved:text(l.unresolved,2000)}));
+  const result=lines.map((l,i)=>({id:text(l.id,80)||crypto.randomUUID(),no:i+1,description:text(l.description,2000),qty:quantity(l.qty),unit:text(l.unit,12)||'EA',spec:text(l.spec,3000),requiredDocs:text(l.requiredDocs,1000),checksRequired:[...new Set([...(Array.isArray(l.checksRequired)?l.checksRequired.filter(k=>CHECKS.includes(k)):CHECKS),'documents','delivery'])],unresolved:text(l.unresolved,2000)}));
   if(result.some(l=>!l.description) || new Set(result.map(l=>l.id)).size!==result.length) throw new DomainError('품목 이름과 고유 번호를 확인하세요.');
   return result;
+}
+export function lineConditions(line){
+  if(!line)return '';
+  return JSON.stringify([line.description,line.qty,line.unit,line.spec,line.requiredDocs,line.unresolved,[...new Set([...(line.checksRequired||CHECKS),'documents','delivery'])].sort()]);
 }
 export const CHECKS=['standard','diameter','pitch','length','grade','finish','documents','delivery'];
 export function assessOffer(line,offer,supplier,settings,now=new Date()) {
@@ -34,8 +38,9 @@ export function assessOffer(line,offer,supplier,settings,now=new Date()) {
   if(!text(offer.sku,160)) reasons.push('공급처 품번');
   if(text(offer.unit,12)!==line.unit) reasons.push('EA·SET 등 거래 단위');
   if(!['EA','PACK'].includes(offer.priceBasis)) reasons.push('개당·포장당 가격 기준');
-  for(const key of line.checksRequired||CHECKS) if(offer.checks?.[key]!=='confirmed') reasons.push(`사양 확인: ${key}`);
+  for(const key of new Set([...(line.checksRequired||CHECKS),'documents','delivery'])) if(offer.checks?.[key]!=='confirmed') reasons.push(`사양 확인: ${key}`);
   if(line.unresolved) reasons.push('고객 사양 미확인');
+  if(text(line.requiredDocs)&&!text(offer.documents))reasons.push('요청한 서류의 공급 조건');
   const currency=text(offer.currency,3).toUpperCase();
   let fx=currency==='KRW'?1:Number(settings.fx?.[currency]?.rate);
   if(currency!=='KRW' && (!Number.isFinite(fx)||fx<=0||!text(settings.fx?.[currency]?.source)||!Number.isFinite(Date.parse(settings.fx?.[currency]?.date))||Date.parse(settings.fx?.[currency]?.date)>now.getTime()+60000)) reasons.push('환율·출처·기준일');

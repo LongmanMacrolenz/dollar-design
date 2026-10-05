@@ -49,6 +49,17 @@ def check(BASE, OUT):
   for width in [320,390,768,1440]:
    page.set_viewport_size({'width':width,'height':900});page.wait_for_timeout(80)
    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'),width
+  page.get_by_role('button',name='요청·조달',exact=True).click();form=page.locator('#request-form')
+  form.get_by_label('품목',exact=True).fill('시험용 와셔');form.get_by_label('규격·호칭·피치·길이·재질/등급·표면처리',exact=True).fill('시험 무나사 와셔 사양');form.get_by_label('필요 서류',exact=True).fill('MTR')
+  form.get_by_text('이 품목에서 확인할 항목',exact=True).click();form.locator('[name=required-pitch]').uncheck()
+  assert form.locator('[name=required-documents]').is_disabled() and form.locator('[name=required-documents]').is_checked()
+  assert form.locator('[name=required-delivery]').is_disabled() and form.locator('[name=required-delivery]').is_checked()
+  form.get_by_role('button',name='품목·고객 저장',exact=True).click();page.get_by_text('모든 품목의 사양과 공급 조건을 먼저 확인하세요.',exact=True).wait_for();assert page.locator('#quote-form').count()==0
+  page.get_by_role('button',name='수정',exact=True).first.click();offer=page.locator('#offer-form')
+  assert offer.locator('[name=check-pitch]').is_disabled();assert not offer.locator('[name=check-documents]').is_checked();assert offer.get_by_label('공급처 확인 일시',exact=True).input_value()==''
+  assert 'MTR' in page.locator('#offer-request-summary').inner_text();assert '다시 확인' in page.locator('#offer-request-summary').inner_text()
+  offer.locator('[name=check-standard]').check();offer.get_by_label('공급처 확인 일시',exact=True).fill(datetime.now().strftime('%Y-%m-%dT%H:%M'));offer.get_by_label('가격·조건 근거',exact=True).select_option('supplier_reply')
+  offer.get_by_label('공급처',exact=True).select_option('grainger');assert not offer.locator('[name=check-standard]').is_checked();assert offer.get_by_label('공급처 확인 일시',exact=True).input_value()=='';assert offer.get_by_label('가격·조건 근거',exact=True).input_value()==''
   page.get_by_role('button',name='잠금',exact=True).click();page.get_by_role('button',name='관리자 연결',exact=True).wait_for();assert page.evaluate("sessionStorage.getItem('bn-procurement-key')") is None
   # Exercise failed intake + retry with synthetic responses. No mailbox or
   # password is connected; the real API's authentication was checked above.
@@ -74,7 +85,7 @@ def check(BASE, OUT):
   banner=page.locator('.banner').filter(has_text='메일 수집 연결 성공');banner.wait_for();assert 'IMAP_UIDVALIDITY_MISSING' not in banner.inner_text();assert '2026-10-06 00:30 KST' in banner.inner_text(),banner.inner_text()
   assert len(attempts)==2
   assert not errors,errors
-  print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
+  print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()
 
 
