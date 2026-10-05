@@ -5,6 +5,15 @@
 
 독자는 플랜트·정비·구매·설계 엔지니어입니다. 숫자 하나가 틀리면 열 개를 빠뜨린 것보다 손해가 큽니다.
 
+## 지식 지도와 읽기 경로
+
+`site/lib-guide.json`은 주제 분류(`topics`)와 목적별 읽기 순서(`paths`)의 편집 원본입니다.
+주제마다 `id, title, en, desc, featured, entries`를 적습니다. 모든 사전 항목은 정확히 한 주제에 속하고, 추천 항목(`featured`)도 그 주제 안에 있어야 합니다.
+읽기 경로는 `id, title, audience, desc, steps`를 적고, 각 단계는 `title, desc, entries`로 기존 항목을 연결합니다. 수치·요건은 이 파일에 추가하지 않습니다.
+`tools/sync_lib.py`가 연결·분류 누락을 검사하고 `app/src/ea_lib_guide.js`를 생성합니다. 정적 페이지도 같은 원본을 읽습니다.
+지도를 고친 뒤에도 `sync_lib.py` → `build_all.py` → `check.py` 순서를 지킵니다.
+검색·주제·읽기 경로는 `/#lib?q=…&topic=…&path=…&kind=…&org=…`로 공유할 수 있습니다. 항목 공유 주소는 `/lib/<id>`입니다.
+
 ## 규칙
 
 1. **정확성이 먼저.** 확실한 값만 씁니다. 모르면 빼고, 대표에게 묻습니다. 규격 번호·판·경도·강도·온도를 추측하지 않습니다.
