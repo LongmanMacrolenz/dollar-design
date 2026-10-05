@@ -1,0 +1,12 @@
+[
+ {
+  "anchor": "<a href=\"#tools\" data-go=\"tools\" data-tab=\"cert\">받으실 3.1 성적서 읽는 법</a><a href=\"#tools\" data-go=\"tools\">규격 도구 전체 → 5장</a></p>",
+  "replace": "<a href=\"#tools\" data-go=\"tools\" data-tab=\"cert\">받으실 3.1 성적서 읽는 법</a>${API610_TOOL ? '<a href=\"#tools\" data-go=\"tools\" data-tab=\"api610\">API 610 재질 클래스 → 볼팅</a>' : ''}<a href=\"#tools\" data-go=\"tools\">규격 도구 전체 → 5장</a></p>",
+  "count": 1
+ },
+ {
+  "anchor": "<dt>나사</dt><dd>${thread}</dd>",
+  "replace": "<dt>나사</dt><dd>${thread}</dd>${API610_TOOL && (f.stud || f.nut) ? `<dt>펌프 볼팅</dt><dd>API 610 재질 클래스(C-6, S-6 등)로 적혀 있으면 <a href=\"#tools\" data-go=\"tools\" data-tab=\"api610\">5장 상세 ${TABS.findIndex(t => t[0] === 'api610') + 1}</a>에서 판과 클래스를 읽어 견적 질문을 정리합니다.</dd>` : ''}",
+  "count": 1
+ }
+]

@@ -1,0 +1,22 @@
+[
+ {
+  "anchor": "  if (pn) res.push({ t: first, s: `${pn.f.short} · 형번`, go: 'm-' + pn.f.id, preset: first, g: '형번' });",
+  "replace": "  if (pn) res.push(METRIC.includes(pn.f) ? { t: first, s: `${pn.f.short} · 형번`, go: 'm-' + pn.f.id, preset: first, g: '형번' } : { t: first, s: `${pn.f.short} · 형번 → 견적함에 1포장 담기 (7장)`, go: 'cart', bomPn: first, g: '형번' }); /* BOM hook: BOM 카탈로그 형번은 품목 장이 없어 견적함으로 */",
+  "count": 1
+ },
+ {
+  "anchor": "    if (it.preset) applyPreset(it.preset);\n",
+  "replace": "    if (it.preset) applyPreset(it.preset);\n    if (it.bomPn) bomPnToCart(it.bomPn); /* BOM hook */\n    if (it.bomDoc) { state.bom.doc = it.bomDoc; bomSave(); } /* BOM hook: 4A-1 문서 탭 */\n",
+  "count": 1
+ },
+ {
+  "anchor": "  const seen = new Set();\n  return res.filter(r => { const k = r.t + r.go + (r.tab || '') + (r.jump || '');",
+  "replace": "  bomSearchMore(raw, res); /* BOM hook: 품목 장이 없는 BOM 카탈로그 품목은 엔진으로 읽어 형번 제안 */\n  const seen = new Set();\n  return res.filter(r => { const k = r.t + r.go + (r.tab || '') + (r.jump || '');",
+  "count": 1
+ },
+ {
+  "anchor": "${esc(LEAD_TIER[f.lead])}</dd>",
+  "replace": "${esc(LEAD_TIER[f.lead])}</dd>${bomInchCatNote(f)}",
+  "count": 1
+ }
+]

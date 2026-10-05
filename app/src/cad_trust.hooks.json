@@ -1,0 +1,117 @@
+[
+ {
+  "anchor": "<span class=\"tag doc\">${esc(f.docTag)}</span>",
+  "replace": "<span class=\"tag ${f.docTagCls || 'doc'}\">${esc(f.docTag)}</span>",
+  "count": 2
+ },
+ {
+  "anchor": "사양서의 지름·산 수·계열·등급을 그대로 적어 주세요.')}</div><div class=\"stack\">${flangeFig()}",
+  "replace": "사양서의 지름·산 수·계열·등급을 그대로 적어 주세요.')}${cadTrustHomeHtml()}</div><div class=\"stack\">${flangeFig()}",
+  "count": 1
+ },
+ {
+  "anchor": "'제조사 밀시트(EN 10204 3.1)는 받은 그대로 사본을 보내고, 히트번호를 제품·라벨과 대조합니다. 저희가 발행하는 문서는 시험값 없는 CoC(ISO 16228 F2.1 형식)입니다.',",
+  "replace": "'제조사 MTR(EN 10204 3.1)은 받은 경우 수정 없이 그대로 전달하고, 히트번호를 제품·라벨과 대조합니다. 품목별 제공 여부는 견적 때 알려 드립니다. 저희가 발행하는 문서는 시험값 없는 CoC(ISO 16228 F2.1 형식)입니다.',",
+  "count": 1
+ },
+ {
+  "anchor": "회신 예정일을 함께 알려 드립니다.' }) + bomInch(true)",
+  "replace": "회신 예정일을 함께 알려 드립니다.', below: cadTrustInchHeadHtml() }) + bomInch(true)",
+  "count": 1
+ },
+ {
+  "anchor": "<dt>서류</dt><dd>${esc(f.docs)}</dd>",
+  "replace": "<dt>서류</dt><dd id=\"i-docs\">${f.docsHtml || esc(f.docs)}</dd>",
+  "count": 1
+ },
+ {
+  "anchor": "${DOC_OPT.map(([v, t]) => `<option value=\"${v}\"${v === defDoc ? ' selected' : ''}>${t}</option>`).join('')}",
+  "replace": "${DOC_OPT.map(([v, t]) => `<option value=\"${v}\"${v === defDoc ? ' selected' : ''}>${v === '제조사 3.1 사본' ? esc(cadTrustDocOpt({ fam: f.id })) : v === '제조사 3.1 사본, KOLAS 시험' ? '제조사 MTR (3.1) 요청 + KOLAS 시험 (실비)' : t}</option>`).join('')}",
+  "count": 1
+ },
+ {
+  "anchor": "<span class=\"hint\" id=\"i-doc-h\">3.1 = 제조사 밀시트(EN 10204 3.1). 받은 그대로 전달합니다${MTR_OK ? '' : ' (공급처가 3.1을 발행하는지 확인한 뒤 가능 여부를 견적 회신 때 알려 드립니다)'}. 3.2 입회는 비용·납기가 추가됩니다.</span>",
+  "replace": "<span class=\"hint\" id=\"i-doc-h\">${esc(cadTrustDocHint({ fam: f.id }))}</span>",
+  "count": 1
+ },
+ {
+  "anchor": "    const grade = $('i-grade').value, fin = $('i-fin').value;\n",
+  "replace": "    const grade = $('i-grade').value, fin = $('i-fin').value;\n    cadTrustInchDocs(f, grade, fin); /* trust hook: 등급별 서류 상태 */\n",
+  "count": 1
+ },
+ {
+  "anchor": "/ ${fin} / 제조사 3.1 사본 · NPS ${r[0]}",
+  "replace": "/ ${fin} / ${cadTrustSpecDoc({ grade: st[0] })} · NPS ${r[0]}",
+  "count": 1
+ },
+ {
+  "anchor": "/ PTFE 코팅 / 제조사 3.1 사본', qty: 48",
+  "replace": "/ PTFE 코팅 / 제조사 3.1 요청', qty: 48",
+  "count": 1
+ },
+ {
+  "anchor": "['제조사 3.1 사본', '제조사 밀시트 사본 (EN 10204 3.1)'],",
+  "replace": "['제조사 3.1 사본', '제조사 MTR (EN 10204 3.1) — 제공 여부 견적 시 회신'],",
+  "count": 1
+ },
+ {
+  "anchor": "...(PMI_ON ? [['PMI', 'PMI 성분 확인 (요청 시, 외부 검사)']] : []),",
+  "replace": "...(PMI_ON ? [['PMI', 'PMI 성분 확인 (가능 여부 회신)']] : []),",
+  "count": 1
+ },
+ {
+  "anchor": "<p class=\"small muted docs-cap\">밀시트(3.1·2.2)는 제조사 문서라 받은 그대로 사본을 전달합니다. 서류는 주문할 때 정해 주세요. 출고 뒤에는 새로 만들거나 고칠 수 없습니다.",
+  "replace": "<p class=\"small muted docs-cap\">${esc(CAD_TRUST_COPY.reqForm.cap)}",
+  "count": 1
+ },
+ {
+  "anchor": "if (/PMI/.test(dj)) w.push(['info', 'G', '휴대용 PMI(XRF)는",
+  "replace": "if (/PMI/.test(dj)) w.push(['info', 'G', (cadPmiOn() ? '' : CAD_TRUST_COPY.pmi.ask.ko + ' ') + '휴대용 PMI(XRF)는",
+  "count": 1
+ },
+ {
+  "anchor": "'원본을 고치지 않고 사본 전달, 히트번호 대조·라벨 표기', MTR_OK ? '3.1이 있는 품목은 기본 포함 (주문 때 요청)' : '주문 때 요청 · 공급처가 3.1을 발행하는지 확인한 뒤 가능 여부 안내'",
+  "replace": "'받은 원본 또는 사본을 고치지 않고 전달, 히트번호 대조·라벨 표기', MTR_OK ? '3.1이 있는 품목은 기본 포함 (주문 때 요청)' : '품목별 제공 여부는 공급처 확인 후 견적 때 회신 (주문 때 요청)'",
+  "count": 1
+ },
+ {
+  "anchor": "'제작을 맡길 때 3.1 발행을 조건으로 하고, 받은 그대로 전달', '견적에 포함'],",
+  "replace": "'제작을 맡길 때 3.1 발행을 조건으로 하고, 받은 그대로 전달', '제작 업체 확인 후 견적에 표기'],",
+  "count": 1
+ },
+ {
+  "anchor": "...(PMI_ON ? [['PMI 성분 확인', '제조사 또는 외부 검사업체', '결과 첨부 (휴대용 PMI는 탄소를 재지 못한다는 한계 안내)', '협의']] : []),",
+  "replace": "...(PMI_ON ? [['PMI 성분 확인', '외부 시험기관', '상시 제공하지 않음 — 요청 시 의뢰 가능 여부 회신 (휴대용 XRF는 탄소를 재지 못함)', '협의']] : []),",
+  "count": 1
+ },
+ {
+  "anchor": "<td data-l=\"추가 비용·납기\">${esc(r[3])}</td></tr>`).join('')}</tbody></table></div>",
+  "replace": "<td data-l=\"추가 비용·납기\">${esc(r[3])}</td></tr>`).join('')}</tbody></table></div>${cadTrustTraceHtml()}",
+  "count": 1
+ },
+ {
+  "anchor": "${REQ_DOCS.map(([v, t, on]) =>",
+  "replace": "${REQ_DOCS.filter(([v]) => v !== 'PMI' || cadPmiOn()).map(([v, t, on]) =>",
+  "count": 1
+ },
+ {
+  "anchor": "${QDOCS.map(r =>",
+  "replace": "${QDOCS.filter(r => !/^PMI/.test(r[0]) || cadPmiOn()).map(r =>",
+  "count": 1
+ },
+ {
+  "anchor": "'마킹·치수·나사 게이지·외관 확인, 밀시트 히트번호 대조'",
+  "replace": "'마킹·치수·나사 게이지·외관 확인, (성적서가 있는 품목) 히트번호 대조'",
+  "count": 1
+ },
+ {
+  "anchor": "'라벨에 규격·등급·히트번호, 받은 서류 사본과 CoC 동봉'",
+  "replace": "'라벨에 규격·등급·히트번호, 받은 제조사 서류와 CoC 동봉'",
+  "count": 1
+ },
+ {
+  "anchor": "['서류', 'CoC 기본 · EN 10204 3.1은 견적 시 가능 여부 안내'],",
+  "replace": "['서류', 'CoC 기본 · ' + cadTrustLine({ fam: f.id, grade: s.g })],",
+  "count": 1
+ }
+]

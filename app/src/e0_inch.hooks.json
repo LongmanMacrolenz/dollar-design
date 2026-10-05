@@ -1,0 +1,7 @@
+[
+ {
+  "anchor": "const inchToMm = s => { // \"1-1/4\" → 31.75\n  const m = String(s).trim().match(/^(\\d+(?:\\.\\d+)?)?(?:[- ]?(\\d+)\\/(\\d+))?$/);\n  if (!m) return NaN;\n  return ((+m[1] || 0) + (m[2] ? m[2] / m[3] : 0)) * 25.4;\n};\n",
+  "replace": "const inchToMm = s => inVal(s) * 25.4; // BOM hook (e0_inch.hooks.json): 엔진 inVal로 읽는다 — '15/16'·'1 3/8'·'.750'·'1.1/8'·'3/4\"'\n",
+  "count": 1
+ }
+]

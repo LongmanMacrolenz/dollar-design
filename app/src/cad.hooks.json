@@ -1,0 +1,27 @@
+[
+ {
+  "anchor": "<div class=\"fam\"><div class=\"fam-l\"><div class=\"dbox\" id=\"fam-draw\"></div>",
+  "replace": "<div class=\"fam\"><div class=\"fam-l\"><div class=\"dbox\" id=\"fam-draw\"></div><div class=\"cad-blk\" id=\"cad-blk\"></div>",
+  "count": 1
+ },
+ {
+  "anchor": "    $('fam-draw').innerHTML = drawing(f, s.size, s.L);\n",
+  "replace": "    $('fam-draw').innerHTML = drawing(f, s.size, s.L);\n    cadMount('cad-blk', { sys: 'm', f, size: s.size, L: s.L, g: s.g, fin: s.fin }); /* CAD hook (cad.hooks.json): CAD · 데이터시트 칸 */\n",
+  "count": 1
+ },
+ {
+  "anchor": "<div class=\"fam\"><div class=\"fam-l\"><div class=\"dbox\" id=\"i-draw\"></div>",
+  "replace": "<div class=\"fam\"><div class=\"fam-l\"><div class=\"dbox\" id=\"i-draw\"></div><div class=\"cad-blk\" id=\"cad-blk\"></div>",
+  "count": 1
+ },
+ {
+  "anchor": "    $('i-draw').innerHTML = drawInch(f, size, len);\n",
+  "replace": "    $('i-draw').innerHTML = drawInch(f, size, len);\n    cadMount('cad-blk', { sys: 'i', f, size, len, grade, fin, spec }); /* CAD hook (cad.hooks.json): CAD · 데이터시트 칸 */\n",
+  "count": 1
+ },
+ {
+  "anchor": "  const first = raw.split(/\\s+/)[0].toUpperCase();\n",
+  "replace": "  const first = cadStripBn(raw.split(/\\s+/)[0].toUpperCase()); /* CAD hook: 'BN_HBF-M10-40-88-ZW.step' → 형번 */\n",
+  "count": 1
+ }
+]

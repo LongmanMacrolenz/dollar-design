@@ -1,4 +1,16 @@
-__pycache__/
-*.pyc
+# 도구가 만드는 폴더
 .wrangler/
 node_modules/
+# 점검 결과·임시 파일
+__pycache__/
+*.pyc
+out/
+app/tests/out/
+bn-check-*/
+# 비공개 금지어(직장 이름 등)는 저장소에 올리지 않는다 (AGENTS.md 7번)
+app/tests/private_banned.txt
+# 비밀·로컬 설정
+.env
+*.key
+*.pem
+.DS_Store

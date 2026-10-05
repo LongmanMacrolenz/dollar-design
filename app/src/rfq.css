@@ -1,0 +1,52 @@
+/* ── 견적 요청 통로 (v5_rfq.js) · 개인정보 처리방침 (v6_policy.js): 기본 토큰과 표제란 격자(.tblock)만 쓴다 ── */
+.rfq-send { margin-top: 18px; }
+.rfq-send > * { gap: 4px; }
+.rfq-send h3 { margin: 0; font-size: 17px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.rfq-send .rs-no { font-size: var(--fs-sm); font-weight: 400; color: var(--ink-2); }
+.rfq-send p { margin: 0; }
+.rfq-send .val { overflow-wrap: anywhere; }
+.rfq-send .sub { overflow-wrap: anywhere; }
+.rs-btns { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 2px; align-items: center; }
+.rs-ta { width: 100%; min-height: 120px; font: inherit; font-size: var(--fs-sm); margin-top: 6px; }
+.pi-note { margin: 0; font-size: var(--fs-sm); line-height: 1.6; color: var(--ink-2); }
+.rq-f { margin-top: 12px; }
+.rq-pi { margin-top: 8px; }
+.rfq-doc .doc-tb b { font-weight: 700; }
+.rq-sum { justify-self: end; width: min(100%, 420px); display: grid; border: var(--lw) solid var(--ink); font-size: var(--fs-sm); }
+.rq-sum > div { display: flex; justify-content: space-between; gap: 12px; padding: 5px 10px; border-bottom: 1px solid var(--hair); }
+.rq-sum > div:last-child { border-bottom: 0; }
+.rq-sum .grand { font-weight: 800; font-size: 15px; border-top: 1px solid var(--ink); }
+.rq-sum .ko b { font-weight: 700; text-align: right; overflow-wrap: anywhere; }
+.c-send { margin-top: 28px; }
+.c-send .doc { margin-top: 0; }
+.pv-l { margin: 12px 0 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: var(--fs-sm); color: var(--ink-2); }
+.pv-t td, .pv-t th { overflow-wrap: anywhere; }
+.pv-clear { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pv-who { margin-top: 12px; }
+/* 발주서·견적 요청서 줄: 좁은 화면에서는 가로 스크롤 표 대신 줄 카드 */
+@media (max-width: 560px) {
+  .rfq-doc .tblw.rq-tw { overflow: visible; }
+  .rfq-doc table.rq-tbl { min-width: 0; width: 100%; }
+  .rfq-doc table.rq-tbl thead { display: none; }
+  .rfq-doc table.rq-tbl, .rfq-doc table.rq-tbl tbody { display: block; }
+  .rfq-doc table.rq-tbl tr { display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; padding: 8px 0; border-bottom: 1px solid var(--hair); }
+  .rfq-doc table.rq-tbl td { display: block; border: 0; padding: 0; text-align: left; min-width: 0; overflow-wrap: anywhere; white-space: normal; }
+  .rfq-doc table.rq-tbl td.rq-no { grid-column: 1; font-weight: 700; }
+  .rfq-doc table.rq-tbl td.rq-pn { grid-column: 2; font-weight: 700; }
+  .rfq-doc table.rq-tbl td.rq-nm { grid-column: 1 / -1; }
+  .rfq-doc table.rq-tbl tr > td.rq-nm:nth-child(2) { grid-column: 2; }
+  .rfq-doc table.rq-tbl td[data-l] { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 12px; font-size: var(--fs-sm); }
+  .rfq-doc table.rq-tbl td[data-l]::before { content: attr(data-l); color: var(--ink-2); }
+  .rfq-doc table.rq-tbl td.rq-amt { font-weight: 700; }
+}
+@media (max-width: 680px) {
+  .tblock.rfq-send > *, .tblock.pv-who > * { grid-column: 1 / -1 !important; border-right: 0 !important; }
+}
+/* 인쇄 (PDF로 저장): 요청서·발주서 사본만 */
+#rfq-print { display: none; }
+@media print {
+  html.rfq-printing body > *:not(#rfq-print) { display: none !important; }
+  html.rfq-printing #rfq-print { display: block !important; }
+  html.rfq-printing #rfq-print .doc { margin: 0; }
+  .rfq-send, .c-send .rfq-send, .qd-send { display: none !important; }
+}
