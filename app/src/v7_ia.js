@@ -238,63 +238,60 @@ function pmMail() {
 }
 /* 홈은 제품 탐색 → 목록 견적 → 현장별 볼팅 → 기술자료 순서로 연결한다.
    이미지에는 규격값을 넣지 않고, 품목 수와 사전 수는 공개 데이터에서 계산한다. */
-V.home = () => `<div class="bn-home" id="z-a">
+V.home = () => `<div class="bn-home bn-studio" id="z-a">
   <section class="bn-hero bn-cinema" aria-labelledby="h-z-a">
     <div class="bn-wrap bn-hero-grid">
       <div class="bn-hero-copy">
-        <p class="bn-eyebrow" lang="en"><span></span> ENGINEERED CONNECTIONS</p>
-        <h1 id="h-z-a" tabindex="-1">작은 부품이,<br><em>큰 설비를 잇습니다.</em></h1>
-        <p class="bn-hero-lead">플랜지부터 하우징, 회전축까지.<br>연결마다 필요한 체결부품을 찾고,<br>BOM 그대로 견적을 요청하세요.</p>
-        <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 라인업 보기 <span aria-hidden="true">→</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">BOM 견적 요청 <span aria-hidden="true">↗</span></a></div>
+        <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
+        <h1 id="h-z-a" tabindex="-1">정확한 부품.<br><em>견고한 연결.</em></h1>
+        <p class="bn-hero-lead">플랜지에서 회전축까지, 연결의 시작은 사양입니다.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
+        <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 살펴보기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
+        <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>
       </div>
       ${bnFilmMarkup()}
     </div>
     ${bnFilmNavigation()}
   </section>
   <div class="bn-facts bn-wrap" aria-label="카탈로그 안내">
-    <div><b>${CAT_TILES.length}<small> CATEGORIES</small></b><span>품목별로 정리한 제품군</span></div>
-    <div><b>${pmCatN()}<small> TYPES</small></b><span>미터·인치 체결부품 품목</span></div>
-    <div><b>CAD<small> &amp; DRAWINGS</small></b><span>제공 품목의 도면 · STEP · DXF</span></div>
-    <a href="#lib" data-go="lib"><b>${typeof LIB !== 'undefined' ? LIB.length : 0}<small> NOTES</small></b><span>규격과 재질을 찾는 사전 <i aria-hidden="true">↗</i></span></a>
+    <div><b>${CAT_TILES.length}<small> PRODUCT CATEGORIES</small></b><span>품목별로 찾는 제품군</span></div>
+    <div><b>${pmCatN()}<small> FASTENER TYPES</small></b><span>미터·인치 체결부품</span></div>
+    <div><b>CAD<small> STEP &amp; DXF</small></b><span>제공 품목의 도면과 모델</span></div>
+    <a href="#lib" data-go="lib"><b>${LIB.length}<small> ENGINEERING NOTES</small></b><span>판단의 근거를 찾는 사전 <i aria-hidden="true">↗</i></span></a>
   </div>
   <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
     <div class="bn-wrap">
-      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / PRODUCT LINEUP</p><h2 id="bn-h-products">제품부터, 찾아보세요.</h2><p>볼트 하나부터 플랜트 볼팅 세트까지. 필요한 품목의 규격과 치수를 확인하세요.</p></div><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div>
-      ${hmTiles()}
-      <p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별 상세에서 확인하세요.</p>
+      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / THE PRODUCT COLLECTION</p><h2 id="bn-h-products">작지만,<br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><p>볼트 하나부터 플랜트 볼팅 세트까지.<br>형상과 용도에 맞는 제품을 살펴보세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
+      <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요.</p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
     </div>
-  </section>
-  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq">
-    <div class="bn-wrap bn-rfq-grid">
-      <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">02 / ENGINEERING RFQ</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>이 사이트의 품번을 몰라도 됩니다.<br>엑셀이나 부품표의 표기를 그대로 붙여 넣으면<br>규격·등급·수량을 읽고, 확인할 항목을 보여 드립니다.</p><ul class="bn-rfq-points"><li><span>01</span> BOM · 엑셀 · CSV 붙여넣기</li><li><span>02</span> 규격 · 치수 · 필요한 서류 확인</li><li><span>03</span> 견적 요청서 · C&amp;D로 연결</li></ul><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
-      <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 규격 확인</span><small>브라우저 안에서 읽습니다</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE ? '단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.' : '<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">→</span></a>'}</div></div>
-    </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div>
   </section>
   <section class="bn-section bn-applications" aria-labelledby="bn-h-applications">
-    <div class="bn-wrap">
-      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">03 / APPLICATIONS</p><h2 id="bn-h-applications">현장의 언어로, 연결합니다.</h2><p>자주 함께 쓰는 체결부품을 설비와 용도별로 모았습니다.</p></div></div>
-      <div class="bn-plant">
-        <div class="bn-plant-copy"><span class="bn-pill" lang="en">PLANT BOLTING</span><h3>플랜지 하나에도,<br>확인할 기준이 있습니다.</h3><p>스터드의 재질·나사·길이와 짝이 되는 너트.<br>조인트 조건을 확인하고 필요한 서류까지 함께 검토합니다.</p><div class="bn-plant-specs"><span>ASTM A193</span><span>ASTM A194</span><span>ASTM A320</span></div><a class="bn-btn bn-btn-light" href="#k-plant" data-go="k-plant">플랜트 볼팅 제품 보기 <span aria-hidden="true">→</span></a><a class="bn-plant-tool" href="#tools" data-go="tools" data-tab="flange">B16.5 스터드 길이 계산 <span aria-hidden="true">↗</span></a></div>
-        <figure class="bn-plant-visual">${pmVideo('hero-flange', '플랜지 조인트의 스터드와 너트를 보여 주는 3D 참고 장면', 1280, 960)}<figcaption>FLANGE JOINT / STUDS &amp; HEAVY HEX NUTS</figcaption></figure>
-      </div>
-      <div class="bn-application-links">${Object.entries(PM_COLL).map(([k, [spec, d]], i) => `<a href="#k-${k}" data-go="k-${k}"><span class="bn-index">0${i + 1}</span><div><b>${esc(CAT_COLL[k].ko)}</b><p>${esc(d)}</p></div><span class="bn-link-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>
+    <div class="bn-wrap"><div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">02 / CONNECTIONS IN CONTEXT</p><h2 id="bn-h-applications">설비는 달라도,<br>체결에는 기준이 있습니다.</h2></div><p>함께 쓰는 부품을 용도별로 모았습니다.<br>조인트 조건과 도면을 함께 확인하세요.</p></div>
+      <div class="bn-application-grid">${Object.entries(PM_COLL).map(([k,[spec,d]],i)=>`<a class="bn-application" href="#k-${k}" data-go="k-${k}"><div class="bn-application-image"><img src="media/boltnote-application-${['flange','shaft','flange'][i]}.webp" alt="${['플랜지의 스터드와 헤비 육각너트','키·멈춤링을 사용하는 회전축','플랜지 조인트의 체결부품 구성'][i]}" width="600" height="450" loading="lazy" decoding="async"><span>0${i+1}</span></div><div class="bn-application-body"><h3>${esc(CAT_COLL[k].ko)}</h3><p>${esc(d)}</p><span class="bn-application-link">제품 모아 보기 <i aria-hidden="true">↗</i></span></div></a>`).join('')}</div>
     </div>
   </section>
-  <section class="bn-section bn-resources" aria-labelledby="bn-h-resources">
-    <div class="bn-wrap"><div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">04 / ENGINEERING RESOURCES</p><h2 id="bn-h-resources">제품을 넘어, 판단의 근거까지.</h2><p>엔지니어와 구매 담당자가 같은 규격을 확인할 수 있도록.</p></div></div>
-      <div class="bn-resource-grid">
-        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('set')}</span><span class="bn-resource-label" lang="en">STANDARDS LIBRARY</span><h3>체결부품 규격 사전</h3><p>형상·나사·재질부터 체결과 검사까지.<br>8개 주제와 목적별 읽기 경로로 살펴보세요.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 2H, ISO 4017" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">→</button></form><a href="#lib" data-go="lib">지식 지도 전체 보기 <span aria-hidden="true">↗</span></a><div class="bn-library-doors">${LIB_PATHS.map(p => `<a href="#lib?path=${p.id}" data-go="lib?path=${p.id}">${esc(p.title)} <span aria-hidden="true">→</span></a>`).join('')}</div></article>
-        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('bolt')}</span><span class="bn-resource-label" lang="en">DRAWINGS &amp; CAD</span><h3>치수 도면 · CAD</h3><p>형상과 치수를 먼저 확인하세요.<br>제공되는 품목은 STEP·DXF를 받을 수 있습니다.</p><div class="bn-resource-tags"><span>DIMENSIONS</span><span>STEP</span><span>DXF</span></div><a href="#ref" data-go="ref">도면·규격 보기 <span aria-hidden="true">↗</span></a></article>
-        <article class="bn-resource"><span class="bn-resource-icon" aria-hidden="true">${iaTh('stud')}</span><span class="bn-resource-label" lang="en">ENGINEERING TOOLS</span><h3>볼팅 검토 도구</h3><p>플랜지 스터드 길이, 재질 대조,<br>각인·규격 표기를 확인하는 도구를 모았습니다.</p><div class="bn-resource-tags"><span>B16.5</span><span>MATERIAL</span><span>MARKING</span></div><a href="#tools" data-go="tools">계산·대조표 열기 <span aria-hidden="true">↗</span></a></article>
-      </div>
-    </div>
-  </section>
-  <section class="bn-section bn-process" aria-labelledby="bn-h-process"><div class="bn-wrap">
-    <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-process">요청부터 견적까지, 명확하게.</h2></div><a class="bn-text-link" href="#about" data-go="about">볼트노트의 운영 원칙 <span aria-hidden="true">↗</span></a></div>
-    <ol class="bn-process-grid">${[['목록을 보냅니다', 'BOM을 붙여 넣거나 엑셀·PDF·도면을 보내 주세요.'], ['사양을 확인합니다', '규격·치수·재질과 필요한 서류를 줄마다 검토합니다.'], ['빠진 조건을 묻습니다', '확인이 필요한 사양을 모아 질문합니다.'], ['견적서로 답합니다', '공급처 확인 뒤 단가·납기와 서류 제공 여부를 적습니다.']].map(([t, d], i) => `<li><span>0${i + 1}</span><h3>${t}</h3><p>${d}</p></li>`).join('')}</ol>
+  <section class="bn-section bn-specs" aria-labelledby="bn-h-specs"><div class="bn-wrap bn-spec-grid">
+    <div><p class="bn-eyebrow" lang="en">03 / BEFORE YOU BUY</p><h2 id="bn-h-specs">비슷한 모양.<br>다른 사양.</h2><p class="bn-spec-lead">외형만으로 정하지 않습니다.<br>구매 전에 확인할 기준을 한 번 더 살펴보세요.</p><a class="bn-text-link" href="#lib?path=purchase" data-go="lib?path=purchase">구매·입고 확인 경로 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-spec-list">${[
+      ['호칭과 피치','M16과 5/8", UNC와 8UN. 비슷한 굵기여도 나사는 호환되지 않습니다. 미터·인치, 피치·산 수, 나사 공차를 함께 확인합니다.','thread-fit'],
+      ['머리 형상과 길이 기준','머리 모양에 따라 길이를 재는 기준과 공구가 달라집니다. 스터드 포인트 포함 여부, 나사부 길이, 좌면과 체결 깊이를 도면으로 확인합니다.','bolt-nut-washer'],
+      ['재질·등급과 너트 조합','재질 규격과 강도 등급은 각각 확인합니다. 플랜트 볼팅은 온도·사용 환경을 보고 스터드와 짝이 되는 너트 등급을 함께 정합니다.','material-grade'],
+      ['표면처리와 필요한 서류','코팅 조건과 조립 시 나사 끼워맞춤, 추적·검사 서류를 함께 확인합니다. 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.','inspection-documents']
+    ].map(([t,d,id],i)=>`<details class="bn-spec"><summary><span>0${i+1}</span><h3>${t}</h3><i aria-hidden="true">+</i></summary><div><p>${d}</p><a href="#lib?topic=${id}" data-go="lib?topic=${id}">관련 지식 살펴보기 <span aria-hidden="true">↗</span></a></div></details>`).join('')}</div>
   </div></section>
-  <section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET'S CONNECT YOUR NEXT PROJECT</p><h2 id="bn-h-cta">다음 목록의 시작은,<br class="ia-m"> 볼트노트에서.</h2><p>필요한 체결부품과 조건을 알려 주세요. 확인할 내용부터 함께 정리합니다.</p></div><a class="bn-btn" href="#list" data-go="list">견적 요청 시작하기 <span aria-hidden="true">→</span></a></div></section>
+  <section class="bn-section bn-resources" aria-labelledby="bn-h-resources"><div class="bn-wrap">
+    <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">04 / KNOWLEDGE, CONNECTED</p><h2 id="bn-h-resources">규격을 알고,<br>판단의 근거를 찾습니다.</h2></div><a class="bn-text-link" href="#lib" data-go="lib">지식 지도 전체 보기 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-knowledge-head"><p><b>${LIB.length}</b>개의 항목을 <b>${LIB_TOPICS.length}</b>개 주제로.<br>품목부터 찾아도, 목적부터 읽어도 됩니다.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 나사 공차, 3.1" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">↗</button></form></div>
+    <div class="bn-topic-grid">${LIB_TOPICS.map((t,i)=>`<a class="bn-topic" href="#lib?topic=${t.id}" data-go="lib?topic=${t.id}"><span class="bn-topic-no">0${i+1}</span><span><b>${esc(t.title)}</b><small>${esc(t.en)} · ${t.entries.length}개 항목</small></span><i aria-hidden="true">↗</i></a>`).join('')}</div>
+    <div class="bn-reading-paths"><span>목적별로 읽기</span>${LIB_PATHS.map(p=>`<a href="#lib?path=${p.id}" data-go="lib?path=${p.id}">${esc(p.title)} <i aria-hidden="true">↗</i></a>`).join('')}</div>
+    <div class="bn-resource-shortcuts"><a href="#ref" data-go="ref"><span>DRAWINGS &amp; CAD</span><h3>형상과 치수를 먼저.</h3><p>제공 품목의 도면 · STEP · DXF</p><i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools"><span>ENGINEERING TOOLS</span><h3>계산과 대조를 함께.</h3><p>스터드 길이 · 재질 · 각인 표기</p><i aria-hidden="true">↗</i></a></div>
+  </div></section>
+  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-rfq-grid">
+    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>엑셀이나 부품표의 표기를 그대로 붙여 넣으세요.<br>규격·등급·수량을 읽고, 확인할 내용을 보여 드립니다.</p><ol class="bn-rfq-points"><li><span>01</span> 목록과 도면을 보냅니다</li><li><span>02</span> 빠진 사양을 함께 확인합니다</li><li><span>03</span> 공급처 확인 뒤 견적서로 답합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
+    <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 사양 확인</span><small>BOM · 엑셀 · CSV</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE?'단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.':'<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">↗</span></a>'}</div></div>
+  </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div></section>
+  <section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET’S MAKE THE CONNECTION.</p><h2 id="bn-h-cta">목록 하나로,<br>다음 연결을 시작하세요.</h2></div><a class="bn-cta-circle" href="#list" data-go="list"><span aria-hidden="true">↗</span><b>견적 요청</b></a></div></section>
 </div>`;
 
 V.after.home = () => {

@@ -1,7 +1,7 @@
 <title>볼트노트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Barlow+Condensed:wght@600&family=Gothic+A1:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Barlow+Condensed:wght@600&family=Manrope:wght@400;500;600;700;800&family=Gothic+A1:wght@400;700;800&display=swap">
 <style>
 /* =====================================================================
    볼트노트 base.css — 방향: 도면 (Engineering drawing sheet)
@@ -1421,11 +1421,13 @@ footer.foot { padding-block: 0 48px; }
         <div class="suggest" id="suggest" hidden></div>
       </div>
       <a class="tb-c stc" id="ia-stc" href="#about" data-go="about"><span class="lab">상태</span><b>검증 운영 중</b><span class="v">참고 견적 →</span></a>
-      <button type="button" class="tb-c ia-menu-b" id="ia-menu-b" aria-expanded="false" aria-controls="ia-menu">메뉴</button>
+      <button type="button" class="tb-c bn-open-find" data-bn-find aria-label="제품·규격 통합 검색"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg></button>
+      <a class="tb-c bn-header-rfq" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a>
+      <button type="button" class="tb-c ia-menu-b" id="ia-menu-b" aria-expanded="false" aria-controls="ia-menu"><span>메뉴</span><i aria-hidden="true"><b></b><b></b></i></button>
       <a class="tb-c cartc cartbtn" href="#cart" data-go="cart"><span class="cart-n" id="cart-n">0</span><b>견적함</b></a>
       <span class="ia-sheet" hidden><b id="sheet-no">1 / 7</b><span id="sheet-nm">홈</span></span>
     </div>
-    <div class="ia-menu" id="ia-menu" hidden></div>
+    <div class="ia-menu" id="ia-menu" role="dialog" aria-modal="true" aria-label="사이트 전체 메뉴" hidden></div>
   </div>
 </header>
 <div class="tb-mini" id="tb-mini" inert>
@@ -1439,6 +1441,7 @@ footer.foot { padding-block: 0 48px; }
 
 <footer class="foot ia-foot">
   <div class="wrap">
+    <div class="bn-footer-sign" aria-hidden="true"><img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="" loading="lazy"></div>
     <div class="pm-ft">
       <a class="pm-ft-brand" href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><span><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"><small>체결부품 목록 견적 · 엔지니어가 줄마다 읽습니다</small></span></a>
       <nav class="pm-ft-nav" aria-label="바닥글 메뉴">
