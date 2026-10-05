@@ -1,0 +1,20 @@
+/* 품목 형상 이미지 (v9_shape.js) ─ 참고용 렌더링 · 마감 색 칩 · 품목 카드 썸네일 */
+.shp { margin: 0; max-width: 560px; border: 1px solid var(--hair); background: var(--sheet); }
+.shp[hidden] { display: none; }
+.shp-img { aspect-ratio: 4 / 3; background: #E9ECEF; }
+.shp-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.shp-looks { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 9px 10px 4px; border-top: 1px solid var(--hair-2); }
+.shp-looks .lab { margin-right: 4px; }
+.shp-looks .chipbtn { font-family: var(--f-sans); }
+.shp figcaption { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px 9px; font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-3); }
+.shp-looks + figcaption { padding-top: 5px; }
+.shp:not(:has(.shp-looks)) figcaption { border-top: 1px solid var(--hair-2); }
+.shp figcaption b { color: var(--ink-2); font-weight: 700; }
+#shp-slot:empty { display: none; }
+/* 품목 카드 썸네일: 사진이 있으면 선화 대신 4:3 사진 */
+.ia-fam .th.ph { width: 96px; height: 72px; padding: 0; overflow: hidden; background: #E9ECEF; }
+.ia-fam .th.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ia-fam:has(.th.ph) { grid-template-columns: 96px minmax(0, 1fr); }
+@media (max-width: 680px) {
+  .shp figcaption { font-size: var(--fs-cap); }
+}

@@ -1,11 +1,11 @@
 """마감·재질 라벨 → 렌더 룩(bl.LOOKS 키) 매핑. 사이트(app/src/v9_shape.js)의 같은 규칙과 맞춰 둡니다."""
 import re
 
-STAINLESS = re.compile(r'A2|A4|스테인리스|STS|SUS|\b304|\b316|18-8|F59[34]|F83[7]|F87[89]|F88[0]|\bB8|S3\d{4}|S32\d{3}|\b410\b|1\.4\d{3}|\bSS\b', re.I)
+STAINLESS = re.compile(r'\bA[24]\b|스테인리스|STS|SUS|\b304|\b316|18-8|F59[34]|F837|F87[89]|F880|\bB8|S3\d{4}|S32\d{3}|\b410\b|1\.4\d{3}|\bSS\b', re.I)
 BRASS = re.compile(r'황동|CuZn|brass', re.I)
 COPPER = re.compile(r'^구리$|copper', re.I)
 ALU = re.compile(r'알루미늄|alumin', re.I)
-NIALLOY = re.compile(r'\bNi\s*\d|F468|니켈합금|Alloy', re.I)
+NIALLOY = re.compile(r'\bNi\s*\d|F468|니켈합금', re.I)
 
 FIN_RULES = [
     (re.compile(r'스테인리스'), 'SS'),

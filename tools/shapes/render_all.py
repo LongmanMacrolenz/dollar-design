@@ -154,6 +154,9 @@ def main():
     out = pathlib.Path(a.out) if a.out else (ROOT / 'out' / 'shapes-preview' if prev else MEDIA)
     out.mkdir(parents=True, exist_ok=True)
     built, sheet, t0 = {}, [], time.time()
+    jobs_first_look = {}
+    for fid, look in jobs:
+        jobs_first_look.setdefault(fid, look)
     for n, (fid, look) in enumerate(jobs, 1):
         ext = 'png' if prev else 'webp'
         dest = out / f'{fid}-{look}.{ext}'
@@ -176,7 +179,10 @@ def main():
         if prev:
             tmp.replace(dest)
         else:
-            Image.open(tmp).convert('RGB').save(dest, 'WEBP', quality=a.quality, method=6)
+            im = Image.open(tmp).convert('RGB')
+            im.save(dest, 'WEBP', quality=a.quality, method=6)
+            if look == jobs_first_look.get(fid):          # 목록 카드용 썸네일: 기본 룩만
+                im.resize((240, 180), Image.LANCZOS).save(out / f'{fid}-s.webp', 'WEBP', quality=72, method=6)
             tmp.unlink()
         sheet.append((dest, f'{fid}-{look}  {F[fid]["ko"][:18]}'))
         print(f'[{n}/{len(jobs)}] {dest.name}  {time.time() - t1:.1f}s', flush=True)

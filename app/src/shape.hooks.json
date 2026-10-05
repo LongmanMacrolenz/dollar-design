@@ -1,0 +1,37 @@
+[
+  {
+    "anchor": "<div class=\"fam\"><div class=\"fam-l\"><div class=\"dbox\" id=\"fam-draw\"></div>",
+    "replace": "<div class=\"fam\"><div class=\"fam-l\"><div id=\"shp-slot\"></div><div class=\"dbox\" id=\"fam-draw\"></div>",
+    "count": 1
+  },
+  {
+    "anchor": "    $('fam-draw').innerHTML = drawing(f, s.size, s.L);\n",
+    "replace": "    $('fam-draw').innerHTML = drawing(f, s.size, s.L);\n    shapeShow(f.id, f.name, GRADE[s.g].label, FINISH[s.fin].label); /* shape hook: 형상 이미지 (v9_shape.js) */\n",
+    "count": 1
+  },
+  {
+    "anchor": "      if (b.dataset.cfg === 'combo') [s.g, s.fin] = b.dataset.v.split('|');",
+    "replace": "      if (b.dataset.cfg === 'combo') { [s.g, s.fin] = b.dataset.v.split('|'); state.shapePick[f.id] = null; } /* shape hook */",
+    "count": 1
+  },
+  {
+    "anchor": "<div class=\"fam\"><div class=\"fam-l\"><div class=\"dbox\" id=\"i-draw\"></div>",
+    "replace": "<div class=\"fam\"><div class=\"fam-l\"><div id=\"shp-slot\"></div><div class=\"dbox\" id=\"i-draw\"></div>",
+    "count": 1
+  },
+  {
+    "anchor": "    $('i-draw').innerHTML = drawInch(f, size, len);\n",
+    "replace": "    $('i-draw').innerHTML = drawInch(f, size, len);\n    shapeShow(f.id, f.name, grade, fin); /* shape hook */\n",
+    "count": 1
+  },
+  {
+    "anchor": "  cfg.addEventListener('input', e => { if (e.target.id === 'i-grade') fillSizes(); calc(); });",
+    "replace": "  cfg.addEventListener('input', e => { if (/^i-(grade|fin)$/.test(e.target.id)) state.shapePick[f.id] = null; /* shape hook */ if (e.target.id === 'i-grade') fillSizes(); calc(); });",
+    "count": 1
+  },
+  {
+    "anchor": "  cfg.addEventListener('change', e => { if (e.target.id === 'i-grade') fillSizes(); calc(); });",
+    "replace": "  cfg.addEventListener('change', e => { if (/^i-(grade|fin)$/.test(e.target.id)) state.shapePick[f.id] = null; /* shape hook */ if (e.target.id === 'i-grade') fillSizes(); calc(); });",
+    "count": 1
+  }
+]
