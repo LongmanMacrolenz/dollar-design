@@ -6,6 +6,8 @@ import {readFile} from 'node:fs/promises';
 import {quotePDF} from '../client/pdf.mjs';
 import {PDFDocument} from 'pdf-lib';
 import {CHECKS} from '../domain.mjs';
+import {requirementsFor} from '../workflow.mjs';
+const replies=(line,request)=>Object.fromEntries(requirementsFor(line,request).map(r=>[r.id,{status:'confirmed',offered:r.required,evidence:'synthetic specification evidence'}]));
 const LOCAL_KEY='LOCAL_TEST_ONLY_'+'x'.repeat(32);
 
 test('real Worker SQLite flow: authentication, stale revisions, supplier gating, quote privacy and mail readiness',async()=>{
@@ -16,22 +18,22 @@ test('real Worker SQLite flow: authentication, stale revisions, supplier gating,
     assert.equal((await send('state',null,'wrong')).httpStatus,401);
     assert.equal((await mf.dispatchFetch('https://example.com/')).status,200);
     const state=await send('state');assert.equal(state.readiness.mailConfigured,false);assert.equal(state.settings.markupPct,20);assert.equal(state.suppliers.length,6);
-    const line={id:'line-test',description:'시험용 볼트',spec:'시험 사양',qty:10,unit:'EA'};
+    const line={id:'line-test',description:'시험용 볼트',spec:'ISO 4017 M12×1.75×50 8.8 PLAIN',qty:10,unit:'EA'};
     const req=await send('requests',{customerName:'테스트',customerEmail:'customer@example.com',subject:'시험 견적',lines:[line]});assert.equal(req.httpStatus,200);
     assert.equal((await send('requests',{...req,revision:999})).httpStatus,409);
     assert.equal((await send('inquiries',{requestId:req.id,supplierId:'koreabolt'})).httpStatus,400);
     const settings=await send('settings',{revision:state.settings.revision,markupPct:20,logistics:{misumi:{shippingKRW:0,evidence:'시험 무료 운송'}},fx:{}});assert.equal(settings.httpStatus,200);
-    const offer=await send('offers',{requestId:req.id,lineId:'line-test',supplierId:'misumi',sku:'TEST-01',unit:'EA',priceBasis:'EA',price:100,packSize:1,minOrderQty:1,availableQty:100,leadDays:3,currency:'KRW',confirmedAt:new Date().toISOString(),expiresAt:new Date(Date.now()+86400000*10).toISOString(),evidenceType:'supplier_reply',evidence:'시험 회신',checks:Object.fromEntries(CHECKS.map(k=>[k,'confirmed']))});assert.equal(offer.httpStatus,200);
+    const offer=await send('offers',{requestId:req.id,lineId:'line-test',requirementResponses:replies(req.lines[0],req),supplierId:'misumi',sku:'TEST-01',unit:'EA',priceBasis:'EA',price:100,packSize:1,minOrderQty:1,availableQty:100,leadDays:3,currency:'KRW',confirmedAt:new Date().toISOString(),expiresAt:new Date(Date.now()+86400000*10).toISOString(),evidenceType:'supplier_reply',evidence:'시험 회신',checks:Object.fromEntries(CHECKS.map(k=>[k,'confirmed']))});assert.equal(offer.httpStatus,200);
     const q=await send('quotes',{requestId:req.id,validUntil:new Date(Date.now()+86400000).toISOString(),notes:'시험 조건'});assert.equal(q.httpStatus,200);assert.equal(q.netKRW,1200);assert.equal(q.totalKRW,1320);assert.equal(q.costKRW,undefined);assert.equal(q.selection,undefined);assert.equal(q.offerRevisions,undefined);
     assert.equal((await send('sync',{})).httpStatus,503);
     const changed=await send('offers',{...offer,price:120});assert.equal(changed.httpStatus,200);
     assert.equal((await send('quotes/send',{id:q.id,revision:q.revision,reviewed:true,pdf:'not-a-pdf'})).httpStatus,409);
     const renamed=await send('requests',{...req,customerName:'연락처 표시명 변경'});
     assert.equal((await send('requests/'+req.id)).plan.ready,true);
-    const revised=await send('requests',{...renamed,lines:[{...renamed.lines[0],spec:'변경된 고객 사양 M16',qty:20}]});assert.equal(revised.httpStatus,200);
+    const revised=await send('requests',{...renamed,lines:[{...renamed.lines[0],spec:'ISO 4017 M16×2×50 8.8 PLAIN',qty:20}]});assert.equal(revised.httpStatus,200);
     const review=await send('requests/'+req.id);assert.equal(review.plan.ready,false);assert.equal(review.offers[0].confirmedAt,'');assert.deepEqual(review.offers[0].checks,{});assert.match(review.offers[0].confirmationReset,/다시 확인/);
     assert.equal((await send('quotes',{requestId:req.id,validUntil:new Date(Date.now()+86400000).toISOString(),notes:'변경 조건'})).httpStatus,409);
-    const reconfirmed=await send('offers',{...review.offers[0],confirmedAt:new Date().toISOString(),evidenceType:'supplier_reply',checks:Object.fromEntries(CHECKS.map(k=>[k,'confirmed']))});assert.equal(reconfirmed.httpStatus,200);
+    const reconfirmed=await send('offers',{...review.offers[0],requirementResponses:replies(revised.lines[0],revised),confirmedAt:new Date().toISOString(),evidenceType:'supplier_reply',checks:Object.fromEntries(CHECKS.map(k=>[k,'confirmed']))});assert.equal(reconfirmed.httpStatus,200);
     assert.equal((await send('requests/'+req.id)).plan.ready,true);
     await send('requests',{...revised,lines:[{...revised.lines[0],qty:30}]});
     const quantityChange=await send('requests/'+req.id);assert.equal(quantityChange.plan.ready,false);assert.deepEqual(quantityChange.offers[0].checks,{});

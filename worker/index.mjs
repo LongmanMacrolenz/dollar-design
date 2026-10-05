@@ -7,6 +7,7 @@ import {MAIL_ACCOUNT,MAX_MAIL_BYTES,MailError,mailErrorMessage,ImapClient,parseM
 import {productCandidate} from './product.mjs';
 import {businessDate} from './dates.mjs';
 import {BUSINESS,quoteMessage,inquiryMessage} from './templates.mjs';
+import {parseBOM,mailBOM,workflowFor,workflowCSV,requirementsFor,supplierSearches,inquiryConditions,replyTarget,supplierRequest} from './workflow.mjs';
 
 function expectedRevision(body,old){if(old&&body.revision!==old.revision)throw new DomainError('다른 창에서 변경되었습니다. 다시 불러오세요.',409);return body.revision;}
 const store=env=>env.PROCUREMENT.get(env.PROCUREMENT.idFromName('boltnote-private-procurement-v1'));
@@ -39,7 +40,7 @@ export class ProcurementStore extends DurableObject {
     this.sql.exec('CREATE TABLE IF NOT EXISTS documents (kind TEXT NOT NULL,id TEXT NOT NULL,data TEXT NOT NULL,revision INTEGER NOT NULL,updated TEXT NOT NULL,PRIMARY KEY(kind,id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS blobs (id TEXT NOT NULL,part INTEGER NOT NULL,data BLOB NOT NULL,PRIMARY KEY(id,part))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS mail_seen (uidvalidity INTEGER NOT NULL,uid INTEGER NOT NULL,message_id TEXT NOT NULL,PRIMARY KEY(uidvalidity,uid))');
-    if(!this.get('settings','main')) this.put('settings','main',{markupPct:DEFAULT_MARKUP_PCT,fx:{},logistics:{}});
+    if(!this.get('settings','main')) this.put('settings','main',{markupPct:DEFAULT_MARKUP_PCT,fx:{},logistics:{},autoInquiries:true});
     for(const supplier of SUPPLIERS) if(!this.get('supplier',supplier.id)) this.put('supplier',supplier.id,{...supplier,email:'',contactVerified:false});
     this.syncing=null;this.sending=new Set();
   }
@@ -56,13 +57,38 @@ export class ProcurementStore extends DurableObject {
   required(kind,id){const value=this.get(kind,id);if(!value)throw new DomainError('항목을 찾을 수 없습니다.',404);return value;}
   readiness(){return {account:MAIL_ACCOUNT,mailConfigured:!!this.env.NAVER_APP_PASSWORD,adminConfigured:true,sync:this.get('sync','main'),markupPct:this.get('settings','main').markupPct};}
   plan(id){return optimizeOffers(this.required('request',id),this.list('offer').filter(o=>o.requestId===id),this.list('supplier'),this.get('settings','main'));}
+  workflow(id){return workflowFor(this.required('request',id),this.list('offer').filter(o=>o.requestId===id));}
+  assertInquiryCurrent(out){
+    const r=this.required('request',out.requestId),s=this.required('supplier',out.supplierId);
+    if((out.requestBasis?inquiryConditions(r)!==out.requestBasis:r.revision!==out.requestRevision)||s.revision!==out.supplierRevision||!s.contactVerified||s.email!==out.to)throw new DomainError('공급처나 품목·특수요건이 변경되었습니다. 문의를 다시 작성하세요.',409);
+  }
+  async inquiryBatch(requestId,{automatic=false}={}){
+    const req=this.required('request',requestId);
+    if(!req.lines?.length)throw new DomainError('BOM 품목을 먼저 확인하세요.');
+    const settings=this.get('settings','main'),out=[],skipped=[];
+    const basis=inquiryConditions(req);
+    const digest=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(basis)));
+    const hash=[...digest].map(n=>n.toString(16).padStart(2,'0')).join('').slice(0,24);
+    if(inquiryConditions(this.required('request',requestId))!==basis)throw new DomainError('BOM이 변경되었습니다. 다시 분석하세요.',409);
+    for(const s of this.list('supplier')){
+      if(!s.contactVerified||!s.email||s.autoInquiry===false){skipped.push({supplierId:s.id,reason:'공식 견적 연락처·자동 문의 대상 확인이 필요합니다.'});continue;}
+      const id='rfq-'+req.id+'-'+s.id+'-'+hash+'-'+s.revision;
+      const old=this.get('outbox',id);if(old){out.push(old);continue;}
+      const canQueue=automatic&&settings.autoInquiries!==false&&!!this.env.NAVER_APP_PASSWORD&&(!req.intakeIssues?.length||req.intakeReviewed===true);
+      const safe=supplierRequest(req),packet=workflowFor(safe);
+      const o=this.put('outbox',id,{kind:'inquiry',requestId:req.id,requestRevision:req.revision,requestBasis:basis,supplierId:s.id,supplierRevision:s.revision,to:s.email,...inquiryMessage(safe,s),status:canQueue?'queued':'draft',automatic:canQueue,cdCSV:workflowCSV(safe,packet),cdFilename:req.number+'-RFQ-CD.csv'});
+      out.push(o);if(canQueue)this.ctx.waitUntil(this.deliver(o.id));
+    }
+    return {outbox:out,skipped,workflow:this.workflow(req.id)};
+  }
   async fetch(request) {
     const path=new URL(request.url).pathname;
     try {
       if(path==='/scheduled'){await this.sync();await this.flush();return json({ok:true});}
       if(request.method==='GET') {
         if(path==='/api/state')return json({readiness:this.readiness(),requests:this.list('request'),suppliers:SUPPLIERS.map(s=>this.get('supplier',s.id)),settings:this.get('settings','main'),outbox:this.list('outbox'),quotes:this.list('quote').map(customerQuote),mail:this.list('mail').map(({body,...m})=>m),business:BUSINESS});
-        let m=path.match(/^\/api\/requests\/([^/]+)$/);if(m)return json({request:this.required('request',m[1]),offers:this.list('offer').filter(o=>o.requestId===m[1]),plan:this.plan(m[1])});
+        let m=path.match(/^\/api\/requests\/([^/]+)$/);if(m){const req=this.required('request',m[1]);return json({request:req,offers:this.list('offer').filter(o=>o.requestId===m[1]),plan:this.plan(m[1]),workflow:this.workflow(m[1]),requirements:req.lines?.map(l=>({lineId:l.id,rows:requirementsFor(l,req),searches:supplierSearches(l,this.list('supplier'))}))||[],replies:this.list('mail').filter(m=>m.requestId===req.id),inquiries:this.list('outbox').filter(o=>o.requestId===req.id&&o.kind==='inquiry')});}
+        m=path.match(/^\/api\/requests\/([^/]+)\/workflow.csv$/);if(m){const req=this.required('request',m[1]);return new Response(workflowCSV(req,this.workflow(req.id)),{headers:{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':`attachment; filename="${req.number}-CD.csv"`,'Cache-Control':'no-store'}});}
         m=path.match(/^\/api\/mail\/([^/]+)$/);if(m)return json(this.required('mail',m[1]));
         m=path.match(/^\/api\/mail\/([^/]+)\/eml$/);if(m){this.required('mail',m[1]);return new Response(this.blobGet('mail:'+m[1]),{headers:{'Content-Type':'message/rfc822','Content-Disposition':'attachment; filename="request.eml"','Cache-Control':'no-store'}});}
         m=path.match(/^\/api\/quotes\/([^/]+)$/);if(m){const q=this.required('quote',m[1]);return json({quote:customerQuote(q),business:BUSINESS});}
@@ -70,9 +96,11 @@ export class ProcurementStore extends DurableObject {
       if(request.method!=='POST')throw new DomainError('지원하지 않는 요청입니다.',405);
       const body=await jsonBody(request);
       if(path==='/api/sync'){await this.sync();return json(this.readiness());}
+      if(path==='/api/bom/preview')return json(parseBOM(body.raw,{specialRequirements:body.specialRequirements,source:body.source||'고객 BOM'}));
+      if(path==='/api/workflow/run')return json(await this.inquiryBatch(body.requestId,{automatic:true}));
       if(path==='/api/settings') {
         const markupPct=Number(body.markupPct);if(!Number.isFinite(markupPct)||markupPct<0||markupPct>500)throw new DomainError('가산율을 확인하세요.');
-        return json(this.put('settings','main',{markupPct,fx:body.fx||{},logistics:body.logistics||{}},expectedRevision(body,this.get('settings','main'))));
+        return json(this.put('settings','main',{markupPct,fx:body.fx||{},logistics:body.logistics||{},autoInquiries:body.autoInquiries!==false},expectedRevision(body,this.get('settings','main'))));
       }
       if(path==='/api/suppliers') {
         const old=this.required('supplier',text(body.id,80));let home=old.home,domains=old.domains;
@@ -81,27 +109,33 @@ export class ProcurementStore extends DurableObject {
           home=url.origin;domains=[url.hostname];
         }
         const address=body.email?email(body.email):'';
-        return json(this.put('supplier',old.id,{...old,home,domains,email:address,contactVerified:!!address&&body.contactVerified===true},expectedRevision(body,old)));
+        return json(this.put('supplier',old.id,{...old,home,domains,email:address,contactVerified:!!address&&body.contactVerified===true,autoInquiry:body.autoInquiry!==false},expectedRevision(body,old)));
       }
       if(path==='/api/requests') {
         const id=body.id?text(body.id,80):crypto.randomUUID();const old=this.get('request',id);
         if(body.id&&!old)throw new DomainError('요청을 찾을 수 없습니다.',404);
-        const value={...old,number:old?.number||'BNQ-'+id.slice(0,8).toUpperCase(),subject:text(body.subject,1000),customerName:text(body.customerName,200),customerEmail:email(body.customerEmail),lines:cleanLines(body.lines),status:'review',mailId:old?.mailId||'',createdAt:old?.createdAt||new Date().toISOString()};
+        if(String(body.specialRequirements||'').length>4000)throw new DomainError('공통 특수요건은 4,000자 이내로 입력하세요.');
+        const basisDocuments=Array.isArray(body.basisDocuments)?body.basisDocuments.map(d=>({id:text(d.id,80)||crypto.randomUUID(),name:text(d.name,200),kind:['drawing','specification','bom','other'].includes(d.kind)?d.kind:'other',reference:text(d.reference,200),revision:text(d.revision,100),reviewed:d.reviewed===true})):old?.basisDocuments||[];
+        if(basisDocuments.length>50||basisDocuments.some(d=>!d.name)||new Set(basisDocuments.map(d=>d.id)).size!==basisDocuments.length)throw new DomainError('검토 문서의 이름·고유 번호와 50개 이내 목록을 확인하세요.');
+        const value={...old,number:old?.number||'BNQ-'+id.slice(0,8).toUpperCase(),subject:text(body.subject,1000),customerName:text(body.customerName,200),customerEmail:email(body.customerEmail),lines:cleanLines(body.lines).map(l=>({...l,requirementsReview:!old?.lines?.some(before=>before.id===l.id)||old.lines.find(before=>before.id===l.id)?.requirementsReview||l.requirementsReview||!!l.specialRequirements||!!body.specialRequirements||!!basisDocuments.length})),specialRequirements:text(body.specialRequirements,4000),basisDocuments,intakeReviewed:body.intakeReviewed===true,status:'review',mailId:old?.mailId||'',createdAt:old?.createdAt||new Date().toISOString()};
         const revision=old?expectedRevision(body,old):undefined;
-        return json(this.ctx.storage.transactionSync(()=>{
+        const saved=this.ctx.storage.transactionSync(()=>{
           const saved=this.put('request',id,value,revision);
           if(old)for(const offer of this.list('offer').filter(o=>o.requestId===id)){
             const before=old.lines.find(l=>l.id===offer.lineId),after=saved.lines.find(l=>l.id===offer.lineId);
-            if(lineConditions(before)!==lineConditions(after))this.put('offer',offer.id,{...offer,checks:{},confirmedAt:'',evidenceType:'',confirmationReset:'고객 사양·수량·서류 요구가 변경되었습니다. 공급처 조건을 다시 확인하세요.'},offer.revision);
+            if(lineConditions(before)!==lineConditions(after)||old.specialRequirements!==saved.specialRequirements||JSON.stringify(old.basisDocuments||[])!==JSON.stringify(saved.basisDocuments||[]))this.put('offer',offer.id,{...offer,checks:{},requirementResponses:{},confirmedAt:'',evidenceType:'',confirmationReset:'고객 사양·수량·서류 요구가 변경되었습니다. 공급처 조건을 다시 확인하세요.'},offer.revision);
           }
           return saved;
-        }));
+        });
+        if(saved.lines.some(l=>l.requirementsReview))await this.inquiryBatch(saved.id,{automatic:true});
+        return json(saved);
       }
       if(path==='/api/offers') {
         const req=this.required('request',text(body.requestId,80));if(!req.lines.some(l=>l.id===body.lineId))throw new DomainError('품목을 확인하세요.');
         const supplier=this.required('supplier',text(body.supplierId,80));const id=body.id?text(body.id,80):crypto.randomUUID();const old=this.get('offer',id);
         if(old&&(old.requestId!==req.id||old.lineId!==body.lineId))throw new DomainError('공급 조건이 다른 요청에 속합니다.');
-        const offer={requestId:req.id,lineId:body.lineId,supplierId:supplier.id,sku:text(body.sku,160),price:body.price,currency:text(body.currency,3).toUpperCase(),unit:text(body.unit,12),priceBasis:body.priceBasis,packSize:body.packSize,minOrderQty:body.minOrderQty,availableQty:body.availableQty,leadDays:body.leadDays,confirmedAt:text(body.confirmedAt,40),expiresAt:text(body.expiresAt,40),evidenceType:text(body.evidenceType,30),evidence:text(body.evidence,8000),checks:body.checks||{},documents:text(body.documents,2000),importCostKRW:body.importCostKRW,importBasis:text(body.importBasis,2000),url:text(body.url,2000)};
+        const requirementResponses={};for(const r of requirementsFor(req.lines.find(l=>l.id===body.lineId),req)){const v=body.requirementResponses?.[r.id];if(v)requirementResponses[r.id]={status:['confirmed','clarification','deviation'].includes(v.status)?v.status:'clarification',offered:text(v.offered,4000),evidence:text(v.evidence,4000)};}
+        const offer={requestId:req.id,lineId:body.lineId,supplierId:supplier.id,sku:text(body.sku,160),price:body.price,currency:text(body.currency,3).toUpperCase(),unit:text(body.unit,12),priceBasis:body.priceBasis,packSize:body.packSize,minOrderQty:body.minOrderQty,availableQty:body.availableQty,leadDays:body.leadDays,confirmedAt:text(body.confirmedAt,40),expiresAt:text(body.expiresAt,40),evidenceType:text(body.evidenceType,30),evidence:text(body.evidence,8000),checks:body.checks||{},requirementResponses,documents:text(body.documents,2000),importCostKRW:body.importCostKRW,importBasis:text(body.importBasis,2000),url:text(body.url,2000)};
         return json(this.put('offer',id,offer,old?expectedRevision(body,old):undefined));
       }
       if(path==='/api/candidate')return json(await productCandidate(body.url,this.required('supplier',body.supplierId)));
@@ -115,7 +149,7 @@ export class ProcurementStore extends DurableObject {
         const req=this.required('request',body.requestId),supplier=this.required('supplier',body.supplierId);
         if(!req.lines?.length)throw new DomainError('품목을 먼저 확인하세요.');
         if(!supplier.email||!supplier.contactVerified)throw new DomainError('공식 공급처 연락처를 확인해 등록하세요.');
-        return json(this.put('outbox',crypto.randomUUID(),{kind:'inquiry',requestId:req.id,requestRevision:req.revision,supplierId:supplier.id,supplierRevision:supplier.revision,to:supplier.email,...inquiryMessage(req,supplier),status:'draft'}));
+        return json(this.put('outbox',crypto.randomUUID(),{kind:'inquiry',requestId:req.id,requestRevision:req.revision,requestBasis:inquiryConditions(req),supplierId:supplier.id,supplierRevision:supplier.revision,to:supplier.email,...inquiryMessage(supplierRequest(req),supplier),cdCSV:workflowCSV(supplierRequest(req),workflowFor(supplierRequest(req))),cdFilename:req.number+'-RFQ-CD.csv',status:'draft'}));
       }
       if(path==='/api/quotes/send') {
         const q=this.required('quote',body.id);this.assertQuoteCurrent(q);
@@ -131,15 +165,14 @@ export class ProcurementStore extends DurableObject {
         const out=this.required('outbox',body.id);
         if(out.status!=='failed'||body.reviewed!==true)throw new DomainError('발송 실패가 확인된 메일만 재시도할 수 있습니다.',409);
         expectedRevision(body,out);
-        const queued=this.put('outbox',out.id,{...out,status:'queued',errorCode:''},out.revision);
+        const queued=this.put('outbox',out.id,{...out,status:'queued',automatic:false,errorCode:''},out.revision);
         this.ctx.waitUntil(this.deliver(out.id));return json(queued);
       }
       if(path==='/api/outbox/send') {
         if(!this.env.NAVER_APP_PASSWORD)throw new DomainError('네이버 앱 비밀번호 설정이 필요합니다.',503);
         const out=this.required('outbox',body.id);
         if(body.reviewed!==true||out.status!=='draft'||body.revision!==out.revision)throw new DomainError('문의 메일을 확인한 뒤 발송하세요.',409);
-        const req=this.required('request',out.requestId),s=this.required('supplier',out.supplierId);
-        if(req.revision!==out.requestRevision||s.revision!==out.supplierRevision||!s.contactVerified||s.email!==out.to)throw new DomainError('공급처나 품목이 변경되었습니다. 문의를 다시 작성하세요.',409);
+        this.assertInquiryCurrent(out);
         const queued=this.put('outbox',out.id,{...out,status:'queued'},out.revision);this.ctx.waitUntil(this.deliver(out.id));return json(queued);
       }
       throw new DomainError('요청을 찾을 수 없습니다.',404);
@@ -163,15 +196,15 @@ export class ProcurementStore extends DurableObject {
       await client.open(this.env.NAVER_APP_PASSWORD);const prev=this.get('sync','main');let lastUID=prev?.uidvalidity===client.validity?prev.lastUID||0:0;
       for(const uid of await client.search(lastUID)) {
         const header=await parseMail(await client.fetch(uid,true));
-        if(quotationSubject(header.subject)) {
+        if(quotationSubject(header.subject)||replyTarget(header,this.list('request'),this.list('outbox'),this.list('supplier')).inquiry) {
           if(!this.sql.exec('SELECT uid FROM mail_seen WHERE uidvalidity=? AND uid=?',client.validity,uid).toArray().length) {
             let mail,raw;if(await client.size(uid)<=MAX_MAIL_BYTES){raw=await client.fetch(uid);mail=await parseMail(raw);}else{mail={...header,body:'메일이 8MB보다 큽니다. 네이버 메일에서 원본과 첨부파일을 직접 확인하세요.',attachments:[],oversized:true};}
             if(!mail.messageId||!this.list('mail').some(m=>m.messageId===mail.messageId)) {
               const id=crypto.randomUUID();if(raw)this.blobPut('mail:'+id,raw);
               this.put('mail',id,{...mail,uid,uidvalidity:client.validity,receivedAt:new Date().toISOString()});
-              const ref=mail.subject.match(/\[(BNQ-[A-Z0-9]+)\]/i)?.[1];const linked=ref&&this.list('request').find(r=>r.number===ref.toUpperCase());
-              if(!linked)this.put('request',id,{number:'BNQ-'+id.slice(0,8).toUpperCase(),subject:mail.subject,customerName:mail.fromName,customerEmail:mail.from,lines:[],status:'intake',mailId:id,createdAt:new Date().toISOString()});
-              else this.put('mail',id,{...this.get('mail',id),requestId:linked.id});
+              const {request:linked,supplier,inquiry}=replyTarget(mail,this.list('request'),this.list('outbox'),this.list('supplier'));
+              if(!linked&&!supplier){const intake=mailBOM(mail);const req=this.put('request',id,{number:'BNQ-'+id.slice(0,8).toUpperCase(),subject:mail.subject,customerName:mail.fromName,customerEmail:mail.from,...intake,status:intake.lines.length?'review':'intake',mailId:id,createdAt:new Date().toISOString()});if(intake.lines.length)await this.inquiryBatch(req.id,{automatic:true});}
+              else this.put('mail',id,{...this.get('mail',id),requestId:linked?.id||'',supplierId:supplier?.id||'',inquiryId:inquiry?.id||'',replyReview:linked?'발신자 진위·회신 원문·품번·각 요건을 검토하세요. 자동 준수 판정하지 않습니다.':'어느 고객 요청의 회신인지 확인하세요. 공급처 회신을 새 고객 BOM으로 처리하거나 다른 공급처에 전달하지 않습니다.'});
               imported++;
             }
             this.sql.exec('INSERT OR IGNORE INTO mail_seen VALUES(?,?,?)',client.validity,uid,mail.messageId||'');
@@ -189,11 +222,12 @@ export class ProcurementStore extends DurableObject {
     try {
       if(out.status!=='queued')return;
       if(!this.env.NAVER_APP_PASSWORD)throw new MailError('NAVER_NOT_CONFIGURED');
+      if(out.automatic&&(this.get('settings','main').autoInquiries===false||this.get('supplier',out.supplierId)?.autoInquiry===false))throw new DomainError('자동 문의 설정이 해제되었습니다.',409);
       if(out.kind==='quote')this.assertQuoteCurrent(this.required('quote',out.quoteId));
-      else {const r=this.required('request',out.requestId),s=this.required('supplier',out.supplierId);if(r.revision!==out.requestRevision||s.revision!==out.supplierRevision||s.email!==out.to)throw new DomainError('문의 조건이 변경되었습니다.',409);}
+      else this.assertInquiryCurrent(out);
       out=this.put('outbox',id,{...out,status:'sending',startedAt:new Date().toISOString()});
       const q=out.kind==='quote'?this.required('quote',out.quoteId):null;
-      const attachment=q?{filename:q.number+'.pdf',bytes:this.blobGet('pdf:'+q.id)}:undefined;
+      const attachment=q?{filename:q.number+'.pdf',bytes:this.blobGet('pdf:'+q.id)}:out.cdCSV?{filename:out.cdFilename,bytes:new TextEncoder().encode(out.cdCSV),type:'text/csv'}:undefined;
       const req=q?this.required('request',q.requestId):null;const reply=req?.mailId?this.get('mail',req.mailId)?.messageId:undefined;
       const message=buildMessage({...out,attachment,messageId:id,replyToMessageId:reply});
       await sendSMTP(this.socket('smtp.naver.com',465),this.env.NAVER_APP_PASSWORD,out.to,message);

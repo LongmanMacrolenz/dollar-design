@@ -1,4 +1,5 @@
 import {referenceDateTime} from './dates.mjs';
+import {matchRequirements,documentsMatch} from './workflow.mjs';
 export const DEFAULT_MARKUP_PCT=20;
 export class DomainError extends Error { constructor(message,status=400){super(message);this.status=status;} }
 export const text=(v,max=1000)=>String(v??'').trim().slice(0,max);
@@ -19,16 +20,17 @@ export function email(value) {
 }
 export function cleanLines(lines) {
   if(!Array.isArray(lines) || !lines.length || lines.length>200) throw new DomainError('품목을 1–200줄 등록하세요.');
-  const result=lines.map((l,i)=>({id:text(l.id,80)||crypto.randomUUID(),no:i+1,description:text(l.description,2000),qty:quantity(l.qty),unit:text(l.unit,12)||'EA',spec:text(l.spec,3000),requiredDocs:text(l.requiredDocs,1000),checksRequired:[...new Set([...(Array.isArray(l.checksRequired)?l.checksRequired.filter(k=>CHECKS.includes(k)):CHECKS),'documents','delivery'])],unresolved:text(l.unresolved,2000)}));
+  if(lines.some(l=>String(l.spec||'').length>3000||String(l.specialRequirements||'').length>4000||String(l.requiredDocs||'').length>1000))throw new DomainError('사양·특수요건·서류가 입력 길이를 넘었습니다. 원문을 검토 문서로 분리하세요.');
+  const result=lines.map((l,i)=>({id:text(l.id,80)||crypto.randomUUID(),no:i+1,description:text(l.description,2000),qty:quantity(l.qty),unit:text(l.unit,12)||'EA',spec:text(l.spec,3000),requiredDocs:text(l.requiredDocs,1000),specialRequirements:text(l.specialRequirements,4000),requirementsReview:l.requirementsReview===true,partReference:text(l.partReference,1000),attributes:Object.fromEntries(['standard','diameter','thread','length','grade','finish','manufacturerPartNo'].filter(k=>text(l.attributes?.[k],500)).map(k=>[k,text(l.attributes[k],500)])),sourceRef:text(l.sourceRef,200),sourceNo:text(l.sourceNo,100),sourceText:text(l.sourceText,6000),checksRequired:[...new Set([...(Array.isArray(l.checksRequired)?l.checksRequired.filter(k=>CHECKS.includes(k)):CHECKS),'documents','delivery'])],unresolved:text(l.unresolved,2000)}));
   if(result.some(l=>!l.description) || new Set(result.map(l=>l.id)).size!==result.length) throw new DomainError('품목 이름과 고유 번호를 확인하세요.');
   return result;
 }
 export function lineConditions(line){
   if(!line)return '';
-  return JSON.stringify([line.description,line.qty,line.unit,line.spec,line.requiredDocs,line.unresolved,[...new Set([...(line.checksRequired||CHECKS),'documents','delivery'])].sort()]);
+  return JSON.stringify([line.sourceNo||'',line.description,line.qty,line.unit,line.spec,line.partReference,line.requiredDocs,line.specialRequirements,line.requirementsReview,line.unresolved,['standard','diameter','thread','length','grade','finish','manufacturerPartNo'].map(k=>line.attributes?.[k]||''),[...new Set([...(line.checksRequired||CHECKS),'documents','delivery'])].sort()]);
 }
 export const CHECKS=['standard','diameter','pitch','length','grade','finish','documents','delivery'];
-export function assessOffer(line,offer,supplier,settings,now=new Date()) {
+export function assessOffer(line,offer,supplier,settings,now=new Date(),request={}) {
   const reasons=[];
   if(!offer.confirmedAt || !['supplier_reply','supplier_quote'].includes(offer.evidenceType) || !text(offer.evidence,8000)) reasons.push('공급처 확인 근거');
   const confirmed=Date.parse(offer.confirmedAt),expires=Date.parse(offer.expiresAt);
@@ -41,6 +43,11 @@ export function assessOffer(line,offer,supplier,settings,now=new Date()) {
   if(!['EA','PACK'].includes(offer.priceBasis)) reasons.push('개당·포장당 가격 기준');
   for(const key of new Set([...(line.checksRequired||CHECKS),'documents','delivery'])) if(offer.checks?.[key]!=='confirmed') reasons.push(`사양 확인: ${key}`);
   if(line.unresolved) reasons.push('고객 사양 미확인');
+  if(request.intakeIssues?.length&&!request.intakeReviewed)reasons.push('고객 BOM 원본·분석 예외 검토');
+  if(line.requirementsReview)for(const r of matchRequirements(line,offer,request)){
+    if(r.status!=='confirmed')reasons.push(`${r.status==='deviation'?'편차':'요건 미확인'}: ${r.label}`);
+    if(r.id==='documents'&&!documentsMatch(r.required,offer.documents))reasons.push('고객 요구 서류와 실제 견적 서류 조건의 일치');
+  }
   if(text(line.requiredDocs)&&!text(offer.documents))reasons.push('요청한 서류의 공급 조건');
   const currency=text(offer.currency,3).toUpperCase();
   let fx=currency==='KRW'?1:Number(settings.fx?.[currency]?.rate);
@@ -64,7 +71,7 @@ export function optimizeOffers(request,offers,suppliers,settings,now=new Date())
   if(!request.lines?.length) throw new DomainError('품목 사양을 먼저 등록하세요.');
   const candidates=request.lines.map(line=>offers.filter(o=>o.lineId===line.id).map(offer=>{
     const supplier=suppliers.find(s=>s.id===offer.supplierId);
-    return {line,offer,supplier,assessment:supplier?assessOffer(line,offer,supplier,settings,now):{eligible:false,reasons:['공급처 등록']}};
+    return {line,offer,supplier,assessment:supplier?assessOffer(line,offer,supplier,settings,now,request):{eligible:false,reasons:['공급처 등록']}};
   }));
   const missing=candidates.map((list,i)=>list.some(c=>c.assessment.eligible)?null:{lineId:request.lines[i].id,no:request.lines[i].no,description:request.lines[i].description,reasons:[...new Set(list.flatMap(c=>c.assessment.reasons))]}).filter(Boolean);
   if(missing.length) return {ready:false,missing,candidates};
@@ -103,7 +110,7 @@ export function createQuote(request,plan,terms,now=new Date()) {
   const lines=plan.selected.map(c=>{
     const cost=c.assessment.baseCostKRW+shippingShare;
     const unitPriceKRW=Math.ceil(cost*(1+markup/100)/c.line.qty);
-    return {no:c.line.no,description:c.line.description,spec:c.line.spec,qty:c.line.qty,unit:c.line.unit,unitPriceKRW,amountKRW:unitPriceKRW*c.line.qty,leadDays:Number(c.offer.leadDays),documents:text(c.offer.documents,2000)};
+    return {no:c.line.no,description:(c.line.sourceNo?'[BOM '+c.line.sourceNo+'] ':'')+c.line.description,spec:c.line.spec,qty:c.line.qty,unit:c.line.unit,unitPriceKRW,amountKRW:unitPriceKRW*c.line.qty,leadDays:Number(c.offer.leadDays),documents:text(c.offer.documents,2000)};
   });
   const netKRW=lines.reduce((sum,l)=>sum+l.amountKRW,0),vatKRW=Math.round(netKRW*.10);
   const validUntil=text(terms.validUntil,30);

@@ -1,4 +1,5 @@
 import PostalMime from 'postal-mime';
+import {xlsxBOM} from './xlsx.mjs';
 import {email,text,DomainError} from './domain.mjs';
 
 const utf8=new TextEncoder();
@@ -114,11 +115,15 @@ export class ImapClient {
   }
   async close(){try{await this.command('LOGOUT');}catch{}try{await this.socket.close();}catch{}}
 }
-export function quotationSubject(subject){return /견적|quotation|\bquote\b|\bRFQ\b|\[BNQ-/i.test(subject);}
+export function quotationSubject(subject){return /견적|quotation|\bquote\b|\bRFQ\b|\bBOM\b|\[BNQ-/i.test(subject);}
 export async function parseMail(bytes){
   const parsed=await PostalMime.parse(bytes);
   const htmlPlain=(parsed.html||'').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'').replace(/<[^>]+>/g,' ').replace(/&nbsp;/g,' ');
-  return {messageId:text(parsed.messageId,500),subject:text(parsed.subject,1000),from:text(parsed.from?.address,254),fromName:text(parsed.from?.name,200),date:parsed.date||'',inReplyTo:text(parsed.inReplyTo,500),references:parsed.references||'',body:text(parsed.text||htmlPlain,600000),attachments:(parsed.attachments||[]).map(a=>({name:text(a.filename||'attachment',200),type:text(a.mimeType,100),size:a.content?.byteLength||0}))};
+  return {messageId:text(parsed.messageId,500),subject:text(parsed.subject,1000),from:text(parsed.from?.address,254),fromName:text(parsed.from?.name,200),date:parsed.date||'',inReplyTo:text(parsed.inReplyTo,500),references:parsed.references||'',body:text(parsed.text||htmlPlain,600000),attachments:(parsed.attachments||[]).map(a=>{
+    const result={name:text(a.filename||'attachment',200),type:text(a.mimeType,100),size:a.content?.byteLength||0};
+    try{if(/\.(csv|tsv|txt)$/i.test(a.filename||'')){if(result.size>200000)throw Error('텍스트 BOM은 200KB 이내로 나누세요.');result.bomText=new TextDecoder('utf-8',{fatal:true}).decode(a.content);}else if(/\.xlsx$/i.test(a.filename||''))result.bomSheets=xlsxBOM(new Uint8Array(a.content));}catch(e){result.bomIssue=text(e.message,500);}
+    return result;
+  })};
 }
 export function encodeHeader(value){
   const words=[];let chunk='';
@@ -140,8 +145,9 @@ export function buildMessage({to,subject,plain,html,attachment,messageId,replyTo
   for(const [type,content] of [['text/plain',plain],['text/html',html||plain]]) body+=`--${alt}\r\nContent-Type: ${type}; charset=UTF-8\r\nContent-Transfer-Encoding: base64\r\n\r\n${wrap64(utf8.encode(content||''))}\r\n`;
   body+=`--${alt}--\r\n`;
   if(attachment){
-    if(!/^[a-zA-Z0-9._-]+\.pdf$/.test(attachment.filename)) throw new DomainError('PDF 파일 이름을 확인하세요.');
-    body+=`--${mix}\r\nContent-Type: application/pdf; name="${attachment.filename}"\r\nContent-Disposition: attachment; filename="${attachment.filename}"\r\nContent-Transfer-Encoding: base64\r\n\r\n${wrap64(attachment.bytes)}\r\n`;
+    if(!/^[a-zA-Z0-9._-]+\.(pdf|csv)$/.test(attachment.filename)) throw new DomainError('첨부 파일 이름을 확인하세요.');
+    const type=attachment.filename.endsWith('.csv')?'text/csv; charset=UTF-8':'application/pdf';
+    body+=`--${mix}\r\nContent-Type: ${type}; name="${attachment.filename}"\r\nContent-Disposition: attachment; filename="${attachment.filename}"\r\nContent-Transfer-Encoding: base64\r\n\r\n${wrap64(attachment.bytes)}\r\n`;
   }
   return headers.join('\r\n')+'\r\n\r\n'+body+`--${mix}--\r\n`;
 }

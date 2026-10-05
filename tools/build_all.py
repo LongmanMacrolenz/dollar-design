@@ -49,6 +49,10 @@ def tree(root: pathlib.Path):
 
 
 def main():
+    reader = subprocess.run(["node", str(ROOT / "tools/build_bom_reader.mjs"), *(["--check"] if "--check" in sys.argv else [])], capture_output=True, text=True)
+    if reader.returncode:
+        print(reader.stdout + reader.stderr)
+        return 1
     if "--check" not in sys.argv:
         build(ROOT)
         return 0
