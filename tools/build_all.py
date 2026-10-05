@@ -33,11 +33,13 @@ def build(root: pathlib.Path):
     print(run("app/build.py", "--base", "app/base.html", "--out", "site/page.html", cwd=root))
     print(run("site/build.py", cwd=root))
     print(run("site/build_lib.py", cwd=root))
+    print(run("site/build_brand.py", cwd=root))
 
 
 def tree(root: pathlib.Path):
     keep = [root / "site" / "page.html", root / "docs" / "index.html", root / "docs" / "sitemap.xml", root / "docs" / "robots.txt"]
     keep += sorted((root / "docs" / "lib").glob("*.html"))
+    keep += sorted((root / "docs" / "brand").glob("*"))
     return keep
 
 
