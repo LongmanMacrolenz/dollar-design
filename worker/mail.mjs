@@ -8,6 +8,25 @@ export const MAX_MAIL_BYTES=8*1024*1024;
 export class MailError extends Error {
   constructor(code,unknown=false){super(code);this.code=code;this.deliveryUnknown=unknown;}
 }
+export function mailErrorMessage(code){
+  if(code==='IMAP_UIDVALIDITY_MISSING'||code==='IMAP_UIDVALIDITY_INVALID') return '네이버 로그인은 성공했지만 메일함 식별 정보를 확인하지 못했습니다. 기존 수집 기록은 유지됩니다. 다시 수집해도 같은 코드가 나오면 서버 응답 확인이 필요합니다.';
+  if(code==='NAVER_AUTH_REJECTED') return '네이버 로그인이 거절되었습니다. IMAP/SMTP 사용 설정과 Cloudflare의 NAVER_APP_PASSWORD를 확인하세요.';
+  return '메일 연결을 확인하세요. 설정과 상태 코드를 참고하세요.';
+}
+// RFC 3501: UIDs are meaningful only together with the mailbox's non-zero
+// 32-bit UIDVALIDITY. Never invent a value or reuse another mailbox's value.
+function uidValidity(lines,status=false){
+  let result;
+  for(const line of lines){
+    const attributes=status?line.match(/^\* STATUS (?:INBOX|"INBOX") \(([^)]*)\)\s*$/i)?.[1]:undefined;
+    const match=status?attributes?.match(/(?:^|\s)UIDVALIDITY\s+(\d+)(?=\s|$)/i):line.match(/^(?:\*|[a-z0-9]+) OK \[UIDVALIDITY\s+(\d+)\]/i);
+    if(!match)continue;
+    const value=Number(match[1]);
+    if(!Number.isInteger(value)||value<1||value>0xffffffff||result!==undefined&&result!==value) throw new MailError('IMAP_UIDVALIDITY_INVALID');
+    result=value;
+  }
+  return result;
+}
 export function base64(bytes) {
   let binary='';for(let i=0;i<bytes.length;i+=8192) binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
   return btoa(binary);
@@ -46,8 +65,17 @@ export class ImapClient {
     if(!(await this.reader.line()).startsWith('* OK')) throw new MailError('IMAP_GREETING_REJECTED');
     await this.command(`LOGIN ${imapQuote(MAIL_ACCOUNT)} ${imapQuote(password)}`);
     const selected=await this.command('SELECT INBOX');
-    this.validity=Number(selected.lines.join('\n').match(/UIDVALIDITY\s+(\d+)/i)?.[1]);
-    if(!this.validity) throw new MailError('IMAP_UIDVALIDITY_MISSING');
+    let validity=uidValidity(selected.lines);
+    // Some servers omit this required SELECT response code. Ask for the
+    // selected mailbox's standard STATUS attribute before searching messages.
+    if(validity===undefined){
+      let status;
+      try{status=await this.command('STATUS "INBOX" (UIDVALIDITY)');}
+      catch(e){if(e.code==='IMAP_COMMAND_REJECTED')throw new MailError('IMAP_UIDVALIDITY_MISSING');throw e;}
+      validity=uidValidity(status.lines,true);
+    }
+    if(validity===undefined) throw new MailError('IMAP_UIDVALIDITY_MISSING');
+    this.validity=validity;
   }
   async command(command){
     const tag='B'+String(++this.sequence).padStart(5,'0');

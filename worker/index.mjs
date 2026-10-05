@@ -3,7 +3,7 @@ import {connect} from 'cloudflare:sockets';
 import {DomainError,text,email,cleanLines,optimizeOffers,createQuote,customerQuote,DEFAULT_MARKUP_PCT} from './domain.mjs';
 import {SUPPLIERS} from './suppliers.mjs';
 import {authorized,assertSameOrigin,jsonBody,json} from './security.mjs';
-import {MAIL_ACCOUNT,MAX_MAIL_BYTES,MailError,ImapClient,parseMail,quotationSubject,buildMessage,sendSMTP,base64,unbase64} from './mail.mjs';
+import {MAIL_ACCOUNT,MAX_MAIL_BYTES,MailError,mailErrorMessage,ImapClient,parseMail,quotationSubject,buildMessage,sendSMTP,base64,unbase64} from './mail.mjs';
 import {productCandidate} from './product.mjs';
 import {businessDate} from './dates.mjs';
 import {BUSINESS,quoteMessage,inquiryMessage} from './templates.mjs';
@@ -135,7 +135,7 @@ export class ProcurementStore extends DurableObject {
         const queued=this.put('outbox',out.id,{...out,status:'queued'},out.revision);this.ctx.waitUntil(this.deliver(out.id));return json(queued);
       }
       throw new DomainError('요청을 찾을 수 없습니다.',404);
-    }catch(e){return json({error:e instanceof DomainError?e.message:e instanceof MailError?'메일 연결을 확인하세요. 설정과 상태 코드를 참고하세요.':'요청을 처리하지 못했습니다.',code:e.code||undefined},e.status||500);}
+    }catch(e){return json({error:e instanceof DomainError?e.message:e instanceof MailError?mailErrorMessage(e.code):'요청을 처리하지 못했습니다.',code:e.code||undefined},e.status||500);}
   }
   assertQuoteCurrent(q) {
     const req=this.required('request',q.requestId),settings=this.get('settings','main');

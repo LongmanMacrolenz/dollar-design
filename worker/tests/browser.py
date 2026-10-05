@@ -50,8 +50,31 @@ def check(BASE, OUT):
    page.set_viewport_size({'width':width,'height':900});page.wait_for_timeout(80)
    assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'),width
   page.get_by_role('button',name='잠금',exact=True).click();page.get_by_role('button',name='관리자 연결',exact=True).wait_for();assert page.evaluate("sessionStorage.getItem('bn-procurement-key')") is None
+  # Exercise failed intake + retry with synthetic responses. No mailbox or
+  # password is connected; the real API's authentication was checked above.
+  state=page.request.get(BASE+'/api/state',headers={'Authorization':'Bearer '+'LOCAL_TEST_ONLY_'+'x'*32}).json()
+  state['readiness']['mailConfigured']=True
+  state['readiness']['sync']=None
+  attempts=[]
+  def sync_response(route):
+   attempts.append(True)
+   if len(attempts)==1:
+    state['readiness']['sync']={'status':'error','errorCode':'IMAP_UIDVALIDITY_MISSING'}
+    route.fulfill(status=500,json={'error':'네이버 로그인은 성공했지만 메일함 식별 정보를 확인하지 못했습니다.','code':'IMAP_UIDVALIDITY_MISSING'})
+   else:
+    state['readiness']['sync']={'status':'connected','lastSuccess':'2026-10-05T15:30:00Z'}
+    route.fulfill(json={'imported':0})
+  page.route('**/api/state',lambda route:route.fulfill(json=state))
+  page.route('**/api/sync',sync_response)
+  page.get_by_label('관리자 비밀키',exact=True).fill('LOCAL_TEST_ONLY_'+'x'*32);page.get_by_role('button',name='관리자 연결',exact=True).click()
+  page.locator('.banner').filter(has_text='수집 확인 전').wait_for()
+  page.get_by_role('button',name='메일 수집',exact=True).click()
+  banner=page.locator('.banner').filter(has_text='메일 수집 오류');banner.wait_for();assert 'IMAP_UIDVALIDITY_MISSING' in banner.inner_text()
+  page.get_by_role('button',name='메일 수집',exact=True).click()
+  banner=page.locator('.banner').filter(has_text='메일 수집 연결 성공');banner.wait_for();assert 'IMAP_UIDVALIDITY_MISSING' not in banner.inner_text();assert '2026-10-06 00:30 KST' in banner.inner_text(),banner.inner_text()
+  assert len(attempts)==2
   assert not errors,errors
-  print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','js_errors':errors},ensure_ascii=False))
+  print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()
 
 
