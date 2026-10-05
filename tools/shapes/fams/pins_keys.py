@@ -578,8 +578,9 @@ def c_ring(kind, r, a_back, a_top, gx, lug_r, lug_h, hole_r, s, n_arc=120):
     return extrude(np.array(pts), 0, s, holes=holes)
 
 
-def e_ring(rg, Ro, s, wp=9.0, tw=6.0, relief=2.7, off=120.0):
-    """E형 멈춤링 (DIN 6799). rg = 홈 지름/2 (발 접촉 반지름), Ro = 바깥 반지름. 열림은 +x쪽, 발 3개(뒤 1 + 열림 가장자리 2)"""
+def e_ring(rg, Ro, s, wp=13.0, tw=4.0, relief=2.9, off=120.0, tip=1.5, taper=30.0):
+    """E형 멈춤링 (DIN 6799). rg = 홈 지름/2 (발 접촉 반지름), Ro = 바깥 반지름. 열림은 +x쪽, 발 3개(뒤 1 + 열림 가장자리 2).
+    열림 쪽 끝은 바깥 윤곽이 안쪽으로 좁아져(폭 tip) 이빨처럼 끝난다"""
     cents = (180.0, 180.0 - off, 180.0 + off)
     a0 = (180.0 - off) - wp
 
@@ -590,7 +591,11 @@ def e_ring(rg, Ro, s, wp=9.0, tw=6.0, relief=2.7, off=120.0):
             u = np.clip((wp + tw / 2 - dd) / tw, 0, 1)
             b = max(b, u * u * (3 - 2 * u))
         return rg + relief * (1 - b)
-    outer = [(Ro * math.cos(math.radians(a)), Ro * math.sin(math.radians(a))) for a in np.linspace(a0, 360 - a0, 140)]
+
+    def rout(th_deg):
+        u = np.clip(min(th_deg - a0, 360 - a0 - th_deg) / taper, 0, 1)
+        return (rg + tip) + (Ro - rg - tip) * (u * u * (3 - 2 * u))
+    outer = [(rout(a) * math.cos(math.radians(a)), rout(a) * math.sin(math.radians(a))) for a in np.linspace(a0, 360 - a0, 160)]
     inner = [(rin(a) * math.cos(math.radians(a)), rin(a) * math.sin(math.radians(a))) for a in np.linspace(360 - a0, a0, 260)]
     pts = _dedupe(outer + inner)
     return extrude(np.array(pts), 0, s)
@@ -658,11 +663,11 @@ def f_ring_int(fid):
 @family('ering', looks=['PH', 'BO', 'ZW', 'SS'])
 def f_ering(fid):
     m = bl.Model(fid)
-    big = e_ring(4.0, 8.0, 0.8, relief=2.7)
-    small = e_ring(2.5, 5.0, 0.6, relief=1.8)
+    big = e_ring(4.0, 8.8, 0.9)
+    small = e_ring(2.5, 5.6, 0.7, relief=1.8, tip=1.2)
     m.add(at(big, -5, 3, 0, yaw=165), 'body', sharp=30, bevel=0.08)
     m.add(at(small, 10, -4, 0, yaw=135), 'body', sharp=30, bevel=0.06)
-    return m.view(el=46)
+    return m.view(el=56)
 
 
 @family('ring-misc', looks=['PH', 'BO', 'SS'])

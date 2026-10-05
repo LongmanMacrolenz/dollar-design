@@ -346,11 +346,6 @@ def rect2d(w, h, cx=0.0, cy=0.0, r=0.0, n=6):
         return np.array([[cx - w / 2, cy - h / 2], [cx + w / 2, cy - h / 2], [cx + w / 2, cy + h / 2], [cx - w / 2, cy + h / 2]])
     r = min(r, w / 2, h / 2)
     pts = []
-    for (sx, sy, a0) in [(1, 1, 0), (-1, 1, 90), (-1, -1, 180), (1, -1, 270)]:
-        for a in np.linspace(a0, a0 + 90, n):
-            pts.append([cx + sx * (w / 2 - r) + r * math.cos(math.radians(a)) * 1, cy + sy * (h / 2 - r) + r * math.sin(math.radians(a)) * 1])
-    # sx, sy는 모서리 위치만; 호는 각 모서리에서 바깥쪽으로
-    pts = []
     for (qx, qy, a0) in [(1, 1, 0), (-1, 1, 90), (-1, -1, 180), (1, -1, 270)]:
         ccx, ccy = cx + qx * (w / 2 - r), cy + qy * (h / 2 - r)
         for a in np.linspace(a0, a0 + 90, n):
