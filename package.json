@@ -1,0 +1,21 @@
+{
+  "name": "boltnote-procurement",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:admin": "node tools/build_admin.mjs",
+    "test:procurement": "node --test worker/tests/*.test.mjs",
+    "dev:worker": "wrangler dev --local",
+    "check:worker": "wrangler deploy --dry-run --outdir /tmp/boltnote-worker-check"
+  },
+  "dependencies": {
+    "@pdf-lib/fontkit": "1.1.1",
+    "pdf-lib": "1.17.1",
+    "postal-mime": "4.0.4"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "miniflare": "5.20261001.0-alpha",
+    "wrangler": "4.147.0"
+  }
+}

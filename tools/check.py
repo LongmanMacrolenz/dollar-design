@@ -53,6 +53,9 @@ def main():
     step("결과물이 원본과 같음", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
 
     node = shutil.which("node")
+    if node:
+        r = run(["npm", "run", "test:procurement"])
+        step("견적·메일·접근 제어 점검", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-1000:])
     page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     if node:
         scripts = re.findall(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", page, re.S)
@@ -95,6 +98,8 @@ def main():
         if not have:
             print("건너뜀  엔진 점검 3종 (playwright 없음: pip install playwright && python -m playwright install chromium)")
         else:
+            r = run([PY, "worker/tests/browser.py"])
+            step("견적 관리 실제 브라우저 흐름", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-1000:])
             out = pathlib.Path(tempfile.mkdtemp(prefix="bn-check-"))
             for name in ("test.py", "holdout.py", "cdtest.py"):
                 r = run([PY, f"app/tests/{name}", "--page", str(ROOT / "site" / "page.html"), "--out", str(out / name)])

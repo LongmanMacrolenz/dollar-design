@@ -11,6 +11,7 @@ bn-check-*/
 app/tests/private_banned.txt
 # 비밀·로컬 설정
 .env
+.dev.vars*
 *.key
 *.pem
 .DS_Store
