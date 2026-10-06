@@ -124,14 +124,24 @@ const IA_DW_ASK = {
 };
 const iaDwAsk = f => IA_DW_ASK[String(f.eng).split(' / ')[0]] || ['호칭 지름과 나사', '길이', '재질·표면처리'];
 
+// 선택한 호칭의 치수 한 줄 (표의 해당 행). 그림이 있을 때는 그림 아래, 없을 때는 안내 칸 안에서 보인다
+const iaDwNum = v => (v == null ? '— (원문 미대조)' : typeof v === 'number' ? String(+v.toFixed(4)) : String(v));
+function iaDwCard(f, s) {
+  const row = f.dims && iaRowOf(f, s.size); if (!row) return '';
+  const u = f.dims.u || (f.sys === 'inch' ? 'in' : 'mm');
+  return `<div class="ia-dcard"><p class="ia-dcard-h"><b>호칭 ${esc(s.size)} 치수</b><span>단위 ${esc(u)}${f.dims.basis === 'T2' ? ' · 공개 자료 3곳 대조(원문 대조 전)' : ''}</span></p><dl>${f.dims.cols.map(([k, ko], i) => `<div><dt>${esc(ko)}</dt><dd>${esc(iaDwNum(row[i + 1]))}</dd></div>`).join('')}</dl></div>`;
+}
+// 2D 칸의 내용: 그림이 있으면 그림 + 치수 카드, 없으면 안내 칸
+const iaDwBox = (f, s, svg) => (svg ? svg + iaDwCard(f, s) : iaDwNone(f, s));
+
 // 2D 칸에 그림이 없을 때의 안내 (그림이 있으면 이 함수는 쓰이지 않는다)
 function iaDwNone(f, s) {
-  const hasTable = !!(f.dims && f.dims.rows && f.dims.rows.length), size = s && s.size ? s.size : '';
-  const why = hasTable
-    ? (iaRowOf(f, size) ? '이 품목은 도면 대신 치수표로 확인합니다. 아래 치수표에서 호칭 줄을 고르세요.' : `이 호칭(${esc(size)})은 규격 원문 대조 값이 없어 도면을 그리지 않습니다. 다른 호칭을 고르세요.`)
+  const hasTable = !!(f.dims && f.dims.rows && f.dims.rows.length), size = s && s.size ? s.size : '', card = iaDwCard(f, s);
+  const why = card ? '이 품목의 모양 도면은 준비 중입니다. 고른 호칭의 치수는 아래와 같습니다.'
+    : hasTable ? `이 호칭(${esc(size)})은 규격 원문 대조 값이 없어 도면을 그리지 않습니다. 다른 호칭을 고르세요.`
     : f.dimsHeld ? `치수표는 규격 원문 대조를 마친 뒤 싣습니다${f.gate ? ` (${esc(f.gate)})` : ''}.`
     : '이 품목의 표준 치수표는 규격서 원문과 대조한 값만 싣는 원칙 때문에 아직 싣지 않았습니다. 없는 치수를 추정해서 그리지 않습니다.';
-  return `<div class="ia-nd"><p class="ia-nd-h"><b>2D 치수 도면</b><span class="tag q">${hasTable ? '치수표' : '준비 중'}</span></p><p class="small">${why}</p>
-    <p class="small"><b>견적 때 알려 주실 치수</b></p><ul class="ia-nd-ask small">${iaDwAsk(f).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+  return `<div class="ia-nd"><p class="ia-nd-h"><b>2D 치수 도면</b><span class="tag q">${hasTable ? '치수표' : '준비 중'}</span></p><p class="small">${why}</p>${card}
+    ${card ? '' : `<p class="small"><b>견적 때 알려 주실 치수</b></p><ul class="ia-nd-ask small">${iaDwAsk(f).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`}
     <div class="actions">${hasTable ? '<button type="button" class="btn sm" data-shp-jump="z-b">치수표 보기 ↓</button>' : ''}<a class="btn sm" href="#custom" data-go="custom">도면·규격 번호 보내 견적 요청</a></div></div>`;
 }

@@ -764,7 +764,7 @@ V.c = id => {
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';
   const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag doc">도면 기반 검토</span></div><p class="note warn small"><span class="nk">제공 범위</span><span>이 품목은 자동 STEP·DXF 다운로드 대상이 아닙니다. 고객 도면과 규격 번호로 요구 형상을 검토합니다.</span></p></section>`}</div>` : '';
   return sheet(zone('A', 'z-a', shd({ trail: [['제품', 'products'], ...(t ? [[t.ko, 't-' + t.id]] : []), [f.ko]], no: 'P', title: `${esc(f.ko)}<span class="h-en" lang="en">${esc(f.en)}${f.enStd ? ` <span class="tag en-std">${esc(f.enStd)}</span>` : ''}</span>`, p: `${sub ? esc(sub.ko) + ' · ' : ''}${mode}${f.use ? ' · ' + esc(f.use) : ''}`, right: stdrow, below: safety + na })
-    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div><div class="dbox" id="ia-draw">${dw || iaDwNone(f, s)}</div><dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
+    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div><div class="dbox" id="ia-draw">${iaDwBox(f, s, dw)}</div><dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
       <div class="fam-r">${iaCfgHTML(f, s)}</div></div>`, 'ia-z')
     + (f.p === 'A' ? zone('B', 'z-b', `<div class="listbar"><h2 id="h-z-b" tabindex="-1">치수표</h2></div>${iaDimsHTML(f, s)}`) : '')
     + zone(f.p === 'A' ? 'C' : 'B', f.p === 'A' ? 'z-c' : 'z-b', `<div class="listbar"><h2>서류·납기</h2></div><p class="small">${esc(CAD_TRUST_COPY ? CAD_TRUST_COPY.always.ko : '')}</p><p class="small muted">재고를 두지 않습니다. 주문마다 국내 도매처에서 조달하고, 납기는 공급처를 확인한 뒤 견적서에 적습니다.</p>`));
@@ -775,7 +775,7 @@ V.after.c = id => {
   shapeShow(f.id, f.ko, s.mat, s.fin);
   const upd = (redrawDw = true) => {
     const o = $('ia-spec-out'); if (o) o.textContent = iaSpecText(f, s);
-    if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d) d.innerHTML = svg || iaDwNone(f, s); document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
+    if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d) d.innerHTML = iaDwBox(f, s, svg); document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
   };
   view().addEventListener('change', e => {
     const k = { 'ia-size': 'size', 'ia-len': 'L', 'ia-mat': 'mat', 'ia-fin': 'fin', 'ia-unit': 'unit' }[e.target.id];

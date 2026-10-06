@@ -2792,6 +2792,15 @@ footer.foot.ia-foot { background: var(--pm-night); color: var(--pm-tx-2); paddin
   .ia-dw .ds { font-size: 15px; }
   .ia-dw .cap { font-size: 13px; }
 }
+/* 고른 호칭의 치수 카드 (2D 칸) */
+.ia-dcard { margin: 0; padding: 10px 14px 12px; border-top: 1px solid var(--hair-2); }
+.ia-nd .ia-dcard { padding: 10px 0 2px; }
+.ia-dcard-h { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; margin: 0 0 8px; font-size: var(--fs-sm); }
+.ia-dcard-h span { color: var(--ink-3); }
+.ia-dcard dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px 14px; margin: 0; }
+.ia-dcard dl > div { border-top: 1px solid var(--hair-2); padding-top: 4px; min-width: 0; }
+.ia-dcard dt { font-size: 11.5px; color: var(--ink-3); line-height: 1.35; }
+.ia-dcard dd { margin: 0; font-family: var(--f-mono); font-size: 14px; color: var(--ink); }
 /* ── zz_site.css ── */
 /* 제품 카탈로그 중심의 사이트 디자인. 엔진과 규격 데이터는 변경하지 않는다. */
 :root {
@@ -13328,7 +13337,7 @@ V.c = id => {
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';
   const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag doc">도면 기반 검토</span></div><p class="note warn small"><span class="nk">제공 범위</span><span>이 품목은 자동 STEP·DXF 다운로드 대상이 아닙니다. 고객 도면과 규격 번호로 요구 형상을 검토합니다.</span></p></section>`}</div>` : '';
   return sheet(zone('A', 'z-a', shd({ trail: [['제품', 'products'], ...(t ? [[t.ko, 't-' + t.id]] : []), [f.ko]], no: 'P', title: `${esc(f.ko)}<span class="h-en" lang="en">${esc(f.en)}${f.enStd ? ` <span class="tag en-std">${esc(f.enStd)}</span>` : ''}</span>`, p: `${sub ? esc(sub.ko) + ' · ' : ''}${mode}${f.use ? ' · ' + esc(f.use) : ''}`, right: stdrow, below: safety + na })
-    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div><div class="dbox" id="ia-draw">${dw || iaDwNone(f, s)}</div><dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
+    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div><div class="dbox" id="ia-draw">${iaDwBox(f, s, dw)}</div><dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
       <div class="fam-r">${iaCfgHTML(f, s)}</div></div>`, 'ia-z')
     + (f.p === 'A' ? zone('B', 'z-b', `<div class="listbar"><h2 id="h-z-b" tabindex="-1">치수표</h2></div>${iaDimsHTML(f, s)}`) : '')
     + zone(f.p === 'A' ? 'C' : 'B', f.p === 'A' ? 'z-c' : 'z-b', `<div class="listbar"><h2>서류·납기</h2></div><p class="small">${esc(CAD_TRUST_COPY ? CAD_TRUST_COPY.always.ko : '')}</p><p class="small muted">재고를 두지 않습니다. 주문마다 국내 도매처에서 조달하고, 납기는 공급처를 확인한 뒤 견적서에 적습니다.</p>`));
@@ -13339,7 +13348,7 @@ V.after.c = id => {
   shapeShow(f.id, f.ko, s.mat, s.fin);
   const upd = (redrawDw = true) => {
     const o = $('ia-spec-out'); if (o) o.textContent = iaSpecText(f, s);
-    if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d) d.innerHTML = svg || iaDwNone(f, s); document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
+    if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d) d.innerHTML = iaDwBox(f, s, svg); document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
   };
   view().addEventListener('change', e => {
     const k = { 'ia-size': 'size', 'ia-len': 'L', 'ia-mat': 'mat', 'ia-fin': 'fin', 'ia-unit': 'unit' }[e.target.id];
@@ -13653,15 +13662,25 @@ const IA_DW_ASK = {
 };
 const iaDwAsk = f => IA_DW_ASK[String(f.eng).split(' / ')[0]] || ['호칭 지름과 나사', '길이', '재질·표면처리'];
 
+// 선택한 호칭의 치수 한 줄 (표의 해당 행). 그림이 있을 때는 그림 아래, 없을 때는 안내 칸 안에서 보인다
+const iaDwNum = v => (v == null ? '— (원문 미대조)' : typeof v === 'number' ? String(+v.toFixed(4)) : String(v));
+function iaDwCard(f, s) {
+  const row = f.dims && iaRowOf(f, s.size); if (!row) return '';
+  const u = f.dims.u || (f.sys === 'inch' ? 'in' : 'mm');
+  return `<div class="ia-dcard"><p class="ia-dcard-h"><b>호칭 ${esc(s.size)} 치수</b><span>단위 ${esc(u)}${f.dims.basis === 'T2' ? ' · 공개 자료 3곳 대조(원문 대조 전)' : ''}</span></p><dl>${f.dims.cols.map(([k, ko], i) => `<div><dt>${esc(ko)}</dt><dd>${esc(iaDwNum(row[i + 1]))}</dd></div>`).join('')}</dl></div>`;
+}
+// 2D 칸의 내용: 그림이 있으면 그림 + 치수 카드, 없으면 안내 칸
+const iaDwBox = (f, s, svg) => (svg ? svg + iaDwCard(f, s) : iaDwNone(f, s));
+
 // 2D 칸에 그림이 없을 때의 안내 (그림이 있으면 이 함수는 쓰이지 않는다)
 function iaDwNone(f, s) {
-  const hasTable = !!(f.dims && f.dims.rows && f.dims.rows.length), size = s && s.size ? s.size : '';
-  const why = hasTable
-    ? (iaRowOf(f, size) ? '이 품목은 도면 대신 치수표로 확인합니다. 아래 치수표에서 호칭 줄을 고르세요.' : `이 호칭(${esc(size)})은 규격 원문 대조 값이 없어 도면을 그리지 않습니다. 다른 호칭을 고르세요.`)
+  const hasTable = !!(f.dims && f.dims.rows && f.dims.rows.length), size = s && s.size ? s.size : '', card = iaDwCard(f, s);
+  const why = card ? '이 품목의 모양 도면은 준비 중입니다. 고른 호칭의 치수는 아래와 같습니다.'
+    : hasTable ? `이 호칭(${esc(size)})은 규격 원문 대조 값이 없어 도면을 그리지 않습니다. 다른 호칭을 고르세요.`
     : f.dimsHeld ? `치수표는 규격 원문 대조를 마친 뒤 싣습니다${f.gate ? ` (${esc(f.gate)})` : ''}.`
     : '이 품목의 표준 치수표는 규격서 원문과 대조한 값만 싣는 원칙 때문에 아직 싣지 않았습니다. 없는 치수를 추정해서 그리지 않습니다.';
-  return `<div class="ia-nd"><p class="ia-nd-h"><b>2D 치수 도면</b><span class="tag q">${hasTable ? '치수표' : '준비 중'}</span></p><p class="small">${why}</p>
-    <p class="small"><b>견적 때 알려 주실 치수</b></p><ul class="ia-nd-ask small">${iaDwAsk(f).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+  return `<div class="ia-nd"><p class="ia-nd-h"><b>2D 치수 도면</b><span class="tag q">${hasTable ? '치수표' : '준비 중'}</span></p><p class="small">${why}</p>${card}
+    ${card ? '' : `<p class="small"><b>견적 때 알려 주실 치수</b></p><ul class="ia-nd-ask small">${iaDwAsk(f).map(x => `<li>${esc(x)}</li>`).join('')}</ul>`}
     <div class="actions">${hasTable ? '<button type="button" class="btn sm" data-shp-jump="z-b">치수표 보기 ↓</button>' : ''}<a class="btn sm" href="#custom" data-go="custom">도면·규격 번호 보내 견적 요청</a></div></div>`;
 }
 /* ── v7_motion.js ── */
