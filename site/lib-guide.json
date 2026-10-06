@@ -500,44 +500,59 @@
     },
     {
       "id": "purchase",
-      "title": "구매·입고 확인",
+      "title": "구매 결정 → BOM 확인",
       "audience": "구매 · 품질",
-      "desc": "요청할 서류와 현품에서 확인할 사항을 연결합니다.",
+      "desc": "추정하지 않고, 확인한 조건과 미확인 질문을 견적 줄에 연결합니다.",
       "steps": [
         {
-          "title": "식별과 추적",
-          "desc": "각인과 히트·로트의 연결을 확인합니다.",
+          "title": "인치와 미터 구분",
+          "desc": "도면의 단위 체계를 먼저 확인합니다.",
           "entries": [
-            "t-marking",
+            "t-inch-mm"
+          ]
+        },
+        {
+          "title": "나사 표기 확인",
+          "desc": "호칭·피치 또는 TPI·공차·내외나사를 함께 확인합니다.",
+          "entries": [
+            "t-inch-designation",
+            "t-metric-designation",
+            "t-inch-class"
+          ]
+        },
+        {
+          "title": "등급과 재질 확인",
+          "desc": "볼트와 너트 각각의 등급, 규격 판본과 대체 허용을 확인합니다.",
+          "entries": [
+            "pc-steel",
+            "astm-a193",
+            "astm-a194"
+          ]
+        },
+        {
+          "title": "표면처리·사용 조건 확인",
+          "desc": "코팅 계통·온도·염분·사워 서비스 요구를 적습니다.",
+          "entries": [
+            "t-hdg",
+            "t-hydrogen",
+            "t-sour"
+          ]
+        },
+        {
+          "title": "필요한 서류 질문",
+          "desc": "문서 종류·히트/로트·시험과 공급 가능 여부를 확인합니다.",
+          "entries": [
+            "t-en10204-types",
             "t-heat-lot",
             "t-mtr"
           ]
         },
         {
-          "title": "검사 문서",
-          "desc": "문서 종류와 적합 확인서의 차이를 읽습니다.",
+          "title": "BOM에 반영",
+          "desc": "원래 줄 번호에 확인 질문을 연결합니다. 모르는 값은 미확인으로 남깁니다.",
           "entries": [
-            "t-en10204-types",
-            "iso-16228",
+            "t-marking",
             "t-coc"
-          ]
-        },
-        {
-          "title": "시험과 수락 검사",
-          "desc": "시험 방법과 입고 검사 범위를 확인합니다.",
-          "entries": [
-            "iso-3269",
-            "t-proof-test",
-            "t-charpy"
-          ]
-        },
-        {
-          "title": "표면처리 조건",
-          "desc": "도금, 오버탭과 수소취성의 관계를 살펴봅니다.",
-          "entries": [
-            "t-hdg",
-            "t-overtap",
-            "t-hydrogen"
           ]
         }
       ]

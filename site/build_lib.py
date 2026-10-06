@@ -21,6 +21,12 @@ GUIDE = json.loads((ROOT / "lib-guide.json").read_text(encoding="utf-8"))
 e = html.escape
 
 
+def official_links(x):
+    links = {"ASTM": ("ASTM", "https://www.astm.org/"), "ASME": ("ASME", "https://www.asme.org/codes-standards"), "ISO": ("ISO", "https://www.iso.org/standards.html"), "KS": ("국가표준인증 통합정보", "https://standard.go.kr/"), "JIS": ("JISC", "https://www.jisc.go.jp/"), "DIN": ("DIN", "https://www.din.de/en"), "SAE": ("SAE", "https://www.sae.org/standards"), "API": ("API", "https://www.api.org/products-and-services/standards")}
+    picked = [f'<a href="{u}" target="_blank" rel="noopener noreferrer">{t} 공식 검색·안내 ↗</a>' for k, (t, u) in links.items() if x.get("org") == k or any(v.startswith(k) for v in x.get("src", []))]
+    return '<p class="src">' + ' · '.join(picked) + '</p><p class="src">발행 기관 안내 링크이며 개별 수치의 검증 원문 링크는 아닙니다. <a href="/#lib?path=purchase">구매 결정 경로 → 견적 확인 질문</a></p>'
+
+
 def site_info() -> dict:
     """site/page.html에서 바닥글에 쓸 사업자 정보를 읽는다 (빈 값이면 표시하지 않음)."""
     t = (ROOT / "page.html").read_text(encoding="utf-8")
@@ -151,7 +157,8 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + '<h2 id="core">핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl
             + ('<section class="watch" id="watch"><h2>BOM·구매 때 주의</h2><ul class="f">' + "".join(f"<li>{e(w)}</li>" for w in x["watch"]) + "</ul></section>" if x.get("watch") else "")
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
-            + f'<p class="src" id="source">근거: {e(" · ".join(x.get("src", [])))} · 확인 {CHECKED}. 규격 원문을 옮긴 것이 아니라 요점을 정리한 것입니다.</p>'
+            + official_links(x)
+            + f'<p class="src" id="source">근거: {e(" · ".join(x.get("src", [])))} · 라이브러리 일괄 검토 {CHECKED} (개별 항목 검토일 미기록). 프로젝트 판본·허용차·사용 조건은 규격 원문과 공급처 서류로 확인해야 합니다. 미확인 값은 추정하지 마세요.</p>'
             + "</article><aside>"
             + f'<div class="box"><h2>지식 지도 · {e(topic["title"])}</h2><p>{e(topic["desc"])}</p><a href="/lib/#topic-{topic["id"]}">이 주제 전체 보기 →</a></div>' + reading
             + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
