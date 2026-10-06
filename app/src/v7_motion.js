@@ -16,10 +16,10 @@ function bnFilmMarkup() {
     <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="규격·재료 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
     </div>
     <div class="bn-film-stage"><div class="bn-film-blueprint" id="bn-film-blueprint" aria-hidden="true">${bnBlueprint()}</div>
-      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-sourcing-poster.webp" aria-label="2D 도면에서 스터드·너트 입체와 나사 확대로 이어지는 장면, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
-        <source data-src="media/boltnote-engineering-v2-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
-        <source data-src="media/boltnote-engineering-v2.webm" type="video/webm">
-        <source data-src="media/boltnote-engineering-v2.mp4" type="video/mp4">
+      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-sourcing-v2-poster.webp" aria-label="2D 도면에서 스터드·너트 입체와 나사 확대로 이어지는 장면, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
+        <source data-src="media/boltnote-engineering-v3-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
+        <source data-src="media/boltnote-engineering-v3.webm" type="video/webm">
+        <source data-src="media/boltnote-engineering-v3.mp4" type="video/mp4">
       </video>
       <div class="bn-film-badge"><span aria-hidden="true"></span><span lang="en">ENGINEERING IN VIEW</span></div>
       <div class="bn-film-corner" aria-hidden="true">BOLTNOTE<br>ENGINEERING SERIES</div>
