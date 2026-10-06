@@ -1,0 +1,61 @@
+/* Company introduction takes precedence over the optional technical viewer. */
+.bn-studio .bn-brand-hero{background:#f3f4ef;color:#17241f;overflow:hidden}
+.bn-studio .bn-brand-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:center;gap:clamp(24px,4vw,64px);padding-top:36px;padding-bottom:36px;min-height:0}
+.bn-brand-copy{min-width:0;padding:12px 0}
+.bn-brand-eyebrow{font-family:var(--bn-en);font-size:10px;letter-spacing:.12em;color:#5c6f61;margin:0 0 22px}
+.bn-studio .bn-brand-hero h1,.bn-studio .bn-brand-hero h1 em{font-size:clamp(32px,3.8vw,58px);line-height:1.23;letter-spacing:-.065em;font-weight:700;color:#17241f;white-space:normal;margin:0;font-style:normal}
+.bn-studio .bn-brand-hero h1 em{color:#d64b2b;display:inline}
+.bn-brand-lead{font-size:14px;line-height:1.9;color:#4b5a50;margin:26px 0}
+.bn-studio .bn-brand-hero .bn-actions{display:flex;gap:10px;flex-wrap:wrap;margin:0}
+.bn-studio .bn-brand-hero .bn-btn{min-height:46px;font-size:12px;padding:12px 18px;gap:12px}
+.bn-brand-scope{font-family:var(--bn-en);font-size:9px;letter-spacing:.08em;color:#5c6f61;margin:28px 0 0}
+.bn-brand-scope span{padding:0 8px}
+.bn-brand-film{margin:0;min-width:0;background:#101d29;color:#f7faf8;border-radius:14px;overflow:hidden;box-shadow:0 18px 42px #1a302d12}
+.bn-brand-stage{position:relative;background:#101d29}
+.bn-brand-stage video{display:block;width:100%;height:clamp(240px,36svh,380px);object-fit:contain}
+.bn-brand-video-label{position:absolute;top:18px;left:22px;font-family:var(--bn-en);font-size:9px;letter-spacing:.12em;color:#d3dde2;pointer-events:none}
+.bn-brand-caption{padding:0 24px 8px;background:#101d29}
+.bn-brand-story{list-style:none;padding:0;margin:0;position:relative;height:94px}
+.bn-brand-story li{position:absolute;inset:0;display:grid;grid-template-columns:auto minmax(0,1fr);align-content:start;gap:16px;opacity:0;visibility:hidden;transition:opacity .2s ease}
+.bn-brand-story li[data-active="true"]{opacity:1;visibility:visible}
+.bn-brand-count{font-family:var(--bn-en);font-size:9px;color:#ef997e;padding-top:8px}
+.bn-brand-story strong{display:block;font-size:clamp(20px,1.8vw,27px);line-height:1.4;font-weight:600;letter-spacing:-.04em;color:#fff}
+.bn-brand-story p{font-size:11px;line-height:1.65;color:#bacbd5;margin:8px 0 0;word-break:keep-all}
+.bn-brand-progress{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;list-style:none;margin:0;padding:0}
+.bn-brand-progress li{font-size:10px;color:#94a7b5;min-width:0;line-height:1.5;white-space:nowrap}
+.bn-brand-progress li[data-active="true"]{color:#fff}
+.bn-brand-progress i{display:block;position:relative;overflow:hidden;height:2px;background:#374c5b;margin:9px 0 0}
+.bn-brand-progress i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--bn-brand-progress,0%);background:#f19878}
+.bn-brand-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;min-height:40px;margin-top:6px;color:#91a7b8;font-size:9px}
+.bn-brand-foot button{display:flex;align-items:center;gap:6px;min-height:40px;padding:6px 0 6px 10px;color:#d6e1e9;font-size:10px;border:0;background:transparent;cursor:pointer}
+.bn-brand-foot button:hover{color:#fff}.bn-brand-foot button:focus-visible{outline:2px solid #f19878;outline-offset:2px}
+.bn-studio .bn-engineering-wrap{padding-top:0;padding-bottom:0}
+.bn-engineering{border-bottom:1px solid #cdd5ce;color:#253c32}
+.bn-engineering>summary{display:flex;align-items:center;gap:16px;list-style:none;cursor:pointer;padding:16px 0;min-height:48px}
+.bn-engineering>summary::-webkit-details-marker{display:none}
+.bn-engineering>summary>span{font-size:13px;font-weight:600}.bn-engineering>summary>small{font-size:11px;color:#65796d}
+.bn-engineering>summary>i{font-size:22px;font-style:normal;margin-left:auto}.bn-engineering[open]>summary>i{transform:rotate(45deg)}
+.bn-engineering-body{padding:4px 0 12px}
+.bn-studio .bn-engineering .bn-film-navigation{max-width:none;margin:0;padding:12px 0 0}
+@media(max-width:900px){
+ .bn-studio .bn-brand-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;padding-top:24px;padding-bottom:24px}
+ .bn-studio .bn-brand-hero h1,.bn-studio .bn-brand-hero h1 em{font-size:34px}.bn-brand-lead{font-size:12px;margin:18px 0}.bn-brand-lead br{display:none}
+ .bn-brand-eyebrow{font-size:8px;margin-bottom:16px}.bn-studio .bn-brand-hero .bn-btn{font-size:11px;padding-inline:14px}
+ .bn-brand-stage video{height:250px}.bn-brand-caption{padding:0 16px 6px}.bn-brand-story{height:105px}.bn-brand-story li{gap:10px}.bn-brand-story strong{font-size:21px}.bn-brand-story p{font-size:10px}.bn-brand-progress{gap:7px}.bn-brand-progress li{font-size:9px}
+}
+@media(max-width:700px){
+ .bn-studio .bn-brand-layout{grid-template-columns:1fr;gap:16px;padding-top:20px;padding-bottom:20px}.bn-brand-copy{padding:0}
+ .bn-studio .bn-brand-hero h1,.bn-studio .bn-brand-hero h1 em{font-size:clamp(29px,7.6vw,45px);line-height:1.18}
+ .bn-brand-eyebrow{font-size:8px;margin-bottom:12px}.bn-brand-lead{font-size:12px;line-height:1.65;margin:14px 0 16px}.bn-brand-lead br{display:block}
+ .bn-studio .bn-brand-hero .bn-actions{gap:8px}.bn-studio .bn-brand-hero .bn-btn{font-size:11px;min-height:42px;padding:9px 14px}.bn-brand-scope{display:none}
+ .bn-brand-stage video{height:clamp(160px,25svh,240px)}.bn-brand-video-label{font-size:8px;top:12px;left:16px}
+ .bn-brand-caption{padding:0 16px 3px}.bn-brand-story{height:76px}.bn-brand-story li{gap:10px}.bn-brand-count{font-size:8px;padding-top:5px}.bn-brand-story strong{font-size:20px}.bn-brand-story p{font-size:10px;line-height:1.6;margin:5px 0 0}
+ .bn-brand-foot{min-height:40px;margin-top:2px}.bn-brand-foot button{font-size:9px}.bn-brand-foot>span{font-size:8px}
+ .bn-engineering>summary{gap:8px;padding-block:14px}.bn-engineering>summary>span{font-size:12px}.bn-engineering>summary>small{font-size:9px}
+}
+@media(max-width:360px),(max-height:720px) and (max-width:700px){
+ .bn-studio .bn-brand-layout{padding-top:14px;padding-bottom:16px;gap:12px}.bn-brand-eyebrow{margin-bottom:8px}
+ .bn-studio .bn-brand-hero h1,.bn-studio .bn-brand-hero h1 em{font-size:28px}.bn-brand-lead{font-size:11px;margin:10px 0 12px}
+ .bn-brand-stage video{height:150px}.bn-brand-story{height:82px}.bn-brand-story strong{font-size:18px}.bn-brand-story p{font-size:9px}.bn-brand-progress li{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.bn-brand-story li{transition:none}}

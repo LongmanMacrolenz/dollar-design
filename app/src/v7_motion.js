@@ -37,14 +37,14 @@ function bnFilmNavigation() {
 let bnFilmCleanup = null;
 function bnFilmInit() {
   if (bnFilmCleanup) bnFilmCleanup();
-  const root = view().querySelector('.bn-cinema');
+  const root = view().querySelector('.bn-engineering');
   if (!root) return;
   const video = root.querySelector('#bn-film-video'), toggle = root.querySelector('#bn-film-play');
   const buttons = [...root.querySelectorAll('[data-bn-scene]')];
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const plantVideo = view().querySelector('.pm-video');
   const abort = new AbortController(), eventOptions = {signal: abort.signal};
-  let desired = false; // Quote first: load video only after an explicit play or chapter selection.
+  let desired = false; // Detailed engineering viewer; the company introduction autoplays separately.
   let visible = true, plantVisible = false, attached = false, pendingSeek = null;
   let filePromise = null, fileURL = null;
   let blueprintMode = false;
