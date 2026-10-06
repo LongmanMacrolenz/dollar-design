@@ -42,8 +42,11 @@ function bdShaft(x0, Lp, cy, hh, o = {}) {
     s += path(x0, m - 5, chL, 0) + path(m + 5, x0 + Lp, 0, chR);
     s += `<path class="bd-th" fill="none" d="M${m - 5} ${cy - hh - 4} q4 ${hh / 2} 0 ${hh} t0 ${hh} M${m + 5} ${cy - hh - 4} q4 ${hh / 2} 0 ${hh} t0 ${hh}"/>`;
   } else s += path(x0, x0 + Lp, chL, chR);
-  const step = Math.max(3, pp);
-  for (let x = tFrom + 2; x < tTo - 1; x += step) { if (broken && Math.abs(x - (x0 + Lp / 2)) < 8) continue; s += `<line class="bd-th" x1="${x.toFixed(1)}" y1="${cy - hh}" x2="${(x + step * .5).toFixed(1)}" y2="${cy + hh}"/>`; }
+  // Conventional thread representation: root lines, not cross-body hatch marks.
+  for(const y of [cy-hh*.78,cy+hh*.78]) {
+    if(broken){const m=x0+Lp/2;if(tFrom<m-6)s+=`<path class="bd-th" fill="none" d="M${tFrom} ${y}H${Math.min(tTo,m-6)}"/>`;if(tTo>m+6)s+=`<path class="bd-th" fill="none" d="M${Math.max(tFrom,m+6)} ${y}H${tTo}"/>`;}
+    else s+=`<path class="bd-th" fill="none" d="M${tFrom} ${y}H${tTo}"/>`;
+  }
   if (tFrom > x0 + 1 || tTo < x0 + Lp - 1) for (const x of [tFrom, tTo]) if (x > x0 + 1 && x < x0 + Lp - 1) s += `<line class="bd-th" x1="${x}" y1="${cy - hh}" x2="${x}" y2="${cy + hh}" stroke-width="1.2"/>`;
   return s;
 }
@@ -70,7 +73,7 @@ function dwSet(g, q) {
   else { const p = P * sc / 2, qq = Qd * sc, w = Math.max(1.5, hh - p); tEnd = xe - qq - w; top = `L${xe - qq - w} ${cy - hh} L${xe - qq} ${cy - p} L${xe} ${cy - p} L${xe} ${cy + p} L${xe - qq} ${cy + p} L${xe - qq - w} ${cy + hh}`; }
   let s = `<path class="bd-ol" d="M${x0} ${cy - hh + ch} L${x0 + ch} ${cy - hh} ${top} L${x0 + ch} ${cy + hh} L${x0} ${cy + hh - ch} Z"/>`;
   const step = Math.max(3, pitchOf(q) * sc);
-  for (let x = x0 + ch + 2; x < tEnd - 1; x += step) s += `<line class="bd-th" x1="${x.toFixed(1)}" y1="${cy - hh + 1}" x2="${(x + step / 2).toFixed(1)}" y2="${cy + hh - 1}"/>`;
+  s += `<path class="bd-th" fill="none" d="M${x0+ch+2} ${cy-hh*.78}H${tEnd-1}M${x0+ch+2} ${cy+hh*.78}H${tEnd-1}"/>`;
   if (pt === 'knurled cup') for (let k = -2; k <= 2; k++) s += `<line class="bd-th" x1="${xe - 3}" y1="${cy + k * c / 3}" x2="${xe - c * .6}" y2="${cy + k * c / 3 + 2}"/>`;
   const T = Math.min(L * .5, Math.max(J * 1.1, d * .45)) * sc, sh = J / Math.sqrt(3) * sc;
   s += `<rect class="bd-hid" x="${x0}" y="${(cy - sh).toFixed(1)}" width="${T.toFixed(1)}" height="${(2 * sh).toFixed(1)}"/>` + cline(x0 - 12, xe + 12, cy);
@@ -259,8 +262,8 @@ function drawingFor(item, opt = {}) {
   let body; try { body = fn(g, q, m); } catch (e) { return null; }
   if (!body) return null;
   const W = 640, H = 400, title = `${q.typeLabel} ${threadTxt(q)}${q.lengthLabel ? ' × ' + q.lengthLabel.replace(/ \(.*$/, '') : ''} 치수 도면`;
-  const unver = g.unsrc ? '<text class="bd-k" x="632" y="16" text-anchor="end">치수: 규격서 확인 중 · 그림은 비례 스케치 (값은 출처 있는 것만)</text>'
-    : (q.system === 'metric' && q.type === 'setscrew') || q.type === 'stud' ? '<text class="bd-k" x="632" y="16" text-anchor="end">일부 치수 일반 자료 기준 · 게시 전 원문 대조</text>' : '';
+  const unver = g.unsrc ? '<text class="bd-k" x="632" y="16" text-anchor="end">형상 참고도 · 표시되지 않은 치수는 적용 규격·고객 도면으로 지정</text>'
+    : (q.system === 'metric' && q.type === 'setscrew') || q.type === 'stud' ? '<text class="bd-k" x="632" y="16" text-anchor="end">형상 참고도 · 표시 치수의 근거와 적용 조건은 구매 사양으로 확인</text>' : '';
   if (g.legend.length) body += `<text class="bd-n" x="16" y="304">${esc(g.legend.join(' · '))}</text>`;
   return `<svg class="bom-dwg${opt.thumb ? ' thumb' : ''}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="${g.id}t ${g.id}d"><title id="${g.id}t">${esc(title)}</title><desc id="${g.id}d">${esc(specLine(q))}. 치수 근거 ${esc(q.dimStd)}. 척도 없음.</desc>${BD_DEFS(g.id)}${BD_STYLE}${unver}${body}${titleBlock(item, W, H)}</svg>`;
 }

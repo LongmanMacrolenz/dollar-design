@@ -2643,7 +2643,7 @@ const recentAside = () => `<aside class="recent" aria-labelledby="h-rc"><div cla
 const plgHTML = (all = false) => `<div class="plg">${Object.entries(FINISH).map(([k, x]) => `<div><i class="sw lg" data-f="${k}"></i><b><code>${k}</code>${esc(x.name)}</b><span>${esc(x.note)}</span></div>`).join('')}${all ? INCH_PL.map(([k, n, t]) => `<div><i class="sw lg" data-f="${k}"></i><b><code>${k}</code>${esc(n)}</b><span>${esc(t)} · 인치 견적품</span></div>`).join('') : ''}</div>
 <p class="small muted plg-cap">화면 색은 실제와 다를 수 있고, 같은 처리도 로트에 따라 색이 다릅니다.</p>`;
 function shipHTML(v, f) {
-  if (f && !PRICE_ON(f.id)) return `<span class="tag q">견적</span><b>납기는 견적 때 회신</b><span class="t">공급처 확인 후 보통 ${SHOP.leadRange[f.id] ? esc(SHOP.leadRange[f.id]) : '<span class="ph">n~m</span>'}영업일 · 포장 ${v.pack}EA</span>`;
+  if (f && !PRICE_ON(f.id)) return `<span class="tag q">견적</span><b>납기는 견적 때 회신</b><span class="t">${SHOP.leadRange[f.id] ? `납기 참고 ${esc(SHOP.leadRange[f.id])}영업일 · 견적 시 확정` : '납기는 공급처 확인 뒤 견적서에 안내'} · 포장 ${v.pack}EA</span>`;
   if (!v.stock) return `<span class="tag wait">도매처 재고</span><b>${v.ship.label} 출고 예정</b><span class="t">${OWN_STOCK ? '' : STOCK_COPY.psT(v.ship.days) + ' · '}포장 ${v.pack}EA</span>`;
   return v.ship.today ? `<span class="tag ok">자체 재고</span><b>오늘 출고</b><span class="t">${CUT_T}까지 발주 확정 시 · 포장 ${v.pack}EA</span>`
     : `<span class="tag ok">자체 재고</span><b>${v.ship.label} 출고</b><span class="t">다음 영업일 · 포장 ${v.pack}EA</span>`;

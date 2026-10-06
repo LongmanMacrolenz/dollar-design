@@ -740,16 +740,16 @@ function cadStripBn(s) {
 /* 고른 품목 → 사양 (부품·이름·치수 출처). ctx: { sys:'m', f, size, L, g, fin } | { sys:'i', f, size, len, grade, fin, spec }
    돌려주는 것: { ok, code, msg, … } — ok가 아니면 파일을 만들지 않는다 (요구사항 §9: 검증 안 된 행·자료 없는 크기는 거절) */
 function cadSpec(ctx) {
-  const f = ctx && ctx.f; if (!f) return { ok: false, code: 'nogen', msg: 'CAD 준비 중' };
+  const f = ctx && ctx.f; if (!f) return { ok: false, code: 'nogen', msg: '도면 기반 검토' };
   const meta = CAD_FAM[f.id];
   const no = (code, msg) => ({ ok: false, code, msg, fam: f.id });
-  if (!meta) return no('nogen', 'CAD 준비 중 — 이 품목은 아직 CAD 생성기가 없습니다. 견적 요청 시 도면으로 회신합니다.');
+  if (!meta) return no('nogen', '이 품목은 자동 CAD 다운로드 대상이 아닙니다. 고객 도면으로 요구 형상을 검토합니다.');
   try { return ctx.sys === 'm' ? cadSpecM(ctx, f, meta) : cadSpecI(ctx, f, meta); }
-  catch (e) { return no('nogen', 'CAD 준비 중 — 이 크기는 아직 파일을 만들 수 없습니다. 견적 요청 시 도면으로 회신합니다.'); }
+  catch (e) { return no('nogen', '이 크기는 자동 CAD 제공 범위에 포함되지 않습니다. 적용 규격과 고객 도면으로 요구 치수를 검토합니다.'); }
 }
 const CAD_MSG = {
   unverified: '이 크기는 규격 원문 대조 전이라 CAD를 만들지 않습니다. 견적 요청 시 도면으로 회신합니다.',
-  nodata: 'CAD 준비 중 — 이 크기는 규격 치수 자료가 아직 없어 파일을 만들지 않습니다. 견적 요청 시 도면으로 회신합니다.',
+  nodata: '이 크기의 검증 치수는 공개 다운로드 범위에 포함되지 않습니다. 적용 규격과 고객 도면으로 검토합니다.',
   len: '길이를 읽을 수 없어 파일을 만들지 않습니다. 길이를 인치로 적어 주세요 (예: 2, 4-1/2, 3.75).',
 };
 function cadSpecM(ctx, f, meta) {
@@ -993,7 +993,7 @@ const cadKB = n => `${Math.max(1, Math.round(n / 1024))} KB`;
 function cadMount(id, ctx) {
   const el = document.getElementById(id); if (!el) return;
   let spec = cadSpec(ctx), built = null;
-  if (spec.ok) { try { built = cadBuild(spec); } catch (e) { spec = { ok: false, code: 'nogen', msg: 'CAD 준비 중 — 이 크기는 아직 파일을 만들 수 없습니다. 견적 요청 시 도면으로 회신합니다.', fam: spec.fam }; } }
+  if (spec.ok) { try { built = cadBuild(spec); } catch (e) { spec = { ok: false, code: 'nogen', msg: '이 크기는 자동 CAD 제공 범위에 포함되지 않습니다. 적용 규격과 고객 도면으로 요구 치수를 검토합니다.', fam: spec.fam }; } }
   CAD_ST.spec = spec; CAD_ST.built = built; CAD_ST.ctx = ctx;
   el.innerHTML = cadBlockHtml(spec, built);
   if (!el.dataset.cadOn) { el.dataset.cadOn = '1'; el.addEventListener('click', cadOnClick); }
@@ -1012,7 +1012,7 @@ function cadBlockHtml(spec, built) {
   return `<section class="cad-blk-in" aria-labelledby="cad-h">
   <div class="cad-hd"><h3 id="cad-h">CAD · 데이터시트</h3><span class="tag doc">STEP · DXF · A4</span></div>
   <p class="small cad-lead">규격 공칭 치수로 만든 단순화 모델입니다. 파일 이름과 부품 정보에 ${spec.ok && spec.quote ? '품목·호칭이' : '형번이'} 들어 있어 설계 BOM에 그대로 쓸 수 있습니다. 회원가입 없이 바로 받을 수 있습니다.</p>
-  ${spec.ok ? `<p class="cad-files"><span class="mono">${e(names)}</span><span class="small muted"> · 약 ${cadKB(built.bytes)}${multi ? ` · 부품 ${spec.parts.length}개 (조립품 아님)` : ''}</span></p>` : `<p class="note warn small cad-why" id="cad-why"><span class="nk">준비 중</span><span>${e(spec.msg)}</span></p>`}
+  ${spec.ok ? `<p class="cad-files"><span class="mono">${e(names)}</span><span class="small muted"> · 약 ${cadKB(built.bytes)}${multi ? ` · 부품 ${spec.parts.length}개 (조립품 아님)` : ''}</span></p>` : `<p class="note warn small cad-why" id="cad-why"><span class="nk">제공 범위</span><span>${e(spec.msg)}</span></p>`}
   <div class="cad-btns">${fileBtns.join('')}${btn('zip', '모두 받기 (zip)')}${ds}${btn('bom', 'BOM 문구 복사')}${tbl}</div>
   ${spec.ok ? `<p class="cad-spec mono small">단위 mm · ${e(cadOriginTxt(spec, 'ko'))}</p>` : ''}
   <p class="small cad-model"><b>${e(CAD_NOTE_KO)}</b></p>
