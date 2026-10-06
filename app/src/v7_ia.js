@@ -239,26 +239,14 @@ function pmMail() {
 /* 홈은 제품 탐색 → 목록 견적 → 현장별 볼팅 → 기술자료 순서로 연결한다.
    이미지에는 규격값을 넣지 않고, 품목 수와 사전 수는 공개 데이터에서 계산한다. */
 V.home = () => `<div class="bn-home bn-studio" id="z-a">
-  <section class="bn-hero bn-cinema" aria-labelledby="h-z-a">
-    <div class="bn-wrap bn-hero-grid">
-      <div class="bn-hero-copy">
-        <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
-        <h1 id="h-z-a" tabindex="-1">BOM은 그대로. <em>구매 조건은 정확하게.</em></h1>
-        <p class="bn-hero-lead">부품표·도면으로 사양과 특수요건을 확인하고 견적을 요청하세요.</p>
-        <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">BOM 견적 요청 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#lib?path=purchase" data-go="lib?path=purchase">특수요건 확인 <span aria-hidden="true">↗</span></a></div>
-        <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
-        <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>
-      </div>
-      ${bnFilmMarkup()}
-    </div>
-    ${bnFilmNavigation()}
-  </section>
+  ${bnBrandMarkup()}
   <div class="bn-facts bn-wrap" aria-label="카탈로그 안내">
     <div><b>${CAT_TILES.length}<small> PRODUCT CATEGORIES</small></b><span>품목별로 찾는 제품군</span></div>
     <div><b>${pmCatN()}<small> FASTENER TYPES</small></b><span>미터·인치 체결부품</span></div>
     <div><b>CAD<small> STEP &amp; DXF</small></b><span>제공 품목의 도면과 모델</span></div>
     <a href="#lib" data-go="lib"><b>${LIB.length}<small> ENGINEERING NOTES</small></b><span>판단의 근거를 찾는 사전 <i aria-hidden="true">↗</i></span></a>
   </div>
+  ${bnEngineeringMarkup()}
   <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
     <div class="bn-wrap">
       <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / THE PRODUCT COLLECTION</p><h2 id="bn-h-products">작지만,<br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><p>볼트 하나부터 플랜트 볼팅 세트까지.<br>형상과 용도에 맞는 제품을 살펴보세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
@@ -296,7 +284,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
 
 V.after.home = () => {
   sbInit('home'); hmBind();
-  bnFilmInit();
+  bnBrandInit();bnFilmInit();
   const f = $('pm-lib-form');
   if (f) f.addEventListener('submit', e => { e.preventDefault(); go(libURL({ q: $('pm-lib-q').value.trim() })); });
 };
