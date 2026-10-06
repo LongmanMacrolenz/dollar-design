@@ -4,13 +4,13 @@
    이름 접두사: ia…(경로·페이지), hm…(홈), sb…(큰 입력칸). 가격은 PRICE_ON(공급처 단가 확인 품목)만, 기본 0개. */
 
 /* ───────── 1. 경로 · 별칭 · 내비 ───────── */
-Object.assign(SHEETS, { products: ['P', '제품'], buy: ['P', '규격품 바로 주문'], list: ['L', '목록 견적'], ref: ['R', '도면·규격'], notes: ['R', '규격 노트'], about: ['A', '회사 소개'], t: ['P', '제품'], k: ['P', '모아 보기'], c: ['P', '품목'] });
+Object.assign(SHEETS, { products: ['P', '제품'], buy: ['P', '규격품 바로 주문'], list: ['L', 'Sales · 견적 문의'], ref: ['R', '도면·규격'], notes: ['R', '규격 노트'], about: ['A', '회사 소개'], t: ['P', '제품'], k: ['P', '모아 보기'], c: ['P', '품목'] });
 SHEETS.bom[1] = '목록 줄마다 보기 (엔지니어 화면)';
 SHEETS.quote[1] = '견적 요청서·견적서';
 SHEETS.custom[1] = '도면·사양서로 요청';
 SHEETS.tools[1] = '계산·대조표';
 SHEETS.help[1] = '회사 소개';
-const IA_ALIAS = { metric: 'products', inch: 'products', help: 'about', cad: 'ref', t: 'products', k: 'products', c: 'products' };
+const IA_ALIAS = { sales: 'list', metric: 'products', inch: 'products', help: 'about', cad: 'ref', t: 'products', k: 'products', c: 'products' };
 // 옛 홈 구역(jumpTo('z-…')) → 새 경로 (명세 10장 표)
 const IA_ZONE = { 'z-a': 'home', 'z-b': 'products', 'z-c': 'k-plant', 'z-d': 'ref', 'z-e': 'notes', 'z-f': 'tools', 'z-g': 'about', 'z-h': 'about' };
 const IA_SYS = ['all', 'metric', 'inch'];
@@ -276,14 +276,14 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
     <div class="bn-resource-shortcuts"><a href="#ref" data-go="ref"><span>DRAWINGS &amp; CAD</span><h3>형상과 치수를 먼저.</h3><p>제공 품목의 도면 · STEP · DXF</p><i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools"><span>ENGINEERING TOOLS</span><h3>계산과 대조를 함께.</h3><p>스터드 길이 · 재질 · 각인 표기</p><i aria-hidden="true">↗</i></a></div>
   </div></section>
   <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-rfq-grid">
-    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>엑셀이나 부품표의 표기를 그대로 붙여 넣으세요.<br>규격·등급·수량을 읽고, 확인할 내용을 보여 드립니다.</p><ol class="bn-rfq-points"><li><span>01</span> 목록과 도면을 보냅니다</li><li><span>02</span> 빠진 사양을 함께 확인합니다</li><li><span>03</span> 공급처 확인 뒤 견적서로 답합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
-    <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 사양 확인</span><small>BOM · 엑셀 · CSV</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE?'단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.':'<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">↗</span></a>'}</div></div>
-  </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div></section>
+    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">05 / CONNECT WITH SALES</p><h2 id="bn-h-rfq">BOM·메모·RFQ,<br>Sales로 바로.</h2><p>기존 자료를 그대로 보내 주세요.<br>사양 확인과 공급처 검토는 볼트노트가 이어갑니다.</p><ol class="bn-rfq-points"><li><span>01</span> BOM·메모·RFQ를 보냅니다</li><li><span>02</span> 사양과 공급 조건을 확인합니다</li><li><span>03</span> 견적과 확인 사항을 회신합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">Sales · 견적 문의 <span aria-hidden="true">↗</span></a></div></div>
+    ${salesContactMarkup(true)}
+  </div></section>
   ${purchaseTrust()}<section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET’S MAKE THE CONNECTION.</p><h2 id="bn-h-cta">목록 하나로,<br>다음 연결을 시작하세요.</h2></div><a class="bn-cta-circle" href="#list" data-go="list"><span aria-hidden="true">↗</span><b>견적 요청</b></a></div></section>
 </div>`;
 
 V.after.home = () => {
-  sbInit('home'); hmBind();
+  hmBind();
   bnBrandInit();bnFilmInit();
   const f = $('pm-lib-form');
   if (f) f.addEventListener('submit', e => { e.preventDefault(); go(libURL({ q: $('pm-lib-q').value.trim() })); });
@@ -555,7 +555,7 @@ function iaPick(it) {
 $('q').addEventListener('paste', e => {
   const t = (e.clipboardData || window.clipboardData)?.getData('text') || '';
   if (!/\n/.test(t.trim())) return;
-  e.preventDefault(); state.listPrefill = t; $('q').value = ''; go(state.route === 'home' ? 'home' : 'list');
+  e.preventDefault(); state.listPrefill = t; $('q').value = ''; go('list');
 });
 window.__hmTest = { kind: sbKind, list: t => sbListData(t).map(r => ({ k: r.k, why: r.why })), isList: sbIsList };
 
@@ -841,21 +841,8 @@ function iaCadSpec(f, s) {
 window.__iaTest = { cadNew: () => Object.keys(IA_CAD_NEW).flatMap(id => { const f = CAT_F[id]; return iaRows(f).map(r => { const sp = iaCadSpec(f, { size: r[0] }); if (!sp.ok) return { id, size: r[0], ok: false, msg: sp.msg };
   const b = cadBuild(sp), x = b.files[0]; return { id, size: r[0], ok: true, stem: sp.stem, kind: x.part.part.kind, p: { ...x.part.part.p, fmt: undefined }, vol: x.vol, step: x.step.text, dxf: x.dxf.text, stepName: x.step.name, dxfName: x.dxf.name }; }); }) };
 /* ───────── 7. 목록 견적 · 도면·규격 · 규격 노트 · 회사 소개 ───────── */
-V.list = () => iaPage(iaHead([['목록 견적']], '목록 보내고 견적 받기', 'Send a List for Quotation',
-  '엑셀·PDF·사진·메일 본문 그대로 보내 주세요. 줄마다 가격·납기·서류 계획을 적어 답합니다.', ORDER_LIVE ? '' : '<p class="ia-pencil">검증 운영 중: 참고 견적을 드립니다. 정식 견적과 주문은 확인 메일로 이어집니다.</p>')
-  + `<div class="ia-two${SHOP.listPrimary === 'paste' ? ' rev' : ''}"><div class="ia-col"><h2 class="ia-h2"><span class="ia-bal sm">A</span>보내기 (메일·카카오톡)</h2><div id="ia-filep" class="ia-filep-w">${iaFilePanel()}</div></div>
-    <div class="ia-col"><h2 class="ia-h2"><span class="ia-bal sm">B</span>보내기 전에 미리 보기 (선택)</h2>${sbBox('list')}</div></div>
-  <div class="ia-box thin ia-recv"><p><span class="lab">받으시는 것</span>1 견적서 (줄마다 단가·납기 범위·서류 계획) · 2 C&amp;D 1장 · 3 공급 불가 목록 <button class="btn sm txt" type="button" data-ia-sample="1">견적서 견본 보기 →</button></p>
-    <p><span class="lab">회신</span>${esc(SLA().recv)}. 20줄 이하는 ${SLA().days}영업일 안에 견적합니다.</p>
-    <p class="redp"><span class="lab">받지 않는 품목</span>원자력 Q·A등급, 선급, 항공·방산, PED 주요 부품</p>
-    <p><a href="#custom" data-go="custom">카탈로그에 없는 모양·길이·해외 규격 → 도면·사양서로 요청</a> · <a href="#bom" data-go="bom">목록 줄마다 자세히 보기 (엔지니어 화면) →</a></p></div>`);
-V.after.list = () => {
-  sbInit('list');
-  view().addEventListener('click', e => {
-    if (e.target.closest('[data-ia-sample]')) { bomNewText(BOM_SAMPLE, true); state.bom.doc = 'quote'; bomSave(); go('quote'); return; }
-    const f = e.target.closest('[data-ia-file]'); if (f) $('ia-filep')?.scrollIntoView({ block: 'start', behavior: reduced() ? 'auto' : 'smooth' });
-  });
-};
+V.list = () => salesPage();
+V.after.list = () => salesInit();
 V.ref = () => iaPage(iaHead([['도면·규격']], '도면·규격 보기', 'Drawings and Standards', '치수 도면, 각인·표기 읽기, 규격 대조표, 플랜지 계산을 가입 없이 씁니다.')
   + `<section class="ia-rsec"><h2 class="ia-h2">도면·CAD</h2><div class="ia-rtiles">${CAT_TILES.map(t => `<a href="#t-${t.id}" data-go="t-${t.id}">${iaTh(IA_TH_TILE[t.id], 64, 40)}<span>${esc(t.ko)}</span></a>`).join('')}</div>
     <p class="small muted">기존 ${typeof CAD_FAM !== 'undefined' ? Object.keys(CAD_FAM).length : 26}개 품목은 품목 페이지에서 치수 도면과 STEP·DXF·A4 데이터시트를 받습니다. 새 품목은 원문 대조를 마친 치수표부터 싣고, 생성기에 맞는 품목(지금 ${Object.keys(IA_CAD_NEW).length}종)은 STEP·DXF도 받습니다. 그 밖의 품목은 고객 도면으로 요구 형상을 검토합니다. DWG는 제공하지 않습니다. DXF R12는 AutoCAD에서 바로 열립니다.</p></section>
@@ -930,7 +917,7 @@ if ('MutationObserver' in window) new MutationObserver(ms => { for (const m of m
 
 /* ───────── 8. 머리글 메뉴(폰) · 바닥글 · 검색 색인 ───────── */
 function iaMenuHTML() {
-  return `<div class="ia-mdoors"><a href="#list" data-go="list">① 목록 보내고 견적 받기</a>${SHOP.quickOrder ? '<a href="#buy" data-go="buy">② 규격품 바로 주문</a>' : ''}<a href="#ref" data-go="ref">${SHOP.quickOrder ? '③' : '②'} 도면·규격 보기</a>${typeof LIB !== 'undefined' && LIB.length ? `<a href="#lib" data-go="lib">${SHOP.quickOrder ? '④' : '③'} 체결부품 규격 사전</a>` : ''}</div>
+  return `<div class="ia-mdoors"><a href="#list" data-go="list">Sales · 견적 문의</a>${SHOP.quickOrder ? '<a href="#buy" data-go="buy">② 규격품 바로 주문</a>' : ''}<a href="#ref" data-go="ref">${SHOP.quickOrder ? '③' : '②'} 도면·규격 보기</a>${typeof LIB !== 'undefined' && LIB.length ? `<a href="#lib" data-go="lib">${SHOP.quickOrder ? '④' : '③'} 체결부품 규격 사전</a>` : ''}</div>
     <div class="ia-chips2">${CAT_TILES.map(t => `<a href="#t-${t.id}" data-go="t-${t.id}">${esc(t.ko)}</a>`).join('')}</div>
     <p><a class="bluep" href="#k-plant" data-go="k-plant"><b>${esc(CAT_COLL.plant.ko)} →</b></a> · <a href="#products" data-go="products">모아 보기 전체 →</a></p>
     <p class="small muted"><a href="#about" data-go="about">회사 소개</a> · 메일 ${rfqC('rfq')} · 카카오톡 ${rfqC('kakaoChat')} · 전화 ${rfqC('tel', { link: true })}</p>`;
@@ -960,5 +947,5 @@ INDEX.forEach(e => {
 Object.values(CAT_F).filter(f => !f.route).forEach(f => INDEX.push({ t: f.ko, s: `${f.en} · ${(f.std[0] || [])[1] || ''}`.slice(0, 90), k: (f.kw + ' ' + f.std.map(x => x[1]).join(' ')).toLowerCase(), go: 'c-' + f.id, g: f.sys === 'inch' ? '인치·플랜트' : '규격품' }));
 CAT_TILES.forEach(t => INDEX.push({ t: t.ko, s: `제품 · ${iaTileN(t)}종`, k: `${t.ko} ${t.en} ${t.subs.map(s => s.ko).join(' ')}`.toLowerCase(), go: 't-' + t.id, g: '도구·안내' }));
 Object.entries(CAT_COLL).forEach(([k, c]) => INDEX.push({ t: c.ko, s: '모아 보기', k: `${c.ko} ${c.en} 모음`.toLowerCase(), go: 'k-' + k, g: '도구·안내' }));
-[['목록 보내고 견적 받기', '엑셀·PDF·사진 그대로', '목록 견적 엑셀 파일 사진 보내기 bom 리스트 부품표', 'list'], ['도면·규격 보기', '도면 · 표기 읽기 · 계산', '도면 cad step dxf 데이터시트 규격 표기 읽기', 'ref'], ['규격 노트', '바뀐 규격과 자주 틀리는 표기', '규격 노트 개정 변경', 'notes'], ['회사 소개', '누가 · 운영 방식 · 사업자 서류', '회사 소개 사업자 서류 사업자등록증 통장 사본 대표', 'about'], ['규격품 바로 주문', '주문 요청서', '바로 주문 주문 요청서 발주', 'buy']]
+[['Sales · 견적 문의', 'BOM·메모·RFQ 그대로 보내기', 'sales 견적 rfq bom 메모 요청서 자료 파일 이메일 영업 문의', 'list'], ['도면·규격 보기', '도면 · 표기 읽기 · 계산', '도면 cad step dxf 데이터시트 규격 표기 읽기', 'ref'], ['규격 노트', '바뀐 규격과 자주 틀리는 표기', '규격 노트 개정 변경', 'notes'], ['회사 소개', '누가 · 운영 방식 · 사업자 서류', '회사 소개 사업자 서류 사업자등록증 통장 사본 대표', 'about'], ['규격품 바로 주문', '주문 요청서', '바로 주문 주문 요청서 발주', 'buy']]
   .forEach(([t, s, k, go]) => INDEX.push({ t, s, k, go, g: '도구·안내' }));
