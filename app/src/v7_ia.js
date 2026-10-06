@@ -696,22 +696,23 @@ const iaQty = v => { if (typeof v === 'number') return isFinite(v) ? v : null; c
 // 값은 수로 계산하고, 표에 분수로 적힌 값('7/16')은 그림에도 분수로 적는다 (Number 객체에 원문 raw와 열 이름 key를 붙임: 그림 글자는 표의 열 이름)
 const iaCv = (f, size, ...keys) => { for (const k of keys) { const r = iaColVal(f, size, k), v = iaQty(r); if (v > 0) return Object.assign(new Number(v), { raw: r, key: k }); } return null; };
 const IA_DRAW = {
-  pin: (f, s) => { const d = iaCv(f, s.size, 'd', 'd1', 'dn'), L = iaQty(s.L) || iaCv(f, s.size, 'lMinStd'); return d && L ? { k: 'pin', d, L } : null; },
+  pin: (f, s) => { const d = iaCv(f, s.size, 'd', 'd1', 'dn'), L = iaQty(s.L) || iaCv(f, s.size, 'lMinStd'); return d ? { k: 'pin', d, L: L || null } : null; },
   washer: (f, s) => { const a = iaCv(f, s.size, 'd1', 'ID'), b = iaCv(f, s.size, 'd2', 'OD'), h = iaCv(f, s.size, 'h', 'T_min'); return a && b && h && b > a ? { k: 'washer', a, b, h, inch: f.sys === 'inch' } : null; },
   nut: (f, s) => { const sw = iaCv(f, s.size, 's', 'F'), m = iaCv(f, s.size, 'm', 'h', 'l', 'H'); return sw && m ? { k: 'nut', s: sw, m, d: iaMetricD(s.size), inch: f.sys === 'inch' } : null; },
   key: (f, s) => { const b = iaCv(f, s.size, 'b'), h = iaCv(f, s.size, 'h'), L = iaQty(s.L) || iaCv(f, s.size, 'lMin'); return b && h && L ? { k: 'key', b, h, L } : null; },
 };
 const IA_DRAW_OF = { pin: 'pin', washer: 'washer', nut: 'nut', key: 'key' };
 function iaDrawSvg(f, s) {
+  const more = iaDwMore(f, s); if (more !== undefined) return more;   // 나사류·스터드·캡너트 (v7_iadraw.js)
   const kind = IA_DRAW_OF[f.eng] && !/^(cotter|clevis|rclip|ipin|grooved|splittaper|spring-co|taper|taper-th)$/.test(f.id) && !/^(tnut|rivnut|channelnut|wing|castle|eyenut|cagenut|weldnut|sqnut|fixturenut|profilenut|oemnut|flangenut|allmetal|hn2)$/.test(f.id) && !/^(sealw|bondseal|dti|taperw|sphw|sqw|pwxl)$/.test(f.id) ? IA_DRAW_OF[f.eng] : null;
   const g = kind && f.dims ? IA_DRAW[kind](f, s) : null; if (!g) return null;
   const P = 'iaAr', u = f.sys === 'inch' ? '"' : '', fmt = v => typeof v?.raw === 'string' && v.raw.includes('/') ? `${v.raw}${u}` : `${+(+v).toFixed(3)}${u}`;
   let b = '', W = 520, H = 250, cy = 122;
   if (g.k === 'pin' || g.k === 'key') {
-    const len = g.L, dia = g.k === 'pin' ? g.d : g.h, sc = Math.min(360 / len, 120 / dia), w = len * sc, h = dia * sc, x0 = (W - w) / 2, y0 = cy - h / 2, ch = g.k === 'pin' ? Math.min(h * .18, 6) : 0;
+    const len = g.L || (g.k === 'pin' ? g.d * 6 : 0), dia = g.k === 'pin' ? g.d : g.h, sc = Math.min(360 / len, 120 / dia), w = len * sc, h = dia * sc, x0 = (W - w) / 2, y0 = cy - h / 2, ch = g.k === 'pin' ? Math.min(h * .18, 6) : 0;
     b += `<path class="ol" d="M${r2(x0 + ch)} ${r2(y0)}H${r2(x0 + w - ch)}L${r2(x0 + w)} ${r2(y0 + ch)}V${r2(y0 + h - ch)}L${r2(x0 + w - ch)} ${r2(y0 + h)}H${r2(x0 + ch)}L${r2(x0)} ${r2(y0 + h - ch)}V${r2(y0 + ch)}Z"/>`;
     if (g.k === 'pin') b += `<path class="cl" d="M${r2(x0 - 14)} ${cy}H${r2(x0 + w + 14)}"/>`;
-    b += dimLine(x0, y0, x0 + w, y0, `${g.k === 'pin' ? 'l' : 'L'} ${fmt(len)}`, 'top', 26, P);
+    b += dimLine(x0, y0, x0 + w, y0, g.L ? `${g.k === 'pin' ? 'l' : 'L'} ${fmt(len)}` : 'l', 'top', 26, P);   // 길이를 안 골랐으면 기호만
     b += dimLine(x0 + w, y0, x0 + w, y0 + h, `${g.k === 'pin' ? 'd' : 'h'} ${fmt(dia)}`, 'right', 26, P);
     if (g.k === 'key') b += `<text class="ds" x="${r2(x0)}" y="${r2(y0 + h + 24)}">b ${fmt(g.b)} (폭)</text>`;
   } else if (g.k === 'washer') {
@@ -774,7 +775,7 @@ V.c = id => {
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';
   const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag wait">준비 중</span></div><p class="note warn small"><span class="nk">준비 중</span><span>CAD 준비 중 — 이 품목은 원문 대조 치수와 CAD 생성기를 맞춘 뒤 STEP·DXF를 드립니다. 견적 요청 시 도면으로 회신합니다.</span></p></section>`}</div>` : '';
   return sheet(zone('A', 'z-a', shd({ trail: [['제품', 'products'], ...(t ? [[t.ko, 't-' + t.id]] : []), [f.ko]], no: 'P', title: `${esc(f.ko)}<span class="h-en" lang="en">${esc(f.en)}${f.enStd ? ` <span class="tag en-std">${esc(f.enStd)}</span>` : ''}</span>`, p: `${sub ? esc(sub.ko) + ' · ' : ''}${mode}${f.use ? ' · ' + esc(f.use) : ''}`, right: stdrow, below: safety + na })
-    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div>${dw ? `<div class="dbox" id="ia-draw">${dw}</div>` : ''}<dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
+    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div><div class="dbox" id="ia-draw">${dw || iaDwNone(f, s)}</div><dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
       <div class="fam-r">${iaCfgHTML(f, s)}</div></div>`, 'ia-z')
     + (f.p === 'A' ? zone('B', 'z-b', `<div class="listbar"><h2 id="h-z-b" tabindex="-1">치수표</h2></div>${iaDimsHTML(f, s)}`) : '')
     + zone(f.p === 'A' ? 'C' : 'B', f.p === 'A' ? 'z-c' : 'z-b', `<div class="listbar"><h2>서류·납기</h2></div><p class="small">${esc(CAD_TRUST_COPY ? CAD_TRUST_COPY.always.ko : '')}</p><p class="small muted">재고를 두지 않습니다. 주문마다 국내 도매처에서 조달하고, 납기는 공급처를 확인한 뒤 견적서에 적습니다.</p>`));
@@ -785,7 +786,7 @@ V.after.c = id => {
   shapeShow(f.id, f.ko, s.mat, s.fin);
   const upd = (redrawDw = true) => {
     const o = $('ia-spec-out'); if (o) o.textContent = iaSpecText(f, s);
-    if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d && svg) d.innerHTML = svg; document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
+    if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d) d.innerHTML = svg || iaDwNone(f, s); document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
   };
   view().addEventListener('change', e => {
     const k = { 'ia-size': 'size', 'ia-len': 'L', 'ia-mat': 'mat', 'ia-fin': 'fin', 'ia-unit': 'unit' }[e.target.id];

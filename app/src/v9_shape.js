@@ -33,15 +33,16 @@ function shapeLook(id, mat, fin, pick) {
 const shapeHas = id => Object.hasOwn(SHAPE_IMG, id) && SHAPE_IMG[id].length > 0;
 const shapeThumb = (id, w = 96, h = 72) => shapeHas(id) ? `<img src="${SHAPE_DIR}${id}-s.webp" width="${w}" height="${h}" alt="" loading="lazy" decoding="async">` : '';
 state.shapePick = state.shapePick || {};   // 품목군 id → 고객이 칩으로 고른 룩 (재질·표면처리 칸을 바꾸면 지운다)
-function shapeFigHtml(id, name, look, hint) {
+function shapeFigHtml(id, name, look, hasTabs) {
   const list = SHAPE_IMG[id], nm = SHAPE_NAME[look] || look;
-  return `<figure class="shp"><div class="shp-img"><img src="${SHAPE_DIR}${id}-${look}.webp" width="576" height="432" alt="${esc(name)} 형상 렌더링 · ${esc(nm)}" decoding="async" onerror="this.closest('.shp').hidden=true">${hint === 'tab' ? '<button type="button" class="shp-go2d" data-shp-tab="2d">2D 치수 보기 →</button>' : hint === 'table' ? '<button type="button" class="shp-go2d" data-shp-jump="z-b">치수표 보기 ↓</button>' : ''}</div>
+  return `<figure class="shp"><div class="shp-img"><img src="${SHAPE_DIR}${id}-${look}.webp" width="576" height="432" alt="${esc(name)} 형상 렌더링 · ${esc(nm)}" decoding="async" onerror="this.closest('.shp').hidden=true">${hasTabs ? '<button type="button" class="shp-go2d" data-shp-tab="2d">2D 치수 보기 →</button>' : ''}</div>
     ${list.length > 1 ? `<div class="shp-looks" role="group" aria-label="마감 색 미리보기"><span class="lab">마감 색</span>${list.map(k => `<button type="button" class="chipbtn${k === look ? ' on' : ''}" data-shp="${k}" aria-pressed="${k === look}">${esc(SHAPE_NAME[k] || k)}</button>`).join('')}</div>` : ''}
     <figcaption><b>형상 · ${esc(nm)}</b><span>참고용 렌더링입니다. 규격 공칭 형상의 대표 호칭 그림이며 실제 제품 사진이 아닙니다. 색은 도금·로트에 따라 다릅니다.</span></figcaption></figure>`;
 }
 // 3D 형상이 있으면 그림 칸 위에 '3D 형상 | 2D 치수 도면' 탭을 둔다. 3D로 눈길을 끌고, 구매 때 필요한 치수는 한 번 눌러 보게 한다.
 // 도면 칸(.dbox)은 그대로 두고 탭 상자로 옮기기만 하므로, 호칭·길이를 바꿀 때 다시 그리는 코드는 그대로 동작한다.
-// 처음 보는 화면은 늘 3D, 한 번 2D를 고르면 그 방문 동안은 품목을 옮겨도 2D로 연다 (저장하지 않음). 도면 칸이 없는 품목(카탈로그 일부)은 탭 없이 3D만 보인다.
+// 처음 보는 화면은 늘 3D, 한 번 2D를 고르면 그 방문 동안은 품목을 옮겨도 2D로 연다 (저장하지 않음).
+// 품목 페이지(#c-)는 도면이 없어도 2D 칸이 있다(v7_iadraw.js의 안내 칸). 그래서 3D가 있는 모든 품목에 탭이 생긴다.
 state.shapeTab = '3d';
 function shapeTabs(slot) {
   const box = slot.nextElementSibling;
@@ -66,12 +67,10 @@ function shapeShow(id, name, mat, fin) {
   const tabbed = () => { const w = slot.closest('.shp-tabs'); if (w) shapeTabApply(w); };
   if (!look) { slot.innerHTML = ''; slot.dataset.look = ''; tabbed(); return; }
   shapeTabs(slot);
-  // 2D 도면이 있으면 탭 단추, 도면은 없지만 치수표(zone B)가 있으면 치수표로 가는 단추, 둘 다 없으면 단추 없음 (없는 치수를 만들어 내지 않는다)
-  const hint = slot.closest('.shp-tabs') ? 'tab' : document.querySelector('#z-b .ia-dimt') ? 'table' : '';
   slot.dataset.id = id; slot.dataset.name = name; slot.dataset.mat = mat || ''; slot.dataset.fin = fin || '';
   if (slot.dataset.look !== look || slot.dataset.shown !== id) {
     slot.dataset.look = look; slot.dataset.shown = id;
-    slot.innerHTML = shapeFigHtml(id, name, look, hint);
+    slot.innerHTML = shapeFigHtml(id, name, look, !!slot.closest('.shp-tabs'));
   }
   tabbed();
 }

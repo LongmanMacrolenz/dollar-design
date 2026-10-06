@@ -44,3 +44,17 @@
   .fam-l > .shp-tabs.only2d { order: 0; }
   .shp-tb { max-width: none; }
 }
+/* 2D 칸에 그림이 없을 때(v7_iadraw.js iaDwNone): 이유·견적 때 알려 주실 치수·요청 단추 */
+.ia-nd { padding: 14px 16px 16px; display: grid; gap: 8px; }
+.ia-nd .ia-dw-sym { max-height: 250px; }
+.ia-nd-h { display: flex; align-items: center; gap: 8px; margin: 0; }
+.ia-nd p { margin: 0; }
+.ia-nd-ask { margin: 0; padding-left: 1.2em; color: var(--ink-2); }
+.ia-nd-ask li { margin: 2px 0; }
+.ia-nd .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+/* 좁은 화면: 도면 칸이 줄어들면 글자도 같이 줄어드니, 도면 안 글자를 키운다 */
+@media (max-width: 680px) {
+  .ia-dw .dt, .ia-dw .dim text { font-size: 17px; }
+  .ia-dw .ds { font-size: 15px; }
+  .ia-dw .cap { font-size: 13px; }
+}
