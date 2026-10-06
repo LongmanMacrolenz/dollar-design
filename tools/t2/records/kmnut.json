@@ -1,0 +1,389 @@
+{
+ "id": "kmnut",
+ "status": "ok",
+ "standard": "DIN 981 KM",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P"
+  ],
+  [
+   "d2",
+   "외경 d2"
+  ],
+  [
+   "d3",
+   "좌면측 지름 d3 (최대)"
+  ],
+  [
+   "h",
+   "너트 폭(두께) h"
+  ],
+  [
+   "b",
+   "홈 폭 b"
+  ],
+  [
+   "t",
+   "홈 깊이 t"
+  ]
+ ],
+ "rows": [
+  [
+   "M10x0.75",
+   0.75,
+   18,
+   13.5,
+   4,
+   3,
+   2
+  ],
+  [
+   "M12x1",
+   1,
+   22,
+   17,
+   4,
+   3,
+   2
+  ],
+  [
+   "M15x1",
+   1,
+   25,
+   21,
+   5,
+   4,
+   2
+  ],
+  [
+   "M17x1",
+   1,
+   28,
+   24,
+   5,
+   4,
+   2
+  ],
+  [
+   "M20x1",
+   1,
+   32,
+   26,
+   6,
+   4,
+   2
+  ],
+  [
+   "M30x1.5",
+   1.5,
+   45,
+   38,
+   7,
+   5,
+   2
+  ],
+  [
+   "M35x1.5",
+   1.5,
+   52,
+   44,
+   8,
+   5,
+   2
+  ],
+  [
+   "M40x1.5",
+   1.5,
+   58,
+   50,
+   9,
+   6,
+   2.5
+  ],
+  [
+   "M45x1.5",
+   1.5,
+   65,
+   56,
+   10,
+   6,
+   2.5
+  ],
+  [
+   "M50x1.5",
+   1.5,
+   70,
+   61,
+   11,
+   6,
+   2.5
+  ],
+  [
+   "M55x2",
+   2,
+   75,
+   67,
+   11,
+   7,
+   3
+  ],
+  [
+   "M60x2",
+   2,
+   80,
+   73,
+   11,
+   7,
+   3
+  ],
+  [
+   "M65x2",
+   2,
+   85,
+   79,
+   12,
+   7,
+   3
+  ],
+  [
+   "M70x2",
+   2,
+   92,
+   85,
+   12,
+   8,
+   3.5
+  ],
+  [
+   "M75x2",
+   2,
+   98,
+   90,
+   13,
+   8,
+   3.5
+  ],
+  [
+   "M80x2",
+   2,
+   105,
+   95,
+   15,
+   8,
+   3.5
+  ],
+  [
+   "M90x2",
+   2,
+   120,
+   108,
+   16,
+   10,
+   4
+  ],
+  [
+   "M95x2",
+   2,
+   125,
+   113,
+   17,
+   10,
+   4
+  ],
+  [
+   "M100x2",
+   2,
+   130,
+   120,
+   18,
+   10,
+   4
+  ],
+  [
+   "M105x2",
+   2,
+   140,
+   126,
+   18,
+   12,
+   5
+  ],
+  [
+   "M110x2",
+   2,
+   145,
+   133,
+   19,
+   12,
+   5
+  ],
+  [
+   "M115x2",
+   2,
+   150,
+   137,
+   19,
+   12,
+   5
+  ],
+  [
+   "M120x2",
+   2,
+   155,
+   138,
+   20,
+   12,
+   5
+  ],
+  [
+   "M125x2",
+   2,
+   160,
+   148,
+   21,
+   12,
+   5
+  ],
+  [
+   "M130x2",
+   2,
+   165,
+   149,
+   21,
+   12,
+   5
+  ],
+  [
+   "M135x2",
+   2,
+   175,
+   160,
+   22,
+   14,
+   6
+  ]
+ ],
+ "row_support": {
+  "M10x0.75": 3,
+  "M12x1": 3,
+  "M15x1": 3,
+  "M17x1": 3,
+  "M20x1": 3,
+  "M30x1.5": 3,
+  "M35x1.5": 3,
+  "M40x1.5": 3,
+  "M45x1.5": 3,
+  "M50x1.5": 3,
+  "M55x2": 3,
+  "M60x2": 3,
+  "M65x2": 3,
+  "M70x2": 3,
+  "M75x2": 3,
+  "M80x2": 3,
+  "M90x2": 3,
+  "M95x2": 3,
+  "M100x2": 3,
+  "M105x2": 3,
+  "M110x2": 3,
+  "M115x2": 3,
+  "M120x2": 3,
+  "M125x2": 3,
+  "M130x2": 3,
+  "M135x2": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_981",
+   "site": "fasten.it",
+   "what": "'DIN 981 type KM' table (06-2009): d1, pitch, d2, d3 max, h, a, b, t, lockwasher type (KML/HM rows ignored). Page labels the standard 'Withdrawn'."
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_981.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "3 blocks KM0-KM34: d, d2, d3, h, b, t, lockwasher"
+  },
+  {
+   "url": "https://digipich.com/en/standards/din-981/",
+   "site": "digipich.com",
+   "what": "table Size,P,h,b,t,d2,d3,marking(KMn),mass,z"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "KM5 row (M25x1.5; d2 38, d3 32, h 7, b 5, t 2)",
+   "why": "all dimensions agree in 3 sources but digipich prints the thread as M24x1.5 (typo) vs M25 in fasten.it and schrauben-lexikon -> only 2 sources agree on the designation; restore after a third source"
+  },
+  {
+   "what": "KM17 row (M85x2)",
+   "why": "h: schrauben-lexikon 15 vs fasten.it and digipich 16 -> only 2 agree"
+  },
+  {
+   "what": "KM28 and larger (M140x2 ... M200x3, Tr210 ... Tr280)",
+   "why": "digipich table ends at KM27; fasten.it + schrauben-lexikon only (2 sources)"
+  },
+  {
+   "what": "KML (light series, M120x2 and up) and HM (trapezoidal) rows",
+   "why": "different series, not checked by 3 sources"
+  },
+  {
+   "what": "column a (fasten.it only), mass, z",
+   "why": "fewer than 3 sources"
+  },
+  {
+   "what": "KM designation numbers (KM0...KM27) as table key",
+   "why": "printed by only schrauben-lexikon and digipich (fasten.it gives lock-washer MB numbers with its own typos); mapping kept in notes"
+  },
+  {
+   "what": "boltsfastener.com 'DIN 981' table",
+   "why": "values (M10x1 dk 22 ...) belong to a different nut series, not KM"
+  }
+ ],
+ "checks": [
+  "d3 < d2 and b < d3 and t < h in every row",
+  "d2, d3, h, b, t all non-decreasing with thread size",
+  "pitch steps 0.75, 1, 1.5, 2 as expected for fine-thread bearing lock nuts",
+  "cell-by-cell comparison of all 6 value columns for each thread size: only discrepancy KM17 h (15 vs 16) and digipich KM5 thread typo"
+ ],
+ "shape_hint": "A round slotted lock nut for rolling bearings: a short cylinder (outer diameter d2, thin width h) with a fine internal thread, four evenly spaced rectangular slots (width b, depth t) cut across one face for a hook/impact wrench and for the tab of a lock washer, and a short collar/relief of diameter d3 on the bearing-side face.",
+ "role_map": {
+  "d_nom": "fine metric thread M<d>x<P> on the shaft",
+  "P": "thread pitch",
+  "d2": "outside diameter",
+  "d3": "diameter of the bearing-side contact face / spigot (max)",
+  "h": "nut width (axial thickness)",
+  "b": "slot width",
+  "t": "slot depth"
+ },
+ "notes": "KM designation = ascending index: KM0 M10x0.75, KM1 M12x1, KM2 M15x1, KM3 M17x1, KM4 M20x1, KM5 M25x1.5 (dropped), KM6 M30x1.5, ... KM27 M135x2 (as printed by schrauben-lexikon and digipich). Thread sizes are fine pitch: do NOT read 'M30' as coarse M30. Matching lock washers are MB<n> with the same index (fasten.it/schrauben-lexikon list them). ISO 2982-2:2013, KS B 2004 and JIS AN nuts not verified; fasten.it marks DIN 981 as 'Withdrawn' (hint says 2009-06 current) - maintainer should confirm which standard the catalog cites. Inch bearing locknuts are a separate family (ilocknut).",
+ "clusters": {
+  "FE (fasteners.eu-derived)": [
+   "digipich.com (provenance: single source fasteners.eu; reproduces fasteners.eu typo KM5='M24x1,5')",
+   "fasteners.eu (live, same values, used only as cross-check)"
+  ],
+  "fasten.it": [
+   "fasten.it (DIN 981 06-2009 table, own typos: MB 16 twice)"
+  ],
+  "German dataset": [
+   "schrauben-lexikon.de (own typos: MB7 twice, header KM34)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched 3 listed URLs + fasteners.eu DIN 981 live, HTTP 200. 26 rows x 6 value cols (P,d2,d3,h,b,t): fasten.it 156/156 ok (2009 table; 1993 table also equal), lexikon 130/130 ok (pitch read from designation M..x..), digipich 156/156 ok, fasteners.eu 130/130 ok. 0 mismatches; every cell exactly 3 clusters. KM index mapping (thread->KM n) identical in lexikon, digipich and fasteners.eu for all 26 rows; fasten.it MB n equals KM n index. Dropped rows KM5/KM17 re-confirmed: KM5 thread is M25 in fasten.it+lexikon but M24 in FE (typo) -> label has 2 clusters only; KM17 h=16 in fasten.it+FE vs 15 lexikon -> 2 clusters only. Physical: d3<d2, b<d3, t<h, all monotone.",
+  "problems": [
+   "Exactly 3 clusters on every cell, and one of them (digipich) is a verbatim copy of fasteners.eu - zero margin; any later disagreement kills a cell.",
+   "Row labels are thread designations M<d>x<P> (consistent in all sources). The KM numbers (KM0..KM27) are printed only by lexikon and the FE cluster (2 clusters; fasten.it only gives lock-washer MB numbers) -> do NOT use KM numbers as the key; keep thread labels. Sequence has gaps (KM5 M25x1.5, KM17 M85x2 absent).",
+   "Labels M120x2 and M130x2 also exist in the light KML series (d2 145/155, d3 135/145) in fasten.it and FE; record correctly uses heavy KM values (d2 155/165) but the bare label is ambiguous across series.",
+   "Do not read M30x1.5 etc. as coarse M30 (all rows fine pitch) - ok as labelled.",
+   "Role of b (slot width), t (slot depth), d3 (bearing-side diameter, max) comes from DIN 981 symbols; sources print only symbols/tolerances (h13 -> nominal=max), no verbal definition. Low risk.",
+   "fasten.it flags DIN 981 'Withdrawn' (replaced by ISO 2982-2); catalog should say which standard it cites."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 981 type KM (2009-06 table; rolling-bearing lock nuts KM0-KM27)",
+ "scope": "KM 시리즈 — 호칭은 나사 표기(M10×0.75)로 적습니다"
+}

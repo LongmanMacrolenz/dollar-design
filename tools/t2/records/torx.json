@@ -1,0 +1,176 @@
+{
+ "id": "torx",
+ "status": "ok",
+ "standard": "ISO 14583",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "dk_max",
+   "머리 지름 dk 최대(=호칭)"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대(=호칭)"
+  ],
+  [
+   "T",
+   "헥사로뷸러 소켓 번호 (TORX T번호)"
+  ],
+  [
+   "A",
+   "소켓 대각 지름 A (참고값)"
+  ],
+  [
+   "t_max",
+   "소켓 깊이 t 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   0.5,
+   5.6,
+   2.4,
+   10,
+   2.8,
+   1.27
+  ],
+  [
+   "M4",
+   0.7,
+   8,
+   3.1,
+   20,
+   3.95,
+   1.66
+  ],
+  [
+   "M5",
+   0.8,
+   9.5,
+   3.7,
+   25,
+   4.5,
+   1.91
+  ],
+  [
+   "M6",
+   1,
+   12,
+   4.6,
+   30,
+   5.6,
+   2.42
+  ],
+  [
+   "M8",
+   1.25,
+   16,
+   6,
+   45,
+   7.95,
+   3.18
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/iso-14583-specifications-hex-socket-pan-head-screws/",
+   "site": "fullerfasteners.com",
+   "what": "ISO 14583 Specifications (page title says hex socket but table is hexalobular): 3 tables M2-M10: P, a, dk, k, x, Socket No., A, t, r, b"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/ScrewBolt-TXPan14583-M.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "Torx pan head screws ISO 14583 table M2-M10: p, a, b, da, dk, k, r, rf, x, socket no., A, t"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1375",
+   "site": "nfgab.com",
+   "what": "Hexalobular (6 Lobe) socket pan head machine screws ISO 14583 (also /p/1350, same data): d2 max (=dk), k max, t max, a~ (=A), bit no.; sizes M2, M2.5, M3, M4, M5, M6, M8 (size header is outside the table, order taken from the page text 'd1 M2 M2,5 M3 M4 M5 M6 M8')"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-7984",
+   "site": "woodstockindustrial.com",
+   "what": "pitch column only (M3-M12): third independent confirmation of coarse pitch P=0.5, 0.7, 0.8, 1.0, 1.25 (pitch is the ISO 261 thread property, not specific to this part); sunhyings.com low-head page gives the same P"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "rows M2, M2.5, M3.5, M10",
+   "why": "M2/M2.5/M3.5: coarse pitch P only in 2 independent sources (Fuller, Westfield); M10 and M3.5 are not in the nfgab table, so dk/k/t/A/T have only 2 sources; no search budget left to find a third page"
+  },
+  {
+   "what": "column b (thread length)",
+   "why": "Fuller and Westfield disagree on every size (Fuller 16/18/19/20/22/25/28/34/40 vs Westfield min 25 or 38) - different definitions"
+  },
+  {
+   "what": "columns dk_min, k_min, t_min, a_max, x_max, r_min, da, rf",
+   "why": "only 2 independent sources (Fuller, Westfield)"
+  },
+  {
+   "what": "other head forms of the family: ISO 14579 (cap), ISO 14580 (cheese), ISO 14581 (countersunk), ISO 14584, DIN 34827",
+   "why": "ISO 14580/14581 have only Fuller + Westfield tables (2 sources); no dedicated ISO 14579 / 14584 / DIN 34827 table was found by URL probing (not verified further because the web search quota ran out)"
+  }
+ ],
+ "checks": [
+  "dk_max/d between 1.87 and 2.0; k_max < dk_max; t_max < k_max; A < dk_max",
+  "P, dk_max, k_max, T, A, t_max strictly increase with d",
+  "Socket numbers T10/T20/T25/T30/T45 match among Fuller, Westfield and nfgab",
+  "no disagreement among the three independent groups on any kept cell (nfgab 1350 and 1375 pages agree with each other)",
+  "only conflict found: column b (dropped)"
+ ],
+ "shape_hint": "Pan (rounded cylindrical) head with a slightly domed top and a flat underside, and a six-lobe (hexalobular, TORX-type) socket recessed in the top; plain machine-screw shank fully threaded (or threaded for a long length) with the thread diameter d.",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse thread pitch",
+  "dk_max": "head diameter max (equals nominal)",
+  "k_max": "head height max (equals nominal)",
+  "T": "hexalobular socket size number (TORX T-size, ISO 10664 'No.')",
+  "A": "hexalobular socket across-lobe size, reference",
+  "t_max": "socket depth max"
+ },
+ "notes": "Only ISO 14583 (pan head hexalobular machine screws) reached 3 independent sources, and only M3-M8. The family hint lists several head forms (ISO 14579 cap, 14580 cheese, 14581 countersunk, 14584 raised countersunk, 14583 pan, DIN 34827 set screws); dimensions differ by head form so this table must not be used for the others. Web search quota ran out during this run, so source discovery was limited to links on known vendor sites.",
+ "clusters": {
+  "Fuller (page title says hex socket pan head; table is hexalobular, Socket No./A)": [
+   "fullerfasteners.com"
+  ],
+  "Westfield Fasteners UK (ISO 14583 spec)": [
+   "westfieldfasteners.co.uk"
+  ],
+  "Nordic Fastening Group nfgab.com (p/1375 and p/1350 same data = one source)": [
+   "nfgab.com"
+  ],
+  "Woodstock Industrial (pitch P only, from DIN 7984 page)": [
+   "woodstockindustrial.com"
+  ],
+  "EXTRA, not in record sources: fasteners.eu ISO 14583 table (own weights table, 'Inner hexalobular Size', 'A ref.')": [
+   "https://www.fasteners.eu/standards/ISO/14583/"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched Fuller, Westfield, nfgab 1375 and 1350, Woodstock din-7984 live plus fasteners.eu ISO 14583 (extra). 5 rows x 7 cols = 35 cells. nfgab table parsed from raw HTML: it has a real <thead> with sizes M2,M2.5,M3,M4,M5,M6,M8 (tbody tag is mistyped <body>, which is why generic parsers miss it), so sizes are explicit, not inferred. All 35 cells equal in Fuller, Westfield and nfgab (dk_max,k_max,T,A,t_max) and equal in fasteners.eu; P equal in Fuller, Westfield, fasteners.eu, Woodstock. No dissent. Physical: dk/d 1.87-2.0, k<dk, t<k, A<dk, all increasing.",
+  "problems": [
+   "nfgab labels the A value 'a ~' (lower case). In ISO 14583 lower-case a is the thread-runout max (0.8..2.5), so for nfgab the role of that row is identified by value (matches Fuller/Westfield 'A Ref.' exactly), i.e. inferred. Header-read A clusters in the record's own sources: Fuller + Westfield only; with fasteners.eu (explicit 'A ref.') there are 3. Column A is a reference dimension (non-binding). Keep, but add fasteners.eu to sources.",
+   "T is stored as the bare number (10,20,25,30,45); sources print 'T10' (Fuller, nfgab) or '10' (Westfield, fasteners.eu). Same meaning.",
+   "P is a thread property (ISO 261); Woodstock din-7984 page only supplies the pitch, others are standard-specific.",
+   "Only ISO 14583 pan head; other head forms not covered (as producer states). Fuller page title mislabelled 'hex socket'."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 14583",
+ "scope": "팬머리 헥사로뷸러(ISO 14583)만 — 다른 머리 모양은 싣지 않았습니다"
+}

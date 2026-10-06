@@ -1,0 +1,266 @@
+{
+ "id": "lowhead",
+ "status": "ok",
+ "standard": "DIN 7984",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "b",
+   "나사부 길이 b (L≤125)"
+  ],
+  [
+   "dk_max",
+   "머리 지름 dk 최대(=호칭)"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대(=호칭)"
+  ],
+  [
+   "s",
+   "육각 구멍 대변 s (호칭)"
+  ],
+  [
+   "t",
+   "육각 구멍 깊이 t (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   0.5,
+   12,
+   5.5,
+   2,
+   2,
+   1.5
+  ],
+  [
+   "M4",
+   0.7,
+   14,
+   7,
+   2.8,
+   2.5,
+   2.3
+  ],
+  [
+   "M5",
+   0.8,
+   16,
+   8.5,
+   3.5,
+   3,
+   2.7
+  ],
+  [
+   "M6",
+   1,
+   18,
+   10,
+   4,
+   4,
+   3
+  ],
+  [
+   "M8",
+   1.25,
+   22,
+   13,
+   5,
+   5,
+   3.8
+  ],
+  [
+   "M10",
+   1.5,
+   26,
+   16,
+   6,
+   7,
+   4.5
+  ],
+  [
+   "M12",
+   1.75,
+   30,
+   18,
+   7,
+   8,
+   5
+  ],
+  [
+   "M16",
+   2,
+   38,
+   24,
+   9,
+   12,
+   5.5
+  ],
+  [
+   "M20",
+   2.5,
+   46,
+   30,
+   11,
+   14,
+   7.5
+  ],
+  [
+   "M24",
+   3,
+   54,
+   36,
+   13,
+   17,
+   8
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-7984-specifications-hex-socket-head-cap-screws-with-low-head/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 7984 Specifications, 4 tables (M3-M24); layout copies the Chinese manufacturer pages, so counted together with kslekou.com/szecjgj.com/fullerkr.com as ONE source"
+  },
+  {
+   "url": "http://www.kslekou.com/product/869.html",
+   "site": "kslekou.com",
+   "what": "DIN 7984 dimension table M3-M24 (Chinese manufacturer); szecjgj.com/product_detail_4105.html has the same template"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/ScrewBolt-SHCapLow-M.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "DIN 7984 dimension table M3-M24: P, b, da, dk, ds, dw, e, lf, k, r, s, t"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1217-hex-socket-head-cap-screws-with-low-head-din-7984",
+   "site": "nfgab.com",
+   "what": "table d2(=dk), b, k, s, t for M3-M12, M16, M20, M24"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-7984",
+   "site": "woodstockindustrial.com",
+   "what": "table pitch, thread length, head diameter, head depth, key size (M3-M12, M16, M20, M24)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_7984.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Maße table dk, k, s, b1 (same table on theo-schrauben.de and wegertseder.com, counted once)"
+  },
+  {
+   "url": "https://sunhyings.com/fasteners/screws/low-head-socket-screws/",
+   "site": "sunhyings.com",
+   "what": "table d, P, s, k, b (M3-M12)"
+  },
+  {
+   "url": "https://www.wuerth.de/web/de/awkg/kompetenz/din_iso_normteile/din-7984-din-6912-zylinderkopfschrauben-innensechskant.php",
+   "site": "wuerth.de",
+   "what": "DIN 7984 dk, k1, s1 rows (M3-M16, M20)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "rows M14, M18, M22",
+   "why": "non-preferred sizes (in parentheses in the standard); socket depth t and pitch have only 2 independent sources there (Chinese-template group, Westfield)"
+  },
+  {
+   "what": "columns dk_min, k_min, e_min (and da, dw, ds min, s_max/s_min, t_max/t_min, r, lf)",
+   "why": "only 2 independent sources (Westfield + the Fuller/kslekou/szecjgj Chinese-template group; Fuller copies the Chinese layout with full-width signs, so it is not independent)"
+  },
+  {
+   "what": "column b for L>125 (b2, b3)",
+   "why": "not applicable for small sizes (would need empty cells)"
+  },
+  {
+   "what": "ecomfasteners.com table",
+   "why": "disagrees with all other groups: k M4=2.5 (others 2.8), M5=3.0 (3.5); s M10=6 (7), M16=10 (12); looks mixed up with DIN 912; excluded from voting"
+  },
+  {
+   "what": "ssfastenersmfgr.com table",
+   "why": "values rounded to integers (M4 k=3, M5 k=4, M3 dk=6, t M3=2), not exact"
+  },
+  {
+   "what": "torqbolt.com page",
+   "why": "only table on the page is another part; no DIN 7984 table"
+  }
+ ],
+ "checks": [
+  "P, b, dk_max, k_max, s, t are non-decreasing with d",
+  "k_max lies between 0.5 d and 0.7 d and k_max <= dk_max/2 (low head, about 60% of a DIN 912 head)",
+  "dk_max >= 1.5 d (head wider than shank); t < k_max + 3",
+  "no disagreement among the independent source groups on any kept cell (conflicts exist only in the excluded ecomfasteners table)",
+  "intra-group copies (fuller/fullerkr, kslekou/szecjgj) are identical on all overlapping cells"
+ ],
+ "shape_hint": "Low cylindrical (drum) head with a flat top and a hexagon socket, head height about half to 0.7 times the thread diameter (roughly 60% of a DIN 912 head), a small under-head radius, an unthreaded shank of diameter d and a thread of length b running to the tip. The socket has no centre hole (that is DIN 6912).",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse thread pitch",
+  "b": "minimum thread length for screw length L<=125 mm",
+  "dk_max": "head diameter max (equals nominal)",
+  "k_max": "head height max (equals nominal)",
+  "s": "hexagon socket width across flats (nominal)",
+  "t": "hexagon socket depth (nominal)"
+ },
+ "notes": "Governing standard DIN 7984 (Zylinderschrauben mit niedrigem Kopf, Innensechskant, ohne Schluesselfuehrung; no ISO counterpart). DIN 6912 (low head with centre bore in the socket; e.g. M10 k=6.5, s=8) and ASME B18.3 low head screws were NOT tabulated and must not be mixed in. Published sizes are the preferred series only; M14, M18, M22 exist in the standard (in parentheses). b is for L<=125 only (M8+ larger b for L>125; M16+ again larger for L>200). Reduced-loadability screws (property class marked with a leading 0, e.g. 010.9, 08.8). Minimum-limit values (dk min, k min, e min) exist in the standard but only 2 independent pages were found.",
+ "clusters": {
+  "CN Chinese-template (one cluster)": [
+   "fullerfasteners.com (+fullerkr.com sister)",
+   "kslekou.com",
+   "szecjgj.com (M3-M12 only)",
+   "fasenco.com (no table on its 7984 page)"
+  ],
+  "W westfield": [
+   "westfieldfasteners.co.uk (full table incl. t, own wording, extra rows dw/v, own glitch dw M24 23.67)"
+  ],
+  "N nfgab": [
+   "nfgab.com (d2=dk, b, k, s, t)"
+  ],
+  "WS woodstock": [
+   "woodstockindustrial.com (P, b, dk, k, s)"
+  ],
+  "L German one-dataset": [
+   "schrauben-lexikon.de",
+   "theo-schrauben.de",
+   "wegertseder.com (dk,k,s,b1)"
+  ],
+  "S sunhyings": [
+   "sunhyings.com (P,s,k,b; M3-M12)"
+  ],
+  "U wuerth": [
+   "wuerth.de (dk,k1,s1; M3-M16,M20)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live all 9 listed URLs (fuller, kslekou, szecjgj, westfield, nfgab, woodstock, lexikon, sunhyings, wuerth; HTTP 200). Matrix 10 rows x 6 cols x 9 pages -> 7 clusters. Min clusters per column: P 3 (M16/M20/M24: CN,W,WS; M3-M12 >=4), b 5, dk_max 5, k_max 5, s 5, t 3 (CN,W,N on all 10 rows). No dissent on any kept cell. fasenco 7984 page has no table (text only). Semantics: all headers read (P Pitch, b L<=125, dk max=nominal, k max=nominal, s nominal, t nominal). Sanity: k/d 0.54-0.67, dk>=1.5d, t<k, monotone.",
+  "problems": [
+   "t column has exactly 3 clusters (CN, Westfield, nfgab) - only these three list socket depth; nfgab's 't' header is bare 't' (value equals nominal t of CN/Westfield, not min/max).",
+   "P for M16/M20/M24 has exactly 3 clusters (CN, Westfield, woodstock); sunhyings only covers M3-M12. Pitch is a coarse-thread property confirmed independently in other families (ss, ss-slot).",
+   "Westfield vs Chinese template: row order of dk/ds/e/k/r/s/t is the standard's own alphabetical order, Westfield has extra rows (dw, v) and its own glitch (dw min M24 23.67), prints '2.30'/'0.60' -> treated as independent; if a reviewer merges them, t drops to 2 clusters.",
+   "Fuller/kslekou/szecjgj/fasenco counted as ONE cluster (producer did too). Excluded sources (ecomfasteners mixed with DIN 912, ssfasteners integer-rounded) correctly kept out. Würth page mixes DIN 6912 rows - only 'DIN 7984' rows used.",
+   "Only preferred sizes M3-M24 published, M14/M18/M22 (bracketed) excluded - fine. b applies to L<=125 mm only (stated in header)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 7984",
+ "scope": "저두 렌치볼트 DIN 7984만 — DIN 6912·ASME B18.3은 싣지 않았습니다"
+}

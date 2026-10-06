@@ -1,0 +1,335 @@
+{
+ "id": "hvset",
+ "status": "ok",
+ "standard": "DIN 6914·6915·6916 (HV 세트)",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "s",
+   "6각 대변 s (볼트·너트 공통, 최대=공칭)"
+  ],
+  [
+   "e_min",
+   "6각 대각 e 최소 (볼트·너트)"
+  ],
+  [
+   "k",
+   "볼트 머리 높이 k (공칭)"
+  ],
+  [
+   "ds_min",
+   "볼트 축부 지름 ds 최소"
+  ],
+  [
+   "ds_max",
+   "볼트 축부 지름 ds 최대"
+  ],
+  [
+   "b1",
+   "나사부 길이 b (단계선 위 짧은 길이)"
+  ],
+  [
+   "b2",
+   "나사부 길이 b (단계선 아래 긴 길이)"
+  ],
+  [
+   "m",
+   "너트 높이 m (공칭=최대)"
+  ],
+  [
+   "m_min",
+   "너트 높이 m 최소"
+  ],
+  [
+   "wd1",
+   "와셔 안지름 d1 (공칭=최소)"
+  ],
+  [
+   "wd2",
+   "와셔 바깥지름 d2 (공칭=최대)"
+  ],
+  [
+   "wh",
+   "와셔 두께 h (공칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M12",
+   1.75,
+   22,
+   23.91,
+   8,
+   11.3,
+   12.7,
+   21,
+   23,
+   10,
+   9.64,
+   13,
+   24,
+   3
+  ],
+  [
+   "M16",
+   2,
+   27,
+   29.56,
+   10,
+   15.3,
+   16.7,
+   26,
+   28,
+   13,
+   12.3,
+   17,
+   30,
+   4
+  ],
+  [
+   "M20",
+   2.5,
+   32,
+   35.03,
+   13,
+   19.16,
+   20.84,
+   31,
+   33,
+   16,
+   14.9,
+   21,
+   37,
+   4
+  ],
+  [
+   "M22",
+   2.5,
+   36,
+   39.55,
+   14,
+   21.16,
+   22.84,
+   32,
+   34,
+   18,
+   16.9,
+   23,
+   39,
+   4
+  ],
+  [
+   "M27",
+   3,
+   46,
+   50.85,
+   17,
+   26.16,
+   27.84,
+   37,
+   39,
+   22,
+   20.7,
+   28,
+   50,
+   5
+  ],
+  [
+   "M30",
+   3.5,
+   50,
+   55.37,
+   19,
+   29.16,
+   30.84,
+   40,
+   42,
+   24,
+   22.7,
+   31,
+   56,
+   5
+  ],
+  [
+   "M36",
+   4,
+   60,
+   66.44,
+   23,
+   35,
+   37,
+   48,
+   50,
+   29,
+   27.7,
+   37,
+   66,
+   6
+  ]
+ ],
+ "row_support": {
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M22": 3,
+  "M27": 3,
+  "M30": 3,
+  "M36": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_6914",
+   "site": "fasten.it",
+   "what": "DIN 6914 (10/1989) bolt table"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/6914/",
+   "site": "fasteners.eu",
+   "what": "DIN 6914 bolt table (torqbolt.com DIN 6914 page is a verbatim copy -> not counted)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-6914-specifications-hex-bolts-with-large-head-system-hv/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 6914 specifications blocks"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/din-6914-hexagon-head-bolts-with-large-width-across-flats/",
+   "site": "boltingspecialist.com",
+   "what": "DIN 6914 table d, k, s, L, b, e min"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/download/t_6914.pdf",
+   "site": "schrauben-lexikon.de (Wegertseder vendor sheet)",
+   "what": "DIN 6914 d, s, e min, k, b1, b2 (M12-M30)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_6915",
+   "site": "fasten.it",
+   "what": "DIN 6915 nut table (12/1999)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/6915/",
+   "site": "fasteners.eu",
+   "what": "DIN 6915 nut table"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-6915-specifications-high-strength-hex-nuts-for-structural-bolting/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 6915 specifications"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/din-6915-heavy-hex-nuts/",
+   "site": "boltingspecialist.com",
+   "what": "DIN 6915 table d, s, e min, h, pitch"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/download/t_6915.pdf",
+   "site": "schrauben-lexikon.de (Wegertseder vendor sheet)",
+   "what": "DIN 6915 d, s, e min, h (M12-M30)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_6916",
+   "site": "fasten.it",
+   "what": "DIN 6916 washer table (10/1989)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/6916/",
+   "site": "fasteners.eu",
+   "what": "DIN 6916 round washers for HV connections"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/din-6916-washers/",
+   "site": "boltingspecialist.com",
+   "what": "DIN 6916 washer table"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/download/t_6916.pdf",
+   "site": "schrauben-lexikon.de (Wegertseder vendor sheet)",
+   "what": "DIN 6916 d, d2, s (M12-M30)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M24 row",
+   "why": "nut height m conflicts: 20 (fasten.it, fullerfasteners DIN 6915, and Fuller EN 14399-4) vs 19 (fasteners.eu, boltingspecialist, Wegertseder sheet); m_min 18.7 vs 17.7 - editions of the standard differ, no unambiguous 3-source value. Bolt and washer values for M24 are certain, see notes."
+  },
+  {
+   "what": "dw (min bearing diameter), k min/max, s min, r, c, da, weight",
+   "why": "present in only 2 independent sources (fasteners.eu, Fuller) or tolerance data of little buying value"
+  },
+  {
+   "what": "M14, M18 (non-preferred sizes in EN 14399-6)",
+   "why": "not in DIN 6914/6915/6916 tables"
+  },
+  {
+   "what": "KS B 1010 / ISO 7412 / ISO 4775 / EN 14399-4 dimensions",
+   "why": "no independent table beyond Fuller/torqbolt (which repeat the DIN dimensions); b differs by standard (EN: reference b = 23, 28, 33, 34, 39, 41, 44, 52)"
+  },
+  {
+   "what": "grip/length tables, bolt length l ranges",
+   "why": "not verified"
+  }
+ ],
+ "checks": [
+  "e_min <= 1.1547*s and e_min > s for every row (hex across-corners limit), e.g. M12 23.91 vs 25.4",
+  "ds_min < d < ds_max for all rows (band -0.7/+0.7 at M12-M16, -0.84/+0.84 at M20-M30, -1/+1 at M36)",
+  "k < m; m_min < m; b1 < b2 (b1 for short lengths, b2 for longer grips)",
+  "washer d1 = d + 1 for every row (13, 17, 21, 23, 28, 31, 37), d2 > d1, h grows 3..6",
+  "s, e_min, k, m, d2 all grow monotonically with d"
+ ],
+ "shape_hint": "A friction-grip structural bolting set: a heavy hexagon-head bolt (large across-flats s, head height k, plain shank ds then a thread of length b) with a heavy hexagon nut (height m, same s) and one round flat washer (hole d1, outside diameter d2, thickness h) placed under the nut or head.",
+ "role_map": {
+  "d_nom": "bolt nominal thread",
+  "P": "coarse pitch",
+  "s": "hex width across flats (bolt and nut)",
+  "e_min": "minimum across-corners",
+  "k": "bolt head height",
+  "ds_min": "shank diameter lower limit",
+  "ds_max": "shank diameter upper limit",
+  "b1": "thread length for shorter bolts",
+  "b2": "thread length for longer bolts",
+  "m": "nut height",
+  "m_min": "nut height lower limit",
+  "wd1": "washer hole diameter",
+  "wd2": "washer outside diameter",
+  "wh": "washer thickness"
+ },
+ "notes": "Structural friction-grip HV set per DIN 6914 (bolt) + DIN 6915 (nut) + DIN 6916 (round washer); these are the DIN predecessors of EN 14399-4 (bolt, nut) and EN 14399-6 (chamfered washer) and the dimensions s, e, k, ds, m, d1, d2, h in the EN 14399-4 pages of Fuller/torqbolt are identical for the sizes checked (M12-M36) - but the EN washer has a chamfer and EN bolts list a different b reference (23, 28, 33, 34, 39, 41, 44, 52). KS B 1010 (F10T) and ISO 7412 were NOT verified against text; the F10T set is dimensionally the same family but confirm before printing 'KS'. b1 = thread length b for nominal lengths above the stepped line in the standard (shorter bolts), b2 for the longer ones; the step-line lengths are not tabulated. Nut m is the standard's 'm' (max = nominal). M24 values with 3+ sources (bolt/washer only): P 3, s 41, e_min 45.2, k 15, ds 23.16..24.84, b 34 / 37, washer d1 25, d2 44, h 4; nut height m for M24 is 19 or 20 depending on edition - unresolved, so the M24 row is not published. Typos found: fasten.it nut M24 e_min 45.02 (45.2), boltingspecialist nut M27 e_min 50.35 (50.85). Washer thickness and nut/bolt chamfer features not included.",
+ "clusters": {
+  "fasteners.eu": [
+   "fasteners.eu DIN 6914 / 6915 / 6916 (torqbolt DIN 6914 = copy, not counted)"
+  ],
+  "fasten.it": [
+   "fasten.it din_6914 / din_6915 / din_6916"
+  ],
+  "Chinese-template standards DB (6914, 6915 only)": [
+   "fullerfasteners.com (no DIN 6916 page: 404)"
+  ],
+  "Boltport family": [
+   "boltingspecialist.com din-6914, din-6915, din-6916 (6916 table has same 13-column layout as fasteners.eu but own typo -> counted independent, marginal)"
+  ],
+  "NOT counted (PDF)": [
+   "schrauben-lexikon.de t_6914/6915/6916.pdf (Wegertseder; M12..M30 only)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live all 11 HTML pages (200) and 3 PDFs (read only). 7 rows (M12,16,20,22,27,30,36) x 14 cols x {fasten.it, fasteners.eu, Fuller, Boltport}: 98 cells, only deviation = Boltport 6915 e_min M27 50.35 (typo; Boltport 6914 and 3 others 50.85). Non-PDF clusters per column: P,s,e_min,k,b1,b2,m = 4; ds_min, ds_max, m_min = 3 (fasten.it, fasteners.eu, Fuller); wd1, wd2, wh = 3 (fasten.it, fasteners.eu, Boltport). P also in 4 thread charts. Sanity: e_min<=1.1547 s and >s, ds_min<d<ds_max, k<m, m_min<m, washer d1=d+1, monotone growth.",
+  "problems": [
+   "washer cols wd1/wd2/wh rest on fasten.it + fasteners.eu + Boltport only (PDF excluded, no Fuller DIN 6916). Boltport 6916 table duplicates fasteners.eu's full column structure (c, e columns that fasten.it omits) while carrying its own M36 h-max typo (5.6 vs 6.6) -> if the maintainer treats Boltport as a derivative of fasteners.eu the washer columns fall to 2 clusters and must be dropped.",
+   "b1/b2: fasten.it labels the pair 'b min÷max' (different meaning from the 'above/below stepped line' of fasteners.eu / Fuller and 'L<=x / L>=y' of Boltport). Role (short vs long bolts) is header-proven by fasteners.eu, Fuller, Boltport = 3 clusters; fasten.it supports numbers only.",
+   "ds_min, ds_max, m_min, wd*, wh sit at exactly 3 clusters (no slack).",
+   "row M24 correctly dropped (nut m 19 vs 20, m_min 17.7 vs 18.7: fasten.it itself prints both editions).",
+   "one row merges three standards (DIN 6914 bolt, 6915 nut, 6916 washer; DIN 6914/6916 flagged 'Withdrawn' by fasten.it); EN 14399 / KS B 1010 claims in notes are unverified and not backed by cells.",
+   "producer count '4-5' for most columns included Wegertseder PDFs; recount without PDFs still >=3 everywhere."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 6914 / DIN 6915 / DIN 6916 (EN 14399-4/-6 equivalent dims; KS B 1010 not verified)"
+}

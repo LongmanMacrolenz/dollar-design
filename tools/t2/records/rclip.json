@@ -1,0 +1,191 @@
+{
+ "id": "rclip",
+ "status": "partial",
+ "standard": "DIN 11024 Form D",
+ "u": "mm",
+ "cols": [
+  [
+   "d2_min",
+   "적용 축(핀) 지름 d2 하한(초과)"
+  ],
+  [
+   "d2_max",
+   "적용 축(핀) 지름 d2 상한(이하)"
+  ],
+  [
+   "d3",
+   "소선(와이어) 지름 d3"
+  ],
+  [
+   "l1",
+   "전체 길이 l1"
+  ]
+ ],
+ "rows": [
+  [
+   "2.5",
+   9.0,
+   11.2,
+   2.25,
+   42.0
+  ],
+  [
+   "3.2",
+   11.2,
+   14.0,
+   2.8,
+   48.0
+  ],
+  [
+   "4",
+   14.0,
+   20.0,
+   3.6,
+   64.0
+  ],
+  [
+   "5",
+   20.0,
+   26.0,
+   4.5,
+   80.0
+  ],
+  [
+   "6.3",
+   26.0,
+   34.0,
+   5.6,
+   97.0
+  ],
+  [
+   "7",
+   34.0,
+   45.0,
+   6.3,
+   125.0
+  ],
+  [
+   "8",
+   45.0,
+   56.0,
+   7.0,
+   150.0
+  ]
+ ],
+ "row_support": {
+  "2.5": 3,
+  "3.2": 3,
+  "4": 3,
+  "5": 3,
+  "6.3": 3,
+  "7": 3,
+  "8": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fixawell.com/din-11024.htm",
+   "site": "fixawell.com",
+   "what": "table 'd1 H13 / d3 / d2 / l1 / d4 / l2 / l3 / h / r1 / r2 / kg per 100pcs' (Form D); same table also on fasteners.eu/standards/din/11024-D/ (counted as ONE source)"
+  },
+  {
+   "url": "https://www.seilerei-voigt.de/federstecker-nach-din-11024.html",
+   "site": "seilerei-voigt.de",
+   "what": "table d1,d2,d3,d4,l1,l2, Gewicht pro 100 Stk"
+  },
+  {
+   "url": "https://kleinsorge.de/produkte/splinte/federstecker-din-11024-galv.-verzinkt",
+   "site": "kleinsorge.de",
+   "what": "table d1..l2, Gewicht kg/100 (tomanro.de page of the same Kleinsorge catalogue = same source)"
+  },
+  {
+   "url": "https://www.industriehof.com/de/katalog/c14/c198/c1135/",
+   "site": "industriehof.com",
+   "what": "per-article tables H, L2, D3, D4, L1, Wellen D2, D1 (sizes 2.5-7 only)"
+  },
+  {
+   "url": "https://www.fasenco.com/din-11024-d/",
+   "site": "fasenco.com",
+   "what": "table d1,d2,d3,d4,l,h (Form D)"
+  },
+  {
+   "url": "https://www.aspenfasteners.com/content/pdf/Metric_DIN_11024_spec.pdf",
+   "site": "aspenfasteners.com",
+   "what": "vendor's own product data sheet: Dimensions of Metric DIN 11024 Spring Cotter Pins (d1,d2,d3,d4,l)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "l3, h, r1, r2 columns",
+   "why": "only fixawell (= fasteners.eu copy) lists l3/r1/r2; h has 3 sources for d1 2.5-7 (fixawell, industriehof, fasenco) but only 2 independent for d1=8 (industriehof has no 8 mm row) -> not publishable"
+  },
+  {
+   "what": "DIN 11024 Form E (single coil) table",
+   "why": "separate series (d=2..7, l=50..105); not chosen, one clearly defined type only"
+  },
+  {
+   "what": "schrauben-lexikon.de 'DIN 11024 D' table (d 2.25..7, L 50/48/62/62/92/120/130, D 10/19/16/26/30/30/30, outer 8-14/18-22/14-20/...)",
+   "why": "non-monotonic, inconsistent with 6 other sources; treated as unreliable outlier (probably mixed dataset)"
+  }
+ ],
+ "checks": [
+  "d2 ranges are contiguous: d2_max(i) = d2_min(i+1) for all sizes (11.2, 14, 20, 26, 34, 45)",
+  "d3 (wire) < d1 (hole) for every size, d1/d3 about 1.11",
+  "l1, l2, d3, d1, d4 and mass all grow monotonically with size; l2 < l1 for every row",
+  "mass per 100 pcs grows roughly with d3^2 x wire length (0.59 -> 13.4 kg/100)",
+  "every kept cell compared programmatically across all 6 sources; no disagreement except 3 typos in minority pages (see evidence)"
+ ],
+ "shape_hint": "A wire spring clip shaped like the letter R: a straight leg that is pushed through the cross-hole of a pin, and a second leg that is bent back and wound as a double (two-turn) coil eye of outer diameter d4 which snaps around the outside of the pin. Total length l1; the wire cross-section is a plain circle of diameter d3.",
+ "role_map": {
+  "d1": "nominal hole diameter in the pin the clip passes through (H13)",
+  "d2_min": "smallest pin/shaft diameter the clip fits (exclusive)",
+  "d2_max": "largest pin/shaft diameter the clip fits",
+  "d3": "actual wire diameter",
+  "d4": "outer diameter of the double coil eye",
+  "l1": "overall length",
+  "l2": "second length dimension on the standard drawing (about 0.55-0.6 x l1)",
+  "kg100": "mass per 100 pieces in kg"
+ },
+ "notes": "Only DIN 11024 Form D (double coil, 'R-clip with double spring') is published. Form E (single coil) has a different series (d1=2.5..9 with l=50..110) and is NOT in this table. DIN 11023 (linch pin) was not researched. Some sellers sell 'similar to DIN 11024' clips with other wire diameters (e.g. 2.0-8.0 round sizes); do not mix. Size label = hole diameter d1 (what buyers call 'R-clip 4' / 'Ø4'). The exact geometric meaning of l2 was not stated in the HTML sources (only the symbol); treat as drawing dimension. Mass is informational and has exactly 3 sources (fixawell, voigt, kleinsorge).",
+ "clusters": {
+  "fasteners.eu + fixawell.com (identical table incl. l3,h,r1,r2)": [
+   "fasteners.eu",
+   "fixawell.com"
+  ],
+  "German retailer (seilerei-voigt) - independence from kleinsorge unproven": [
+   "seilerei-voigt.de"
+  ],
+  "German wholesaler Kleinsorge (+ tomanro.de reseller of the same catalogue)": [
+   "kleinsorge.de",
+   "tomanro.de"
+  ],
+  "industriehof.com (own-brand per-article data, sizes 2.5-7 only)": [
+   "industriehof.com"
+  ],
+  "fasenco/aspen/boltsfastener (same d1,d2,d3,d4,l layout and 'X.0 - Y.Y' ranges)": [
+   "fasenco.com",
+   "aspenfasteners.com (PDF, corroboration only, not counted)",
+   "boltsfastener.com (copy, not counted)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fixawell, fasteners.eu/standards/din/11024-D, voigt, kleinsorge, industriehof, fasenco (all 200) and Aspen PDF (parsed with pymupdf). 7 rows x 7 value cols (d2_min,d2_max,d3,d4,l1,l2,kg100) x 7 sources: 0 numeric mismatches. Counted clusters per kept col (d2_min,d2_max,d3,l1): rows 2.5-7 = 4 (fe/fix, voigt+klein merged, industriehof, fasenco); row 8 = 3 (industriehof has no 8). l2: rows 2.5-7 = 3 (fe/fix, voigt+klein merged, industriehof), row 8 = 2. kg100: 2 for all rows (fe/fix, voigt+klein merged; industriehof gives only rounded per-piece weights 0.006..0.090 kg = 0.6..9.0 per 100, not equal to 0.59..9.7). Sanity: d2 ranges contiguous, d3<d1, l2<l1, all cols monotone.",
+  "problems": [
+   "d4 role inferred wrongly: producer labels it 'outer diameter of the coil eye'; fasteners.eu legend says only 'diameter of the eye' and Keller&Kalmbach (item 2029563, DIN 11024 D 6.3) calls the same 25 mm 'Inner diameter di' (and wire 'Diameter d 5.6'). Inner vs outer differ by 2 x wire dia -> semantics unclear, column dropped (values themselves have >=3 clusters).",
+   "kg100 only 3 sources (fasteners.eu/fixawell, voigt, kleinsorge). voigt and kleinsorge show identical column set (d1..l2, mass/100), identical 'galv. verzinkt / vergutet' wording and Voigt's d2 '14,0 - 20' looks like a hand-trimmed copy of '14,0 - 20,0' style data; independence cannot be proven. If they merge only 2 clusters remain -> drop kg100.",
+   "l2: row 8 has only fe/fix + voigt + kleinsorge (same fragility) -> 2 clusters if merged; rows 2.5-7 would be fine (industriehof L2 equal). Column dropped for simplicity; per-cell alternative: keep l2 for rows 2.5-7 only. l2 is defined in the fasteners.eu legend ('distance of the center bolt from the eye'); producer's label '(drawing symbol)' is vague.",
+   "d2_min labelled 'exclusive (over)': industriehof shows 'ab 9,0 - 11,2' (inclusive) for d1=2.5 and 'uber ...' (exclusive) only for rows 3.2-8; contiguity 11.2/14/20/26/34/45 holds. Relabel as 'shaft diameter range lower bound'.",
+   "d1 row label = hole in the pin (industriehof 'Wellenbohrung D1'), d2 = pin diameter range ('Wellen D2'), d3 = wire (fe legend 'diameter wire'): roles confirmed by headers/legends.",
+   "Row 8 depends on fasenco being independent of the fasteners.eu family (it shares only the h column; its '9.0 - 11.2' formatting differs from fe's '9-11,2'); if merged, row 8 would fall to 2 clusters.",
+   "aspenfasteners PDF disclaims 'data obtained from publicly available sources' (corroboration only); boltsfastener 11024 pages are copies of the fasenco/aspen layout; schrauben-lexikon 'DIN 11024 D' table is a different dataset (excluded by producer, agreed)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "d4",
+   "kg100",
+   "l2"
+  ]
+ },
+ "standard_full": "DIN 11024 Form D (double-coil spring cotter / R-clip)"
+}

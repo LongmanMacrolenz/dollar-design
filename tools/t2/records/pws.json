@@ -1,0 +1,235 @@
+{
+ "id": "pws",
+ "status": "ok",
+ "standard": "ISO 7092 (DIN 433)",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "구멍 지름 d1 (호칭, 최소값)"
+  ],
+  [
+   "d2",
+   "바깥지름 d2 (호칭, 최대값)"
+  ],
+  [
+   "h",
+   "두께 h (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M1.6",
+   1.7,
+   3.5,
+   0.3
+  ],
+  [
+   "M2",
+   2.2,
+   4.5,
+   0.3
+  ],
+  [
+   "M2.5",
+   2.7,
+   5.0,
+   0.5
+  ],
+  [
+   "M3",
+   3.2,
+   6.0,
+   0.5
+  ],
+  [
+   "M3.5",
+   3.7,
+   7.0,
+   0.5
+  ],
+  [
+   "M4",
+   4.3,
+   8.0,
+   0.5
+  ],
+  [
+   "M5",
+   5.3,
+   9.0,
+   1.0
+  ],
+  [
+   "M6",
+   6.4,
+   11.0,
+   1.6
+  ],
+  [
+   "M8",
+   8.4,
+   15.0,
+   1.6
+  ],
+  [
+   "M10",
+   10.5,
+   18.0,
+   1.6
+  ],
+  [
+   "M12",
+   13.0,
+   20.0,
+   2.0
+  ],
+  [
+   "M14",
+   15.0,
+   24.0,
+   2.5
+  ],
+  [
+   "M16",
+   17.0,
+   28.0,
+   2.5
+  ],
+  [
+   "M20",
+   21.0,
+   34.0,
+   3.0
+  ],
+  [
+   "M24",
+   25.0,
+   39.0,
+   4.0
+  ],
+  [
+   "M30",
+   31.0,
+   50.0,
+   4.0
+  ]
+ ],
+ "row_support": {
+  "M1.6": 3,
+  "M2": 3,
+  "M2.5": 3,
+  "M3": 3,
+  "M3.5": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/7092/",
+   "site": "fasteners.eu",
+   "what": "ISO-7092-labelled table d1 min/max, d2 max/min, h (torqbolt.com DIN 433 page is an identical copy -> same source)"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_230.html",
+   "site": "globalfastener.com",
+   "what": "ISO 7092:2000 Plain Washers-Small Series table (d min=nominal, dc max=nominal, h); M1.6-M36"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_7092.asp",
+   "site": "schrauben-lexikon.de (Wegertseder GmbH)",
+   "what": "ISO 7092 technical data table d1 / d2 / h, M1-M36"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-7092/",
+   "site": "boltport.com",
+   "what": "same numbers, but same row set / column order as schrauben-lexikon -> treated as a copy, NOT counted"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_623.html",
+   "site": "globalfastener.com",
+   "what": "DIN 433-1 table, used only to see that M18 h 2.5 / M36 d2 58 are the DIN values"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M1, M1.2, M1.4, M1.8 rows",
+   "why": "only fasteners.eu + schrauben-lexikon (and boltport, which looks copied from schrauben-lexikon) list them; globalfastener starts at M1.6"
+  },
+  {
+   "what": "M2.2, M7 rows",
+   "why": "only schrauben-lexikon (+ boltport copy)"
+  },
+  {
+   "what": "M22, M27, M33 rows",
+   "why": "fasteners.eu does not list them; only globalfastener + schrauben-lexikon (boltport = copy) -> 2 independent sources"
+  },
+  {
+   "what": "M18 row (h)",
+   "why": "h = 3 in globalfastener ISO 7092, schrauben-lexikon ISO 7092 and boltport; fasteners.eu (+torqbolt copy) says 2.5 (= DIN 433-1 value per globalfastener DIN 433 page) -> only 2 independent sources for the ISO value"
+  },
+  {
+   "what": "M36 row (d2)",
+   "why": "d2 = 60 in globalfastener ISO 7092, schrauben-lexikon, boltport; fasteners.eu says 58 (= DIN 433-1) -> only 2 independent sources for the ISO value"
+  },
+  {
+   "what": "d1 max / d2 min / h max / h min limit columns",
+   "why": "explicit only in fasteners.eu and globalfastener"
+  }
+ ],
+ "checks": [
+  "every kept row identical (d1, d2, h) in the three independent sources (fasteners.eu, globalfastener, schrauben-lexikon)",
+  "d1 > thread diameter in every row (d1 - d from 0.1 mm at M1.6 to 1.0 mm at M30; 1.0 mm for M12 and up)",
+  "d1 and d2 strictly increase with size; h never decreases (0.3, 0.5, 1, 1.6, 2, 2.5, 3, 4 mm steps)",
+  "d2 > d1 everywhere; d2/d1 between 1.54 and 2.06 (small series: OD about 1.5-2.1 x hole)",
+  "no row where ISO 7092 and DIN 433 differ is published (M18 h: ISO 3 vs DIN 2.5; M36 d2: ISO 60 vs DIN 58)"
+ ],
+ "shape_hint": "A thin flat round washer: disc with a concentric through-hole, flat on both faces, product grade A (hole slightly larger than the screw thread); small outside diameter (about 1.5-2.1 times the hole), intended for cheese-head screws.",
+ "role_map": {
+  "d_nom_note": "thread size M that the washer fits (ISO 7092 names the washer by thread size; DIN 433 named it by hole size)",
+  "d1": "inside (hole) diameter, nominal = lower limit",
+  "d2": "outside diameter, nominal = upper limit",
+  "h": "thickness, nominal"
+ },
+ "notes": "Rows are the intersection of three independent public tables; limit (max/min) columns omitted. M3.5 and M14 are bracketed (non-preferred) sizes of the standard but are listed identically in all sources. Dropped on purpose: M18 (h) and M36 (d2), where ISO 7092 (3 / 60 per globalfastener + schrauben-lexikon + boltport) and DIN 433 (2.5 / 58 per fasteners.eu, globalfastener DIN 433-1) differ - one more independent ISO 7092 source would make them publishable; and M22, M27, M33 (not on fasteners.eu). boltport.com pages mirror schrauben-lexikon and fasteners.eu data and were not counted as sources.",
+ "clusters": {
+  "fasteners.eu cluster (STRICT: fasteners.eu + torqbolt DIN 433 copy + boltport)": [
+   "fasteners.eu/standards/ISO/7092/",
+   "fasteners.eu/standards/DIN/433/ (table byte-identical to the ISO page)",
+   "torqbolt.com DIN 433 page (identical 22 rows)",
+   "boltport.com iso-7092 / din-433 (not counted separately)"
+  ],
+  "Chinese-template standards DB": [
+   "globalfastener.com detail_230 (ISO 7092:2000)",
+   "globalfastener.com detail_623 (DIN 433-1, used only to prove which numbers are DIN)"
+  ],
+  "German dataset (Wegertseder)": [
+   "schrauben-lexikon.de/norm/ISO_7092.asp"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Live re-fetch + python parse of fasteners.eu ISO 7092 and DIN 433, torqbolt DIN 433, globalfastener detail_230 (ISO) and detail_623 (DIN), schrauben-lexikon ISO_7092, boltport iso-7092 and din-433. Matrix 27 thread sizes x (d1,d2,h) x 8 pages. All 16 kept rows (M1.6,M2,M2.5,M3,M3.5,M4,M5,M6,M8,M10,M12,M14,M16,M20,M24,M30) x 3 cols are identical in fe, gf_iso and sl_iso (48/48 cells, 3 clusters each), and equal in fe_din/gf_din/tq_din. Verified the ISO vs DIN differences are exactly M18 h (ISO 3 / DIN 2.5) and M36 d2 (ISO 60 / DIN 58): fasteners.eu ISO page = DIN 433 table (fe_iso == fe_din on all 22 rows incl. 2.5 and 58), gf_iso/sl_iso/boltport_iso give 3 and 60. No other ISO != DIN difference exists in any kept row. Headers read from the pages: 'd min = nominal size', 'dc max = nominal size', 'h Nominal size' (gf), 'd1 min / d2 max / h Nominal size' (fe). Physical sanity: d1 and d2 strictly increase, h non-decreasing, d2 > d1, d1 > thread dia.",
+  "problems": [
+   "STRICT reading: every kept cell has EXACTLY 3 clusters (fe-cluster, gf, sl); no margin. If boltport were the 3rd instead of fasteners.eu it would not help (boltport = fe cluster per lead; also copies sl).",
+   "ISO-proper support is only gf_iso + sl_iso (+boltport ISO page, same cluster as fe) : the fasteners.eu 'ISO 7092' page is literally the DIN 433 table (identical to /DIN/433/ in all 22 rows, so it prints DIN numbers). It is accepted only because for the 16 kept rows DIN 433 == ISO 7092 numerically. If the lead wants 3 clusters carrying genuine ISO-labelled numbers independent of the DIN table, pws has 2 (gf, sl) and would fail.",
+   "M18 (h) and M36 (d2) correctly dropped: the fe cluster is internally inconsistent there (fasteners.eu 2.5/58 vs boltport 3/60), ISO values 3/60 have only gf + sl = 2 clusters. M22, M27, M33 correctly dropped (not on fasteners.eu: gf + sl only). M1, M1.2, M1.4, M1.8 (not in gf), M2.2, M7 (sl only) correctly dropped.",
+   "globalfastener tables carry no thread label (only d, dc, h); the M label of each gf column is matched through the hole diameter d1 (unique per row), not read from a header. Verified unique for all 16 rows.",
+   "boltport DIN 433 page has a typo M1.2 d1 = 1.5 (irrelevant: row dropped, boltport not counted).",
+   "M3.5 and M14 are bracketed non-preferred sizes in ISO 7092 but listed identically in all three clusters."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 7092:2000 (plain washers, small series, product grade A; = DIN EN ISO 7092 = DIN 433 for the rows kept)"
+}

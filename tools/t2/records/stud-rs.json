@@ -1,0 +1,182 @@
+{
+ "id": "stud-rs",
+ "status": "partial",
+ "standard": "DIN 2510-3",
+ "u": "mm",
+ "cols": [
+  [
+   "d2",
+   "감경 몸통(허리) 지름 d2"
+  ],
+  [
+   "b1",
+   "나사부 길이 b1 (L형, 긴 나사)"
+  ],
+  [
+   "SW",
+   "렌치 대변 SW"
+  ]
+ ],
+ "rows": [
+  [
+   "M12",
+   8.5,
+   20,
+   7
+  ],
+  [
+   "M16",
+   12,
+   23,
+   10
+  ],
+  [
+   "M20",
+   15,
+   28,
+   11
+  ],
+  [
+   "M24",
+   18,
+   32,
+   11
+  ],
+  [
+   "M27",
+   20.5,
+   35,
+   13
+  ],
+  [
+   "M30",
+   23,
+   39,
+   13
+  ],
+  [
+   "M33",
+   25.5,
+   42,
+   22
+  ],
+  [
+   "M36",
+   27.5,
+   45,
+   22
+  ],
+  [
+   "M39",
+   30.5,
+   48,
+   24
+  ]
+ ],
+ "row_support": {
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M27": 3,
+  "M30": 3,
+  "M33": 3,
+  "M36": 3,
+  "M39": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_2510-3",
+   "site": "fasten.it",
+   "what": "DIN 2510 Part 3 dimension table (d1..z4, SW), M12..M180x8"
+  },
+  {
+   "url": "https://boltport.com/standards/din-2510-form-l/",
+   "site": "boltport.com (sister sites count as one)",
+   "what": "DIN 2510 Form L table: d2, d3, b1, z1, z2, SW"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-2510",
+   "site": "theo-schrauben.de",
+   "what": "DIN 2510 'Maße' table: d2, d3, b1, z2, s (M12..M39)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M22 row",
+   "why": "only theo-schrauben lists it (fasten.it and Boltport skip M22)"
+  },
+  {
+   "what": "M42, M45, M48, M52, M56 and larger rows",
+   "why": "theo-schrauben stops at M39; only fasten.it and Boltport (2 sources); those two agree on M42-M52 values"
+  },
+  {
+   "what": "d7, b2, b3, z3, z4 (forms K, KU, Z, ZU)",
+   "why": "only Boltport (per-form pages) and fasten.it -> 2 sources"
+  },
+  {
+   "what": "z1 column",
+   "why": "Boltport only (it equals the coarse pitch P)"
+  },
+  {
+   "what": "stud lengths and weight table (fasteners.eu)",
+   "why": "different layout (l1 and weights per length), single source"
+  },
+  {
+   "what": "DIN 2510-5 nut and sleeve dimensions",
+   "why": "not fetched"
+  }
+ ],
+ "checks": [
+  "d2/d between 0.70 and 0.79 for all rows (waisted shank): 8.5 (M12) ... 30.5 (M39)",
+  "b1 grows with d: 20, 23, 28, 32, 35, 39, 42, 45, 48",
+  "SW and d3 non-decreasing with d",
+  "3 independent pages agree cell by cell for all 9 kept rows (no disagreement)",
+  "fasten.it has typos on larger sizes (M80x6 d2 '666'), not used"
+ ],
+ "shape_hint": "A double-ended stud: both ends carry a metric thread (nut ends) joined by a plain shank turned down to a reduced (waisted) diameter d2 (about 0.7-0.8 d) so the stud is elastic; ends have chamfers and thread run-out (z2), and the stud is used with two hex nuts (DIN 2510-5).",
+ "role_map": {
+  "d_nom": "nominal thread M",
+  "d2": "reduced (waisted) shank diameter",
+  "d3": "auxiliary diameter symbol d3 of DIN 2510-3 (not defined in the source text)",
+  "b1": "thread length of Form L",
+  "z2": "symbol z2 of DIN 2510-3 (length at the stud end, not defined in the source text)",
+  "SW": "width across flats (spanner size)"
+ },
+ "notes": "Only Form L columns are published (b1). Sizes M12-M39 only. The meaning of d3, z2 and SW follows DIN 2510-3 symbols; the sources do not define them in text, so use the symbols with the DIN 2510-3 drawing when modelling. Thread pitch not tabulated here (use coarse ISO 261 pitch; Boltport z1 column equals the coarse pitch). Stud length L is customer specified.",
+ "clusters": {
+  "fasten.it": [
+   "fasten.it/en/norms/norm/din_2510-3 (all forms, M12..M180x8)"
+  ],
+  "Boltport family": [
+   "boltport.com/standards/din-2510-form-l (M12..M56; sister sites one source)"
+  ],
+  "German shop dataset (schrauben-lexikon/theo/wegertseder)": [
+   "theo-schrauben.de/DIN-2510 (M12..M39, has extra M22)"
+  ],
+  "NOT used": [
+   "fasteners.eu (weights per length only)",
+   "torqbolt/andrews/bolting specialist (404/no table)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live fasten.it, boltport.com form-L, theo-schrauben.de (200); compared 9 rows (M12..M39) x 5 cols (d2,d3,b1,z2,SW) x 3 sources = 135 cells, 0 mismatches; also fasten.it vs Boltport for M42..M56 (identical). Checked d2/d ratio 0.71-0.78, monotone b1/SW/d3/z2.",
+  "problems": [
+   "d3 and z2: header symbols only; no source (fasten.it, Boltport, theo) defines them; producer role_map admits 'not defined in the source text' and the Korean labels ('end auxiliary diameter', 'end length') are guesses -> dropped.",
+   "d2 (reduced shank dia) role is also not stated verbally; supported only by the standard's title ('reduced shank') and d2/d~0.75 - kept (flag).",
+   "SW: header 'width accross flats' (fasten.it), 'SW' (Boltport), 's' (theo); values jump 13->22 between M30 and M33 and M12 SW=7 < d2=8.5 (wrench flats of unknown location) - values agree across sources, meaning of the feature unknown.",
+   "b1 = 'Form L' mapping stated by Boltport page title / theo shop context ('Form L ... langes Gewinde'); fasten.it lists b1,b2,b3 without form names.",
+   "exactly 3 clusters for every cell; fasten.it and Boltport are identical on all 14 common rows incl. the omission of M22 and the '-' at M56 b1 (possible common ancestry, not provable) - if merged, support falls to 2.",
+   "theo has M22 (16.5,14,30,6,11) that fasten.it and Boltport lack -> M22 correctly absent."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "d3",
+   "z2"
+  ]
+ },
+ "standard_full": "DIN 2510-3 (waisted / reduced-shank stud bolts, Form L)",
+ "scope": "DIN 2510-3 L형만"
+}

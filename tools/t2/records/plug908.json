@@ -1,0 +1,351 @@
+{
+ "id": "plug908",
+ "status": "ok",
+ "standard": "DIN 908",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P"
+  ],
+  [
+   "c",
+   "칼라 두께 c (공칭, 최소=공칭)"
+  ],
+  [
+   "dk_max",
+   "칼라 지름 d2 최대=공칭"
+  ],
+  [
+   "i",
+   "나사부 길이 i (공칭)"
+  ],
+  [
+   "h",
+   "전체 길이 l (약) = i + c"
+  ],
+  [
+   "s",
+   "육각 구멍 대변 s (공칭)"
+  ],
+  [
+   "t_min",
+   "육각 구멍 깊이 t 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "M10",
+   1,
+   3,
+   14,
+   8,
+   11,
+   5,
+   5
+  ],
+  [
+   "M12",
+   1.5,
+   3,
+   17,
+   12,
+   15,
+   6,
+   7
+  ],
+  [
+   "M14",
+   1.5,
+   3,
+   19,
+   12,
+   15,
+   6,
+   7
+  ],
+  [
+   "M16",
+   1.5,
+   3,
+   21,
+   12,
+   15,
+   8,
+   7.5
+  ],
+  [
+   "M18",
+   1.5,
+   4,
+   23,
+   12,
+   16,
+   8,
+   7.5
+  ],
+  [
+   "M20",
+   1.5,
+   4,
+   25,
+   14,
+   18,
+   10,
+   7.5
+  ],
+  [
+   "M22",
+   1.5,
+   4,
+   27,
+   14,
+   18,
+   10,
+   7.5
+  ],
+  [
+   "M24",
+   1.5,
+   4,
+   29,
+   14,
+   18,
+   12,
+   7.5
+  ],
+  [
+   "M26",
+   1.5,
+   4,
+   31,
+   16,
+   20,
+   12,
+   9
+  ],
+  [
+   "M27",
+   2,
+   4,
+   32,
+   16,
+   20,
+   12,
+   9
+  ],
+  [
+   "M30",
+   1.5,
+   4,
+   36,
+   16,
+   20,
+   17,
+   9
+  ],
+  [
+   "M33",
+   2,
+   5,
+   39,
+   16,
+   21,
+   17,
+   9
+  ],
+  [
+   "M36",
+   1.5,
+   5,
+   42,
+   16,
+   21,
+   19,
+   10.5
+  ],
+  [
+   "M38",
+   1.5,
+   5,
+   44,
+   16,
+   21,
+   19,
+   10.5
+  ],
+  [
+   "M42",
+   1.5,
+   5,
+   49,
+   16,
+   21,
+   22,
+   10.5
+  ],
+  [
+   "M45",
+   1.5,
+   5,
+   52,
+   16,
+   21,
+   22,
+   10.5
+  ],
+  [
+   "M48",
+   1.5,
+   5,
+   55,
+   16,
+   21,
+   24,
+   10.5
+  ],
+  [
+   "M52",
+   1.5,
+   5,
+   60,
+   16,
+   21,
+   24,
+   10.5
+  ],
+  [
+   "M56",
+   2,
+   5,
+   64,
+   20,
+   25,
+   32,
+   14
+  ],
+  [
+   "M64",
+   2,
+   5,
+   72,
+   20,
+   25,
+   32,
+   14
+  ]
+ ],
+ "row_support": {
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3,
+  "M18": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M26": 3,
+  "M27": 3,
+  "M30": 3,
+  "M33": 3,
+  "M36": 3,
+  "M38": 3,
+  "M42": 3,
+  "M45": 3,
+  "M48": 3,
+  "M52": 3,
+  "M56": 3,
+  "M64": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/din-908-hexagon-socket-screw-plug",
+   "site": "torqbolt.com",
+   "what": "DIN 908 table 0 (k=c, dk, i, lt, e, s, t1)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-908-specifications-hex-socket-screw-plugs/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 908 Specifications, 9 transposed tables (P,c,d2,e,i,L,s,t)"
+  },
+  {
+   "url": "https://www.fasenco.com/din-908/",
+   "site": "fasenco.com",
+   "what": "table d1,d2,s,c,i,l approx,t min (M10..M64)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_908.asp",
+   "site": "schrauben-lexikon.de (same data on theo-schrauben.de, wegertseder.com)",
+   "what": "Maße: s, t min, d2, c - corroboration only, contains typos"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M39 and M60 rows",
+   "why": "only torqbolt and Fuller (2 sources)"
+  },
+  {
+   "what": "G (ISO 228-1 pipe thread) rows G1/8A..G2A",
+   "why": "different thread series; P column not applicable; not published here"
+  },
+  {
+   "what": "e_min across-corners, s tolerance limits, mass",
+   "why": "rounding/format differs between sources (e.g. M10 e 5.7 vs 5.723) -> not 3 identical; not needed for buying"
+  },
+  {
+   "what": "second pitch x2 rows (M30,M36,M42,M45,M48,M52)",
+   "why": "same dimensions as fine row; only the finer pitch is listed"
+  }
+ ],
+ "checks": [
+  "h = i + c for every row (M10 8+3=11, M18 12+4=16, M33 16+5=21, M56 20+5=25)",
+  "c, dk, i, h, s, t_min non-decreasing with thread size across all 20 rows",
+  "dk >= d+4 and dk > s for every row",
+  "t_min < i + c = h (socket depth smaller than plug length), e.g. M10 5<11, M56 14<25",
+  "German shop dataset dissent cells are the only differences found: M14 c=4 (others 3), M38 dk=42 (others 44), M56 dk=72 (others 64) - each contradicts monotonic growth (M38 dk=42 equals M36; M56 dk=72 equals M64) and 3 independent sources"
+ ],
+ "shape_hint": "Cylindrical plug with a flat round collar (diameter dk, thickness c) at the top that seats against the port face (normally with a DIN 7603 sealing ring); below the collar a fully threaded metric fine-pitch shank of length i. A hexagon socket (width across flats s, depth t) is recessed in the top face; there is no external hex head, so total height above the seat is only c. Overall length l = i + c.",
+ "role_map": {
+  "d": "nominal thread diameter (metric fine thread)",
+  "P": "thread pitch",
+  "c": "collar thickness (min = nominal, +0.5)",
+  "dk_max": "collar diameter d2 (max = nominal, h14)",
+  "i": "threaded shank length (nominal, +-0.2)",
+  "h": "overall length approx = i + c",
+  "s": "hex socket width across flats (nominal, D12)",
+  "t_min": "minimum hex socket depth"
+ },
+ "notes": "Metric fine-thread Form A series only (cylindrical thread, sealed by ring under the collar - see sealw for DIN 7603). Pitch shown is the finer series pitch; M30, M36, M42, M45, M48, M52 also exist with P=2 and identical other dimensions. The G (ISO 228-1) variants with the same d2/c/s/t pattern are not in the table. Confirmed against 3 independent sources in every cell (torqbolt, Fuller, fasenco); the German shop dataset (3 sites, one lineage) agrees except for 3 typo cells. Web search quota was exhausted before this family; sources were found by URL pattern from sites already used for plug906/plug910.",
+ "clusters": {
+  "Fuller / Chinese standards-DB template": [
+   "fullerfasteners.com"
+  ],
+  "torqbolt (newer edition, own layout)": [
+   "torqbolt.com"
+  ],
+  "fasenco.com (template site; same d1,d2,s,c,i,l approx layout as ssfastenersmfgr.com)": [
+   "fasenco.com"
+  ],
+  "German shop dataset (one lineage; carries s,t,d2,c only)": [
+   "schrauben-lexikon.de (theo-schrauben.de, wegertseder.com)"
+  ],
+  "EXTRA, not in record sources: fasteners.eu (c,d2,e,i,l,s,t table, older edition, own typos)": [
+   "https://www.fasteners.eu/standards/DIN/908/"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched torqbolt, Fuller, fasenco, lexikon live plus fasteners.eu DIN 908 (extra). Parsed torqbolt table 0 (labels P1/P2/G, then k=c, dk, i, lt, e, s, t1), Fuller 9 transposed tables, fasenco table, lexikon (s,t,d2,c), fasteners.eu. 20 rows x 7 cols = 140 cells. Clusters per column (min over rows, without extra source): P 3-4, c 3, dk_max 3, i 3 (torqbolt,Fuller,fasenco only), h 3 (same three), s 3-4, t_min 3-4. Every row agrees with all clusters that carry the cell except German-dataset typos: M14 c=4, M38 dk=42, M56 dk=72, M27 labelled 'M 27 x 1,5', its 'M 52 x 2' column garbled. fasteners.eu agrees with the record in all 140 cells where it has a row (M48 row labelled x2 twice, so M48 P not supported by it). Physical: h=i+c all rows, c/dk/i/h/s/t non-decreasing, dk>s, t<h.",
+  "problems": [
+   "i and h rest on exactly 3 clusters (torqbolt, Fuller, fasenco) - requires Fuller/torqbolt independence (judged independent: transposed min/max layout and 1-decimal e values vs 3-decimal e and mass in torqbolt, no shared typos) and fasenco not being a copy of either. fasteners.eu (extra) gives a 4th explicit match for every i,h cell; recommend adding it.",
+   "fasenco calls the part 'Taper Thread' in its text (wrong - DIN 908 is cylindrical); numbers are correct.",
+   "Second pitch (x2) rows with identical dimensions exist for M30,M36,M42,M45,M48,M52; record lists finer pitch only (P not a unique key).",
+   "Cylindrical G (ISO 228-1) rows share the same d2/c/s/t pattern but are not in the table (OK)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 908 (hexagon socket screw plug with collar, cylindrical metric fine thread)",
+ "scope": "육각구멍 칼라 플러그 DIN 908 (미터 가는나사)"
+}

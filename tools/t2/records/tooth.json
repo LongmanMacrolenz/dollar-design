@@ -1,0 +1,359 @@
+{
+ "id": "tooth",
+ "status": "ok",
+ "standard": "DIN 6798 A형 (톱니 수는 DIN 6797 A형 포함)",
+ "u": "mm",
+ "cols": [
+  [
+   "d1_min",
+   "내경 d1 최소(=호칭)"
+  ],
+  [
+   "d2_max",
+   "외경 d2 최대(=호칭)"
+  ],
+  [
+   "s",
+   "두께 s"
+  ],
+  [
+   "z_min_6798A",
+   "최소 톱니 수 (DIN 6798 A)"
+  ],
+  [
+   "z_min_6797A",
+   "최소 톱니 수 (DIN 6797 A)"
+  ]
+ ],
+ "rows": [
+  [
+   "M1.6",
+   1.7,
+   3.6,
+   0.3,
+   9,
+   6
+  ],
+  [
+   "M2",
+   2.2,
+   4.5,
+   0.3,
+   9,
+   6
+  ],
+  [
+   "M2.5",
+   2.7,
+   5.5,
+   0.4,
+   9,
+   6
+  ],
+  [
+   "M3",
+   3.2,
+   6.0,
+   0.4,
+   9,
+   6
+  ],
+  [
+   "M3.5",
+   3.7,
+   7.0,
+   0.5,
+   10,
+   6
+  ],
+  [
+   "M4",
+   4.3,
+   8.0,
+   0.5,
+   11,
+   8
+  ],
+  [
+   "M5",
+   5.3,
+   10.0,
+   0.6,
+   11,
+   8
+  ],
+  [
+   "M6",
+   6.4,
+   11.0,
+   0.7,
+   12,
+   8
+  ],
+  [
+   "M7",
+   7.4,
+   12.5,
+   0.8,
+   14,
+   8
+  ],
+  [
+   "M8",
+   8.4,
+   15.0,
+   0.8,
+   14,
+   8
+  ],
+  [
+   "M10",
+   10.5,
+   18.0,
+   0.9,
+   16,
+   9
+  ],
+  [
+   "M18",
+   19.0,
+   30.0,
+   1.4,
+   18,
+   12
+  ],
+  [
+   "M20",
+   21.0,
+   33.0,
+   1.4,
+   20,
+   12
+  ],
+  [
+   "M22",
+   23.0,
+   36.0,
+   1.5,
+   20,
+   14
+  ],
+  [
+   "M24",
+   25.0,
+   38.0,
+   1.5,
+   20,
+   14
+  ],
+  [
+   "M27",
+   28.0,
+   44.0,
+   1.6,
+   22,
+   14
+  ],
+  [
+   "M30",
+   31.0,
+   48.0,
+   1.6,
+   22,
+   14
+  ]
+ ],
+ "row_support": {
+  "M1.6": 3,
+  "M2": 3,
+  "M2.5": 3,
+  "M3": 3,
+  "M3.5": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M7": 3,
+  "M8": 3,
+  "M10": 3,
+  "M18": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M27": 3,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/din-6798a-external-tooth-washers-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "DIN 6798A table (d1 min/max, d2, s1, min teeth, for thread) [cluster A]"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_639.html",
+   "site": "globalfastener.com",
+   "what": "DIN 6798 (A) dimension table (d, dc, t, teeth, for thread) [cluster B, counted as one with hjfasteners + fullerfasteners]"
+  },
+  {
+   "url": "https://www.hjfasteners.com/pro.asp?keyno=1360&bascode=101&name=External-Serrated-Lock-Washer-DIN6798A",
+   "site": "hjfasteners.com",
+   "what": "DIN6798A table, identical layout to globalfastener [cluster B]"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-6798a-specifications-serrated-lock-washers-type-a/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 6798A specifications, identical to globalfastener [cluster B]"
+  },
+  {
+   "url": "https://www.beneri.com/en/prodotto/din-6798-a",
+   "site": "beneri.com",
+   "what": "DIN 6798 A table (d H13, D h14, s, no. of teeth) [cluster C]"
+  },
+  {
+   "url": "https://www.engineersedge.com/hardware/din_6798_serrated_lock_washers_14593.htm",
+   "site": "engineersedge.com",
+   "what": "DIN 6798 A/J/V table (d1,d2,s1, teeth form A) [cluster D]"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6798A.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Technische Daten DIN 6798 A (d, s, d2, Anzahl der Zaehne) [cluster E]"
+  },
+  {
+   "url": "https://shop.dresselhaus.de/de/7-Produktshop/n,6,DIN-EN-ISO-Normteile-1052-6926/n,6290,DIN-6798-F%C3%A4cherscheiben/wgr,1668,F%C3%A4cherscheiben-Form-A.html",
+   "site": "shop.dresselhaus.de",
+   "what": "Faecherscheiben Form A d1/d2 table [cluster F, d2 only]"
+  },
+  {
+   "url": "https://damesa.com/en/products/fasteners/washers/din-6798-serrated-lock-washer-external-teeth-form-a",
+   "site": "damesa.com",
+   "what": "DIN 6798 form A part tables d/D/S with tolerances [cluster G, a few sizes]"
+  },
+  {
+   "url": "https://sunhyings.com/fasteners/washers/toothed-lock-washers/",
+   "site": "sunhyings.com",
+   "what": "Toothed lock washers DIN 6797/6798 d1,d2,s (M3..M30 subset) [cluster H]"
+  },
+  {
+   "url": "https://torqbolt.com/din-6797a-external-tooth-washers-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "DIN 6797A table, used for the 6797 A teeth column"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-6797a-specifications-toothed-lock-washer-type-a/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 6797A specifications, 6797 A teeth column (same cluster as globalfastener layout)"
+  },
+  {
+   "url": "https://www.beneri.com/en/prodotto/din-6797-a",
+   "site": "beneri.com",
+   "what": "DIN 6797 A table, teeth column"
+  },
+  {
+   "url": "https://www.engineersedge.com/hardware/din_6797_toothed_lock_washers_metric_14592.htm",
+   "site": "engineersedge.com",
+   "what": "DIN 6797 teeth (form A and J column), 6797 A teeth column"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6797A.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "DIN 6797 A d, s, d2, Anzahl der Zaehne, 6797 A teeth column"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M12 row (d1 13 vs 12.5 / 12.6)",
+   "why": "genuine conflict in d1: 13 (torqbolt, globalfastener cluster, sunhyings) vs 12.5 (engineersedge, schrauben-lexikon, dresselhaus) vs 12.6 (beneri, damesa); no unambiguous >=3 majority"
+  },
+  {
+   "what": "M14 row (d1 15 vs 14.5)",
+   "why": "conflict in d1: 15 (torqbolt, globalfastener cluster, beneri, damesa) vs 14.5 (engineersedge, schrauben-lexikon, dresselhaus)"
+  },
+  {
+   "what": "M16 row (d1 17 vs 16.5)",
+   "why": "conflict in d1: 17 (torqbolt, globalfastener cluster, sunhyings) vs 16.5 (beneri, damesa, engineersedge, schrauben-lexikon, dresselhaus)"
+  },
+  {
+   "what": "d1_max (upper limit) and d2_min (lower limit) columns",
+   "why": "listed by only torqbolt + globalfastener cluster for M6 and several others (beneri has no 6.4 row; its own 6.18 variant), so <3 sources for some rows; columns dropped rather than rows"
+  },
+  {
+   "what": "variant sizes 1.8, 1.9, 2.5, 2.8, 3.0, 5.1, 5.5, 8.2, 9.55, 11.5, 13.2, 26.4 and similar half-sizes",
+   "why": "present in only 1-4 pages as non-coarse-series/older variants; not needed for the main M-series"
+  },
+  {
+   "what": "boltsfastener.com DIN 6797 table not used",
+   "why": "size labels shifted by one for M2.5-M5 (e.g. M2.5 listed with d=3.2); defective"
+  },
+  {
+   "what": "engineersedge/lexikon teeth for other rows",
+   "why": "engineersedge has typos in the teeth list (e.g. 16 6 8 8 18, 8 for M14/M16) and lexikon lists 7 teeth for M2/M2.5; these cells were out-voted by >=3 other clusters"
+  }
+ ],
+ "checks": [
+  "d2_max > d1_min for every row (ratio d2/d1 between 1.52 and 2.12)",
+  "d1_min non-decreasing with thread size",
+  "d2_max non-decreasing with thread size",
+  "s non-decreasing with thread size",
+  "z_min_6798A non-decreasing with thread size",
+  "z_min_6797A non-decreasing with thread size",
+  "DIN 6797 A min teeth <= DIN 6798 A min teeth in every row (6798 is the finer-toothed series)",
+  "d1_min is larger than the thread major diameter d (clearance hole), e.g. M10 -> 10.5, M30 -> 31",
+  "every cell (d1,d2,s,teeth) agreed by >=3 independent source clusters; d1/d2/s cross-checked against 6798 A pages only, DIN 6797 A pages used only for its own teeth column",
+  "d1, d2, s are identical in DIN 6797 A and DIN 6798 A pages (same size series); only the minimum number of teeth differs",
+  "d1 and d2 values match the standard tolerance classes seen in beneri/torqbolt (d1 H13, d2 h14), e.g. M10: 10.5 / 18 with limits 10.77 and 17.57 listed in 3 clusters (limits not published, only 2 clusters for some rows)"
+ ],
+ "shape_hint": "Flat round washer with a plain circular hole; the outer rim is cut into many radial teeth (external teeth, Form A) that are twisted alternately up and down out of the plane so the washer looks like a toothed star in plan view and slightly wavy in side view.",
+ "role_map": {
+  "d1_min": "inner (hole) diameter, min = nominal (H13)",
+  "d2_max": "outer diameter incl. teeth, max = nominal (h14)",
+  "s": "washer thickness",
+  "z_min_6798A": "minimum number of teeth, DIN 6798 A (many fine teeth)",
+  "z_min_6797A": "minimum number of teeth, DIN 6797 A (fewer, coarser teeth)"
+ },
+ "notes": "Scope: Form A (external teeth) of DIN 6797 and DIN 6798 only. Forms J (internal teeth), V (countersunk external teeth) and ASME B18.21.1 / KS B 1325 not verified. d1/d2/s are identical in both DIN standards; the teeth counts differ (6798 A has more teeth). d1 is the minimum (=nominal) inner diameter, tolerance H13; d2 maximum (=nominal) h14. Thread label is the screw size the washer is made for (d1 10.5 = M10 etc.). M12, M14, M16 rows are missing on purpose: pages disagree whether d1 is 13/15/17 or 12.5/14.5/16.5 (maintainer must check the standard). Some manufacturers (beneri, damesa) also sell own variants 6.18/10.9, 8.2/14, 12.6/20.22, 16.5/26; those are not the DIN series. schrauben-lexikon states both forms correspond to no ISO standard; whether DIN 6797/6798 are formally withdrawn was not verified.",
+ "clusters": {
+  "A FE (fasteners.eu-derived)": [
+   "torqbolt.com (6798A and 6797A tables cell-identical to fasteners.eu incl. FE typos M3.5 d1max=3, M27 d1=38)",
+   "fasteners.eu (live: /standards/DIN/6798-A/, /6797-A/)"
+  ],
+  "B Chinese template": [
+   "globalfastener.com",
+   "hjfasteners.com",
+   "fullerfasteners.com (6798A and 6797A pages)"
+  ],
+  "C beneri": [
+   "beneri.com (6798-A and 6797-A pages)"
+  ],
+  "D engineersedge": [
+   "engineersedge.com (6798 and 6797 pages)"
+  ],
+  "E German dataset": [
+   "schrauben-lexikon.de (6798A, 6797A)"
+  ],
+  "F dresselhaus (d1,d2 only)": [
+   "shop.dresselhaus.de"
+  ],
+  "G damesa/Mikalor (own variants for M5,M6,M8,M12,M16)": [
+   "damesa.com"
+  ],
+  "H sunhyings (subset, 'DIN 6798:1971 reference sheet')": [
+   "sunhyings.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 15 listed URLs live (HTTP 200; hjfasteners page 0 <title> but table parsed) + fasteners.eu 6798-A/6797-A. 17 rows x 5 cols matrix over 8 clusters, 85 cells: every cell agrees in >=3 clusters. Minimum rows: M1.6 (A,B,D for all 5 cols) and M7 z_min_6797A (A,B,D); M3.5 d1/d2/s/z98 4 clusters; others 4-8. Standard identity verified per page (<title> and table content): z_min_6798A only from 6798A pages (teeth 9,9,9,9,10,11,11,12,14,14,16,18,18,20,20,20,22,22 pattern), z_min_6797A only from 6797A pages (6,6,6,6,6,8,8,8,8,8,9,..12,12,14,14,14,14); no swap; z97<=z98 in all rows. dims d1_min/d2_max/s read only from 6798A pages (6797A pages equal). Outvoted deviations recorded: M2 z98 lexikon 7; M4 z97 engineersedge 6; M20-M30 z98 beneri 18/18/18/20/20 vs 20/20/20/22/22 (A,B,D,E agree); M6 beneri/damesa 6.18/10.9 (6 clusters say 6.4/11); M5 5.1/9/0.5 and M8 8.2/14/0.8 are alternative older sizes listed by D,E,G.",
+  "problems": [
+   "torqbolt is a fasteners.eu copy -> torqbolt+fasteners.eu = ONE cluster (producer counted torqbolt alone, which is fine, but it must not be combined with anything fasteners.eu-derived such as digipich).",
+   "M1.6 row and M7 z_min_6797A have exactly 3 clusters (FE, Chinese template, engineersedge); engineersedge has several typos elsewhere (teeth '16 6 8 8 18'), none in kept cells.",
+   "M12, M14, M16 d1 conflict (13/15/17 vs 12.5/14.5/16.5 vs 12.6/16.5) - producer's row drop is correct; leaves a size gap M10 -> M18.",
+   "M5 and M8: sources list two variants (d1 5.1/9 and 5.3/10; 8.2/14 and 8.4/15); kept 5.3/10/0.6 and 8.4/15/0.8 (current series, 5-6 clusters). Row label M5/M8 is not unique in some sources.",
+   "d1 'min = nominal (H13)' and d2 'max = nominal (h14)' confirmed by Chinese template and FE headers (nominal size = min/max).",
+   "DIN 6797 A/6798 A formally withdrawn status not checked (producer note); form J/V excluded."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 6798 A (external teeth) with DIN 6797 A teeth column"
+}

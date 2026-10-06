@@ -1,0 +1,270 @@
+{
+ "id": "carriage",
+ "status": "ok",
+ "standard": "DIN 603",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통 나사)"
+  ],
+  [
+   "b",
+   "나사부 길이 b (L≤125)"
+  ],
+  [
+   "dk_max",
+   "머리 지름 dk 최대"
+  ],
+  [
+   "dk_min",
+   "머리 지름 dk 최소"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대"
+  ],
+  [
+   "k_min",
+   "머리 높이 k 최소"
+  ],
+  [
+   "f_max",
+   "사각목 높이 f 최대"
+  ],
+  [
+   "f_min",
+   "사각목 높이 f 최소"
+  ],
+  [
+   "v_max",
+   "사각목 폭 v 최대"
+  ],
+  [
+   "v_min",
+   "사각목 폭 v 최소"
+  ],
+  [
+   "ds_min",
+   "축 지름 ds 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "M5",
+   0.8,
+   16,
+   13.55,
+   12.45,
+   3.3,
+   2.7,
+   4.1,
+   2.9,
+   5.48,
+   4.52,
+   4.52
+  ],
+  [
+   "M6",
+   1,
+   18,
+   16.55,
+   15.45,
+   3.88,
+   3.12,
+   4.6,
+   3.4,
+   6.48,
+   5.52,
+   5.52
+  ],
+  [
+   "M8",
+   1.25,
+   22,
+   20.65,
+   19.35,
+   4.88,
+   4.12,
+   5.6,
+   4.4,
+   8.58,
+   7.42,
+   7.42
+  ],
+  [
+   "M10",
+   1.5,
+   26,
+   24.65,
+   23.35,
+   5.38,
+   4.62,
+   6.6,
+   5.4,
+   10.58,
+   9.42,
+   9.42
+  ],
+  [
+   "M12",
+   1.75,
+   30,
+   30.65,
+   29.35,
+   6.95,
+   6.05,
+   8.75,
+   7.25,
+   12.7,
+   11.3,
+   11.3
+  ],
+  [
+   "M16",
+   2,
+   38,
+   38.8,
+   37.2,
+   8.95,
+   8.05,
+   12.9,
+   11.1,
+   16.7,
+   15.3,
+   15.3
+  ],
+  [
+   "M20",
+   2.5,
+   46,
+   46.8,
+   45.2,
+   11.05,
+   9.95,
+   15.9,
+   14.1,
+   20.84,
+   19.16,
+   19.16
+  ]
+ ],
+ "row_support": {
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-603-specifications-cup-head-square-neck-bolts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 603 table M5-M20 (b,dk,ds,k1=f,k,r,s=v)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/603/",
+   "site": "fasteners.eu",
+   "what": "DIN 603 table M5-M20 (b,dk,ds,f,k,r,v)"
+  },
+  {
+   "url": "https://degademir.com/en/urun/din-603-mushroom-head-square-neck-bolt",
+   "site": "degademir.com",
+   "what": "DIN 603 table M5-M20 (k,dk,f,v,ds,b)"
+  },
+  {
+   "url": "https://boltport.com/standards/din-603/",
+   "site": "boltport.com",
+   "what": "DIN 603 table M5-M16 (typos: M6 v min 5.72, M12 P 1.76 -> ignored)"
+  },
+  {
+   "url": "https://www.kova.in/technical-information/din603/",
+   "site": "kova.in",
+   "what": "DIN 603 max-value table M6-M20 (P,b,dk,f,k,v); same table as capitalbolts.in, counted once"
+  },
+  {
+   "url": "https://www.capitalbolts.in/din-603",
+   "site": "capitalbolts.in",
+   "what": "identical copy of the kova.in table (counted together with it as one source)"
+  },
+  {
+   "url": "https://www.jigneshsteel.com/stainless-steel-coach-carriage-bolts.html",
+   "site": "jigneshsteel.com",
+   "what": "small table d2,k,f,b (M20 b-row shifted, not used for M20 b)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "b2 (125<L<=200) and b3 (L>200) thread lengths",
+   "why": "M5/M6 have no value for b3 (and jigneshsteel disagrees on M5 b2); M20 b3 listed only by 4; not needed, no nulls allowed"
+  },
+  {
+   "what": "r1 (head radius ~), r2, r3, e_min",
+   "why": "only fuller/fasteners.eu (r) or boltport (e) -> <3 independent sources"
+  },
+  {
+   "what": "M24 and larger, M3-M4",
+   "why": "not in the sources' table"
+  }
+ ],
+ "checks": [
+  "dk_max, k_max, f_max, v_max, b, P are strictly non-decreasing M5..M20",
+  "max > min for dk, k, f, v in all rows; v_min equals ds_min in all 7 rows (square width min = shank diameter min)",
+  "dk_max/d falls from 2.71 (M5) to 2.34 (M20) (all within 2.3..2.8) and k_max < 0.7*d (shallow cup head); dk_max-dk_min = 1.1 (M5,M6), 1.3 (M8-M12), 1.6 (M16,M20)",
+  "b(L<=125) = 2d+6 (M5..M16) and 46 for M20 = 2d+6, consistent with ISO coarse-thread bolt rule",
+  "v_max > d (square is slightly larger than shank, press-fits into the slot) for all rows; f_max > k_max for all rows"
+ ],
+ "shape_hint": "Carriage (coach) bolt: a low shallow-domed round (mushroom) head of diameter dk and height k with no drive; directly under the head a short square neck (height f, width v across flats) that locks into a square hole or wood; below that a plain round shank of diameter d with thread of length b at the end.",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse thread pitch",
+  "b": "thread length for bolts L<=125",
+  "dk_max": "head diameter max",
+  "dk_min": "head diameter min",
+  "k_max": "head height max",
+  "k_min": "head height min",
+  "f_max": "square neck height max",
+  "f_min": "square neck height min",
+  "v_max": "square neck width max (across flats)",
+  "v_min": "square neck width min",
+  "ds_min": "shank diameter min"
+ },
+ "notes": "Metric DIN 603 (mushroom head square neck bolt, product grade B/C by maker). ISO 8677 (grade C) and KS B 1031 were not separately verified -- they may differ slightly (e.g. tolerances); ASME B18.5 inch carriage bolts are a different table (AFT/Portland/Jignesh list it: 1/4 head dia 0.594, 1/2 1.094) and were NOT collected (only 3 inch sizes have 3 sources). Several pages (Portland/Jignesh inch table 4) show a different 'large head' pattern (1/4: 0.844) -- do not mix with B18.5 carriage bolts. DIN 603 thread lengths b2 (L 125-200: 22,24,28,32,36,44,52) and b3 (L>200: -,-,41,45,49,57,65) are listed by 3-4 sources for M8+, kept out of the table.",
+ "clusters": {
+  "Chinese template": [
+   "fullerfasteners.com"
+  ],
+  "fasteners.eu family (boltport is a copy with extra typos M6 v_min 5.72, M12 P 1.76)": [
+   "fasteners.eu",
+   "boltport.com"
+  ],
+  "degademir.com": [
+   "degademir.com"
+  ],
+  "kova.in = capitalbolts.in (max values only, M6-M20)": [
+   "kova.in",
+   "capitalbolts.in"
+  ],
+  "jigneshsteel.com (d2,k,f,b max only; page blocked live 403, raw copy used; M20 b row shifted -> not used)": [
+   "jigneshsteel.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fuller, fasteners.eu, degademir, boltport, kova, capital live (200); jignesh via raw copy. Parsed all tables; matrix 7 rows x 11 value columns x 7 sources. Only deviations: boltport M12 P 1.76 and M6 v_min 5.72 (copy-typos of the fasteners.eu cluster). Clusters per column (min over rows): P 3 (fuller, feu, degademir; M6-M20 +kova/capital), b 4, dk_max/k_max/f_max/v_max 4-5, dk_min/k_min/f_min/v_min/ds_min exactly 3 (fuller, fasteners.eu, degademir) for ALL seven rows (max-only kova/capital and jignesh give nothing for min columns). Header symbols read from sources: fuller labels f as 'k1' and v as 's'; fasteners.eu and degademir label them f / v ('Neck Height','Neck Width') so the roles are source-defined.",
+  "problems": [
+   "All five *_min columns (dk,k,f,v,ds) rest on exactly 3 clusters (fuller, fasteners.eu, degademir): thin margin - if degademir were judged a copy of the Chinese/FEU data these 35 cells fall to 2",
+   "Family label 'ISO 8677 · DIN 603 · KS B 1031 · ASME B18.5' but table is DIN 603 only (ISO 8677 grade C / KS / ASME B18.5 inch carriage-bolt table not verified; ASME B18.5 numbers differ, e.g. 1/2 head dia 1.094) -> publish as DIN 603",
+   "ds_min and v_min are identical in every row (redundant column, harmless)",
+   "b is for L<=125 only (fasteners.eu prints 'l < 125mm', fuller 'L<=125')",
+   "M12 P: 4 clusters 1.75 vs boltport typo 1.76; M6 v_min: 3 clusters 5.52 vs boltport typo 5.72 -> outvoted"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 603",
+ "scope": "DIN 603 값 — ISO 8677·KS B 1031·ASME B18.5는 싣지 않았습니다"
+}

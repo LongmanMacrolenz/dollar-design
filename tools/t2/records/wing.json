@@ -1,0 +1,331 @@
+{
+ "id": "wing",
+ "status": "ok",
+ "standard": "DIN 315",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (coarse)"
+  ],
+  [
+   "d2_max",
+   "원통(보스) 지름 d2 최대"
+  ],
+  [
+   "d2_min",
+   "원통(보스) 지름 d2 최소"
+  ],
+  [
+   "d3_max",
+   "칼라 지름 d3 최대"
+  ],
+  [
+   "e_max",
+   "날개 폭(스팬) e 최대"
+  ],
+  [
+   "e_min",
+   "날개 폭(스팬) e 최소"
+  ],
+  [
+   "g_max",
+   "날개 두께 g1 최대"
+  ],
+  [
+   "g_min",
+   "날개 두께 g1 최소"
+  ],
+  [
+   "h_max",
+   "전체 높이 h 최대"
+  ],
+  [
+   "h_min",
+   "전체 높이 h 최소"
+  ],
+  [
+   "m_max",
+   "너트 몸체 높이 m 최대"
+  ],
+  [
+   "m_min",
+   "너트 몸체 높이 m 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "M4",
+   0.7,
+   8,
+   6,
+   7,
+   20,
+   18,
+   1.9,
+   1.1,
+   10.5,
+   8.5,
+   4.6,
+   3.2
+  ],
+  [
+   "M5",
+   0.8,
+   11,
+   8,
+   9,
+   26,
+   24,
+   2.3,
+   1.5,
+   13,
+   11,
+   6.5,
+   4
+  ],
+  [
+   "M6",
+   1,
+   13,
+   10,
+   11,
+   33,
+   30,
+   2.3,
+   1.5,
+   17,
+   15,
+   8,
+   5
+  ],
+  [
+   "M8",
+   1.25,
+   16,
+   13,
+   12.5,
+   39,
+   36,
+   2.8,
+   2,
+   20,
+   18,
+   10,
+   6.5
+  ],
+  [
+   "M10",
+   1.5,
+   20,
+   17,
+   16.5,
+   51,
+   48,
+   4.4,
+   3.6,
+   25,
+   23,
+   12,
+   8
+  ],
+  [
+   "M12",
+   1.75,
+   23,
+   20,
+   19.5,
+   65,
+   62,
+   4.9,
+   4.1,
+   33.5,
+   31,
+   14,
+   10
+  ],
+  [
+   "M16",
+   2,
+   29,
+   26,
+   23,
+   73,
+   70,
+   6.4,
+   5.6,
+   37.5,
+   35,
+   17,
+   13
+  ],
+  [
+   "M20",
+   2.5,
+   35,
+   32,
+   29,
+   90,
+   86,
+   6.9,
+   6.1,
+   46.5,
+   44,
+   21,
+   16
+  ],
+  [
+   "M24",
+   3,
+   44,
+   41,
+   37.5,
+   110,
+   106,
+   9.4,
+   8.6,
+   56.5,
+   53.5,
+   25,
+   20
+  ]
+ ],
+ "row_support": {
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_315",
+   "site": "fasten.it",
+   "what": "Dimensions table 'DIN 315 round wings' (P, D1=d2, e, h, g, m max/min)"
+  },
+  {
+   "url": "https://anankafasteners.com/din-315-d-wings-nuts-with-rounded-wings-standard-weight-chart/",
+   "site": "anankafasteners.com",
+   "what": "DIN 315 D standard weight chart: d1,P,d2,d3,e,g1,g2,h,m max/min"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-315-specifications-wing-nuts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 315 specifications (3 tables; dk, ds, L, y, y1, k, m max/min)"
+  },
+  {
+   "url": "https://www.ssfastenersmfgr.com/wing-nuts-specifications-din-315.html",
+   "site": "ssfastenersmfgr.com",
+   "what": "d2/e/h min values only (g column not used: mixes y and y1)"
+  },
+  {
+   "url": "https://itafasteners.com/products-nuts-wing.php",
+   "site": "itafasteners.com",
+   "what": "D2/E/G/H max table (identical copy at aspenfasteners.com -> counted once)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_315D.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "DIN 315 D: e,h,m,d2,d3 max"
+  },
+  {
+   "url": "https://schraube-mutter.de/befestigungstechnik/muttern/fluegelmuttern-din-315-galvanisch-verzinkt-deutsche-form/",
+   "site": "schraube-mutter.de",
+   "what": "Nenngroesse, h, e, P table"
+  },
+  {
+   "url": "https://www.jcfasteners.com/wp-content/uploads/DIN-315-Wing-Nut-B6C46-SS316.pdf",
+   "site": "jcfasteners.com",
+   "what": "Manufacturer's own catalogue datasheet B6C46 (h,e,g1,g2,d2,m max) - vendor data sheet, not a standard"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "column d3 min (collar dia min)",
+   "why": "only 2 sources (anankafasteners, fullerfasteners)"
+  },
+  {
+   "what": "column g2/y1 (wing root thickness) both limits",
+   "why": "max has 3 (ananka, fuller, JC) but min only 2; also ssfasteners column mixes y and y1 -> omitted"
+  },
+  {
+   "what": "M14 and M3 rows",
+   "why": "not in the DIN 315 table of the primary sources; M14 values conflict between sources (itafasteners h 36 / e 72 vs schraube-mutter.de h 32.3 / e 63.5)"
+  },
+  {
+   "what": "fasten.it h max M12 = 35.5",
+   "why": "typo; 6 other sources give 33.5 (value 33.5 used)"
+  }
+ ],
+ "checks": [
+  "max > min for d2, e, h, m, g in every row",
+  "d3_max < d2_max; e_min > d2_max; h_min > m_max in every row",
+  "all columns non-decreasing with thread size (M4..M24)",
+  "pitch = ISO coarse pitch for each size (0.7 ... 3)",
+  "per-cell agreement counted across sources; M12 h_max outlier (35.5) isolated to one site",
+  "itafasteners and aspenfasteners tables are identical (same layout, same M14 column) -> counted as ONE source"
+ ],
+ "shape_hint": "A hex-less round-bodied wing nut: a cylindrical threaded boss (d2 outer, with a smaller collar d3 at the top) carrying two thin, flat, rounded wings that flare out opposite each other to a total span e and an overall height h; front view shows the two wings as a wide flat butterfly profile, top view shows the boss circle with a bar-shaped wing pair.",
+ "role_map": {
+  "d_nom": "nominal thread (M size)",
+  "P": "coarse thread pitch",
+  "d2_max": "boss/base outside diameter max",
+  "d2_min": "boss/base outside diameter min",
+  "d3_max": "collar diameter max (upper boss step)",
+  "e_max": "wing span (overall width across wings) max",
+  "e_min": "wing span min",
+  "g_max": "wing thickness g1 max",
+  "g_min": "wing thickness g1 min",
+  "h_max": "overall nut height (boss + wings) max",
+  "h_min": "overall nut height min",
+  "m_max": "height of the nut body (boss) max",
+  "m_min": "height of the nut body min"
+ },
+ "notes": "Governing standard DIN 315 Form D (rounded wings, 'German form'). DIN 315 also defines Form A (rectangular/American wings) and AF (forged), whose dimensions differ - do not mix. d3_max, g_min and m_min are supported by exactly 3 sources; everything else by 4-7. row_support = lowest per-column agreement in the row. KS B 1014 and ASME B18.6.9 (inch) were not verified.",
+ "clusters": {
+  "A fasten.it": [
+   "fasten.it/en/norms/norm/din_315 (all cols except d3; M12 h_max typo 35.5)"
+  ],
+  "B anankafasteners": [
+   "anankafasteners.com din-315-d table (d2,d3,e,g1,g2,h,m)"
+  ],
+  "C Chinese-template DB (fullerfasteners + globalfastener)": [
+   "fullerfasteners.com/tech/din-315-specifications-wing-nuts/",
+   "globalfastener.com/standards/detail_202.html (not in record; one cluster with fuller)"
+  ],
+  "D ssfastenersmfgr": [
+   "ssfastenersmfgr.com (d2_min, e_min, h_min only; its g column mixes y/y1 -> unusable)"
+  ],
+  "E itafasteners (+aspenfasteners = same page)": [
+   "itafasteners.com/products-nuts-wing.php (d2,e,g,h max)"
+  ],
+  "F German shop dataset": [
+   "schrauben-lexikon.de/norm/DIN_315D.asp (e,h,m,d2,d3 max)"
+  ],
+  "G schraube-mutter.de": [
+   "schraube-mutter.de (h,e,P only)"
+  ],
+  "not counted": [
+   "jcfasteners.com PDF datasheet (vendor sheet)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Live curl re-fetch (HTTP 200) of all 7 HTML sources in the record + globalfastener detail_202; PDF not used. 9 rows (M4..M24) x 12 value columns (P,d2,d3_max,e,g1,h,m max/min) x 8 page instances parsed by header (fasten.it/ita/sl transposed, ananka/ss/sm row-wise, fuller 3 tables with dk/ds/L/y/y1/k/m = d2/d3/e/g1/g2/h/m). All 108 record cells equal on every page that carries them; only deviation: fasten.it M12 h_max 35.5 vs 33.5 on 5 clusters. Clusters per column (fuller+globalfastener merged, ita=aspen): P 4, d2_max 5, d2_min 4, d3_max 3, e_max 6, e_min 4, g_max 4, g_min 3, h_max 5-6, h_min 4, m_max 4, m_min 3. No PDF counted. Sanity: max>min, d3<d2<e_min, h_min>m_max, all columns monotone M4..M24, pitch = ISO coarse.",
+  "problems": [
+   "Thin columns (exactly 3 clusters, all 9 rows): d3_max (ananka, fuller/globalfastener, schrauben-lexikon), g_min (fasten.it, ananka, fuller/globalfastener), m_min (fasten.it, ananka, fuller/globalfastener). One further 'copy' finding for any of these three pairs would sink the column; no shared typos were found between A, B, C (no typos at all except fasten.it M12 h_max), so independence rests on different sites/layouts only.",
+   "Role mapping uses different symbols per source: fasten.it 'D1' (boss d2), 'g' = g1; fuller 'dk'=d2, 'ds'=d3, 'L'=e, 'y'=g1, 'y1'=g2, 'k'=h; ita 'D2','E','G','H'. Mapping was confirmed against ananka's explicit d2/d3/e/g1/g2/h/m header and by identical values - not inferred by magnitude alone. ss g column is NOT g1_min (it mixes y1 min and y min) and was not counted.",
+   "fasten.it M12 h_max = 35.5 is a typo (kept 33.5 backed by ananka, fuller, ita, schrauben-lexikon, schraube-mutter). M14 rows conflict between sources (ita 36/72 vs schraube-mutter 32.3/63.5) and stay dropped; M3 stays out.",
+   "Form D (rounded/German wings, DIN 315 07/1998) only; Form A/AF values differ. Row labels M4..M24 coarse pitch only - fine.",
+   "ita/aspen is one page and schrauben-lexikon is one German dataset (wegertseder sister not counted)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 315 (Form D, rounded/German wings; 07/1998 table values)"
+}

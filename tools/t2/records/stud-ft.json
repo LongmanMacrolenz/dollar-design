@@ -1,0 +1,248 @@
+{
+ "id": "stud-ft",
+ "status": "ok",
+ "standard": "DIN 976-1 Form B",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "나사 피치 P (굵은나사)"
+  ],
+  [
+   "As",
+   "유효 단면적 As (mm²)"
+  ]
+ ],
+ "rows": [
+  [
+   "M5",
+   0.8,
+   14.2
+  ],
+  [
+   "M6",
+   1,
+   20.1
+  ],
+  [
+   "M8",
+   1.25,
+   36.6
+  ],
+  [
+   "M10",
+   1.5,
+   58
+  ],
+  [
+   "M12",
+   1.75,
+   84.3
+  ],
+  [
+   "M14",
+   2,
+   115
+  ],
+  [
+   "M16",
+   2,
+   157
+  ],
+  [
+   "M18",
+   2.5,
+   192
+  ],
+  [
+   "M20",
+   2.5,
+   245
+  ],
+  [
+   "M22",
+   2.5,
+   303
+  ],
+  [
+   "M24",
+   3,
+   353
+  ],
+  [
+   "M27",
+   3,
+   459
+  ],
+  [
+   "M30",
+   3.5,
+   561
+  ],
+  [
+   "M33",
+   3.5,
+   694
+  ],
+  [
+   "M36",
+   4,
+   817
+  ],
+  [
+   "M39",
+   4,
+   976
+  ]
+ ],
+ "row_support": {
+  "M5": 4,
+  "M6": 4,
+  "M8": 4,
+  "M10": 4,
+  "M12": 4,
+  "M14": 4,
+  "M16": 4,
+  "M18": 4,
+  "M20": 4,
+  "M22": 4,
+  "M24": 4,
+  "M27": 4,
+  "M30": 4,
+  "M33": 4,
+  "M36": 4,
+  "M39": 4
+ },
+ "sources": [
+  {
+   "url": "https://www.engineeringtoolbox.com/metric-bolts-minimum-ultimate-tensile-proof-loads-d_2026.html",
+   "site": "engineeringtoolbox.com",
+   "what": "table 0 (coarse): d, P, As,nom"
+  },
+  {
+   "url": "https://www.slsbearings.com/centralengineering/tensile-strength.html",
+   "site": "slsbearings.com",
+   "what": "table 0: thread d, nominal stress area (As only)"
+  },
+  {
+   "url": "https://www.nfgab.com/technology-quality/technical-pages/tensile-strength/metric-coarse-threads",
+   "site": "nfgab.com",
+   "what": "tables 0/1: thread, pitch, nominal stress area"
+  },
+  {
+   "url": "https://www.trfastenings.com/knowledge-base/metric-screws/minimum-ultimate-tensile-loads",
+   "site": "trfastenings.com",
+   "what": "table 0: nominal stress area (As only; M4 typo 8.76)"
+  },
+  {
+   "url": "https://www.yaxiio.com/en/tools/threaded-rod-weight-chart",
+   "site": "yaxiio.com",
+   "what": "table 1: size, pitch, As (M6..M36)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/basic-metric-thread-chart-m1-m100-2/",
+   "site": "fullerfasteners.com",
+   "what": "table 0: coarse pitch (P only)"
+  },
+  {
+   "url": "https://andrewsfasteners.uk/standards/din-976-1-basic-dimensions-studding-threaded-bar-metric-thread-stud-bolt/",
+   "site": "andrewsfasteners.uk",
+   "what": "DIN 976-1 table: size d, pitch (M12..M39, P only)"
+  },
+  {
+   "url": "https://www.bigboltnut.com/product/din-976-dimension-standard.html",
+   "site": "bigboltnut.com",
+   "what": "DIN 976 table 0: nominal, pitch P (M16..M64, P only)"
+  },
+  {
+   "url": "https://torqbolt.com/asme-b18-31-1m-metric-continous-thread-studs-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "ASME B18.31.1M continuous studs table: D, P (M5..M48; counted together with fas10.in as one source)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "DIN 976-1 weight per 1000 pcs (L=1000) column",
+   "why": "not a dimension; DIN 976 copies (torqbolt, gfasteners, theo-schrauben) are one table; other sites show 500 vs 502, 725 vs 728 kg (density differences) - no 3-way agreement"
+  },
+  {
+   "what": "ASME B18.31.1M nominal length range/increments and Umax=2P",
+   "why": "only torqbolt.com and fas10.in (look like copies; each has different typos) - 2 sources, no third; Umax = 2P restated in notes only"
+  },
+  {
+   "what": "DIN 976-1 length tolerance table (±) by nominal length",
+   "why": "not size-keyed; only andrews+torqbolt (same numbers) found, no third; omitted"
+  },
+  {
+   "what": "M42, M45, M48, M52 rows",
+   "why": "As tables of etb, tr, sls, nfg stop at M39; yaxiio stops at M36 -> no 3 sources for M42-M52 (pitch alone is known from DIN 976/ASME sources but kept out with the As column)"
+  },
+  {
+   "what": "M2..M4 and M3.5/M7 rows",
+   "why": "outside typical stud range / non-preferred sizes; M4 As has typo 8.76 on trfastenings"
+  },
+  {
+   "what": "pitch diameter d2 / minor diameter d3 columns",
+   "why": "sources use different rounding or ISO 965 limit values (basic vs 6g), no 3 sources with identical numbers found quickly"
+  }
+ ],
+ "checks": [
+  "P strictly non-decreasing with d (0.8 ... 4)",
+  "As increases monotonic with d (14.2 ... 976)",
+  "As ≈ pi/4*(d-0.9382*P)^2 within rounding for all 16 rows (ISO 898-1 formula)",
+  "uis.no table gives 14.18, 20.12, 36.61 ... (unrounded) - agrees with ISO values to 3 s.f.; not counted"
+ ],
+ "shape_hint": "A plain straight cylindrical rod with the metric thread cut over its entire length (fully threaded, no head, no shank); both ends are chamfered or cone-ended (DIN 976-1 Form B) so a nut can start on either end.",
+ "role_map": {
+  "d_nom": "nominal thread diameter M, coarse pitch",
+  "P": "thread pitch (coarse)",
+  "As": "nominal tensile stress area per ISO 898-1 (mm2)"
+ },
+ "notes": "DIN 976-1 itself tabulates little beyond d, P, length range/tolerance and weight; no public source tables for chamfer length were found. Length L is customer-specified (any length, max normally 1000 mm; 3000 mm for rod). ASME B18.31.1M continuous studs use Umax = 2P thread runout, preferred lengths 12-20 step 4, 25-50 step 5, 60-160 step 10, >=180 step 20 (2 sources only, not in table). Pitch: fine pitches exist but only coarse kept. Draw: pitch diameter d2 = d - 0.6495P, minor d3 = d - 1.2269P (formulas, not tabulated).",
+ "clusters": {
+  "As (nominal stress area) - Engineering ToolBox": [
+   "engineeringtoolbox.com (header 'Nominal Stress Area As,nom (mm2)', cites ISO 898)"
+  ],
+  "As - SLS Bearings": [
+   "slsbearings.com ('Nominal stress area, mm2'; cites ISO 898-1)"
+  ],
+  "As - Nordic Fastening Group": [
+   "nfgab.com ('Nominal stress area mm2'; Swedish decimal commas, grouped cells)"
+  ],
+  "As - TR Fastenings": [
+   "trfastenings.com ('Nominal stress area (mm2)'; own typos M4 8.76, class '9.6')"
+  ],
+  "As - Yaxiio": [
+   "yaxiio.com ('As (mm2)'; cites ISO 898-1)"
+  ],
+  "P - Fuller (Chinese-template cluster, 1 member)": [
+   "fullerfasteners.com"
+  ],
+  "P - Andrews Fasteners UK (DIN 976-1 page)": [
+   "andrewsfasteners.uk (M12-M39)"
+  ],
+  "P - BigBoltNut": [
+   "bigboltnut.com (M16-M64)"
+  ],
+  "P - TorqBolt": [
+   "torqbolt.com ASME B18.31.1M (M5-M30, M36)"
+  ],
+  "P also from": [
+   "engineeringtoolbox.com, nfgab.com, yaxiio.com (same pages as above)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 4,
+  "checks_done": "Re-downloaded all 9 URLs live (HTTP 200) and parsed the tables (NFG grouped cells split, comma decimals converted). Matrix 16 rows (M5..M39) x 2 columns (P, As). As: ETB, SLS, NFG, TR agree on all 16 rows; Yaxiio agrees on its 14 rows (M6-M36) -> 4 clusters on M5 and M39, 5 on M6-M36; 0 disagreements. P: ETB, NFG and Fuller cover all 16 rows; Yaxiio M6-M36; Andrews M12-M39 (10 sizes); BigBoltNut M16-M39; TorqBolt ASME B18.31.1M M5-M30,M36 -> min 4 clusters (M5: ETB, NFG, Fuller, TorqBolt), M39 has 5; 0 disagreements. As header text read in each source: ETB 'Nominal Stress Area As,nom (mm2)' (page cites ISO 898-1), SLS 'Nominal stress area, mm2' (cites ISO 898 Part 1), Yaxiio 'As (mm2)' with text 'As = stress area from ISO 898-1', NFG 'Nominal stress area mm2', TR 'Nominal stress area (mm2)' (NFG/TR show the ISO 898-1 property classes but no ISO number). Physical: As = pi/4 (d - 0.9382 P)^2 reproduces all 16 As within 0.38 %; P non-decreasing 0.8..4; As strictly increasing 14.2..976.",
+  "problems": [
+   "Only P and As: As is an ISO 898-1 mechanical-property quantity (As,nom), not a DIN 976-1 / stud dimension; none of the 5 As sources is a DIN 976-1 page. Publish the standard as 'ISO 898-1 (As) + coarse pitch' rather than attributing As to DIN 976-1.",
+   "Table carries no stud geometry (no length range/tolerance, chamfer, weight): length tolerance (Andrews+TorqBolt only) and weights were rightly dropped. Value to the catalog is low but every cell passes.",
+   "As is printed rounded (58, 115, 157, 192, 245 ... as integers from M10/M14 up); ISO unrounded values from uis.no are not equal numerically but agree to <0.2 % (not counted).",
+   "Stress area/pitch cluster note: the 5 As pages all reproduce the same ISO 898-1 table, but they differ in layout and typos (TR: 8.76 at M4, '9.6'), so they were counted as independent."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 976-1 Form B (pitch per ISO 261/ASME B18.31.1M; stress area per ISO 898-1)"
+}

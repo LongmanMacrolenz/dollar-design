@@ -8,13 +8,13 @@ const iaDwLab = k => String(k).replace(/^(b1)_939$/, '$1').replace(/^b_(le125|12
 const iaDwFmt = f => { const u = f.sys === 'inch' ? '"' : ''; return v => (typeof v?.raw === 'string' && v.raw.includes('/') ? v.raw : +(+v).toFixed(3)) + u; };
 // 호칭 지름: 미터 M8 → 8, 분수 1/4 → 0.25, 번호 크기 #8 → 0.060 + 0.013 × 번호 (ASME B1.1 번호 크기의 기본 바깥지름 정의식)
 function iaDwDia(f, size) {
-  const sz = String(size), n = sz.match(/^#(\d+)/);
+  const sz = String(size).replace(/^ST\s*/i, ''), n = sz.match(/^#(\d+)/);
   const d = n ? 0.060 + 0.013 * +n[1] : iaMetricD(sz) || iaQty((sz.match(/^(?:\d+-)?\d+\/\d+|^\d+(?:\.\d+)?/) || [''])[0]);
   return d > 0 ? Object.assign(new Number(d), { key: '호칭 D' }) : null;
 }
 function iaDwFrame(f, s, body, note, H = 250) {
   const P = 'iaAr', u = f.sys === 'inch' ? 'in' : 'mm';
-  return `<svg class="dw ia-dw" viewBox="0 0 560 ${H}" role="img" aria-label="${esc(f.ko)} ${esc(s.size)} 치수 도면"><defs>${marker(P)}</defs>${body}<text class="cap" x="552" y="${H - 8}" text-anchor="end">${esc(f.enStd || '')} · 단위 ${u} · 비례 없음${f.dims && f.dims.basis === 'T2' ? ' · 공개 자료 3곳 대조(원문 대조 전)' : ''}${note ? ' · ' + esc(note) : ''}</text></svg>`;
+  return `<svg class="dw ia-dw" viewBox="0 0 560 ${H}" role="img" aria-label="${esc(f.ko)} ${esc(s.size)} 치수 도면"><defs>${marker(P)}</defs>${body}<text class="cap" x="552" y="${H - 8}" text-anchor="end">${esc((f.dims && f.dims.basis === 'T2' && f.dims.standard) || f.enStd || '')} · 단위 ${u} · 비례 없음${f.dims && f.dims.basis === 'T2' ? ' · 공개 자료 3곳 대조(원문 대조 전)' : ''}${note ? ' · ' + esc(note) : ''}</text></svg>`;
 }
 const iaDwLen = s => { const v = iaQty(s.L); return v > 0 ? v : null; };
 
@@ -27,6 +27,9 @@ function iaDwScrew(f, s, o) {
   let b = `<path class="cl" d="M${x0 - 14} ${cy}H${r2(xEnd + 14)}"/>`;
   if (o.head === 'csk') b += `<path class="pt" d="M${x0} ${r2(cy - aa / 2)}V${r2(cy + aa / 2)}L${r2(xh)} ${r2(cy + dd / 2)}V${r2(cy - dd / 2)}Z"/>`;
   else if (o.head === 'dome') b += `<path class="pt" d="M${r2(xh)} ${r2(cy - aa / 2)}H${r2(x0 + hl * .5)}Q${x0} ${r2(cy - aa / 2)} ${x0} ${r2(cy - aa * .14)}V${r2(cy + aa * .14)}Q${x0} ${r2(cy + aa / 2)} ${r2(x0 + hl * .5)} ${r2(cy + aa / 2)}H${r2(xh)}Z"/>`;
+  else if (o.head === 'cyl') b += `<path class="pt" d="M${r2(xh)} ${r2(cy - aa / 2)}H${r2(x0 + 2)}L${x0} ${r2(cy - aa / 2 + 2)}V${r2(cy + aa / 2 - 2)}L${r2(x0 + 2)} ${r2(cy + aa / 2)}H${r2(xh)}Z"/>`;
+  else if (o.head === 'hex') b += `<path class="pt" d="M${x0 + 2} ${r2(cy - aa / 2)}H${r2(xh)}V${r2(cy + aa / 2)}H${x0 + 2}L${x0} ${r2(cy + aa / 2 - 2)}V${r2(cy - aa / 2 + 2)}Z"/><path class="eg" d="M${x0} ${cy}H${r2(xh)}"/>`;
+  else if (o.head === 'flange') { const fc = Math.min(Math.max((+o.c || hh * .22), 0.12) * sc, hl * .6), hs = (+o.s || A * .7) * sc; b += `<path class="pt" d="M${x0 + 2} ${r2(cy - hs / 2)}H${r2(xh - fc)}V${r2(cy + hs / 2)}H${x0 + 2}L${x0} ${r2(cy + hs / 2 - 2)}V${r2(cy - hs / 2 + 2)}Z"/><path class="eg" d="M${x0} ${cy}H${r2(xh - fc)}"/><path class="pt" d="M${r2(xh - fc)} ${r2(cy - aa / 2)}H${r2(xh)}V${r2(cy + aa / 2)}H${r2(xh - fc)}Z"/>`; }
   else if (o.head === 'pan') { const rr = Math.min(hl * .5, aa * .2); b += `<path class="pt" d="M${r2(xh)} ${r2(cy - aa / 2)}H${r2(x0 + rr)}Q${x0} ${r2(cy - aa / 2)} ${x0} ${r2(cy - aa / 2 + rr)}V${r2(cy + aa / 2 - rr)}Q${x0} ${r2(cy + aa / 2)} ${r2(x0 + rr)} ${r2(cy + aa / 2)}H${r2(xh)}Z"/>`; }
   const sx = none ? x0 : xh;   // 몸통 시작
   b += `<path class="pt" d="M${r2(sx)} ${r2(cy - dd / 2)}H${r2(xEnd - ch)}L${r2(xEnd)} ${r2(cy - dd / 2 + ch)}V${r2(cy + dd / 2 - ch)}L${r2(xEnd - ch)} ${r2(cy + dd / 2)}H${r2(sx)}Z"/>`;
@@ -69,6 +72,35 @@ function iaDwCapnut(f, s) {
   return iaDwFrame(f, s, b, '둥근 부분 모양은 대표 형상');
 }
 
+
+// 품목군 id → 나사류 도면 설명. D = 몸통 지름 (열 키, 없으면 호칭에서), A = 머리 지름·폭, hh = 머리 높이, 나머지는 머리 모양에 따른 값.
+// 값은 모두 표(f.dims)의 열에서 읽는다. 열 이름은 tools/t2/records/<id>.json 의 role_map 참고
+const IA_DW_PART = {
+  flangebolt: { head: 'flange', D: 'd', A: 'dc_max', hh: 'k_max', c: 'c_min', s: 's_max' },
+  carriage: { head: 'dome', D: 'd', A: 'dk_max', hh: 'k_max' },
+  cskbolt: { head: 'csk', D: 'd', A: 'dk_max', hh: 'k' },
+  lag: { head: 'hex', D: null, A: 's_max', hh: 'k_max' },
+  fitbolt: { head: 'hex', D: 'ds', A: 's', hh: 'k' },
+  lowhead: { head: 'cyl', D: 'd', A: 'dk_max', hh: 'k_max', sock: ['s', 't'] },
+  torx: { head: 'pan', D: 'd', A: 'dk_max', hh: 'k_max' },
+  bhflange: { head: 'flange', D: 'd', A: 'dc_max', hh: 'k_max' },
+  'tap-hex': { head: 'hex', D: null, A: 's_max', hh: 'k' },
+  sqbolt: { head: 'cyl', D: 'E_max', A: 'F_basic', hh: 'H_basic' },
+  tap: { head: 'pan', D: null, A: 'dk_max', hh: 'k_max' },
+  'ms-inch': { head: 'pan', D: 'D', A: 'A_max', hh: 'H_max' },
+  'ms-slot': { head: 'cyl', D: null, A: 'dk_max', hh: 'k_max' },
+  'ms-truss': { head: 'dome', D: null, A: 'At_max', hh: 'Ht_max' },
+  clevis: { head: 'cyl', D: 'd', A: 'dk', hh: 'k' },
+};
+function iaDwPart(f, s) {
+  const sp = IA_DW_PART[f.id]; if (!sp) return undefined;
+  const g = k => (k ? iaCv(f, s.size, k) : null), D = g(sp.D) || iaDwDia(f, s.size), A = g(sp.A), hh = g(sp.hh);
+  if (!D || !A || !hh) return null;
+  const sk = sp.sock ? [g(sp.sock[0]), g(sp.sock[1])] : [null, null];
+  return iaDwScrew(f, s, { head: sp.head, D, A, hh, c: g(sp.c), s: g(sp.s), labs: { D: g(sp.D) ? iaDwLab(sp.D) : '호칭 D', A: iaDwLab(sp.A), hh: iaDwLab(sp.hh) },
+    sock: sk[0] ? { w: +sk[0], t: sk[1] ? +sk[1] : 0, tv: sk[1], tLab: iaDwLab(sp.sock[1]), lab: iaDwLab(sp.sock[0]), v: sk[0] } : null });
+}
+
 // 도면을 이 파일이 맡는 품목이면 SVG 글자(또는 그릴 수 없으면 null), 아니면 undefined (iaDrawSvg가 이어서 처리)
 function iaDwMore(f, s) {
   if (!f.dims) return undefined;
@@ -83,6 +115,7 @@ function iaDwMore(f, s) {
   if (f.eng === 'setscrew') { const D = iaDwDia(f, size), J = fmtC('J'), T = fmtC('T_min'); return D && J ? iaDwScrew(f, s, { head: 'none', D, labs: { D: '호칭 D' }, sock: { w: +J, t: T ? +T : 0, tv: T, tLab: '구멍 깊이 T min', lab: '육각 구멍 J', v: J } }) : null; }
   if (f.id === 'ms-pan' || f.id === 'ms-csk') { const D = iaDwDia(f, size), A = fmtC('dk'), hh = fmtC('k'); return D && A && hh ? iaDwScrew(f, s, { head: f.id === 'ms-csk' ? 'csk' : 'pan', D, A, hh, labs: { D: '호칭 d', A: 'dk', hh: 'k' } }) : null; }
   if (f.dims.cols && f.dims.cols.some(c => c[0] === 'F_basic') && f.dims.cols.some(c => c[0] === 'LT_s')) return iaDwHexBolt(f, s);
+  if (IA_DW_PART[f.id]) return iaDwPart(f, s);
   if (f.id === 'stud-te') return iaDwStud(f, s);
   if (f.id === 'capnut') return iaDwCapnut(f, s);
   return undefined;
@@ -129,7 +162,7 @@ const iaDwNum = v => (v == null ? '— (원문 미대조)' : typeof v === 'numbe
 function iaDwCard(f, s) {
   const row = f.dims && iaRowOf(f, s.size); if (!row) return '';
   const u = f.dims.u || (f.sys === 'inch' ? 'in' : 'mm');
-  return `<div class="ia-dcard"><p class="ia-dcard-h"><b>호칭 ${esc(s.size)} 치수</b><span>단위 ${esc(u)}${f.dims.basis === 'T2' ? ' · 공개 자료 3곳 대조(원문 대조 전)' : ''}</span></p><dl>${f.dims.cols.map(([k, ko], i) => `<div><dt>${esc(ko)}</dt><dd>${esc(iaDwNum(row[i + 1]))}</dd></div>`).join('')}</dl></div>`;
+  return `<div class="ia-dcard"><p class="ia-dcard-h"><b>호칭 ${esc(s.size)} 치수</b><span>${f.dims.basis === 'T2' && f.dims.standard ? esc(f.dims.standard) + ' · ' : ''}단위 ${esc(u)}${f.dims.basis === 'T2' ? ' · 공개 자료 3곳 대조(원문 대조 전)' : ''}</span></p>${f.dims.scope ? `<p class="small muted ia-dcard-scope">범위: ${esc(f.dims.scope)}</p>` : ''}<dl>${f.dims.cols.map(([k, ko], i) => `<div><dt>${esc(ko)}</dt><dd>${esc(iaDwNum(row[i + 1]))}</dd></div>`).join('')}</dl></div>`;
 }
 // 2D 칸의 내용: 그림이 있으면 그림 + 치수 카드, 없으면 안내 칸
 const iaDwBox = (f, s, svg) => (svg ? svg + iaDwCard(f, s) : iaDwNone(f, s));

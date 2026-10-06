@@ -1,0 +1,243 @@
+{
+ "id": "spring-co",
+ "status": "partial",
+ "standard": "ISO 8750 (DIN 7343)",
+ "u": "mm",
+ "cols": [
+  [
+   "d2_max",
+   "끝단 모따기부 지름 d2 최대 (장착 전)"
+  ],
+  [
+   "a",
+   "끝단 모따기 길이 a (약)"
+  ],
+  [
+   "s",
+   "판 두께 s"
+  ]
+ ],
+ "rows": [
+  [
+   "0.8",
+   0.75,
+   0.3,
+   0.07
+  ],
+  [
+   "1",
+   0.95,
+   0.3,
+   0.08
+  ],
+  [
+   "1.2",
+   1.15,
+   0.4,
+   0.1
+  ],
+  [
+   "1.5",
+   1.4,
+   0.5,
+   0.13
+  ],
+  [
+   "2",
+   1.9,
+   0.7,
+   0.17
+  ],
+  [
+   "2.5",
+   2.4,
+   0.7,
+   0.21
+  ],
+  [
+   "3",
+   2.9,
+   0.9,
+   0.25
+  ],
+  [
+   "4",
+   3.9,
+   1.1,
+   0.33
+  ],
+  [
+   "5",
+   4.85,
+   1.3,
+   0.42
+  ],
+  [
+   "6",
+   5.85,
+   1.5,
+   0.5
+  ],
+  [
+   "8",
+   7.8,
+   2.0,
+   0.67
+  ],
+  [
+   "10",
+   9.75,
+   2.5,
+   0.84
+  ],
+  [
+   "12",
+   11.7,
+   3.0,
+   1.0
+  ],
+  [
+   "14",
+   13.6,
+   3.5,
+   1.2
+  ],
+  [
+   "16",
+   15.6,
+   4.0,
+   1.3
+  ],
+  [
+   "20",
+   19.6,
+   4.5,
+   1.7
+  ]
+ ],
+ "row_support": {
+  "0.8": 3,
+  "1": 3,
+  "1.2": 3,
+  "1.5": 3,
+  "2": 3,
+  "2.5": 3,
+  "3": 3,
+  "4": 3,
+  "5": 3,
+  "6": 3,
+  "8": 3,
+  "10": 3,
+  "12": 3,
+  "14": 3,
+  "16": 3,
+  "20": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/iso-8750-specifications-spring-type-straight-pins-coiled/",
+   "site": "fullerfasteners.com",
+   "what": "ISO 8750 Specifications tables (d before mounting max/min, d2, s, a, double shear a/b)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/iso/8750/",
+   "site": "fasteners.eu",
+   "what": "Table according to ISO 8750 (same table also on /standards/din/7343/)"
+  },
+  {
+   "url": "https://boltport.com/standards/din-7343/",
+   "site": "boltport.com",
+   "what": "Dimensions for DIN 7343 / ISO 8750 table (current-edition values; typo d1_min 12.34 for d=12 outvoted)"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_878.html",
+   "site": "globalfastener.com",
+   "what": "GB/T 879.4-2000 Spring-type straight pins - coiled, standard duty (same numbers as ISO 8750:2007 table: d max/min, d2, a, s, double shear 1/2; d 0.8..20)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/pins-keys-standard/iso-8750.html",
+   "site": "boltsfastener.com",
+   "what": "ISO 8750 table M1.5..M12 (column headers mislabelled: 'd2 Min.' is d1 min; values used d1 min/max, d2 max, s, a)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "older-edition values (ISO 8750:1987 / DIN 7343:1973)",
+   "why": "ferrofast.com ISO 8750, schrauben-lexikon.de ISO 8750/DIN 7343 (d 1..16: a=0.3,0.5,0.7,0.8,1,1.2,1.3,1.7,2,3,3,4,4.5,5; d1=1.1,1.62,2.15,...) and Fuller's DIN 7343 page (d1 min=nominal) give different numbers; they describe the old edition and are NOT mixed into the table (GB/T 879.4 page agrees with the current-edition table, not the old one.)"
+  },
+  {
+   "what": "column b of shear strength (second value row)",
+   "why": "only sizes <=12 listed; meaning of a/b (steel vs stainless) not confirmed in the fetched HTML; also dropped length list (+ matrix of commercial lengths) because only one source (fasteners.eu) shows it"
+  },
+  {
+   "what": "ISO 8748 (heavy duty) / ISO 8751 (light duty) / DIN 7344",
+   "why": "single-table schema; ISO 8748 table (d 1.5..20: d1 max 1.71, 2.21, ... ; s 0.17...) is visible identically in ferrofast, boltsfastener, boltport(7344), fasteners.eu but not compiled here"
+  }
+ ],
+ "checks": [
+  "d1_max > d1_min >= d1 nominal-ish > d2_max for all rows (e.g. 6: 6.5 > 6.25 > 5.85)",
+  "d1_max, d1_min, d2_max, a, s, F_a all increase strictly with d",
+  "d1_max - d1_min about 0.05-0.25 (tolerance band grows with size)",
+  "s/d about 0.08-0.09 for d>=1.5 (0.13/1.5, 0.5/6, 1/12, 1.7/20) -> plausible wall",
+  "a column agrees between all four independent clusters wherever listed",
+  "two single-cell disagreements resolved by majority: s(2.5)=0.21 (Fuller 0.2), d1_min(12)=12.4 (boltport 12.34)"
+ ],
+ "shape_hint": "Hollow cylindrical spring pin formed by coiling a steel strip about 2 turns (spiral section, 'Spirol'-type): outside diameter d1 before mounting, both ends chamfered/rounded (chamfer length a, end diameter d2), plain straight sides, no head. Draw as a rectangle of length l with chamfered ends; the end view shows a spiral of wall thickness s.",
+ "role_map": {
+  "d1": "nominal diameter (before mounting)",
+  "d1_max": "max outside diameter before mounting",
+  "d1_min": "min outside diameter before mounting",
+  "d2_max": "max diameter of the chamfered end (rise) before mounting",
+  "a": "approximate chamfer length at each end",
+  "s": "nominal strip (wall) thickness",
+  "F_a": "minimum double shear load in kN, column 'a' of the table"
+ },
+ "notes": "Standard-duty coiled spring pin ISO 8750:2007 values (current table with d1 'before mounting' max/min). Sizes 0.8..20. Pin length l is a separate series (not published). Row support = independent source clusters agreeing on every listed cell of the row (Fuller; fasteners.eu incl. its DIN 7343 page; boltport; boltsfastener lists only d1 1.5-12 and not F_a; globalfastener GB/T 879.4 page). Independence caveat: fasteners.eu, boltport and boltsfastener may share an upstream (the same typo c max=33 appears on all of fasteners.eu/boltport/ferrofast for the sibling clevis pin ISO 2340 table); if those three count as ONE source the support is Fuller + GB/T 879.4 + that group = 3 for every cell except s at d=2.5 (Fuller dissents -> 2: GB/T page and group). Do not mix with the old DIN 7343 or ISO 8750:1987 numbers. For the same site hint families (heavy duty ISO 8748 / DIN 7344) a separate table would be needed.",
+ "clusters": {
+  "A Chinese-template (1 cluster; producer counted it as 2)": [
+   "fullerfasteners.com ISO 8750 page (live)",
+   "globalfastener.com detail_878 GB/T 879.4 page (live) -- same dataset/typo-free except Fuller s(2.5)=0.2 vs gf 0.21"
+  ],
+  "B Boltport/fasteners.eu group (strict = 1)": [
+   "fasteners.eu iso/8750 + din/7343 (live, identical)",
+   "boltport.com din-7343 (live; typo d1_min(12)=12.34)",
+   "boltsfastener.com iso-8750 (live; M1.5..M12, headers mislabelled)"
+  ],
+  "C fasten.it": [
+   "fasten.it/en/norms/norm/din_7343 (live; d1 nom, d2 max (before mounting), a approx, s; no d1 max/min, no shear) -- producer reported this page as login-gated/no table, live fetch returns the table"
+  ],
+  "Y older-edition dataset (dissents, 1 cluster)": [
+   "schrauben-lexikon.de ISO_8750 + DIN_7343 (identical)",
+   "ferrofast.com iso-8750 (table identical to lexikon incl. oddities d1=3.24, d2=2.35) -- shows ferrofast does NOT share the fasteners.eu data on this standard"
+  ],
+  "not counted": [
+   "fullerfasteners DIN 7343 (old edition)",
+   "fasten.it ISO 8750 page (no table)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live (HTTP 200) 9 pages (fuller, gf GB/T 879.4, fasteners.eu x2, boltport, boltsfastener, ferrofast, lexikon, fasten.it DIN 7343). Matrix 17 rows x 6 columns (d1_max,d1_min,d2_max,a,s,F_a) x 9 pages. Agreement of record with strict clusters per column: d1_max A,B only (2) -> fail; d1_min A,B only (2) + Y dissent at 8 sizes + boltport typo -> fail; F_a A,B only (+Y/lexikon 'Abscherkraft' for d1..16, but variant 'a' meaning undefined) -> fail; d2_max A,B,C = 3 for 16 rows, but row 3.5: A,B say 3.4, fasten.it AND Y say 3.35 -> only 2 clusters on 3.4 -> row fails; a: A,B,C = 3 for all 17 rows (Y dissents at 11 sizes: 22 cell-conflicts); s: A(gf),B,C,Y agree on all rows (Fuller 0.2 at 2.5 is the lone dissent inside cluster A; B,C,Y,gf say 0.21 -> kept). Sanity: d1_max>d1_min>d2_max, a,s monotone, s/d~0.08-0.09.",
+  "problems": [
+   "Strict reading collapses producer's 'Fuller + GB/T 879.4 + group = 3' to 2 clusters (Fuller and globalfastener are one Chinese-template cluster). Only fasten.it DIN 7343 rescues d2_max, a, s (3 clusters, zero slack); d1_max, d1_min, F_a stay at 2 clusters -> dropped.",
+   "d2_max at d=3.5 split 2 vs 2 (3.4: A,B; 3.35: fasten.it + lexikon/ferrofast) -> row 3.5 dropped (a and s of that row would have been fine).",
+   "Two incompatible number sets circulate under 'ISO 8750': current/2007-type set X (A,B,C) and older set Y (lexikon, ferrofast): Y differs in a at 11/14 sizes (e.g. d=6: 2 vs 1.5), in d2 at 11/14, in d1 at 8/14. Record follows X (3 clusters vs 1); keep the 'before mounting' wording and do not mix with Y/old DIN 7343.",
+   "fasten.it page is labelled DIN 7343 (04/1969) yet carries the X numbers (except d2 3.5) -> edition label mismatch; counted as a numeric corroborator only.",
+   "F_a is 'row a' of 'Minimum shear strength, double, kN' (rows a/b); no fetched page says what a vs b mean -> variant undefined, label '표 a열' is neutral/meaningless -> dropped even though A,B (+Y) agree numerically.",
+   "Semantics of kept columns: fasteners.eu legend gives 'a - taper', 's - wall thickness of the pin', 'd2 - diameter rise', 'd1 - pin diameter'; record labels 'chamfer length'/'chamfered-end diameter' go beyond the legend -> relabel with legend wording (a = taper, d2 = diameter rise, before mounting).",
+   "Producer's own s(2.5) and d1_min(12) 'typo' resolutions are right (0.21 and 12.4) but d1_min is dropped anyway.",
+   "Family mismatch: family covers ISO 8750 (standard) + ISO 8748 (heavy) + ISO 8751 (light) + DIN 7343/7344 + KS B 1345; record is ISO 8750 only (16 sizes 0.8..20 minus 3.5)."
+  ],
+  "dropped_rows": [
+   "3.5"
+  ],
+  "dropped_cols": [
+   "F_a",
+   "d1_max",
+   "d1_min"
+  ]
+ },
+ "standard_full": "ISO 8750:2007 (standard duty coiled spring-type straight pin; DIN 7343 successor)",
+ "scope": "표준형 코일 스프링핀(ISO 8750)만 — ISO 8748·8751은 싣지 않았습니다"
+}

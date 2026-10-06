@@ -1,0 +1,194 @@
+{
+ "id": "clevis",
+ "status": "partial",
+ "standard": "ISO 2341:1986",
+ "u": "mm",
+ "cols": [
+  [
+   "dk",
+   "머리 지름 dk (h14)"
+  ],
+  [
+   "d1",
+   "분할핀 구멍 지름 d1 (H13, 분할핀 호칭)"
+  ],
+  [
+   "k",
+   "머리 높이 k (js14)"
+  ]
+ ],
+ "rows": [
+  [
+   "4",
+   6,
+   1,
+   1
+  ],
+  [
+   "5",
+   8,
+   1.2,
+   1.6
+  ],
+  [
+   "6",
+   10,
+   1.6,
+   2
+  ],
+  [
+   "8",
+   14,
+   2,
+   3
+  ],
+  [
+   "10",
+   18,
+   3.2,
+   4
+  ],
+  [
+   "12",
+   20,
+   3.2,
+   4
+  ],
+  [
+   "14",
+   22,
+   4,
+   4
+  ],
+  [
+   "16",
+   25,
+   4,
+   4.5
+  ],
+  [
+   "18",
+   28,
+   5,
+   5
+  ],
+  [
+   "20",
+   30,
+   5,
+   5
+  ]
+ ],
+ "row_support": {
+  "4": 3,
+  "5": 3,
+  "6": 3,
+  "8": 3,
+  "10": 3,
+  "12": 3,
+  "14": 3,
+  "16": 3,
+  "18": 3,
+  "20": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_252.html",
+   "site": "globalfastener.com",
+   "what": "ISO 2341-1986 table (d, d min, dk, dk min, d1, d1 max, c, e, k, k max/min, le, r) d 3..100; EN 22341 page (detail_2286) is same data and not counted separately"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/iso/2341/",
+   "site": "fasteners.eu",
+   "what": "ISO 2341 table d h11, dk h14, d1 H13, c max, e, k js14, le min, r (d 4..24; same table on /din/1444/)"
+  },
+  {
+   "url": "https://boltport.com/standards/din-1444/",
+   "site": "boltport.com",
+   "what": "DIN 1444 table d h11, dk h14, d1 H13, c max., e, k js14, le min., r (d 4..24)"
+  },
+  {
+   "url": "https://ferrofast.com/resources/dimensional-standards/iso/pins/iso-2341/",
+   "site": "ferrofast.com",
+   "what": "ISO 2341 table d1,d2,d3,k,w (= d, dk, d1, k, le); same numbers on boltsfastener.com DIN 1444 page -> counted as one; lacks c, e, r"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "d = 3 and d >= 27 rows (27,30,33,36,40,45,50,55,60,70,80,90,100)",
+   "why": "only globalfastener (all) and ferrofast/boltsfastener (3, 27, 30, 36) list them -> at most 2 sources"
+  },
+  {
+   "what": "ISO 2340 / DIN 1443 clevis pin without head and ISO 8738 / DIN 1440 washer, ASME B18.8.1 inch clevis pins",
+   "why": "single-table schema; headless pin table is visible (d, d1, c, w) but fasteners.eu, boltport and ferrofast all carry the same obvious typo c max = 33 at d=12 (should be 3) -> evidence these three pages share an upstream, so no 3 independent sources"
+  },
+  {
+   "what": "k max / k min and d min / dk min computed limits (gf only)",
+   "why": "single source"
+  }
+ ],
+ "checks": [
+  "d1 values (1,1.2,1.6,2,3.2,4,5,6.3) are the nominal sizes of split pins ISO 1234 -> consistent with the split-pin-hole function",
+  "dk/d lies between 1.5 and 1.8 for all rows; dk, k, le_min, c_max, e and d1 are non-decreasing with d",
+  "k < dk and k <= le_min for all rows (head height smaller than head diameter)",
+  "no disagreement on any listed cell among globalfastener, fasteners.eu, boltport and ferrofast/boltsfastener",
+  "globalfastener's EN 22341 page (same site, same data) equals the ISO 2341 numbers"
+ ],
+ "shape_hint": "Cylindrical pin with a flat round head (diameter dk, height k, small fillet r under the head) and a small cross hole (diameter d1) near the free end for a split pin; pin end slightly chamfered (c). Type A has no hole, Type B has the hole at distance le from the head underside.",
+ "role_map": {
+  "d": "pin shank diameter, tolerance h11",
+  "dk": "head diameter, tolerance h14",
+  "d1": "split-pin hole diameter H13 (Type B)",
+  "c_max": "chamfer/end dimension c max at the pin end (per ISO 2341 figure)",
+  "e": "dimension e at the hole/end (per ISO 2341 figure)",
+  "k": "head height",
+  "le_min": "minimum distance from head underside to the hole (effective length le)",
+  "r": "approx. fillet radius under head"
+ },
+ "notes": "Metric ISO 2341 / DIN 1444 only, d 4..24 (12 of 26 listed sizes). Pin length l series is not tabulated. INDEPENDENCE CAVEAT: fasteners.eu, boltport.com and ferrofast.com (+ boltsfastener.com) show the same typo on the sibling ISO 2340/DIN 1443 table, which suggests a common upstream; counted leniently as separate sources here (row_support 4: globalfastener, fasteners.eu, boltport, ferrofast/boltsfastener; 3 for c,e,r columns which ferrofast lacks). If those four are treated as ONE source the true independent support is 2 (globalfastener vs that group) - maintainer must decide. No other independent page with the numbers was reachable (Fuller has no DIN 1444 page; Muehl has none; lexikon has no data).",
+ "clusters": {
+  "A Chinese-template": [
+   "globalfastener.com detail_252 ISO 2341-1986 (live; EN 22341 detail_2286 same site/data not counted twice)"
+  ],
+  "B Boltport/fasteners.eu/ferrofast/boltsfastener group (strict = 1; shared c max=33 typo verified live on ISO 2340/DIN 1443 tables of fasteners.eu, boltport, ferrofast AND boltsfastener)": [
+   "fasteners.eu iso/2341 + din/1444 (live, explicit headers d h11, dk h14, d1 H13, c max, e, k js14, le min, r)",
+   "boltport.com din-1444 (live, same headers)",
+   "ferrofast.com iso-2341 (live; non-ISO headers d1,d2,d3,k,w -> d,dk,d1,k,le mapped by magnitude)",
+   "boltsfastener.com din-1444 (live; identical to ferrofast table)"
+  ],
+  "C fasten.it (missed by producer)": [
+   "fasten.it/en/norms/norm/din_1444 (live; explicit headers d, dk, k, e, c max, d1, le min; d 3..100; DIN 1444:1974 'withdrawn')"
+  ],
+  "not counted": [
+   "lexikon/muehl/fuller (no data)",
+   "gf GB/T 880/882 (different standards)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live (HTTP 200) gf 2341, fasteners.eu iso/2341 + din/1444, boltport din-1444, ferrofast iso-2341, boltsfastener din-1444, fasten.it din_1444 (+ sibling ISO 2340/DIN 1443 tables of fasteners.eu, boltport, ferrofast, boltsfastener, gf, fasten.it for the typo test). Matrix 12 rows (4..24) x 8 columns x 7 pages (+ rows 3, 27..100 on gf/fasten.it/ferrofast/boltsfastener). Result: dk and d1: all 12 rows 3 clusters (A,B,C), 0 conflicts; k: 10 rows 3 clusters, rows 22 (5.5 vs fasten.it 5) and 24 (6 vs fasten.it 6.3) only 2 clusters + 1 dissent -> dropped; r: A,B only (fasten.it/ferrofast/boltsfastener lack it) -> 2 clusters; c_max, e, le_min numerically 3 clusters for all 12 rows (0 conflicts) but dropped for semantics. Sanity: dk/d 1.5-1.8, k<dk, d1 = ISO 1234 split pin sizes, all non-decreasing.",
+  "problems": [
+   "Strict reading (fasteners.eu+boltport+ferrofast+boltsfastener = one cluster) would leave only 2 clusters (gf vs group) as the producer feared; fasten.it DIN 1444 (not found by producer) is the third cluster for d, dk, d1, k, c, e, le.",
+   "Rows 22 and 24 dropped: k=5.5/6 (gf, group, ISO numbers) vs fasten.it 5/6.3 (DIN 1444:1974); same DIN/ISO split at d=27 (k 6 vs 6.3) and e at d=50 (2 vs 3). Dissent from a different edition leaves only 2 clusters on the ISO numbers.",
+   "c_max, e, le_min dropped (meaning not readable): fasteners.eu legend defines both 'c - taper' and 'e - taper' (indistinguishable); gf prints 'e ~' bare; le legend says 'le - distance from the axis of the hole to face' (and ISO 2340 'w - distance ... from the front of pin', same numbers) i.e. hole axis to PIN END, whereas the record/role_map says 'head underside to hole' -> record's le_min semantics are wrong, not just unclear.",
+   "r dropped: only gf, fasteners.eu, boltport list it (A + group = 2 clusters).",
+   "Header-mapping risk: ferrofast/boltsfastener use d1,d2,d3,k,w (not ISO symbols); mapping to d, dk, d1, k, le is by magnitude and by agreement with explicit-header pages; harmless for rows 4..24 (group has explicit pages) but it is the only group evidence for rows 3, 27, 30, 36.",
+   "Possible re-run additions (not in record, ignore for this verdict): rows 3 (dk 5, d1 0.8, k 1), 30 (44, 8, 8), 36 (50, 8, 8) have 3 clusters (gf, ferrofast/boltsfastener, fasten.it) for d, dk, d1, k; row 27 fails on k (6 vs 6.3).",
+   "Family mismatch: family 'clevis' = ISO 2341 (headed) + ISO 2340/DIN 1443 (headless) + ISO 8738/DIN 1440 washers + ASME B18.8.1 inch (sys=both); record covers ISO 2341/DIN 1444 headed metric only, d 4..24 (10 rows after drops of 26 sizes). Headless table exists on gf/fasten.it/fe/boltport/ferrofast but the group carries the c max=33 typo at d=12.",
+   "Kept-column semantics read from fasteners.eu legend: d - pin diameter (h11), dk - head diameter (h14), k - head height (js14), d1 - diameter of hole for cotter pin (H13)."
+  ],
+  "dropped_rows": [
+   "22",
+   "24"
+  ],
+  "dropped_cols": [
+   "c_max",
+   "e",
+   "le_min",
+   "r"
+  ]
+ },
+ "standard_full": "ISO 2341:1986 (= EN 22341 = DIN 1444) clevis pin with head, Type A / B",
+ "scope": "머리붙이 클레비스 핀(ISO 2341)만 — 머리 없는 핀·와셔·인치는 싣지 않았습니다"
+}

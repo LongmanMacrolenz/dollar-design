@@ -1,0 +1,227 @@
+{
+ "id": "tnut",
+ "status": "ok",
+ "standard": "DIN 508",
+ "u": "mm",
+ "cols": [
+  [
+   "a",
+   "홈 폭 a (T홈 DIN 650 호칭 폭)"
+  ],
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "e",
+   "머리 폭 e (공칭, 최대)"
+  ],
+  [
+   "h",
+   "전체 높이 h"
+  ],
+  [
+   "k",
+   "머리 두께 k (공칭, 최대)"
+  ]
+ ],
+ "rows": [
+  [
+   "M4",
+   5,
+   0.7,
+   9,
+   6.5,
+   3
+  ],
+  [
+   "M5",
+   6,
+   0.8,
+   10,
+   8,
+   4
+  ],
+  [
+   "M6",
+   8,
+   1.0,
+   13,
+   10,
+   6
+  ],
+  [
+   "M8",
+   10,
+   1.25,
+   15,
+   12,
+   6
+  ],
+  [
+   "M10",
+   12,
+   1.5,
+   18,
+   14,
+   7
+  ],
+  [
+   "M12",
+   14,
+   1.75,
+   22,
+   16,
+   8
+  ],
+  [
+   "M16",
+   18,
+   2.0,
+   28,
+   20,
+   10
+  ],
+  [
+   "M20",
+   22,
+   2.5,
+   35,
+   28,
+   14
+  ],
+  [
+   "M24",
+   28,
+   3.0,
+   44,
+   36,
+   18
+  ],
+  [
+   "M30",
+   36,
+   3.5,
+   54,
+   44,
+   22
+  ]
+ ],
+ "row_support": {
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/508/",
+   "site": "fasteners.eu",
+   "what": "DIN 508 table: thread d, a nominal/max/min, e, f, h, k, weight (M4-M48); torqbolt.com ISO 299 page is an identical copy of this table"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-508-specifications-t-slot-nuts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 508 specifications blocks M4-M48 (P, a, s(=e), f, h, k, slot width)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_508",
+   "site": "fasten.it",
+   "what": "DIN 508 (06/2002) table: d, slot size DIN 650, k, h, a, e (12 rows M5-M30)"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/din-508-t-nuts/",
+   "site": "boltingspecialist.com",
+   "what": "DIN 508 T-nuts: d, a, e, h, k, slot width (thread assignment per slot differs: lists alternative smaller threads)"
+  },
+  {
+   "url": "https://hlhrapid.com/knowledge/metric-thread-chart-guide/",
+   "site": "hlhrapid.com",
+   "what": "coarse pitch P"
+  },
+  {
+   "url": "https://www.trfastenings.com/knowledge-base/thread-geometries/metric-coarse-standard",
+   "site": "trfastenings.com",
+   "what": "coarse pitch P"
+  },
+  {
+   "url": "https://fastenerexperts.com/358-2/",
+   "site": "fastenerexperts.com",
+   "what": "coarse pitch P"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "a=16, 20, 24 rows (threads M14, M18, M22 in fasten.it)",
+   "why": "listed only by fasten.it and boltingspecialist (2 sources); boltingspecialist assigns M10/M12/M20 to those slots"
+  },
+  {
+   "what": "M36, M42, M48 rows (a=42, 48, 54)",
+   "why": "only fasteners.eu and Fuller list them (torqbolt page is a copy of fasteners.eu); also fasteners.eu/torqbolt e_min for M36 is a typo (54 instead of 64)"
+  },
+  {
+   "what": "tolerance limits a max/min, e min, k min, f, weight, F min columns",
+   "why": "a max/min, f and weight only in 2 independent sources (fasteners.eu, Fuller); tolerance values only as '-0.5' in other sources"
+  },
+  {
+   "what": "bolt-thread assignment per slot width of boltingspecialist",
+   "why": "disagrees with the other three sources for slots >= 10 (e.g. slot 12 -> M8 vs M10); the nut dimensions e, h, k agree"
+  }
+ ],
+ "checks": [
+  "a, e, h, k and P grow monotonically with thread size",
+  "e > a and h > k for every row; for slots 10-36 h = 2k exactly",
+  "thread/slot pairing M4/5, M5/6, M6/8, M8/10, M10/12, M12/14, M16/18, M20/22, M24/28, M30/36 identical in fasteners.eu, Fuller, fasten.it (M5-M30) and boltingspecialist for M4-M6",
+  "slot widths a follow DIN 650 T-slot series (5, 6, 8, 10, 12, 14, 18, 22, 28, 36)"
+ ],
+ "shape_hint": "A T-slot nut: a flat block with a T-shaped cross-section. The wide head (width e, thickness k) sits inside the T-slot under the table; a narrower neck of width a (equal to the slot opening) rises through the slot opening, giving total height h. A tapped through-hole of thread d runs vertically through the middle.",
+ "role_map": {
+  "d_nom": "preferred thread d",
+  "a": "nominal slot width / neck width (DIN 650)",
+  "P": "thread pitch",
+  "e": "width of the head part (nominal max)",
+  "h": "total height of the nut",
+  "k": "head thickness (nominal max)"
+ },
+ "notes": "DIN 508 T-slot nut (nut with a rectangular T-head for machine-tool T-slots). Row = the standard's preferred thread for each T-slot width a (DIN 650). Several slot widths also allow a smaller alternative thread (boltingspecialist lists e.g. slot 12 with M8, slot 10 with M6); the nut dimensions e, h, k depend on the slot width only, so the same nut serves both. ISO 299 is the same table (torqbolt.com page copies fasteners.eu). e and k are the nominal (maximum) sizes; the minimum limits are e - 0.5 (e - 1 for slots >= 28) and k - 0.3 / k - 0.5 (k - 1 for slots >= 28) according to fasteners.eu, Fuller and boltingspecialist, but are not tabulated here because the tolerance columns are only in two independent sources. Slots 16, 20, 24 and 42-54 are in the standard but have <3 sources. KS B 1039 (Korean T-slot nut) was not checked.",
+ "clusters": {
+  "fasteners.eu": [
+   "fasteners.eu/standards/DIN/508 (torqbolt ISO 299 page now 404; producer copy = identical, not counted)"
+  ],
+  "fasten.it": [
+   "fasten.it/en/norms/norm/din_508 (M5..M30)"
+  ],
+  "Chinese-template standards DB": [
+   "fullerfasteners.com (M4..M48; labels e as 's')"
+  ],
+  "Boltport family": [
+   "boltingspecialist.com/dimensions/din-508-t-nuts (a,e,h,k by slot width; thread labels differ)"
+  ],
+  "P thread charts": [
+   "hlhrapid.com",
+   "trfastenings.com",
+   "fastenerexperts.com",
+   "engineeringtoolbox.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live fasteners.eu, Fuller, fasten.it, boltingspecialist (200). 10 rows x {a,e,h,k} x 4 sources compared by row label and (for Boltport) by slot width; P x4 charts for all 10 sizes. 0 value disagreements for the three DIN-keyed sources; Boltport agrees by slot for all 10 rows (by label only M4,M5,M6). Rows: M4 = fasteners.eu+Fuller+Boltport (fasten.it has no M4); M30(a=36) = fasteners.eu+Fuller+fasten.it (Boltport stops at slot 28); M5..M24 = 4.",
+  "problems": [
+   "row-label convention: each T-slot width allows two threads (Boltport lists M6 for slots 8 and 10, M8 for slot 12, M10 for 14/16, M12 for 18/20, M20 for 24/28); the record uses the larger/preferred thread (M8<->a=10, M10<->12 ...) as in fasteners.eu/Fuller/fasten.it. The d_nom<->a pairing for M8..M24 is supported by 3 clusters, not by Boltport.",
+   "M4 and M30 rows sit at exactly 3 clusters; Fuller labels e as 's' (value-matched), so e at M4/M30 has only 2 header-proven sources + Fuller.",
+   "no source defines a/e/h/k in words (only 'Slot Size DIN 650' for a); roles rest on DIN 508 symbols (flag only).",
+   "e,k are nominal (max) values; fasten.it/Boltport print them with a tolerance suffix ('9 - 0.5') - consistent."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 508 (T-slot nuts; ISO 299 table identical)"
+}

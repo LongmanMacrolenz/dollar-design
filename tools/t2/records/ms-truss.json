@@ -1,0 +1,482 @@
+{
+ "id": "ms-truss",
+ "status": "partial",
+ "standard": "ASME B18.6.3",
+ "u": "in",
+ "cols": [
+  [
+   "At_max",
+   "트러스머리 지름 A 최대"
+  ],
+  [
+   "At_min",
+   "트러스머리 지름 A 최소"
+  ],
+  [
+   "Ht_max",
+   "트러스머리 높이 H 최대"
+  ],
+  [
+   "Ht_min",
+   "트러스머리 높이 H 최소"
+  ],
+  [
+   "Rt_max",
+   "트러스머리 윗면 곡률 반지름 R 최대"
+  ],
+  [
+   "J_max",
+   "홈 폭 J 최대 (트러스·바인드 공통)"
+  ],
+  [
+   "J_min",
+   "홈 폭 J 최소 (트러스·바인드 공통)"
+  ],
+  [
+   "Tt_max",
+   "트러스머리 홈 깊이 T 최대"
+  ],
+  [
+   "Tt_min",
+   "트러스머리 홈 깊이 T 최소"
+  ],
+  [
+   "Ab_max",
+   "바인드머리 지름 A 최대"
+  ],
+  [
+   "Ab_min",
+   "바인드머리 지름 A 최소"
+  ],
+  [
+   "Ob_max",
+   "바인드머리 전체 높이 O 최대"
+  ],
+  [
+   "Ob_min",
+   "바인드머리 전체 높이 O 최소"
+  ],
+  [
+   "Fb_max",
+   "바인드머리 둥근부 높이 F 최대"
+  ],
+  [
+   "Fb_min",
+   "바인드머리 둥근부 높이 F 최소"
+  ],
+  [
+   "Tb_max",
+   "바인드머리 홈 깊이 T 최대"
+  ],
+  [
+   "Tb_min",
+   "바인드머리 홈 깊이 T 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "#0",
+   0.131,
+   0.119,
+   0.037,
+   0.029,
+   0.087,
+   0.023,
+   0.016,
+   0.022,
+   0.014,
+   0.126,
+   0.119,
+   0.032,
+   0.026,
+   0.012,
+   0.008,
+   0.018,
+   0.009
+  ],
+  [
+   "#1",
+   0.164,
+   0.149,
+   0.045,
+   0.037,
+   0.107,
+   0.026,
+   0.019,
+   0.027,
+   0.018,
+   0.153,
+   0.145,
+   0.041,
+   0.035,
+   0.015,
+   0.011,
+   0.024,
+   0.014
+  ],
+  [
+   "#2",
+   0.194,
+   0.18,
+   0.053,
+   0.044,
+   0.129,
+   0.031,
+   0.023,
+   0.031,
+   0.022,
+   0.181,
+   0.171,
+   0.05,
+   0.043,
+   0.018,
+   0.013,
+   0.03,
+   0.02
+  ],
+  [
+   "#3",
+   0.226,
+   0.211,
+   0.061,
+   0.051,
+   0.151,
+   0.035,
+   0.027,
+   0.036,
+   0.026,
+   0.208,
+   0.197,
+   0.059,
+   0.052,
+   0.022,
+   0.016,
+   0.036,
+   0.025
+  ],
+  [
+   "#4",
+   0.257,
+   0.241,
+   0.069,
+   0.059,
+   0.169,
+   0.039,
+   0.031,
+   0.04,
+   0.03,
+   0.235,
+   0.223,
+   0.068,
+   0.061,
+   0.025,
+   0.018,
+   0.042,
+   0.03
+  ],
+  [
+   "#5",
+   0.289,
+   0.272,
+   0.078,
+   0.066,
+   0.191,
+   0.043,
+   0.035,
+   0.045,
+   0.034,
+   0.263,
+   0.249,
+   0.078,
+   0.069,
+   0.029,
+   0.021,
+   0.048,
+   0.035
+  ],
+  [
+   "#6",
+   0.321,
+   0.303,
+   0.086,
+   0.074,
+   0.211,
+   0.048,
+   0.039,
+   0.05,
+   0.037,
+   0.29,
+   0.275,
+   0.087,
+   0.078,
+   0.032,
+   0.024,
+   0.053,
+   0.04
+  ],
+  [
+   "#8",
+   0.384,
+   0.364,
+   0.102,
+   0.088,
+   0.254,
+   0.054,
+   0.045,
+   0.058,
+   0.045,
+   0.344,
+   0.326,
+   0.105,
+   0.095,
+   0.039,
+   0.029,
+   0.065,
+   0.05
+  ],
+  [
+   "#10",
+   0.448,
+   0.425,
+   0.118,
+   0.103,
+   0.283,
+   0.06,
+   0.05,
+   0.068,
+   0.053,
+   0.399,
+   0.378,
+   0.123,
+   0.112,
+   0.045,
+   0.034,
+   0.077,
+   0.06
+  ],
+  [
+   "#12",
+   0.511,
+   0.487,
+   0.134,
+   0.118,
+   0.336,
+   0.067,
+   0.056,
+   0.077,
+   0.061,
+   0.454,
+   0.43,
+   0.141,
+   0.13,
+   0.052,
+   0.039,
+   0.089,
+   0.07
+  ],
+  [
+   "1/4",
+   0.573,
+   0.546,
+   0.15,
+   0.133,
+   0.375,
+   0.075,
+   0.064,
+   0.087,
+   0.07,
+   0.525,
+   0.498,
+   0.165,
+   0.152,
+   0.061,
+   0.046,
+   0.105,
+   0.084
+  ],
+  [
+   "5/16",
+   0.698,
+   0.666,
+   0.183,
+   0.162,
+   0.457,
+   0.084,
+   0.072,
+   0.106,
+   0.085,
+   0.656,
+   0.622,
+   0.209,
+   0.194,
+   0.077,
+   0.059,
+   0.134,
+   0.108
+  ],
+  [
+   "3/8",
+   0.823,
+   0.787,
+   0.215,
+   0.191,
+   0.538,
+   0.094,
+   0.081,
+   0.124,
+   0.1,
+   0.788,
+   0.746,
+   0.253,
+   0.235,
+   0.094,
+   0.071,
+   0.163,
+   0.132
+  ]
+ ],
+ "row_support": {
+  "#0": 3,
+  "#1": 3,
+  "#2": 3,
+  "#3": 3,
+  "#4": 3,
+  "#5": 3,
+  "#6": 3,
+  "#8": 3,
+  "#10": 3,
+  "#12": 3,
+  "1/4": 3,
+  "5/16": 3,
+  "3/8": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/asme-b18-6-3-slotted-truss-head-machine-screws-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "Slotted truss head table (A, H, R, J, T)"
+  },
+  {
+   "url": "https://torqbolt.com/asme-b18-6-3-slotted-binding-head-machine-screws-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "Slotted binding head table (A, O, F, J, T, U, X); same site as above -> counted once"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/asme-b18-6-3-slotted-truss-head-machine-screws/index.html",
+   "site": "boltingspecialist.com",
+   "what": "Slotted truss head table"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/asme-b18-6-3-slotted-binding-head-machine-screws/index.html",
+   "site": "boltingspecialist.com",
+   "what": "Slotted binding head table"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/asme-b18-6-3-type-1-cross-recessed-truss-head-machine-screws/index.html",
+   "site": "boltingspecialist.com",
+   "what": "Type 1 cross recessed truss head (A, H) used only as cross-check that Phillips truss A/H equal slotted; has typo A max 5/16 = 0.68"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_4995.html",
+   "site": "globalfastener.com",
+   "what": "ASME B18.6.3 Table 24 slotted truss head"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_4998.html",
+   "site": "globalfastener.com",
+   "what": "ASME B18.6.3 Table 27 slotted binding head"
+  },
+  {
+   "url": "https://www.aftfasteners.com/truss-head-machine-screws-dimensions-specifications/",
+   "site": "aftfasteners.com",
+   "what": "Truss Head Slotted & Phillips Drive Size Chart (A, H, J, T; sizes #2..1/2 without 7/16) - truss columns only"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "KS B 1023 / JIS B 1111 metric cross recessed truss/binding table",
+   "why": "no 3 independent public tables could be found (web search budget exhausted; globalfastener has KS B 1023/JIS B 1111 pages but only pan head tables are text; no other independent source located)"
+  },
+  {
+   "what": "Phillips recess data for truss head (driver No., M, gaging depth)",
+   "why": "only 2 sources (aftfasteners, boltingspecialist cross truss page)"
+  },
+  {
+   "what": "#0000, #000, #00 rows",
+   "why": "micro sizes, not in AFT; omitted as out of scope"
+  },
+  {
+   "what": "truss rows 7/16, 1/2, 9/16, 5/8, 3/4",
+   "why": "truss columns have >=3 sources, but ASME slotted binding head does not exist above 3/8, and cells cannot be blank"
+  },
+  {
+   "what": "boltingspecialist cross truss 5/16 A max = 0.68",
+   "why": "typo; the other 4 sources (incl. boltingspecialist's own slotted truss page) give 0.698"
+  }
+ ],
+ "checks": [
+  "no disagreement among slotted-table sources on any kept cell (only defect: the 5/16 A max typo on the cross-recessed truss page)",
+  "max > min on every pair (A, H, J, T, O, F)",
+  "all columns non-decreasing with size",
+  "truss head diameter A > binding head diameter A (truss is the wider low dome); truss head height H < total binding height O",
+  "J (slot width) values are identical in truss and binding tables of all 3 sources (so one shared pair of columns)",
+  "Phillips truss A/H (AFT 'Slotted & Phillips' chart, boltingspecialist cross truss page) identical to slotted truss A/H"
+ ],
+ "shape_hint": "Truss head: very low, wide, gently domed head (diameter A about 2.3 x D, height H about 0.6 x D) with a flat bearing face, slotted or cross recessed, on a threaded shank. Binding head: slightly smaller diameter head with tapered/rounded sides and a flat top 'oval' crown (total height O, crown height F), slotted, on a threaded shank.",
+ "role_map": {
+  "d_nom": "nominal size",
+  "At_max": "truss head diameter max",
+  "At_min": "truss head diameter min",
+  "Ht_max": "truss head height max",
+  "Ht_min": "truss head height min",
+  "Rt_max": "truss head top radius max",
+  "J_max": "slot width max",
+  "J_min": "slot width min",
+  "Tt_max": "slot depth max, truss head",
+  "Tt_min": "slot depth min, truss head",
+  "Ab_max": "binding head diameter max",
+  "Ab_min": "binding head diameter min",
+  "Ob_max": "binding head total height max",
+  "Ob_min": "binding head total height min",
+  "Fb_max": "binding head crown (oval) height max",
+  "Fb_min": "binding head crown (oval) height min",
+  "Tb_max": "slot depth max, binding head",
+  "Tb_min": "slot depth min, binding head"
+ },
+ "notes": "INCH ASME B18.6.3 only; the KS B 1023 / JIS B 1111 metric truss/binding table could not be verified (see dropped). Sizes #0..3/8 only (13 rows). Thread pitch is not included here: use the UNC/UNF TPI of the same size from the ms-inch table (#2..1/2). Truss head table in the standard continues to 3/4 (7/16..3/4 values had 3 sources) but cannot be published here because the binding head columns do not exist above 3/8. ASME slotted binding head is slotted only (a binding head is also made undercut, columns U, X exist in the sources but were left out). 18 columns = at the limit. Independence of torqbolt vs boltingspecialist vs globalfastener is assumed from distinct layouts; row support is exactly 3 (binding and R columns have only these 3 sites).",
+ "clusters": {
+  "torqbolt (TorqBolt Pvt Ltd)": [
+   "torqbolt.com slotted truss page",
+   "torqbolt.com slotted binding page (same site, once)"
+  ],
+  "boltport group (Bolting Specialist = Resistant Metal Alloys LLP)": [
+   "boltingspecialist.com slotted truss",
+   "boltingspecialist.com slotted binding",
+   "boltingspecialist.com Type 1 cross truss (A,H only; has 5/16 A max typo 0.68)"
+  ],
+  "globalfastener / Chinese-template DB": [
+   "globalfastener.com detail_4995 (truss)",
+   "globalfastener.com detail_4998 (binding)"
+  ],
+  "aftfasteners (truss A,H,J,T only; no #0,#1,7/16..; no R; no binding)": [
+   "aftfasteners.com truss chart"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-downloaded all 8 listed URLs live (all 200). Parsed torqbolt truss (21 rows x 9 cols) and binding (16 rows x 14 cols), boltingspecialist truss/binding/cross-truss, gf 4995 (21 rows) and 4998 (16 rows), AFT truss chart (#2..1/2, 12 rows). Compared all 13 rows x 17 value columns (221 cells) of the record against every source listing them: 0 disagreements (only the bs cross-truss 5/16 A max 0.68 vs 0.698, which is outside the cluster that matters and not in the record). Full-table cross-diff of the three transcriptions over ALL their rows (truss 189 cells, binding 212 cells): torq vs bs 0 diffs, torq vs gf 0, bs vs gf 0. Cluster counts: truss At/Ht/J/Tt = 4 clusters for rows #2..3/8, 3 for #0,#1 (AFT starts at #2); Rt_max = 3 (torq,bs,gf; AFT has no R); all 8 binding columns = 3 (torq,bs,gf; no other binding source - engineersedge/china-bolts truss/binding pages are 404/empty, AFT has no binding page). J_max/J_min identical in truss and binding tables of all three sources (so shared column is valid). Sanity: max>min everywhere, all columns non-decreasing with size, At>Ab on all rows, Fb<Ob, At/D = 2.18-2.27. Independence torq vs bs: same evidence as ms-inch (different companies, different markup, binding footnotes worded differently - torq 'a/b' table footnotes vs bs 'Notes: Break sharp edge...', no shared typos); fasteners.eu has no ASME B18.6.3.",
+  "problems": [
+   "LABEL MISMATCH (decisive for 'fix'): family is '+자 트러스머리·바인드머리 작은나사' (KS B 1023, sys both) but the record is ASME SLOTTED truss + SLOTTED binding head, inch only. Slot columns J,Tt,Tb and all 8 binding columns do not describe a cross-recessed screw, and no source shows a cross-recessed binding head. Cross-recessed truss A/H being equal to slotted is evidenced by only 2 clusters (AFT 'Slotted & Phillips' chart, bs cross truss page; gf 4996/4997 returned empty, torqbolt cross pages 404). Publish only under a slotted (일자홈) truss/binding label, inch ASME B18.6.3, not as the '+자' family or as the metric/KS part.",
+   "Exactly 3 clusters (torq, bs, gf) on the 8 binding columns, Rt_max, and on truss At/Ht/J/Tt for rows #0,#1: all rest on torqbolt != boltingspecialist. Judged independent (see checks_done). If the owner merges them: drop cols Rt_max, Ab_*, Ob_*, Fb_*, Tb_* and rows #0,#1 (leaves At,Ht,J,Tt for #2..3/8).",
+   "Producer check 'truss head height H < binding total height O' is FALSE for #0..#5 (e.g. #1 0.045 vs 0.041); harmless to the data but the stated sanity check is wrong.",
+   "Metric KS B 1023 / JIS B 1111 truss/binding table not verified (producer dropped it): the 'sys: both' family has only the inch half.",
+   "Producer dropped truss rows 7/16..3/4 because binding stops at 3/8; truss-only columns for those rows have 3 clusters (could be a separate truss-only table).",
+   "Semantics read from headers: At/Ab = Head Dia A; Ht = Head Height H (truss); Ob = Total Head Height O; Fb = Head Oval Height F (gf 'k' and 'f'); Rt = Head Radius R max; J = Slot Width; Tt/Tb = Slot Depth T. Binding U,X (undercut) rightly left out."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ASME B18.6.3 (slotted truss head and slotted binding head tables; Phillips truss head shares A and H)",
+ "scope": "일자(−)홈 트러스머리·바인드머리만 — 십자홈 값은 싣지 않았습니다"
+}

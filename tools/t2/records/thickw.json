@@ -1,0 +1,188 @@
+{
+ "id": "thickw",
+ "status": "ok",
+ "standard": "DIN 7349",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "구멍 지름 d1"
+  ],
+  [
+   "d2",
+   "바깥지름 d2"
+  ],
+  [
+   "s",
+   "두께 s"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   3.2,
+   9.0,
+   1.0
+  ],
+  [
+   "M4",
+   4.3,
+   12.0,
+   1.6
+  ],
+  [
+   "M5",
+   5.3,
+   15.0,
+   2.0
+  ],
+  [
+   "M6",
+   6.4,
+   17.0,
+   3.0
+  ],
+  [
+   "M8",
+   8.4,
+   21.0,
+   4.0
+  ],
+  [
+   "M10",
+   10.5,
+   25.0,
+   4.0
+  ],
+  [
+   "M12",
+   13.0,
+   30.0,
+   6.0
+  ],
+  [
+   "M16",
+   17.0,
+   40.0,
+   6.0
+  ],
+  [
+   "M18",
+   19.0,
+   44.0,
+   8.0
+  ],
+  [
+   "M20",
+   21.0,
+   44.0,
+   8.0
+  ],
+  [
+   "M22",
+   23.0,
+   50.0,
+   8.0
+  ],
+  [
+   "M27",
+   28.0,
+   60.0,
+   10.0
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M18": 3,
+  "M20": 3,
+  "M22": 3,
+  "M27": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/7349/",
+   "site": "fasteners.eu (boltport.com/standards/din-7349/ and torqbolt.com DIN 7349 page are identical copies incl. the typo 'diamater' - counted as ONE source)",
+   "what": "DIN 7349 table d1 / d2 / s / weight / DIN 1481 sleeve / thread, M3-M30"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_650.html",
+   "site": "globalfastener.com",
+   "what": "DIN 7349-1974 Plain Washers for Bolts with Heavy Clamping Sleeves: d, dc, h, weight, bolt diameter"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_7349.asp",
+   "site": "schrauben-lexikon.de (Wegertseder GmbH)",
+   "what": "DIN 7349 technical data table Nenngroesse / d1 / d2 / h (M3-M30, without M14 and M24)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M14 row",
+   "why": "only fasteners.eu (copied by boltport/torqbolt) + globalfastener list it (2 independent sources); schrauben-lexikon omits M14"
+  },
+  {
+   "what": "M24 row",
+   "why": "same: fasteners.eu cluster + globalfastener only (schrauben-lexikon omits M24)"
+  },
+  {
+   "what": "M30 row",
+   "why": "d2 = 68 in fasteners.eu cluster and globalfastener but 69 in schrauben-lexikon -> only 2 sources for 68 (d1 31, s 10 agree)"
+  },
+  {
+   "what": "'for clamping sleeve DIN 1481' column",
+   "why": "only in fasteners.eu cluster (boltport/torqbolt copies)"
+  },
+  {
+   "what": "DIN 6340 and KS B 1327 tables",
+   "why": "DIN 6340: fasteners.eu (and boltport copy) M10 d2=26 vs globalfastener/schrauben-lexikon 28; schrauben-lexikon d1 (M12 13.3, M36 38.5, M16-M30 .0) differ from the other two; KS B 1327 not found. DIN 7349 chosen as the governing standard"
+  }
+ ],
+ "checks": [
+  "each kept row has identical d1, d2, s in all 3 independent sources",
+  "d1 > thread diameter (d1 - d = 0.2 mm at M3 up to 1.0 mm at M12 and up) and d2 > d1",
+  "d1 and d2 never decrease with size, s never decreases (1, 1.6, 2, 3, 4, 4, 6, 6, 8, 8, 8, 10)",
+  "d2/d1 between 2.1 and 2.83; s is 0.33-0.5 x thread diameter (thick washer), d2 is 2.2-3 x thread diameter"
+ ],
+ "shape_hint": "A thick flat round washer: disc with a concentric through-hole, flat on both faces, noticeably thicker than a normal washer (s about 0.33-0.5 x thread diameter) and with an outside diameter about 2.2-3 x the thread diameter.",
+ "role_map": {
+  "d_nom_note": "thread size M of the bolt (washer is used with bolts and heavy spring/clamping sleeves)",
+  "d1": "inside (hole) diameter, nominal",
+  "d2": "outside diameter, nominal",
+  "s": "washer thickness, nominal"
+ },
+ "notes": "DIN 7349 is the heavy washer for bolts used with heavy clamping sleeves (DIN 1481); it has no ISO equivalent and its current validity was not checked against the original. Only nominal values are published (tolerances not found in 3 sources). DIN 6340 (washers for clamping devices, quenched and tempered) was examined and rejected: the public tables disagree (M10 d2 26 vs 28, M12/M36 d1 differences). fasteners.eu, boltport and torqbolt carry one and the same table.",
+ "clusters": {
+  "fasteners.eu cluster (STRICT: fasteners.eu + boltport + torqbolt; verified identical dict on all 15 rows, same typo 'diamater')": [
+   "fasteners.eu/standards/DIN/7349/",
+   "boltport.com/standards/din-7349/",
+   "torqbolt.com DIN 7349 page (raw copy; live URL slug guessed 404, producer's copy used and checked identical)"
+  ],
+  "Chinese-template standards DB": [
+   "globalfastener.com/standards/detail_650.html (DIN 7349-1974)"
+  ],
+  "German dataset (Wegertseder)": [
+   "schrauben-lexikon.de/norm/DIN_7349.asp (13 sizes, no M14/M24)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Live re-fetch of fasteners.eu, boltport, globalfastener, schrauben-lexikon (torqbolt from producer raw copy, compared equal to fasteners.eu on all 15 rows). Matrix 15 sizes x (d1,d2,s) x 5 pages. All 12 kept rows (M3,M4,M5,M6,M8,M10,M12,M16,M18,M20,M22,M27) x 3 cols = 36 cells identical in fe-cluster, gf and sl (3 clusters each; no dissent). Dropped rows confirmed: M14, M24 (only fe-cluster + gf), M30 (d2 68 in fe-cluster + gf, 69 in sl). Headers: fe 'd1 / d2 / s', gf 'Nominal Diameter d / dc / h' + 'For bolt diameter', sl 'd1 / d2 / h'. Physical sanity: d1,d2,s monotone, d2/d1 2.1-2.8, d1 > thread dia.",
+  "problems": [
+   "Every kept cell has exactly 3 clusters under the STRICT reading (fe-cluster, gf, sl); no spare source.",
+   "globalfastener's hole column is headed only 'Nominal Diameter d' (no '1'); read as hole diameter because values (3.2, 4.3, ...) equal the fasteners.eu/schrauben-lexikon d1 and a separate 'For bolt diameter' row carries the thread size; row key M is read from that row, not inferred.",
+   "DIN 7349 is a withdrawn-style German standard (no ISO equivalent); only nominal values exist in all sources, no tolerances.",
+   "Alternatives (DIN 6340) correctly rejected by producer: not re-verified here (not part of the record)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 7349 (heavy plain washers for bolts with heavy clamping/spring sleeves; no ISO equivalent)"
+}

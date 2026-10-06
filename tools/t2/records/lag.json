@@ -1,0 +1,268 @@
+{
+ "id": "lag",
+ "status": "ok",
+ "standard": "DIN 571",
+ "u": "mm",
+ "cols": [
+  [
+   "ds_min",
+   "축 지름 ds 최소"
+  ],
+  [
+   "da_max",
+   "머리 밑 필렛 지름 da 최대"
+  ],
+  [
+   "k_nom",
+   "머리 높이 k 호칭"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대"
+  ],
+  [
+   "k_min",
+   "머리 높이 k 최소"
+  ],
+  [
+   "s_max",
+   "육각 대변 s 최대(호칭)"
+  ],
+  [
+   "s_min",
+   "육각 대변 s 최소"
+  ],
+  [
+   "e_min",
+   "육각 대각 e 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "4",
+   3.52,
+   5,
+   2.8,
+   3.1,
+   2.5,
+   7,
+   6.64,
+   7.5
+  ],
+  [
+   "5",
+   4.52,
+   6,
+   3.5,
+   3.88,
+   3.13,
+   8,
+   7.64,
+   8.63
+  ],
+  [
+   "6",
+   5.52,
+   7.2,
+   4,
+   4.38,
+   3.63,
+   10,
+   9.64,
+   10.89
+  ],
+  [
+   "7",
+   6.42,
+   8.2,
+   5,
+   5.38,
+   4.63,
+   12,
+   11.57,
+   13.07
+  ],
+  [
+   "8",
+   7.42,
+   10.2,
+   5.5,
+   5.88,
+   5.13,
+   13,
+   12.57,
+   14.2
+  ],
+  [
+   "10",
+   9.42,
+   12.2,
+   7,
+   7.45,
+   6.55,
+   17,
+   16.57,
+   18.72
+  ],
+  [
+   "12",
+   11.3,
+   15.2,
+   8,
+   8.45,
+   7.55,
+   19,
+   18.48,
+   20.88
+  ],
+  [
+   "16",
+   15.3,
+   19.2,
+   10,
+   10.45,
+   9.55,
+   24,
+   23.16,
+   26.17
+  ],
+  [
+   "20",
+   19.3,
+   24.4,
+   13,
+   13.9,
+   12.1,
+   30,
+   29.16,
+   32.95
+  ]
+ ],
+ "row_support": {
+  "4": 3,
+  "5": 3,
+  "6": 3,
+  "7": 3,
+  "8": 3,
+  "10": 3,
+  "12": 3,
+  "16": 3,
+  "20": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.capitalbolts.in/din-571",
+   "site": "capitalbolts.in",
+   "what": "DIN 571 table (ds,da,k,s,e,weights); same table/typo ('292') as fasteners.eu -> one source with fasteners.eu and boltport"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/571/",
+   "site": "fasteners.eu",
+   "what": "DIN 571 table, same as capitalbolts.in"
+  },
+  {
+   "url": "https://boltport.com/standards/din-571/",
+   "site": "boltport.com",
+   "what": "short table d1,s,e,k (M5,M6,M8,M10,M12,M16), copy of the above cluster"
+  },
+  {
+   "url": "https://degademir.com/en/urun/din-571-hexagon-head-wood-screw",
+   "site": "degademir.com",
+   "what": "DIN 571 table 4-20 (da,k,sw,e,ds)"
+  },
+  {
+   "url": "https://www.qewitfastener.com/carbon-steel-hexagon-head-coach-screws-din-571/",
+   "site": "qewitfastener.com",
+   "what": "DIN 571 table 4-20 (ds,da,k,s,e)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-571-specifications-hex-head-wood-screws/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 571 table 4-20 (ds,da,k,s,e)"
+  },
+  {
+   "url": "https://www.fastenerdata.co.uk/fasteners/screws/wood-screw/coach/metric-hexagon-coach-screw-steel-din571.html",
+   "site": "fastenerdata.co.uk",
+   "what": "DIN 571 d,s,e,k nominal/max/min (its e for 4, 7, 20 differs: 7.7, 13.2, 33.0 -> ignored)"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-571",
+   "site": "theo-schrauben.de",
+   "what": "DIN 571 Technische Daten: ds,k,s,e (German reseller cluster counted once)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "thread length b / length series",
+   "why": "not given as a size-table column in the sources (only length/weight tables)"
+  },
+  {
+   "what": "torqbolt.com DIN 571 table",
+   "why": "header row lacks the '16' column so every value is shifted by one size -> defective, not used"
+  },
+  {
+   "what": "fastenerdata e_min for sizes 4, 7, 20",
+   "why": "7.7 / 13.2 / 33.0 vs 7.5 / 13.07 / 32.95 in 4 other clusters -> minority"
+  },
+  {
+   "what": "ASME B18.2.1 hex lag screws (inch) and square lag screws",
+   "why": "not tabulated here (one standard per family). torqbolt.com lists the B18.2.1 hex lag table in mm; inch table needs 3 sources"
+  }
+ ],
+ "checks": [
+  "All 8 value columns non-decreasing with size (4..20)",
+  "ds_min < d < da_max, k_min < k_nom < k_max, s_max > s_min, e_min > s_min in every row",
+  "e_min/s_min between 1.12 and 1.18 for all rows (hex across corners vs flats; computed numerically)",
+  "k_nom/d between 0.62 and 0.72 and s_max/d between 1.5 and 1.75 for all rows",
+  "German cluster (theo) shows minor typos vs 4+ other clusters: d=20 ds_min 19.2, k_max 13.65, k_min 12.45, s_min 29.08; d=12 s_min 18.46; d=4 e 7.51 -> its values were outvoted, never used"
+ ],
+ "shape_hint": "Lag screw (coach screw): a hexagon head with a flat underside (no washer face) on a tapered-point wood-screw shank: unthreaded plain shank of diameter d just below the head, then a coarse wood-screw thread (core tapering to a gimlet point) over about 60-70 % of the length; head is a low hexagon of height k and across-flats s.",
+ "role_map": {
+  "d": "nominal diameter (mm, wood-screw size)",
+  "ds_min": "shank diameter min",
+  "da_max": "transition diameter under head max",
+  "k_nom": "head height nominal",
+  "k_max": "head height max",
+  "k_min": "head height min",
+  "s_max": "across flats max = nominal",
+  "s_min": "across flats min",
+  "e_min": "across corners min"
+ },
+ "notes": "DIN 571 hexagon head wood (coach/lag) screw, nominal diameter d in mm (4,5,6,(7),8,10,12,16,20; '7' is a non-preferred size). d is NOT an ISO metric thread (wood-screw thread). Lengths 16-300 mm. s is the ISO-type 7,8,10,12,13,17,19,24,30 series. Head height k min/max symmetric about nominal. e values in the standard are minima. The US/ASME B18.2.1 inch lag screw table (1/4 .. 1-1/2) is different and not included.",
+ "clusters": {
+  "capitalbolts.in + fasteners.eu + boltport (same text, same typo '292' in the 16 mm weight row)": [
+   "capitalbolts.in",
+   "fasteners.eu",
+   "boltport.com"
+  ],
+  "degademir.com (no k nominal)": [
+   "degademir.com"
+  ],
+  "Chinese template (STRICT one cluster)": [
+   "fullerfasteners.com",
+   "qewitfastener.com"
+  ],
+  "fastenerdata.co.uk (s,e,k nominal/max/min only; e dissents at d=4,7,20)": [
+   "fastenerdata.co.uk"
+  ],
+  "German reseller dataset (ds,k,s,e; typos d=4 e 7.51, d=12 s_min 18.46, d=20 ds_min 19.2 / k 13.65 / 12.45 / s_min 29.08)": [
+   "theo-schrauben.de"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 8 sources live (200), parsed every table; matrix 9 rows x 8 value columns x 8 pages. Clusters per column after strict merging (min over rows): ds_min 3-4 (A,B,C +E except d=20), da_max exactly 3 (A,B,C), k_nom exactly 3 (A capital/feu, C fuller/qewit, D fastenerdata; degademir has none), k_max 5, k_min 5, s_max 5, s_min 3-4 (A,B,C; E dissents d=12,20), e_min 3-5 (A,B,C always; D dissents d=4 7.7,d=7 13.2,d=20 33.0; E dissents d=4 7.51). No cell where a different value has >=2 clusters.",
+  "problems": [
+   "STRICT merge of fuller+qewit and capital+fasteners.eu+boltport leaves da_max, k_nom (and s_min, e_min, ds_min in the worst rows) at exactly 3 clusters - thin margin; producer's 4/5 counts relied on counting fuller and qewit separately",
+   "Family label 'ASME B18.2.1 · DIN 571' but table is DIN 571 only (metric mm wood-screw sizes); ASME inch lag screw table is separate",
+   "d = 4,5,6,7,8,10,12,16,20 are wood-screw diameters (fuller prints 'M4'...; capital/fasteners.eu print '(7)' in brackets = non-preferred) - label convention: bare numbers, 7 is non-preferred",
+   "da role: only degademir words it ('Under Head Radius Length'); symbol da (transition diameter) kept, label should stay symbol-based",
+   "e_min is a minimum (standard e min), not nominal; fastenerdata e values 7.7/13.2/33.0 are minority"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 571",
+ "scope": "DIN 571 육각 목재나사 값 — ASME B18.2.1 래그 스크루는 싣지 않았습니다"
+}

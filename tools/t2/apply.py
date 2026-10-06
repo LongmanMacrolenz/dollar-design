@@ -64,6 +64,11 @@ def validate(r):
     srcs = r.get("sources") or []
     if len({s.get("site") for s in srcs if s.get("site")}) < 3:
         e.append("서로 다른 사이트 출처가 3곳 미만")
+    # 검증 담당이 서로 베낀 사이트를 묶은 결과(clusters)가 있으면, 묶음 기준으로도 3곳 이상이어야 한다
+    if r.get("clusters") is not None and len(r["clusters"]) < 3:
+        e.append("서로 독립된 출처 묶음이 3곳 미만")
+    if r.get("clusters") is not None and int((r.get("verification") or {}).get("cell_support_min", 0)) < 3:
+        e.append("검증된 최소 일치 출처가 3곳 미만")
     for k in ("standard", "shape_hint", "role_map"):
         if not r.get(k):
             e.append(f"{k}가 비었습니다")
@@ -71,7 +76,9 @@ def validate(r):
 
 
 def to_dims(r):
-    d = {"u": r["u"], "basis": "T2", "cols": r["cols"], "rows": r["rows"]}
+    d = {"u": r["u"], "basis": "T2", "standard": r["standard"], "cols": r["cols"], "rows": r["rows"]}
+    if r.get("scope"):
+        d["scope"] = r["scope"]   # 표가 다루는 범위 (품목군 이름보다 좁을 때 화면에 적는다)   # standard = 이 표가 실제로 따른 규격 (품목군 이름의 규격 목록과 다를 수 있다)
     return d
 
 

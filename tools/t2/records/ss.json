@@ -1,0 +1,281 @@
+{
+ "id": "ss",
+ "status": "ok",
+ "standard": "ISO 4026–4029 (DIN 913–916) 공통 치수",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "나사 피치 P (보통나사)"
+  ],
+  [
+   "s",
+   "육각 구멍 대변 s 호칭"
+  ],
+  [
+   "t_min_short",
+   "육각 구멍 깊이 t 최소 (짧은 길이 l)"
+  ],
+  [
+   "t_min_long",
+   "육각 구멍 깊이 t 최소 (긴 길이 l)"
+  ],
+  [
+   "dp_max",
+   "평끝·봉끝 지름 dp 최대"
+  ],
+  [
+   "dz_max",
+   "컵(오목)끝 지름 dz 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "M1.6",
+   0.35,
+   0.7,
+   0.7,
+   1.5,
+   0.8,
+   0.8
+  ],
+  [
+   "M2",
+   0.4,
+   0.9,
+   0.8,
+   1.7,
+   1.0,
+   1.0
+  ],
+  [
+   "M2.5",
+   0.45,
+   1.3,
+   1.2,
+   2.0,
+   1.5,
+   1.2
+  ],
+  [
+   "M3",
+   0.5,
+   1.5,
+   1.2,
+   2.0,
+   2.0,
+   1.4
+  ],
+  [
+   "M4",
+   0.7,
+   2.0,
+   1.5,
+   2.5,
+   2.5,
+   2.0
+  ],
+  [
+   "M5",
+   0.8,
+   2.5,
+   2.0,
+   3.0,
+   3.5,
+   2.5
+  ],
+  [
+   "M6",
+   1.0,
+   3.0,
+   2.0,
+   3.5,
+   4.0,
+   3.0
+  ],
+  [
+   "M8",
+   1.25,
+   4.0,
+   3.0,
+   5.0,
+   5.5,
+   5.0
+  ],
+  [
+   "M10",
+   1.5,
+   5.0,
+   4.0,
+   6.0,
+   7.0,
+   6.0
+  ],
+  [
+   "M12",
+   1.75,
+   6.0,
+   4.8,
+   8.0,
+   8.5,
+   8.0
+  ],
+  [
+   "M16",
+   2.0,
+   8.0,
+   6.4,
+   10.0,
+   12.0,
+   10.0
+  ],
+  [
+   "M20",
+   2.5,
+   10.0,
+   8.0,
+   12.0,
+   15.0,
+   14.0
+  ],
+  [
+   "M24",
+   3.0,
+   12.0,
+   10.0,
+   15.0,
+   18.0,
+   16.0
+  ]
+ ],
+ "row_support": {
+  "M1.6": 3,
+  "M2": 3,
+  "M2.5": 3,
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_913",
+   "site": "fasten.it",
+   "what": "DIN 913 / DIN 914 / 915 / 916 and DIN EN ISO 4026 / 4027 / 4028 / 4029 dimension tables (all pages = one source)"
+  },
+  {
+   "url": "https://itafasteners.com/products-socket-set-screws.php",
+   "site": "itafasteners.com",
+   "what": "DIN 913 / 914 / 916 tables (P, dp, dt, dv, e, s, t short/long), DIN 915 summary"
+  },
+  {
+   "url": "https://www.ayafasteners.com/screws/set-screws/hexagon-socket-set-screws-with-flat-point.html",
+   "site": "ayafasteners.com",
+   "what": "DIN 913 table: P, dp, e, s, t short/long"
+  },
+  {
+   "url": "https://torqbolt.com/iso-4026-hexagon-set-screws-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "ISO 4026 / DIN 913 / 914 / 915 / 916 pages (same dataset, mis-labelled header; columns re-assigned by position) = 1 source"
+  },
+  {
+   "url": "https://www.cvtcivata.com/en-US/din_913/3/287/352/0/0",
+   "site": "cvtcivata.com",
+   "what": "DIN 913-916 and ISO 4026-4029: P, dp/dv, z, s, l range (one source)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/screws-standard/din-913.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 913 / 914 / 915 / 916: t min, e, s, d1 (cone/cup), dog d2 and z"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_913.asp",
+   "site": "schrauben-lexikon.de / wegertseder.com",
+   "what": "DIN 913-916: s, dp/dv max (confirmation only; has typos in 914/916)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "e_min column",
+   "why": "ISO 4026-4029:2003 and DIN 913-916 differ for M1.6/M2/M2.5 (ISO 0.809/1.011/1.454 on one site only vs DIN 0.803/1.003/1.427 on 5 sites); also ISO prints 3 decimals (1.733) vs DIN 2 (1.73)"
+  },
+  {
+   "what": "dt (cone tip diameter) column",
+   "why": "DIN 914 gives 0-0.3/0.4/0.5 for M2-M5 while ISO 4027 gives 0.75/1/1.25 (one site each) -> unverifiable for M1.6-M5; M6-M24 verified (see notes)"
+  },
+  {
+   "what": "z (dog length) columns",
+   "why": "3 sources only for M3-M16 (fasten.it, cvtcivata, boltsfastener); M1.6-M2.5, M20, M24 have 2 -> kept out of the table, values in notes"
+  },
+  {
+   "what": "non-ISO sizes M1.4, M1.8, M14, M18, M22",
+   "why": "only in DIN (bracketed), not in ISO 4026-4029; not tabulated"
+  },
+  {
+   "what": "t value for cone point M12",
+   "why": "DIN 914 M12 t_min = 4.5 in 3 sources (ita, boltsfastener, torqbolt) vs 4.8 in fasten.it (DIN 914 and ISO 4027); table value 4.8 is the flat/dog/cup value"
+  }
+ ],
+ "checks": [
+  "dz_max <= dp_max < d for every size",
+  "t_min_short < t_min_long; t, s, P, dp, dz non-decreasing with size",
+  "dp_max (flat) equals dog diameter in fasten.it, cvtcivata, boltsfastener (and wegertseder DIN 915 'e' row, which is dp max)",
+  "ISO 4026/4029 pages of fasten.it give the same dp/dz/s/P/t as DIN 913/916 for all ISO sizes",
+  "every cell: >=4 independent sources (row_support 4)"
+ ],
+ "shape_hint": "Headless (grub) screw: a plain threaded cylinder with a hexagon socket (key size s, depth t) cut into one end and a shaped point at the other end - flat (dia dp), cone (small tip), dog (full-length cylinder dp, length z) or cup (concave end, rim dia dz). Thread runs the full length; a short chamfer at the socket end.",
+ "role_map": {
+  "P": "thread pitch (coarse)",
+  "s": "hexagon socket size (key width, nominal)",
+  "t_min_short": "min key engagement depth for short lengths",
+  "t_min_long": "min key engagement depth for long lengths",
+  "dp_max": "max diameter of flat point and of dog point",
+  "dz_max": "max diameter of cup point (rim)"
+ },
+ "notes": "Values are valid for DIN 913/914/915/916 and ISO 4026/4027/4028/4029 where they overlap. t_min_short/long apply to flat (913/4026), dog (915/4028) and cup (916/4029); for the cone type DIN 914 sources give t M12 = 4.5 (3 sources) instead of 4.8. Extra values verified by >=3 sources but not in the table: DIN 914/ISO 4027 cone tip dt max M6 1.5, M8 2, M10 2.5, M12 3, M16 4, M20 5, M24 6 (3-4 sources); e_min (hex socket across corners, 2-decimals) M3 1.73, M4 2.30, M5 2.87, M6 3.44, M8 4.58, M10 5.72, M12 6.86, M16 9.15, M20 11.43, M24 13.72 (6 sources; ISO prints 3 decimals); dog z (min/max) short L: M3 0.75/1.0, M4 1/1.25, M5 1.25/1.5, M6 1.5/1.75, M8 2/2.25, M10 2.5/2.75, M12 3/3.25, M16 4/4.3; long L: M3 1.5/1.75, M4 2/2.25, M5 2.5/2.75, M6 3/3.25, M8 4/4.3, M10 5/5.3, M12 6/6.3, M16 8/8.36 (fasten.it, cvtcivata, boltsfastener). Hex-socket tolerance (s min/max) from ita, aya, torqbolt. dp min (flat) 0.75..17.57 per DIN 913 (4 sources) not tabulated. Preferred lengths per size not verified (cvtcivata l range only). KS B 1028 / JIS B 1177 not checked (no public HTML source found; web search budget exhausted).",
+ "clusters": {
+  "F fasten.it (aggregator)": [
+   "fasten.it din_913/914/915/916 + din_en_iso_4026/4027/4028/4029"
+  ],
+  "G Chinese template (gf + aya same row order/labels 'P Pitch','dp max/min','e min','s Nominal Size/max/min','t min')": [
+   "globalfastener.com detail_144/146/147/149 (ISO 4026-4029; detail_147 only via producer copy, live 403)",
+   "ayafasteners.com DIN 913 page"
+  ],
+  "ITT India-catalog twins (same table layout incl. 'df: lower limit of minor thread diameter' cell, same M12 4.5 anomaly in DIN 914/916)": [
+   "itafasteners.com",
+   "torqbolt.com din-913/914/915/916 (+boltsfastener copy not used here)"
+  ],
+  "C cvtcivata": [
+   "cvtcivata.com din_913-916, iso_4026/4029 (P, dp/dv, s only)"
+  ],
+  "B boltsfastener": [
+   "boltsfastener.com din-913/914/915/916 (t short, s, dog d2, cup d1)"
+  ],
+  "L German one-dataset": [
+   "schrauben-lexikon.de",
+   "wegertseder.com",
+   "theo-schrauben.de"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live: fasten.it 8 pages, cvt 6 pages, torqbolt 913/914/915/916/4026 (ISO 4027-4029 torq pages empty), itafasteners, aya913, boltsfastener 913-916, lexikon 913-916, gf 4026/4027/4029 (gf 4028 = producer copy, 403 live). Parsed all into 4 point types and pooled values across types (they are identical in the standards). Matrix 13 rows x 6 cols x 6 clusters. Min clusters: P 4, s 5, t_min_short 3, t_min_long 3, dp_max 5, dz_max 5. Dissent: lexikon DIN 916 M4 s '12' (typo), ita DIN 915 M10 t '4/3' (typo; torq 4/6), ITT+B M12 t_short 4.5 for DIN 914 (and ITT for DIN 916). Semantics: t short/long confirmed by headers 'short/long' (aya), 'Short screw/Long screw' (gf 4027), footnote L<=L0 short (gf 4026). dz<=dp<d, t_short<t_long, monotone: pass.",
+  "problems": [
+   "t_min_short / t_min_long are supported by exactly 3 clusters on all 13 rows (F, G, ITT; B adds short only M2-M20 flat). All three are catalogue/aggregator style pages; ita+torq treated as ONE cluster, gf+aya as ONE cluster.",
+   "M12 t_min_short=4.8 is contested by type: 4.8 on fasten.it (all 8 pages), gf (4026/4027), aya, boltsfastener 913/916, ita/torq 913/915; but 4.5 on ita+torq DIN 914 and DIN 916 and boltsfastener DIN 914. For the cone type (DIN 914/ISO 4027) it is 2 vs 2 clusters; cup (4029) only fasten.it+boltsf agree. The record's note admits this only for the cone type. Flat/dog/cup-ISO values are fine; if the family must hold for all 4 point types strictly, drop the M12 t_min_short cell (or row M12).",
+   "gf detail_147 (ISO 4028) could not be fetched live (HTTP 403) - producer copy used for G's dog-point votes only (not needed for any cell to reach 3). gf detail_149 (ISO 4029) labels its two t rows 'Full depth'/'Short depth' (inverted wording) -> its cup t values were not counted.",
+   "torqbolt ISO 4027/4028/4029/7045 pages are empty; torq header rows are mislabelled (producer re-assigned by position - verified against fasten.it, OK).",
+   "Row labels M1.6..M24 coarse ISO series only; DIN-only sizes M1.4/M1.8/M14/M18/M22 correctly excluded. dp_max applies to flat and dog point only, dz_max to cup only (header 'dp max' / 'd1 max' / 'dz max' read, not inferred)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 4026 / 4027 / 4028 / 4029 (= DIN 913 / 914 / 915 / 916): common dimensions, flat/dog and cup point diameters"
+}

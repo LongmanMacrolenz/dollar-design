@@ -1,0 +1,190 @@
+{
+ "id": "sphw",
+ "status": "partial",
+ "standard": "DIN 6319 C형",
+ "u": "mm",
+ "cols": [
+  [
+   "d",
+   "구멍 지름 d 최소(=호칭)"
+  ],
+  [
+   "d3",
+   "외경 d3 (dc)"
+  ],
+  [
+   "h",
+   "전체 높이 h (h2)"
+  ],
+  [
+   "h1",
+   "테두리 높이 h1"
+  ],
+  [
+   "r1",
+   "구면 반경 SR (r1)"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   6.4,
+   12.0,
+   2.3,
+   0.7,
+   9.0
+  ],
+  [
+   "M8",
+   8.4,
+   17.0,
+   3.2,
+   0.6,
+   12.0
+  ],
+  [
+   "M10",
+   10.5,
+   21.0,
+   4.0,
+   0.8,
+   15.0
+  ],
+  [
+   "M12",
+   13.0,
+   24.0,
+   4.6,
+   1.1,
+   17.0
+  ],
+  [
+   "M16",
+   17.0,
+   30.0,
+   5.3,
+   1.3,
+   22.0
+  ],
+  [
+   "M20",
+   21.0,
+   36.0,
+   6.3,
+   2.0,
+   27.0
+  ],
+  [
+   "M24",
+   25.0,
+   44.0,
+   8.2,
+   2.4,
+   32.0
+  ],
+  [
+   "M30",
+   31.0,
+   56.0,
+   11.2,
+   3.6,
+   41.0
+  ]
+ ],
+ "row_support": {
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-6319c-specifications-spherical-washers-form-c/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 6319C specification tables (d min/max, dc, h, f, h1, SR, weight) M6-M48 [cluster B, globalfastener layout]"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6319C.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Technische Daten DIN 6319 C (d, d3, h1, h2, r1) 6.4-50 [cluster E]"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/washer-standard/din-6319.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 6319C table (D1, D3, H1, H2, R1) M5-M30 [cluster D]"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M5 (d 5.25) and M14 rows",
+   "why": "M5 only in boltsfastener; M14 only fuller + boltsfastener (2 clusters)"
+  },
+  {
+   "what": "M36, M42, M48",
+   "why": "only fuller + schrauben-lexikon (2 clusters)"
+  },
+  {
+   "what": "DIN 6319 form D (conical seat washer / Kegelpfanne)",
+   "why": "only fuller and schrauben-lexikon list it (2 clusters); torqbolt page for 6319C/D has no content ('Under Development'); boltsfastener has only form C"
+  },
+  {
+   "what": "d max, f, weight columns",
+   "why": "only the fuller table lists them"
+  }
+ ],
+ "checks": [
+  "d3 (outer diameter) exceeds hole d in every row",
+  "d non-decreasing with thread size",
+  "d3 non-decreasing with thread size",
+  "h non-decreasing with thread size",
+  "r1 non-decreasing with thread size",
+  "h1 is NOT monotonic (M6 0.7 > M8 0.6) but identical in all 3 clusters, so kept as published by the standard tables",
+  "overall height h exceeds rim height h1 in every row",
+  "sphere radius r1 larger than half the outer diameter d3/2 (r1/(d3/2) = 1.41..1.50), so the spherical cap is shallower than a hemisphere",
+  "every cell identical in 3 clusters (fuller/globalfastener layout, schrauben-lexikon, boltsfastener); M14 only 2 clusters (no lexikon column) -> dropped; M36-M48 only 2 clusters"
+ ],
+ "shape_hint": "Thick round washer with a round bore; one face is flat and the other is a convex spherical cap (radius r1) so in section it looks like a plano-convex disc with a low rim of height h1 and a total height h; it sits in a matching concave conical seat (form D) to compensate for angular misalignment.",
+ "role_map": {
+  "d": "bore diameter of the spherical washer, minimum = nominal (H13)",
+  "d3": "outer diameter of the spherical washer (dc)",
+  "h": "total height of the spherical washer (symbol h2 in lexikon/boltsfastener, h in fuller)",
+  "h1": "height at the rim of the washer (symbol h1 in all three sources)",
+  "r1": "radius of the spherical surface (SR)"
+ },
+ "notes": "Form C = spherical washer (Kugelscheibe), case-hardened; it is paired with form D, the conical seat washer (Kegelpfanne), which is NOT published here (2 sources only; D has d = 7.1, 9.6, 12 ... and d4 = d3). Sizes refer to the bolt (M6..M30); the bore d is larger than the bolt (e.g. M12 -> 13). The boltsfastener.com page appears to be a compiled site (its other tables show label errors), so its independence from the other two cannot be proven; all three tables are identical for the 8 kept rows. DIN 6319 corresponds to no ISO standard according to schrauben-lexikon.",
+ "clusters": {
+  "Chinese-template standards DB (fuller/globalfastener)": [
+   "fullerfasteners.com"
+  ],
+  "German dataset (schrauben-lexikon/wegertseder)": [
+   "schrauben-lexikon.de"
+  ],
+  "fasteners.eu family (found by verifier, NOT in producer sources)": [
+   "fasteners.eu/standards/DIN/6319/"
+  ],
+  "NOT COUNTED (independence unproven; same symbols d1,d3,h1,h2,r1 + decimal commas as fasteners.eu, compilation site)": [
+   "boltsfastener.com"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fuller (200), schrauben-lexikon DIN_6319C (200), boltsfastener din-6319 (200) and additionally fasteners.eu /standards/DIN/6319/ (200). Parsed all with tbl.py. Matrix 8 rows (M6..M30) x 5 cols (d,d3,h,h1,r1) x 4 sources = 160 comparisons: 160/160 numerically equal, 0 mismatches. fasteners.eu columns d1,d3,h1,h2(C),r1 read by header+sub-header (C/D/G); lexikon mapped to M-sizes via bore d (lexikon has no M labels). Sanity: d3>d, h>h1, all monotone except h1 (M6 0.7 > M8 0.6, present identically in all 4 sources); sagitta of sphere SR over d3 (M6: 9-sqrt(81-36)=2.29) matches h=2.3, so r1 is a radius.",
+  "problems": [
+   "PRODUCER'S 3-CLUSTER CLAIM DOES NOT HOLD AS WRITTEN: boltsfastener.com cannot be counted (compilation site, same symbol set/decimal-comma style as fasteners.eu, also has an M5 row found nowhere else). Without it the producer's sources give only 2 clusters (fuller + lexikon).",
+   "Rows survive only because the verifier found a genuine third source: fasteners.eu /standards/DIN/6319/ (Czech portal, own table with d1,d2,d3,d4,d5,f1,h1,h2,h3,r1, thread size, weight, bolting force; different layout from fuller and lexikon; no shared typos). Values for all 8 kept rows x 5 cols equal in fuller, lexikon, fasteners.eu. Publish ONLY if the record's sources list is changed: replace boltsfastener.com by https://www.fasteners.eu/standards/DIN/6319/. If the maintainer refuses to count fasteners.eu, verdict becomes reject (2 clusters).",
+   "fasteners.eu legend is sloppy (r1 'diameter of the sphere', h2 'washer width'); r1 role (radius, SR) and h role (total height) are confirmed by fuller (SR, h) and lexikon (r1, h2) instead; fasteners.eu column roles used by header symbol only.",
+   "Lexikon table has no thread-size labels (columns are labelled by bore d); M-size label comes from fuller/fasteners.eu ('for thread diameter' / 'Thread size').",
+   "h1 non-monotonic (M6 0.7 > M8 0.6) is a real feature of the standard (all 4 sources agree); keep.",
+   "Extra rows now supportable by 3 clusters (fuller, lexikon, fasteners.eu all equal): M36 (37,68,14,4.6,50), M42 (43,78,17,6.5,58), M48 (50,92,21,8,67). M14 only fuller+fasteners.eu (lexikon has no 15 bore) -> stays dropped. M5 only boltsfastener -> dropped. Form D has fuller+lexikon+fasteners.eu too but column mapping not verified here.",
+   "No slack: every kept cell has exactly 3 clusters; any further merge (e.g. if fuller turns out to copy fasteners.eu) would sink all rows."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 6319 form C"
+}

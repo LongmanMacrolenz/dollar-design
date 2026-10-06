@@ -1,0 +1,271 @@
+{
+ "id": "eyenut",
+ "status": "partial",
+ "standard": "DIN 582",
+ "u": "mm",
+ "cols": [
+  [
+   "d2",
+   "받침(칼라) 지름 d2"
+  ],
+  [
+   "d3",
+   "링 바깥지름 d3"
+  ],
+  [
+   "d4",
+   "링 안지름 d4"
+  ],
+  [
+   "e",
+   "받침(너트부) 높이 e"
+  ],
+  [
+   "h",
+   "전체 높이 h"
+  ],
+  [
+   "k",
+   "링 두께(폭) k"
+  ]
+ ],
+ "rows": [
+  [
+   "M8",
+   20,
+   36,
+   20,
+   8.5,
+   36,
+   8
+  ],
+  [
+   "M10",
+   25,
+   45,
+   25,
+   10,
+   45,
+   10
+  ],
+  [
+   "M12",
+   30,
+   54,
+   30,
+   11,
+   53,
+   12
+  ],
+  [
+   "M16",
+   35,
+   63,
+   35,
+   13,
+   62,
+   14
+  ],
+  [
+   "M20",
+   40,
+   72,
+   40,
+   16,
+   71,
+   16
+  ],
+  [
+   "M24",
+   50,
+   90,
+   50,
+   20,
+   90,
+   20
+  ],
+  [
+   "M30",
+   65,
+   108,
+   60,
+   25,
+   109,
+   24
+  ],
+  [
+   "M36",
+   75,
+   126,
+   70,
+   30,
+   128,
+   28
+  ]
+ ],
+ "row_support": {
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M30": 3,
+  "M36": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.ganternorm.com/en/products/3.4-Installing-Lifting-Damping-with-Leveling-Feet-Lifting-Gear-and-Rubber-Buffers/Lifting-eye-bolts-Lifting-eye-nuts/DIN-582-Lifting-eye-nuts-Steel",
+   "site": "ganternorm.com",
+   "what": "DIN 582 steel table d1,d2,d3,d4,e,h,k,m (M6-M36 only)"
+  },
+  {
+   "url": "https://torqbolt.com/din-582-lifting-eye-nuts-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "table 0: d1,d2,d3,d4,e,h,k with min/max (M6-M100)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-582-specifications-lifting-eye-nuts/",
+   "site": "fullerfasteners.com",
+   "what": "8 sub-tables dk,d2,d1,k,h,d0,d3 (mapped to d2,d3,d4,e,h,k,m); same numbers as torqbolt"
+  },
+  {
+   "url": "https://www.h-lift.com/products/din-582-eye-nut",
+   "site": "h-lift.com",
+   "what": "A,B,C,D = d2,d3,d4,k"
+  },
+  {
+   "url": "https://www.lgrigging.com/products/eye-nut-din-582/",
+   "site": "lgrigging.com",
+   "what": "d1,d2,d3,d4,e,h,k,SWL"
+  },
+  {
+   "url": "https://www.seilerei-voigt.de/ringmuttern-din-582.html",
+   "site": "seilerei-voigt.de",
+   "what": "d2,d3,d4,h,k + WLL"
+  },
+  {
+   "url": "https://www.drahtseile24.de/Ringmutter-Schwarz-DIN-582-C-15E",
+   "site": "drahtseile24.de",
+   "what": "d2,d3,d4,h,k (only M6-M20, M30)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_582.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "h,k,d2,d3,d4 (older table; differs at M6 only)"
+  },
+  {
+   "url": "https://www.birkhofer-shop.com/WebRoot/Sage/Shops/BirkhoferVerbindungselemente/MediaGallery/TechData/Datenblatt_DIN_582.pdf",
+   "site": "birkhofer-shop.com",
+   "what": "distributor's own technical datasheet (d2,d3,d4,h,e,k; M6..M56; marks M6,M14,M18,M22,M27,M33 as not in the standard)"
+  },
+  {
+   "url": "https://www.greenpin.com/sites/default/files/2024-02/Eye%20nuts.pdf",
+   "site": "greenpin.com",
+   "what": "manufacturer catalogue page 'Eye nuts, generally to DIN 582' (d2,d3,d4,e,h)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M6 row",
+   "why": "Birkhofer marks M6 as not in the standard; schrauben-lexikon (older edition) lists a different M6 row (d2 17, d3 27, d4 16, h 31, k 6) vs 9 other pages 20/36/20/36/8"
+  },
+  {
+   "what": "M14, M18, M22, M27, M33, M39, M45, M52, M60 rows",
+   "why": "intermediate sizes not in the standard (Birkhofer asterisk); sources conflict (e.g. M27: 65/108/60 vs 50/90/50 vs 55/96/60; M33: 75/126/70 vs 65/108/60)"
+  },
+  {
+   "what": "M80 and M100 rows",
+   "why": "e (base height) only in torqbolt and fullerfasteners (steelnutbolts.com is a copy of the fuller table) -> 2 independent sources"
+  },
+  {
+   "what": "column m (ganternorm m / fuller d3)",
+   "why": "only ganternorm and fullerfasteners list it"
+  },
+  {
+   "what": "load columns (WLL / F1,F2,F3 / SWL)",
+   "why": "rated loads, not dimensions; sources disagree (M6: 70/75/80/90 kg; M30: 3200 vs 3600 vs 2.1 t etc.) and edition-dependent -> not published"
+  },
+  {
+   "what": "greenpin M48 row (d2 110, d3 184, ... = M52 values)",
+   "why": "outlier vs 6 sources (typo/shift), 100/166/90/40/168 kept"
+  },
+  {
+   "what": "engineeringhardware.com table",
+   "why": "rows inconsistent with the standard (e.g. M12 ring 36/63/63), not used"
+  },
+  {
+   "what": "tolerance min/max columns",
+   "why": "only torqbolt + fuller (+copy) list them"
+  }
+ ],
+ "checks": [
+  "d3 > d2 >= d4 in all rows",
+  "k == (d3 - d4)/2 exactly in all 13 rows (ring cross-section relation)",
+  "h within 4 mm of d3 in all rows",
+  "e < k + 6 and e grows with size",
+  "every column non-decreasing with thread size",
+  "per-cell majority >=3 sources; outliers listed in evidence"
+ ],
+ "shape_hint": "A forged ring-shaped lifting eye nut: a short flat-bottomed cylindrical base (collar, diameter d2, height e) with an internal metric thread, from which a round closed ring (outer diameter d3, inner diameter d4, ring thickness k) rises vertically; total height h is about equal to the ring outer diameter.",
+ "role_map": {
+  "d_nom": "internal thread size (M)",
+  "d2": "collar/base outside diameter",
+  "d3": "outside diameter of the eye ring",
+  "d4": "inside (hole) diameter of the eye ring",
+  "e": "height of the nut/base part",
+  "h": "overall height from seat to top of ring",
+  "k": "thickness (width) of the ring cross-section"
+ },
+ "notes": "Nominal values only. Governing standard DIN 582 (steel, stainless and C15E forged eye nuts; edition year of the source tables not established (sources do not state it; the current 2024-05 edition was not checked)). Intermediate sizes (M14, M18, M22, M27, M33, M39, M45, M52, M60) are not standard sizes and were dropped. Sizes M72 and above have fine/coarse pitch 6 (M72x6); pitch column omitted because sources do not tabulate it consistently. Working-load limits (WLL) deliberately omitted: they are ratings, sources disagree for some sizes, and the user must take them from the manufacturer's current datasheet. KS B 1034 not verified. row_support = lowest per-column agreement (columns k/d2/d3/d4/h: M72 has 3-4, M64 4-6, M8-M56 >=4; e is the weakest column).",
+ "clusters": {
+  "G ganternorm": [
+   "ganternorm.com DIN 582 steel (M6-M36 only)"
+  ],
+  "TF torqbolt + fullerfasteners (identical numbers incl. min/max/weights; steelnutbolts and globalfastener d241 are further copies)": [
+   "torqbolt.com din-582-lifting-eye-nuts...",
+   "fullerfasteners.com/tech/din-582-specifications-lifting-eye-nuts/"
+  ],
+  "H h-lift": [
+   "h-lift.com/products/din-582-eye-nut (d2,d3,d4,k only; no e,h)"
+  ],
+  "L lgrigging": [
+   "lgrigging.com/products/eye-nut-din-582/ (d1..k, M6-M64)"
+  ],
+  "V seilerei-voigt": [
+   "seilerei-voigt.de ringmuttern-din-582 (d2,d3,d4,h,k; M6-M100; no e)"
+  ],
+  "D drahtseile24": [
+   "drahtseile24.de (M6-M20, M30 only; no e)"
+  ],
+  "SL schrauben-lexikon (older edition)": [
+   "schrauben-lexikon.de DIN_582.asp (M6-M36; no e)"
+  ],
+  "not counted (vendor PDFs)": [
+   "birkhofer-shop datasheet PDF",
+   "greenpin catalogue PDF"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Live curl (HTTP 200) of ganternorm, torqbolt, fullerfasteners, h-lift, lgrigging, seilerei-voigt, drahtseile24, schrauben-lexikon (globalfastener d241 returned 403 live - not counted; steelnutbolts fetched, copy of fuller). 13 rows x 6 columns (d2,d3,d4,e,h,k) x 8 page instances (torqbolt and fuller compared separately but merged): every record cell equals every page value that exists (0 mismatches). Cluster counts per cell with TF merged and PDFs excluded: rows M8-M36: d2/d3/d4/k 6-7, h 5-6, e exactly 3 (ganternorm, TF, lgrigging); rows M42-M64: d2/d3/d4/k 4, h 3, e 2 (TF, lgrigging); M72: d2/d3/d4/h/k 2 (TF, voigt), e 1. Sanity: k=(d3-d4)/2 exact for all 13 rows, d3>d2>=d4, h within 4 mm of d3, monotone.",
+  "problems": [
+   "e column fails for M42, M48, M56, M64, M72: after merging torqbolt+fuller (identical numbers) only torqbolt/fuller and lgrigging list e above M36 (ganternorm stops at M36); the producer's count of 4-5 came from the two vendor PDFs (Birkhofer datasheet, Greenpin catalogue), which may not count. Rows dropped rather than the column; alternative is to keep M42-M64 and drop column e.",
+   "M72 additionally has only torqbolt/fuller and seilerei-voigt for d2,d3,d4,h,k (2 clusters) -> fails regardless.",
+   "Thin cells: e for M8..M36 has exactly 3 clusters (ganternorm, torqbolt/fuller, lgrigging). lgrigging M8 e is typed '8,5' (decimal comma in an otherwise dot table), a hint that its e column may have been pasted from a German-notation table (ganternorm/Birkhofer); if lgrigging were ruled dependent on ganternorm, e would drop to 2 clusters and the whole column would have to be dropped.",
+   "h-lift and lgrigging share identical off-standard values for non-standard sizes (M22 45/81, M27 50/90/50/20, M33 65/108, M39 75/126, M45 85/144, M52 100/166) that differ from torqbolt/birkhofer, so they may be one lineage; the kept sizes M8-M64 d2,d3,d4,k still have >=3 clusters with H+L merged (TF, H+L, V) and ganternorm for <=M36.",
+   "Fullerfasteners uses symbols dk,d2,d1,k,h,d0,d3 for the record's d2,d3,d4,e,h,k,m (mapped by value-matching, not by DIN 582 symbol names); harmless here because it is merged with torqbolt whose headers are d1,d2,d3,d4,e,h,k explicitly.",
+   "Edition: DIN 582 edition year of the tables is not stated by any source (current 2024-05 edition not checked); intermediate sizes M14,M18,M22,M27,M33,M39,M45,M52,M60 are non-standard and correctly excluded; M6 correctly excluded (older edition differs). Values are nominal only."
+  ],
+  "dropped_rows": [
+   "M42",
+   "M48",
+   "M56",
+   "M64",
+   "M72"
+  ],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 582 (lifting eye nuts, coarse thread; nominal dimensions)"
+}

@@ -1,0 +1,254 @@
+{
+ "id": "swingbolt",
+ "status": "ok",
+ "standard": "DIN 444",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P"
+  ],
+  [
+   "b",
+   "나사부 길이 b (l ≤ 125)"
+  ],
+  [
+   "d2",
+   "핀 구멍 지름 d2 (H9, 공칭)"
+  ],
+  [
+   "d3_max",
+   "아이 바깥 지름 d3 최대"
+  ],
+  [
+   "d3_min_A",
+   "아이 바깥 지름 d3 최소 (A형)"
+  ],
+  [
+   "d3_min_BC",
+   "아이 바깥 지름 d3 최소 (B·C형)"
+  ],
+  [
+   "s_max_A",
+   "아이 두께 s 최대 (A형)"
+  ],
+  [
+   "s_min_A",
+   "아이 두께 s 최소 (A형)"
+  ],
+  [
+   "s_max_BC",
+   "아이 두께 s 최대 (B·C형)"
+  ],
+  [
+   "s_min_BC",
+   "아이 두께 s 최소 (B·C형)"
+  ]
+ ],
+ "rows": [
+  [
+   "M5",
+   0.8,
+   16,
+   5,
+   12,
+   10.9,
+   11.57,
+   8,
+   7.52,
+   6,
+   5.88
+  ],
+  [
+   "M6",
+   1,
+   18,
+   6,
+   14,
+   12.9,
+   13.57,
+   9,
+   8.52,
+   7,
+   6.85
+  ],
+  [
+   "M8",
+   1.25,
+   22,
+   8,
+   18,
+   16.9,
+   17.57,
+   11,
+   10.3,
+   9,
+   8.85
+  ],
+  [
+   "M10",
+   1.5,
+   26,
+   10,
+   20,
+   18.7,
+   19.48,
+   14,
+   13.3,
+   12,
+   11.82
+  ],
+  [
+   "M12",
+   1.75,
+   30,
+   12,
+   25,
+   23.7,
+   24.48,
+   17,
+   16.3,
+   14,
+   13.82
+  ],
+  [
+   "M16",
+   2,
+   38,
+   16,
+   32,
+   30.4,
+   31.38,
+   19,
+   18.16,
+   17,
+   16.82
+  ],
+  [
+   "M20",
+   2.5,
+   46,
+   18,
+   40,
+   38.4,
+   39.38,
+   24,
+   23.16,
+   22,
+   21.79
+  ],
+  [
+   "M24",
+   3,
+   54,
+   22,
+   45,
+   43.4,
+   44.38,
+   28,
+   27.16,
+   25,
+   24.79
+  ]
+ ],
+ "row_support": {
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_444",
+   "site": "fasten.it",
+   "what": "DIN 444 dimensions form A (table 0) and forms B/C (table 1), 04/1983 edition"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/444/",
+   "site": "fasteners.eu",
+   "what": "DIN 444 dimension table M5-M39 (Type A, B, C)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-444-specifications-eye-bolts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 444 specifications tables (nominal/min/max, six column blocks)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M30, M36 rows",
+   "why": "pin hole d2 is not unique: the standard gives two values with a footnote (M30: 27 or 28; M36: 32 or 33) - fasten.it prints '27/28', '32/33', Fuller prints two columns, fasteners.eu one value"
+  },
+  {
+   "what": "(M27), (M33), (M39) rows",
+   "why": "bracketed non-preferred sizes; M27 and M39 also have ambiguous d2 (24/25, 35/36)"
+  },
+  {
+   "what": "b (125<l<=200) and b (l>200) columns",
+   "why": "'-' for small sizes (no null allowed); full values given in notes (3 sources agree)"
+  },
+  {
+   "what": "r (radius under eye) column",
+   "why": "only fasteners.eu and Fuller list it (2 sources)"
+  },
+  {
+   "what": "weight tables",
+   "why": "not dimensional / only fasten.it and fasteners.eu"
+  }
+ ],
+ "checks": [
+  "d3_min_A < d3_min_BC <= d3_max and s_min <= s_max for every row",
+  "Type A eye thickness s is larger than B/C (s_max_A > s_max_BC) for every row",
+  "d2, d3_max, s_max_A, b all increase with size; P is the coarse metric pitch (0.8 ... 3)",
+  "fasteners.eu b-row has a typo (M27 '6' for 60) and a shifted '0' header cell; ignored for kept rows, rows M5-M24 agree exactly in the three sources"
+ ],
+ "shape_hint": "A swing (hinge) bolt: a threaded rod (thread length b, diameter d1) whose head end is a flat forged eye / lug of round outline with outside diameter d3 and thickness s; a transverse pin hole of diameter d2 passes through the eye so the bolt can pivot on a pin. A small radius blends the rod into the eye. Type A has a thicker, slightly smaller-diameter eye than B/C.",
+ "role_map": {
+  "d_nom": "nominal thread d1",
+  "P": "thread pitch",
+  "b": "thread length for l <= 125",
+  "d2": "pin (hinge) hole diameter, H9",
+  "d3_max": "eye outside diameter, max",
+  "d3_min_A": "eye outside diameter min, type A",
+  "d3_min_BC": "eye outside diameter min, types B and C",
+  "s_max_A": "eye thickness max, type A",
+  "s_min_A": "eye thickness min, type A",
+  "s_max_BC": "eye thickness max, types B/C",
+  "s_min_BC": "eye thickness min, types B/C"
+ },
+ "notes": "DIN 444 (04/1983) eye bolts 'Augenschrauben' = swing bolts: hinged on a pin, NOT for lifting. Forms: A (forged, larger eye), B and C (machined; same eye dimensions, differ in thread/shank design). b is the thread length for nominal length l <= 125; b for 125 < l <= 200 is: M8 28, M10 32, M12 36, M16 44, M20 52, M24 60; b for l > 200 is: M12 49, M16 57, M20 65, M24 73 (all mm; '-' = not used). Row M5 and M6 exist only up to l<=125. Bracketed non-preferred sizes (M27, M33, M39) and M30/M36 dropped (see dropped). Radius r (2.5, 4, 4, 4, 6, 6, 6, 10 for M5..M24) is listed by only two sources, so it is not published. Slot/tolerance classes (d2 H9, d2 min=nominal, max = nominal + 0.03..0.05) not tabulated.",
+ "clusters": {
+  "fasteners.eu": [
+   "fasteners.eu/standards/DIN/444"
+  ],
+  "fasten.it": [
+   "fasten.it/en/norms/norm/din_444 (form A table + form B/C table)"
+  ],
+  "Chinese-template standards DB": [
+   "fullerfasteners.com",
+   "torqbolt.com/din-444 (same nominal/min/max template incl. r 1.875/3.75; same cluster)"
+  ],
+  "Boltport family (only b,d2,d3_max,s_max_A: max values only)": [
+   "boltingspecialist.com (bs444a)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live fasten.it, fasteners.eu, fullerfasteners (200) + producer raw copies of boltingspecialist/torqbolt. Parsed all tables. 8 rows (M5..M24) x 10 data cols (P,b,d2,d3_max,d3_min_A,d3_min_BC,s_max_A,s_min_A,s_max_BC,s_min_BC) x 3 sources = 240 cell comparisons, 0 mismatches (after fixing my parser offset). b,d2,d3_max,s_max_A also in Boltport (4 clusters). P also in fasten.it/Fuller + ISO thread charts (Wikipedia, EngineeringToolbox, hlhrapid, trfastenings, fastenerexperts; M5..M24 all equal). No PDF involved in this record. Sanity: d3_min_A<d3_min_BC<=d3_max, s_min<=s_max, s_A>s_BC, all grow with size.",
+  "problems": [
+   "d3_min_A, d3_min_BC, s_*_min, s_max_BC, P: exactly 3 clusters (fasteners.eu, fasten.it, Fuller) - minimum, no slack.",
+   "fasten.it uses different symbols: its 'd1' column is the pin hole (DIN d2) and its 'd2 min/max' is the eye OD (DIN d3); Fuller labels the eye OD 'Sd' (torqbolt 'd b'). Mapping for those two sources is by numeric identity, header-proven only in fasteners.eu (and Boltport for d2/d3 max).",
+   "no source defines d3 (eye OD) / s (eye thickness) in words; roles rest on DIN 444 symbol convention + geometry (flag only).",
+   "fasteners.eu b rows are unlabeled/shifted (stray '0' cell, M27 '6' typo) - b for l<=125 read positionally; fasten.it, Fuller, Boltport label it 'b (l<=125)'.",
+   "producer note 'fasteners.eu and Fuller have the same structure' is just the DIN table structure; no shared typos found (fasteners.eu typos not in Fuller)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 444 (1983)"
+}

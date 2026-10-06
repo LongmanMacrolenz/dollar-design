@@ -1,0 +1,212 @@
+{
+ "id": "sqw",
+ "status": "ok",
+ "standard": "DIN 436",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "구멍 지름 d1 (호칭)"
+  ],
+  [
+   "a",
+   "한 변 길이 a (호칭)"
+  ],
+  [
+   "h",
+   "두께 h (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M10",
+   11.0,
+   30.0,
+   3.0
+  ],
+  [
+   "M12",
+   13.5,
+   40.0,
+   4.0
+  ],
+  [
+   "M16",
+   17.5,
+   50.0,
+   5.0
+  ],
+  [
+   "M20",
+   22.0,
+   60.0,
+   5.0
+  ],
+  [
+   "M22",
+   24.0,
+   70.0,
+   6.0
+  ],
+  [
+   "M24",
+   26.0,
+   80.0,
+   6.0
+  ],
+  [
+   "M27",
+   30.0,
+   90.0,
+   6.0
+  ],
+  [
+   "M30",
+   33.0,
+   95.0,
+   6.0
+  ],
+  [
+   "M33",
+   36.0,
+   100.0,
+   6.0
+  ],
+  [
+   "M36",
+   39.0,
+   110.0,
+   8.0
+  ],
+  [
+   "M39",
+   42.0,
+   125.0,
+   8.0
+  ],
+  [
+   "M42",
+   45.0,
+   135.0,
+   8.0
+  ],
+  [
+   "M45",
+   48.0,
+   140.0,
+   8.0
+  ],
+  [
+   "M48",
+   52.0,
+   150.0,
+   10.0
+  ],
+  [
+   "M52",
+   56.0,
+   160.0,
+   10.0
+  ]
+ ],
+ "row_support": {
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M27": 3,
+  "M30": 3,
+  "M33": 3,
+  "M36": 3,
+  "M39": 3,
+  "M42": 3,
+  "M45": 3,
+  "M48": 3,
+  "M52": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/436/",
+   "site": "fasteners.eu (torqbolt.com DIN 436 page is an identical copy incl. the typos d1 '3' at M30 and 27,2 at M52 -> same source)",
+   "what": "DIN 436 table: d1 nominal/min/max, a nominal/max/min, h nominal/max/min, weight"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_625.html",
+   "site": "globalfastener.com",
+   "what": "DIN 436-1990 Square Washers; Especially for Wood Constructions: d, dc(a), h per thread size M10-M52"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_436.asp",
+   "site": "schrauben-lexikon.de (Wegertseder GmbH)",
+   "what": "DIN 436 technical data table d / a / h (M10-M52); its h at M16, M22, M36 and a at M36 deviate"
+  },
+  {
+   "url": "https://boltport.com/standards/din-436/",
+   "site": "boltport.com",
+   "what": "table Size / d1 / a / s with own size labels (M35, M38, ...), matched by d1 value; a and s agree with fasteners.eu + globalfastener in all 15 rows"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "max/min limit columns for a, h and d1 max",
+   "why": "explicit only in fasteners.eu (+ torqbolt copy) and globalfastener"
+  },
+  {
+   "what": "M8 row (d1 9)",
+   "why": "listed only by boltport, without a and s"
+  },
+  {
+   "what": "ASTM F844 square/other-shape washers",
+   "why": "inch standard not collected in this pass"
+  }
+ ],
+ "checks": [
+  "15 rows M10-M52: d1 and a and h never decrease with size; d1 > thread diameter (d1 - d = 1.0 mm at M10 up to 4 mm at M52)",
+  "a (side) > d1 in every row; a/d1 between 2.7 and 3.1 (side about 2.7-3.1 x hole)",
+  "h = 3 (M10), 4 (M12), 5 (M16-M20), 6 (M22-M33), 8 (M36-M45), 10 (M48-M52)",
+  "same d1 series as ISO 7094 / DIN 440 (11, 13.5, 17.5, 22, 24, 26, 30, 33, 36, 39, 42, 45, 48, 52, 56)"
+ ],
+ "shape_hint": "A square steel plate (side a) with a round hole in the centre, flat both faces, thickness h (about 3-10 mm); used under nuts/bolt heads on timber so the load spreads over a square area.",
+ "role_map": {
+  "d_nom_note": "thread size M of the bolt",
+  "d1": "diameter of the central round hole, nominal = lower limit",
+  "a": "side length of the square plate, nominal",
+  "h": "plate thickness, nominal"
+ },
+ "notes": "DIN 436 round-hole square washer. Rows with two disagreeing sources: M16 h (5; schrauben-lexikon 4), M22 h (6; schrauben-lexikon 5), M36 a and h (110/8; schrauben-lexikon 100/6) rest on fasteners.eu + globalfastener + boltport (boltport has a different size labelling, matched via d1) - treat those three cells as the weakest. fasteners.eu typo d1 '3' at M30 and d1 max 27,2 at M52 ignored. Square-hole version is DIN 436 V / DIN 440 V (not included). ASTM F844 not covered here.",
+ "clusters": {
+  "fasteners.eu cluster (STRICT: fasteners.eu + torqbolt copy (same typos '3' at M30, 27,2 at M52) + boltport (relabelled sizes M35..M55, matched by d1) + digipich (same '3' typo))": [
+   "fasteners.eu/standards/DIN/436/",
+   "torqbolt.com/din-436-square-wood-construction-washers-dimensions-standards-specifications",
+   "boltport.com/standards/din-436/",
+   "digipich.com/en/standards/din-436/ (not used by producer; copy)"
+  ],
+  "Chinese-template standards DB": [
+   "globalfastener.com/standards/detail_625.html (DIN 436-1990)"
+  ],
+  "German dataset (Wegertseder)": [
+   "schrauben-lexikon.de/norm/DIN_436.asp (dissenter at M16 h, M22 h, M36 a, M36 h)"
+  ],
+  "fasten.it (found by verifier, NOT in the record's sources)": [
+   "https://www.fasten.it/en/norms/norm/din_436 (DIN 436, 05/1990, M8-M52, columns 'd nom=min', 'a max=nom', 'h nom'; own layout, no shared typos, M10 weight 19 vs 20 elsewhere -> not a copy of fe/gf)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Live re-fetch of fasteners.eu, torqbolt, globalfastener, schrauben-lexikon, boltport (+ fasten.it and digipich discovered via sibling records). Matrix 15 rows (M10..M52) x (d1,a,h) x 4 clusters (FE-cluster, GF, SL, FIT) = 45 cells. 41 cells have 4 clusters. The 4 weak cells the producer flagged (M16 h=5, M22 h=6, M36 a=110, M36 h=8) have exactly 3 clusters (FE, GF, FIT) against the sl dissent (4, 5, 100, 6); the producer's 3rd/4th source for them was boltport, which under the STRICT reading is the same cluster as fasteners.eu, so WITHOUT fasten.it these four cells would have only 2 clusters. M30 d1=33: GF, SL, FIT agree (fasteners.eu/torqbolt print '3' typo) -> 3 even excluding the fe cluster. Evidence sl is wrong at M36: its M36 column (a 100, h 6) duplicates M33's (100, 6) while all other sources have 110/8, and sl is the only one with a=100 twice; sl M16 h=4 / M22 h=5 break the otherwise monotone h series (3,4,5,5,6,6,...). Headers read: fe 'd1 nominal min / a nominal max / h nominal', fasten.it 'd nom=min / a max=nom / h nom', gf 'd min=nominal / s max=nominal (= side a) / h nominal', sl 'd / a / h'. Physical sanity: a > d1, d1,a,h monotone.",
+  "problems": [
+   "CONDITIONAL: the record's own source list (fe+tq copy, gf, sl, boltport) gives only 2 clusters for M16 h, M22 h, M36 a, M36 h under the strict reading (boltport = fasteners.eu cluster) and sl contradicts them. They pass ONLY because fasten.it (verified live, all 15 rows equal the record) is a third independent cluster. The fasten.it URL must be added to the record's sources (https://www.fasten.it/en/norms/norm/din_436); if the lead does not accept fasten.it, drop rows M16, M22, M36 (or only those 4 cells' columns h and a).",
+   "boltport's size labels are WRONG/shifted (M35, M38, M41, M44, M47, M51, M55 for M33..M52) and it has an M8 row without a/s; it was only matchable through d1 values -> unusable as a labelled source, never count it.",
+   "M8 row (d1 9, a 30, h 3) exists only in fasten.it (+ boltport without a/s) -> 2 clusters -> correctly absent.",
+   "fasteners.eu / torqbolt / digipich typos: M30 d1 '3', M52 d1 max 27,2 (limit column not used). fasteners.eu and globalfastener both show M10 weight 20 where fasten.it shows 19 (computed 18.96 kg/1000): a weight-column coincidence only; dimension cells show no shared typo, so gf stays a separate cluster.",
+   "globalfastener names the side length 's' (not 'a'); role matched by identical values to fe/sl/fasten.it 'a', not inferred by magnitude alone.",
+   "DIN 436 (round hole). Square-hole V variant not included; ASTM F844 not covered."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 436 (square washers, especially for timber constructions; no ISO equivalent)"
+}

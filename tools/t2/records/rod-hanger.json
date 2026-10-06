@@ -1,0 +1,200 @@
+{
+ "id": "rod-hanger",
+ "status": "ok",
+ "standard": "ASME B1.1 (UNC)",
+ "u": "in",
+ "cols": [
+  [
+   "tpi",
+   "산수 (UNC)"
+  ],
+  [
+   "d2",
+   "기본 유효지름 (UNC)"
+  ],
+  [
+   "Ar",
+   "골지름 단면적 Ar (in²)"
+  ],
+  [
+   "As",
+   "유효 단면적 As (in²)"
+  ]
+ ],
+ "rows": [
+  [
+   "3/8",
+   16,
+   0.3344,
+   0.0678,
+   0.0775
+  ],
+  [
+   "1/2",
+   13,
+   0.45,
+   0.1257,
+   0.1419
+  ],
+  [
+   "5/8",
+   11,
+   0.566,
+   0.202,
+   0.226
+  ],
+  [
+   "3/4",
+   10,
+   0.685,
+   0.302,
+   0.334
+  ],
+  [
+   "7/8",
+   9,
+   0.8028,
+   0.419,
+   0.462
+  ],
+  [
+   "1",
+   8,
+   0.9188,
+   0.551,
+   0.606
+  ],
+  [
+   "1-1/8",
+   7,
+   1.0322,
+   0.693,
+   0.763
+  ],
+  [
+   "1-1/4",
+   7,
+   1.1572,
+   0.89,
+   0.969
+  ],
+  [
+   "1-1/2",
+   6,
+   1.3917,
+   1.294,
+   1.405
+  ]
+ ],
+ "row_support": {
+  "3/8": 4,
+  "1/2": 4,
+  "5/8": 4,
+  "3/4": 4,
+  "7/8": 4,
+  "1": 4,
+  "1-1/8": 4,
+  "1-1/4": 4,
+  "1-1/2": 4
+ },
+ "sources": [
+  {
+   "url": "https://www.efunda.com/designstandards/screws/screwunc.cfm",
+   "site": "efunda.com",
+   "what": "UNC series: tpi, pitch dia, minor dia area, tensile stress area"
+  },
+  {
+   "url": "https://www.flangeboltchart.com/thread/dimensions",
+   "site": "flangeboltchart.com",
+   "what": "ASME B1.1 UNC chart: tpi, pitch dia, minor area, tensile area"
+  },
+  {
+   "url": "https://www.aptp.com/technical/standard-thread-pitch-chart/",
+   "site": "aptp.com",
+   "what": "UNC series: pitch dia, minor-dia section, tensile stress area"
+  },
+  {
+   "url": "https://mechanicalc.com/reference/fastener-size-tables",
+   "site": "mechanicalc.com",
+   "what": "UNC tpi, tensile stress area, minor area"
+  },
+  {
+   "url": "https://threadspec.org/unc/",
+   "site": "threadspec.org",
+   "what": "UNC: tpi, pitch dia, stress area (no minor area)"
+  },
+  {
+   "url": "https://www.engineeringtoolbox.com/loads-hanging-rods-d_1341.html",
+   "site": "engineeringtoolbox.com",
+   "what": "hanger rod size vs pipe size, root area, max load - single source, only used to choose the size range 3/8..1-1/2"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "Hanger rod maximum load and pipe-size/rod-size selection table",
+   "why": "only engineeringtoolbox.com found (imperial and metric pages = one site); no 2nd/3rd independent page reachable (web search budget exhausted)"
+  },
+  {
+   "what": "Whitworth (BSW, BS 84) rows",
+   "why": "no BS 84 table sources fetched (search budget exhausted); Korean '3부/4부/5부' W-thread rods may differ from UNC at some sizes"
+  },
+  {
+   "what": "1/4 and 5/16 rows",
+   "why": "not hanger sizes (smallest hanger rod 3/8); data exist in rod-in"
+  },
+  {
+   "what": "1-3/4 and larger rows",
+   "why": "not hanger rod sizes"
+  }
+ ],
+ "checks": [
+  "tpi decreases monotonically with D (16 ... 6)",
+  "d2 = D - 0.649519/tpi within 0.0006",
+  "Ar < As < pi/4 D^2 for all rows",
+  "Row values identical to the rod-in family (same sources) for the same sizes"
+ ],
+ "shape_hint": "A plain straight fully-threaded rod (all-thread) used vertically to hang pipes, trays or ducts from a ceiling; no head, ends cut square or chamfered, usually zinc plated; threaded into hanger clamps, clevises, beam clamps or rod couplings with hex nuts.",
+ "role_map": {
+  "d_nom": "nominal rod diameter, inch fraction (Korean 부 = 1/8 in)",
+  "tpi": "threads per inch (UNC)",
+  "d2": "basic pitch diameter (in)",
+  "Ar": "area at minor diameter (in^2)",
+  "As": "tensile stress area (in^2)"
+ },
+ "notes": "Korean hanger rods are called 3부 (3/8), 4부 (1/2), 5부 (5/8), 6부 (3/4), 7부(7/8), 8부 (1) and are sold as 'W' (Whitworth) or UNC thread depending on the supplier; only UNC is verified here. BSW pitches are not identical to UNC at every size; ask the supplier or verify before publishing a 'W' table. Hanger rod load ratings (MSS SP-58/ASME B31.1) have only one public table found, so loads are not published.",
+ "clusters": {
+  "eFunda": [
+   "efunda.com screwunc.cfm"
+  ],
+  "ThreadSpec": [
+   "threadspec.org/unc/ (no minor-area column)"
+  ],
+  "flangeboltchart.com": [
+   "flangeboltchart.com/thread/dimensions"
+  ],
+  "APTP": [
+   "aptp.com standard-thread-pitch-chart"
+  ],
+  "MechaniCalc": [
+   "mechanicalc.com fastener-size-tables (tpi, As, Ar)"
+  ],
+  "Engineering ToolBox (NOT used for any cell)": [
+   "engineeringtoolbox.com loads-hanging-rods (root area rounded to 2 decimals; only the size range)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 4,
+  "checks_done": "Re-downloaded all 6 URLs live (HTTP 200). 9 rows (3/8..1-1/2) x 4 value columns (tpi, d2, Ar, As). tpi: efunda, threadspec, fbc, aptp, mechc agree on all 9 rows; d2: efunda, threadspec, fbc, aptp agree on all 9 (4 clusters); Ar ('Minor Dia Area'/'Minor Area'/'Section at Minor Dia.'): efunda, fbc, aptp, mechc agree on all 9 (4 clusters); As: all 5 agree on all 9. 0 disagreements. Physical: d2 = D - 0.649519/tpi within 5e-5; Ar = pi/4 (D - 1.299038/tpi)^2 within 0.09 %; As within 0.14 % of pi/4 (D - 0.9743/tpi)^2; Ar < As < pi/4 D^2 on every row; tpi non-increasing 16..6.",
+  "problems": [
+   "UNC only. The family's governing standard in the catalog is BS 84 (Whitworth 55 deg) first, ASME B1.1 second; Korean hanger bolts (3-bu/4-bu/5-bu) are often W-thread, and BSW 1/2 is 12 tpi vs UNC 13, so the 1/2 row (tpi 13, d2 0.45) is wrong for a W rod. Publish strictly as 'UNC' (the column labels already say UNC) and do not present it as the BS 84 table.",
+   "Row selection (3/8..1-1/2 = hanger sizes) comes from a single page (Engineering ToolBox pipe-size/rod table); every cell is verified, but the 'which sizes are hanger rods' claim has one source. 1-1/8 is a hanger size there but rarely stocked.",
+   "Table is a pure subset of rod-in's UNC table plus the Ar column; nothing hanger-specific (no load ratings: only one source).",
+   "Ar role read from headers ('Minor Dia Area'/'Minor Area'/'Section at Minor Dia.'), consistent with the basic external minor diameter (D - 1.299/tpi)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ASME B1.1 UNC (hanger rod sizes 3/8-1-1/2); BS 84 Whitworth variant NOT verified",
+ "scope": "UNC(보통나사) 기준 — BS 84(휘트워스)는 싣지 않았습니다"
+}

@@ -1,0 +1,224 @@
+{
+ "id": "flangenut",
+ "status": "ok",
+ "standard": "DIN 6923 = EN 1661 = ISO 4161",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "나사 피치 P"
+  ],
+  [
+   "c_min",
+   "플랜지 가장자리 두께 c 최소"
+  ],
+  [
+   "dc_max",
+   "플랜지 지름 dc 최대"
+  ],
+  [
+   "dw_min",
+   "접촉(좌면) 지름 dw 최소"
+  ],
+  [
+   "e_min",
+   "대각 거리 e 최소"
+  ],
+  [
+   "m_max",
+   "너트 높이 m 최대"
+  ],
+  [
+   "m_min",
+   "너트 높이 m 최소"
+  ],
+  [
+   "s_max",
+   "맞변 거리 s 호칭=최대"
+  ]
+ ],
+ "rows": [
+  [
+   "M5",
+   0.8,
+   1.0,
+   11.8,
+   9.8,
+   8.79,
+   5.0,
+   4.7,
+   8.0
+  ],
+  [
+   "M6",
+   1.0,
+   1.1,
+   14.2,
+   12.2,
+   11.05,
+   6.0,
+   5.7,
+   10.0
+  ],
+  [
+   "M8",
+   1.25,
+   1.2,
+   17.9,
+   15.8,
+   14.38,
+   8.0,
+   7.6,
+   13.0
+  ],
+  [
+   "M10",
+   1.5,
+   1.5,
+   21.8,
+   19.6,
+   16.64,
+   10.0,
+   9.6,
+   15.0
+  ],
+  [
+   "M12",
+   1.75,
+   1.8,
+   26.0,
+   23.8,
+   20.03,
+   12.0,
+   11.6,
+   18.0
+  ],
+  [
+   "M16",
+   2.0,
+   2.4,
+   34.5,
+   31.9,
+   26.75,
+   16.0,
+   15.3,
+   24.0
+  ],
+  [
+   "M20",
+   2.5,
+   3.0,
+   42.8,
+   39.9,
+   32.95,
+   20.0,
+   18.9,
+   30.0
+  ]
+ ],
+ "row_support": {
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/4161/",
+   "site": "fasteners.eu",
+   "what": "ISO 4161 table M5-M20 (page DIN/6923 carries the identical table); torqbolt.com ISO 4161 page reproduces it with the same labels -> counted with fasteners.eu as ONE source"
+  },
+  {
+   "url": "https://boltport.com/standards/din-6923/",
+   "site": "boltport.com",
+   "what": "DIN 6923 table M5-M20 (pages eu-1661 and iso-4161 same company; boltport iso-4161 only dc, m, s) - counted once"
+  },
+  {
+   "url": "https://www.engineersedge.com/hardware/metric_hex_flange_nuts__13730.htm",
+   "site": "engineersedge.com",
+   "what": "Metric hex flange nuts (ASME B18.2.4.4M) table M5-M20"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M14 row",
+   "why": "e_min: fasteners.eu/torqbolt/boltport 23.36 vs engineersedge 23.35 -> only 2 independent sources for 23.36"
+  },
+  {
+   "what": "s_min column",
+   "why": "M20: fasteners.eu/torqbolt 29.67 vs boltport/engineersedge 29.16 (grade tolerance difference ISO vs ASME); other rows agree (M5 7.78, M6 9.78, M8 12.73, M10 14.73, M12 17.73, M16 23.67) but column dropped to keep M20"
+  },
+  {
+   "what": "r (fillet radius) column",
+   "why": "engineersedge rounds r (M6 0.4, M8 0.5, M12 0.7, M14 0.9, M16 1.0) vs 0.36/0.48/0.72/0.88/0.96 in fasteners.eu and boltport -> 2 sources"
+  },
+  {
+   "what": "da (max) and m' columns",
+   "why": "not given by engineersedge -> only 2 independent sources (da max M5 5.75 M6 6.75 M8 8.75 M10 10.8 M12 13.0 M16 17.3 M20 21.6; m' min 2.2 3.1 4.5 5.5 6.7 9.0 11.1)"
+  },
+  {
+   "what": "M24 and larger, M3-M4",
+   "why": "no source lists them in the DIN 6923/ISO 4161 tables used (tables stop at M20; boltport ISO 4161 page lists M4 but others do not)"
+  },
+  {
+   "what": "fine-thread variants (M8x1, M10x1.25 (M10x1), M12x1.5 (M12x1.25), M14x1.5, M16x1.5, M20x1.5)",
+   "why": "only the coarse series is published; fine pitches are listed by fasteners.eu and boltport only"
+  }
+ ],
+ "checks": [
+  "dc_max > dw_min > e_min > s_max for every row",
+  "m_max = d (flange nut height equals nominal diameter) for every row, m_max > m_min",
+  "all dimensions increase monotonically with size",
+  "e_min/s_max between 1.09 and 1.12 (e_min is based on s_min and grade tolerances)",
+  "DIN 6923 page and ISO 4161 page of fasteners.eu contain the same table; boltport DIN 6923 and EN 1661 pages also identical"
+ ],
+ "shape_hint": "Hexagon nut with an integral round washer flange at the bottom (diameter dc, thin edge c, slightly conical top fillet r) so the side view is a hexagon body of height m with a wide flat flange disc at the base; optional radial serrations on the flange underside (DIN 6923 serrated version has the same dimensions).",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse pitch",
+  "c_min": "flange edge thickness min",
+  "dc_max": "flange diameter max",
+  "dw_min": "bearing circle diameter min",
+  "e_min": "width across corners min",
+  "m_max": "nut height max (= nominal d)",
+  "m_min": "nut height min",
+  "s_max": "width across flats nominal = max"
+ },
+ "notes": "Only 3 source groups exist for these tables (fasteners.eu / boltport / engineersedge), found without web search (budget exhausted). ISO 4161:2012 style 2 coarse thread M5-M20; s_max values: M10 15 (not 16) and M12 18, M14 21, M16 24, M20 30. DIN 6923 additionally covers fine pitch M8x1, M10x1.25, M12x1.5 etc.; and the serrated version has identical dimensions. M10 uses s=15 mm (flange nuts differ from hexagon nuts).",
+ "clusters": {
+  "FE+BP (strict: one cluster): fasteners.eu / torqbolt / Boltport": [
+   "fasteners.eu/standards/ISO/4161/",
+   "fasteners.eu/standards/DIN/6923/",
+   "torqbolt.com iso-4161-hex-flange-nuts page (same labels 'nominal=max.', m')",
+   "boltport.com/standards/din-6923/",
+   "boltport.com/standards/eu-1661/",
+   "boltingspecialist copies (not fetched live)"
+  ],
+  "EE: engineersedge (ASME B18.2.4.4M)": [
+   "engineersedge.com/hardware/metric_hex_flange_nuts__13730.htm",
+   "torqbolt asme-b18-2-4-4m page = same numbers (lineage of EE, not counted)"
+  ],
+  "GF: globalfastener (Chinese-template DB)": [
+   "globalfastener.com/standards/detail_334.html (DIN 6923-1983)",
+   "detail_473.html (ISO 4161-1983)",
+   "detail_404.html (ISO 4161-1999) disagrees on m_min M8/M10/M12/M20 (7.64/9.64/11.57/18.7) - not counted"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Live curl (HTTP 200) of fasteners.eu ISO 4161 + DIN 6923, torqbolt ISO 4161, boltport din-6923 + eu-1661, engineersedge 13730, globalfastener detail_334/404/473 and torqbolt ASME B18.2.4.4M. 7 rows (M5,M6,M8,M10,M12,M16,M20) x 8 columns (P,c_min,dc_max,dw_min,e_min,m_max,m_min,s_max) x 9 table instances: all 56 record cells equal in every instance that has them, except m_min of M8/M10/M12/M20 on globalfastener ISO 4161-1999 (7.64/9.64/11.57/18.7). Strict-clustering count (FE+torq+BP merged, EE, GF 1983 pages) = 3 for every cell; lenient (FE+torq, BP, EE, GF) = 4. Physical sanity (dc>dw>e>s, m_max=d, m_max>m_min, e/s=1.098-1.10, monotone) passed.",
+  "problems": [
+   "Record sources list only fasteners.eu, boltport, engineersedge. Boltport's flange-nut table has the same column set/layout/values as the fasteners.eu-derived torqbolt ISO 4161 page (differs only in M20 s_min 29.16 vs 29.67), so under the strict reading it is one cluster with fasteners.eu/torqbolt and the producer's list shows only 2 clusters. The third cluster comes from globalfastener DIN 6923-1983 / ISO 4161-1983 pages (not in the record; verified live) - add them to the sources.",
+   "Edition caveat: globalfastener's ISO 4161-1999 page gives m_min 7.64/9.64/11.57/18.7 for M8/M10/M12/M20 (record: 7.6/9.6/11.6/18.9 = DIN 6923, ISO 4161-1983, ASME B18.2.4.4M, fasteners.eu, Boltport, engineersedge). Record title 'DIN 6923 = EN 1661 = ISO 4161' is therefore not strictly true for m_min; label the table 'DIN 6923 / EN 1661' (ASME-compatible).",
+   "M14 e_min stays dropped: 23.36 on fasteners.eu, torqbolt, Boltport, globalfastener (3 pages of 2 strict clusters = FE+BP, GF) vs 23.35 engineersedge+torqbolt ASME page - only 2 strict clusters. M20 s_min column stays dropped (29.67 vs 29.16 split across editions).",
+   "Row label/semantics fine: coarse series only, M10 s=15 (flange nut, not 16/17), c_min = flange edge thickness min, dc_max flange diameter, dw_min bearing circle, s_max nominal=max, all read from headers."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 6923 = EN 1661 = ISO 4161 (hexagon nuts with flange, style 2, coarse thread); numerically the same as ASME B18.2.4.4M for the kept cells"
+}

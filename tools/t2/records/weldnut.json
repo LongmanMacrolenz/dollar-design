@@ -1,0 +1,252 @@
+{
+ "id": "weldnut",
+ "status": "partial",
+ "standard": "DIN 929",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "s",
+   "대변거리 s (공칭=최대)"
+  ],
+  [
+   "e_min",
+   "대각거리 e 최소"
+  ],
+  [
+   "m",
+   "높이 m (공칭=최대)"
+  ],
+  [
+   "d2",
+   "센터링 파일럿 지름 d2 (d11)"
+  ],
+  [
+   "d3",
+   "판재 구멍 지름 d3 (H13)"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   0.5,
+   7.5,
+   8.15,
+   3,
+   4.5,
+   4.5
+  ],
+  [
+   "M4",
+   0.7,
+   9,
+   9.83,
+   3.5,
+   6,
+   6
+  ],
+  [
+   "M5",
+   0.8,
+   10,
+   10.95,
+   4,
+   7,
+   7
+  ],
+  [
+   "M6",
+   1,
+   11,
+   12.02,
+   5,
+   8,
+   8
+  ],
+  [
+   "M8",
+   1.25,
+   14,
+   15.38,
+   6.5,
+   10.5,
+   10.5
+  ],
+  [
+   "M10",
+   1.5,
+   17,
+   18.74,
+   8,
+   12.5,
+   12.5
+  ],
+  [
+   "M12",
+   1.75,
+   19,
+   20.91,
+   10,
+   14.8,
+   14.8
+  ],
+  [
+   "M14",
+   2,
+   22,
+   24.27,
+   11,
+   16.8,
+   16.8
+  ],
+  [
+   "M16",
+   2,
+   24,
+   26.51,
+   13,
+   18.8,
+   18.8
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_929",
+   "site": "fasten.it",
+   "what": "'Dimensions in mm - source DIN 929' (12-2013): P, d2, m, s, e min, d3, sheet thickness a"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_929.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "table d,m,s,d2,h1,h2 (e column differs - not used)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/nuts-standard/din-929.html",
+   "site": "boltsfastener.com",
+   "what": "table d,s,e,m,d1(=pilot) M6-M12"
+  },
+  {
+   "url": "https://digipich.com/en/standards/din-929/",
+   "site": "digipich.com",
+   "what": "table Size,P,s,e,m,b,d2,d3,d4,h1,h2"
+  },
+  {
+   "url": "https://torqbolt.com/din-929-hexagon-weld-nuts-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "table b,d2,d3,d4,e,h1,h2,m,s (merged cells re-aligned)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-929-specifications-hex-weld-nuts/",
+   "site": "fullerfasteners.com",
+   "what": "4 sub-tables b,d1,d2,d3,e,h1,h2,m,s (symbols d1/d2/d3 there = d2/d3/d4 elsewhere)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "square (DIN 928) and flange (ISO 21670/DIN 977) weld nuts",
+   "why": "not checked; only hexagon DIN 929 table was verified"
+  },
+  {
+   "what": "7/16-20 UNF variant columns",
+   "why": "inch thread variants appear only in torqbolt and fullerfasteners"
+  },
+  {
+   "what": "m min, s min, d1 max/min, d2 max, h1/h2 min, load values, mass",
+   "why": "only fullerfasteners (and partly torqbolt) list them -> <3 sources"
+  },
+  {
+   "what": "fine-thread pitches (M8x1, M10x1.25 ...)",
+   "why": "only torqbolt and fullerfasteners"
+  },
+  {
+   "what": "schrauben-lexikon 'e' column (8.6, 10.4, 11.5, ... 27.7)",
+   "why": "differs from e min (8.15 ... 26.51) of the 4 other sources (older edition or e max) -> ignored"
+  },
+  {
+   "what": "sheet thickness range a (0.63-1.5 ...)",
+   "why": "only fasten.it"
+  },
+  {
+   "what": "boltsfastener M16 row",
+   "why": "cells are dashes"
+  }
+ ],
+ "checks": [
+  "s < e_min < 1.1547 s for all 9 sizes",
+  "d4_max < d2 < s and d2 > thread diameter; d2 == d3 (nominal) in all rows",
+  "h2 < h1; all columns non-decreasing with size",
+  "no cell disagreement among the sources used (every kept cell: all available sources equal)",
+  "pitch equals ISO coarse pitch"
+ ],
+ "shape_hint": "A hexagon nut (across flats s, height m) intended to be projection-welded to sheet metal: the weld face carries a short cylindrical centering pilot (diameter d2, height about b) that locates in a hole d3 in the sheet and small weld projections (h1, h2) on the face around it; the thread bore has a chamfer/relief of diameter d4 at the far side.",
+ "role_map": {
+  "d_nom": "internal thread size",
+  "P": "coarse pitch",
+  "s": "width across flats",
+  "e_min": "minimum width across corners",
+  "m": "nut height",
+  "d2": "centering pilot diameter on the weld face (fits hole d3)",
+  "d3": "hole diameter in the sheet for the pilot",
+  "d4_max": "max diameter of thread-side chamfer/relief",
+  "b": "standard dimension b (about 0.8-1.5 mm; appears to be the pilot/weld-face height - sources do not describe it)",
+  "h1": "standard dimension h1 (weld projection height, 0.55-1.8 mm)",
+  "h2": "standard dimension h2 (second projection height, 0.25-1.0 mm)"
+ },
+ "notes": "Only the hexagon DIN 929 was verified (the catalog family also names DIN 928 square, ISO 21670 flange and KS B 1058 - not verified). (M14) is a non-preferred size written in brackets in the standard. The sources give no verbal definition of b, h1, h2 - their roles in role_map are inferred from magnitudes; draftsman should confirm against the standard drawing. DIN 929 is also made in M8x1, M10x1.25 etc. fine pitch and 7/16 UNF - not included. row_support: d4_max and b are supported by exactly 3 sources (digipich, torqbolt, fullerfasteners), h1/h2 by 4, the rest by 4-6.",
+ "clusters": {
+  "FE (fasteners.eu-derived)": [
+   "fasteners.eu (live, re-fetched)",
+   "torqbolt.com (table identical to fasteners.eu incl. quirks)",
+   "digipich.com (page says: values from single source fasteners.eu)"
+  ],
+  "fasten.it": [
+   "fasten.it"
+  ],
+  "German dataset": [
+   "schrauben-lexikon.de"
+  ],
+  "Chinese template": [
+   "fullerfasteners.com"
+  ],
+  "boltsfastener (copier, not counted as independent; only M6-M12, M16 dashes)": [
+   "boltsfastener.com"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 6 listed URLs (+fasteners.eu DIN 929) live, all HTTP 200. Parsed with Python; 9 rows x 10 value cols compared per source: fasten.it 54 cells (P,d2,d3,m,s,e_min) 54 ok; lexikon 45 (m,s,d2,h1,h2) 45 ok; boltsfastener 16 (M6-M12 s,e,m,d1) 16 ok; digipich 90 ok; fuller 4 sub-tables 90 ok (fuller d1/d2/d3 re-mapped via tolerance labels d11/H13/max); torqbolt==fasteners.eu table cell-identical. 0 mismatches (lexikon 'e' column is the theoretical 1.1547*s, not e min, correctly ignored). Support per kept column after drops: P 3 (fasten.it, FE, fuller), s 4-5, e_min 3 (fasten.it, FE, fuller; +boltsfastener M6-M12), m 5, d2 5, d3 3 (fasten.it, FE, fuller). Dropped columns: d4_max and b only FE+fuller = 2 clusters; h1/h2 = lexikon+FE+fuller = 3 clusters but role not defined by any source. Physical: s<e_min<1.1547s, d4<d2<s, h2<h1, all monotone.",
+  "problems": [
+   "FE cluster = fasteners.eu + torqbolt + digipich (identical tables / explicit provenance) counts as ONE source: the producer counted digipich and torqbolt as 2 extra independent sources.",
+   "b and d4_max have only 2 clusters (FE, fullerfasteners) -> fail T2; dropped.",
+   "b, h1, h2: no source text/header defines their physical role (only symbols with nominal/max/min); producer's role_map and Korean labels (projection height etc.) are inferred from magnitude -> dropped per instruction. h1/h2 would otherwise have 3 clusters (lexikon, FE, fuller) and could be restored as bare-symbol columns without role text.",
+   "d4_max role (thread-side chamfer/relief) also not described by sources; fuller calls it d3 and fasten.it/lexikon do not list it.",
+   "d2 (pilot, d11) and d3 (sheet hole, H13) roles come only from tolerance classes; numerically identical in all rows (d2==d3), fuller uses d1/d2/d3 symbols shifted by one.",
+   "M14 is a bracketed non-preferred size '(M14)' in the standard; row label M14 loses the brackets.",
+   "e_min/s = 1.087-1.105 (below 1.1547 theoretical) - consistent in all 4 sources, fine but not a geometric across-corners.",
+   "Only coarse-pitch rows kept (fine pitches M8x1.. and 7/16-20 UNF omitted) - OK, no mixing."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "b",
+   "d4_max",
+   "h1",
+   "h2"
+  ]
+ },
+ "standard_full": "DIN 929 (hexagon weld nuts with projections, 12-2013 table; sizes M3-M16)"
+}

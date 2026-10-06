@@ -1,0 +1,276 @@
+{
+ "id": "sealw",
+ "status": "ok",
+ "standard": "DIN 7603 Form A",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "내경 호칭 d1"
+  ],
+  [
+   "d2",
+   "외경 호칭 d2"
+  ],
+  [
+   "d1_min",
+   "실제 내경 d1 최소 (공차 +0.3)"
+  ],
+  [
+   "d2_max",
+   "실제 외경 d2 최대 (공차 -0.2)"
+  ],
+  [
+   "s",
+   "두께 s (공칭, ±0.2)"
+  ]
+ ],
+ "rows": [
+  [
+   "4x8",
+   4,
+   8,
+   4.2,
+   7.9,
+   1
+  ],
+  [
+   "8x11.5",
+   8,
+   11.5,
+   8.2,
+   11.4,
+   1
+  ],
+  [
+   "10x13.5",
+   10,
+   13.5,
+   10.2,
+   13.4,
+   1
+  ],
+  [
+   "12x16",
+   12,
+   16,
+   12.2,
+   15.9,
+   1.5
+  ],
+  [
+   "14x18",
+   14,
+   18,
+   14.2,
+   17.9,
+   1.5
+  ],
+  [
+   "16x20",
+   16,
+   20,
+   16.2,
+   19.9,
+   1.5
+  ],
+  [
+   "17x21",
+   17,
+   21,
+   17.2,
+   20.9,
+   1.5
+  ],
+  [
+   "18x22",
+   18,
+   22,
+   18.2,
+   21.9,
+   1.5
+  ],
+  [
+   "20x24",
+   20,
+   24,
+   20.2,
+   23.9,
+   1.5
+  ],
+  [
+   "22x27",
+   22,
+   27,
+   22.2,
+   26.9,
+   1.5
+  ],
+  [
+   "24x29",
+   24,
+   29,
+   24.3,
+   28.9,
+   2
+  ],
+  [
+   "26x31",
+   26,
+   31,
+   26.3,
+   30.9,
+   2
+  ],
+  [
+   "27x32",
+   27,
+   32,
+   27.3,
+   31.9,
+   2
+  ],
+  [
+   "30x36",
+   30,
+   36,
+   30.3,
+   35.9,
+   2
+  ],
+  [
+   "33x39",
+   33,
+   39,
+   33.3,
+   38.9,
+   2
+  ],
+  [
+   "42x49",
+   42,
+   49,
+   42.3,
+   48.9,
+   2
+  ]
+ ],
+ "row_support": {
+  "4x8": 3,
+  "8x11.5": 3,
+  "10x13.5": 3,
+  "12x16": 3,
+  "14x18": 3,
+  "16x20": 3,
+  "17x21": 3,
+  "18x22": 3,
+  "20x24": 3,
+  "22x27": 3,
+  "24x29": 3,
+  "26x31": 3,
+  "27x32": 3,
+  "30x36": 3,
+  "33x39": 3,
+  "42x49": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-7603a-specifications-sealing-ring-washer-form-a/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 7603 Form A, 18 transposed tables: d (min=nominal), dc (max=nominal), H"
+  },
+  {
+   "url": "https://www.fasenco.com/din-7603/",
+   "site": "fasenco.com",
+   "what": "table size, d1, d2, s (36 sizes)"
+  },
+  {
+   "url": "https://www.ganternorm.com/de/produkte/3.5/Dichtungen/DIN-7603-Dichtringe-fuer-Verschlussschrauben-DIN-908-DIN-910-Kupfer-Aluminium-Edelstahl",
+   "site": "ganternorm.com",
+   "what": "manufacturer table d1 nominal/actual, d2 nominal/actual, s (20 sizes, those fitting DIN 908/910)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/washer-standard/din-7603.html",
+   "site": "boltsfastener.com",
+   "what": "table d1(thread), d2, s - corroborates nominal OD and s only"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-7603",
+   "site": "theo-schrauben.de",
+   "what": "Form A copper rings: thread d, OD d1, thickness h - corroborates nominal OD and s only"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "21x26 (G1/2 ring)",
+   "why": "fasenco lists d1 21.25 vs 21.2 (Fuller, Ganter) - only 2 sources agree on d1_min"
+  },
+  {
+   "what": "48x55",
+   "why": "d1_min/d2_max only Fuller and Ganter (2)"
+  },
+  {
+   "what": "23x28",
+   "why": "s: Fuller 2, fasenco 1.5, theo 2 and d1/d2 only Fuller+fasenco"
+  },
+  {
+   "what": "all other sizes in Fuller (e.g. 5x9, 6x10, 10x14, 14x20, 16x22, 36x42, 38x44, 50x57 ... 90x100)",
+   "why": "actual d1/d2 only available from Fuller (+fasenco) - fewer than 3 sources"
+  },
+  {
+   "what": "Form C (profiled ring, thickness h, profile e) entire table",
+   "why": "only Fuller lists Form C dimensions"
+  },
+  {
+   "what": "thin PTFE/paper/fibre variants (Prg 0.5, Pr 0.3, FA)",
+   "why": "material-specific thickness from one source"
+  }
+ ],
+ "checks": [
+  "d1_min = d1 + 0.2 for d1 <= 22 and d1 + 0.3 for d1 >= 24 in every kept row (as Ganter 'Istmass +0,3' / Fuller min)",
+  "d2_max = d2 - 0.1 in every row (-0.2 tolerance row Ganter: 11.5 -> 11.4)",
+  "d2 > d1 by 3.5 to 7 mm, ring width (d2-d1)/2 between 1.75 and 3.5 mm; s grows 1 -> 1.5 -> 2 with size",
+  "d1, d2, d1_min, d2_max strictly increasing with size (rows sorted by d1)",
+  "fasenco typos found and out-voted: 24x29 s=1.5 (3 others 2.0), 23x28 s=1.5, 21x26 d1 21.25"
+ ],
+ "shape_hint": "A thin flat annular washer (like a plain flat ring gasket): inner hole d1, outer diameter d2, thickness s (1 to 2 mm), made of copper, aluminium, steel or fibre; used as a crush seal under the collar of screw plugs DIN 908 / DIN 910.",
+ "role_map": {
+  "size": "designation d1×d2 as ordered (DIN 7603 A d1×d2)",
+  "d1": "nominal inner diameter in the designation",
+  "d2": "nominal outer diameter in the designation",
+  "d1_min": "actual inner diameter minimum (tolerance +0.3 / +0.2)",
+  "d2_max": "actual outer diameter maximum (tolerance -0.2)",
+  "s": "ring thickness nominal (tol +-0.2)"
+ },
+ "notes": "Rows are keyed by the designation 'd1xd2' because several rings share the same d1 with different d2 (e.g. 10x13.5 / 10x14 / 10x16, only 10x13.5 kept). The kept rows are the sizes that fit DIN 908/DIN 910 plugs (M10x1 -> 10x13.5, M12x1.5 -> 12x16, M14x1.5/G1/4 -> 14x18, M16x1.5 -> 16x20, G3/8 -> 17x21, M18x1.5 -> 18x22, M20x1.5 -> 20x24, M22x1.5 -> 22x27, M24x1.5 -> 24x29, M26x1.5 -> 26x31, M27x2/G3/4 -> 27x32, M30x1.5 -> 30x36, M33x2/G1 -> 33x39, M42 / G1 1/4 -> 42x49) - this pairing is from Ganter's own table plus the DIN 910/908 collar d2 values (verified in plug910/plug908). G1/2 (21x26) and M48/G1 1/2 (48x55) rows dropped for lack of a 3rd source. Ganter's rows 4*, 5*, 6.5* are footnoted as special sizes. The thickness s of Al/Cu/St/Vf is identical; fibre/PTFE variants differ (not published).",
+ "clusters": {
+  "Fuller / Chinese standards-DB template (DIN 7603 Form A, 18 transposed tables Phi d1 x d2)": [
+   "fullerfasteners.com"
+  ],
+  "fasenco.com (table size,d1,d2,s with actual dimensions; typos differ from Fuller)": [
+   "fasenco.com"
+  ],
+  "Ganter manufacturer catalog (d1 nominal / actual +0,3 / d2 nominal / actual -0,2 / s)": [
+   "ganternorm.com"
+  ],
+  "German shop dataset + boltsfastener-style thread-keyed table (partial, thread-keyed, only used for 24x29 s)": [
+   "theo-schrauben.de"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched Fuller, fasenco, Ganter, boltsfastener, theo live. 16 rows x 5 cols (80 cells). d1_min, d2_max, s compared across Fuller/fasenco/Ganter for every row: all 48 cells equal in the 3 sources except 24x29 s (Fuller 2, Ganter 2, fasenco 1.5). Nominal d1,d2 (designation) read from Fuller 'Phi4 x8' headers, fasenco 'size 4x8', Ganter 'd1/d2 Nennmass'. boltsfastener and theo are keyed by thread size (M24 etc.) with several rings per thread; they cannot confirm 15 of 16 rows cleanly (e.g. 12x16 appears with s=1 and s=1.5) so they were not counted; theo 'M24 29 2' supports 24x29 s=2. Checks: d1_min=d1+0.2 (d1<=22) or +0.3 (d1>=24), d2_max=d2-0.1, s 1/1.5/2 steps, strictly increasing.",
+  "problems": [
+   "d1_min, d2_max and 15 of 16 s cells have exactly 3 clusters (Fuller, fasenco, Ganter); they pass only if all three are independent. Evidence: fasenco lists sizes Fuller lacks (5x9, 6x10, 10x14, 12x18, 13x18, 16x22, 20x26, 21x28, 22x29) and Fuller lists many fasenco lacks; fasenco typos (21x26 d1 21.25, 23x28/24x29 s=1.5) are not in Fuller/Ganter.",
+   "24x29 s=2 is the weakest cell: Fuller + Ganter explicit, theo thread-keyed row 'M24 29 2' (mapping thread->ring inferred), fasenco dissents with 1.5 (same file also has 23x28 s=1.5, a block typo). Numerically 3 clusters agree; flagged for the lead.",
+   "d1_min/d2_max are actual-size limits (Ganter 'Istmass +0,3 / -0,2', Fuller d min / dc max), not nominal; label them as such. boltsfastener page title uses 'Cooper' (same template as fasenco) - ignored.",
+   "Ganter marks 4x8 (and 5*,6.5*) 'nur in CU und AL lieferbar' - availability only, dimensions identical.",
+   "Producer note claims Fuller lists 5x9/6x10/10x14/16x22; it does not (irrelevant for kept rows)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 7603 Form A (flat sealing ring, Cu/Al/St/Vf)",
+ "scope": "DIN 7603 A형 (평 링)"
+}

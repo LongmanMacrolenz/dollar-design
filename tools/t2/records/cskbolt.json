@@ -1,0 +1,206 @@
+{
+ "id": "cskbolt",
+ "status": "partial",
+ "standard": "DIN 604",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통 나사)"
+  ],
+  [
+   "b",
+   "나사부 길이 b (L≤125)"
+  ],
+  [
+   "dk_max",
+   "머리 지름 dk 최대"
+  ],
+  [
+   "k",
+   "머리 높이 k (호칭)"
+  ],
+  [
+   "alpha_min",
+   "접시각 α 최소 (도)"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   1,
+   18,
+   12.55,
+   4,
+   90
+  ],
+  [
+   "M8",
+   1.25,
+   22,
+   16.55,
+   5,
+   90
+  ],
+  [
+   "M10",
+   1.5,
+   26,
+   19.65,
+   5.5,
+   90
+  ],
+  [
+   "M12",
+   1.75,
+   30,
+   24.65,
+   7,
+   90
+  ],
+  [
+   "M16",
+   2,
+   38,
+   32.8,
+   9,
+   90
+  ],
+  [
+   "M20",
+   2.5,
+   46,
+   32.8,
+   11.5,
+   60
+  ],
+  [
+   "M24",
+   3,
+   54,
+   38.8,
+   13,
+   60
+  ]
+ ],
+ "row_support": {
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-604-specifications-flat-countersunk-nib-bolts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 604 table M6-M24 (P,b,dk,s=g,k,alpha,i)"
+  },
+  {
+   "url": "https://www.kova.in/technical-information/din604/",
+   "site": "kova.in",
+   "what": "DIN 604 table M6-M24 (P,b,dk,k,g,alpha, weights); identical table on capitalbolts.in/din-604 -> one source"
+  },
+  {
+   "url": "https://www.capitalbolts.in/din-604",
+   "site": "capitalbolts.in",
+   "what": "same table as kova.in (counted once)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/604/",
+   "site": "fasteners.eu",
+   "what": "DIN 604 table M6-M24 (P,b,dk,ds,g,i,k,alpha)"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-604",
+   "site": "theo-schrauben.de",
+   "what": "DIN 604 Technische Daten (dk,k,a,g,b1-3): used M6-M16 only; its last row is the M20 row mislabelled 'M24'"
+  },
+  {
+   "url": "https://www.fastenerdata.co.uk/fasteners/bolts/more/bolts-a-to-f/countersunk-nib/metric-coarse/metric-coarse-countersunk-nib-bolt-with-din555-nut-grade-46-din604.html",
+   "site": "fastenerdata.co.uk",
+   "what": "DIN 604 table (d1,dk,k,a,b,g max): k, g, angle, b used; its dk lists 12,16,19,24,32,32,38.8 (differs from the others for M6-M20) -> not used for dk"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/ISO_metric_screw_thread",
+   "site": "wikipedia.org",
+   "what": "coarse pitch cross-check (ISO 261)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "dk_min, g_min, i_min, ds columns",
+   "why": "only fuller and fasteners.eu list them (2 independent sources)"
+  },
+  {
+   "what": "b2/b3 (125<L<=200, L>200)",
+   "why": "M6 has '-' for L>200 (no value for a row); other sizes agree (e.g. M8 28/41) but a numeric column cannot cover M6"
+  },
+  {
+   "what": "DIN 605 (square neck, M6-M10 only in the sources) and DIN 608 (short square neck, M10-M12 only)",
+   "why": "not tabulated: one table per family; each has only 2-3 sizes in the sources (fuller, kova/capital, fasteners.eu, fastenerdata, theo cluster), could be added as separate families"
+  },
+  {
+   "what": "ASME B18.9 plow bolts / KS B 1017",
+   "why": "not researched in this run (only a few fastenerdata/torqbolt pages seen, no cell-by-cell comparison)"
+  }
+ ],
+ "checks": [
+  "P, b, k, g_max non-decreasing M6..M24; dk_max equal for M16 and M20 (32.8) in all sources (standard table), then 38.8 for M24",
+  "dk_max > d, k < dk_max, g_max < k in every row; countersink angle 90 deg for M6-M16 and 60 deg for M20/M24 in all clusters",
+  "b(L<=125) = 2d+6 (M6..M24: 18,22,26,30,38,46,54)"
+ ],
+ "shape_hint": "Flat countersunk-head bolt with a small rectangular nib (tab) on the underside of the countersunk head that bites into the part to stop the bolt turning: head is a shallow cone of diameter dk, height k and included angle alpha (90 or 60 deg), the nib protrudes by height g under the cone; below it a plain shank with thread of length b for a nut.",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse pitch",
+  "b": "thread length for L<=125",
+  "dk_max": "head diameter max",
+  "k": "head height nominal",
+  "g_max": "nib height max",
+  "alpha_min": "countersink angle (min, degrees)"
+ },
+ "notes": "DIN 604 only (nib type). Same family also covers DIN 605 (square neck, M6-M10), DIN 608 (short square neck, M10-M12) and ASME B18.9 plow bolts (inch) -- not tabulated. Angle: 90 deg for M6-M16, 60 deg for M20 and M24. dk of M16 and M20 are both 32.8 in the standard table as published by 3 independent sources.",
+ "clusters": {
+  "Chinese template": [
+   "fullerfasteners.com"
+  ],
+  "kova.in = capitalbolts.in (identical table)": [
+   "kova.in",
+   "capitalbolts.in"
+  ],
+  "fasteners.eu": [
+   "fasteners.eu"
+  ],
+  "German reseller dataset (M6-M16 only; its 'M24' row is the M20 row)": [
+   "theo-schrauben.de"
+  ],
+  "fastenerdata.co.uk (k,g,b,angle; its dk is a rounded nominal 12,16,19,24,32,32 -> not counted for dk_max)": [
+   "fastenerdata.co.uk"
+  ],
+  "NOT counted": [
+   "en.wikipedia.org ISO_metric_screw_thread (P)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fuller, kova, capital, fasteners.eu, theo, fastenerdata, wikipedia live (200). Matrix 7 rows (M6-M24) x 6 value columns (P,b,dk_max,k,g,alpha) x 6 sources: no disagreement except theo's mislabelled last row (values of M20 under 'M24') and fastenerdata dk (nominal 12,16,19,24,32,32). Clusters (min over rows): P 3 (fuller, kova/capital, fasteners.eu; no other DIN 604 page lists P), b 4, dk_max 3 for M20/M24 (fuller, kova, feu; theo stops at M16), k 4, alpha_min 3 for M20/M24 (fuller, kova, fastenerdata; fasteners.eu prints angle without per-size alignment), g 4. Legend of fasteners.eu read: 'g - width of the nib', 'i - height of the nose', 'k - head height', 'alpha - angle head'.",
+  "problems": [
+   "g_max role is WRONG in the record: producer labels it nib HEIGHT ('돌기 높이', role_map 'nib height max', shape_hint 'nib protrudes by height g'); the only legend (fasteners.eu) says g = WIDTH of the nib and i = HEIGHT of the nose; fuller calls the same row 's'. Numbers are 4-cluster verified but the role was inferred -> drop g_max (or relabel as nib width g and fix shape_hint)",
+   "k label: record says 'nominal' but fuller prints 'k max' and the other pages bare 'k' -> relabel '머리 높이 k' without 호칭",
+   "P has exactly 3 clusters (fuller, kova=capital, fasteners.eu); dk_max M20/M24 and alpha_min M20/M24 also exactly 3",
+   "M16 and M20 dk_max both 32.8: confirmed by fuller, kova/capital, fasteners.eu (+theo M16); consistent with 60 deg cone on M20 ((32.8-20)/2/tan30 = 11.1 ~ k 11.5)",
+   "Family label 'KS B 1017 · DIN 604 · DIN 605 · DIN 608 · ASME B18.9' and name '사각목·돌기붙이': table is DIN 604 (NIB type) only - square-neck DIN 605/608 and ASME plow bolts are not covered",
+   "alpha_min: only min angle (90 deg / 60 deg; max 95/65 deg not published)"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "g_max"
+  ]
+ },
+ "standard_full": "DIN 604 (flat countersunk nib bolt)",
+ "scope": "DIN 604 돌기붙이(nib)형만 — DIN 605·608(사각목)은 싣지 않았습니다"
+}

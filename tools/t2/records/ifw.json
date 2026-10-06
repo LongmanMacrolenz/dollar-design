@@ -1,0 +1,318 @@
+{
+ "id": "ifw",
+ "status": "partial",
+ "standard": "ASTM F436 Type 1",
+ "u": "in",
+ "cols": [
+  [
+   "d1",
+   "구멍 지름 d1 (호칭, 하한값)"
+  ],
+  [
+   "d2",
+   "바깥지름 d2 (호칭)"
+  ],
+  [
+   "h_min",
+   "두께 h 최소"
+  ],
+  [
+   "h_max",
+   "두께 h 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "1/2",
+   0.531,
+   1.063,
+   0.097,
+   0.177
+  ],
+  [
+   "5/8",
+   0.688,
+   1.313,
+   0.122,
+   0.177
+  ],
+  [
+   "3/4",
+   0.813,
+   1.468,
+   0.122,
+   0.177
+  ],
+  [
+   "7/8",
+   0.938,
+   1.75,
+   0.136,
+   0.177
+  ],
+  [
+   "1",
+   1.063,
+   2.0,
+   0.136,
+   0.177
+  ],
+  [
+   "1-1/8",
+   1.188,
+   2.25,
+   0.136,
+   0.177
+  ],
+  [
+   "1-1/4",
+   1.375,
+   2.5,
+   0.136,
+   0.177
+  ],
+  [
+   "1-3/8",
+   1.5,
+   2.75,
+   0.136,
+   0.177
+  ],
+  [
+   "1-1/2",
+   1.625,
+   3.0,
+   0.136,
+   0.177
+  ],
+  [
+   "1-3/4",
+   1.875,
+   3.375,
+   0.178,
+   0.28
+  ],
+  [
+   "2",
+   2.125,
+   3.75,
+   0.178,
+   0.28
+  ],
+  [
+   "2-1/4",
+   2.375,
+   4.0,
+   0.24,
+   0.34
+  ],
+  [
+   "2-1/2",
+   2.625,
+   4.5,
+   0.24,
+   0.34
+  ],
+  [
+   "2-3/4",
+   2.875,
+   5.0,
+   0.24,
+   0.34
+  ],
+  [
+   "3",
+   3.125,
+   5.5,
+   0.24,
+   0.34
+  ],
+  [
+   "3-1/4",
+   3.375,
+   6.0,
+   0.24,
+   0.34
+  ],
+  [
+   "3-1/2",
+   3.625,
+   6.5,
+   0.24,
+   0.34
+  ],
+  [
+   "3-3/4",
+   3.875,
+   7.0,
+   0.24,
+   0.34
+  ],
+  [
+   "4",
+   4.125,
+   7.5,
+   0.24,
+   0.34
+  ]
+ ],
+ "row_support": {
+  "1/2": 3,
+  "5/8": 3,
+  "3/4": 3,
+  "7/8": 3,
+  "1": 3,
+  "1-1/8": 3,
+  "1-1/4": 3,
+  "1-3/8": 3,
+  "1-1/2": 3,
+  "1-3/4": 3,
+  "2": 3,
+  "2-1/4": 3,
+  "2-1/2": 3,
+  "2-3/4": 3,
+  "3": 3,
+  "3-1/4": 3,
+  "3-1/2": 3,
+  "3-3/4": 3,
+  "4": 3
+ },
+ "sources": [
+  {
+   "url": "https://haydonbolts.com/products/f436-2/",
+   "site": "haydonbolts.com (identical table on jhbotts.com = ONE source)",
+   "what": "ASTM F436-11 table: Circular/Clipped/Extra Thick, nominal OD/ID decimals + thickness min/max"
+  },
+  {
+   "url": "https://torqbolt.com/astm-f436-f436m-washers-specifications-suppliers-manufacturers",
+   "site": "torqbolt.com",
+   "what": "F436 table: ID min/max, OD min/max, thickness std/extra thick"
+  },
+  {
+   "url": "https://globalsupplyinc.com/wp-content/uploads/2022/11/F436_Structural_Washers.pdf",
+   "site": "globalsupplyinc.com",
+   "what": "vendor PRODUCT DATA SHEET (not the standard) F436 structural washers, nominal/min/max ID/OD + thickness to 3 in"
+  },
+  {
+   "url": "https://www.portlandbolt.com/products/washers/hardened-round/",
+   "site": "portlandbolt.com",
+   "what": "F436 hardened round washer table (fractions), 1/2 to 4 in"
+  },
+  {
+   "url": "https://www.badensteel.com/f436",
+   "site": "badensteel.com",
+   "what": "F436 washer table (fractions), 1/4 to 4 in (no 9/16)"
+  },
+  {
+   "url": "https://www.wroughtwasher.com/standard-washers/astm-f436-structural-washers/",
+   "site": "wroughtwasher.com",
+   "what": "manufacturer part list with OD/ID/THK limits (used for ID min and thickness, 1/2 to 3 in)"
+  },
+  {
+   "url": "https://www.californiafastener.com/spec-library/astm-f436",
+   "site": "californiafastener.com",
+   "what": "nominal OD/ID/thickness 1/2 to 1-1/2 (corroborating only)"
+  },
+  {
+   "url": "https://mondial2000.ca/charts/washer-dimensions-chart-sae-uss-structural-f436-metric/",
+   "site": "mondial2000.ca",
+   "what": "F436 chart 1/2 to 1-1/2 (corroborating only)"
+  },
+  {
+   "url": "https://www.asmc.net/9-16-grade-f436-round-structural-washer-medium-carbon-steel-hot-dip-galvanized/",
+   "site": "asmc.net",
+   "what": "9/16 product specification (ID 0.625, OD 1.188, T 0.110-0.177)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "ID/OD min/max limit columns",
+   "why": "explicit limits found only in torqbolt + vendor data sheet (<=2-1/2) + wrought (1/2-3 only); <3 sources for 1/4-7/16, 9/16 and 3-1/4..4. Tolerance is a size-range rule (see notes)"
+  },
+  {
+   "what": "extra-thick thickness columns (0.305-0.375, 0.313-0.375 for >=2-1/2)",
+   "why": "only for 1/2 and up (no value for 1/4-7/16) and only haydon+torqbolt (+portland 1/2-1-1/2) explicit for 1-3/4 and up; no nulls allowed"
+  },
+  {
+   "what": "clipped-washer edge distance E",
+   "why": "only haydon+torqbolt"
+  },
+  {
+   "what": "non-standard intermediate sizes 1-5/8 and 1-7/8 (listed by portland/wrought)",
+   "why": "not in the F436 table (only portland+wrought list them)"
+  }
+ ],
+ "checks": [
+  "d1 > bolt size d in every row; d1 - d = 1/32 (1/4-1/2), 1/16 (9/16-1-1/8), 1/8 (1-1/4 and up); d1, d2, h_min, h_max never decrease with size",
+  "d2 > d1 everywhere; d2/d (OD / bolt size) falls from 2.5 (1/4) to about 1.9-2.0 (3/4-1-1/2) to 1.78-1.88 (2-1/4-4) - smooth, no outlier",
+  "h_max >= h_min in every row; thickness bands: 0.051-0.080 (1/4-7/16), 0.097-0.177 (1/2), 0.110-0.177 (9/16), 0.122-0.177 (5/8-3/4), 0.136-0.177 (7/8-1-1/2), 0.178-0.28 (1-3/4, 2), 0.24-0.34 (2-1/4-4)",
+  "cross-check against explicit limits in torqbolt (all 24 sizes): ID min = d1; ID max = d1 + 0.032/0.063/0.125; OD min/max = d2 -/+ 0.032 (<1 in), 0.063 (1 to 3 in), 0.125 (>3 in) - 0 mismatches",
+  "fraction sources (portland, baden, calfast, mondial) agree with the decimal sources within 0.001 (9/32=0.28125 vs 0.281; 1-15/32=1.46875 vs 1.468; 59/64=0.921875 vs 0.922); the 3-decimal form is published"
+ ],
+ "shape_hint": "A flat round annular washer (disc with a concentric round hole), uniform thickness, flat both faces; outer diameter about 2x the hole diameter (OD roughly 2.3x bolt size for 1/4, 2x for 1 in). Hardened steel, typically stamped with a maker mark on one face.",
+ "role_map": {
+  "d_nom_note": "nominal washer size = bolt nominal diameter in inches",
+  "d1": "hole (inside) diameter, nominal = lower limit; tolerance -0/+0.032 (<1 in), -0/+0.063 (1 to 3 in), -0/+0.125 (>3 in)",
+  "d2": "outside diameter, nominal; tolerance +/-0.032 (<1 in), +/-0.063 (1 to 3 in), +/-0.125 (>3 in)",
+  "h_min": "thickness minimum (circular/clipped)",
+  "h_max": "thickness maximum (circular/clipped)"
+ },
+ "notes": "ASTM F436 Type 1 circular, inch only; the metric F436M table is a separate standard and is not included. Extra-thick (structural, 'HVY') washers exist from 1/2 up with T 0.305-0.375 (0.313-0.375 for 2-1/2 and up) but are not in the table. Tolerance rule (hole -0/+; OD +/-) is in role_map. Sizes 1-5/8 and 1-7/8 are stocked by some vendors but are not F436 nominal sizes. SAE pattern note: F436 OD is the 'SAE' (narrow) pattern, NOT USS.",
+ "clusters": {
+  "JHBotts/Haydon (identical table, verified byte-for-byte equal rows)": [
+   "haydonbolts.com/products/f436-2/",
+   "jhbotts.com/products/f436-2/"
+  ],
+  "torqbolt": [
+   "torqbolt.com F436/F436M page (explicit: ID min, thickness; OD only as min/max -> nominal d2 = midpoint, DERIVED, not counted)"
+  ],
+  "portland": [
+   "portlandbolt.com hardened-round (fractions for d1/d2, decimals for thickness)"
+  ],
+  "baden": [
+   "badensteel.com/f436 (fractions for d1/d2, decimals for thickness; 1/2 ID printed '17.32')"
+  ],
+  "wrought": [
+   "wroughtwasher.com part list (ID min + thickness explicit; OD only min/max -> derived)"
+  ],
+  "calfast": [
+   "californiafastener.com spec-library (1/2-1-1/2, fractions)"
+  ],
+  "mondial": [
+   "mondial2000.ca (1/2-1-1/2, fractions)"
+  ],
+  "albany": [
+   "albanycountyfasteners.com (extra source found in raw/ifw, re-fetched live: explicit decimals ID/OD/T for 1/2-1-1/2, 1-3/4, 3)"
+  ],
+  "asmc": [
+   "asmc.net 9/16 product page (explicit 0.625/1.188/0.110-0.177)"
+  ],
+  "NOT COUNTED": [
+   "globalsupplyinc.com F436 PDF (vendor data sheet = corroboration only; producer counted it as the 3rd source in rows 1/4-7/16, 9/16 and 3-1/4..4)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched 10 URLs live (haydon, jhbotts, torqbolt, portland, baden, wrought, calfast, mondial, asmc, globalsupply pdf (not parsed, excluded)) + albany. Parsed all HTML tables with python (own sup/sub-fraction fix for portland). Matrix 24 rows x 4 cols (d1,d2,h_min,h_max) x 9 sources (haydon/jhbotts merged), tiers A=explicit decimal, B=fraction equal within 0.001, C=derived midpoint of min/max (not counted). Every record value matched the majority; dissenters were individually explained (haydon 1-3/4 d2 3.25 and 3-3/4 d1 3.975 and h_min 0.34 for >=2-1/4 = typos/footnote C; baden 1 & 1-1/8 d1; calfast 1/2 h_min 0.122 and 1-1/8 d1; mondial 1-1/4..1-1/2 d1). Support (A+B clusters, PDF and C excluded): d1 >=3 everywhere (1/4-7/16 and 3-3/4 = exactly 3), h_min/h_max >=3 everywhere, d2 >=3 everywhere EXCEPT 1/4, 5/16, 3/8, 7/16 (haydon + baden = 2) and 9/16 (haydon + asmc = 2). Physical sanity (d2>d1, monotone, h_max>=h_min, tolerance rule vs torqbolt limits) fine.",
+  "problems": [
+   "d2 (OD) for 1/4, 5/16, 3/8, 7/16 has only 2 counted clusters (haydon decimal + baden fraction); producer's 3rd was the globalsupply vendor PDF (not allowed). torqbolt/wrought give only OD min/max; midpoint = d2 in every row (0 mismatches) but is arithmetic, not a published number. If the lead accepts midpoint-of-limits as the nominal, these 5 rows pass with exactly 3.",
+   "d2 for 9/16 has haydon + asmc = 2 explicit (+torqbolt midpoint); d1/h_min/h_max for 9/16 = 3 (haydon, torqbolt, asmc) so only d2 breaks the row.",
+   "Inch fraction sources (portland, baden, calfast, mondial) carry d1/d2 as fractions (e.g. 17/32, 1-15/32), not as the standard's 3-decimal numbers; they are counted as equal only at |diff|<0.001. 3/4 d2 = 1.468 (ASTM prints truncated value) vs 1-15/32 = 1.46875: counted at tolerance 0.00075 only. With zero tolerance the d2 column would drop to <=2 in all rows.",
+   "d2 rows 2, 2-1/4, 2-1/2, 2-3/4 have exactly 3 clusters (haydon + portland + baden fractions); rows 3-1/4..4 d1/d2 also rest on exactly 3 (d1 3-3/4: torqbolt + portland + baden, haydon typo 3.975).",
+   "h_min for 2-1/4..4 = 0.24: haydon shows 0.34 (footnote C typo); 3-1/4..4 rest on exactly 3 (torqbolt, portland, baden), 2-1/4..3 on 4 (+wrought).",
+   "d1 is the hole nominal = ID min (tolerance -0/+): read from torqbolt/wrought 'min' column and haydon 'Nominal'; consistent with the standard's tolerance table, not inferred by magnitude.",
+   "Row label convention fine (bolt size in fractions, unique); F436M metric not mixed in; extra-thick and clipped variants excluded.",
+   "Concretecalculate page lists 1/2 thickness 0.097-0.121 (wrong, dissenter); AFT table uses a different convention (not used)."
+  ],
+  "dropped_rows": [
+   "1/4",
+   "3/8",
+   "5/16",
+   "7/16",
+   "9/16"
+  ],
+  "dropped_cols": []
+ },
+ "standard_full": "ASTM F436 (Type 1 round hardened washers, inch series)"
+}
