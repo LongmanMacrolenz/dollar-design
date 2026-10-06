@@ -1,0 +1,14 @@
+/* Original Boltnote identity. Outlined lettering stays consistent on every device. */
+.bn-logo { display: block; width: 210px; height: auto; max-width: 100%; flex: none; }
+.bn-identity { display: flex; flex-direction: column; gap: 5px; }
+.tb.ia-tb .brand { flex-basis: 234px; }
+.tb.ia-tb .brand small { margin: 0 0 0 1px; font-size: 11px; letter-spacing: .025em; }
+.bn-logo-white { display: none; }
+:root[data-theme="dark"] .bn-logo-ink { display: none; }
+:root[data-theme="dark"] .bn-logo-white { display: block; }
+.pm-ft-brand .bn-logo { width: 238px; margin-bottom: 12px; }
+.pm-ft-brand small { font-size: 12px; }
+.tb-mini .bn-logo { width: 139px; }
+@media (max-width: 1100px) { .tb.ia-tb .brand { flex-basis: 205px; } .tb .bn-logo { width: 188px; } }
+@media (max-width: 860px) { .tb.ia-tb .brand { flex-basis: 180px; } .tb .bn-logo { width: 174px; } }
+@media (max-width: 680px) { .tb .bn-logo { width: 164px; } .tb.ia-tb .brand { flex: 1; } .tb-mini .bn-logo { width: 118px; } }

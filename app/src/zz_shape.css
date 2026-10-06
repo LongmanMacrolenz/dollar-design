@@ -25,3 +25,12 @@
 @media (max-width: 680px) {
   .shp figcaption { font-size: var(--fs-cap); }
 }
+/* 3D가 첫 화면이고, 2D 치수 도면은 접어 둔다 */
+.shp-2d { margin-top: 12px; max-width: 560px; border: 1px solid var(--hair); background: var(--sheet); }
+.shp-2d > summary { cursor: pointer; padding: 11px 14px; font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.shp-2d > summary::-webkit-details-marker { display: none; }
+.shp-2d > summary::after { content: '+'; font-weight: 400; font-size: 18px; line-height: 1; }
+.shp-2d[open] > summary::after { content: '−'; }
+.shp-2d > summary:hover { color: var(--ink); }
+.shp-2d > .dbox { margin: 0; border: 0; border-top: 1px solid var(--hair-2); }
+@media (max-width: 1020px) { .shp-2d { max-width: none; } }

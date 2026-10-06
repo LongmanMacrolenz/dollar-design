@@ -39,11 +39,21 @@ function shapeFigHtml(id, name, look) {
     ${list.length > 1 ? `<div class="shp-looks" role="group" aria-label="마감 색 미리보기"><span class="lab">마감 색</span>${list.map(k => `<button type="button" class="chipbtn${k === look ? ' on' : ''}" data-shp="${k}" aria-pressed="${k === look}">${esc(SHAPE_NAME[k] || k)}</button>`).join('')}</div>` : ''}
     <figcaption><b>형상 · ${esc(nm)}</b><span>참고용 렌더링입니다. 규격 공칭 형상의 대표 호칭 그림이며 실제 제품 사진이 아닙니다. 색은 도금·로트에 따라 다릅니다.</span></figcaption></figure>`;
 }
+// 3D 형상이 있으면 2D 치수 도면은 접어 둔다: 첫 화면은 3D, 도면은 '치수 도면 (2D) 보기'를 눌러 펼친다.
+// 도면 칸(.dbox)은 그대로 두고 details로 감싸기만 하므로, 호칭·길이를 바꿀 때 다시 그리는 코드는 그대로 동작한다.
+function shapeFold2d(slot) {
+  const box = slot.nextElementSibling;
+  if (!box || !box.classList.contains('dbox') || box.closest('details.shp-2d')) return;
+  const d = document.createElement('details'); d.className = 'shp-2d';
+  const s = document.createElement('summary'); s.textContent = '치수 도면 (2D) 보기'; d.append(s);
+  box.before(d); d.append(box);
+}
 // 자리 #shp-slot 에 그림을 넣거나 바꾼다. 같은 룩이면 그대로 둔다 (칸을 바꿀 때마다 깜박이지 않게)
 function shapeShow(id, name, mat, fin) {
   const slot = document.getElementById('shp-slot'); if (!slot) return;
   const look = shapeLook(id, mat, fin, state.shapePick[id]);
   if (!look) { slot.innerHTML = ''; slot.dataset.look = ''; return; }
+  shapeFold2d(slot);
   slot.dataset.id = id; slot.dataset.name = name; slot.dataset.mat = mat || ''; slot.dataset.fin = fin || '';
   if (slot.dataset.look === look && slot.dataset.shown === id) return;
   slot.dataset.look = look; slot.dataset.shown = id;

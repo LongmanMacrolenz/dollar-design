@@ -184,8 +184,7 @@ footer.foot.ia-foot { background: var(--pm-night); color: var(--pm-tx-2); paddin
 .pm-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; border: 0; background: transparent; }
 .pm-tiles .pm-tile { display: flex; flex-direction: column; gap: 0; padding: 0; overflow: hidden; border: 1px solid var(--hair-2) !important; border-radius: var(--pm-r); background: var(--sheet); box-shadow: var(--pm-sh); transition: transform .22s ease, box-shadow .22s ease; }
 .pm-tiles .pm-tile:hover { transform: translateY(-4px); box-shadow: var(--pm-sh-h); background: var(--sheet); }
-/* 품목 사진은 흰 바탕의 정사각형이다 (물건이 위아래로 꽉 차서 4:3로 자르면 잘림) */
-.pm-media { display: block; aspect-ratio: 1 / 1; background: #F3F5F5; overflow: hidden; }
+.pm-media { display: block; aspect-ratio: 4 / 3; background: var(--pm-night); overflow: hidden; }
 .pm-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .pm-tile:hover .pm-media img { transform: scale(1.03); }
 .pm-tile-b { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 14px; align-items: center; padding: 18px 20px 20px; }
@@ -354,4 +353,3 @@ footer.foot.ia-foot { background: var(--pm-night); color: var(--pm-tx-2); paddin
 .ia-q .ia-fh { margin: 8px 0 0; line-height: 1.5; }
 /* 목록 견적: 칸 제목(h2)과 겹치는 판 제목은 화면에서만 숨긴다 (읽기 프로그램용 이름은 남김) */
 .ia-two .ia-filep > h3 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.pm-imgnote { margin: 14px 0 0; text-align: right; color: var(--ink-3); }

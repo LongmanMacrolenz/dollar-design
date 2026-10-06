@@ -1,0 +1,546 @@
+{
+  "topics": [
+    {
+      "id": "bolt-nut-washer",
+      "title": "볼트·너트·와셔",
+      "en": "THREADED PARTS",
+      "desc": "형상과 역할부터 치수 규격의 대응 관계까지.",
+      "featured": [
+        "p-hex-bolt",
+        "p-stud-bolt",
+        "p-flat-washer"
+      ],
+      "entries": [
+        "astm-f436",
+        "asme-b18-2-1",
+        "asme-b18-2-2",
+        "asme-b18-31-2",
+        "asme-b18-3",
+        "asme-b18-21-1",
+        "asme-b18-22-1",
+        "asme-b18-2-6",
+        "iso-4014",
+        "iso-4017",
+        "iso-4016-4018",
+        "iso-4032",
+        "iso-4033",
+        "iso-4035",
+        "iso-4762",
+        "iso-10642",
+        "iso-7380",
+        "iso-4026-4029",
+        "iso-7089-7090",
+        "iso-7091-7093",
+        "iso-4162",
+        "iso-7040-10511",
+        "iso-4759",
+        "en-14399",
+        "en-15048",
+        "din-931",
+        "din-933",
+        "din-934",
+        "din-912",
+        "din-125",
+        "din-127",
+        "din-6914",
+        "din-7991",
+        "din-6921",
+        "din-985",
+        "din-439",
+        "din-975",
+        "din-938",
+        "din-913-916",
+        "din-580",
+        "din-2510",
+        "din-267",
+        "din-iso-map",
+        "ks-b-1002",
+        "ks-b-1012",
+        "ks-b-1010",
+        "ks-b-2819",
+        "ks-washer",
+        "ks-socket",
+        "ks-iso-map",
+        "jis-b-1180",
+        "jis-b-1181",
+        "jis-b-1176",
+        "jis-b-1186",
+        "jis-b-1256",
+        "jis-b-1251",
+        "jis-hex-af",
+        "t-across-flats",
+        "t-heavy-hex",
+        "t-full-partial",
+        "t-product-grade",
+        "p-hex-bolt",
+        "p-heavy-hex-bolt",
+        "p-stud-bolt",
+        "p-double-end-stud",
+        "p-threaded-rod",
+        "p-shcs",
+        "p-csk",
+        "p-button",
+        "p-set-screw",
+        "p-hex-nut",
+        "p-heavy-hex-nut",
+        "p-lock-nut",
+        "p-flange-nut",
+        "p-cap-nut",
+        "p-wing-nut",
+        "p-flat-washer",
+        "p-spring-washer",
+        "p-hardened-washer",
+        "p-anchor-bolt",
+        "p-eye-bolt",
+        "p-u-bolt",
+        "p-structural-set",
+        "p-jack-bolt",
+        "p-flange-bolt-set",
+        "p-screw-plug"
+      ]
+    },
+    {
+      "id": "thread-fit",
+      "title": "나사·끼워맞춤",
+      "en": "THREADS & FITS",
+      "desc": "미터·인치 표기, 공차, 물림 길이와 구멍.",
+      "featured": [
+        "t-metric-designation",
+        "t-inch-designation",
+        "t-engagement"
+      ],
+      "entries": [
+        "asme-b1-1",
+        "iso-68-1",
+        "iso-261",
+        "iso-965",
+        "iso-273",
+        "ks-thread",
+        "jis-b-0205",
+        "t-unc-unf",
+        "t-8un",
+        "t-unr",
+        "t-inch-class",
+        "t-inch-designation",
+        "t-metric-coarse-fine",
+        "t-metric-tol",
+        "t-metric-designation",
+        "t-tpi-pitch",
+        "t-left-hand",
+        "t-engagement",
+        "t-clearance",
+        "t-inch-mm",
+        "t-tap-drill"
+      ]
+    },
+    {
+      "id": "material-grade",
+      "title": "재질·강도 등급",
+      "en": "MATERIALS & GRADES",
+      "desc": "볼트와 너트의 등급, 사용 환경과 재료.",
+      "featured": [
+        "gr-b7-vs-b16",
+        "pc-steel",
+        "pc-a2-a4"
+      ],
+      "entries": [
+        "astm-a193",
+        "astm-a194",
+        "astm-a320",
+        "astm-a453",
+        "astm-a962",
+        "astm-a307",
+        "astm-f3125",
+        "astm-a325",
+        "astm-a490",
+        "astm-a354",
+        "astm-a449",
+        "astm-a563",
+        "astm-f1554",
+        "astm-f593",
+        "astm-f594",
+        "astm-a574",
+        "astm-f912",
+        "sae-j429",
+        "sae-j995",
+        "astm-f468",
+        "gr-b7",
+        "gr-b7m",
+        "gr-b16",
+        "gr-b8",
+        "gr-b8m",
+        "gr-l7",
+        "gr-l43",
+        "gr-660",
+        "gr-2h",
+        "gr-a194-7",
+        "gr-7l",
+        "gr-a194-8",
+        "gr-sae-5",
+        "gr-sae-8",
+        "gr-f3125-a325",
+        "gr-f3125-a490",
+        "gr-f1554",
+        "gr-a563-dh",
+        "gr-b7-vs-b16",
+        "mat-4140",
+        "mat-316",
+        "mat-304",
+        "mat-a286",
+        "mat-718",
+        "mat-duplex",
+        "mat-monel",
+        "iso-898-1",
+        "iso-898-2",
+        "iso-3506-1",
+        "iso-3506-2",
+        "en-10269",
+        "pc-steel",
+        "pc-8-8",
+        "pc-10-9",
+        "pc-12-9",
+        "pc-nut",
+        "pc-a2-a4",
+        "mat-42crmo4",
+        "iso-898-3",
+        "jis-b-1051",
+        "t-f10t",
+        "t-mdmt",
+        "t-sour",
+        "t-proof-load",
+        "t-yield-tensile"
+      ]
+    },
+    {
+      "id": "joint-design",
+      "title": "체결·접합 설계",
+      "en": "JOINT DESIGN",
+      "desc": "예압과 토크, 플랜지 조립, 풀림과 피로.",
+      "featured": [
+        "t-preload",
+        "t-torque",
+        "t-self-loosening"
+      ],
+      "entries": [
+        "asme-b16-5",
+        "asme-b16-47",
+        "asme-b16-20",
+        "asme-pcc-1",
+        "en-1515",
+        "en-1092-1",
+        "ks-flange",
+        "jis-b-2220",
+        "t-stress-area",
+        "t-preload",
+        "t-torque",
+        "t-torque-scatter",
+        "t-pattern",
+        "t-tensioning",
+        "t-stud-length",
+        "t-flange-bolting",
+        "t-rf-rtj",
+        "t-self-loosening",
+        "t-fatigue",
+        "t-gasket-seating"
+      ]
+    },
+    {
+      "id": "pins-keys-rings",
+      "title": "핀·키·멈춤링",
+      "en": "SHAFT & POSITIONING",
+      "desc": "위치 결정, 축과 허브 연결, 축방향 유지.",
+      "featured": [
+        "p-dowel-pin",
+        "p-key",
+        "p-retaining-ring"
+      ],
+      "entries": [
+        "iso-8734",
+        "iso-2338",
+        "iso-8752",
+        "iso-1234",
+        "din-471",
+        "din-6885",
+        "din-6888",
+        "din-7-6325",
+        "din-1481",
+        "din-94",
+        "ks-b-1336",
+        "ks-b-1311",
+        "p-dowel-pin",
+        "p-spring-pin",
+        "p-split-pin",
+        "p-retaining-ring",
+        "p-key"
+      ]
+    },
+    {
+      "id": "rivets-inserts",
+      "title": "리벳·인서트·작은나사",
+      "en": "RIVETS & INSERTS",
+      "desc": "판재 체결과 암나사 보강에 쓰는 부품.",
+      "featured": [
+        "p-blind-rivet",
+        "p-rivet-nut",
+        "p-thread-insert"
+      ],
+      "entries": [
+        "p-blind-rivet",
+        "p-rivet-nut",
+        "p-thread-insert",
+        "p-machine-screw"
+      ]
+    },
+    {
+      "id": "coating-corrosion",
+      "title": "표면처리·부식",
+      "en": "FINISHES & CORROSION",
+      "desc": "도금과 코팅, 수소취성, 갈링과 부식.",
+      "featured": [
+        "t-hdg",
+        "t-hydrogen",
+        "t-galling"
+      ],
+      "entries": [
+        "astm-a153",
+        "astm-f2329",
+        "astm-f1941",
+        "astm-f1136",
+        "iso-4042",
+        "iso-10683",
+        "iso-10684",
+        "iso-15156",
+        "t-hydrogen",
+        "t-baking",
+        "t-hdg",
+        "t-overtap",
+        "t-zinc-plating",
+        "t-zinc-flake",
+        "t-ptfe",
+        "t-black-oxide",
+        "t-phosphate",
+        "t-cadmium",
+        "t-znni",
+        "t-galling",
+        "t-galvanic",
+        "t-scc",
+        "t-passivation",
+        "t-rohs",
+        "t-anti-seize",
+        "t-mech-zinc"
+      ]
+    },
+    {
+      "id": "inspection-documents",
+      "title": "검사·추적·서류",
+      "en": "INSPECTION & DOCUMENTS",
+      "desc": "각인과 로트부터 시험 방법과 검사 문서까지.",
+      "featured": [
+        "t-en10204-types",
+        "t-heat-lot",
+        "t-proof-test"
+      ],
+      "entries": [
+        "astm-f606",
+        "astm-a370",
+        "api-20e",
+        "iso-16228",
+        "iso-3269",
+        "iso-16047",
+        "en-10204",
+        "t-en10204-types",
+        "t-mtr",
+        "t-coc",
+        "t-heat-lot",
+        "t-marking",
+        "t-pmi",
+        "t-kolas",
+        "t-tensile",
+        "t-proof-test",
+        "t-wedge",
+        "t-hardness",
+        "t-charpy",
+        "t-salt-spray",
+        "t-thread-gauge"
+      ]
+    }
+  ],
+  "paths": [
+    {
+      "id": "read-bom",
+      "title": "BOM 표기부터 읽기",
+      "audience": "구매 · 설계",
+      "desc": "품목 이름, 나사 표기, 등급과 대응 규격을 차례로 확인합니다.",
+      "steps": [
+        {
+          "title": "품목과 형상",
+          "desc": "볼트·스터드·너트의 역할을 구분합니다.",
+          "entries": [
+            "p-hex-bolt",
+            "p-stud-bolt",
+            "p-heavy-hex-nut"
+          ]
+        },
+        {
+          "title": "나사 표기",
+          "desc": "미터와 인치 표기를 읽고 공차를 확인합니다.",
+          "entries": [
+            "t-metric-designation",
+            "t-inch-designation",
+            "t-metric-tol"
+          ]
+        },
+        {
+          "title": "재질과 등급",
+          "desc": "치수 규격과 강도 등급을 구분합니다.",
+          "entries": [
+            "pc-steel",
+            "gr-b7-vs-b16",
+            "pc-a2-a4"
+          ]
+        },
+        {
+          "title": "대응 규격과 서류",
+          "desc": "규격 변경과 필요한 검사 문서를 확인합니다.",
+          "entries": [
+            "din-iso-map",
+            "ks-iso-map",
+            "t-en10204-types"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "flange",
+      "title": "플랜지 볼팅 검토",
+      "audience": "배관 · 플랜트",
+      "desc": "스터드 사양부터 예압과 조립 순서까지 연결해서 읽습니다.",
+      "steps": [
+        {
+          "title": "형상과 길이",
+          "desc": "플랜지 조건과 길이 측정 기준을 확인합니다.",
+          "entries": [
+            "t-flange-bolting",
+            "t-stud-length",
+            "t-rf-rtj"
+          ]
+        },
+        {
+          "title": "볼트와 너트 등급",
+          "desc": "볼팅 재료와 짝 너트의 요구를 확인합니다.",
+          "entries": [
+            "astm-a193",
+            "astm-a194",
+            "astm-a320"
+          ]
+        },
+        {
+          "title": "예압과 마찰",
+          "desc": "토크와 체결력의 관계, 마찰의 영향을 읽습니다.",
+          "entries": [
+            "t-preload",
+            "t-torque",
+            "t-torque-scatter"
+          ]
+        },
+        {
+          "title": "조립과 관리",
+          "desc": "조립 지침과 조임 순서, 텐셔닝을 살펴봅니다.",
+          "entries": [
+            "asme-pcc-1",
+            "t-pattern",
+            "t-tensioning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "machine",
+      "title": "기계·축 조립 검토",
+      "audience": "기계 설계 · 정비",
+      "desc": "나사 체결과 핀·키·멈춤링의 서로 다른 역할을 찾습니다.",
+      "steps": [
+        {
+          "title": "체결부 형상",
+          "desc": "렌치볼트와 멈춤나사의 용도를 구분합니다.",
+          "entries": [
+            "p-shcs",
+            "p-set-screw",
+            "p-csk"
+          ]
+        },
+        {
+          "title": "나사와 구멍",
+          "desc": "물림 길이, 통과 구멍과 밑구멍을 확인합니다.",
+          "entries": [
+            "t-engagement",
+            "t-clearance",
+            "t-tap-drill"
+          ]
+        },
+        {
+          "title": "위치 결정과 축 연결",
+          "desc": "핀·키·멈춤링을 역할별로 살펴봅니다.",
+          "entries": [
+            "p-dowel-pin",
+            "p-key",
+            "p-retaining-ring"
+          ]
+        },
+        {
+          "title": "체결부 유지",
+          "desc": "풀림, 피로와 갈링의 원인을 읽습니다.",
+          "entries": [
+            "t-self-loosening",
+            "t-fatigue",
+            "t-galling"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "purchase",
+      "title": "구매·입고 확인",
+      "audience": "구매 · 품질",
+      "desc": "요청할 서류와 현품에서 확인할 사항을 연결합니다.",
+      "steps": [
+        {
+          "title": "식별과 추적",
+          "desc": "각인과 히트·로트의 연결을 확인합니다.",
+          "entries": [
+            "t-marking",
+            "t-heat-lot",
+            "t-mtr"
+          ]
+        },
+        {
+          "title": "검사 문서",
+          "desc": "문서 종류와 적합 확인서의 차이를 읽습니다.",
+          "entries": [
+            "t-en10204-types",
+            "iso-16228",
+            "t-coc"
+          ]
+        },
+        {
+          "title": "시험과 수락 검사",
+          "desc": "시험 방법과 입고 검사 범위를 확인합니다.",
+          "entries": [
+            "iso-3269",
+            "t-proof-test",
+            "t-charpy"
+          ]
+        },
+        {
+          "title": "표면처리 조건",
+          "desc": "도금, 오버탭과 수소취성의 관계를 살펴봅니다.",
+          "entries": [
+            "t-hdg",
+            "t-overtap",
+            "t-hydrogen"
+          ]
+        }
+      ]
+    }
+  ]
+}

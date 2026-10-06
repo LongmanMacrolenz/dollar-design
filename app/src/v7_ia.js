@@ -169,7 +169,8 @@ function hmTrust() {
     <div class="ia-tc no"><span class="lab">하지 않습니다</span>당일 출고 약속 · 승인 없는 대체품<br><span class="ia-d">3.1 직접 발행 · 받은 도면 공개</span></div>
   </div><p class="ia-bizline">사업자 ${iaBizNo()} · ${ORDER_LIVE ? '통신판매업 신고' : '신고 전'} · <a href="#about" data-go="about">회사 소개 →</a></p><p class="ia-trust-f"><a href="#about" data-go="about">회사 소개 →</a></p></section>`;
 }
-const hmTiles = () => `<div class="ia-tiles" role="list">${CAT_TILES.map(t => `<a class="ia-tile" role="listitem" href="#t-${t.id}" data-go="t-${t.id}">${iaTh(IA_TH_TILE[t.id])}<b>${esc(t.ko)}</b><span class="en" lang="en">${esc(t.en)}</span><span class="cnt">${iaTileN(t)}종</span></a>`).join('')}</div>`;
+// 홈과 제품 목록에서 같은 제품군 이미지·실제 카탈로그 수를 사용한다.
+const hmTiles = () => `<ul class="bn-products" role="list">${CAT_TILES.map((t, i) => `<li><a class="bn-product" href="#t-${t.id}" data-go="t-${t.id}"><span class="bn-product-visual bn-product-${t.id}" aria-hidden="true"></span><span class="bn-product-info"><span class="bn-product-top"><span class="bn-index">0${i + 1}</span><span class="bn-product-count">${iaTileN(t)}종</span></span><h3>${esc(t.ko)}</h3><span class="bn-product-en" lang="en">${esc(t.en)}</span><span class="bn-product-desc">${t.subs.slice(0, 3).map(s => esc(s.ko.replace(/ \(.*?\)/g, ''))).join(' · ')}</span><span class="bn-product-link">제품 살펴보기 <span aria-hidden="true">↗</span></span></span></a></li>`).join('')}</ul>`;
 const hmColls = home => `<div class="ia-colls"><span class="lab">모아 보기</span><a class="hi" href="#k-plant" data-go="k-plant">${esc(CAT_COLL.plant.ko)} →</a><a class="ia-d" href="#k-pump" data-go="k-pump">${esc(CAT_COLL.pump.ko)} →</a><a class="ia-d" href="#k-flange" data-go="k-flange">${esc(CAT_COLL.flange.ko)} →</a>${home ? '<a class="ia-m" href="#products" data-go="products">모아 보기 전체 →</a>' : ''}</div>`;
 function sbBox(where) {
   const lg = where === 'list';
@@ -188,10 +189,8 @@ function sbBox(where) {
 const PM_MEDIA = 'media/';
 const pmImg = (n, alt, w, h, eager = false) => `<picture><source srcset="${PM_MEDIA}${n}.png" media="(prefers-reduced-motion: reduce)"><img src="${PM_MEDIA}${n}.gif" alt="${esc(alt)}" width="${w}" height="${h}"${eager ? ' fetchpriority="high"' : ' loading="lazy"'} decoding="async"></picture>`;
 // 첫 화면 3D: 소리 없는 반복 동영상. 움직임 줄이기 설정이면 멈춘 첫 장면(poster)만 보인다 (V.after.home에서 처리)
-const pmVideo = (n, label, w, h) => `<video class="pm-video" width="${w}" height="${h}" autoplay muted loop playsinline preload="auto" poster="${PM_MEDIA}${n}-poster.jpg" aria-label="${esc(label)}"><source src="${PM_MEDIA}${n}.webm" type="video/webm"><source src="${PM_MEDIA}${n}.mp4" type="video/mp4"></video>`;
-// 품목 타일 사진(ChatGPT로 만든 예시 이미지, 512×512). 실제 공급 제품의 사진이 아니라 화면 아래에 예시라고 밝힌다
-const PM_TILE_IMG = { bolt: 't-bolt', nut: 't-nut', washer: 't-washer', stud: 't-stud', pin: 't-pin', rivet: 't-rivet' };
-const pmPhoto = (n, w, h) => `<img src="${PM_MEDIA}${n}.webp" alt="" width="${w}" height="${h}" loading="lazy" decoding="async">`;
+const pmVideo = (n, label, w, h) => `<video class="pm-video" width="${w}" height="${h}" muted loop playsinline preload="none" poster="${PM_MEDIA}${n}-poster.jpg" aria-label="${esc(label)}"><source src="${PM_MEDIA}${n}.webm" type="video/webm"><source src="${PM_MEDIA}${n}.mp4" type="video/mp4"></video>`;
+const PM_TILE_IMG = { bolt: 'p-bolt', nut: 'p-nut', washer: 'p-washer', stud: 'p-stud', pin: 'p-pin', rivet: 'p-rivet' };
 const PM_COLL = {
   plant: ['A193 B7 · B7M · B8M · B16 · A320 L7', '스터드볼트와 헤비 육각너트. 고온·저온·사워 조건의 플랜지 볼팅'],
   pump: ['평행 키 · 다웰핀 · 멈춤링 · 플러그', '펌프·회전기기 정비 때 볼트와 함께 나오는 줄'],
@@ -205,7 +204,7 @@ const pmFacts = () => `<ul class="pm-facts" aria-label="볼트노트 한눈에">
   [`${iaYears()}<small>년</small>`, '회전기기 분야 기계엔지니어'],
   [`${SLA().days}<small>영업일</small>`, '20줄 이하 목록 견적 회신'],
 ].map(([b, t]) => `<li><b>${b}</b><span>${t}</span></li>`).join('')}</ul>`;
-const pmTiles = () => `<div class="ia-tiles pm-tiles" role="list">${CAT_TILES.map(t => `<a class="ia-tile pm-tile" role="listitem" href="#t-${t.id}" data-go="t-${t.id}"><span class="pm-media">${pmPhoto(PM_TILE_IMG[t.id] || 't-bolt', 512, 512)}</span><span class="pm-tile-b"><b>${esc(t.ko)}</b><span class="en" lang="en">${esc(t.en)}</span><span class="cnt">${iaTileN(t)}종</span><span class="pm-arr" aria-hidden="true">→</span></span></a>`).join('')}</div>`;
+const pmTiles = () => `<div class="ia-tiles pm-tiles" role="list">${CAT_TILES.map(t => `<a class="ia-tile pm-tile" role="listitem" href="#t-${t.id}" data-go="t-${t.id}"><span class="pm-media">${pmImg(PM_TILE_IMG[t.id] || 'p-bolt', '', 480, 360)}</span><span class="pm-tile-b"><b>${esc(t.ko)}</b><span class="en" lang="en">${esc(t.en)}</span><span class="cnt">${iaTileN(t)}종</span><span class="pm-arr" aria-hidden="true">→</span></span></a>`).join('')}</div>`;
 const pmColls = () => `<div class="pm-colls" role="list">${Object.entries(PM_COLL).map(([k, [spec, d]], i) => `<a class="pm-coll${k === 'plant' ? ' hi' : ''}" role="listitem" href="#k-${k}" data-go="k-${k}"><span class="pm-no">0${i + 1}</span><b>${esc(CAT_COLL[k].ko)}</b><span class="pm-spec">${esc(spec)}</span><span class="pm-d">${esc(d)}</span><span class="pm-more">${CAT_COLL[k].f.length}종 보기 <span aria-hidden="true">→</span></span></a>`).join('')}</div>`;
 const PM_MATCH = [
   ['규격·등급', 'A193 B7·B7M·B16, A320 L7, A453 660처럼 재질 규격과 등급을 정하고, 짝이 되는 A194 너트 등급까지 맞춥니다. KS·ISO·DIN·JIS 미터 규격도 대응을 봅니다.'],
@@ -237,85 +236,69 @@ function pmMail() {
   const subj = '[목록견적] ', body = ['볼트노트 견적 담당자님께', '목록 파일을 첨부합니다.', '필요한 날짜·납품지:', '필요한 서류(3.1, CoC):'].join('\r\n');
   return `<a class="pm-btn ghost" href="${esc('mailto:' + String(CONTACT.rfq).trim() + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body))}">견적 메일 보내기</a>`;
 }
-V.home = () => {
-  const h = hmH1();
-  return `<div class="pm-home" id="z-a">
-  <section class="pm-hero" aria-labelledby="h-z-a">
-    <div class="pm-w pm-hero-in">
-      <div class="pm-hero-tx">
-        ${ORDER_LIVE ? '' : '<a class="ia-status pm-status" href="#about" data-go="about"><i aria-hidden="true"></i>검증 운영 중: 참고 견적을 드립니다 <span aria-hidden="true">→</span></a>'}
-        <p class="pm-eye" lang="en">BOM → ASTM / ASME specs → quality docs</p>
-        <div class="ia-hero"><h1 id="h-z-a" tabindex="-1">${h.h1}</h1><p>${h.sub}</p></div>
-        ${sbBox('home')}
+/* 홈은 제품 탐색 → 목록 견적 → 현장별 볼팅 → 기술자료 순서로 연결한다.
+   이미지에는 규격값을 넣지 않고, 품목 수와 사전 수는 공개 데이터에서 계산한다. */
+V.home = () => `<div class="bn-home bn-studio" id="z-a">
+  <section class="bn-hero bn-cinema" aria-labelledby="h-z-a">
+    <div class="bn-wrap bn-hero-grid">
+      <div class="bn-hero-copy">
+        <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
+        <h1 id="h-z-a" tabindex="-1">정확한 부품.<br><em>견고한 연결.</em></h1>
+        <p class="bn-hero-lead">플랜지에서 회전축까지, 연결의 시작은 사양입니다.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
+        <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 살펴보기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a></div>
+        <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
+        <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>
       </div>
-      <figure class="pm-hero-fig">
-        <div class="pm-hero-media pm-3d">${pmVideo('hero-flange', 'ASME B16.5 NPS 4 Class 300 플랜지 이음을 돌려 보며, 스터드볼트 8개의 너트를 1-5-3-7-2-6-4-8 순서로 조이는 3D 장면', 1280, 960)}</div>
-        <figcaption><span class="mono">ASME B16.5 · NPS 4 · Class 300</span><span>스터드 8개 · 조임 순서 1-5-3-7-2-6-4-8</span></figcaption>
-      </figure>
+      ${bnFilmMarkup()}
     </div>
-    <div class="pm-w">${pmFacts()}</div>
+    ${bnFilmNavigation()}
   </section>
-  <div class="pm-w pm-doors-w">${hmDoors()}<div id="ia-filep" class="ia-filep-w" hidden></div></div>
-  <section class="pm-sec" aria-labelledby="pm-h-match">
-    <div class="pm-w pm-split rev">
-      <div class="pm-split-tx">${pmHead('What we match', 'pm-h-match', '줄마다 세 가지를 맞춥니다', '구매 담당자가 가진 것은 이 사이트의 품번이 아니라 BOM과 단면도의 표기입니다. 그 표기를 규격, 치수, 서류로 나눠 맞추고, 맞지 않는 곳은 질문으로 돌려 드립니다.')}
-        <ol class="pm-match">${PM_MATCH.map(([t, d], i) => `<li><span class="pm-no">0${i + 1}</span><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ol>
-        <ul class="pm-tools">${[['ref', '표기·사양 읽기', ''], ['tools', '플랜지 스터드 길이 (B16.5)', 'flange'], ['tools', '3.1 성적서 읽는 법', 'cert'], ['tools', '재질 대조', 'mat']].map(([g, t, k]) => `<li><a href="#${g}" data-go="${g}"${k ? ` data-tab="${k}"` : ''}>${t}<span aria-hidden="true">→</span></a></li>`).join('')}</ul>
-      </div>
-      <figure class="pm-shot">${pmImg('match-docs', 'BOM 세 줄을 차례로 읽어 ASTM·ASME 규격과 등급, 조건, 필요한 서류(제조사 3.1, 경도 기록, 충격시험, 코팅 성적서, CoC)로 맞추는 장면', 640, 480)}</figure>
-    </div>
-  </section>
-  ${typeof LIB !== 'undefined' && LIB.length ? `<section class="pm-sec pm-sec-2" aria-labelledby="pm-h-lib">
-    <div class="pm-w pm-lib">
-      <div>${pmHead('Library', 'pm-h-lib', '체결부품 규격 사전', `ASTM·ASME·ISO·EN·DIN·KS·JIS 규격과 등급, 나사, 서류·시험, 코팅, 부품 용어 ${LIB.length}개를 엔지니어가 정리했습니다. BOM의 표기를 사전처럼 찾아보세요.`, '<a class="pm-link" href="#lib" data-go="lib">사전 전체 보기 <span aria-hidden="true">→</span></a>')}</div>
-      <div class="pm-lib-f"><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: B7M, 2H, EN 10204 3.1, 렌치볼트" autocomplete="off" spellcheck="false"><button type="submit">사전 찾기</button></form><div class="lib-pop"><span class="lab">자주 찾는 항목</span>${LIB_POP.slice(0, 8).map(libLink).join('')}</div></div>
-    </div>
-  </section>` : ''}
-  <section class="pm-sec" aria-labelledby="pm-h-prod">
-    <div class="pm-w">${pmHead('Products', 'pm-h-prod', '품목으로 찾기', '미터 KS·ISO·DIN·JIS 규격품부터 인치 ASME·ASTM 플랜트 볼트까지, 품목마다 규격표와 치수 도면을 붙였습니다.', '<a class="pm-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">→</span></a>')}
-    ${pmTiles()}
-    <p class="small muted pm-imgnote">품목 이미지는 이해를 돕는 예시이며, 실제 공급 제품의 사진이 아닙니다.</p></div>
-  </section>
-  <section class="pm-band pm-plant" aria-labelledby="pm-h-plant">
-    <div class="pm-w pm-split">
-      ${pmB165()}
-      <div class="pm-split-tx">${pmHead('Plant bolting', 'pm-h-plant', '플랜지 볼팅은 세트로 봅니다', '압력 등급과 호칭으로 스터드 지름·길이·개수를 계산하고, 재질에 맞는 A194 너트와 필요한 서류를 함께 정합니다.')}
-        <ul class="pm-checks">${PM_PLANT.map(t => `<li>${t}</li>`).join('')}</ul>
-        <div class="pm-acts"><a class="pm-btn" href="#tools" data-go="tools" data-tab="flange">플랜지 스터드 길이 계산 <span aria-hidden="true">→</span></a><a class="pm-btn ghost" href="#k-plant" data-go="k-plant">플랜트 볼팅 모아 보기</a></div>
-      </div>
+  <div class="bn-facts bn-wrap" aria-label="카탈로그 안내">
+    <div><b>${CAT_TILES.length}<small> PRODUCT CATEGORIES</small></b><span>품목별로 찾는 제품군</span></div>
+    <div><b>${pmCatN()}<small> FASTENER TYPES</small></b><span>미터·인치 체결부품</span></div>
+    <div><b>CAD<small> STEP &amp; DXF</small></b><span>제공 품목의 도면과 모델</span></div>
+    <a href="#lib" data-go="lib"><b>${LIB.length}<small> ENGINEERING NOTES</small></b><span>판단의 근거를 찾는 사전 <i aria-hidden="true">↗</i></span></a>
+  </div>
+  <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
+    <div class="bn-wrap">
+      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / THE PRODUCT COLLECTION</p><h2 id="bn-h-products">작지만,<br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><p>볼트 하나부터 플랜트 볼팅 세트까지.<br>형상과 용도에 맞는 제품을 살펴보세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
+      <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요.</p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
     </div>
   </section>
-  <section class="pm-sec" aria-labelledby="pm-h-coll">
-    <div class="pm-w">${pmHead('Collections', 'pm-h-coll', '현장별로 모아 보기', '자주 함께 나오는 줄을 현장 기준으로 묶었습니다.')}
-    ${pmColls()}</div>
-  </section>
-  <section class="pm-band" aria-labelledby="pm-h-proc">
-    <div class="pm-w pm-split">
-      <figure class="pm-shot">${pmImg('proc-list', '받은 목록 여섯 줄을 한 줄씩 읽어 견적, 질문, 공급 불가로 나누고 견적서·C&D·공급 불가 목록을 만드는 과정', 720, 450)}</figure>
-      <div class="pm-split-tx">${pmHead('How it works', 'pm-h-proc', '목록이 견적서가 되기까지')}
-        <ol class="pm-steps">${PM_STEPS.map(([t, d], i) => `<li><span class="pm-no">0${i + 1}</span><div><b>${t}</b><p>${d}</p></div></li>`).join('')}</ol>
-        <div class="pm-acts"><a class="pm-btn" href="#list" data-go="list">목록 견적 시작 <span aria-hidden="true">→</span></a></div>
-      </div>
+  <section class="bn-section bn-applications" aria-labelledby="bn-h-applications">
+    <div class="bn-wrap"><div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">02 / CONNECTIONS IN CONTEXT</p><h2 id="bn-h-applications">설비는 달라도,<br>체결에는 기준이 있습니다.</h2></div><p>함께 쓰는 부품을 용도별로 모았습니다.<br>조인트 조건과 도면을 함께 확인하세요.</p></div>
+      <div class="bn-application-grid">${Object.entries(PM_COLL).map(([k,[spec,d]],i)=>`<a class="bn-application" href="#k-${k}" data-go="k-${k}"><div class="bn-application-image"><img src="media/boltnote-application-${['flange','shaft','flange'][i]}.webp" alt="${['플랜지의 스터드와 헤비 육각너트','키·멈춤링을 사용하는 회전축','플랜지 조인트의 체결부품 구성'][i]}" width="600" height="450" loading="lazy" decoding="async"><span>0${i+1}</span></div><div class="bn-application-body"><h3>${esc(CAT_COLL[k].ko)}</h3><p>${esc(d)}</p><span class="bn-application-link">제품 모아 보기 <i aria-hidden="true">↗</i></span></div></a>`).join('')}</div>
     </div>
   </section>
-  <section class="pm-sec pm-sec-2" aria-labelledby="pm-h-trust">
-    <div class="pm-w">${pmHead('How we work', 'pm-h-trust', '운영 원칙', '혼자 운영하는 곳이라 할 수 있는 일과 하지 않는 일을 먼저 적어 둡니다.')}
-    ${hmTrust()}</div>
-  </section>
-  <section class="pm-cta" aria-labelledby="pm-h-cta">
-    <div class="pm-w pm-cta-in">
-      <div><h2 id="pm-h-cta">다음 정비 목록, 한 번 보내 보세요</h2><p>급한 건이 아니어도 괜찮습니다. 견적서를 보고 판단하시면 됩니다.</p></div>
-      <div class="pm-acts"><a class="pm-btn" href="#list" data-go="list">목록 견적 시작 <span aria-hidden="true">→</span></a>${pmMail()}</div>
-    </div>
-  </section>
+  <section class="bn-section bn-specs" aria-labelledby="bn-h-specs"><div class="bn-wrap bn-spec-grid">
+    <div><p class="bn-eyebrow" lang="en">03 / BEFORE YOU BUY</p><h2 id="bn-h-specs">비슷한 모양.<br>다른 사양.</h2><p class="bn-spec-lead">외형만으로 정하지 않습니다.<br>구매 전에 확인할 기준을 한 번 더 살펴보세요.</p><a class="bn-text-link" href="#lib?path=purchase" data-go="lib?path=purchase">구매·입고 확인 경로 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-spec-list">${[
+      ['호칭과 피치','M16과 5/8", UNC와 8UN. 비슷한 굵기여도 나사는 호환되지 않습니다. 미터·인치, 피치·산 수, 나사 공차를 함께 확인합니다.','thread-fit'],
+      ['머리 형상과 길이 기준','머리 모양에 따라 길이를 재는 기준과 공구가 달라집니다. 스터드 포인트 포함 여부, 나사부 길이, 좌면과 체결 깊이를 도면으로 확인합니다.','bolt-nut-washer'],
+      ['재질·등급과 너트 조합','재질 규격과 강도 등급은 각각 확인합니다. 플랜트 볼팅은 온도·사용 환경을 보고 스터드와 짝이 되는 너트 등급을 함께 정합니다.','material-grade'],
+      ['표면처리와 필요한 서류','코팅 조건과 조립 시 나사 끼워맞춤, 추적·검사 서류를 함께 확인합니다. 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.','inspection-documents']
+    ].map(([t,d,id],i)=>`<details class="bn-spec"><summary><span>0${i+1}</span><h3>${t}</h3><i aria-hidden="true">+</i></summary><div><p>${d}</p><a href="#lib?topic=${id}" data-go="lib?topic=${id}">관련 지식 살펴보기 <span aria-hidden="true">↗</span></a></div></details>`).join('')}</div>
+  </div></section>
+  <section class="bn-section bn-resources" aria-labelledby="bn-h-resources"><div class="bn-wrap">
+    <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">04 / KNOWLEDGE, CONNECTED</p><h2 id="bn-h-resources">규격을 알고,<br>판단의 근거를 찾습니다.</h2></div><a class="bn-text-link" href="#lib" data-go="lib">지식 지도 전체 보기 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-knowledge-head"><p><b>${LIB.length}</b>개의 항목을 <b>${LIB_TOPICS.length}</b>개 주제로.<br>품목부터 찾아도, 목적부터 읽어도 됩니다.</p><form id="pm-lib-form" role="search"><label class="sr" for="pm-lib-q">규격 사전에서 찾기</label><input id="pm-lib-q" type="search" placeholder="예: A193 B7, 나사 공차, 3.1" autocomplete="off" spellcheck="false"><button type="submit" aria-label="규격 사전 검색">↗</button></form></div>
+    <div class="bn-topic-grid">${LIB_TOPICS.map((t,i)=>`<a class="bn-topic" href="#lib?topic=${t.id}" data-go="lib?topic=${t.id}"><span class="bn-topic-no">0${i+1}</span><span><b>${esc(t.title)}</b><small>${esc(t.en)} · ${t.entries.length}개 항목</small></span><i aria-hidden="true">↗</i></a>`).join('')}</div>
+    <div class="bn-reading-paths"><span>목적별로 읽기</span>${LIB_PATHS.map(p=>`<a href="#lib?path=${p.id}" data-go="lib?path=${p.id}">${esc(p.title)} <i aria-hidden="true">↗</i></a>`).join('')}</div>
+    <div class="bn-resource-shortcuts"><a href="#ref" data-go="ref"><span>DRAWINGS &amp; CAD</span><h3>형상과 치수를 먼저.</h3><p>제공 품목의 도면 · STEP · DXF</p><i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools"><span>ENGINEERING TOOLS</span><h3>계산과 대조를 함께.</h3><p>스터드 길이 · 재질 · 각인 표기</p><i aria-hidden="true">↗</i></a></div>
+  </div></section>
+  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-rfq-grid">
+    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>엑셀이나 부품표의 표기를 그대로 붙여 넣으세요.<br>규격·등급·수량을 읽고, 확인할 내용을 보여 드립니다.</p><ol class="bn-rfq-points"><li><span>01</span> 목록과 도면을 보냅니다</li><li><span>02</span> 빠진 사양을 함께 확인합니다</li><li><span>03</span> 공급처 확인 뒤 견적서로 답합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
+    <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 사양 확인</span><small>BOM · 엑셀 · CSV</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE?'단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.':'<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">↗</span></a>'}</div></div>
+  </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div></section>
+  <section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET’S MAKE THE CONNECTION.</p><h2 id="bn-h-cta">목록 하나로,<br>다음 연결을 시작하세요.</h2></div><a class="bn-cta-circle" href="#list" data-go="list"><span aria-hidden="true">↗</span><b>견적 요청</b></a></div></section>
 </div>`;
-};
+
 V.after.home = () => {
   sbInit('home'); hmBind();
-  const vid = view().querySelector('.pm-video');
-  if (vid) { try { if (reduced()) { vid.removeAttribute('autoplay'); vid.pause(); } else { const pr = vid.play(); if (pr && pr.catch) pr.catch(() => {}); } } catch (e) {} }
+  bnFilmInit();
   const f = $('pm-lib-form');
-  if (f) f.addEventListener('submit', e => { e.preventDefault(); state.lib = { q: $('pm-lib-q').value.trim(), kind: '', org: '' }; go('lib'); });
+  if (f) f.addEventListener('submit', e => { e.preventDefault(); go(libURL({ q: $('pm-lib-q').value.trim() })); });
 };
 function hmBind() {
   const v = view();
@@ -785,7 +768,7 @@ V.c = id => {
   const safety = f.safety ? note(f.safety[0], esc(f.safety[1]), f.safety[0] === 'crit' ? '불가' : '안전') : '';
   // naText는 조건부 안내(제조사 품번·상표가 지정된 줄): 품목 자체는 사양을 적어 견적 요청할 수 있다
   const na = f.naText ? note('warn', esc(f.naText), '안내') : '';
-  const notes = f.notes.length ? `<div class="fnote"><h3>이 품목에서 자주 확인하는 것</h3><dl>${f.notes.map(n => `<dt${n.red ? ' class="redp"' : ''}>${esc(n.t || '확인')}</dt><dd>${esc(n.d)}</dd>`).join('')}</dl></div>` : '';
+  const notes = (f.notes.length ? `<div class="fnote"><h3>이 품목에서 자주 확인하는 것</h3><dl>${f.notes.map(n => `<dt${n.red ? ' class="redp"' : ''}>${esc(n.t || '확인')}</dt><dd>${esc(n.d)}</dd>`).join('')}</dl></div>` : '') + libProductLinks(f.id);
   const docs = (() => { try { return cadTrustLine({ fam: f.id, cat: f.g, system: f.sys === 'inch' ? 'inch' : 'metric' }); } catch { return '제조사 MTR(EN 10204 3.1) 제공 여부: 공급처 확인 중 — 견적 시 회신'; } })();
   const kv = [['규격', f.std.map(x => x[1]).join(' · ')], ['체계', f.sys === 'inch' ? '인치' : f.sys === 'both' ? '미터·인치' : '미터'], ['공급 구분', f.tier || '견적 문의'], ['서류', `CoC 기본 · ${docs}`], ...(f.use ? [['용도', f.use]] : []), ...(f.quoteNote ? [['견적', f.quoteNote]] : [])];
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';

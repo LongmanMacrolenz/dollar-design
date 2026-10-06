@@ -17,6 +17,7 @@ SITE_URL = "https://boltnote.boltnote.workers.dev/"
 CHECKED = "2026-10"
 KIND = {"std": "규격", "grade": "등급", "mat": "재질", "thread": "나사", "concept": "개념·설계", "doc": "서류", "test": "시험", "coat": "코팅·부식", "part": "부품 용어"}
 KIND_ORDER = ["std", "grade", "mat", "thread", "concept", "doc", "test", "coat", "part"]
+GUIDE = json.loads((ROOT / "lib-guide.json").read_text(encoding="utf-8"))
 e = html.escape
 
 
@@ -39,7 +40,7 @@ CSS = """
 a{color:inherit}.w{max-width:1180px;margin:0 auto;padding:0 clamp(16px,2.4vw,32px)}
 header{background:var(--night);color:var(--tx);border-bottom:1px solid rgba(255,255,255,.07)}
 header .w{display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.03em}.brand svg{width:30px;height:30px;color:var(--acc)}
+.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.03em}.brand img{width:190px;height:auto;display:block}
 nav.top{display:flex;gap:4px;flex:1;flex-wrap:wrap}nav.top a{color:var(--tx-2);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}nav.top a:hover,nav.top a.on{color:#fff;background:rgba(255,255,255,.06)}
 .cta{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:9px;background:var(--acc);color:var(--ink);font-weight:800;text-decoration:none}
 main{padding:28px 0 64px}.crumbs{font-size:13px;color:var(--ink-3);margin-bottom:10px}.crumbs a{color:var(--ink-2)}
@@ -59,9 +60,17 @@ table{border-collapse:collapse;width:100%;background:var(--sheet);font-size:14px
 .q{width:100%;min-height:52px;padding:0 16px;border:1.5px solid var(--hair);border-radius:12px;font-size:16px;margin:16px 0 8px;background:var(--sheet)}
 .sec{margin-top:28px}.sec>h2{display:flex;gap:8px;align-items:baseline}.sec>h2 small{font-size:12.5px;color:var(--ink-3);font-weight:600}
 footer{background:var(--night);color:var(--tx-2);font-size:13px;padding:36px 0}footer b{color:var(--tx)}footer .r{display:flex;flex-wrap:wrap;gap:4px 16px;padding:10px 0;border-top:1px solid var(--line)}footer a{color:var(--tx-2)}
+:root{--paper:#F5F7FA;--sheet:#fff;--acc:#FF6B35;--hl-soft:#FFF1E9}
+[hidden]{display:none!important}.w{max-width:1280px}html{scroll-padding-top:20px}a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.cta{color:#131C29}.library-head{max-width:760px}.eyebrow{font-size:11px;letter-spacing:.08em;color:var(--ink-3);font-weight:700}.intro{margin:14px 0 24px;color:var(--ink-2)}
+.library-paths,.library-map{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0 32px}.path,.topic{padding:22px 20px;border-radius:10px;text-decoration:none;display:flex;flex-direction:column;gap:8px}.path{background:var(--night);color:#fff}.path span{color:var(--tx-2);font-size:12px}.path b,.topic b{font-size:17px}.path p,.topic p{font-size:13px;margin:0}.topic{border:1px solid var(--hair-2);background:var(--sheet)}.topic small{font-size:11px;color:var(--ink-3)}.topic p{color:var(--ink-2)}
+.library-search{padding:22px 24px;border:1px solid var(--hair-2);background:var(--sheet);border-radius:10px;margin-bottom:32px}.library-search label{font-size:14px;font-weight:700}.q{margin:10px 0}.search-note{font-size:12px;color:var(--ink-3);margin:0}.no-results{border:1px solid var(--hair-2);padding:24px;background:var(--sheet);border-radius:10px}.no-results button{padding:12px 16px;cursor:pointer}
+.toc,.entry-tools{display:flex;flex-wrap:wrap;gap:8px 24px;margin:20px 0}.toc a,.entry-tools a{font-size:13px;padding:8px 0}.toc{border-bottom:1px solid var(--hair-2)}.reading{list-style:none;padding:0;margin:0}.reading li{margin:16px 0}.reading li>span{display:block;font-size:12px;font-weight:700;margin-bottom:8px}.chip{min-height:40px;max-width:100%;overflow-wrap:anywhere}.chip.current{background:var(--ink);color:var(--sheet)}.sec>p{color:var(--ink-2);font-size:14px}.cards .card{min-width:0;overflow-wrap:anywhere}
+@media(max-width:960px){.library-paths,.library-map{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.library-paths{grid-template-columns:minmax(0,1fr)}.topic{padding:18px 14px}.topic b{font-size:15px}.library-search{padding:18px}.brand{font-size:18px}nav.top a{padding:10px 8px}}
 @media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}nav.top{order:3;flex-basis:100%}}
 """
-MARK = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>'
+MARK = '<img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote">'
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700;800&display=swap" rel="stylesheet">'
 
 
@@ -69,10 +78,11 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None) ->
     url = SITE_URL + path
     return (
         '<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        '<link rel="icon" href="/brand/boltnote-mark.svg" type="image/svg+xml">\n'
         f"<title>{e(title)}</title>\n<meta name=\"description\" content=\"{e(desc)}\">\n<link rel=\"canonical\" href=\"{url}\">\n"
         f'<meta property="og:type" content="article"><meta property="og:site_name" content="볼트노트"><meta property="og:locale" content="ko_KR">'
         f'<meta property="og:url" content="{url}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
-        f'<meta property="og:image" content="{SITE_URL}og.png"><meta name="twitter:card" content="summary_large_image">\n'
+        f'<meta property="og:image" content="{SITE_URL}brand/boltnote-social.png"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
         + f"{FONTS}\n<style>{CSS}</style>\n</head>\n<body>\n{body}\n</body>\n</html>\n"
     )
@@ -84,7 +94,7 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 def header(on: str = "lib") -> str:
     nav = [("/#products", "제품", ""), ("/#list", "목록 견적", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
-    return ('<header><div class="w"><a class="brand" href="/">' + MARK + '볼트노트</a><nav class="top" aria-label="주 메뉴">'
+    return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
             + '</nav><a class="cta" href="/#list">목록 견적 →</a></div></header>')
 
@@ -101,7 +111,7 @@ def footer(info: dict) -> str:
     elif info["kakao"]: r2.append(f"카카오톡 {e(info['kakao'])} (채널 공개 준비 중)")
     r2.append("호스팅 Cloudflare, Inc. (미국)")
     r3 = ['<a href="/#privacy"><b>개인정보 처리방침</b></a>', '<a href="/#terms">이용약관</a>', '<a href="/#about">회사 소개</a>']
-    return ('<footer><div class="w">' + "".join(f'<div class="r">{" ".join(f"<span>{x}</span>" for x in row)}</div>' for row in (r1, r2, r3))
+    return ('<footer><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a>' + "".join(f'<div class="r">{" ".join(f"<span>{x}</span>" for x in row)}</div>' for row in (r1, r2, r3))
             + f'<div class="r"><span>규격 사전은 발행 기관 공개 자료·공식 미리보기·공공 문서와, 일부 값은 제조·유통사 공개 기술자료 3곳 이상을 대조해 요점을 정리한 것입니다 (확인 {CHECKED}). 계약·설계에는 규격 원문을 확인하세요.</span></div></div></footer>')
 
 
@@ -112,24 +122,38 @@ def badges(x: dict) -> str:
 
 
 def entry_html(x: dict, by: dict, info: dict) -> str:
+    topic = next(t for t in GUIDE["topics"] if x["id"] in t["entries"])
+    path = next((p for p in GUIDE["paths"] if any(x["id"] in s["entries"] for s in p["steps"])), None)
+    reading = ""
+    if path:
+        for i, step in enumerate(path["steps"], 1):
+            chips = "".join(f'<span class="chip current" aria-current="page">{e(by[r]["t"])}</span>' if r == x["id"]
+                            else f'<a class="chip" href="/lib/{r}">{e(by[r]["t"])}</a>' for r in step["entries"])
+            reading += f'<li><span>0{i} {e(step["title"])}</span><div class="chips">{chips}</div></li>'
+        reading = (f'<div class="box"><h2>함께 읽기 · {e(path["title"])}</h2><ol class="reading">{reading}</ol>'
+                   f'<a href="/#lib?path={path["id"]}">읽기 경로 전체 보기 →</a></div>')
     tbl = ""
     t = x.get("table")
     if t and t.get("rows"):
-        tbl = (f'<h2>{e(t.get("cap", ""))}</h2><div class="tw"><table><thead><tr>' + "".join(f"<th>{e(h)}</th>" for h in t.get("head", []))
+        tbl = (f'<h2 id="table">{e(t.get("cap", ""))}</h2><div class="tw"><table><thead><tr>' + "".join(f"<th>{e(h)}</th>" for h in t.get("head", []))
                + "</tr></thead><tbody>" + "".join("<tr>" + "".join(f"<td>{e(str(c))}</td>" for c in r) + "</tr>" for r in t["rows"]) + "</tbody></table></div>"
                + (f'<p class="src">{e(t["note"])}</p>' if t.get("note") else ""))
     rel = [by[r] for r in x.get("rel", []) if r in by]
     fams = x.get("famko", {})
     body = (header() + '<main><div class="w">'
-            + f'<p class="crumbs"><a href="/">홈</a> › <a href="/lib/">규격 사전</a> › {e(x["t"])}</p><h1>{e(x["t"])}</h1>'
+            + f'<p class="crumbs"><a href="/">홈</a> › <a href="/lib/">규격 사전</a> › <a href="/lib/#topic-{topic["id"]}">{e(topic["title"])}</a> › {e(x["t"])}</p><h1>{e(x["t"])}</h1>'
             + f'<p class="bd">{badges(x)}</p><p class="ko">{e(x.get("ko", ""))}</p>' + (f'<p class="en" lang="en">{e(x["en"])}</p>' if x.get("en") else "")
-            + '<div class="grid"><article>'
+            + f'<div class="entry-tools"><a href="/#lib-{x["id"]}">사이트에서 이 항목 보기 ↗</a><a href="/lib/#topic-{topic["id"]}">← 주제 목록으로</a></div>'
+            + '<nav class="toc" aria-label="항목 안에서 이동"><a href="#core">핵심</a>'
+            + ('<a href="#table">표·조건</a>' if tbl else '') + ('<a href="#watch">구매 시 주의</a>' if x.get("watch") else '')
+            + '<a href="#source">근거</a></nav><div class="grid"><article>'
             + f'<p class="lead">{e(x.get("sum", ""))}</p>' + (f'<p class="{STL[x["status"].startswith("현행")]}">상태: {e(x["status"])}</p>' if x.get("status") else "")
-            + '<h2>핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl
-            + ('<section class="watch"><h2>BOM·구매 때 주의</h2><ul class="f">' + "".join(f"<li>{e(w)}</li>" for w in x["watch"]) + "</ul></section>" if x.get("watch") else "")
+            + '<h2 id="core">핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl
+            + ('<section class="watch" id="watch"><h2>BOM·구매 때 주의</h2><ul class="f">' + "".join(f"<li>{e(w)}</li>" for w in x["watch"]) + "</ul></section>" if x.get("watch") else "")
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
-            + f'<p class="src">근거: {e(" · ".join(x.get("src", [])))} · 확인 {CHECKED}. 규격 원문을 옮긴 것이 아니라 요점을 정리한 것입니다.</p>'
+            + f'<p class="src" id="source">근거: {e(" · ".join(x.get("src", [])))} · 확인 {CHECKED}. 규격 원문을 옮긴 것이 아니라 요점을 정리한 것입니다.</p>'
             + "</article><aside>"
+            + f'<div class="box"><h2>지식 지도 · {e(topic["title"])}</h2><p>{e(topic["desc"])}</p><a href="/lib/#topic-{topic["id"]}">이 주제 전체 보기 →</a></div>' + reading
             + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
             + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="/#c-{e(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
             + '<div class="box dark"><h2>이 규격이 들어간 BOM이 있으신가요?</h2><p>표기 그대로 보내 주시면 줄마다 규격·등급과 필요한 서류를 맞춰 견적합니다.</p><a class="cta" href="/#list">목록 견적으로 →</a></div>'
@@ -141,23 +165,32 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
 
 
 def index_html(L: list, info: dict) -> str:
+    by = {x["id"]: x for x in L}
     secs = []
-    for k in KIND_ORDER:
-        xs = [x for x in L if x["kind"] == k]
-        if not xs: continue
-        secs.append(f'<section class="sec" data-k="{k}"><h2>{e(KIND[k])} <small>{len(xs)}개</small></h2><div class="cards">'
-                    + "".join(f'<a class="card" href="/lib/{x["id"]}" data-s="{e((x["t"] + " " + x.get("ko", "") + " " + " ".join(x.get("aka", []))).lower())}"><b>{e(x["t"])}</b><span>{e(x.get("ko", ""))}</span></a>' for x in xs)
-                    + "</div></section>")
-    js = ("<script>(()=>{const q=document.getElementById('q');q.addEventListener('input',()=>{const v=q.value.trim().toLowerCase().replace(/\\s+/g,'');"
-          "document.querySelectorAll('.card').forEach(c=>{c.hidden=v&&!c.dataset.s.replace(/\\s+/g,'').includes(v)});"
-          "document.querySelectorAll('.sec').forEach(s=>{s.hidden=![...s.querySelectorAll('.card')].some(c=>!c.hidden)})})})();</script>")
-    body = (header() + '<main><div class="w"><p class="crumbs"><a href="/">홈</a> › 규격 사전</p><h1>체결부품 규격 사전</h1>'
-            + f'<p class="lead" style="margin-top:10px">ASTM·ASME·ISO·EN·DIN·KS·JIS의 규격과 등급, 나사, 서류·시험, 코팅, 부품 용어 {len(L)}개를 기계엔지니어가 정리했습니다. 규격 원문이 아니라 BOM을 읽고 살 때 확인할 사실과 값만 적습니다.</p>'
-            + '<label for="q" style="position:absolute;left:-9999px">사전에서 찾기</label><input class="q" id="q" type="search" placeholder="예: B7M, 2H, 8.8, EN 10204 3.1, 렌치볼트" autocomplete="off">'
+    for topic in GUIDE["topics"]:
+        cards = []
+        for id in topic["entries"]:
+            x = by[id]
+            search = " ".join([x["t"], x.get("ko", ""), x.get("en", ""), *x.get("aka", []),
+                               x.get("sum", ""), *x.get("facts", []), *x.get("watch", [])])
+            cards.append(f'<a class="card" href="/lib/{id}" data-s="{e(search)}"><b>{e(x["t"])}</b><span>{e(x.get("ko", ""))}</span></a>')
+        secs.append(f'<section class="sec" id="topic-{topic["id"]}"><h2>{e(topic["title"])} <small>{len(cards)}개</small></h2>'
+                    + f'<p>{e(topic["desc"])}</p><div class="cards">' + "".join(cards) + "</div></section>")
+    paths = "".join(f'<a class="path" href="/#lib?path={p["id"]}"><span>{e(p["audience"])}</span><b>{e(p["title"])} ↗</b><p>{e(p["desc"])}</p><span>{len(p["steps"])}단계 읽기</span></a>' for p in GUIDE["paths"])
+    topics = "".join(f'<a class="topic" href="#topic-{t["id"]}"><small>{e(t["en"])}</small><b>{e(t["title"])}</b><p>{e(t["desc"])}</p><small>{len(t["entries"])}개 항목 →</small></a>' for t in GUIDE["topics"])
+    js = '<script>' + (ROOT / "lib-index.js").read_text(encoding="utf-8") + '</script>'
+    body = (header() + '<main><div class="w"><p class="crumbs"><a href="/">홈</a> › 규격 사전</p>'
+            + '<div class="library-head"><p class="eyebrow">FASTENER KNOWLEDGE LIBRARY</p><h1>체결부품 지식 라이브러리</h1>'
+            + '<p class="intro">부품을 고르고, 도면을 읽고, 구매 조건을 정리할 때. 규격과 실무 지식을 필요한 순서로 찾아보세요.</p></div>'
+            + f'<form class="library-search" id="search" role="search"><label for="q">규격 번호, 품목 이름, 궁금한 개념으로 찾기</label><input class="q" id="q" type="search" placeholder="예: A193 B7, 토크 예압, 핀, EN 10204 3.1" maxlength="200" autocomplete="off"><p class="search-note">{len(L)}개 항목 · 규격·개념·구매 시 주의까지 검색합니다. Enter를 누르면 검색 결과로 이동합니다.</p></form>'
+            + '<div id="overview"><h2>무엇을 확인하고 계신가요?</h2><div class="library-paths">' + paths + '</div>'
+            + '<h2>체결부품 지식의 전체 지도</h2><nav class="library-map" aria-label="라이브러리 주제">' + topics + '</nav></div>'
+            + f'<p class="search-note" id="count" aria-live="polite" aria-atomic="true">{len(L)}개 항목</p>'
+            + '<div class="no-results" id="empty" hidden><p>현재 검색어에 맞는 항목이 없습니다. 단어를 줄여 다시 찾아보세요.</p><button id="reset" type="button">검색 지우기</button><p>사전에 없는 사양은 <a href="/#list">목록 견적</a>에 보내 주세요.</p></div>'
             + "".join(secs) + "</div></main>" + footer(info) + js)
     ld = {"@context": "https://schema.org", "@type": "DefinedTermSet", "name": "볼트노트 체결부품 규격 사전", "url": f"{SITE_URL}lib/",
           "hasDefinedTerm": [{"@type": "DefinedTerm", "name": x["t"], "url": f"{SITE_URL}lib/{x['id']}"} for x in L]}
-    return page("체결부품 규격 사전 | 볼트노트", f"ASTM·ASME·ISO·EN·DIN·KS·JIS 체결부품 규격과 등급, 나사, 서류·시험, 코팅 {len(L)}개 항목을 엔지니어가 정리한 사전", "lib/", body, ld)
+    return page("체결부품 지식 라이브러리 | 볼트노트", f"체결부품 규격과 실무 지식 {len(L)}개 항목. 주제별 탐색과 BOM·플랜지·기계 조립·구매 확인 읽기 경로", "lib/", body, ld)
 
 
 def main() -> None:

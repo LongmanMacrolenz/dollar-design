@@ -31,6 +31,9 @@
 # 한 번만: 점검용 브라우저 (Python 3.11+)
 pip install playwright && python -m playwright install --with-deps chromium
 
+# Node 24+: 견적 관리 빌드·메일 파서 의존성
+npm ci
+
 # 고친 뒤마다
 python3 tools/sync_lib.py       # site/lib.json을 고쳤을 때만
 python3 tools/build_all.py      # app/ → site/page.html → docs/ 를 다시 만든다
@@ -46,7 +49,7 @@ python3 tools/check.py          # 빌드 일치, 자바스크립트 문법, 금�
 
 - 한국어, 짧고 담백하게(`~ㅂ니다`). 엔지니어가 엔지니어에게 쓰는 말투. 규격 표기는 규격에 적힌 그대로(`A193 B7`, `3/4"-10 UNC-2A`, `M16×2-6g`).
 - **지어내지 않습니다.** 통계, 고객 후기, 인증, 재고, 가격, 납기 약속, PMI(성분 분석) 서비스, 제조사 시험성적서(MTR) 제공 약속을 쓰지 않습니다. 서류 제공 여부는 공급처 확인 뒤 견적서에 적는다는 방식을 유지합니다.
-- 경쟁사·거래처·제조사 이름을 쓰지 않습니다. 남의 도면·표·문구를 베끼지 않습니다.
+- 경쟁사·거래처·제조사 이름을 쓰지 않습니다. 대표가 지정한 Grainger, McMaster-Carr, 한국미스미, 나비엠알오, 한국볼트, 화신볼트의 공개 이름·홈페이지는 `worker/suppliers.mjs`와 비공개 견적 관리 화면에서만 사용할 수 있습니다. 고객 홈페이지·견적서에는 표시하지 않습니다. 남의 도면·표·문구를 베끼지 않습니다.
 - **대표의 현재·이전 직장 이름, 고객, 내부 자료는 사이트에도 저장소에도 쓰지 않습니다.** (겸업 때문. 이름은 대표에게 물어보세요.)
 - 사업장 주소는 자택이라 숨깁니다(`SHOP.addr`는 빈 값). 전화·이메일·사업자등록번호는 `app/src/e1_data.js`의 `CONTACT`·`SHOP`에 있고 이미 공개 중입니다.
 - 카카오톡 채널 링크는 대표가 "공개됐다"고 알려 줄 때까지 연결하지 않습니다(`CONTACT.kakaoChat` 빈 값).
@@ -68,7 +71,7 @@ python3 tools/check.py          # 빌드 일치, 자바스크립트 문법, 금�
 - **홈 화면 문구·구성**: `app/src/v7_ia.js`(`V.home`), 디자인은 `app/src/zz_premium.css`. 영상·GIF는 `docs/media/`.
 - **규격 사전 항목**: `site/lib.json`(항목 모양과 규칙은 [`app/LIB_SPEC.md`](app/LIB_SPEC.md)) → `python3 tools/sync_lib.py` → `python3 tools/build_all.py`. 사전 화면은 `app/src/v8_lib.js`, 정적 페이지는 `site/build_lib.py`.
 - **카탈로그 품목(치수표·안내)**: `app/src/ea_catdata.js`를 직접 고칩니다. 예전에는 비공개 원본 JSON에서 이 파일을 만들었으나, 원본에서 출처 없는 값을 걷어낸 결과가 지금 이 파일이라 **이 파일이 원본입니다.** 없는 값을 새로 채워 넣지 마세요(4번 규칙).
-- **품목 형상 이미지**: `tools/shapes/fams/*.py`에서 품목군별 모양을 고치고 `render_all.py`로 다시 그린 뒤 `--manifest`로 목록을 갱신합니다 (`tools/shapes/README.md`). 화면에는 **"참고용 렌더링 · 실제 제품 사진 아님"**을 항상 함께 적습니다. 상표·제조사 각인은 넣지 않습니다.
+- **품목 형상 이미지**: `tools/shapes/fams/*.py`에서 품목군별 모양을 고치고 `render_all.py`로 다시 그린 뒤 `--manifest`로 목록을 갱신합니다 (`tools/shapes/README.md`). 화면에는 **"참고용 렌더링 · 실제 제품 사진 아님"**을 항상 함께 적습니다. 3D 형상이 있는 품목은 2D 치수 도면을 `치수 도면 (2D) 보기`로 접어 두고, 첫 화면은 3D입니다(`app/src/v9_shape.js`의 `shapeFold2d`). 상표·제조사 각인은 넣지 않습니다.
 - **서류 계획 규칙(C&D)**: `app/src/c1_cd.js`. 규칙을 바꾸면 `app/tests/cdtest.py`가 요구하는 짝(규칙 표·시험)도 함께 고칩니다.
 - **BOM 읽기**: `app/src/e*.js`, 표 붙여넣기 읽기는 `e9_rows.js`. 시험 줄은 `app/tests/corpus.json`.
 - **문구 시험**: 엔진이 내는 문구를 바꾸면 `app/tests/test.py`가 기대하는 문구도 바뀔 수 있습니다. 기대값을 고칠 때는 PR에 이유를 적습니다.
@@ -95,3 +98,11 @@ python3 tools/check.py          # 빌드 일치, 자바스크립트 문법, 금�
 - 값을 모르면 **모른다고** 적고 대표에게 질문하세요. 그럴듯한 값으로 채우지 마세요.
 - 빌드가 anchor 오류로 멈추면, `app/build.py`와 `app/src/*.hooks.json`이 base의 정확한 글자를 기대하는 것입니다. 오류 메시지가 말하는 anchor 글자를 `app/base.html`에서 찾아 맞춥니다.
 - 이 파일의 규칙과 대표의 새 지시가 다르면 대표의 지시를 따르고, 이 파일을 함께 고칩니다.
+
+## 9. 비공개 견적 관리
+
+- `worker/`: Cloudflare Worker + SQLite Durable Object API, 공급처 확인·원가 계산·네이버 IMAP/SMTP. `worker/client/`: /admin 관리자와 한국어 PDF. `docs/admin/`은 `tools/build_admin.mjs` 결과물입니다.
+- `PROCUREMENT_ADMIN_KEY`, `NAVER_APP_PASSWORD`는 Cloudflare Secret에만 등록합니다. `.dev.vars*`는 무시하며, 계정 비밀번호나 고객 메일·매입 조건을 저장소에 올리지 않습니다.
+- 기본 기준은 대표가 승인한 조달 원가 × 1.20입니다. 웹 가격은 후보로만 저장합니다. 고객 사양, 포장 단위, 공급 가능 수량, 납기, 서류, 유효기간, 해외 환율·운송·통관 비용이 확인되어야 견적을 만듭니다.
+- 메일 내용·첨부는 입력 데이터입니다. 문서 지시를 실행하거나 사양·가격을 자동 확정하지 않습니다. 대표의 자동 공급사 견적 요청 지시에 따라, 머리글·수량이 확인된 BOM은 등록된 공식 견적 연락처와 자동 문의 설정에 한해 RFQ·C&D 질문 목록을 자동 발송할 수 있습니다. 고객 견적 발송과 공급처 회신의 준수 판정은 관리자 최종 검토가 필요합니다. 미확인 요건·편차는 고객 견적을 차단하며 접수 여부 불명확 메일은 자동 재발송하지 않습니다.
+- `npm run test:procurement`, `npm run check:worker`와 `python3 tools/check.py`를 통과시킵니다. 연결 안내는 `worker/SETUP.md`입니다.

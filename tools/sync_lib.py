@@ -20,6 +20,8 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 LIB_JSON = ROOT / "site" / "lib.json"
 EA_LIB = ROOT / "app" / "src" / "ea_lib.js"
+GUIDE_JSON = ROOT / "site" / "lib-guide.json"
+EA_GUIDE = ROOT / "app" / "src" / "ea_lib_guide.js"
 
 KINDS = {"std", "grade", "mat", "thread", "concept", "doc", "test", "coat", "part"}
 ORGS = {"ASTM", "ASME", "ISO", "EN", "DIN", "KS", "JIS", "SAE", "API", "NACE", "-"}
@@ -90,6 +92,38 @@ def render(entries, famko):
     return HEADER + "const LIB = " + body + ";\n", clean
 
 
+def guide_text(entries):
+    """One editorial map for the interactive and shareable static library."""
+    guide = json.loads(GUIDE_JSON.read_text(encoding="utf-8"))
+    ids = {x["id"] for x in entries}
+    covered = []
+    for group in ("topics", "paths"):
+        seen = set()
+        for x in guide[group]:
+            if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", x["id"]) or x["id"] in seen:
+                raise ValueError(f"lib-guide {group}: 잘못되거나 겹친 id {x['id']}")
+            seen.add(x["id"])
+            if not x.get("title") or not x.get("desc"):
+                raise ValueError(f"lib-guide: 제목·설명 누락 {x['id']}")
+            refs = x.get("entries", []) + x.get("featured", [])
+            for step in x.get("steps", []):
+                if not step.get("title") or not step.get("entries"):
+                    raise ValueError(f"lib-guide: 빈 읽기 단계 {x['id']}")
+                refs += step["entries"]
+            if not refs or set(refs) - ids:
+                raise ValueError(f"lib-guide: 없는 항목 {x['id']}: {set(refs) - ids}")
+            if group == "topics":
+                if not set(x["featured"]).issubset(x["entries"]):
+                    raise ValueError(f"lib-guide: 주제 밖 추천 항목 {x['id']}")
+                covered += x["entries"]
+    if set(covered) != ids or len(covered) != len(ids):
+        raise ValueError("lib-guide: 모든 항목을 정확히 한 주제에 분류해야 합니다")
+    if BANNED.search(json.dumps(guide, ensure_ascii=False)):
+        raise ValueError("lib-guide: 금지어")
+    return ("/* 자동 생성: tools/sync_lib.py · 원본 site/lib-guide.json */\n"
+            + "const LIB_GUIDE = " + json.dumps(guide, ensure_ascii=False, separators=(",", ":")) + ";\n")
+
+
 def main():
     check = "--check" in sys.argv
     entries = load()
@@ -106,11 +140,18 @@ def main():
         if e.get("fam"):
             e["famko"] = {f: famko[f] for f in e["fam"]}
     text, clean = render(entries, famko)
+    try:
+        guide = guide_text(entries)
+    except (ValueError, KeyError) as error:
+        print("오류", error)
+        return 1
     if check:
-        same = EA_LIB.exists() and EA_LIB.read_text(encoding="utf-8") == text
-        print(f"{len(clean)}항목 · ea_lib.js {'맞음' if same else '다름 — python3 tools/sync_lib.py를 실행하세요'}")
+        same = (EA_LIB.exists() and EA_LIB.read_text(encoding="utf-8") == text
+                and EA_GUIDE.exists() and EA_GUIDE.read_text(encoding="utf-8") == guide)
+        print(f"{len(clean)}항목 · 사전·탐색 데이터 {'맞음' if same else '다름 — python3 tools/sync_lib.py를 실행하세요'}")
         return 0 if same else 1
     EA_LIB.write_text(text, encoding="utf-8")
+    EA_GUIDE.write_text(guide, encoding="utf-8")
     LIB_JSON.write_text(json.dumps(entries, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"{len(clean)}항목 → {EA_LIB.relative_to(ROOT)} ({len(text):,}자), famko 채움")
     return 0

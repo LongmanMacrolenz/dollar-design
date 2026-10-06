@@ -8,6 +8,7 @@
 3. 사이트 스크립트에 문법 오류가 없는가                                             (Node가 있을 때)
 4. 사이트·사전 페이지에 금지어가 없는가 (재고·출고 약속, 서비스 약속, 가격 표시 등)
 5. app/tests의 엔진 점검 3종이 통과하는가                                          (playwright 크로미움이 있을 때)
+6. 홈페이지 체결 영상의 피치·좌면·공구 복귀 동작이 맞는가                          (Python 표준 라이브러리)
 하나라도 실패하면 종료 코드 1. 브라우저 경로는 환경 변수 BN_CHROMIUM(없으면 playwright 기본).
 직장 이름 같은 비공개 금지어는 환경 변수 BN_PRIVATE_BANNED('이름1|이름2') 또는 app/tests/private_banned.txt에서 읽는다.
 """
@@ -52,7 +53,16 @@ def main():
     r = run([PY, "tools/build_all.py", "--check"])
     step("결과물이 원본과 같음", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
 
+    r = run([PY, "tools/test_precision.py"])
+    step("체결 영상의 피치·좌면·공구 동작", r.returncode == 0,
+         "6종 물리 조건" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
+
     node = shutil.which("node")
+    if node:
+        r = run(["node", "tools/build_bom_reader.mjs", "--check"])
+        step("BOM 표 읽기 원본 일치", r.returncode == 0, "" if r.returncode == 0 else r.stderr[-600:])
+        r = run(["npm", "run", "test:procurement"])
+        step("견적·메일·접근 제어 점검", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-1000:])
     page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     if node:
         scripts = re.findall(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", page, re.S)
@@ -95,6 +105,8 @@ def main():
         if not have:
             print("건너뜀  엔진 점검 3종 (playwright 없음: pip install playwright && python -m playwright install chromium)")
         else:
+            r = run([PY, "worker/tests/browser.py"])
+            step("견적 관리 실제 브라우저 흐름", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-1000:])
             out = pathlib.Path(tempfile.mkdtemp(prefix="bn-check-"))
             for name in ("test.py", "holdout.py", "cdtest.py"):
                 r = run([PY, f"app/tests/{name}", "--page", str(ROOT / "site" / "page.html"), "--out", str(out / name)])

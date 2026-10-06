@@ -1,7 +1,7 @@
 <title>볼트노트</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Barlow+Condensed:wght@600&family=Gothic+A1:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Barlow+Condensed:wght@600&family=Manrope:wght@400;500;600;700;800&family=Gothic+A1:wght@400;700;800&display=swap">
 <style>
 /* =====================================================================
    볼트노트 base.css — 방향: 도면 (Engineering drawing sheet)
@@ -1413,10 +1413,7 @@ footer.foot { padding-block: 0 48px; }
 <header class="tb ia-tb" id="tb">
   <div class="wrap">
     <div class="tb-grid ia-grid">
-      <a class="tb-c brand" href="#home" data-go="home" aria-label="볼트노트 홈">
-        <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 20h7m3 0h2m14 0h2m3 0h7M20 1v7m0 3v2m0 14v2m0 3v7" stroke="currentColor" stroke-width=".9"/></svg>
-        <span><strong>볼트노트</strong><small>체결부품 · 엔지니어 검토</small></span>
-      </a>
+      <a class="tb-c brand" href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><span class="bn-identity"><img class="bn-logo bn-logo-ink" src="/brand/boltnote-logo.svg" width="632" height="104" alt="boltnote"><img class="bn-logo bn-logo-white" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="" aria-hidden="true"><small>체결부품 · 엔지니어 검토</small></span></a>
       <nav class="tb-c ia-nav" id="nav" aria-label="주 메뉴"><a href="#products" data-go="products">제품</a><a href="#list" data-go="list">목록 견적</a><a href="#ref" data-go="ref">도면·규격</a><a href="#lib" data-go="lib" data-lib>규격 사전</a><a href="#about" data-go="about">회사 소개</a></nav>
       <div class="tb-c find" role="search">
         <label class="sr" for="q">규격 · 표기 · 각인으로 찾기</label>
@@ -1424,15 +1421,17 @@ footer.foot { padding-block: 0 48px; }
         <div class="suggest" id="suggest" hidden></div>
       </div>
       <a class="tb-c stc" id="ia-stc" href="#about" data-go="about"><span class="lab">상태</span><b>검증 운영 중</b><span class="v">참고 견적 →</span></a>
-      <button type="button" class="tb-c ia-menu-b" id="ia-menu-b" aria-expanded="false" aria-controls="ia-menu">메뉴</button>
+      <button type="button" class="tb-c bn-open-find" data-bn-find aria-label="제품·규격 통합 검색"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg></button>
+      <a class="tb-c bn-header-rfq" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a>
+      <button type="button" class="tb-c ia-menu-b" id="ia-menu-b" aria-expanded="false" aria-controls="ia-menu"><span>메뉴</span><i aria-hidden="true"><b></b><b></b></i></button>
       <a class="tb-c cartc cartbtn" href="#cart" data-go="cart"><span class="cart-n" id="cart-n">0</span><b>견적함</b></a>
       <span class="ia-sheet" hidden><b id="sheet-no">1 / 7</b><span id="sheet-nm">홈</span></span>
     </div>
-    <div class="ia-menu" id="ia-menu" hidden></div>
+    <div class="ia-menu" id="ia-menu" role="dialog" aria-modal="true" aria-label="사이트 전체 메뉴" hidden></div>
   </div>
 </header>
 <div class="tb-mini" id="tb-mini" inert>
-  <a href="#home" data-go="home" aria-label="볼트노트 홈"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><strong>볼트노트</strong></a>
+  <a href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"></a>
   <button type="button" id="mini-find">찾기</button>
   <a href="#list" data-go="list" class="ia-mini-list">목록 보내기</a>
   <a href="#cart" data-go="cart">견적함 <span class="cart-n">0</span></a>
@@ -1442,8 +1441,9 @@ footer.foot { padding-block: 0 48px; }
 
 <footer class="foot ia-foot">
   <div class="wrap">
+    <div class="bn-footer-sign" aria-hidden="true"><img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="" loading="lazy"></div>
     <div class="pm-ft">
-      <a class="pm-ft-brand" href="#home" data-go="home" aria-label="볼트노트 홈"><svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 5.5 32.6 12.75v14.5L20 34.5 7.4 27.25v-14.5z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="20" cy="20" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 20h7m3 0h2m14 0h2m3 0h7M20 1v7m0 3v2m0 14v2m0 3v7" stroke="currentColor" stroke-width=".9"/></svg><span><strong>볼트노트</strong><small>체결부품 목록 견적 · 엔지니어가 줄마다 읽습니다</small></span></a>
+      <a class="pm-ft-brand" href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><span><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"><small>체결부품 목록 견적 · 엔지니어가 줄마다 읽습니다</small></span></a>
       <nav class="pm-ft-nav" aria-label="바닥글 메뉴">
         <div><b>견적</b><a href="#list" data-go="list">목록 견적</a><a href="#cart" data-go="cart">견적함</a><a href="#products" data-go="products">제품</a></div>
         <div><b>모아 보기</b><a href="#k-plant" data-go="k-plant">플랜트 볼팅</a><a href="#k-pump" data-go="k-pump">펌프 정비 볼트</a><a href="#k-flange" data-go="k-flange">KS·JIS 플랜지 세트</a></div>
@@ -2563,12 +2563,16 @@ function setNav(r) {
   iaAfterNav(r, nm);
 }
 function go(route, push = true) {
+  const libraryInput = /^lib(?:\?|$)/.test(String(route || ''));
+  if (libraryInput) libReadRoute(String(route));
+  if (libraryInput) route = 'lib';
   route = normRoute(route);
   state.route = route;
+  const address = route === 'lib' ? libURL() : route;
   try {
     const cur = location.hash.slice(1);
-    if (push && cur !== route) history.pushState(null, '', '#' + route);
-    else if (!push && cur && cur !== route) history.replaceState(null, '', '#' + route);   // 없는 장(#m-xyz)은 고친 주소로
+    if (push && cur !== address) history.pushState(null, '', '#' + address);
+    else if (!push && cur && cur !== address) history.replaceState(null, '', '#' + address);   // 없는 장(#m-xyz)은 고친 주소로
   } catch {}
   const [name, arg] = route.includes('-') ? [route.split('-')[0], route.slice(route.indexOf('-') + 1)] : [route, null];
   const fn = { home: V.home, metric: V.metric, inch: V.inch, m: V.family, i: V.inchFam, custom: V.custom, tools: V.tools, cart: V.cart, help: V.help }[name] || V.home;
@@ -4136,7 +4140,7 @@ themeApply(themePref());
   setH();
   if ('ResizeObserver' in window) new ResizeObserver(setH).observe(tb); else window.addEventListener('resize', setH);
   if ('IntersectionObserver' in window) new IntersectionObserver(([en]) => { const on = !en.isIntersecting; mini.classList.toggle('on', on); mini.inert = !on; }).observe(tb);
-  $('mini-find').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' }); ($('sb') || $('q')).focus({ preventScroll: true }); });
+  $('mini-find').addEventListener('click', () => { window.scrollTo({ top: 0, behavior: reduced() ? 'auto' : 'smooth' }); ($('sb') || $('lib-q') || $('q'))?.focus({ preventScroll: true }); });
 }
 try { matchMedia('(max-width: 680px)').addEventListener('change', () => { syncDet(); if (state.redraw) state.redraw(); const fb = $('fl-dbox'); if (fb) { fb.innerHTML = flangeSvg(); if (flangeInit.calc) flangeInit.calc(); } }); } catch {}
 
@@ -4151,6 +4155,6 @@ initSearch();
 saveCart();
 revCell();
 const start = location.hash.slice(1);
-go(/^[a-z][a-z0-9-]*$/.test(start) ? start : 'home', false);
+go(/^[a-z][a-z0-9-]*$/.test(start) || start.startsWith('lib?') ? start : 'home', false);
 })();
 </script>
