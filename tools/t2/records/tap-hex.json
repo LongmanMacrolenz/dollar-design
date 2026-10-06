@@ -1,0 +1,284 @@
+{
+ "id": "tap-hex",
+ "status": "partial",
+ "standard": "DIN 7976",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "나사 피치 P"
+  ],
+  [
+   "e_min",
+   "육각 대각 지름 e 최소"
+  ],
+  [
+   "k",
+   "머리 높이 k 호칭"
+  ],
+  [
+   "k_min",
+   "머리 높이 k 최소"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대"
+  ],
+  [
+   "r_max",
+   "머리 밑 둥글기 r 최대"
+  ],
+  [
+   "s_max",
+   "육각 대변 s 최대(=호칭)"
+  ],
+  [
+   "s_min",
+   "육각 대변 s 최소"
+  ],
+  [
+   "yC_max",
+   "나사 끝 길이 y 최대 (C형 뾰족끝)"
+  ]
+ ],
+ "rows": [
+  [
+   "ST2.2",
+   0.8,
+   3.38,
+   1.3,
+   1.18,
+   1.42,
+   0.3,
+   3.2,
+   3.02,
+   2.0
+  ],
+  [
+   "ST2.9",
+   1.1,
+   5.4,
+   1.5,
+   1.38,
+   1.62,
+   0.4,
+   5.0,
+   4.82,
+   2.6
+  ],
+  [
+   "ST3.5",
+   1.3,
+   5.96,
+   2.3,
+   2.18,
+   2.42,
+   0.5,
+   5.5,
+   5.32,
+   3.2
+  ],
+  [
+   "ST3.9",
+   1.3,
+   7.59,
+   2.3,
+   2.18,
+   2.42,
+   0.5,
+   7.0,
+   6.78,
+   3.5
+  ],
+  [
+   "ST4.2",
+   1.4,
+   7.59,
+   2.8,
+   2.68,
+   2.92,
+   0.6,
+   7.0,
+   6.78,
+   3.7
+  ],
+  [
+   "ST4.8",
+   1.6,
+   8.71,
+   3.0,
+   2.88,
+   3.12,
+   0.7,
+   8.0,
+   7.78,
+   4.3
+  ],
+  [
+   "ST5.5",
+   1.8,
+   8.71,
+   4.0,
+   3.85,
+   4.15,
+   0.8,
+   8.0,
+   7.78,
+   5.0
+  ],
+  [
+   "ST6.3",
+   1.8,
+   10.95,
+   4.8,
+   4.65,
+   4.95,
+   0.9,
+   10.0,
+   9.78,
+   6.0
+  ],
+  [
+   "ST8",
+   2.1,
+   14.26,
+   5.8,
+   5.65,
+   5.95,
+   1.1,
+   13.0,
+   12.73,
+   7.5
+  ]
+ ],
+ "row_support": {
+  "ST2.2": 3,
+  "ST2.9": 3,
+  "ST3.5": 3,
+  "ST3.9": 3,
+  "ST4.2": 3,
+  "ST4.8": 3,
+  "ST5.5": 3,
+  "ST6.3": 3,
+  "ST8": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/din-7976-hexagon-head-ab-self-tapping-screws-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "DIN 7976 dimension table (ST2.2-ST8); the ISO 1479 page of the same site has an identical table = counted once"
+  },
+  {
+   "url": "https://vidasan.com/en/urun/din-7976-iso-1479-hexagon-head-self-tapping-screws/",
+   "site": "vidasan.com",
+   "what": "DIN 7976 / ISO 1479 table ST2.2-ST6.3 (decimal commas)"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_541.html",
+   "site": "globalfastener.com",
+   "what": "DIN 7976-1990 dimension table (the ISO 1479:2011 page detail_5230 of same site used only as extra evidence for P,e,s,y; one site = one source)"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/TappingScrew-HexHd.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "DIN 7976 table: P,a,e,k,r,s,y(Type C)"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1665-hexagon-head-tapping-screw-iso-1479-din-7976-c",
+   "site": "nfgab.com",
+   "what": "ISO 1479 / DIN 7976 C: s, k (DIN value), e min"
+  },
+  {
+   "url": "https://www.ayafasteners.com/screws/self-tapping-screws/hexagon-head-self-tapping-screws.html",
+   "site": "ayafasteners.com",
+   "what": "ISO 1479:2011 table; used only for P,e,s,y columns (identical in both editions)"
+  },
+  {
+   "url": "https://www.wegertseder.com/DIN-7976-Sechskant-Blechschrauben-C-mit-Spitze",
+   "site": "wegertseder.com (same table on schrauben-lexikon.de and theo-schrauben.de = 1 source)",
+   "what": "DIN 7976 technical data: k, s, y(C)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "ST9.5 row",
+   "why": "not in DIN 7976 / ISO 1479:1983; only the ISO 1479:2011 tables (aya, globalfastener) list it, and there k/r differ"
+  },
+  {
+   "what": "column a (thread runout max)",
+   "why": "equals P in every source except westfield (ST5.5 a=1.88 typo); not needed, omitted"
+  },
+  {
+   "what": "ISO 1479:2011 k_min / r_min columns",
+   "why": "only 2 sources (aya, globalfastener) - not published; edition not used"
+  },
+  {
+   "what": "boltsfastener.com e values (5.45, 6, 7.66, 7.66, 8.79, 8.79, 11.05)",
+   "why": "single dissenting source (e = 1.13*s_min); contradicts 5+ others; ignored"
+  }
+ ],
+ "checks": [
+  "e_min = 1.12 x s_min within +-0.01 for all 9 rows (computed from kept columns)",
+  "s_max < e_min < 1.1547 x s_min (e below theoretical across-corners) for all rows",
+  "k_min < k < k_max and k tolerance symmetric (+-0.12) for all rows",
+  "s_min < s_max; y(F) < y(C) for all rows",
+  "P, k, s, e, y(C) non-decreasing with size (ST3.9/ST4.2 share s=7,e=7.59; ST4.8/ST5.5 share s=8,e=8.71)",
+  "every cell: >=3 independent sites agree (min row_support 3)"
+ ],
+ "shape_hint": "Plain hexagon head with a flat top and flat underside, no washer face or flange. Below it a fully threaded tapping-screw shank (thread runs right up to the head, a = P) ending in a cone point (Type C) or a short flat/truncated point (Type F). Draw head height k, width across flats s (side view s, top view hexagon with e across corners), and point length y.",
+ "role_map": {
+  "P": "thread pitch (coarse tapping-screw thread)",
+  "e_min": "minimum hexagon width across corners",
+  "k": "nominal head height",
+  "k_min": "head height minimum",
+  "k_max": "head height maximum",
+  "r_max": "max fillet radius under head",
+  "s_max": "width across flats (= nominal)",
+  "s_min": "width across flats minimum",
+  "yC_max": "max length of the end (point) for Type C",
+  "yF_max": "max length of the end for Type F"
+ },
+ "notes": "Edition: DIN 7976 / ISO 1479:1983 (type C and F). ISO 1479:2011 (current) changed head height k and r (e.g. ST2.9: k max 2.3 in ISO 2011 vs 1.62 here) and added ST9.5 and Type R; only 2-3 sources found for the 2011 k values, so it was NOT used. Thread sizes in brackets in ISO 1479:1983 (ST3.9, ST5.5, ST8) are non-preferred sizes. ST3.5 e_min: 5.96 (5 sources) - torqbolt and vidasan print 5.95 (typo/rounding; 1.12 x 5.32 = 5.958). a max = P. Standard nominal lengths l (torqbolt and westfield agree, only 2 sources, not in table): 4.5, 6.5, 9.5, 13, 16, 19, 22, 25, 32, 38, 45, 50; Type C length tolerance l-0.8/+0.8 (min=l-0.8, max=l+0.8 for l<=25; +-1.3 above). KS B 1036 not checked (no public HTML).",
+ "clusters": {
+  "A torqbolt+vidasan (merged conservatively: identical label words 'nominal=max.', same 5.95 deviation at ST3.5 e)": [
+   "torqbolt.com (din-7976; iso-1479 page identical)",
+   "vidasan.com"
+  ],
+  "B Chinese-template standards DB": [
+   "globalfastener.com detail_541 (DIN 7976)",
+   "globalfastener.com detail_5230 (ISO 1479:2011)",
+   "ayafasteners.com (table = detail_5230 mirror: same row order/labels 'P Pitch','a max','y Reference/参考值', same ST9.5 column and '/' placeholders)"
+  ],
+  "C westfieldfasteners.co.uk": [
+   "westfieldfasteners.co.uk"
+  ],
+  "D nfgab.com": [
+   "nfgab.com (s, k DIN value, e only)"
+  ],
+  "E German one-dataset": [
+   "wegertseder.com",
+   "schrauben-lexikon.de",
+   "theo-schrauben.de (k, s, yC only; typo ST4.8 yC 4.2)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live 7 listed URLs (all HTTP 200) + gf detail_5230 (producer copy). Parsed all tables with tbl.py; built matrix 9 rows x 10 data cols x 8 parsed pages (torqbolt, vidasan, gf541, gf5230, aya, westfield, nfgab k/s/e rows, wegert k/s/y rows) and counted agreeing clusters per cell. Result: P,e_min,k,k_min,k_max,r_max,s_max,s_min,yC_max >=3 clusters in all 9 rows (P, k_min, k_max, r_max, s_min exactly 3 = A,B,C); yF_max only 2 clusters (A,B) in every row (westfield lists Type C only, nfgab/wegert have no yF, aya yF is mirror of gf). Semantics read from headers (P, e min, k nominal/min/max, r max, s max=nominal/min, y max Type C/Type F). Sanity: e_min = 1.12*s_min (+-0.01), s_max<e<1.1547*s_min, k_min<k<k_max, monotone; all pass. fasteners.eu not fetchable (HTTP 466) - not counted.",
+  "problems": [
+   "yF_max (y max Type F): only clusters A (torqbolt/vidasan) and B (gf, aya = gf 5230 mirror) list it -> 2 clusters; ST3.9 row has only torqbolt+vidasan+gf; ST8 only torqbolt+gf+aya. DROP column.",
+   "ayafasteners.com is NOT independent of globalfastener.com: its ISO 1479:2011 table has the same row order/labels and identical values as gf detail_5230 (incl. ST9.5 and '/' cells) -> producer counted it as a separate source for P, e, s, y.",
+   "torqbolt and vidasan appear to share one origin (same 5.95 for ST3.5 e_min, same label wording) -> counted as one cluster; with this merge k_min, k_max, r_max, s_min, P are supported by exactly 3 clusters (A torqbolt/vidasan, B gf, C westfield).",
+   "ST3.5 e_min=5.96 is contested: 5.96 in gf, aya(=gf), westfield, nfgab (3 independent clusters) vs 5.95 in torqbolt+vidasan; 1.12*5.32=5.958 favours 5.96. Passes the >=3 rule but is the weakest e cell.",
+   "ST4.8 yC_max: wegertseder group prints 4.2 (typo) vs 4.3 in 5 other pages -> 4.3 ok.",
+   "Edition: k_min/k_max/r_max exist only for the DIN 7976 / ISO 1479:1983 edition (torqbolt/vidasan, gf541, westfield); ISO 1479:2011 values differ (aya, gf5230, nfgab k ISO) - record correctly uses 1983 edition, state this in the standard note.",
+   "Row labels: ST3.9, ST5.5, ST8 are bracketed (non-preferred) sizes in the standard; labels without brackets are fine."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "yF_max"
+  ]
+ },
+ "standard_full": "DIN 7976 (= ISO 1479:1983), Type C / Type F",
+ "scope": "DIN 7976 육각 태핑나사 (ISO 1479:1983)"
+}

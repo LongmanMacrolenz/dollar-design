@@ -1,0 +1,209 @@
+{
+ "id": "ss-slot",
+ "status": "ok",
+ "standard": "ISO 4766·7434–7436 (DIN 551·553·417·438)",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "나사 피치 P (보통나사)"
+  ],
+  [
+   "n_nom",
+   "홈 너비 n 호칭"
+  ],
+  [
+   "t_min",
+   "홈 깊이 t 최소(=호칭)"
+  ],
+  [
+   "dp_max",
+   "평끝·봉끝 지름 dp 최대"
+  ],
+  [
+   "dt_max",
+   "원뿔끝 끝단 지름 dt 최대"
+  ],
+  [
+   "dz_max",
+   "컵끝 지름 dz 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "M2.5",
+   0.45,
+   0.4,
+   0.72,
+   1.5,
+   0.25,
+   1.2
+  ],
+  [
+   "M3",
+   0.5,
+   0.4,
+   0.8,
+   2.0,
+   0.3,
+   1.4
+  ],
+  [
+   "M4",
+   0.7,
+   0.6,
+   1.12,
+   2.5,
+   0.4,
+   2.0
+  ],
+  [
+   "M5",
+   0.8,
+   0.8,
+   1.28,
+   3.5,
+   0.5,
+   2.5
+  ],
+  [
+   "M6",
+   1.0,
+   1.0,
+   1.6,
+   4.0,
+   1.5,
+   3.0
+  ],
+  [
+   "M8",
+   1.25,
+   1.2,
+   2.0,
+   5.5,
+   2.0,
+   5.0
+  ],
+  [
+   "M10",
+   1.5,
+   1.6,
+   2.4,
+   7.0,
+   2.5,
+   6.0
+  ],
+  [
+   "M12",
+   1.75,
+   2.0,
+   2.8,
+   8.5,
+   3.0,
+   8.0
+  ]
+ ],
+ "row_support": {
+  "M2.5": 3,
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_551",
+   "site": "fasten.it",
+   "what": "DIN 551, DIN EN 24766 (ISO 4766), DIN 553, DIN EN 27434, DIN 417, DIN EN 27435, DIN 438, DIN EN 27436 tables (all pages = one source)"
+  },
+  {
+   "url": "https://torqbolt.com/iso-4766-slotted-set-screws-with-flat-point-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "ISO 4766 (and DIN 551, 553, ISO 7434) tables; boltsfastener.com/din-551 is a layout/number copy of the torqbolt DIN 551 table (incl. dp min 6.67) -> same source"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_551.asp",
+   "site": "schrauben-lexikon.de / wegertseder.com (theo-schrauben.de/DIN-551 same table)",
+   "what": "DIN 551 / 553 / 417 / 438: n, t, dp / dt / dz (DIN 417 t row and DIN 438 M12 t defective, not used)"
+  },
+  {
+   "url": "https://www.cvtcivata.com/en-US/din_551/3/287/350/0/0",
+   "site": "cvtcivata.com",
+   "what": "DIN 551, 553, ISO 4766, 7434, 7435, 7436: P, dp / dt / dz, l range"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M1.6 and M2 rows",
+   "why": "dz_max (cup point 0.8 / 1.0) only on fasten.it and cvtcivata (2 sources)"
+  },
+  {
+   "what": "M1, M1.2, M1.4, M3.5 rows",
+   "why": "not in all four ISO standards (M1/M1.4 only DIN; M1.2 only ISO 4766/7434; (M3.5) bracketed non-preferred) - not tabulated"
+  },
+  {
+   "what": "n min / n max, t max columns",
+   "why": "only fasten.it and torqbolt (+ its boltsfastener copy) list them = 2 independent sources; also M4 t max 1.42 (fasten.it) vs 1.45 (torqbolt, boltsfastener)"
+  },
+  {
+   "what": "z (dog length) column",
+   "why": "fasten.it + wegertseder only (cvt/torq have none)"
+  },
+  {
+   "what": "ASME B18.6.2 inch slotted set screws",
+   "why": "not covered - no 3 independent sources reachable (summary page of aya lists the standard without a dimension table)"
+  }
+ ],
+ "checks": [
+  "dz_max <= dp_max < d and dt_max < dp_max for all rows",
+  "n_nom, t_min, P, dp, dt, dz non-decreasing with size",
+  "n_nom, t_min and P are identical across the four types (flat/cone/dog/cup) in fasten.it, torqbolt, wegertseder",
+  "dp_max (flat) equals dog diameter in fasten.it (417/27435) and cvtcivata 7435 and wegertseder 417",
+  "min 3 independent sites per cell (row_support 3)"
+ ],
+ "shape_hint": "Headless (grub) set screw: a plain fully threaded cylinder with a single straight screwdriver slot cut across one end face (slot width n, depth t), and a shaped point at the other end - flat (dia dp), cone (small tip dt), long dog (full-diameter pin dp, length z) or cup (concave end, rim dia dz).",
+ "role_map": {
+  "P": "thread pitch (coarse)",
+  "n_nom": "nominal slot width",
+  "t_min": "min slot depth (nominal = min)",
+  "dp_max": "max diameter of the flat point and of the dog point",
+  "dt_max": "max diameter of the tip of the cone point",
+  "dz_max": "max diameter of the cup point"
+ },
+ "notes": "Rows M2.5-M12 only. Values apply to ISO 4766 (flat, DIN 551), 7434 (cone, DIN 553), 7435 (long dog, DIN 417), 7436 (cup, DIN 438); n_nom/t_min/P identical for all four. Extra cautions: (1) t_min M2.5 = 0.72 (3 sites) but fasten.it DIN 438 / ISO 7436 lists 0.71 for the cup type; (2) wegertseder DIN 417 t row and DIN 438 M12 t (2.5) are defective; torqbolt ISO 7434 / DIN 553 prints M5 t 1.25 instead of 1.28; all outvoted by >=3 sites. (3) M1.6 and M2: P 0.35/0.4, n 0.25/0.25, t 0.56/0.64, dp 0.8/1.0, dt 0.16/0.2 have >=3 sources but dz (0.8/1.0) has 2 - add them to the table only if a third source is found. (4) Inch (ASME B18.6.2) and KS B 1025 not covered. Web search budget was exhausted, so other independent distributor pages could not be searched for.",
+ "clusters": {
+  "F fasten.it (aggregator)": [
+   "fasten.it din_551, din_en_24766, din_553, din_en_27434, din_417, din_en_27435, din_438, din_en_27436"
+  ],
+  "T torqbolt (+ boltsfastener din-551 = same table, same dp min 6.67, t max 1.45)": [
+   "torqbolt.com iso-4766, din-551, din-553, iso-7434, din-438, iso-7436",
+   "boltsfastener.com din-551"
+  ],
+  "L German one-dataset": [
+   "schrauben-lexikon.de DIN 551/553/417/438",
+   "wegertseder.com",
+   "theo-schrauben.de"
+  ],
+  "C cvtcivata": [
+   "cvtcivata.com din_551/553, iso_4766/7434/7435/7436 (P, dp/dt/dz only)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live 8 fasten.it, 6 torqbolt, 4 lexikon, 6 cvt pages and boltsfastener din-551 (all HTTP 200). Matrix 8 rows x 6 cols x 4 clusters, values pooled over the 4 point types (flat/cone/dog/cup). Min clusters: P 3 (F,T,C), n_nom 3 (F,L,T), t_min 3 (F,L,T), dp_max 4, dt_max 4, dz_max 3 (M2.5 and M12: F,L,C; torq cup pages cover only M3-M10). No numeric dissent among clusters except typos listed below. dz<=dp<d, dt<dp, monotone: pass.",
+  "problems": [
+   "Every one of P, n_nom, t_min, dz_max(M2.5, M12) is supported by exactly 3 clusters; no spare vote. boltsfastener din-551 is a full copy of the torqbolt DIN 551 table (so not a 4th source).",
+   "t_min M2.5=0.72: fasten.it DIN 438 and ISO 27436 (cup) print 0.71 while F's other 6 pages, torqbolt, lexikon (incl. cup DIN 438) say 0.72 -> likely a fasten.it typo; cell still has F(other pages), T, L = 3 clusters.",
+   "Defective pages ignored correctly: lexikon DIN 417 t row is shifted by one size, lexikon DIN 438 M12 t=2.5 (others 2.8), torqbolt ISO 7434/DIN 553 M5 t 1.25 (vs 1.28), torqbolt/ita-style headers mislabelled.",
+   "n_nom is labelled 'n nom' only on fasten.it ISO pages and 'n nominal' on torqbolt; lexikon prints bare 'n' (value = nominal, DIN 551 itself lists n min/max only) - semantic read OK but L's vote relies on value equality.",
+   "M1.6/M2 rows correctly dropped (dz only fasten.it+cvt); DIN-only sizes M1/M1.2/M1.4 and bracketed M3.5 excluded."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 4766 / 7434 / 7435 / 7436 (= DIN 551 / 553 / 417 / 438), metric"
+}

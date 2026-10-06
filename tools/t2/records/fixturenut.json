@@ -1,0 +1,209 @@
+{
+ "id": "fixturenut",
+ "status": "partial",
+ "standard": "DIN 6331",
+ "u": "mm",
+ "cols": [
+  [
+   "s",
+   "육각 대변거리 s"
+  ],
+  [
+   "m",
+   "너트 높이 m (≈1.5d)"
+  ],
+  [
+   "d1",
+   "칼라 지름 d1"
+  ],
+  [
+   "a",
+   "칼라 두께 a"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   10,
+   9,
+   14,
+   3
+  ],
+  [
+   "M8",
+   13,
+   12,
+   18,
+   3.5
+  ],
+  [
+   "M10",
+   16,
+   15,
+   22,
+   4
+  ],
+  [
+   "M12",
+   18,
+   18,
+   25,
+   4
+  ],
+  [
+   "M16",
+   24,
+   24,
+   31,
+   5
+  ],
+  [
+   "M20",
+   30,
+   30,
+   37,
+   6
+  ],
+  [
+   "M24",
+   36,
+   36,
+   45,
+   6
+  ],
+  [
+   "M27",
+   41,
+   40,
+   50,
+   7
+  ],
+  [
+   "M30",
+   46,
+   45,
+   58,
+   8
+  ],
+  [
+   "M36",
+   55,
+   54,
+   68,
+   10
+  ],
+  [
+   "M42",
+   65,
+   63,
+   80,
+   12
+  ]
+ ],
+ "row_support": {
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M27": 3,
+  "M30": 3,
+  "M36": 3,
+  "M42": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_6331",
+   "site": "fasten.it",
+   "what": "'Dimensions in mm - source DIN 6331' (04-2003): P, s, e min, m, d1, a, weight"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6331.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "table a,d1,m,s (M6-M42, incl. non-preferred M14/M18/M22)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/nuts-standard/din-6331.html",
+   "site": "boltsfastener.com",
+   "what": "table Size,a,d1,da min/max,e min,m,s"
+  },
+  {
+   "url": "https://digipich.com/en/standards/din-6331/",
+   "site": "digipich.com",
+   "what": "table Size,P,d1,s,e,m,da,a,mass"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "P (pitch) column",
+   "why": "only fasten.it and digipich list it (2 sources); ISO coarse pitch M6 1 ... M48 5"
+  },
+  {
+   "what": "da (bore/thread-end diameter) min/max",
+   "why": "only boltsfastener and digipich"
+  },
+  {
+   "what": "M14, M18, M22 rows",
+   "why": "non-preferred sizes listed by schrauben-lexikon only"
+  },
+  {
+   "what": "weights (mass per 1000)",
+   "why": "sources differ (e.g. DIN 6330 M6 4 vs 5 kg) and not a dimension"
+  },
+  {
+   "what": "DIN 6330 (plain, no collar) as a separate table",
+   "why": "family JSON holds one standard; its s, e_min, m are identical to DIN 6331 (see notes)"
+  }
+ ],
+ "checks": [
+  "s < e_min < 1.1547 s in all 12 rows",
+  "d1 > e_min (collar larger than across-corners) and a < m",
+  "m / d between 1.4 and 1.55 (1.5 d nut) in all rows",
+  "all columns non-decreasing with size",
+  "no cell disagreement among the 3-4 sources per cell"
+ ],
+ "shape_hint": "A tall hexagon nut about 1.5 times the thread diameter in height, with a round flange/collar of diameter d1 and thickness a at one end (clamping fixtures, jigs, tooling); side view is a tall hex body on top of a thin disc collar.",
+ "role_map": {
+  "d_nom": "internal thread size (M, coarse)",
+  "s": "width across flats",
+  "e_min": "minimum width across corners",
+  "m": "overall nut height (1.5 d series)",
+  "d1": "collar (flange) outside diameter",
+  "a": "collar thickness"
+ },
+ "notes": "Chosen standard: DIN 6331 (collared, matches the Korean family name). DIN 6330 (plain 1.5d nut, spherical/ball seat form) has identical s, e_min and m for M6-M48; its extra dimension r (seat radius) is supported by 3 sources (schrauben-lexikon, boltsfastener, digipich) only for M6-M30: M6 9, M8 11, M10 15, M12 17, M16 22, M20 27, M24 32, M30 41 (M36 50, M42 58, M48 67 have only 2 sources) - not part of this table. Pitch column omitted (2 sources). KS B 1035 not verified. row_support = lowest per-column agreement (e_min and M48 rows have exactly 3 sources).",
+ "clusters": {
+  "FE (fasteners.eu-derived)": [
+   "fasteners.eu (live)",
+   "digipich.com (provenance: fasteners.eu)",
+   "boltsfastener.com (same column set/order a,d1,da min/max,e min,m,s as fasteners.eu, no P column; its DIN 6330 page repeats fasteners.eu weights incl. comma decimals that differ from fasten.it)"
+  ],
+  "fasten.it": [
+   "fasten.it"
+  ],
+  "German dataset": [
+   "schrauben-lexikon.de (M6-M42 only; a,d1,m,s only - no e, no M48)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 4 listed URLs + fasteners.eu live, HTTP 200. 12 rows x 5 value cols: fasten.it 60/60 ok, lexikon 44/44 ok (M48 absent, no e col), boltsfastener 60/60 ok, digipich 60/60 ok, fasteners.eu 60/60 ok. 0 mismatches. After clustering: s,m,d1,a rows M6-M42 = 3 clusters (fasten.it, lexikon, FE); e_min = 2 clusters (fasten.it, FE) ; M48 s,m,d1,a = 2 clusters (fasten.it, FE; lexikon lacks M48).",
+  "problems": [
+   "boltsfastener.com and digipich.com are not independent of fasteners.eu (explicit provenance / identical layout+values); producer counted 4 sources, real count is 3 clusters for s,m,d1,a and 2 for e_min.",
+   "e_min: only fasten.it + FE-cluster -> 2 clusters, dropped.",
+   "M48: lexikon has no M48 -> only 2 clusters for every cell, row dropped.",
+   "Row support was claimed 3 for all rows but relied on counting digipich/boltsfastener as separate.",
+   "m is nominal (js15) and s nominal (h13/h14), d1 h13, a js14: all nominal values, fine. e/s=1.105-1.119, m/d=1.5 (M27 m=40 -> 1.48)."
+  ],
+  "dropped_rows": [
+   "M48"
+  ],
+  "dropped_cols": [
+   "e_min"
+  ]
+ },
+ "standard_full": "DIN 6331 (hexagon nut with collar, height 1.5 d; 04-2003 table)"
+}

@@ -1,0 +1,272 @@
+{
+ "id": "flangebolt",
+ "status": "partial",
+ "standard": "DIN 6921",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통 나사)"
+  ],
+  [
+   "b",
+   "나사부 길이 b (L≤125)"
+  ],
+  [
+   "dc_max",
+   "플랜지 지름 dc 최대"
+  ],
+  [
+   "ds_min",
+   "축 지름 ds 최소"
+  ],
+  [
+   "e_min",
+   "육각 대각 e 최소"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대"
+  ],
+  [
+   "s_max",
+   "육각 대변 s 최대(호칭)"
+  ],
+  [
+   "s_min",
+   "육각 대변 s 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   1,
+   18,
+   14.2,
+   5.82,
+   10.95,
+   6.6,
+   10,
+   9.78
+  ],
+  [
+   "M8",
+   1.25,
+   22,
+   18,
+   7.78,
+   14.26,
+   8.1,
+   13,
+   12.73
+  ],
+  [
+   "M10",
+   1.5,
+   26,
+   22.3,
+   9.78,
+   16.5,
+   9.2,
+   15,
+   14.73
+  ],
+  [
+   "M12",
+   1.75,
+   30,
+   26.6,
+   11.73,
+   17.62,
+   11.5,
+   16,
+   15.73
+  ],
+  [
+   "M14",
+   2,
+   34,
+   30.5,
+   13.73,
+   19.86,
+   12.8,
+   18,
+   17.73
+  ],
+  [
+   "M16",
+   2,
+   38,
+   35,
+   15.73,
+   23.15,
+   14.4,
+   21,
+   20.67
+  ]
+ ],
+ "row_support": {
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-6921-specifications-hex-flange-bolts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 6921 specifications, 3 tables M5-M20 (all columns)"
+  },
+  {
+   "url": "https://www.hjfasteners.com/pro.asp?keyno=1547&bascode=103&name=DIN6921",
+   "site": "hjfasteners.com",
+   "what": "DIN 6921 dimension table M5-M20 (all columns)"
+  },
+  {
+   "url": "https://www.qewitfastener.com/hexagon-flange-head-bolts-din-6921/",
+   "site": "qewitfastener.com",
+   "what": "Hexagon flange head bolts DIN 6921 table M5-M20 (all columns)"
+  },
+  {
+   "url": "https://degademir.com/en/urun/din-6921-hexagon-head-flange-bolt",
+   "site": "degademir.com",
+   "what": "DIN 6921 dimension table M5-M20 (P, dc, c, k, k1, s, e, ds, b)"
+  },
+  {
+   "url": "https://www.aftfasteners.com/metric-hex-flange-bolt-din-6921-mechanical-technical-information/",
+   "site": "aftfasteners.com",
+   "what": "DIN 6921 table M5-M16 (s, e, dc, ds, k, b)"
+  },
+  {
+   "url": "https://www.capitalbolts.in/din-6921",
+   "site": "capitalbolts.in",
+   "what": "DIN 6921 table M6-M20 (P, b, k, dc, e, s) -- same table as kova.in, counted once; its ds Min/Max labels are swapped, not used"
+  },
+  {
+   "url": "https://www.kova.in/technical-information/din6921/",
+   "site": "kova.in",
+   "what": "identical copy of the capitalbolts.in table (counted as one source together with it)"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-6921",
+   "site": "theo-schrauben.de",
+   "what": "k, s, dc, b for M5-M16 (German reseller cluster theo/proselect/wegertseder/schrauben24 = one source; M5 dc has a typo 11,58)"
+  },
+  {
+   "url": "https://www.intafast.com/wp-content/uploads/2019/09/DIN6921_HEX_FLANGE_BOLTS.pdf",
+   "site": "intafast.com",
+   "what": "manufacturer's own data sheet (PDF), used only as an extra cross-check, not counted in row_support"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "dw_min column",
+   "why": "only fuller/hjf/qewit list it (3 Chinese exporter tables); dropped to keep >=4 sources per cell"
+  },
+  {
+   "what": "b2 (125<L<=200) and b3 (L>200) columns",
+   "why": "M5/M6 have no value ('/'), and b3 for M10-M14 disagrees between sources (fuller '/', capital/intafast 45/49/53)"
+  },
+  {
+   "what": "da, du, f, r1-r4, t columns",
+   "why": "only 3-4 sources, detail dimensions not needed for buying/drawing"
+  },
+  {
+   "what": "M24 and larger, fine-pitch variants",
+   "why": "not in DIN 6921 range (M5-M20)"
+  }
+ ],
+ "checks": [
+  "dc_max, k_max, e_min, s_max, c_min, b, P are non-decreasing with size M5..M20",
+  "ds_min < d (d-0.18..d-0.33), s_max > s_min, dc_max > 1.3*s_max and > 1.7*d, k1_min < k_max",
+  "e_min/s_min = 1.1196..1.1200 for all 8 rows (min hex across-corners is 1.12 x min across-flats; checked numerically)",
+  "s_max - s_min = 0.22 (M5,M6), 0.27 (M8-M14), 0.33 (M16,M20): same in every source that lists both",
+  "P matches ISO 261 coarse pitch for every size (0.8,1,1.25,1.5,1.75,2,2,2.5)",
+  "b(L<=125) = 2d+6 (M5..M16 -> 16..38; M20 46) consistent with the other sources and ISO 4017-type thread-length rule",
+  "s_max column follows 8,10,13,15,16,18,21,27: this is the DIN 6921 table itself (NOT the EN 1665 / flange-nut series 18,21,24,30) -- confirmed by 6 independent sources incl. one reseller (Lawson) listing M12 across flats 16"
+ ],
+ "shape_hint": "Hex-head bolt with an integral round flange (washer face) under the head: the head is a short hexagon (height k) sitting on a thin circular flange of diameter dc whose rim is a thin lip of thickness c; the flange underside is slightly conical/concave, the shank is a plain cylinder with a thread of length b at the tip and a fillet/transition at the head.",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse thread pitch",
+  "b": "thread length for bolt lengths L<=125",
+  "c_min": "minimum thickness of the flange edge",
+  "dc_max": "maximum flange diameter",
+  "ds_min": "minimum shank diameter",
+  "e_min": "minimum hex across-corners",
+  "k_max": "maximum total head height (hex + flange)",
+  "k1_min": "minimum height of the wrenching hex portion",
+  "s_max": "hex across-flats (nominal = max)",
+  "s_min": "minimum hex across-flats"
+ },
+ "notes": "DIN 6921 (original 1983-type table). The EN 1665 table (current heavy series) differs for several sizes (e.g. M10 s=16,k=10.4; M12 s=18,k=11.8 per the German reseller table) and has no 3 independent sources found, so it is NOT published. ISO 4162 (small series, s=7,8,10,13,15,18,21) is also a different table (only AFT + stainlessfix found). Several 'DIN 6921' pages online (Vidasan, itafasteners.com, Aspen PDF, engineeringhardware.com) actually show the flange NUT DIN 6923 table (s=8..30) or look auto-generated -- ignore them. Do not mix DIN 6921 s (M12=16) with EN 1665 s (M12=18). Coarse pitch only; M5-M20.",
+ "clusters": {
+  "Chinese exporter template (STRICT: ONE cluster; identical 26-column table, identical values)": [
+   "fullerfasteners.com",
+   "hjfasteners.com",
+   "qewitfastener.com"
+  ],
+  "degademir.com (Turkish maker; own layout; P,dc,c,k,k1,s,e,ds,b)": [
+   "degademir.com"
+  ],
+  "aftfasteners.com (DIN 6921 page; its 'EN1665' page prints the identical table; its 'ISO 4162' page is a different table)": [
+   "aftfasteners.com"
+  ],
+  "capitalbolts.in = kova.in (byte-identical table; ds Min/Max labels swapped)": [
+   "capitalbolts.in",
+   "kova.in"
+  ],
+  "German reseller dataset (k,s,dc only)": [
+   "theo-schrauben.de",
+   "proselect-schrauben.de",
+   "schrauben24.biz",
+   "wegertseder.com",
+   "schrauben-lexikon.de"
+  ],
+  "fastenerdata.co.uk (found by verifier; k,dc,e,s,b only; dissents: M5 k 5.8/dc 11.58, M14 dc 30.0, e M10-M20)": [
+   "fastenerdata.co.uk (metric-coarse-flange-bolt-grade-88-din6921)"
+  ],
+  "NOT counted: corroboration/PDF/single size": [
+   "intafast.com PDF (vendor data sheet)",
+   "lawson (M12 only)",
+   "hammer-shop (M6 only)"
+  ],
+  "NOT usable: show DIN 6923 flange NUT table under the DIN 6921 name": [
+   "fasteners.eu/standards/DIN/6921",
+   "boltport.com/standards/din-6921",
+   "vidasan",
+   "itafasteners",
+   "aspenfasteners"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live (HTTP 200) fuller, hjf, qewit, degademir, aft, capitalbolts, kova, theo and parsed every table myself (python/tbl.py). Matrix 8 rows x 10 value columns (P,b,c,dc,ds_min,e,k,k1,s_max,s_min) x 8 parsed sources: zero numeric disagreements except theo M5 dc 11,58 (vs 11.8). Fuller/hjf/qewit identical in all 26 columns (no CHINESE DIFF) -> one cluster. Additionally fetched fasteners.eu + boltport DIN-6921 pages live: both are the DIN 6923 NUT table (da,dc,dw,e,h,m,m',s=8..30) -> row semantics of the record (b, ds, k1 columns = bolt) confirmed not nut; no nut value (dc M8 17.9, e M8 14.38, s M12 18) leaked into the record. Found fastenerdata DIN 6921 page (extra cluster) and compared k,dc,e,s,b for 8 rows. Cluster counts per column: P 3 (CH,DG,CAP; M5 only CH,DG=2); b 4 (M5: CH,DG,AFT; AFT has no L-range label); c 2 (CH,DG) FAIL; dc 5 (M5: CH,DG,AFT vs GER+FD 11.58); ds_min 3 (CH,DG,AFT; M20 only CH,DG=2 because capital/kova ds labels are swapped); e 4; k 5-6; k1 2 FAIL; s_max 5-6; s_min 3 (CH,AFT,CAP; M5 CH,AFT=2 and M20 CH,CAP=2).",
+  "problems": [
+   "STRICT clustering: fuller/hjfasteners/qewit are one cluster -> c_min and k1_min have only 2 clusters (Chinese + degademir) -> dropped",
+   "M5 row fails: P (only CH+DG = 2 clusters; capital/kova start at M6), s_min (CH+AFT = 2), and dc_max is contested (3 clusters say 11.8 but theo cluster AND fastenerdata say 11.58, k 5.8 on fastenerdata)",
+   "M20 row fails: ds_min only CH+DG (capital/kova ds Min/Max labels are swapped on the page so not counted; AFT stops at M16) and s_min only CH+capital/kova (AFT stops at M16)",
+   "Alternative if M5/M20 are wanted: keep them and instead drop columns P, ds_min, s_min (then all kept cells >=3 clusters)",
+   "Family label 'EN 1665 · DIN 6921 · ISO 4162 · KS B 1042 · ASME B18.2.1' but the table is DIN 6921 ONLY: theo's EN 1665 table differs (M10 s16 k10.4, M12 s18 k11.8, M16 s24 k15.4), AFT's ISO 4162 table differs (s 7,8,10,13,15,18,21; dc 11.4..32.8); AFT's 'EN1665' page just reprints DIN 6921. Publish as 'DIN 6921' only and do not present it as EN 1665/ISO 4162",
+   "Several 'DIN 6921' pages (fasteners.eu, boltport, vidasan, itafasteners, aspen) are really the DIN 6923 flange-nut table (s 8,10,13,15,18,21,24,30; h,m,m' columns); none of their numbers are in the record",
+   "fastenerdata (DIN 6921 page) dissents on e_min M10 16.49, M12 17.6, M14 19.76, M16 23.12, M20 28.5 and dc M14 30.0 (4 clusters say 16.5/17.62/19.86/23.15/29.87/30.5); outvoted, kept, but note M12 s=16 here vs 18 in nut/EN 1665 tables",
+   "b is only labelled 'L<=125' by CH/DG/capital; AFT 'Thread Length (LT) Basic' has no L range",
+   "dc_max/s_max: only CH and AFT print an explicit 'max' header; DG/capital/theo print a bare symbol (same numbers)",
+   "ds_min: capital/kova page has Min/Max swapped (Min 6 / Max 5.82) -> excluded; intafast PDF and lawson/hammer product pages agree but are corroboration only",
+   "M14 is a non-preferred size in the standard family; kept (all sources list it unbracketed)"
+  ],
+  "dropped_rows": [
+   "M20",
+   "M5"
+  ],
+  "dropped_cols": [
+   "c_min",
+   "k1_min"
+  ]
+ },
+ "standard_full": "DIN 6921",
+ "scope": "DIN 6921 값 — EN 1665·ISO 4162는 표가 달라 싣지 않았습니다"
+}

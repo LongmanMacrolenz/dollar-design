@@ -1,0 +1,293 @@
+{
+ "id": "plug906",
+ "status": "ok",
+ "standard": "DIN 906",
+ "u": "mm",
+ "cols": [
+  [
+   "b",
+   "나사부 길이 b (전체 길이, js16)"
+  ],
+  [
+   "s",
+   "육각 구멍 대변 s (공칭)"
+  ],
+  [
+   "t_min",
+   "육각 구멍 깊이 t 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "R1/8",
+   8,
+   5,
+   4
+  ],
+  [
+   "R1/4",
+   10,
+   7,
+   5
+  ],
+  [
+   "R3/8",
+   10,
+   8,
+   5
+  ],
+  [
+   "R1/2",
+   10,
+   10,
+   5
+  ],
+  [
+   "R3/4",
+   12,
+   12,
+   6
+  ],
+  [
+   "R1",
+   12,
+   17,
+   6
+  ],
+  [
+   "R1 1/4",
+   18,
+   22,
+   11.5
+  ],
+  [
+   "R1 1/2",
+   20,
+   24,
+   11.5
+  ],
+  [
+   "M8x1",
+   8,
+   4,
+   4
+  ],
+  [
+   "M10x1",
+   8,
+   5,
+   4
+  ],
+  [
+   "M12x1.5",
+   10,
+   6,
+   5
+  ],
+  [
+   "M14x1.5",
+   10,
+   7,
+   5
+  ],
+  [
+   "M16x1.5",
+   10,
+   8,
+   5
+  ],
+  [
+   "M18x1.5",
+   10,
+   8,
+   5
+  ],
+  [
+   "M20x1.5",
+   10,
+   10,
+   5
+  ],
+  [
+   "M22x1.5",
+   10,
+   10,
+   5
+  ],
+  [
+   "M24x1.5",
+   12,
+   12,
+   6
+  ],
+  [
+   "M26x1.5",
+   12,
+   12,
+   6
+  ],
+  [
+   "M27x2",
+   12,
+   12,
+   6
+  ],
+  [
+   "M30x1.5",
+   12,
+   17,
+   6
+  ],
+  [
+   "M33x2",
+   12,
+   17,
+   6
+  ],
+  [
+   "M36x1.5",
+   15,
+   19,
+   7.5
+  ],
+  [
+   "M38x1.5",
+   15,
+   19,
+   7.5
+  ],
+  [
+   "M42x1.5",
+   18,
+   22,
+   11.5
+  ]
+ ],
+ "row_support": {
+  "R1/8": 3,
+  "R1/4": 3,
+  "R3/8": 3,
+  "R1/2": 3,
+  "R3/4": 3,
+  "R1": 3,
+  "R1 1/4": 3,
+  "R1 1/2": 3,
+  "M8x1": 3,
+  "M10x1": 3,
+  "M12x1.5": 3,
+  "M14x1.5": 3,
+  "M16x1.5": 3,
+  "M18x1.5": 3,
+  "M20x1.5": 3,
+  "M22x1.5": 3,
+  "M24x1.5": 3,
+  "M26x1.5": 3,
+  "M27x2": 3,
+  "M30x1.5": 3,
+  "M33x2": 3,
+  "M36x1.5": 3,
+  "M38x1.5": 3,
+  "M42x1.5": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/din-906-hexagon-socket-pipe-plug",
+   "site": "torqbolt.com",
+   "what": "DIN 906 table 0 (thread, l js16, e min, s, t1 min, mass)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-906-specifications-hex-socket-pipe-plugs/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 906 Specifications, 8 transposed tables (L, s, t); R header cells are date-garbled ('8-Jan'=R1/8) and were decoded"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_906.asp",
+   "site": "schrauben-lexikon.de (same dataset on wegertseder.com)",
+   "what": "Maße table: s, t min, b for M8..M42 and R1/8..R2"
+  },
+  {
+   "url": "https://www.fasenco.com/din-906/",
+   "site": "fasenco.com",
+   "what": "table Size,b,s,t min (M8..M36 only; M14 s typo)"
+  },
+  {
+   "url": "https://www.ganternorm.com/en/products/3.5-Controlling-venting-sealing-of-liquids-and-gases/Threaded-plugs-Sealing-plugs/DIN-906-Threaded-plugs-with-conical-thread-Steel",
+   "site": "ganternorm.com",
+   "what": "manufacturer table d, R, h(=b), A/F(=s): corroborates b and s only (no t)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M6x1 row",
+   "why": "only torqbolt and Ganter (2 sources)"
+  },
+  {
+   "what": "M39x2, M45, M48, M52, M56x2, M60x2 rows",
+   "why": "t_min only in torqbolt+Fuller (2 independent); b,s also Ganter for M45/M48 but no 3rd t source"
+  },
+  {
+   "what": "R1 3/4 and R2 rows",
+   "why": "only the German shop dataset (1 source)"
+  },
+  {
+   "what": "e_min (hex socket across-corners) and s_max/s_min tolerance limits",
+   "why": "torqbolt and Fuller disagree in digits for s tolerance (e.g. M10 s 5.020-5.140 vs 5.03-5.15); e only in torqbolt"
+  },
+  {
+   "what": "mass per 1000 pcs",
+   "why": "not a dimension; not needed"
+  }
+ ],
+ "checks": [
+  "b, s, t_min non-decreasing with size within R series (8 rows) and within M series (16 rows)",
+  "t_min < b for every row (socket depth smaller than plug length: 4<8, 5<10, 6<12, 7.5<15, 11.5<18/20)",
+  "socket width s is smaller than the thread major diameter for every M row (M8 4<8 ... M42 22<42)",
+  "R rows carry identical (b,s,t) to the M rows at the same series step (R1/8=M10, R1/4=M14, R3/8=M16/M18, R1/2=M20/M22, R3/4=M24-M27, R1=M30/M33, R1 1/4=M42, R1 1/2=M48): consistent in torqbolt, Fuller and the German dataset",
+  "s values 4,5,6,7,8,10,12,17,19,22,24,32 are standard hex-key (ISO 4762 / DIN 911) sizes"
+ ],
+ "shape_hint": "Headless plug: a plain cylinder of length b fully threaded with a slightly tapered (conical) external thread, flat end face with a small chamfer, and a hexagon socket (width across flats s, depth t) recessed in the large end. No head, no collar; seals by taper thread (usually with sealant).",
+ "role_map": {
+  "d": "thread designation (R = tapered pipe thread ISO 7-1; Mxp = metric tapered DIN 158-1)",
+  "b": "plug/thread length (also total length), tolerance js16",
+  "s": "hex socket width across flats, nominal (tol D12)",
+  "t_min": "minimum hex socket depth"
+ },
+ "notes": "Rows are labelled with pitch inside the label (M10x1 etc.) and R pipe rows have no pitch column because R-thread pitch (TPI) is not in these sources. R rows and M rows share the same dimension grid; pairings between R and M sizes differ between sources (Ganter pairs R1/4 with M14, torqbolt with M12/M14), so no R<->M equivalence is asserted. R1 support relies on torqbolt's row whose label is truncated to 'DIN 906 R' (sits between R3/4 and R1 1/4 and its dims equal R1). Sizes with two series pitches (M30, M36, M42 also P=2) use the finer pitch row. 'b' is the thread length per DIN 906 'short thread' and equals overall length. Tapered NPT variants (DIN 906 NPT, ASME) are a different family (plugnpt). Fasenco lists M14 s=4 (typo; 7 per 4 other sources) - its M14 row not counted.",
+ "clusters": {
+  "Fuller / Chinese standards-DB template": [
+   "fullerfasteners.com"
+  ],
+  "torqbolt (newer DIN 906 edition, own layout)": [
+   "torqbolt.com"
+  ],
+  "German shop dataset (one lineage)": [
+   "schrauben-lexikon.de (wegertseder.com, theo-schrauben.de same data)"
+  ],
+  "fasenco.com (template site 'Fasteners Standard', sales@fasenco.com)": [
+   "fasenco.com"
+  ],
+  "Ganter manufacturer catalog (b,s only, no t)": [
+   "ganternorm.com"
+  ],
+  "EXTRA, not in record sources: fasteners.eu (own table d1,b,e,s,t,t',w; typos differ from torqbolt/Fuller, e.g. M38 weight 97,4)": [
+   "https://www.fasteners.eu/standards/DIN/906/"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 5 listed URLs live plus fasteners.eu DIN 906 (extra, HTTP 200). Parsed torqbolt (3 label columns M-pitch1 / M-pitch2 / R, then l, e, s, s min/max, t1), Fuller (8 transposed tables incl. decoded date-garbled R labels), lexikon (s,t min,b per size incl. explicit R rows), fasenco (M8..M36), Ganter (M row paired with R row: h, A/F), fasteners.eu. 24 rows x 3 cols = 72 cells. Cluster counts per cell without the extra source: b 4-5 (R rows: F,G,L,T), s 4-5 (M14 s: fasenco typo 4 out-voted), t_min 3-4 (R rows and M38/M42: F,L,T only; Ganter has no t). With fasteners.eu every cell has +1 and all agree. Zero numeric dissent except fasenco M14 s=4. Physical: b,s,t non-decreasing within R series and M series, t<b, s<d; R rows carry the same (b,s,t) as the M row they are paired with in torqbolt/Fuller/fasteners.eu (R1/8=M10, R1/4=M14 own row, R3/8=M16/M18, R1/2=M20/M22, R3/4=M24-M27, R1=M30/M33, R1 1/4=M42, R1 1/2=M48).",
+  "problems": [
+   "Mixed thread families in one `d` key: labels are unambiguous (R rows have no 'x' and no pitch; M rows always MxP) but `d` must be treated as a designation string, not a number; R rows have no pitch.",
+   "R-row evidence is partly decoded: Fuller R labels are Excel-date garbled ('8-Jan'=R1/8, '4-Jan'=R1/4, '8-Mar'=R3/8, '2-Jan'=R1/2, '4-Mar'=R3/4; R1 is plain '1'). Decode is unambiguous and cross-validated by explicit labels in torqbolt/lexikon/fasteners.eu, but it is an inference.",
+   "R1: torqbolt label is truncated to 'DIN 906 R' (assigned to R1 by sequence only). Explicit R1 labels exist in Fuller ('1'), lexikon ('R 1'), Ganter ('R 1'), fasteners.eu ('R1'). So R1 t_min has explicit support only from Fuller+lexikon (+fasteners.eu extra); b,s are fine (4 explicit). Recommend adding the fasteners.eu URL to sources.",
+   "Symbol for plug length differs by site (torqbolt/Fuller 'l/L js16', lexikon/fasenco/fasteners.eu 'b', Ganter 'h'); same value in every row (headless plug: thread length = overall length).",
+   "M30x1.5/M36x1.5/M42x1.5 also exist as x2 with identical b,s,t (fasenco lists M30x2 only); fine because pitch is in the label.",
+   "fasteners.eu additionally supports rows M45, M48, M52 (b,s,t) - not added."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 906 (hexagon socket pipe plug, conical thread: R per ISO 7-1/DIN 3858 and metric tapered per DIN 158-1)",
+ "scope": "육각구멍 테이퍼 플러그 DIN 906 (R 관용 테이퍼 · 미터 테이퍼)"
+}

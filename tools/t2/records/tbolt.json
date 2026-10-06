@@ -1,0 +1,180 @@
+{
+ "id": "tbolt",
+ "status": "partial",
+ "standard": "DIN 186",
+ "u": "mm",
+ "cols": [
+  [
+   "b",
+   "나사부 길이 b (L≤125)"
+  ],
+  [
+   "m",
+   "치수 m (DIN 186)"
+  ],
+  [
+   "n",
+   "치수 n (DIN 186)"
+  ],
+  [
+   "k",
+   "머리 높이 k (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   18,
+   16,
+   6,
+   4.5
+  ],
+  [
+   "M8",
+   22,
+   18,
+   8,
+   5.5
+  ],
+  [
+   "M10",
+   26,
+   21,
+   10,
+   7
+  ],
+  [
+   "M12",
+   30,
+   26,
+   12,
+   8
+  ],
+  [
+   "M16",
+   38,
+   30,
+   16,
+   10.5
+  ],
+  [
+   "M20",
+   46,
+   36,
+   20,
+   13
+  ],
+  [
+   "M24",
+   54,
+   43,
+   24,
+   15
+  ]
+ ],
+ "row_support": {
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-186-specifications-t-heads-bolts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 186 table M6-M48 (ds,k,n,m,r,b1-b3); nominal k,n,m,b1 used"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/186/",
+   "site": "fasteners.eu",
+   "what": "DIN 186 table M6-M48 (nominal k,n,m,b used); boltport.com/standards/din-186/ is a copy with the same typos -> one source"
+  },
+  {
+   "url": "https://boltport.com/standards/din-186/",
+   "site": "boltport.com",
+   "what": "copy of the fasteners.eu table (same typo ds max M24 2.84) -> counted with fasteners.eu"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-186",
+   "site": "theo-schrauben.de",
+   "what": "DIN 186 Form B small table M6-M24: m, n, k, b1 (nominal); the German reseller sister sites (proselect-schrauben.de, schrauben24.biz, wegertseder.com) share the same data -> one source; its 'l' row has a typo (189)"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/ISO_metric_screw_thread",
+   "site": "wikipedia.org",
+   "what": "coarse pitch P (reference for ISO 261 coarse pitch), together with kova.in DIN 6914 table for M24=3"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M30, M36, M42, M48 rows",
+   "why": "nominal dims have only 2 independent sources (fuller, fasteners.eu==boltport); theo cluster stops at M24"
+  },
+  {
+   "what": "k/n/m/ds max-min columns, e_min, r1, r2",
+   "why": "only fuller and fasteners.eu list them (2 independent sources); fasteners.eu has typo ds max M24 = 2.84"
+  },
+  {
+   "what": "b2/b3 columns",
+   "why": "fuller gives b2 for M6-M12 (24,28,32,36) while fasteners.eu/theo show none (-) -> disagreement, dropped"
+  },
+  {
+   "what": "DIN 261 table",
+   "why": "fasteners.eu/boltport (one source) + theo cluster (M16-M24 only) -> insufficient"
+  }
+ ],
+ "checks": [
+  "m > n > k for all rows; n (head width) equals d in every row; m/d = 2.67 (M6) -> 1.79 (M24)",
+  "m, k, b, P are strictly increasing M6..M24",
+  "b(L<=125) = 2d+6 for M6..M24 (18,22,26,30,38,46,54); same rule as the other bolt tables in this batch",
+  "fuller and fasteners.eu also list max/min for k,n,m (not published, only 2 sources); their m max-min spread is 1.8 (M6,M8), 2.0 (M10-M16), 2.5 (M20,M24), centred on the nominal m, consistent with the published nominal"
+ ],
+ "shape_hint": "T-head (hammer-head) bolt: the head is a flat rectangular bar of length m, width n (= d) and height k, set crosswise on top of the shank; right under the head sits a short square neck, then a plain shank with a thread of length b at the end. In side view the head looks like a T.",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse pitch",
+  "b": "thread length for L<=125",
+  "m": "head length (long side of the T)",
+  "n": "head width",
+  "k": "head height"
+ },
+ "notes": "Nominal head sizes only (the standard also defines +/- tolerances, not published here). Rows M6-M24 only. DIN 186 form A/B (square neck) share these head dimensions in the sources. DIN 261 / DIN 188 (double nib) are separate standards, not published. P is the ISO coarse pitch (Wikipedia ISO 261 table, kova DIN 6914 for M24=3 and the fuller/fasteners.eu rows agree).",
+ "clusters": {
+  "Chinese template": [
+   "fullerfasteners.com"
+  ],
+  "fasteners.eu family (boltport copy shares typo ds max M24 2.84)": [
+   "fasteners.eu",
+   "boltport.com"
+  ],
+  "German reseller dataset (m,n,k,l,b1,b2 only; 'DIN 186 Form B'; l(M12) typo 189)": [
+   "theo-schrauben.de"
+  ],
+  "NOT counted (not a distributor page / not this part)": [
+   "en.wikipedia.org ISO_metric_screw_thread (P)",
+   "kova DIN 6914 (P M24)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fuller, fasteners.eu, boltport, theo, wikipedia live (200). Parsed all; matrix 7 rows (M6-M24) x 5 value columns (P,b,m,n,k) x 4 sources: fuller = fasteners.eu = theo on every b,m,n,k cell (35 cells, zero disagreement). P is printed only by fuller and fasteners.eu/boltport (2 clusters; theo has no P; Wikipedia not a distributor page and not counted) -> P fails. Role check: fasteners.eu legend defines k = head height, m = head width, n = head thickness, b = thread length; fuller says 'Type B = with square neck and long thread'; theo says 'Form B' (Form A = partial thread).",
+  "problems": [
+   "P column has only 2 clusters (fuller, fasteners.eu==boltport); the Wikipedia ISO table and kova DIN 6914 pages used by the producer are not DIN 186 pages / not counted -> drop P",
+   "Table is DIN 186 FORM B (long thread; fuller 'Type B', theo 'Form B', fasteners.eu 'Type B' lg/ls table). Record says 'form A/B share these dimensions' - not verified by any source (theo: Form A = partial thread); b (L<=125) is the Form B value -> publish as 'DIN 186 Form B'",
+   "Family label 'DIN 186 · DIN 261': DIN 261 not covered (1-2 sources); label must not imply it",
+   "Role names m/n are the producer's reading (m head length, n head width); fasteners.eu legend says m = head width, n = head thickness, k = head height; numbers are unambiguous (m long side 16..43, n short side = d, k height) but relabel neutrally (m long side of head, n short side, k height) to avoid contradicting the only legend",
+   "M30-M48 rows have only 2 clusters (fuller, fasteners.eu) - correctly excluded by producer; fuller b2 M6-M12 (24,28,32,36) vs fasteners.eu/theo '-' disagreement - b2/b3 correctly excluded",
+   "Nominal values only (no tolerances)"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "P"
+  ]
+ },
+ "standard_full": "DIN 186 (T-head bolt with square neck, form A/B)",
+ "scope": "DIN 186 B형만"
+}

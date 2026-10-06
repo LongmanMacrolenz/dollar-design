@@ -1,0 +1,220 @@
+{
+ "id": "sqnut",
+ "status": "partial",
+ "standard": "DIN 557",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "s_max",
+   "대변거리 s (공칭=최대)"
+  ],
+  [
+   "e_max",
+   "대각거리 e 최대"
+  ],
+  [
+   "m_max",
+   "높이 m 최대(공칭)"
+  ],
+  [
+   "dw_min",
+   "좌면 지름 dw 최소"
+  ],
+  [
+   "mw_min",
+   "유효 렌치 높이 mw 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "M5",
+   0.8,
+   8,
+   11.3,
+   4,
+   6.7,
+   2.5
+  ],
+  [
+   "M6",
+   1,
+   10,
+   14.1,
+   5,
+   8.7,
+   3.2
+  ],
+  [
+   "M8",
+   1.25,
+   13,
+   18.4,
+   6.5,
+   11.5,
+   4.1
+  ],
+  [
+   "M10",
+   1.5,
+   17,
+   24,
+   8,
+   15.5,
+   5.2
+  ],
+  [
+   "M12",
+   1.75,
+   19,
+   26.9,
+   10,
+   17.2,
+   6.6
+  ],
+  [
+   "M16",
+   2,
+   24,
+   33.9,
+   13,
+   22,
+   8.6
+  ]
+ ],
+ "row_support": {
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_557",
+   "site": "fasten.it",
+   "what": "'Dimensions in mm - source DIN 557' (P, dw min, e max, m, mw min, s) M5-M16, M10/M12 in two widths"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-557-specifications-square-nuts/",
+   "site": "fullerfasteners.com",
+   "what": "2 tables: P, dw, e max/min, m max/min, m1(=mw), s max/min (M5-M16)"
+  },
+  {
+   "url": "https://digipich.com/en/standards/din-557/",
+   "site": "digipich.com",
+   "what": "table Size,P,s,e,m (min-max ranges),dw,mw (M5-M16)"
+  },
+  {
+   "url": "https://www.jcfasteners.com/wp-content/uploads/Din-557-Square-Nut-B4C56-SS304.pdf",
+   "site": "jcfasteners.com",
+   "what": "manufacturer catalogue datasheet B4C56 (m, mw, s, e max/min, dw min) M5-M16 - vendor datasheet, not the standard"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/nuts-standard/din-557.html",
+   "site": "boltsfastener.com",
+   "what": "table d,s,e,m (M4-M16)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_557.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "table d,s,e,m (M4-M16)"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1449-square-nuts-din-557",
+   "site": "nfgab.com",
+   "what": "table d1,e,s,m (M5-M20; header row is thead without tr)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "column s_min (min width across flats)",
+   "why": "M12: fullerfasteners and digipich 18.48 vs jcfasteners 18.57 -> only 2 agree"
+  },
+  {
+   "what": "M4 row",
+   "why": "only boltsfastener + schrauben-lexikon (not in DIN 557:1994 table; JC/fasten.it/fuller/digipich start at M5)"
+  },
+  {
+   "what": "M20 row",
+   "why": "only nfgab.com lists it"
+  },
+  {
+   "what": "alternate widths M10 s=16 (dw 14.5, e 22.6) and M12 s=18 (dw 16.5, e 25.4)",
+   "why": "only fasten.it and fullerfasteners list them (2 sources); published rows use s=17 / s=19 which all sources list"
+  },
+  {
+   "what": "engineeringhardware.com table",
+   "why": "e min 11.1/13.9/... not in the standard (derived), rejected"
+  },
+  {
+   "what": "JC datasheet dw_min for M10 (14.5) and M12 (16.5)",
+   "why": "JC pairs the s=17/19 rows with dw of the s=16/18 variants; 3 other sources agree on 15.5 / 17.2"
+  }
+ ],
+ "checks": [
+  "e_max = 1.4142 x s within 0.1 mm for all six sizes",
+  "e_max > e_min; m_max > m_min > mw_min",
+  "dw_min < s; all columns non-decreasing with size",
+  "pitch = ISO coarse pitch",
+  "fullerfasteners M16 m max printed 'l3' (typo for 13): ignored, 6 other sources give 13"
+ ],
+ "shape_hint": "A thick square nut: top view is a square of side s with a central threaded hole (sharp corners across e), side view is a rectangle of height m; sometimes a slightly chamfered circular bearing face of diameter dw on one side.",
+ "role_map": {
+  "d_nom": "nominal thread (M)",
+  "P": "coarse pitch",
+  "s_max": "width across flats (square side), nominal = max",
+  "e_max": "width across corners max",
+  "e_min": "width across corners min",
+  "m_max": "nut height nominal/max",
+  "m_min": "nut height min",
+  "dw_min": "bearing face diameter min",
+  "mw_min": "min effective wrench height (m1/mw)"
+ },
+ "notes": "Only DIN 557 was checked (also named DIN 562 thin square nut, KS B 1013, ASME B18.2.2 - not verified). DIN 557 itself has two historical widths for M10 (s=17 vs 16) and M12 (s=19 vs 18); the table uses the common s=17 and s=19; the s=16 / s=18 variants appear only in fasten.it and fullerfasteners. Sizes M4 and M20+ are not in DIN 557:1994. row_support = lowest per-column agreement (e_min, m_min and dw_min have exactly 3 sources for some rows).",
+ "clusters": {
+  "A fasten.it": [
+   "fasten.it/en/norms/norm/din_557 (P, dw, e max, m, mw, s)"
+  ],
+  "B Chinese-template DB (fullerfasteners + globalfastener)": [
+   "fullerfasteners.com/tech/din-557-specifications-square-nuts/",
+   "globalfastener.com/standards/detail_239.html (DIN 557-1985, older edition; not in record)"
+  ],
+  "C digipich": [
+   "digipich.com/en/standards/din-557/ (min-max ranges)"
+  ],
+  "DE boltsfastener + schrauben-lexikon (identical 3-row s/e/m layout and values, EN/DE mirrors)": [
+   "boltsfastener.com DIN 557",
+   "schrauben-lexikon.de DIN_557.asp"
+  ],
+  "F nfgab": [
+   "nfgab.com square nuts DIN 557 (e,s,m)"
+  ],
+  "not counted (vendor PDF)": [
+   "jcfasteners.com datasheet B4C56"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Live curl (HTTP 200) of fasten.it, fullerfasteners, digipich, boltsfastener, schrauben-lexikon, nfgab and globalfastener detail_239; JC PDF not used. 6 rows (M5..M16) x 8 columns (P,s_max,e_max,e_min,m_max,m_min,dw_min,mw_min) x 7 page instances: no record cell conflicts with any page value except mw_min on globalfastener's DIN 557-1985 page (2.4/3.1/4.0/5.1/6.4/8.5, older edition, same cluster as fuller which agrees) and fuller M16 m_max typo 'l3'. Clusters per cell (JC PDF excluded): s_max, e_max, m_max 5; P, dw_min, mw_min 3 (fasten.it, fuller/globalfastener, digipich); e_min and m_min 2 (fuller, digipich). Sanity: e_max=1.414*s within 0.1, e_max>e_min, m_max>m_min>mw_min, monotone, pitch=ISO coarse.",
+  "problems": [
+   "e_min and m_min fail: only fullerfasteners and digipich (2 clusters) list them; the producer's third source was the JC Fasteners PDF datasheet, which may only corroborate. Drop both columns (no other independent page found: engineeringhardware e_min is derived, der-schraubenladen is images).",
+   "Thin cells (exactly 3 clusters, all 6 rows): P, dw_min, mw_min = fasten.it, fuller(+globalfastener), digipich. digipich shows no shared typos with fuller or fasten.it (fuller's M16 'l3' typo not copied), so it is counted separately; if digipich were found to derive from fuller these three columns would also fail.",
+   "boltsfastener and schrauben-lexikon carry the same row layout (d, s, e, m) and the same M4..M16 values -> counted once (producer already counted 6-7 'sources' for s/e/m max; clustered count is 5).",
+   "fullerfasteners table 2 column labels are scrambled ('M10 SW 16', 'M12', 'M12 SW 18' hold s=17, 18, 19); rows must be identified by s value, which matches fasten.it/digipich s=17/19 rows - a label inference, harmless for the kept s=17/19 rows.",
+   "Row convention: M10 uses s=17 (not the older s=16, dw 14.5, e 22.6) and M12 uses s=19 (not 18); fasten.it/fuller/globalfastener list both widths, digipich/boltsfastener/schrauben-lexikon/nfgab list 17/19. Edition note: globalfastener DIN 557-1985 differs in m/mw from the 1994 table used here (m max 4.6/min 3.4 vs 4/3.52 for M5).",
+   "Semantics fine: s_max=nominal=max, e_max=across corners max, m_max=nominal, dw_min=bearing diameter min, mw_min=m1/mw effective wrench height min - all read from headers."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "e_min",
+   "m_min"
+  ]
+ },
+ "standard_full": "DIN 557 (square nuts, product grade C, 1994 table; coarse thread)"
+}

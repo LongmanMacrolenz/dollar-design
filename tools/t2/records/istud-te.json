@@ -1,0 +1,295 @@
+{
+ "id": "istud-te",
+ "status": "ok",
+ "standard": "ASME B18.31.2 Table 3",
+ "u": "in",
+ "cols": [
+  [
+   "Bm",
+   "탭엔드 완전나사 길이 Bm (호칭)"
+  ],
+  [
+   "Umax",
+   "나사 끝 모따기 구간 U 최대 (=2P, UNC)"
+  ],
+  [
+   "B_le10",
+   "너트쪽 완전나사 길이 B 최소 (L≤10in)"
+  ],
+  [
+   "B_10_16",
+   "너트쪽 완전나사 길이 B 최소 (10in<L≤16in)"
+  ],
+  [
+   "B_gt16",
+   "너트쪽 완전나사 길이 B 최소 (L>16in)"
+  ]
+ ],
+ "rows": [
+  [
+   "1/4",
+   0.375,
+   0.1,
+   0.75,
+   1.0,
+   1.5
+  ],
+  [
+   "5/16",
+   0.469,
+   0.111,
+   0.875,
+   1.125,
+   1.625
+  ],
+  [
+   "3/8",
+   0.563,
+   0.125,
+   1.0,
+   1.25,
+   1.75
+  ],
+  [
+   "7/16",
+   0.656,
+   0.143,
+   1.125,
+   1.375,
+   1.875
+  ],
+  [
+   "1/2",
+   0.75,
+   0.154,
+   1.25,
+   1.5,
+   2.0
+  ],
+  [
+   "5/8",
+   0.938,
+   0.182,
+   1.5,
+   1.75,
+   2.25
+  ],
+  [
+   "7/8",
+   1.313,
+   0.222,
+   2.0,
+   2.25,
+   2.75
+  ],
+  [
+   "1",
+   1.5,
+   0.25,
+   2.25,
+   2.5,
+   3.0
+  ],
+  [
+   "1-1/8",
+   1.688,
+   0.286,
+   2.5,
+   2.75,
+   3.25
+  ],
+  [
+   "1-1/4",
+   1.875,
+   0.286,
+   2.75,
+   3.0,
+   3.5
+  ],
+  [
+   "1-3/8",
+   2.063,
+   0.333,
+   3.0,
+   3.25,
+   3.75
+  ],
+  [
+   "1-1/2",
+   2.25,
+   0.333,
+   3.25,
+   3.5,
+   4.0
+  ],
+  [
+   "1-3/4",
+   2.625,
+   0.4,
+   3.75,
+   4.0,
+   4.5
+  ],
+  [
+   "2",
+   3.0,
+   0.444,
+   4.25,
+   4.5,
+   5.0
+  ],
+  [
+   "2-1/4",
+   3.375,
+   0.444,
+   4.75,
+   5.0,
+   5.5
+  ],
+  [
+   "2-1/2",
+   3.75,
+   0.5,
+   5.25,
+   5.5,
+   6.0
+  ],
+  [
+   "2-3/4",
+   4.125,
+   0.5,
+   5.75,
+   6.0,
+   6.5
+  ]
+ ],
+ "row_support": {
+  "1/4": 3,
+  "5/16": 3,
+  "3/8": 3,
+  "7/16": 3,
+  "1/2": 3,
+  "5/8": 3,
+  "7/8": 3,
+  "1": 3,
+  "1-1/8": 3,
+  "1-1/4": 3,
+  "1-3/8": 3,
+  "1-1/2": 3,
+  "1-3/4": 3,
+  "2": 3,
+  "2-1/4": 3,
+  "2-1/2": 3,
+  "2-3/4": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.a193gradeb7.com/tap-end-studs/",
+   "site": "a193gradeb7.com (Boltport; sister sites boltport.com, a193gradeb8m.com, boltingspecialist.com identical incl. typo -> ONE source)",
+   "what": "ASME B18.31.2 tap end studs table: BM nom/min/max, Umax=2P, Bmin by L"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/asme_b18.31.2",
+   "site": "fasten.it",
+   "what": "table 'Tap end studs (1.5D engagement)': Bm nominal and B min (3 L ranges)"
+  },
+  {
+   "url": "https://www.nickel-systems.com/products/studs-rods/tap-end-studs/",
+   "site": "nickel-systems.com",
+   "what": "tap-end studs table: Bm, Umax=2P (UNC/UNF), Bmin by L"
+  },
+  {
+   "url": "https://www.aesteiron.com/stud-bolts.html",
+   "site": "aesteiron.com",
+   "what": "table 2: Bmin by L range and Umax (UNC/UNF/8UN), 19 sizes"
+  },
+  {
+   "url": "https://torqbolt.com/asme-b18-31-2-imperial-continous-thread-double-end-reduced-and-full-body-studs-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "chamfered thread distance U (UNC/UNF/8UN min/max)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "9/16 row",
+   "why": "Bm only on 2 sources (nickel-systems lacks the size)"
+  },
+  {
+   "what": "3/4 row",
+   "why": "Bm: fasten.it and nickel-systems show 1.125 but Boltport shows typo '1.1.25' (and its sister sites copy it) -> only 2 clean sources"
+  },
+  {
+   "what": "1-5/8 and 1-7/8 rows",
+   "why": "8UN-only sizes (no UNC U value -> would need empty cell) and Bm only 2 sources"
+  },
+  {
+   "what": "3, 3-1/4, 3-1/2, 3-3/4, 4 rows",
+   "why": "B for L<=10 in does not exist for these sizes (empty cell not allowed); their other cells agree on 3+ sources, see notes"
+  },
+  {
+   "what": "Umax for UNF threads",
+   "why": "not defined for sizes >= 1-3/4; empty cells not allowed"
+  },
+  {
+   "what": "Bm min/max columns",
+   "why": "only Boltport group lists them (dceng.com gives mm conversions); 1 independent source"
+  },
+  {
+   "what": "mm-converted table at fasteners-bolts.com (dceng)",
+   "why": "inch standard converted to mm: not native, not used as a source"
+  }
+ ],
+ "checks": [
+  "Bm = 1.5 D (rounded to 3 decimals) for all 17 rows",
+  "B_le10 < B_10_16 < B_gt16 in every row (+0.25 / +0.5 in steps)",
+  "Umax = 2/TPI(UNC): 0.100 (1/4-20) ... 0.500 (>=2-1/2), non-decreasing with size",
+  "B_le10 grows monotonic with D (0.75 ... 5.75)",
+  "All value columns agree across listed sources for each kept size; only discrepancies were the Boltport typo 1.1.25 (3/4 Bm) and nickel-systems label typo '11/2' (=1/2)"
+ ],
+ "shape_hint": "A headless double-ended threaded rod: a short fully-threaded tap end (about 1.5 D, interference-fit class 5) screwed into the casing, then a plain unthreaded body of reduced or full diameter, then a longer nut end with full thread (B) where a heavy hex nut is fitted; both ends have a chamfered lead-in (U).",
+ "role_map": {
+  "d_nom": "nominal thread diameter D (inch)",
+  "Bm": "nominal full thread length of tap end (1.5 D)",
+  "Umax": "max length from stud end to first full-form thread (=2 pitches, UNC)",
+  "B_le10": "min full-thread length at nut end for stud length L<=10 in",
+  "B_10_16": "min full-thread length at nut end for 10<L<=16 in",
+  "B_gt16": "min full-thread length at nut end for L>16 in"
+ },
+ "notes": "Tap-end (interference fit, ASME B1.12 Class 5/NC-5) stud: B is nut-end full thread; stud overall length L is customer specified; stand-off S = L - Bm. Table 3 of B18.31.2 applies to 1.5D engagement; other engagement tables (1D, 2D) were not checked. Sizes 3, 3-1/4, 3-1/2, 3-3/4, 4 in exist with only B(10<L<=16) and B(L>16) and Bm (Bm 4.5/4.875/5.25/5.625/6.0 on bp,fasten.it,nickel; B(L>16) 7/7.5/8/8.5/9) - kept out of the table only because of the no-empty-cell rule for B(L<=10). Thread = UNC (NC-5) tap end; UNF/8UN variants not tabulated. Sizes 1-5/8 and 1-7/8 are 8UN-only.",
+ "clusters": {
+  "Boltport group (ONE source)": [
+   "a193gradeb7.com/tap-end-studs (live)",
+   "a193gradeb8m.com (producer copy)",
+   "boltingspecialist.com (live + producer copy)",
+   "boltport.com (producer copy)"
+  ],
+  "fasten.it (cites 'ASME B18.31.2 2008 table 3 tap end studs 1.5D')": [
+   "fasten.it/en/norms/norm/asme_b18.31.2 (table 1 of the page)"
+  ],
+  "Nickel Systems (US stocking distributor)": [
+   "nickel-systems.com/products/studs-rods/tap-end-studs/"
+  ],
+  "TorqBolt": [
+   "torqbolt.com ASME B18.31.2 continuous-thread page (U min/max table; Umax only)"
+  ],
+  "aesteiron.com (NOT counted: live fetch blocked by SiteGround captcha; only producer's copy parsed)": [
+   "aesteiron.com/stud-bolts.html"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Live re-download OK for a193gradeb7.com, fasten.it, nickel-systems, torqbolt (HTTP 200); boltingspecialist re-fetched; aesteiron.com returned a captcha redirect (not re-fetchable) so it was parsed from the producer copy and NOT counted. Boltport sister pages (b7, b8m, boltport_b7, bspec_tap): all 28 table rows identical incl. the typo '1.1.25' (3/4 Bm) -> one cluster. Matrix 17 rows x 5 value columns (Bm, Umax, B_le10, B_10_16, B_gt16) x sources = 85 cells, 0 disagreements for the kept rows. Bm: {Boltport, fasten.it, Nickel} = 3 clusters on all 17 rows (only these three publish Bm). B columns: same 3 clusters on all 17 rows (+aesteiron on 12 rows, not counted). Umax (UNC): {Boltport, Nickel, TorqBolt} = 3 on all 17 rows (+aesteiron on 12). Dropped rows re-checked: 3/4 Bm only 2 clean clusters (Boltport '1.1.25'), 9/16 absent at Nickel -> producer's drops are correct. Physical: Bm = 1.5 D on all 17 rows (to 0.0006), B_le10 < B_10_16 < B_gt16 (+0.25/+0.5 steps), Umax = 2/tpi(UNC) non-decreasing 0.100..0.500, B grows monotonically with D.",
+  "problems": [
+   "Every kept cell is supported by exactly 3 clusters (Bm and B columns: Boltport, fasten.it, Nickel Systems; Umax: Boltport, Nickel, TorqBolt). Zero margin.",
+   "Independence risk: Nickel Systems' tap-end table has different headings, no Bm min/max and only UNC/UNF Umax columns, and different typos ('11/2') than Boltport ('1.1.25') -> counted as an independent transcription of the standard. If a reviewer judges Nickel to be derived from Boltport, Bm and B columns drop to 2 clusters on ALL rows and the record fails.",
+   "aesteiron.com cannot be re-fetched (captcha); its rows are in scrambled order (looks like a reshuffled copy). Not used to reach 3.",
+   "TorqBolt's table is the continuous-thread stud table (U min/max, Table 1), not the tap-end table; U values are the same 2P numbers, used only for Umax.",
+   "Role check: Bm = 'Tap End Full Thread Length, Bm' (nominal), B = 'Minimum Nut End Full Thread Length, Bmin' by stud length L in inches, Umax = 'Umax = 2P' UNC & NC-5 column; all read from headers, none inferred. Table 3 = 1.5D engagement only; other engagements not covered. Row labels '1-1/8' etc. are fine (sources use '1 1/8').",
+   "UNF/8UN Umax and sizes 3..4 in (no B for L<=10 in) are not in the table (empty-cell rule); 9/16 and 3/4 rows missing for lack of a third clean source."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ASME B18.31.2 Table 3 (tap-end studs, 1.5D engagement, UNC/NC-5 tap end)"
+}

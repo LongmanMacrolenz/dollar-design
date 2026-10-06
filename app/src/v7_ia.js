@@ -685,16 +685,17 @@ const iaQty = v => { if (typeof v === 'number') return isFinite(v) ? v : null; c
 // 값은 수로 계산하고, 표에 분수로 적힌 값('7/16')은 그림에도 분수로 적는다 (Number 객체에 원문 raw와 열 이름 key를 붙임: 그림 글자는 표의 열 이름)
 const iaCv = (f, size, ...keys) => { for (const k of keys) { const r = iaColVal(f, size, k), v = iaQty(r); if (v > 0) return Object.assign(new Number(v), { raw: r, key: k }); } return null; };
 const IA_DRAW = {
-  pin: (f, s) => { const d = iaCv(f, s.size, 'd', 'd1', 'dn'), L = iaQty(s.L) || iaCv(f, s.size, 'lMinStd'); return d ? { k: 'pin', d, L: L || null } : null; },
-  washer: (f, s) => { const a = iaCv(f, s.size, 'd1', 'ID'), b = iaCv(f, s.size, 'd2', 'OD'), h = iaCv(f, s.size, 'h', 'T_min'); return a && b && h && b > a ? { k: 'washer', a, b, h, inch: f.sys === 'inch' } : null; },
+  pin: (f, s) => { if (f.id === 'clevis') return null;   /* 머리붙이 클레비스 핀은 v7_iadraw.js가 머리를 포함해 그린다 */
+    const d = iaCv(f, s.size, 'd', 'd1', 'dn', 'A_std_basic'), L = iaQty(s.L) || iaCv(f, s.size, 'lMinStd'); return d ? { k: 'pin', d, L: L || null } : null; },
+  washer: (f, s) => { const a = iaCv(f, s.size, 'd1', 'ID'), b = iaCv(f, s.size, 'd2', 'OD'), h = iaCv(f, s.size, 'h', 'T_min', 'h_max', 'h_min', 's'); return a && b && h && b > a ? { k: 'washer', a, b, h, inch: f.sys === 'inch' } : null; },
   nut: (f, s) => { if (f.id === 'capnut') return null;   /* 캡너트는 v7_iadraw.js가 둥근 모양으로 그린다 (육각너트 모양으로 다시 그려지지 않게 비움) */
-    const sw = iaCv(f, s.size, 's', 'F'), m = iaCv(f, s.size, 'm', 'h', 'l', 'H'); return sw && m ? { k: 'nut', s: sw, m, d: iaMetricD(s.size), inch: f.sys === 'inch' } : null; },
+    const sw = iaCv(f, s.size, 's', 'F', 'F_basic', 's_max'), m = iaCv(f, s.size, 'm', 'h', 'l', 'H', 'H_basic', 'm_max'); return sw && m ? { k: 'nut', s: sw, m, d: iaMetricD(s.size), inch: f.sys === 'inch' } : null; },
   key: (f, s) => { const b = iaCv(f, s.size, 'b'), h = iaCv(f, s.size, 'h'), L = iaQty(s.L) || iaCv(f, s.size, 'lMin'); return b && h && L ? { k: 'key', b, h, L } : null; },
 };
 const IA_DRAW_OF = { pin: 'pin', washer: 'washer', nut: 'nut', key: 'key' };
 function iaDrawSvg(f, s) {
   const more = iaDwMore(f, s); if (more !== undefined) return more;   // 나사류·스터드·캡너트 (v7_iadraw.js)
-  const kind = IA_DRAW_OF[f.eng] && !/^(cotter|clevis|rclip|ipin|grooved|splittaper|spring-co|taper|taper-th)$/.test(f.id) && !/^(tnut|rivnut|channelnut|wing|castle|eyenut|cagenut|weldnut|sqnut|fixturenut|profilenut|oemnut|flangenut|allmetal|hn2)$/.test(f.id) && !/^(sealw|bondseal|dti|taperw|sphw|sqw|pwxl)$/.test(f.id) ? IA_DRAW_OF[f.eng] : null;
+  const kind = IA_DRAW_OF[f.eng] && !/^(cotter|clevis|rclip|grooved|splittaper|spring-co|taper|taper-th)$/.test(f.id) && !/^(tnut|rivnut|channelnut|wing|castle|eyenut|cagenut|weldnut|sqnut|fixturenut|profilenut|oemnut|flangenut|allmetal|hn2)$/.test(f.id) && !/^(bondseal|dti|taperw|sphw|sqw)$/.test(f.id) ? IA_DRAW_OF[f.eng] : null;
   const g = kind && f.dims ? IA_DRAW[kind](f, s) : null; if (!g) return null;
   const P = 'iaAr', u = f.sys === 'inch' ? '"' : '', fmt = v => typeof v?.raw === 'string' && v.raw.includes('/') ? `${v.raw}${u}` : `${+(+v).toFixed(3)}${u}`;
   let b = '', W = 520, H = 250, cy = 122;
@@ -727,7 +728,7 @@ function iaDimsHTML(f, s) {
   if (!f.dims) return f.dimsHeld ? `<div class="note info small"><span class="nk">도면 기준 견적</span><span>이 품목의 상세 치수는 적용 규격과 고객 도면을 기준으로 확인합니다${f.gate ? ` (${esc(f.gate)})` : ''}. 공개 치수표 대신 요구 사양으로 견적을 검토합니다.</span></div>`
     : `<div class="note info small"><span class="nk">치수</span><span>표준 치수표는 싣지 않았습니다. 도면이나 규격 번호를 보내 주시면 그 기준으로 견적합니다.</span></div>`;
   const cols = f.dims.cols, u = f.dims.u || (f.sys === 'inch' ? 'in' : 'mm');
-  return `<div class="tblw ia-dimt"><table class="tbl mid"><caption>${f.dims.basis === 'T2' ? `치수 근거 ${esc(f.enStd || '')} · 제조·유통사 공개 기술자료 3곳 이상 대조 (규격서 원문 대조 전)` : `치수 근거 ${esc(f.enStd || '')} · 원문 대조 행만`} · 단위 ${esc(u)}${f.dims.dropped ? ` · 원문 미대조 ${f.dims.dropped}행은 싣지 않음` : ''}</caption><thead><tr><th scope="col">호칭</th>${cols.map(([k, ko]) => `<th scope="col" class="r"><span class="mono">${esc(k)}</span><span class="sub">${esc(ko)}</span></th>`).join('')}</tr></thead><tbody>${f.dims.rows.map(r => `<tr${r[0] === s.size ? ' aria-current="true" class="on"' : ''} data-ia-size="${esc(r[0])}"><th scope="row" class="mono">${esc(r[0])}</th>${r.slice(1).map(v => `<td class="r mono">${v == null ? '<span class="faint">—</span>' : esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  return `<div class="tblw ia-dimt"><table class="tbl mid"><caption>${f.dims.basis === 'T2' ? `치수 근거 ${esc(f.dims.standard || f.enStd || '')} · 제조·유통사 공개 기술자료 3곳 이상 대조 (규격서 원문 대조 전)${f.dims.scope ? ` · 범위: ${esc(f.dims.scope)}` : ''}` : `치수 근거 ${esc(f.enStd || '')} · 원문 대조 행만`} · 단위 ${esc(u)}${f.dims.dropped ? ` · 원문 미대조 ${f.dims.dropped}행은 싣지 않음` : ''}</caption><thead><tr><th scope="col">호칭</th>${cols.map(([k, ko]) => `<th scope="col" class="r"><span class="mono">${esc(k)}</span><span class="sub">${esc(ko)}</span></th>`).join('')}</tr></thead><tbody>${f.dims.rows.map(r => `<tr${r[0] === s.size ? ' aria-current="true" class="on"' : ''} data-ia-size="${esc(r[0])}"><th scope="row" class="mono">${esc(r[0])}</th>${r.slice(1).map(v => `<td class="r mono">${v == null ? '<span class="faint">—</span>' : esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 function iaSpecText(f, s) {
   return [f.short || f.ko, (f.std[0] || [])[1] ? String(f.std[0][1]).split(/[ (]/).slice(0, 2).join(' ') : '', s.size && (s.L ? `${s.size} × ${s.L}` : s.size), s.mat, s.fin, s.memo && `메모: ${s.memo}`].filter(Boolean).join(' / ');

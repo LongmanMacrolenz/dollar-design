@@ -1,0 +1,284 @@
+{
+ "id": "conical",
+ "status": "ok",
+ "standard": "DIN 6796",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "내경 d1 (최소=호칭)"
+  ],
+  [
+   "d2",
+   "외경 d2 (최대=호칭)"
+  ],
+  [
+   "s",
+   "재료 두께 s"
+  ],
+  [
+   "h_max",
+   "무하중 높이 h 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "M2",
+   2.2,
+   5.0,
+   0.4,
+   0.6
+  ],
+  [
+   "M2.5",
+   2.7,
+   6.0,
+   0.5,
+   0.72
+  ],
+  [
+   "M3",
+   3.2,
+   7.0,
+   0.6,
+   0.85
+  ],
+  [
+   "M3.5",
+   3.7,
+   8.0,
+   0.8,
+   1.06
+  ],
+  [
+   "M4",
+   4.3,
+   9.0,
+   1.0,
+   1.3
+  ],
+  [
+   "M5",
+   5.3,
+   11.0,
+   1.2,
+   1.55
+  ],
+  [
+   "M6",
+   6.4,
+   14.0,
+   1.5,
+   2.0
+  ],
+  [
+   "M7",
+   7.4,
+   17.0,
+   1.75,
+   2.3
+  ],
+  [
+   "M8",
+   8.4,
+   18.0,
+   2.0,
+   2.6
+  ],
+  [
+   "M10",
+   10.5,
+   23.0,
+   2.5,
+   3.2
+  ],
+  [
+   "M12",
+   13.0,
+   29.0,
+   3.0,
+   3.95
+  ],
+  [
+   "M14",
+   15.0,
+   35.0,
+   3.5,
+   4.65
+  ],
+  [
+   "M16",
+   17.0,
+   39.0,
+   4.0,
+   5.25
+  ],
+  [
+   "M18",
+   19.0,
+   42.0,
+   4.5,
+   5.8
+  ],
+  [
+   "M20",
+   21.0,
+   45.0,
+   5.0,
+   6.4
+  ],
+  [
+   "M22",
+   23.0,
+   49.0,
+   5.5,
+   7.05
+  ],
+  [
+   "M24",
+   25.0,
+   56.0,
+   6.0,
+   7.75
+  ],
+  [
+   "M27",
+   28.0,
+   60.0,
+   6.5,
+   8.35
+  ],
+  [
+   "M30",
+   31.0,
+   70.0,
+   7.0,
+   9.2
+  ]
+ ],
+ "row_support": {
+  "M2": 3,
+  "M2.5": 3,
+  "M3": 3,
+  "M3.5": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M7": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3,
+  "M18": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M27": 3,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/din-6796-conical-spring-washers-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "DIN 6796 table (d1,d2,s,h max/min,weight,thread) [cluster A]"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-6796-specifications-conical-spring-washer/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 6796 specification tables (d min/max, dc, h, H max/min) - same layout as globalfastener.com [cluster B]"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6796.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Technische Daten DIN 6796 (M3-M24: d1,d2,h max/min,s) [cluster E]"
+  },
+  {
+   "url": "https://www.rafflenbeul.de/produktprogramm/normteile/spannscheiben.php",
+   "site": "rafflenbeul.de",
+   "what": "Maße von Spannscheiben (d1 x d2, s; M3-M24 without M22) [cluster R]"
+  },
+  {
+   "url": "https://www.ferratec-industrial-solutions.ch/de/online-katalog/tellerfedern-und-spannscheiben/web-va5314-spannscheiben-nach-din-6796/",
+   "site": "ferratec-industrial-solutions.ch",
+   "what": "catalog list of article dimensions outer x inner x thickness, lo (=h max), M2-M30 [cluster F]"
+  },
+  {
+   "url": "https://www.schnorr-group.com/de/produkte/spannscheiben/spannscheiben-din-6796",
+   "site": "schnorr-group.com",
+   "what": "DIN 6796 table (Nennmass, D2, D1, hmin, hmax) M12-M30 [cluster S]"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "h_min column",
+   "why": "only torqbolt, fuller and schrauben-lexikon list h min for M2-M10 (lexikon from M3, with a typo '135' at M5, torqbolt 2.4 vs 2.24 at M8); <3 sources for M2, M2.5, M3.5, M5, M7, M8 -> column dropped rather than 6 rows"
+  },
+  {
+   "what": "d1_max / d2_min limits, weight",
+   "why": "only the globalfastener-layout cluster (fuller) lists limits; weights only 2 clusters; not published"
+  },
+  {
+   "what": "bellevilleusa.com 'DIN 6796' table",
+   "why": "t and H values differ from all other sources (e.g. M4 t=0.8 vs 1.0, M12 t=3.5 vs 3) - unreliable, not used"
+  },
+  {
+   "what": "M33, M36 (bellevilleusa only)",
+   "why": "not in the other tables"
+  }
+ ],
+ "checks": [
+  "d2 > d1 in every row (d2/d1 from 2.08 to 2.33)",
+  "d1 strictly increases with thread size",
+  "d2 strictly increases with thread size",
+  "s strictly increases with thread size",
+  "h_max strictly increases with thread size",
+  "h_max > s in every row; cone rise (h_max - s)/s between 0.28 and 0.50 (plausible conical-washer deflection range)",
+  "d1 (hole) exceeds the thread diameter for every size (M10 -> 10.5, M30 -> 31)",
+  "every kept cell has >=3 independent clusters in agreement; d1/d2/s/h_max for M18 h_max resolved 4 vs 1 (torqbolt typo 5.6)"
+ ],
+ "shape_hint": "Shallow cone-shaped (Belleville-type) washer with a plain round hole: a thin ring whose outer edge is raised so the side view is a flat trapezoid/cone of height h above the base ring of thickness s; seen from above it is a plain annulus.",
+ "role_map": {
+  "d1": "inner (bolt-hole) diameter, minimum = nominal, H14",
+  "d2": "outer diameter, maximum = nominal, h14",
+  "s": "material thickness",
+  "h_max": "free (unloaded) overall height of the conical washer, maximum"
+ },
+ "notes": "Coverage M2-M30 (19 sizes). Rows M2.5, M3.5, M7 rest on exactly 3 clusters (torqbolt, fuller/globalfastener layout, ferratec). Torqbolt has typos (M18 h max 5.6, M8 h min 2.4) and a missing thread label for M2; schrauben-lexikon M5 h min '135'. Free height 'h' here is the standard's H (overall height unloaded, listed max); the thickness is s. DIN 6796 is for 8.8-10.9 bolted joints, not interchangeable with spring (helical) washers. KS B 1329 correspondence not verified. schrauben-lexikon states interchangeable with ISO 10670 (not verified and not used).",
+ "clusters": {
+  "FE (fasteners.eu-derived)": [
+   "torqbolt.com (table identical to fasteners.eu 6796 incl. typo M18 h=5.6)",
+   "fasteners.eu (live)"
+  ],
+  "Chinese template": [
+   "fullerfasteners.com"
+  ],
+  "German dataset": [
+   "schrauben-lexikon.de (M3-M24)"
+  ],
+  "rafflenbeul": [
+   "rafflenbeul.de (d1 x d2, s; M3-M24 w/o M22) - independence from lexikon not provable, count optional"
+  ],
+  "ferratec": [
+   "ferratec-industrial-solutions.ch (De x Di x Dicke, lo = free height)"
+  ],
+  "schnorr": [
+   "schnorr-group.com (M12-M30; D2, D1, hmax; s column empty)"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 6 URLs live (HTTP 200) + fasteners.eu 6796. 19 rows x 4 cols x 6 clusters parsed: 0 mismatches except torqbolt/FE M18 h_max 5.6 (typo; 4 other clusters 5.8). Support: M2, M2.5, M3.5, M7 all cols = 3 (FE, fuller, ferratec); M3-M10: 4-5; M12-M30: 4-6 (M27/M30 s: FE, fuller, ferratec; schnorr s empty). Physical: d2/d1 2.08-2.33, all columns strictly monotone, h_max>s.",
+  "problems": [
+   "Rows M2, M2.5, M3.5, M7 have exactly 3 clusters and depend on ferratec (a distributor catalogue, columns 'Dicke' and 'lo').",
+   "M27/M30 s: schnorr's s column is empty -> exactly 3 (FE, fuller, ferratec).",
+   "Symbol conflict between sources: FE/lexikon use s=thickness, h=overall height; fullerfasteners uses h=thickness and H=overall height. Mapping confirmed by ferratec words (Dicke / lo) and schnorr hmax, not by magnitude alone - OK. h_max = free height max (ferratec 'lo').",
+   "rafflenbeul and lexikon are both German shops with the same M3-M24 range and may share one dataset; harmless, because every cell keeps >=3 clusters even without rafflenbeul.",
+   "torqbolt typo M2 label 'M' ; FE-cluster typo M18 h max 5.6 correctly outvoted."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 6796"
+}

@@ -1,0 +1,182 @@
+{
+ "id": "taperw",
+ "status": "ok",
+ "standard": "DIN 434",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "구멍 지름 d1 최소(=호칭)"
+  ],
+  [
+   "a",
+   "변 a (호칭)"
+  ],
+  [
+   "b",
+   "변 b (호칭)"
+  ],
+  [
+   "h",
+   "높이 h (호칭)"
+  ],
+  [
+   "r",
+   "모서리 반경 r (약)"
+  ]
+ ],
+ "rows": [
+  [
+   "M8",
+   9.0,
+   22.0,
+   22.0,
+   3.8,
+   1.6
+  ],
+  [
+   "M10",
+   11.0,
+   22.0,
+   22.0,
+   3.8,
+   1.6
+  ],
+  [
+   "M20",
+   22.0,
+   40.0,
+   44.0,
+   7.0,
+   2.8
+  ],
+  [
+   "M22",
+   24.0,
+   44.0,
+   50.0,
+   8.0,
+   3.2
+  ],
+  [
+   "M24",
+   26.0,
+   56.0,
+   56.0,
+   8.5,
+   3.2
+  ],
+  [
+   "M27",
+   30.0,
+   56.0,
+   56.0,
+   8.5,
+   3.2
+  ]
+ ],
+ "row_support": {
+  "M8": 3,
+  "M10": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M27": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/din-434-square-taper-washers-for-u-section-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "DIN 434 table (d1, a, b, e, h, r, t, z, weight) [cluster A]"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-434-specifications-square-taper-washers-for-u-sections/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 434 specification tables (globalfastener layout) [cluster B]"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_434.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Technische Daten DIN 434 (D, a, b, h, r, e) [cluster E]"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/washer-standard/din-434.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 434 table (I.D, O.D=a, THK=h) - counted for d1, a, h only [cluster D]"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M12 row",
+   "why": "d1 conflict: 13.5 (torqbolt, fuller) vs 14 (schrauben-lexikon, boltsfastener) - 2 vs 2, no >=3 majority"
+  },
+  {
+   "what": "M16 row",
+   "why": "d1 conflict: 17.5 (torqbolt, fuller) vs 18 (schrauben-lexikon, boltsfastener) - 2 vs 2"
+  },
+  {
+   "what": "M30 row",
+   "why": "only boltsfastener lists it"
+  },
+  {
+   "what": "e (thin-edge height), t, z, weight, d1_max, a/b/h min/max",
+   "why": "e disagrees (M24/M27: 6.26 vs 6.25 in schrauben-lexikon); t, z, tolerances only in torqbolt/fuller (2 clusters); weights differ between sites"
+  },
+  {
+   "what": "DIN 435 (I-sections, 14% taper) table",
+   "why": "only torqbolt has a table; schrauben-lexikon has a typo (M12 h 3.2 instead of 6.2) and no 3rd source; fuller has only a weights page"
+  },
+  {
+   "what": "ASTM F436 beveled washers",
+   "why": "not attempted; engineersedge page has no HTML table (image)"
+  }
+ ],
+ "checks": [
+  "a and b exceed d1 in every row (hole smaller than the washer)",
+  "d1 non-decreasing with thread size",
+  "a non-decreasing with thread size",
+  "h non-decreasing with thread size",
+  "r non-decreasing with thread size",
+  "slope check (h - e)/(b/2) = 0.080..0.082 for all rows, matching the 8% taper of DIN 434 (the slope therefore runs along side b) (e, the thin-edge height, was listed by 3 clusters but is not published because e for M24/M27 reads 6.26 vs 6.25)",
+  "every cell agreed by >=3 independent clusters (d1,a,h by 4; b,r by 3)"
+ ],
+ "shape_hint": "Flat rectangular (nearly square) plate with a round bolt hole in the middle and rounded or clipped corners; in side view it is a wedge: one face is flat and the other slopes at 8 percent across the width so the thickness is lowest at one edge and highest at the opposite edge.",
+ "role_map": {
+  "d1": "hole diameter, minimum = nominal (H14)",
+  "a": "nominal side length a of the rectangular washer",
+  "b": "nominal side length b of the washer, the side along which the 8% slope runs (inferred from the h-e check); b may differ from a",
+  "h": "nominal height (thickness) h of the wedge-shaped washer",
+  "r": "corner radius, approximate"
+ },
+ "notes": "DIN 434 = square taper washer for U (channel) sections, 8% taper. DIN 435 (I-sections, 14% taper) is not published (only one reliable table). Missing rows M12 and M16 are on purpose: sources disagree on d1 (13.5/17.5 vs 14/18). The values a and b listed here are nominal sizes; M12/M16/M20/M22 have b larger than a (e.g. M12: 26 x 30). Slope check (see checks) was done with the dimension e which is not published. Weights, tolerance limits not published. KS / ASTM F436 correspondence not verified.",
+ "clusters": {
+  "FE (fasteners.eu-derived)": [
+   "torqbolt.com (table identical to fasteners.eu 434)",
+   "fasteners.eu (live)"
+  ],
+  "Chinese template": [
+   "fullerfasteners.com"
+  ],
+  "German dataset": [
+   "schrauben-lexikon.de"
+  ],
+  "boltsfastener (partial copier: weights M8-M22 identical to FE, a/h identical; not counted)": [
+   "boltsfastener.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 4 listed URLs live (HTTP 200) + fasteners.eu DIN 434. 6 rows x 5 cols: FE/torqbolt, fuller, lexikon agree on all 30 cells (b and r only exist there -> exactly 3 clusters; d1,a,h also in boltsfastener). 0 mismatches. M12 d1 13.5 (FE, fuller) vs 14 (lexikon, boltsfastener) and M16 17.5 vs 18 confirmed; M30 only boltsfastener (33). e (M24/M27 6.26 vs lexikon 6.25) not published. Slope check (h-e)/(b/2)=0.080-0.082 for all 6 rows reproduced (vs a/2: 0.0875-0.091 at M20/M22 -> slope runs along b).",
+  "problems": [
+   "b and r have exactly 3 clusters (FE, Chinese template, lexikon); d1,a,h 3 (4 if boltsfastener were independent, but its weights/dims largely copy fasteners.eu with some edits, so not counted).",
+   "Which of a/b carries the 8% slope is inferred from arithmetic with the unpublished e; role_map/shape_hint statement 'slope along b' is inference (valid on M20/M22 where a!=b) - keep out of the data columns or flag.",
+   "d1 'min = nominal (H14)' per fuller header; boltsfastener 'I.D'/'O.D' semantics (O.D = a) are generic.",
+   "Kept rows have a!=b only at M20, M22; M8/M10/M24/M27 are square. M12/M16 dropped correctly (d1 edition conflict), leaving gaps M10 -> M20.",
+   "DIN 434 (U-sections, 8%) only; DIN 435 / ASTM F436 not covered."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 434"
+}

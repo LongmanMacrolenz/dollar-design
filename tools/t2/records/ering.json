@@ -1,0 +1,354 @@
+{
+ "id": "ering",
+ "status": "partial",
+ "standard": "DIN 6799",
+ "u": "mm",
+ "cols": [
+  [
+   "d2",
+   "홈 지름 d2 (호칭)"
+  ],
+  [
+   "d1_min",
+   "적용 축 지름 d1 최소"
+  ],
+  [
+   "d1_max",
+   "적용 축 지름 d1 최대"
+  ],
+  [
+   "s",
+   "링 두께 s"
+  ],
+  [
+   "a",
+   "개구 폭 a (자유 상태)"
+  ],
+  [
+   "d3_max",
+   "홈에 장착 시 외경 d3 최대"
+  ],
+  [
+   "m",
+   "홈 폭 m"
+  ],
+  [
+   "n_min",
+   "홈 가장자리 여유 n 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "E1.2",
+   1.2,
+   1.4,
+   2.0,
+   0.3,
+   1.01,
+   3.25,
+   0.34,
+   0.6
+  ],
+  [
+   "E1.5",
+   1.5,
+   2.0,
+   2.5,
+   0.4,
+   1.28,
+   4.25,
+   0.44,
+   0.8
+  ],
+  [
+   "E1.9",
+   1.9,
+   2.5,
+   3.0,
+   0.5,
+   1.61,
+   4.8,
+   0.54,
+   1.0
+  ],
+  [
+   "E2.3",
+   2.3,
+   3.0,
+   4.0,
+   0.6,
+   1.94,
+   6.3,
+   0.64,
+   1.0
+  ],
+  [
+   "E3.2",
+   3.2,
+   4.0,
+   5.0,
+   0.6,
+   2.7,
+   7.3,
+   0.64,
+   1.0
+  ],
+  [
+   "E4",
+   4,
+   5.0,
+   7.0,
+   0.7,
+   3.34,
+   9.3,
+   0.74,
+   1.2
+  ],
+  [
+   "E5",
+   5,
+   6.0,
+   8.0,
+   0.7,
+   4.11,
+   11.3,
+   0.74,
+   1.2
+  ],
+  [
+   "E6",
+   6,
+   7.0,
+   9.0,
+   0.7,
+   5.26,
+   12.3,
+   0.74,
+   1.2
+  ],
+  [
+   "E7",
+   7,
+   8.0,
+   11.0,
+   0.9,
+   5.84,
+   14.3,
+   0.94,
+   1.5
+  ],
+  [
+   "E8",
+   8,
+   9.0,
+   12.0,
+   1.0,
+   6.52,
+   16.3,
+   1.05,
+   1.8
+  ],
+  [
+   "E9",
+   9,
+   10.0,
+   14.0,
+   1.1,
+   7.63,
+   18.8,
+   1.15,
+   2.0
+  ],
+  [
+   "E10",
+   10,
+   11.0,
+   15.0,
+   1.2,
+   8.32,
+   20.4,
+   1.25,
+   2.0
+  ],
+  [
+   "E12",
+   12,
+   13.0,
+   18.0,
+   1.3,
+   10.45,
+   23.4,
+   1.35,
+   2.5
+  ],
+  [
+   "E15",
+   15,
+   16.0,
+   24.0,
+   1.5,
+   12.61,
+   29.4,
+   1.55,
+   3.0
+  ],
+  [
+   "E19",
+   19,
+   20.0,
+   31.0,
+   1.75,
+   15.92,
+   37.6,
+   1.8,
+   3.5
+  ],
+  [
+   "E24",
+   24,
+   25.0,
+   38.0,
+   2.0,
+   21.88,
+   44.6,
+   2.05,
+   4.0
+  ]
+ ],
+ "row_support": {
+  "E1.2": 3,
+  "E1.5": 3,
+  "E1.9": 3,
+  "E2.3": 3,
+  "E3.2": 3,
+  "E4": 3,
+  "E5": 3,
+  "E6": 3,
+  "E7": 3,
+  "E8": 3,
+  "E9": 3,
+  "E10": 3,
+  "E12": 3,
+  "E15": 3,
+  "E19": 3,
+  "E24": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/din/6799/",
+   "site": "fasteners.eu",
+   "what": "DIN 6799 table d2,d1,s,a,weight,d2,m,n,d3,... (itafasteners.com E-Clips page carries the identical table: counted with it as ONE)"
+  },
+  {
+   "url": "https://www.beneri.com/en/prodotto/din-6799",
+   "site": "beneri.com",
+   "what": "DIN 6799 dimension table (sizes 1.2-30)"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-6799",
+   "site": "woodstockindustrial.com",
+   "what": "DIN 6799 E-Clips spec table (s, d3 as 'Clearance C', a as 'Height (g)', m, n; sizes 0.8-24)"
+  },
+  {
+   "url": "https://www.internationalsprings.com/e-clip-din-6799.html",
+   "site": "internationalsprings.com",
+   "what": "E-Clip DIMENSION Table"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/retaining-rings-standards/din-6799.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 6799 table d2, a, s, d1 range, m, n (sizes 0.8-24)"
+  },
+  {
+   "url": "https://shop.hpceurope.com/an/produit.asp?prid=3779",
+   "site": "hpceurope.com",
+   "what": "product table d2, shaft range, d3 max, a, s (sizes 1.2-19)"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/Clip-EClip.pdf",
+   "site": "westfieldfasteners.co.uk",
+   "what": "vendor product specification (Table 1 and 2, all 18 sizes)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "mass per 1000 pcs column",
+   "why": "fasteners.eu/westfield list 0.003..13.5, beneri lists different values (0.007..14.44); no 3-source majority"
+  },
+  {
+   "what": "g and Fsg/FN/Fs load columns, rotational speed n_abl",
+   "why": "not geometric buying dimensions; not cross-checked"
+  },
+  {
+   "what": "d1 column of woodstockindustrial.com",
+   "why": "it lists the middle of the shaft range (1.2 for 1-1.4 ...), not min/max; only used for sanity"
+  },
+  {
+   "what": "d4 'expanded' column of boltsfastener.com",
+   "why": "different rounded quantity (2,3,4,4.5,6...), not d3 max"
+  }
+ ],
+ "checks": [
+  "d2 < d1_min < d1_max < d3_max for every size (groove smaller than shaft range, ring larger than shaft)",
+  "opening width a < d2 for every size (clip must be spread to snap on)",
+  "groove width m = s + (0.04..0.05) > s, n_min grows with size; s, a, d3_max, m, n monotonic non-decreasing",
+  "shaft range midpoints (d1_min+d1_max)/2 equal the single 'shaft diameter' values listed by woodstockindustrial.com for all 16 sizes it shows",
+  "typos found and outvoted: internationalsprings d1_min(30)=30 (others 32), m(19)=180.00 (others 1.8)"
+ ],
+ "shape_hint": "A flat, thin spring-steel washer shaped like the capital letter E: a ring open on one side with three small inward-pointing prongs (the middle one opposite the opening) that snap sideways (radially) into a shaft groove of diameter d2. Outer outline is a rounded ring of diameter d3_max, thickness s.",
+ "role_map": {
+  "size": "buyer's designation, E + groove diameter",
+  "d2": "nominal groove diameter in the shaft (also the ring size)",
+  "d1_min": "smallest shaft diameter the ring is intended for",
+  "d1_max": "largest shaft diameter the ring is intended for",
+  "s": "ring thickness",
+  "a": "opening width of the unstressed ring",
+  "d3_max": "maximum outside diameter of the ring seated in the groove",
+  "m": "groove width in the shaft",
+  "n_min": "minimum edge margin (groove edge to shaft end)"
+ },
+ "notes": "DIN 6799 sizes the ring by GROOVE diameter d2 (E4 = 4 mm groove, shaft 5-7 mm). Korean KS B 1337 / JIS B 2804 E-rings use a different size designation and different outline dimensions (a second JIS table appears on itafasteners.com) - do not mix them with this table. Standard tolerances on s, a, d2(h11), m are not listed here. Sizes 0.8 and 30 are in the standard but rarely stocked. Current DIN 6799 edition may differ from the published tables (hint says 2026-05 edition, tables are from the older public editions).",
+ "clusters": {
+  "fasteners.eu (+itafasteners per producer; ita page not re-fetched, my probe URL 404)": [
+   "fasteners.eu"
+  ],
+  "Beneri (own mass data differs from fasteners.eu -> independent)": [
+   "beneri.com"
+  ],
+  "International Springs (row 30 and 19 have typos; own part numbers)": [
+   "internationalsprings.com (only reachable without www)"
+  ],
+  "HPC Europe shop (sizes 1.2-19, d1 range, d3 max, a, s)": [
+   "shop.hpceurope.com"
+  ],
+  "Woodstock Industrial (counted only for s, m, n, d2: d1 col is midpoint, 'Clearance (C)' and mislabelled 'Height (g)' for a not counted; no E8 row)": [
+   "woodstockindustrial.com"
+  ],
+  "NOT COUNTED (independence unproven; different dataset d4/'expanded' but compilation site)": [
+   "boltsfastener.com"
+  ],
+  "NOT COUNTED (vendor PDF, defines roles only)": [
+   "westfieldfasteners.co.uk Clip-EClip.pdf"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fasteners.eu, beneri, woodstock, internationalsprings (www host resets, bare host 200), boltsfastener, hpceurope, westfield PDF (itafasteners probe URL 404). 18 rows x 8 cols x 7 sources compared programmatically (rowspan-split fasteners.eu cells handled by filtering tolerance cells). Only mismatches: internationalsprings E30 d1_min 30 (others 32) and E19 m 180.00 (others 1.8). Strict support count (fe, beneri, ints, hpc all cols; woodstock only s,m,n,d2; no boltsfastener, no PDF): E1.2-E24 min = 3 (cells E8 m/n, E19 m, E24 d1/a/d3), E0.8 = 2 (d1_min, d1_max, a, d3_max), E30 = 2 (d1_min). Sanity: d2<d1_min<d1_max<d3_max, a<d2, m=s+0.04..0.05, s/m/n/a/d3 non-decreasing for all kept rows.",
+  "problems": [
+   "E30 d1_min=32: fasteners.eu 32, beneri 32, internationalsprings 30 (typo), westfield 32 but it is a vendor PDF -> only 2 countable clusters; the producer counted the PDF. Row E30 dropped (its other cells have exactly fe+beneri+ints, ints being the sloppy source with a duplicated part number in that row).",
+   "E0.8: beneri and hpceurope have no 0.8 row. Without boltsfastener (not counted: compilation site, caller flagged its copy behaviour) d1_min, d1_max and a have only fasteners.eu + internationalsprings; d3_max has only those two even if boltsfastener were counted (its d4 'expanded' is a different quantity), the third value comes from woodstock 'Clearance (C)' whose role is only inferred by equality with d3 in the other 15 rows. Row dropped.",
+   "Kept rows E1.2-E24 have exactly 3 clusters at E8 (m, n_min), E19 (m; ints typo 180.00), E24 (d1_min, d1_max, a, d3_max); these rest on fasteners.eu + beneri + internationalsprings being independent (beneri has own mass data; ints has own typos but uses the same Fs/Fsg symbols as fasteners.eu). Zero slack.",
+   "Role check: a = 'opening width of the unstressed ring' is defined only in the Westfield PDF key (fasteners.eu legend: 'a - opening Range'; hpceurope header 'A'); woodstock labels the same values 'Height (g)' (wrong) so it is not counted for a. d3_max: explicit 'd3 max' in beneri/ints, 'Ød3 max' in hpceurope, PDF key 'maximum external diameter when seated in the groove', fasteners.eu 'd3 - Outer diameter' -> fine. d1_min/d1_max = shaft range (legend 'd1 - shaft diameter').",
+   "woodstock 'For Shaft Diameter' column is the midpoint of d1_min/d1_max for all 16 rows it lists (checked) - consistent but not usable as min/max; woodstock has no E8 row.",
+   "boltsfastener d4 'Expanded' and mislabelled 'd3 from/to' (= d1 range) columns are not used; its a,s,m,n,d1 values equal the kept ones but it is not counted.",
+   "Size label 'E<d2>' is a trade designation (groove diameter); JIS/KS E-rings use different sizing - agreed with producer."
+  ],
+  "dropped_rows": [
+   "E0.8",
+   "E30"
+  ],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 6799 (E-clip / retaining washer for shafts; size = groove diameter d2)"
+}

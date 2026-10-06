@@ -1,0 +1,200 @@
+{
+ "id": "taper-th",
+ "status": "partial",
+ "standard": "ISO 8736",
+ "u": "mm",
+ "cols": [
+  [
+   "d2",
+   "암나사 호칭지름 d2 (M, 미터 보통나사)"
+  ],
+  [
+   "t1",
+   "나사 깊이 t1 (핀 내 나사부 길이)"
+  ]
+ ],
+ "rows": [
+  [
+   "6",
+   4,
+   6
+  ],
+  [
+   "8",
+   5,
+   8
+  ],
+  [
+   "10",
+   6,
+   10
+  ],
+  [
+   "12",
+   8,
+   12
+  ],
+  [
+   "16",
+   10,
+   16
+  ],
+  [
+   "20",
+   12,
+   18
+  ]
+ ],
+ "row_support": {
+  "6": 4,
+  "8": 4,
+  "10": 4,
+  "12": 4,
+  "16": 4,
+  "20": 4
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_268.html",
+   "site": "globalfastener.com",
+   "what": "ISO 8736 table (d, a, d2, P, d1, t1, t2, t); same data family as DIN 7978 page detail.php?sid=MTQzMg and fullerfasteners.com DIN 7978 page -> ONE source (cluster A)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-7978-specifications-taper-pins-with-internal-thread/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 7978 Specifications table (cluster A, counted once)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_7978",
+   "site": "fasten.it",
+   "what": "DIN 7978 dimension table: d1 max, d2 nom, a, t1, t2, t3 (cluster B)"
+  },
+  {
+   "url": "https://boltport.com/standards/din-7978/",
+   "site": "boltport.com",
+   "what": "DIN 7978 table d, d2, t(=t1), f(=a) (cluster C)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_7978.asp",
+   "site": "schrauben-lexikon.de (Wegertseder)",
+   "what": "Technische Daten DIN 7978: d, d2, t1, a, t2 min (cluster D)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/pins-keys-standard/iso-8736.html",
+   "site": "boltsfastener.com",
+   "what": "ISO 8736 table d1, d2, a, b(=t1), t min (cluster E; same layout/values on fasenco.com DIN 7978 and boltsfastener DIN 7978 pages -> one source)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/din/7978/",
+   "site": "fasteners.eu",
+   "what": "table d, d2, t, f (cluster F; same values as boltport, listed separately but may share an origin)"
+  },
+  {
+   "url": "https://ferrofast.com/resources/dimensional-standards/iso/pins/iso-8736/",
+   "site": "ferrofast.com",
+   "what": "ISO 8736 table d, d2, t1, a, t2 min (cluster G)"
+  },
+  {
+   "url": "https://www.dm-muehl.de/cgi-local/produkt/produkt_02.pl?wort=7978&link=kegelstift_din-7978-iso-8736.shtml%2C7978",
+   "site": "dm-muehl.de",
+   "what": "d1 min/max, d2, c~(=a) (confirms d2 and a only)"
+  },
+  {
+   "url": "https://neue-physik.de/356.4_Elemente.php",
+   "site": "neue-physik.de",
+   "what": "ISO 8736 / DIN 7978 table: 'passend fuer M x t1' (confirms d2 and t1 only)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "d = 25, 30, 40, 50 rows",
+   "why": "a (end crown) only listed by 2 independent clusters (globalfastener/fuller, fasten.it) for d=30/40/50 and 3 for d=25 but t1 only 2 (+ one questionable distributor page, Woodstock, whose counterbore diameter column deviates from all others)"
+  },
+  {
+   "what": "d = 14 row (DIN 7978 only, not in ISO 8736)",
+   "why": "t2/other cells only from the globalfastener/fuller cluster plus boltport/fasteners.eu/Woodstock; not part of ISO 8736 (6..50), omitted"
+  },
+  {
+   "what": "d = 5 and 13 (Muehl) / 5 (Woodstock, M3)",
+   "why": "not in ISO 8736/DIN 7978 per other sources; single-source"
+  },
+  {
+   "what": "t2_min column (min depth of tapped hole/thread depth in part)",
+   "why": "sources disagree from d=20 up: DIN-labelled pages (globalfastener DIN 7978 page, fuller, schrauben-lexikon, boltsfastener, ferrofast) give 27/34/42/42/50 for d=20/25/30/40/50 whereas globalfastener's ISO 8736 page and fasten.it give 28/35/40/40/50. d<=16 agree (10,12,16,20,25) but a column cannot be kept for part of the rows without dropping d=20."
+  },
+  {
+   "what": "t (counterbore/thread chamfer depth), d1 (counterbore dia), d_min (h10 lower limit)",
+   "why": "t: A and B agree (1,1.2,1.2,1.2,1.5,1.5) but B (fasten.it) differs from A at d=40 (2.5 vs 2); d1 differs between globalfastener/fuller (4.3,5.3,6.4,8.4) and Woodstock (4.5,5.5,6.5,8.5); d_min only in 2 clusters"
+  },
+  {
+   "what": "P (coarse pitch 0.7,0.8,1,1.25,1.5,1.75)",
+   "why": "only listed by globalfastener ISO page and fasten.it ('M4 x 0.7'); thread sizes are ISO coarse series by definition"
+  },
+  {
+   "what": "ISO 8737 / DIN 7977 male-thread pin (second variant of the family)",
+   "why": "single-table schema: not compiled. Observation only: d 5,6,8,10,12,(14),16,20 list b=14,18,22,24,27,(30),35,35, d2=M5,M6,M8,M10,M12,(M12),M16,M16 identically in boltport, fasteners.eu, schrauben-lexikon, ferrofast; a_max=2.4,3,4,4.5,5.3,(6),6,6 in ferrofast, schrauben-lexikon, fasten.it. fasten.it 'b min' row is misaligned (max<min for d=30). Could be split as an own family."
+  }
+ ],
+ "checks": [
+  "a, d2 and t1 grow monotonically with d (a: 0.8..2.5, t1: 6..18, d2: 4..12)",
+  "t1 equals d for d=6..16 (6,8,10,12,16) and is 18 for d=20 (all sources)",
+  "a equals the ISO 2339 plain taper pin 'a' of the same d (0.8,1,1.2,1.6,2,2.5): consistent with taper family",
+  "d2 ~ 0.6 d for d<=20 (4/6, 5/8, 6/10, 8/12, 10/16, 12/20) -> thread core smaller than pin small end, plausible",
+  "Technifast vendor PDF (DIN 7978: d 6..20 / thread M4,M5,M6,M8,M8,M10,M12) agrees on d2 for d<=20 (not counted as source)"
+ ],
+ "shape_hint": "Solid 1:50 tapered pin (nominal d at the SMALL end) with a tapped blind hole (internal metric thread d2, depth t1) in the LARGE end face so a puller screw can extract it; both ends slightly rounded/chamfered (a). Draw as a cone-frustum rod with a threaded counterbored hole at the large end.",
+ "role_map": {
+  "d": "nominal diameter at small end of taper, tolerance h10, 1:50 taper",
+  "d2": "nominal diameter of internal thread in the large end (coarse pitch)",
+  "a": "approximate end crown/rounding dimension (same values as ISO 2339 a)",
+  "t1": "thread length (depth) in the pin"
+ },
+ "notes": "Internal-thread variant only (ISO 8736 = DIN 7978; Type A ground / B turned). Rows are the ISO 8736 sizes d = 6..20 (6,8,10,12,16,20); larger sizes (25-50) and the DIN-only size 14 are not publishable under T2. Length range per diameter not published (stock-length lists of independent sites differ). IMPORTANT edition conflict: ISO 8736 and DIN 7978 differ in t2 min for d>=20 (28/35/40/40 vs 27/34/42/42) and in 't' at d=40 - hence t2/t omitted. Support counts = independent clusters A,B,C,D,E,F,G that agree on all three columns (C and F might share an origin -> conservative minimum 6). Male-thread ISO 8737 / DIN 7977 data not included (see dropped). INDEPENDENCE CAVEAT: fasteners.eu, boltport.com, ferrofast.com and boltsfastener.com print an identical typo (c max=33 at d=12) on the sibling clevis-pin ISO 2340/DIN 1443 table, so they may share an upstream dataset; their layouts differ so they were counted separately in row_support. Strict count (boltport, boltsfastener/fasenco, fasteners.eu, ferrofast merged into one): rows still have >=4 independent clusters for every kept column (globalfastener/fuller, fasten.it, schrauben-lexikon, that group; plus dm-muehl for d2/a and neue-physik for d2/t1).",
+ "clusters": {
+  "A Chinese-template": [
+   "globalfastener.com ISO 8736 (detail_268; live) and DIN 7978 page (raw/ copy)",
+   "fullerfasteners.com DIN 7978 (live; labelled rows d2/d1/t1/t2/t)"
+  ],
+  "B fasten.it": [
+   "fasten.it/en/norms/norm/din_7978 (d1 max, d2 nom 'M4 x 0.7', a, t1 nom, t2 min, t3 nom; DIN 7978 'Withdrawn')"
+  ],
+  "C Boltport/fasteners.eu group (strict = 1 cluster)": [
+   "boltport.com/standards/din-7978 (d,d2,t,f)",
+   "fasteners.eu din/7978 + iso/8736 (d,d2,t,f)",
+   "boltsfastener.com iso-8736 (d1,d2,a approx,b,t min)",
+   "fasenco.com din 7978 (raw/ copy, identical to boltsfastener)",
+   "ferrofast.com iso-8736 (d,d2,t1,a,t2 min)"
+  ],
+  "D German dataset": [
+   "schrauben-lexikon.de DIN_7978 (d,d2,t1,a,t2 min)"
+  ],
+  "E dm-muehl.de": [
+   "DIN 7978 page: d1 max/min, d2, 'c ~' -- usable for d2 only (its 'c ~' = a-values but different symbol)"
+  ],
+  "F neue-physik.de": [
+   "ISO 8736/DIN 7978 table 'passend fuer M x t' + order text 'Innengewinde M 5 - Gewindelaenge 8 mm' -> d2 and t1 (thread length)"
+  ],
+  "not counted": [
+   "woodstock7978 (counterbore dia deviates), technifast PDF, huyett/gardette/metalfast/metricmcc (no table)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 4,
+  "checks_done": "Re-fetched live (HTTP 200): globalfastener ISO 8736, fullerfasteners, fasten.it, boltport, schrauben-lexikon, boltsfastener, fasteners.eu, ferrofast, dm-muehl, neue-physik. Parsed all tables; matrix 6 rows (6,8,10,12,16,20) x 3 columns (d2,a,t1) x 10 pages (gf, fuller, fasten.it, boltport, fasteners.eu, lexikon, boltsfastener, ferrofast, muehl [d2,a], neue-physik [d2,t1]): 0 disagreements (d2 60/60 cells, a 54/54, t1 54/54 incl. t1=18 at d=20). Strict clusters per kept cell: d2 = 6 (A,B,C,D,E,F), t1 = 5 (A,B,C,D,F; E has no t1), a = 4 (A,B,C,D) -> min 4 with explicit-header pages A,B,C(ferrofast),D. Sanity: d2<d, t1=d for d<=16, 18 at d=20, d2 monotone.",
+  "problems": [
+   "Column 'a' dropped for semantics: every page prints only the bare symbol 'a ~' (muehl: 'c ~'); the only textual definition anywhere is fasteners.eu legend 'a - taper' (generic legend that also lists b, which that table does not print; table header there is 'f'), which contradicts the record's 'end rounding/crown' gloss; role was inferred from equality with ISO 2339 'a'. Numbers themselves pass (4 clusters).",
+   "fasteners.eu/boltport print 't' and 'f' for t1 and a (and fasteners.eu legend calls 't' 'the depth of the hole'): symbol mapping t->t1, f->a was by value-matching; only ferrofast/boltsfastener (same cluster) and clusters A,B,D carry explicit t1/a headers. Kept t1 because gf/fuller/fasten.it/lexikon/ferrofast all print 't1' and neue-physik words it 'Gewindelaenge' (thread length).",
+   "Producer row_support=7 is the lenient count (copy sites counted separately); strict count is 4-6.",
+   "Family mismatch: family covers ISO 8736 (internal thread) AND ISO 8737 (external thread) + KS B 1308; record covers ISO 8736/DIN 7978 internal-thread only, d=6..20 of ISO sizes 6..50 (25,30,40,50 and DIN-only 14 not publishable).",
+   "t2/t/d1 columns correctly omitted (ISO 8736 vs DIN 7978 edition conflict for d>=20).",
+   "Header-order trap on globalfastener: its header table lists d1,P,d2 but data rows run M-thread,P,counterbore-dia; Fuller's labelled rows were used to resolve."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "a"
+  ]
+ },
+ "standard_full": "ISO 8736 (= DIN 7978, internal-thread taper pin, d 6-20 verified)",
+ "scope": "내나사 테이퍼 핀(ISO 8736)만 — 외나사형(ISO 8737)은 싣지 않았습니다"
+}

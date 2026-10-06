@@ -1,0 +1,414 @@
+{
+ "id": "ihn",
+ "status": "ok",
+ "standard": "ASME B18.2.2",
+ "u": "in",
+ "cols": [
+  [
+   "F_basic",
+   "맞변 거리 F 기준"
+  ],
+  [
+   "F_max",
+   "맞변 거리 F 최대"
+  ],
+  [
+   "F_min",
+   "맞변 거리 F 최소"
+  ],
+  [
+   "G_max",
+   "대각 거리 G 최대"
+  ],
+  [
+   "G_min",
+   "대각 거리 G 최소"
+  ],
+  [
+   "H_basic",
+   "육각너트 두께 H 기준"
+  ],
+  [
+   "H_max",
+   "육각너트 두께 H 최대"
+  ],
+  [
+   "H_min",
+   "육각너트 두께 H 최소"
+  ],
+  [
+   "H1_basic",
+   "잼너트 두께 H1 기준"
+  ],
+  [
+   "H1_max",
+   "잼너트 두께 H1 최대"
+  ],
+  [
+   "H1_min",
+   "잼너트 두께 H1 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "1/4",
+   "7/16",
+   0.438,
+   0.428,
+   0.505,
+   0.488,
+   "7/32",
+   0.226,
+   0.212,
+   "5/32",
+   0.163,
+   0.15
+  ],
+  [
+   "5/16",
+   "1/2",
+   0.5,
+   0.489,
+   0.577,
+   0.557,
+   "17/64",
+   0.273,
+   0.258,
+   "3/16",
+   0.195,
+   0.18
+  ],
+  [
+   "3/8",
+   "9/16",
+   0.562,
+   0.551,
+   0.65,
+   0.628,
+   "21/64",
+   0.337,
+   0.32,
+   "7/32",
+   0.227,
+   0.21
+  ],
+  [
+   "7/16",
+   "11/16",
+   0.688,
+   0.675,
+   0.794,
+   0.768,
+   "3/8",
+   0.385,
+   0.365,
+   "1/4",
+   0.26,
+   0.24
+  ],
+  [
+   "1/2",
+   "3/4",
+   0.75,
+   0.736,
+   0.866,
+   0.84,
+   "7/16",
+   0.448,
+   0.427,
+   "5/16",
+   0.323,
+   0.302
+  ],
+  [
+   "9/16",
+   "7/8",
+   0.875,
+   0.861,
+   1.01,
+   0.982,
+   "31/64",
+   0.496,
+   0.473,
+   "5/16",
+   0.324,
+   0.301
+  ],
+  [
+   "5/8",
+   "15/16",
+   0.938,
+   0.922,
+   1.083,
+   1.051,
+   "35/64",
+   0.559,
+   0.535,
+   "3/8",
+   0.387,
+   0.363
+  ],
+  [
+   "3/4",
+   "1-1/8",
+   1.125,
+   1.088,
+   1.299,
+   1.24,
+   "41/64",
+   0.665,
+   0.617,
+   "27/64",
+   0.446,
+   0.398
+  ],
+  [
+   "7/8",
+   "1-5/16",
+   1.312,
+   1.269,
+   1.516,
+   1.447,
+   "3/4",
+   0.776,
+   0.724,
+   "31/64",
+   0.51,
+   0.458
+  ],
+  [
+   "1",
+   "1-1/2",
+   1.5,
+   1.45,
+   1.732,
+   1.653,
+   "55/64",
+   0.887,
+   0.831,
+   "35/64",
+   0.575,
+   0.519
+  ],
+  [
+   "1-1/8",
+   "1-11/16",
+   1.688,
+   1.631,
+   1.949,
+   1.859,
+   "31/32",
+   0.999,
+   0.939,
+   "39/64",
+   0.639,
+   0.579
+  ],
+  [
+   "1-1/4",
+   "1-7/8",
+   1.875,
+   1.812,
+   2.165,
+   2.066,
+   "1-1/16",
+   1.094,
+   1.03,
+   "23/32",
+   0.751,
+   0.687
+  ],
+  [
+   "1-3/8",
+   "2-1/16",
+   2.062,
+   1.994,
+   2.382,
+   2.273,
+   "1-11/64",
+   1.206,
+   1.138,
+   "25/32",
+   0.815,
+   0.747
+  ],
+  [
+   "1-1/2",
+   "2-1/4",
+   2.25,
+   2.175,
+   2.598,
+   2.48,
+   "1-9/32",
+   1.317,
+   1.245,
+   "27/32",
+   0.88,
+   0.808
+  ]
+ ],
+ "row_support": {
+  "1/4": 3,
+  "5/16": 3,
+  "3/8": 3,
+  "7/16": 3,
+  "1/2": 3,
+  "9/16": 3,
+  "5/8": 3,
+  "3/4": 3,
+  "7/8": 3,
+  "1": 3,
+  "1-1/8": 3,
+  "1-1/4": 3,
+  "1-3/8": 3,
+  "1-1/2": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.aftfasteners.com/finished-hex-nuts-dimensions-technical-information/",
+   "site": "aftfasteners.com",
+   "what": "Hex Nut Sizes table (ANSI/ASME B18.2.2) 1/4-3; also https://www.aftfasteners.com/hex-jam-nuts-dimensions-technical-information/ jam table (rows <=1-1/2 used). Sister copy: diecasting-mould.com (counted as the same source)"
+  },
+  {
+   "url": "https://bhamfast.com/technical-info/charts/finished-hex-nut-dimensions",
+   "site": "bhamfast.com",
+   "what": "Finished Hex Nut Dimensions 1/4-2-3/4 (no 1-1/4, 1-7/8)"
+  },
+  {
+   "url": "https://www.atlrod.com/finished-hex-nut-dimensions/",
+   "site": "atlrod.com",
+   "what": "Finished Hex Nut Dimensions 1/4-2-3/4 (same template also at aptp.com/technical/finished-hex-nut-dimensions/, counted as the same source)"
+  },
+  {
+   "url": "https://www.almabolt.com/pages/catalog/nuts/hexnutgrade2.htm",
+   "site": "almabolt.com",
+   "what": "Finished Hex Nuts Dimensions & Specifications table, 1/4-3"
+  },
+  {
+   "url": "https://engineersedge.com/hex_nut.htm",
+   "site": "engineersedge.com",
+   "what": "Hex Nuts and Hex Jam Nuts table (F,G,H and jam H1), 1/4-1-1/2"
+  },
+  {
+   "url": "https://www.portlandbolt.com/products/nuts/hex-nuts/",
+   "site": "portlandbolt.com",
+   "what": "Hex nut dimension table 1/2-1-1/2; jam: https://www.portlandbolt.com/products/nuts/hex-jam/"
+  },
+  {
+   "url": "https://brassland.com/resources/tools/asme-b18-2-2-hex-nut-dimensions/",
+   "site": "brassland.com",
+   "what": "Hex nut and jam nut H1 tables, 1/4-3/4"
+  },
+  {
+   "url": "https://torqbolt.com/asme-b18-2-2-hex-nuts-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "Hex nuts inch table (min/max only). Same data/typos as amesweb.info Hex-Nut-Sizes-Dimensions-Table, bigboltnut.com, boltport.com, boltingspecialist.com, cnclathing.com, nickel-systems.com (jam) and torqbolt jam page -> counted as ONE source"
+  },
+  {
+   "url": "https://haydonbolts.com/products/hex-nuts/",
+   "site": "haydonbolts.com",
+   "what": "Hex & jam nut table, basic F/H/h only (used to confirm basic wrench size / basic thickness for 1/2 and up)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "1-5/8, 1-3/4, 2, 2-1/4, 2-1/2, 2-3/4, 3 rows (hex nut part)",
+   "why": "hex nut F/G/H values themselves have >=3 source groups (listed in the evidence file) but the jam-nut H1 columns are only available from <=2 independent source groups above 1-1/2; because empty cells are not allowed the rows are left out. The one-source E-family jam values for 2-1/4 and 2-1/2 even look wrong (copied from the heavy jam table, 1.267/1.427)."
+  },
+  {
+   "what": "1-7/8 row",
+   "why": "only the single torqbolt-style source family lists it"
+  },
+  {
+   "what": "3/4 jam basic 24/64 (aft), typos 11/8, 15/16, 11/2, 11/16 (engineersedge), .1051 (atlrod), 4.456 / 2-1/2 G values (aft/diecasting), 2.35/2.43/1.416/1.364 (torqbolt family, 1-5/8)",
+   "why": "typos; do not affect kept rows because >=3 other sources agree"
+  },
+  {
+   "what": "Thread TPI column",
+   "why": "not listed in the dimension tables of 3 independent sources (only bigboltnut.com)"
+  }
+ ],
+ "checks": [
+  "G_max / F_max = 1.1547 +/- 0.003 for every kept row (hex across-corners geometry)",
+  "max >= min for F, G, H, H1 in every row; H1_max < H_min (jam nut thinner than hex nut)",
+  "F, G, H, H1 increase monotonically with size (except H1 9/16 = 5/16 basic, same basic as 1/2, which is the real standard value and agrees in 3 sources)",
+  "F_basic is the standard wrench size, equal to F_max within 0.0005 (3/8: F_max .562 is the truncated 9/16 = .5625); H_basic within H_min..H_max",
+  "every kept cell agrees in >=3 independent source groups; row_support = minimum over the row"
+ ],
+ "shape_hint": "Plain hexagon prism with a central threaded through-hole; side view is a rectangle of height H, top view is a regular hexagon with flats F across and corners G; a 30-degree chamfer on the corners of one or both faces gives the washer-faced look. A jam nut is the same hexagon but thinner (H1, about 1/2 to 2/3 of H).",
+ "role_map": {
+  "d": "nominal thread size (UNC/UNF), inch",
+  "F_basic": "width across flats, basic (wrench size, fraction)",
+  "F_max": "width across flats max",
+  "F_min": "width across flats min",
+  "G_max": "width across corners max",
+  "G_min": "width across corners min",
+  "H_basic": "thickness of hex nut, basic (fraction)",
+  "H_max": "hex nut thickness max",
+  "H_min": "hex nut thickness min",
+  "H1_basic": "hex jam nut thickness, basic (fraction)",
+  "H1_max": "hex jam nut thickness max",
+  "H1_min": "hex jam nut thickness min"
+ },
+ "notes": "Standard = ASME B18.2.2 finished hex nut (Table: hex nuts and hex jam nuts); F and G are the same for hex and jam nuts, only thickness differs (H vs H1). F_basic, H_basic and H1_basic are fractions exactly as the standard lists them (strings); all others are decimal inches. Heavy hex nuts are NOT included (different F, G, H). Hex-only verified rows 1-5/8 to 3 (without jam) are in ihn.evidence.txt if the maintainers want a hex-only extension. Sizes shown are the standard series; UNC pitch is not included.",
+ "clusters": {
+  "A aftfasteners (+diecasting-mould copy)": [
+   "aftfasteners.com hex",
+   "aftfasteners.com hex-jam",
+   "diecasting-mould.com (copy, not counted separately)"
+  ],
+  "B bhamfast": [
+   "bhamfast.com"
+  ],
+  "C atlrod/aptp": [
+   "atlrod.com",
+   "aptp.com (same template)"
+  ],
+  "D almabolt": [
+   "almabolt.com hexnutgrade2.htm (hex)",
+   "almabolt.com hex.htm Jam Hex Nuts table (jam; NOT listed in record sources)"
+  ],
+  "EF amesweb/engineersedge + Boltport-copy family (merged under strict reading)": [
+   "engineersedge.com/hex_nut.htm",
+   "amesweb.info",
+   "torqbolt.com hex+jam",
+   "boltport.com",
+   "boltingspecialist.com",
+   "bigboltnut.com",
+   "cnclathing.com",
+   "nickel-systems.com"
+  ],
+  "G portlandbolt": [
+   "portlandbolt.com hex-nuts",
+   "portlandbolt.com hex-jam"
+  ],
+  "H brassland": [
+   "brassland.com"
+  ],
+  "I haydonbolts (basic columns only)": [
+   "haydonbolts.com"
+  ],
+  "J badensteel (F_basic,H_basic,H1_basic only)": [
+   "badensteel.com/nut-dimensions"
+  ],
+  "K fmwfasteners (F_basic,H_basic only)": [
+   "fmwfasteners.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "14 rows x 11 cols x up to 11 clusters. Live re-fetch (curl) of aft hex+jam, bhamfast, atlrod, almabolt hexnutgrade2 + hex.htm, engineersedge, portlandbolt hex+jam, brassland, haydonbolts, torqbolt (live fetch OK, tables identical to producer raw copies); producer raw copies parsed for amesweb.info/boltport/boltingspecialist/bigbolt/cnc/nickel/torq jam, badensteel, fmw. Parsed by column position from the two-row headers (Basic/Max/Min x F,G,H) and numerically compared; fractions parsed to decimals; portlandbolt mixed numerals (11/8=1-1/8) decoded against F max/H max. Sanity: G_max/F_max=1.153-1.157 for all rows, max>=min, H1_max<H_min, F,G,H,H1 monotone, F_basic~F_max.",
+  "problems": [
+   "Under the strict E/F merge (amesweb.info is AmesWeb = same group as engineersedge, and amesweb.info shares typos with the boltport/torqbolt family) the producer's 'E' and 'F' groups are ONE cluster. Producer row_support values that relied on both are overstated by 1.",
+   "After the merge the only cells at the minimum are 9/16 H1_max and H1_min: clusters = aftfasteners jam, EF merged, and almabolt hex.htm jam table (A+D+EF = 3). almabolt hex.htm is NOT in the record's sources list and must be added (https://www.almabolt.com/pages/catalog/nuts/hex.htm, 'Jam Hex Nuts' table; verified 9/16 = 5/16, .324, .301). Without it 9/16 would have only 2 clusters. If A and D (same table template, different typos) were ruled one cluster, row 9/16 would have to be dropped.",
+   "All other cells have >=4 clusters (F/G/H hex columns 4-8; H1 columns 4-5). Weakest after 9/16: 1-1/4 F_max/F_min/H_max/H_min = 4.",
+   "3/8 F_max .562 conflicts with the Boltport/amesweb family (.563) but 5 other clusters give .562 (ASME .562); kept value correct.",
+   "Typos seen in sources are not in kept values: aft jam 3/4 H1 basic 24/64, engineersedge 11/8 15/16 11/2 11/16, atlrod .1051, boltport 0.631/2.994, almabolt hex.htm jam 3/8 F basic 3/16 and 5/8 F max 1.938, badensteel 7/16 and 1-1/4 G min.",
+   "F_basic, H_basic, H1_basic are stored as fraction strings while other columns are numbers (mixed types); numeric value equality verified (e.g. 1-9/32). Row label = nominal diameter only (UNC/UNF share dims) - fine. Dropped 1-5/8..3 rows are the producer's choice, not re-verified (H1 only <=2 groups)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ASME B18.2.2 (finished hex nuts and hex jam nuts, UNC/UNF, inch)"
+}

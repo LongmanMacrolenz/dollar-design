@@ -76,7 +76,9 @@ def validate(r):
 
 
 def to_dims(r):
-    d = {"u": r["u"], "basis": "T2", "cols": r["cols"], "rows": r["rows"]}
+    d = {"u": r["u"], "basis": "T2", "standard": r["standard"], "cols": r["cols"], "rows": r["rows"]}
+    if r.get("scope"):
+        d["scope"] = r["scope"]   # 표가 다루는 범위 (품목군 이름보다 좁을 때 화면에 적는다)   # standard = 이 표가 실제로 따른 규격 (품목군 이름의 규격 목록과 다를 수 있다)
     return d
 
 

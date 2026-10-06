@@ -1,0 +1,382 @@
+{
+ "id": "ipin",
+ "status": "ok",
+ "standard": "ASME B18.8.2 hardened ground machine dowel pins",
+ "u": "in",
+ "cols": [
+  [
+   "d_nom",
+   "호칭 핀 지름 (소수, 인치)"
+  ],
+  [
+   "A_std_basic",
+   "핀 지름 A 표준계열 기준(basic)"
+  ],
+  [
+   "A_std_max",
+   "핀 지름 A 표준계열 최대"
+  ],
+  [
+   "A_std_min",
+   "핀 지름 A 표준계열 최소"
+  ],
+  [
+   "A_os_basic",
+   "핀 지름 A 오버사이즈계열 기준(basic)"
+  ],
+  [
+   "A_os_max",
+   "핀 지름 A 오버사이즈계열 최대"
+  ],
+  [
+   "A_os_min",
+   "핀 지름 A 오버사이즈계열 최소"
+  ],
+  [
+   "B_max",
+   "끝단(포인트) 지름 B 최대"
+  ],
+  [
+   "B_min",
+   "끝단(포인트) 지름 B 최소"
+  ],
+  [
+   "C_max",
+   "크라운 높이 C 최대"
+  ],
+  [
+   "R_min",
+   "크라운 반경 R 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "1/16",
+   0.0625,
+   0.0627,
+   0.0628,
+   0.0626,
+   0.0635,
+   0.0636,
+   0.0634,
+   0.058,
+   0.048,
+   0.02,
+   0.008
+  ],
+  [
+   "5/64",
+   0.0781,
+   0.0783,
+   0.0784,
+   0.0782,
+   0.0791,
+   0.0792,
+   0.079,
+   0.074,
+   0.064,
+   0.026,
+   0.01
+  ],
+  [
+   "3/32",
+   0.0938,
+   0.094,
+   0.0941,
+   0.0939,
+   0.0948,
+   0.0949,
+   0.0947,
+   0.089,
+   0.079,
+   0.031,
+   0.012
+  ],
+  [
+   "1/8",
+   0.125,
+   0.1252,
+   0.1253,
+   0.1251,
+   0.126,
+   0.1261,
+   0.1259,
+   0.12,
+   0.11,
+   0.041,
+   0.016
+  ],
+  [
+   "5/32",
+   0.1562,
+   0.1564,
+   0.1565,
+   0.1563,
+   0.1572,
+   0.1573,
+   0.1571,
+   0.15,
+   0.14,
+   0.052,
+   0.02
+  ],
+  [
+   "3/16",
+   0.1875,
+   0.1877,
+   0.1878,
+   0.1876,
+   0.1885,
+   0.1886,
+   0.1884,
+   0.18,
+   0.17,
+   0.062,
+   0.023
+  ],
+  [
+   "1/4",
+   0.25,
+   0.2502,
+   0.2503,
+   0.2501,
+   0.251,
+   0.2511,
+   0.2509,
+   0.24,
+   0.23,
+   0.083,
+   0.031
+  ],
+  [
+   "5/16",
+   0.3125,
+   0.3127,
+   0.3128,
+   0.3126,
+   0.3135,
+   0.3136,
+   0.3134,
+   0.302,
+   0.29,
+   0.104,
+   0.039
+  ],
+  [
+   "3/8",
+   0.375,
+   0.3752,
+   0.3753,
+   0.3751,
+   0.376,
+   0.3761,
+   0.3759,
+   0.365,
+   0.35,
+   0.125,
+   0.047
+  ],
+  [
+   "7/16",
+   0.4375,
+   0.4377,
+   0.4378,
+   0.4376,
+   0.4385,
+   0.4386,
+   0.4384,
+   0.424,
+   0.409,
+   0.146,
+   0.055
+  ],
+  [
+   "1/2",
+   0.5,
+   0.5002,
+   0.5003,
+   0.5001,
+   0.501,
+   0.5011,
+   0.5009,
+   0.486,
+   0.471,
+   0.167,
+   0.063
+  ],
+  [
+   "5/8",
+   0.625,
+   0.6252,
+   0.6253,
+   0.6251,
+   0.626,
+   0.6261,
+   0.6259,
+   0.611,
+   0.595,
+   0.208,
+   0.078
+  ],
+  [
+   "3/4",
+   0.75,
+   0.7502,
+   0.7503,
+   0.7501,
+   0.751,
+   0.7511,
+   0.7509,
+   0.735,
+   0.715,
+   0.25,
+   0.094
+  ],
+  [
+   "7/8",
+   0.875,
+   0.8752,
+   0.8753,
+   0.8751,
+   0.876,
+   0.8761,
+   0.8759,
+   0.86,
+   0.84,
+   0.293,
+   0.109
+  ],
+  [
+   "1",
+   1.0,
+   1.0002,
+   1.0003,
+   1.0001,
+   1.001,
+   1.0011,
+   1.0009,
+   0.98,
+   0.96,
+   0.333,
+   0.125
+  ]
+ ],
+ "row_support": {
+  "1/16": 3,
+  "5/64": 3,
+  "3/32": 3,
+  "1/8": 3,
+  "5/32": 3,
+  "3/16": 3,
+  "1/4": 3,
+  "5/16": 3,
+  "3/8": 3,
+  "7/16": 3,
+  "1/2": 3,
+  "5/8": 3,
+  "3/4": 3,
+  "7/8": 3,
+  "1": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.engineersedge.com/hardware/machine_dowel_pins_chart_ansi_asme__13076.htm",
+   "site": "engineersedge.com",
+   "what": "Machine Dowel Pins Chart ANSI/ASME - table 'Nominal Size / Pin Diameter A / Point Diameter B / Crown Height C / Crown Radius R' (Standard + Oversize)"
+  },
+  {
+   "url": "https://amesweb.info/Fasteners/Pins/Dowel-Pin-Sizes-Chart.aspx",
+   "site": "amesweb.info",
+   "what": "Dowel Pin Sizes Chart - first table (same structure as engineersedge, counted with it as ONE source)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/ansi-b18-8-2-specifications-dowel-pin-case-hardened-imperial/",
+   "site": "fullerfasteners.com",
+   "what": "ANSI B18.8.2 Specifications dowel pin (5 tables of 3 sizes each; symbols d, d1, c, R)"
+  },
+  {
+   "url": "https://www.hdw.com.tw/en/news/Article/ANSI-dowel-pins-chart.htm",
+   "site": "hdw.com.tw",
+   "what": "ANSI machine dowel pins chart (transposed table, all 15 sizes)"
+  },
+  {
+   "url": "https://www.brightonbest.com/download/pds/Dowel_Pin_Standard_Series_2019.pdf",
+   "site": "brightonbest.com",
+   "what": "vendor product data sheet 'Dowel Pin Standard Series' (standard series A, B, C only; corroboration)"
+  },
+  {
+   "url": "https://www.rcfastener.com/documents/RC_Specs/Pin_Dowel.pdf",
+   "site": "rcfastener.com",
+   "what": "vendor spec sheet dowel pins standard series 1/8..1 (corroboration; same catalogue template as purchasepartners.com Dowell.pdf)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "baetrocnc.com dowel pin chart",
+   "why": "mislabelled: its 'actual pin dia max' equals the basic value (0.0627 not 0.0628) and 'oversize max' equals the oversize basic (0.0635); not used"
+  },
+  {
+   "what": "Single shear load and suggested press-fit hole columns",
+   "why": "not needed for drawing; only 2 independent HTML sources (engineersedge, hdw) for 1/16-3/32"
+  },
+  {
+   "what": "Taper pins (1/48 taper) and spring/roll pins of ASME B18.8.2",
+   "why": "family names three pin types; only the dowel pin (clearly defined single type) was tabulated"
+  }
+ ],
+ "checks": [
+  "A_std_max = A_std_basic + 0.0001 and A_std_min = basic - 0.0001 for all 15 sizes",
+  "Oversize basic = standard basic + 0.0008 (oversize series is +0.001 over nominal vs +0.0002) for all sizes",
+  "point diameter B max < A_std_min and B max > B min; crown height C max > crown radius R min",
+  "all numeric columns strictly increase with nominal size",
+  "d_nom is the rounded decimal of the fraction (3/32=0.0938, 5/32=0.1562) as printed in the tables",
+  "all 15 rows compared cell by cell: engineersedge, amesweb, fullerfasteners, hdw.com.tw agree on every number; vendor PDFs agree for the cells they list"
+ ],
+ "shape_hint": "A plain solid cylindrical rod with no head and no thread; one end has a chamfer (point diameter B, angle roughly 4-16 deg) and the other end is domed/crowned (crown height C, crown radius R). Overall length is chosen by the buyer; the diameter is ground to a tight tolerance for press fit.",
+ "role_map": {
+  "size": "nominal pin diameter as fraction of an inch",
+  "d_nom": "nominal diameter in decimal inch",
+  "A_std_basic": "pin diameter A basic, standard series (nominal + 0.0002)",
+  "A_std_max": "pin diameter A max, standard series",
+  "A_std_min": "pin diameter A min, standard series",
+  "A_os_basic": "pin diameter A basic, oversize series (nominal + 0.001)",
+  "A_os_max": "pin diameter A max, oversize series",
+  "A_os_min": "pin diameter A min, oversize series",
+  "B_max": "chamfered point diameter B max",
+  "B_min": "chamfered point diameter B min",
+  "C_max": "crown height C max",
+  "R_min": "crown radius R min"
+ },
+ "notes": "Only the hardened ground machine dowel pin of ASME B18.8.2 is tabulated (Standard Series is the normal stock; Oversize Series is for repair). Fractions 5/64 and 5/32 are non-preferred sizes (shown in parentheses in some sources). Lengths are not part of this table (length tolerance +-0.010 in per vendor sheets). Taper pins and spring (roll/coiled) pins from the same standard are NOT covered. Sources engineersedge and amesweb look like copies of each other and were counted as one; row_support=3 is therefore the minimum for the oversize columns, standard-series columns have 4-5.",
+ "clusters": {
+  "engineersedge.com + amesweb.info (same table structure, same values/format)": [
+   "engineersedge.com",
+   "amesweb.info"
+  ],
+  "Chinese-template standards DB": [
+   "fullerfasteners.com"
+  ],
+  "hdw.com.tw (Taiwan; transposed table with its own typo 0.7496 in press-fit hole column)": [
+   "hdw.com.tw"
+  ],
+  "NOT COUNTED (vendor PDFs, corroboration only)": [
+   "rcfastener.com PDF (std series 1/8-1 agrees)",
+   "brightonbest.com PDF"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched engineersedge, amesweb, fuller, hdw (HTML, all 200) and both PDFs. 15 rows x 11 cols x 4 HTML pages = 660 comparisons, 660/660 equal (engineersedge fraction+decimal cell split, fuller 3-size blocks, hdw transposed). RC PDF checked for 1/8..1 std series A/B/C/R: equal. Sanity script: A max/min = basic +-0.0001, oversize basic = std basic + 0.0008, std basic - d_nom = 0.0002, B max < A min, B max > B min, C max > R min, every column strictly increasing: all pass.",
+  "problems": [
+   "Exactly 3 clusters for every cell (eng/ames, fuller, hdw) - zero slack; vendor PDFs do not count. hdw independence from engineersedge supported by its own divergent value (3/4 suggested hole min 0.7496 vs 0.7495 in engineersedge and RC PDF); fuller and hdw both print zero-stripped numbers (0.125, 0.02) but share no typo and different layout - kept separate.",
+   "fuller uses symbols d, d1, c, R instead of A, B, C, R; roles confirmed by position and by exact value equality with the A/B/C/R-labelled engineersedge and hdw ('Pin Diameter(A)', 'Point Diameter(B)', 'Crown Height', 'Crown Radius').",
+   "d_nom printed as 0.0781, 0.0938, 0.1562 (true 0.078125, 0.09375, 0.15625) - 'as printed' in all 4 sources, keep but note rounding; 5/64 and 5/32 are non-preferred sizes (fuller shows them in parentheses).",
+   "A_os_* = oversize series (A basic +0.0008 over standard) - role read from headers 'Oversize Series' in all four pages. Units inches confirmed.",
+   "baetrocnc exclusion (mislabelled max) agreed; single-shear and press-fit columns not kept (not needed)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ASME B18.8.2 hardened ground machine dowel pins (Standard Series and Oversize Series)"
+}

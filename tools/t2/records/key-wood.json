@@ -1,0 +1,177 @@
+{
+ "id": "key-wood",
+ "status": "ok",
+ "standard": "DIN 6888",
+ "u": "mm",
+ "cols": [
+  [
+   "b",
+   "키 폭 b"
+  ],
+  [
+   "h",
+   "키 높이 h"
+  ],
+  [
+   "d2",
+   "키 지름(원판 지름) d2"
+  ]
+ ],
+ "rows": [
+  [
+   "2x2.6",
+   2.0,
+   2.6,
+   7.0
+  ],
+  [
+   "2x3.7",
+   2.0,
+   3.7,
+   10.0
+  ],
+  [
+   "3x5",
+   3.0,
+   5.0,
+   13.0
+  ],
+  [
+   "3x6.5",
+   3.0,
+   6.5,
+   16.0
+  ],
+  [
+   "4x6.5",
+   4.0,
+   6.5,
+   16.0
+  ],
+  [
+   "5x6.5",
+   5.0,
+   6.5,
+   16.0
+  ],
+  [
+   "5x7.5",
+   5.0,
+   7.5,
+   19.0
+  ],
+  [
+   "5x9",
+   5.0,
+   9.0,
+   22.0
+  ],
+  [
+   "6x9",
+   6.0,
+   9.0,
+   22.0
+  ],
+  [
+   "8x11",
+   8.0,
+   11.0,
+   28.0
+  ],
+  [
+   "10x13",
+   10.0,
+   13.0,
+   32.0
+  ]
+ ],
+ "row_support": {
+  "2x2.6": 3,
+  "2x3.7": 3,
+  "3x5": 3,
+  "3x6.5": 3,
+  "4x6.5": 3,
+  "5x6.5": 3,
+  "5x7.5": 3,
+  "5x9": 3,
+  "6x9": 3,
+  "8x11": 3,
+  "10x13": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/din/6888/",
+   "site": "fasteners.eu",
+   "what": "DIN 6888 table (b x h, d2, l, t1, t2); boltsfastener.com/standards/pins-keys-standard/din-6888.html carries the same table with the same typo pattern ('1,5x 2,6') and is counted with it as ONE source"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6888.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Technische Daten DIN 6888 (Maße b, h, d2, l, shaft ranges)"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-6888",
+   "site": "woodstockindustrial.com",
+   "what": "DIN 6888 Woodruff Keys: key size (t x h x d) table"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "rows 1.5x2.6 (d2 7), 3x3.7, 4x5, 6x7.5, 6x11, 8x9, 8x13, 10x11, 10x16 and 2.5x3.7, 4x7.5, 1x1.4, 6x10",
+   "why": "each present in fewer than 3 independent sources (fasteners.eu/boltsfastener count as one; lexikon and woodstock each omit different rows)"
+  },
+  {
+   "what": "columns l (chord length), t1, t2 (groove depths)",
+   "why": "only fasteners.eu (= boltsfastener) lists t1/t2/l for all rows; lexikon lists l for only 6 sizes -> at most 2 independent sources"
+  },
+  {
+   "what": "shaft diameter ranges",
+   "why": "woodstock gives two columns (torque / location duty) and lexikon two rows with different offsets; semantics not confirmed"
+  },
+  {
+   "what": "ASME B17.2 (inch, No. 606 etc.)",
+   "why": "only engineersedge.com HTML table found (1 source); web search budget exhausted so further sources not discoverable"
+  }
+ ],
+ "checks": [
+  "for all 11 kept rows b, h and d2 agree exactly in the three independent sources",
+  "b < h < d2 for every row; h/d2 between 0.36 and 0.41",
+  "d2 values belong to the preferred diameter series 7,10,13,16,19,22,28,32,45 and grow with h",
+  "boltsfastener vs fasteners.eu: identical numbers and identical odd spacing typo -> counted as one source"
+ ],
+ "shape_hint": "A Woodruff key is a flat disc segment (a circular disc of diameter d2 with a portion cut off by a chord); in side view it looks like a larger-than-half circle of height h, and in the plan view it is a thin rectangle of width b. Overall thickness (b) is uniform; the rounded part sits in the shaft keyseat, the flat top projects into the hub keyway.",
+ "role_map": {
+  "size": "designation b x h",
+  "b": "key width (thickness of the disc)",
+  "h": "key height (from flat to the bottom of the round)",
+  "d2": "diameter of the disc the key is cut from"
+ },
+ "notes": "Partial: only the b, h, d2 triple for 11 of about 20 DIN 6888 sizes is publishable under the 3-source rule. DIN 6888 (1956 edition tables, current edition 2022-03 may differ). l (chord), t1, t2 exist in fasteners.eu but lack a third independent source. The ASME B17.2 numbered keys (e.g. No. 606) were not verifiable: engineersedge.com has the full inch table but no second/third source could be fetched. Do not mix with DIN 6885 parallel keys.",
+ "clusters": {
+  "fasteners.eu + boltsfastener.com (identical table, same odd typo '1.5x 2.6', same 20 rows)": [
+   "fasteners.eu",
+   "boltsfastener.com"
+  ],
+  "German dataset (schrauben-lexikon/wegertseder)": [
+   "schrauben-lexikon.de"
+  ],
+  "woodstockindustrial.com (BS 4235 Pt 2 key size t x h x d)": [
+   "woodstockindustrial.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fasteners.eu, boltsfastener, schrauben-lexikon, woodstock (all 200). Parsed fasteners.eu (2 transposed blocks of 10), boltsfastener (20 rows), lexikon (2 blocks, 'Masse' row = b), woodstock (regex 't x h x d'). 11 kept rows x (b,h,d2): b/h are the row key; d2 equal in all 4 pages for all 11 rows (44/44). Union of rows = 24; boltsfastener==fasteners.eu on all 20 rows (confirms copy). Sanity: b<h<d2; h/d2 = 0.37-0.41.",
+  "problems": [
+   "Exactly 3 clusters per row (fasteners.eu family, lexikon, woodstock); each kept row exists in all three. Zero slack.",
+   "Lexikon labels its first row only 'Masse' - role b inferred by matching the (b,h) pairs with fasteners.eu 'b x h' and woodstock 't x h x d'; h and d2 rows are labelled.",
+   "Woodstock calls b 't' (thickness) and gives the key as t x h x d; fasteners.eu legend: b width, h height, d2 body diameter, l length - consistent with record roles.",
+   "Only 11 of 24 union rows kept; the rest each have <=2 clusters (agreed). 2.5x3.7, 4x7.5 (lexikon+woodstock only), 1.5x2.6 (fe+woodstock only) correctly dropped.",
+   "No physical issues; d2 follows series 7,10,13,16,19,22,28,32."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 6888 (Woodruff key, metric)"
+}

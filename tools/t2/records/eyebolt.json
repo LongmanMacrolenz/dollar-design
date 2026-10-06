@@ -1,0 +1,345 @@
+{
+ "id": "eyebolt",
+ "status": "partial",
+ "standard": "DIN 580",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "d2",
+   "머리부 지름 d2 (칼라/받침 지름)"
+  ],
+  [
+   "d3",
+   "아이 바깥 지름 d3"
+  ],
+  [
+   "d4",
+   "아이 안지름 d4"
+  ],
+  [
+   "e",
+   "칼라 두께 e"
+  ],
+  [
+   "h",
+   "전체 높이 h (받침면에서 아이 끝까지)"
+  ],
+  [
+   "k",
+   "아이 단면(링 선) 지름 k"
+  ],
+  [
+   "l",
+   "나사부 길이 l"
+  ]
+ ],
+ "rows": [
+  [
+   "M8",
+   1.25,
+   20,
+   36,
+   20,
+   6,
+   36,
+   8,
+   13
+  ],
+  [
+   "M10",
+   1.5,
+   25,
+   45,
+   25,
+   8,
+   45,
+   10,
+   17
+  ],
+  [
+   "M12",
+   1.75,
+   30,
+   54,
+   30,
+   10,
+   53,
+   12,
+   20.5
+  ],
+  [
+   "M16",
+   2.0,
+   35,
+   63,
+   35,
+   12,
+   62,
+   14,
+   27
+  ],
+  [
+   "M20",
+   2.5,
+   40,
+   72,
+   40,
+   14,
+   71,
+   16,
+   30
+  ],
+  [
+   "M24",
+   3.0,
+   50,
+   90,
+   50,
+   18,
+   90,
+   20,
+   36
+  ],
+  [
+   "M30",
+   3.5,
+   65,
+   108,
+   60,
+   22,
+   109,
+   24,
+   45
+  ],
+  [
+   "M36",
+   4.0,
+   75,
+   126,
+   70,
+   26,
+   128,
+   28,
+   54
+  ],
+  [
+   "M42",
+   4.5,
+   85,
+   144,
+   80,
+   30,
+   147,
+   32,
+   63
+  ],
+  [
+   "M48",
+   5.0,
+   100,
+   166,
+   90,
+   35,
+   168,
+   38,
+   68
+  ],
+  [
+   "M56",
+   5.5,
+   110,
+   184,
+   100,
+   38,
+   187,
+   42,
+   78
+  ],
+  [
+   "M64",
+   6.0,
+   120,
+   206,
+   110,
+   42,
+   208,
+   48,
+   90
+  ],
+  [
+   "M72x6",
+   6.0,
+   150,
+   260,
+   140,
+   50,
+   260,
+   60,
+   100
+  ]
+ ],
+ "row_support": {
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M30": 3,
+  "M36": 3,
+  "M42": 3,
+  "M48": 3,
+  "M56": 3,
+  "M64": 3,
+  "M72x6": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/din/580/",
+   "site": "fasteners.eu",
+   "what": "DIN 580 dimension table (d2,d3,d4,e,f,g,h,k,l,m,r; M8-M100x6)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-580-specifications-lifting-eye-bolts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 580 Specifications tables (nominal/min/max per dimension, M6-M100x6)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_580",
+   "site": "fasten.it",
+   "what": "DIN 580 2018 and 2010 dimension tables (d2,d3,d4,e,g,l,k,m; no h)"
+  },
+  {
+   "url": "https://www.ganternorm.com/en/products/3.4-Installing-Lifting-Damping-with-Leveling-Feet-Lifting-Gear-and-Rubber-Buffers/Lifting-eye-bolts-Lifting-eye-nuts/DIN-580-Lifting-eye-bolts-Steel",
+   "site": "ganternorm.com",
+   "what": "GN/DIN 580 dimension table M6-M36 (jwwinco.com is its US sister site = same source)"
+  },
+  {
+   "url": "https://www.birkhofer-shop.com/WebRoot/Sage/Shops/BirkhoferVerbindungselemente/MediaGallery/TechData/Datenblatt_DIN_580.pdf",
+   "site": "birkhofer-shop.com",
+   "what": "vendor data sheet DIN 580 (d2,d3,d4,h,l,k; its 'm' row is actually e)"
+  },
+  {
+   "url": "https://www.intafast.com/wp-content/uploads/2019/11/DIN-580-1.pdf",
+   "site": "intafast.com",
+   "what": "vendor data sheet DIN 580 (d1,d2,d3,d4,h,L,P)"
+  },
+  {
+   "url": "https://www.h-lift.com/products/din-580-eye-bolt",
+   "site": "h-lift.com",
+   "what": "product table (d2,d3,d4,l) - used only to corroborate those 4 columns"
+  },
+  {
+   "url": "https://hlhrapid.com/knowledge/metric-thread-chart-guide/",
+   "site": "hlhrapid.com",
+   "what": "ISO metric coarse pitch table (P)"
+  },
+  {
+   "url": "https://www.trfastenings.com/knowledge-base/thread-geometries/metric-coarse-standard",
+   "site": "trfastenings.com",
+   "what": "metric coarse thread table (P)"
+  },
+  {
+   "url": "https://fastenerexperts.com/358-2/",
+   "site": "fastenerexperts.com",
+   "what": "DIN metric thread pitch chart (P; fullerfasteners basic-metric-thread-chart has identical layout = same source)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M80x6 row",
+   "why": "h = 298 / 330 supported by only 2 sources (fasteners.eu, fullerfasteners); other columns have 3 sources, but h is needed for drawing"
+  },
+  {
+   "what": "M100x6 row",
+   "why": "h = 330 supported by only 2 sources (fasteners.eu, fullerfasteners)"
+  },
+  {
+   "what": "M6, M14, M18, M22, M27, M33, M39, M45, M52, M60 rows (2018 edition extra sizes, not in 2010 edition)",
+   "why": "e and m listed by only 2 sources (fasten.it 2018, fullerfasteners); sources disagree on whole rows (e.g. M22: d2=50/45/40, M27 d2=65/50, h-lift and bolting specialist pages copy a different series) -> no 3-source majority"
+  },
+  {
+   "what": "weight, f, g, r1-r3, tolerance min/max columns",
+   "why": "not needed for buying/drawing or not available in >=3 sources"
+  }
+ ],
+ "checks": [
+  "d3 = d4 + 2k for every row (e.g. M8 20+16=36, M30 60+48=108, M72x6 140+120=260)",
+  "d3 >= d2 >= d4 and all of d2,d3,d4,e,h,k,l,m grow monotonically with size",
+  "h is within -1..+3 mm of d3 for every row (equal at M8, M10, M24, M72x6)",
+  "e < k < m for every row; m/k between 1.14 and 1.25",
+  "P values are the ISO 261 coarse pitches (M8 1.25 ... M64 6); M72x6 uses pitch 6 from the designation itself"
+ ],
+ "shape_hint": "A forged collar eye bolt: a round ring (eye, outer diameter d3, bore d4, section k) on top of a flat round collar (diameter d2, thickness e) joined to it by a short neck; below the collar a plain threaded shank of length l and diameter d1. Side view: ring on top, collar disc, threaded shank pointing down; total height h from collar bearing face to top of ring.",
+ "role_map": {
+  "d_nom": "nominal thread diameter d1",
+  "P": "coarse thread pitch",
+  "d2": "collar diameter",
+  "d3": "outer diameter of eye ring",
+  "d4": "inner diameter of eye (bore)",
+  "e": "collar thickness",
+  "h": "overall height from bearing face to top of eye",
+  "k": "ring cross-section (eye width)",
+  "l": "thread length",
+  "m": "standard dimension m of the eye/neck region (always larger than k; see the standard drawing)"
+ },
+ "notes": "DIN 580 (Sept 2010 series, M8-M72x6 kept; the 2018 edition adds M6, M14, M18, M22, M27, M33, M39, M45, M52, M60, which are dropped here because sources conflict). Sizes M80x6 and M100x6 dropped (h only 2 sources). Dimensions are nominal (tolerances are in the standard). WLL (working load limit) is NOT included: load tables vary by edition (2010 vs 2018) and need the standard. DIN 580 and ISO 3266 forged eye bolts are similar but not identical; the table is DIN 580 only. KS B 1033 (JIS B 1168 style, different dimensions with A/B/C/D/H/L symbols) was not verified. Birkhofer sheet: its row labelled 'm' contains e values (6,6,8,10,...), real m was not listed there. birkhofer l(M24)=35 is an outlier vs 36 from 6 other sources.",
+ "clusters": {
+  "fasteners.eu": [
+   "fasteners.eu/standards/din/580"
+  ],
+  "fasten.it": [
+   "fasten.it/en/norms/norm/din_580 (2010 + 2018 tables = one page)"
+  ],
+  "Chinese-template standards DB": [
+   "fullerfasteners.com",
+   "globalfastener.com (mirror, not counted separately)"
+  ],
+  "Ganter group (M6-M36 only, e/h/k/l/m/d2-d4)": [
+   "ganternorm.com",
+   "jwwinco.com",
+   "elesa-ganter pdf"
+  ],
+  "itafasteners.com (extra, not in record sources; used only as 3rd cluster for h at M42-M72x6)": [
+   "itafasteners.com/products-bolts-eye-bolts.php"
+  ],
+  "P thread charts": [
+   "hlhrapid.com",
+   "trfastenings.com (to M48 only)",
+   "fastenerexperts.com",
+   "engineeringtoolbox.com",
+   "en.wikipedia ISO_metric_screw_thread"
+  ],
+  "NOT counted": [
+   "birkhofer-shop.com pdf",
+   "intafast.com pdf",
+   "h-lift.com (columns only 'A B C D', no header meaning -> role by magnitude)",
+   "whole-spec.com (labels D/d/H/L/E/C, KS B 1033, e/k disagree at M36/M48/M56)",
+   "anschlagmittel-online.com (A/C swapped at M30/M42, typos)",
+   "boltingspecialist/itafasteners d2/d3 label swap"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live (HTTP 200): fasteners.eu, fullerfasteners, fasten.it, ganternorm, h-lift, itafasteners, whole-spec, hlhrapid, trfastenings, fastenerexperts, engineeringtoolbox, wikipedia; parsed transposed/nominal-min-max tables with Python. Matrix 13 rows x 8 dimension cols (d2,d3,d4,e,h,k,l,m) x {fasteners.eu, Fuller, fasten.it 2010+2018, Ganter (<=M36), ITA, whole-spec}: 0 numeric disagreements among fasteners.eu/Fuller/fasten.it/Ganter over ALL sizes incl. the 2018-only ones (checked 25 sizes x 8 cols). Every record cell equals fasteners.eu AND Fuller AND fasten.it (d2,d3,d4,e,k,l,m; h has no fasten.it column) -> 3 non-PDF clusters; M8-M36 additionally Ganter. P checked M8..M64 in 4-5 thread charts (all equal); M72x6 P=6 is part of the designation printed in all 3 DIN sources. Physical: d3=d4+2k exact for all 13 rows; d3>=d2>=d4; h within -1..+3 of d3; all columns monotonic.",
+  "problems": [
+   "h for M42..M72x6: only fasteners.eu + Fuller among the producer's listed web sources (fasten.it has no h column; Ganter stops at M36; Birkhofer/intafast are PDFs). The producer's support counts (4 / 3) included PDFs. h is rescued only by an extra source NOT in record.sources: itafasteners.com table (h M42=147, M48=168, M56=187, M64=208, M72=260; label 'M72' without x6), plus whole-spec (H, M42-M56) and anschlagmittel-online (M42). At M64 and M72x6 h therefore has exactly 3 clusters (fasteners.eu, Fuller, ITA) -> add itafasteners.com to sources or drop h/rows M64,M72x6 (ITA labels d2/d3 swapped relative to DIN but its 'h' header matches).",
+   "column m: no source defines it (header symbol only); producer's role text 'neck width / standard dimension m of the eye-neck region' is a guess -> dropped (drawing does not need it). If kept, label must be symbol-only.",
+   "k/e roles are validated only by arithmetic (d3=d4+2k) and DIN symbol convention, not by a verbal definition in any source (acceptable, flag only).",
+   "h-lift A/B/C/D columns have no meaning in the page (role by magnitude) - producer counted it for d2,d3,d4,l; not needed, cells still have 3 other clusters.",
+   "row M72x6 mixes fine-pitch designation with coarse-pitch rows (DIN 580 itself designates M72x6, M80x6, M100x6).",
+   "M80x6 / M100x6 rows dropped by producer for h having 2 sources would also reach 3 with ITA (h=298/330) - optional restore; all other columns there have fasteners.eu+Fuller+fasten.it.",
+   "producer evidence says 'e,m = 4 (M8..M36)'; true independent count is 4 only because Ganter is included; Fuller and globalfastener are one cluster."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "m"
+  ]
+ },
+ "standard_full": "DIN 580 (2010 size series)"
+}

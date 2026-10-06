@@ -1,0 +1,230 @@
+{
+ "id": "tabw",
+ "status": "ok",
+ "standard": "DIN 432",
+ "u": "mm",
+ "cols": [
+  [
+   "d",
+   "구멍 지름 d"
+  ],
+  [
+   "d2",
+   "외경 d2"
+  ],
+  [
+   "s",
+   "두께 s"
+  ],
+  [
+   "f",
+   "혀 폭 f"
+  ],
+  [
+   "g",
+   "혀 치수 g"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   3.2,
+   12.0,
+   0.4,
+   2.5,
+   4.5
+  ],
+  [
+   "M4",
+   4.3,
+   14.0,
+   0.4,
+   2.5,
+   5.5
+  ],
+  [
+   "M5",
+   5.3,
+   17.0,
+   0.75,
+   3.5,
+   7.0
+  ],
+  [
+   "M6",
+   6.4,
+   19.0,
+   0.75,
+   3.5,
+   7.5
+  ],
+  [
+   "M8",
+   8.4,
+   22.0,
+   1.0,
+   3.5,
+   8.5
+  ],
+  [
+   "M10",
+   10.5,
+   26.0,
+   1.0,
+   4.5,
+   10.0
+  ],
+  [
+   "M12",
+   13.0,
+   30.0,
+   1.2,
+   4.5,
+   12.0
+  ],
+  [
+   "M14",
+   15.0,
+   33.0,
+   1.2,
+   4.5,
+   13.0
+  ],
+  [
+   "M16",
+   17.0,
+   36.0,
+   1.2,
+   5.5,
+   15.0
+  ],
+  [
+   "M20",
+   21.0,
+   42.0,
+   1.6,
+   6.5,
+   18.0
+  ],
+  [
+   "M24",
+   25.0,
+   50.0,
+   1.6,
+   7.5,
+   21.0
+  ],
+  [
+   "M30",
+   31.0,
+   63.0,
+   1.6,
+   8.5,
+   25.0
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://torqbolt.com/din-432-tab-washers-with-one-external-tab-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "DIN 432 table (For screw, d, d1 (=outer), s, f, g) M3-M36 preferred sizes [cluster A]"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-432-specifications-washer-with-external-tap/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 432 specification tables (d, d2, d3, g, s, f, h, r) M3-M100 [cluster B, globalfastener layout]"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_432.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Technische Daten DIN 432 (d, d2, f, g, h, s) [cluster E]"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M36 row",
+   "why": "g: torqbolt 31 and fuller 31 vs schrauben-lexikon 312 (typo) -> only 2 valid sources"
+  },
+  {
+   "what": "M3.5, M7, M18, M22, M27, M33 and all sizes >= M39",
+   "why": "not in the torqbolt table (non-preferred or larger series); only fuller + lexikon (2 clusters)"
+  },
+  {
+   "what": "h (tab height) and d3, r, weight columns",
+   "why": "h only in fuller and lexikon (2 clusters); d3, r, weight only in fuller"
+  },
+  {
+   "what": "DIN 93 (tab washer with one long tab)",
+   "why": "torqbolt page has no table ('Under Development'); only fuller + schrauben-lexikon (2 clusters)"
+  },
+  {
+   "what": "DIN 463 (tab washer with long tab and wing)",
+   "why": "outer diameter D listed only by fuller and lexikon (torqbolt table has no D column); columns d, b, L, L1, s had 3 sources for M4-M39 but without D the part cannot be drawn, so DIN 432 was chosen instead"
+  },
+  {
+   "what": "schrauben-lexikon DIN 432 s for M60 (5.5) and fuller f vs lexikon f for M56-M64",
+   "why": "defects/disagreements in large sizes, outside kept range"
+  }
+ ],
+ "checks": [
+  "outer diameter d2 exceeds hole d in every row",
+  "d non-decreasing with thread size",
+  "d2 non-decreasing with thread size",
+  "s non-decreasing with thread size",
+  "f non-decreasing with thread size",
+  "g non-decreasing with thread size",
+  "f < g < d2/2 in every row (tab dimensions stay inside the outer radius)",
+  "hole d follows the same coarse series as DIN 6797/6798/6796 (M10 -> 10.5, M12 -> 13, M16 -> 17, M20 -> 21, M30 -> 31)",
+  "every kept cell agreed by 3 independent clusters (torqbolt, fuller/globalfastener layout, schrauben-lexikon)"
+ ],
+ "shape_hint": "Thin flat round washer with a round centre hole and one rectangular tab (external nose) sticking out of the outer rim; the tab is later bent against the part or a nut flat to lock the screw, so in plan view it looks like a disc with a single lug.",
+ "role_map": {
+  "d": "hole (bore) diameter",
+  "d2": "outer diameter of the washer",
+  "s": "material thickness",
+  "f": "width of the external tab (nose)",
+  "g": "tab dimension g as listed in all three sources (length measure of the external tab; exact definition from the standard drawing not verified)"
+ },
+ "notes": "Covers only DIN 432 (external-tab / Aussennase form), 12 preferred sizes M3-M30. DIN 93 (one long tab) and DIN 463 (long tab and wing) are separate standards; DIN 463 data exist with 3 sources for d, b, L, L1, s (M4-M39) but no third source for outer diameter D, DIN 93 only 2 sources. All three DIN standards are withdrawn without successor (per hint; not verified). The tab-height h (listed in fuller/lexikon) and d3 are not published. d is the hole diameter (same series as the tooth/conical washers).",
+ "clusters": {
+  "fasteners.eu + torqbolt.com (identical table: same header 'For screw,d,d1,s,f,g', same 13 preferred rows M3-M36, same order)": [
+   "torqbolt.com",
+   "fasteners.eu"
+  ],
+  "Chinese-template standards DB": [
+   "fullerfasteners.com"
+  ],
+  "German dataset (wegertseder)": [
+   "schrauben-lexikon.de"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched torqbolt (200), fuller (200), lexikon DIN_432 (200) and fasteners.eu /standards/DIN/432/ (200). 12 kept rows (M3..M30) x 5 cols (d,d2,s,f,g) x 4 pages = 240 comparisons, 240/240 equal (torqbolt==fasteners.eu on all 13 rows incl. M36). Fuller keyed by 'for thread diameter' label, lexikon keyed by hole d (3.2,4.3,...,31). M36: fuller 31, torqbolt/fe 31, lexikon 312 (obvious typo) -> only 2 agreeing clusters, correctly dropped. Sanity: d2>d, s,f,g,d,d2 non-decreasing, f<g<d2/2 for all 12.",
+  "problems": [
+   "torqbolt is an exact fasteners.eu copy (same labels 'd1' for outer diameter, same 13-row subset) -> counts as ONE cluster; producer's 'cluster A' is correct, support is exactly 3 (A, fuller, lexikon), no slack.",
+   "Header inconsistency in fasteners.eu/torqbolt: table header calls the OUTER diameter 'd1' although fasteners.eu legend says d1=inner, d2=outer; fuller and lexikon label it d2 (outer) -> record's d2=outer is confirmed by those two plus value magnitude.",
+   "Lexikon's hole-diameter row is labelled only 'Masse'; role d inferred by position/equality with other sources (d=3.2... matches fuller 'd' and fasteners.eu 'd').",
+   "Producer role_map says g is a 'length measure of the external tab; definition not verified' - fasteners.eu legend defines g as 'distance to the nose'; fix the label text (value support unaffected).",
+   "M3.5, M7, M18, M22, M27, M33, M36 and >=M39 correctly dropped (<=2 clusters or typo)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 432"
+}

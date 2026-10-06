@@ -1,0 +1,221 @@
+{
+ "id": "fitbolt",
+ "status": "partial",
+ "standard": "DIN 609",
+ "u": "mm",
+ "cols": [
+  [
+   "ds",
+   "축(맞춤부) 지름 ds 호칭 (k6)"
+  ],
+  [
+   "k",
+   "머리 높이 k 호칭"
+  ],
+  [
+   "s",
+   "육각 대변 s 최대(호칭)"
+  ],
+  [
+   "b2",
+   "나사부 길이 b (50<L≤150)"
+  ],
+  [
+   "b3",
+   "나사부 길이 b (L>150)"
+  ]
+ ],
+ "rows": [
+  [
+   "M8",
+   9,
+   5.3,
+   13,
+   16.5,
+   21.5
+  ],
+  [
+   "M10",
+   11,
+   6.4,
+   16,
+   19.5,
+   24.5
+  ],
+  [
+   "M12",
+   13,
+   7.5,
+   18,
+   22.5,
+   27.5
+  ],
+  [
+   "M14",
+   15,
+   8.8,
+   21,
+   24,
+   29
+  ],
+  [
+   "M16",
+   17,
+   10,
+   24,
+   27,
+   32
+  ],
+  [
+   "M18",
+   19,
+   11.5,
+   27,
+   29.5,
+   34.5
+  ],
+  [
+   "M20",
+   21,
+   12.5,
+   30,
+   30.5,
+   35.5
+  ],
+  [
+   "M24",
+   25,
+   15,
+   36,
+   36.5,
+   41.5
+  ],
+  [
+   "M30",
+   32,
+   19,
+   46,
+   43,
+   48
+  ]
+ ],
+ "row_support": {
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3,
+  "M18": 3,
+  "M20": 3,
+  "M24": 3,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-609-specifications-hex-fit-bolts/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 609 table M8-M52: P, ds, k, s, b1-b3 (and e, dg, kw, r)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/609/",
+   "site": "fasteners.eu",
+   "what": "DIN 609 table M8-M52 (typos: s min M8 2,73; kw M10 47,35)"
+  },
+  {
+   "url": "https://boltport.com/standards/din-609/",
+   "site": "boltport.com",
+   "what": "copy of fasteners.eu table with the same typos (counted with fasteners.eu); extra typo e M10 17.777"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-609",
+   "site": "theo-schrauben.de",
+   "what": "DIN 609 Technische Daten: k, s, ds, b1-b3 for M8,M10,M12,M14,M16,M20,M24,M30 (German reseller cluster counted once)"
+  },
+  {
+   "url": "https://www.fastenerdata.co.uk/fasteners/bolts/more/bolts-a-to-f/fit/metric-coarse/metric-coarse-hexagon-fit-bolt-h7-with-long-thread-grade-88-din609.html",
+   "site": "fastenerdata.co.uk",
+   "what": "DIN 609 table D,k,s,dS,b(<50,50-150,>150) M8-M30"
+  },
+  {
+   "url": "https://en.wikipedia.org/wiki/ISO_metric_screw_thread",
+   "site": "wikipedia.org",
+   "what": "coarse pitch P reference (ISO 261), plus kova.in DIN 933 / DIN 6914 pitch rows"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M22, M27, M33-M52 rows",
+   "why": "only fuller and fasteners.eu (+boltport copy) list them (2 independent sources)"
+  },
+  {
+   "what": "b1 (L<=50) column",
+   "why": "not defined ('-') for M24/M30 in every source, so a numeric column cannot cover all rows; values for M8-M20 are known (14.5,17.5,20.5,22,25,27.5,28.5)"
+  },
+  {
+   "what": "e_min, s_min, k_min/k_max, dg (thread end dia), kw, r, ds limits",
+   "why": "only fuller and fasteners.eu (+boltport copy, with typos s min M8 2.73, kw M10 47.35, e M10 17.777) list them -> 2 independent sources"
+  },
+  {
+   "what": "DIN 610 (short thread) variant",
+   "why": "not tabulated: one table per family. DIN 610 has the same ds,k,s but shorter thread b (b2/b3 e.g. M8 13.5/18.5 vs DIN 609 16.5/21.5); fuller, fasteners.eu and the German cluster list it (3 clusters), fastenerdata's DIN 610 page wrongly repeats the DIN 609 table. Could be added as a second table if needed"
+  },
+  {
+   "what": "DIN 7968 (fit bolt for steel construction)",
+   "why": "fuller, fasteners.eu/boltport and the German cluster list it (partial: M12-M30), not compared cell by cell here -> not published"
+  }
+ ],
+ "checks": [
+  "ds, k, s, b2, b3, P non-decreasing M8..M30",
+  "ds is d+1 for M8..M24 (9,11,13,15,17,19,21,25) and d+2 for M30 (32): shank larger than thread (fit bolt) in all rows",
+  "b3 = b2 + 5 in every row",
+  "k/s between 0.40 and 0.43 and s equals ISO hex AF (13,16,18,21,24,27,30,36,46) for these sizes",
+  "b1 (L<=50): 14.5,17.5,20.5,22,25,27.5,28.5 for M8..M20 and '-' (not defined) for M24/M30 in all sources, so b1 is not tabulated"
+ ],
+ "shape_hint": "Hexagon-head fit (reamer / pass) bolt: a hex head of across-flats s and height k, then a long plain cylindrical fitting shank of diameter ds (ground, one mm larger than the thread) with a shorter reduced thread of diameter d at the end (thread length b, ending in a thread-runout zone between ds and the thread).",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse pitch",
+  "ds": "fit-shank diameter nominal (tolerance k6)",
+  "k": "head height nominal",
+  "s": "hex across-flats nominal=max",
+  "b2": "thread length b for 50<L<=150",
+  "b3": "thread length b for L>150"
+ },
+ "notes": "DIN 609 (long thread). Sizes in parentheses in the standard ((M14),(M18),(M22),(M27)...) are non-preferred; M14 and M18 are kept (4 / 3 sources). M18 has 3 sources (no German cluster entry). Shank ds is a ground fit diameter (k6) - not equal to the thread. Hex across-flats for M8 is 13 mm (ISO s), M10 16 etc. KS/ISO 7968-type steel construction fit bolts (DIN 7968) are different and were not verified.",
+ "clusters": {
+  "Chinese template": [
+   "fullerfasteners.com"
+  ],
+  "fasteners.eu family (boltport copy, extra typos)": [
+   "fasteners.eu",
+   "boltport.com"
+  ],
+  "German reseller dataset (no M18 row; M24/M30 b1 '-')": [
+   "theo-schrauben.de"
+  ],
+  "fastenerdata.co.uk (D,k,s,dS,b <50/50-150/>150 for M8-M30 incl. M18)": [
+   "fastenerdata.co.uk"
+  ],
+  "NOT counted": [
+   "en.wikipedia.org ISO_metric_screw_thread (P)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fuller, fasteners.eu, boltport, theo, fastenerdata, wikipedia live (200). Matrix 9 rows (M8-M30) x 6 value columns (P,ds,k,s,b2,b3) x 5 sources: ds,k,s,b2,b3 identical in every source that lists them (fasteners.eu ds/k min-max labels are swapped but nominal rows used; boltport copy typos only in non-kept columns). Clusters: ds 4 (M18: fuller, feu, fd = 3), k 4 (M18 3), s 4 (M18 3), b2/b3 4 (M18 3). P: only fuller prints a coarse-pitch row (fasteners.eu/boltport/theo/fastenerdata tables contain no P row; their M8x1.. rows are fine-pitch) -> 1 cluster, Wikipedia not counted.",
+  "problems": [
+   "P column has a single DIN 609 source (fuller); the 'kova DIN 933/6914' and Wikipedia cross-checks are other parts / not distributor pages -> drop P",
+   "Table is DIN 609 (LONG thread) only; family label 'DIN 609 · DIN 610 · DIN 7968': DIN 610 has shorter thread b (e.g. M8 13.5/18.5), DIN 7968 is a different part - do not present as covering them",
+   "M14 and M18 are non-preferred sizes ('(M14)','(M18)' in fuller, fasteners.eu, boltport); M18 has exactly 3 clusters (no German row)",
+   "ds is a k6 fit-shank NOMINAL (fuller 'Nominal Size (K6)'); tolerance limits not published",
+   "b1 (L<=50) correctly omitted ('-' for M24/M30)"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "P"
+  ]
+ },
+ "standard_full": "DIN 609 (hex fit bolt with long thread, H/k6 shank)",
+ "scope": "DIN 609 긴 나사형만 — DIN 610·7968은 싣지 않았습니다"
+}

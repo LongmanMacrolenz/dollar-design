@@ -1,0 +1,207 @@
+{
+ "id": "shoulder",
+ "status": "partial",
+ "standard": "ISO 7379",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "ds",
+   "숄더 지름 d1/ds (호칭, f9)"
+  ],
+  [
+   "dk",
+   "머리 지름 dk 최대 (플레인 머리)"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대"
+  ],
+  [
+   "s",
+   "육각 구멍 대변 s"
+  ],
+  [
+   "b",
+   "나사부 길이 b (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   1,
+   8,
+   13,
+   5.5,
+   4,
+   11
+  ],
+  [
+   "M8",
+   1.25,
+   10,
+   16,
+   7,
+   5,
+   13
+  ],
+  [
+   "M12",
+   1.75,
+   16,
+   24,
+   11,
+   8,
+   18
+  ],
+  [
+   "M16",
+   2,
+   20,
+   30,
+   14,
+   10,
+   22
+  ]
+ ],
+ "row_support": {
+  "M6": 3,
+  "M8": 3,
+  "M12": 3,
+  "M16": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/iso-7379-specifications-hex-socket-head-shoulder-screws/",
+   "site": "fullerfasteners.com",
+   "what": "ISO 7379 Specifications, 2 tables (M5-M10, M12-M20): P, ds, b max/min, dk, k, s, t, e ..."
+  },
+  {
+   "url": "https://www.fasenco.com/iso-7379-hexagon-socket-head-shoulder-screw/",
+   "site": "fasenco.com",
+   "what": "table Size, P, D max/min, E max/min (=b), A max (=dk), H (=k), J (=s), T"
+  },
+  {
+   "url": "https://www.ganternorm.com/en/products/3.2-Mounting-Positioning-Leveling-with-Retaining-Cables-Screws-Clamping-and-Supporting-Elements/Swing-bolts-Shoulder-screws-Thrust-bolts/ISO-7379-Shoulder-Screws-Steel-with-Collar",
+   "site": "ganternorm.com",
+   "what": "table d1 f9, d2, l1, d3 (=dk), l2 (=b), l3 (=k), A/F (=s)"
+  },
+  {
+   "url": "https://www.fastenright.com/general-fixings/socket-shoulder-screws-iso-7379/sk14",
+   "site": "fastenright.com",
+   "what": "Technical Data table d1, D, k, s, L2, Pitch"
+  },
+  {
+   "url": "https://www.pass-schulterschrauben.de/cgi-bin/produkt/produkt_02.pl?wort=passschulterschraube&link=index.html%2C7379",
+   "site": "pass-schulterschrauben.de",
+   "what": "table d, g, d f9 max/min, l2, dk, k, SW"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/ISO-7379",
+   "site": "theo-schrauben.de",
+   "what": "ISO 7379 Technische Daten: dk, ds, k, s, b (same table also at schrauben-lexikon.de DIN 7379 = Wegertseder, counted once)"
+  },
+  {
+   "url": "https://www.vidasan.com/en/urun/iso-7379-pass-shoulder-screws-with-hexagon-socket/",
+   "site": "vidasan.com",
+   "what": "table d, ds, dk, k, S, b (M5-M10 only, partly unreliable, used only as extra vote for M6, M8)"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1213",
+   "site": "nfgab.com",
+   "what": "Hex socket head shoulder bolts ISO 7379: table d1 max/min, d3 (=dk), k max, t min, s; d1 listed as 6/8/10/12/16/20/24 with footnote 'Not according to ISO 7379'"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M5, M10, M20 rows (and M3, M4 which are not in ISO 7379)",
+   "why": "shoulder diameter d1 is split between two series: 6 / 12 / 24 mm (Ganter, Muehl, fastenright, vidasan: 4 independent sources) and 6.5 / 13 / 25 mm (Fuller, Fasenco, theo-schrauben M5 only; Ganter's own text says the official ISO sheet has 6.5-M5/13-M10/25-M20). No clean >=3 majority without a counter-group, so the whole rows are dropped (nfgab adds a 5th source for 6/12/24 but flags it 'not according to ISO 7379')"
+  },
+  {
+   "what": "columns e, g1, g2, ds1 (thread undercut), r, b_min, dk min/knurled, k min",
+   "why": "only 1-2 independent sources (Fuller, Fasenco)"
+  },
+  {
+   "what": "vidasan k M10=8.9 (and M12=10.11 in a search snippet)",
+   "why": "typo/defect, other groups say 9 and 11; vidasan used only as extra vote for M6/M8"
+  },
+  {
+   "what": "engineeringhardware.com and aimsindustrial.com.au tables",
+   "why": "values inconsistent with all other sources (k equals shoulder diameter, dk 11/9.5, shifted socket sizes), excluded"
+  },
+  {
+   "what": "elesa / elesa-ganter / jwwinco / TME pages",
+   "why": "same Ganter catalogue (or inch conversion), not counted as separate sources"
+  }
+ ],
+ "checks": [
+  "ds > d and dk > ds, k < dk for every kept row",
+  "b < b_max, b_max-b = 0.25 (M6, M8) or 0.4 (M12, M16), consistent with the b min column of fasenco/Fuller (b nominal = mid of max/min)",
+  "b/d falls from 1.83 (M6) to 1.38 (M16), as expected for shoulder screws",
+  "P, ds, dk, k, s, b, b_max strictly increase with d",
+  "no disagreement among source groups on any kept cell",
+  "t_min (3.3, 4.2, 6.6, 8.8) agrees among Fuller, Fasenco, nfgab for all kept rows; grows with d and is < k_max"
+ ],
+ "shape_hint": "Cylindrical head with a hexagon socket on top, under it a long, precisely ground unthreaded cylindrical shoulder of diameter ds (larger than the thread), and at the end a much shorter, smaller thread of diameter d and length b (with a small relief groove between shoulder and thread). The nominal length is the shoulder length (under head to shoulder end), not the overall length.",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse thread pitch",
+  "ds": "nominal shoulder diameter (tolerance f9, DIN 7379 h8)",
+  "dk": "head diameter max (plain head)",
+  "k_max": "head height max",
+  "s": "hexagon socket width across flats",
+  "b": "thread length nominal",
+  "b_max": "thread length max (b min = b - 0.25 for M6/M8, b - 0.4 for M12/M16)",
+  "t_min": "hexagon socket depth min"
+ },
+ "notes": "Only M6, M8, M12, M16 are published because for M5, M10, M20 the market shows two incompatible shoulder diameters (6/12/24 vs the ISO nominal 6.5/13/25). The catalog owner must decide the d1 series for M5/M10/M20 himself (Ganter states the official ISO 7379 sheet is 6.5-M5 / 13-M10 / 25-M20; M3 d1=4 and M4 d1=5 exist only in the older DIN 9841-type series). Shoulder length (the ordering length, about 6..200 mm) is not in this table. Property class 12.9, shoulder tolerance f9 (DIN 7379: h8). KS B 1104 and ASME B18.3 shoulder screws were not tabulated. nfgab.com lists d1 as 6/8/10/12/16/20/24 and marks it 'Not according to ISO 7379' (vendor footnote), which supports the ISO sheet being 6.5/13/25 for M5/M10/M20, but a third table source for 6.5/13/25 was not found, so those rows stay dropped.",
+ "clusters": {
+  "CN Chinese-template (one cluster)": [
+   "fullerfasteners.com iso-7379 (+fullerkr.com p8 sister page)",
+   "fasenco.com iso-7379 (same values incl. D min 6.451, E max/min = Fuller b max/min)"
+  ],
+  "GA ganter": [
+   "ganternorm.com ISO 7379 (elesa/jwwinco/TME same catalogue)"
+  ],
+  "FR fastenright": [
+   "fastenright.com"
+  ],
+  "MU Muehl": [
+   "pass-schulterschrauben.de"
+  ],
+  "TH German one-dataset": [
+   "theo-schrauben.de ISO-7379",
+   "schrauben-lexikon.de DIN 7379",
+   "wegertseder.com"
+  ],
+  "VI vidasan": [
+   "vidasan.com (M5-M10 only)"
+  ],
+  "NF nfgab": [
+   "nfgab.com (d1 6/8/10/12/16/20/24, d3, k, t, s; footnote 'Not according to ISO 7379')"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live all 8 listed URLs (fuller, fasenco, ganter, fastenright, pass-schulter, theo, vidasan, nfgab; HTTP 200) + engineeringhardware.com. Matrix 4 rows x 8 cols x 7 clusters. Clusters per column (min over rows): ds 6, dk 6, k_max 6, s 6, b 3 (FR, GA, MU; VI adds M6/M8), P 2 (CN, FR) +EH page = 3, b_max 2 (CN + theo unlabeled 'b'), t_min 2 (CN + nfgab). No numeric dissent on any kept cell (vidasan k M10 8.9 / vidasan dk = knurled 13.27 are not votes).",
+  "problems": [
+   "b_max FAILS: producer counted Fuller, Fasenco and theo = 3, but Fuller and Fasenco are one Chinese-template cluster (identical b max/min and D min 6.451) -> CN + theo = 2 clusters. Also theo's bare 'b' (9.75/11.25/13.25/18.4/22.4) is only identifiable as b max by magnitude (inferred role). DROP.",
+   "t_min FAILS: Fuller, Fasenco, nfgab counted as 3 but Fuller=Fasenco -> CN + nfgab = 2 clusters. No other site lists key engagement t. DROP.",
+   "P: in-family only CN + fastenright (2); the third vote is engineeringhardware.com, whose pitch column is right but whose k column (k = d) mixes DIN 9841 and was excluded by the producer; P is a coarse-thread property (M6 1, M8 1.25, M12 1.75, M16 2 confirmed in all other families). Kept, but weakest column; drop if strict in-family counting is required.",
+   "b (nominal thread length) is read from 'l2' (ganter, pass) / 'L2' (fastenright) - no textual definition on the pages, role identified by ISO 7379 symbol convention (l1 shoulder length, l2 thread length, l3 head height in the Ganter header) and by equality with the midpoint of CN b max/min (11.25/10.75 -> 11); only vidasan prints a plain 'b' (M6 11, M8 13). Three clusters agree, flagged as inferred-by-symbol.",
+   "ganter, fastenright, pass-schulterschrauben, vidasan, nfgab all carry the 6/12/24 mm shoulder series for M5/M10/M20 (non-ISO 6.5/13/25), suggesting one catalogue origin; harmless for kept rows (M6, M8, M12, M16 identical in both series). Rows M5/M10/M20 correctly dropped.",
+   "ds is the nominal (f9) shoulder diameter; dk is the PLAIN head diameter max (knurled 13.27/16.27/24.33/30.33 not used); k_max/s fine."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "b_max",
+   "t_min"
+  ]
+ },
+ "standard_full": "ISO 7379",
+ "scope": "숄더볼트 ISO 7379 (M6·M8·M12·M16만)"
+}

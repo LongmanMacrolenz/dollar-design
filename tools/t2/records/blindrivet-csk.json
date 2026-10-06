@@ -1,0 +1,202 @@
+{
+ "id": "blindrivet-csk",
+ "status": "partial",
+ "standard": "DIN 7337 B형",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "몸통 지름 d1 공칭"
+  ],
+  [
+   "dk",
+   "접시머리 지름 d2(dk) 최대(공칭)"
+  ],
+  [
+   "k",
+   "머리 높이 k 공칭(≈)"
+  ],
+  [
+   "d3",
+   "권장 체결 구멍 지름 d3 공칭"
+  ]
+ ],
+ "rows": [
+  [
+   "3",
+   3.0,
+   6,
+   0.9,
+   3.1
+  ],
+  [
+   "4",
+   4.0,
+   7.5,
+   1,
+   4.1
+  ],
+  [
+   "4.8",
+   4.8,
+   9,
+   1.2,
+   4.9
+  ],
+  [
+   "5",
+   5.0,
+   9,
+   1.2,
+   5.1
+  ],
+  [
+   "6",
+   6.0,
+   11,
+   1.5,
+   6.1
+  ],
+  [
+   "6.4",
+   6.4,
+   12,
+   1.6,
+   6.5
+  ]
+ ],
+ "row_support": {
+  "3": 3,
+  "4": 3,
+  "4.8": 3,
+  "5": 3,
+  "6": 3,
+  "6.4": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_1690.html",
+   "site": "globalfastener.com",
+   "what": "DIN 7337 (B) table: d max/min, dk max/min, k approx (7 sizes 3-6.4)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_7337",
+   "site": "fasten.it",
+   "what": "Second table 'DIN 7337 B': d1, d2 min/max, K nom"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/BlindRivet_CskPlain7337.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "Table 1 (d2 nominal, k; merged cells decoded via colspan; d2 cell for 4.8/5 is garbled 'p' -> not used) and Table 4 (hole d3)"
+  },
+  {
+   "url": "https://www.keller-kalmbach.com/products/fasteners/blind-technology/blind-rivets/standard-blind-rivets/iso-15978-fakkt-blind-rivet-countersunk-head-120/p/580000710330080",
+   "site": "keller-kalmbach.com",
+   "what": "ISO 15978 product pages 2.4/3/3.2/4/4.8/5: 'Diameter of the head dk' (supports dk only; 6 pages fetched)"
+  },
+  {
+   "url": "https://www.ierofasteners.com/en/standard-blind-rivets-aluminium-steel/447-Standard-blind-rivets-Aluminium-Steel-Countersunk-Head-48x250mm-ISO15978-box-250-pcs.html",
+   "site": "ierofasteners.com",
+   "what": "ISO 15978 product pages 2.4/4.0/4.8: Head Diameter, Hole Diameter (supports dk, d3)"
+  },
+  {
+   "url": "https://www.gesipa.de/produkte/standard-blindniete/1433512-blindniete-alustahl-senkkopf-4-x-8/",
+   "site": "gesipa.de",
+   "what": "Manufacturer product pages Senkkopf 3/4 (Alu/Stahl): Bohrloch, Kopfdurchmesser (supports dk, d3 for 3, 4)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/rivets-standard/din-7337.html",
+   "site": "boltsfastener.com",
+   "what": "hole 'Drill dia.' row (DIN 7337 common; typo 63.3 at 3.2)"
+  },
+  {
+   "url": "https://yiwan.net/blogs/rivet-size-chart-standard-diameters-lengths-materials/",
+   "site": "yiwan.net",
+   "what": "hole d3 column (DIN 7337 common)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "row 2.4",
+   "why": "DIN 7337 B tables (globalfastener, fasten.it, Westfield) have no 2.4 row; k for 2.4 only from one vendor catalog (fffat PDF 0.8) -> <3 sources"
+  },
+  {
+   "what": "dk_min / d1 max-min tolerance columns",
+   "why": "only globalfastener and fasten.it list them explicitly (2 sources); Westfield gives deviations not limits"
+  },
+  {
+   "what": "ISO 15978 vendor-catalog numbers (fastenersfixingsandtools.co.uk PDF: dk 3.2:6.4, 4:7.8, 4.8/5:9.5; k 0.8/1.1/1.1/1.4/1.8/1.8)",
+   "why": "single vendor, contradicts the 3+ source set (Keller, IERO, DIN 7337 B tables) for dk 3.2, 4, 4.8, 5; not used. Same for Gesipa steel/steel and A2 rivets (dk 9.5 for 4.8/5) which are different rivet variants"
+  },
+  {
+   "what": "closed-end/sealed rivets (ISO 15973)",
+   "why": "no public dimension table with 3 sources found; not covered by this table (the family name also includes it)"
+  }
+ ],
+ "checks": [
+  "dk grows with d1 (6,6,7.5,9,9,11,12); k grows (0.9..1.6)",
+  "dk_min < dk_max for all rows in both tables where listed (e.g. 5.6<6)",
+  "countersunk dk is smaller than the dome-head dk of the same d (DIN 7337 A: 6.5,6.5,8,9.5,9.5,12,13) for every size",
+  "d3 = d1 + 0.1 for all rows; hole > shank",
+  "k small vs dk (k < dk/5): head is a shallow 120 deg countersunk cone",
+  "fasten.it and globalfastener tables identical for dk min/max, k (all 7 rows); Westfield identical wherever its cell is readable"
+ ],
+ "shape_hint": "Open-end blind (pop) rivet with a 120 degree countersunk (flat conical) head: a straight tubular body of diameter d1 ending in a shallow cone head of top diameter dk and small height k, with the steel break mandrel protruding above the head; the head sits flush in a countersunk hole.",
+ "role_map": {
+  "d1": "nominal rivet body diameter",
+  "dk": "countersunk head top diameter (DIN symbol d2), max = nominal",
+  "k": "head height, nominal (approx.)",
+  "d3": "recommended drill hole diameter nominal"
+ },
+ "notes": "Governing numbers are DIN 7337 Form B (withdrawn 1991 edition, replaced by ISO 15978 for d 2.4-5 aluminium/steel). ISO 15978-labelled product pages of Keller-Kalmbach and IERO confirm dk (5/6/6/7.5/9/9 for 2.4/3/3.2/4/4.8/5) but k is only published by DIN 7337 B sources (globalfastener, fasten.it, Westfield). One vendor catalog (fastenersfixingsandtools PDF) prints different ISO 15978 numbers (dk 6.4/7.8/9.5, k up to 1.8); this is the main caveat - verify against the ISO text before drawing precise cone geometry. dk_min is 0.4/0.5/0.7 below dk (5.6, 7, 8.5, 10.3, 11.3) per DIN 7337 B. Closed-end rivets (ISO 15973) are not covered. Hole values for 6/6.4 and 3.2 rely on pages that are not countersunk-specific (the DIN 7337 hole table is common to forms A and B; Westfield's csk page Table 4 confirms it).",
+ "clusters": {
+  "Chinese-template standards DB (1 source)": [
+   "globalfastener.com/standards/detail_1690.html (DIN 7337 B)"
+  ],
+  "fasten.it (Italian norm portal)": [
+   "fasten.it/en/norms/norm/din_7337 (table 'DIN 7337 B')"
+  ],
+  "Westfield Fasteners UK": [
+   "westfieldfasteners.co.uk BlindRivet_CskPlain7337 (Table 1 k, d2; Table 4 d3)"
+  ],
+  "Keller & Kalmbach (distributor, ISO 15978 product pages)": [
+   "keller-kalmbach.com (pages 2.4/3/3.2/4/4.8/5; dk only; hole given only as a range)"
+  ],
+  "IERO (distributor, ISO 15978 product pages)": [
+   "ierofasteners.com 2.4/4.0/4.8 (dk, d3)"
+  ],
+  "Gesipa (manufacturer product pages)": [
+   "gesipa.de 3x12 Al/St, 4x8 Al/St, 5x8 St/St, 4.8x12 A2 (live re-fetched; 3x6 and 4x10 only from producer copy)"
+  ],
+  "boltsfastener.com": [
+   "boltsfastener.com/standards/rivets-standard/din-7337.html (d3 only; its d2/k are the DIN 7337 A dome-head values)"
+  ],
+  "yiwan.net blog": [
+   "yiwan.net rivet-size-chart (d3 only; same A-form d2/k)"
+  ],
+  "NOT counted (vendor PDF)": [
+   "fastenersfixingsandtools.co.uk fffat.pdf (ISO 15978 Al/St sheet; dissents on dk and k)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-downloaded all 8 listed URLs live (all HTTP 200) + Keller 3.2/4/4.8/5 pages, IERO 2.4/4.0 pages, Gesipa 3x12/5x8/A2-4.8x12 pages (URLs taken from the producer's raw copies). Parsed with tbl.py. Westfield Table 1 decoded by hand from colspans (columns 2.4,3,3.2,4,4.8,5,6,6.4): k = -,0.9,0.9,1,1.2,1.2,1.5,1.6; d2 = -,6,6,7.5,'p','p',11,12 (4.8/5 garbled, not counted); Table 4 d3 = 2.5,3.1,3.3,4.1,4.9,5.1,6.1,6.5. Matrix 7 rows x {dk,k,d3} x all sources. dk: gf=fasten.it=Westfield(where readable) on every row (6,6,7.5,9,9,11,12). k: gf=fasten.it=Westfield on all 7 rows (exactly 3 clusters, no other HTML source has k). d3 clusters per row (non-PDF, exact number): 3:{W,Gesipa,yiwan,bolts}=4; 3.2:{W,yiwan}=2 FAIL (bolts prints typo 63.3; Keller gives range 3,3-3,4 not a number; fffat PDF not countable); 4:5; 4.8:{W,IERO,Gesipa-A2,yiwan,bolts}=5; 5:{W,Gesipa-5x8,yiwan,bolts}=4; 6:{W,yiwan,bolts}=3; 6.4:{W,yiwan,bolts}=3. dk clusters: 3:5; 4:6; 4.8:{gf,fasten.it,IERO,Keller}=4; 5:{gf,fasten.it,Keller}=3; 6,6.4:{gf,fasten.it,Westfield}=3. Physical: dk,k,d3 monotonic; d3=d1+0.1 on all rows; k matches a 120-deg cone k=(dk-d1)/2/tan60 within 0.09 mm on every row (0.87/0.81/1.01/1.21/1.15/1.44/1.62 vs 0.9/0.9/1.0/1.2/1.2/1.5/1.6).",
+  "problems": [
+   "Row 3.2: d3=3.3 has only 2 valid clusters (Westfield, yiwan). boltsfastener prints '63.3' (typo), Keller prints a range '3,3 - 3,4 mm', fffat PDF cannot count -> row 3.2 dropped (alternative: keep 3.2 and drop column d3).",
+   "k column: exactly 3 clusters on every row (globalfastener-cluster, fasten.it, Westfield) = zero margin. The vendor ISO 15978 sheet (fffat.pdf, Al/St) disagrees on k for ALL rows (3:1.1, 3.2:1.1, 4:1.4, 4.8:1.8, 5:1.8 vs 0.9/0.9/1.0/1.2/1.2) and on dk for 3.2 (6.4), 4 (7.8), 4.8 (9.5), 5 (9.5). No HTML ISO-15978 source publishes k. Per T2 the PDF neither adds nor removes a cluster, so k passes, but ONLY as DIN 7337 B 'k approx.' data.",
+   "Standard mismatch: catalog family std is ISO 15978 (d 2.4-5) + ISO 15973, but the table is DIN 7337 B (withdrawn 1991). It must be published/labelled as DIN 7337 B, never as ISO 15978. Rows 6 and 6.4 are outside ISO 15978's d range; ISO row 2.4 is absent.",
+   "dk rows 4.8 and 5: Gesipa A2 4.8x12 and Steel/Steel 5x8 pages print 9.50 (and fffat PDF 9.5) vs 9 on gf, fasten.it, Keller, IERO. Majority still >=3 (4.8: 4 clusters, 5: 3 clusters) but 5 is thin; a different rivet-material variant may be the cause (unresolved).",
+   "d3 rows 6 and 6.4 rest on exactly 3 clusters (Westfield, boltsfastener, yiwan). yiwan.net is a manufacturer blog whose other tables are rules of thumb (solid-rivet dk = 2d, not DIN 660) -> reliability doubtful; boltsfastener/yiwan blind-rivet tables are the DIN 7337 A (dome head) table, so they support only the hole column, not dk/k.",
+   "boltsfastener.com page is titled 'countersunk' but its d2/k (6.5/0.8...) are the A-form values -> contradicts dk/k here; not counted for dk/k (also theo-schrauben ISO-15978 page = A-form values, per producer).",
+   "Westfield dk for 4.8 and 5 is garbled ('p') in HTML -> not counted for those two cells.",
+   "Column d1 duplicates the row label (size); trivial, not a verified measurement. dk key = DIN symbol d2 in fasten.it/Westfield (role read from header, not inferred)."
+  ],
+  "dropped_rows": [
+   "3.2"
+  ],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 7337 Form B (countersunk 120 deg, open end); ISO 15978 (d 2.4-5) is the successor",
+ "scope": "DIN 7337 B형(접시머리 120°) 값 — ISO 15978 값과 다를 수 있습니다"
+}

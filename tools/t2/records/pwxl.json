@@ -1,0 +1,193 @@
+{
+ "id": "pwxl",
+ "status": "ok",
+ "standard": "ISO 7094",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "구멍 지름 d1 (호칭, 최소값)"
+  ],
+  [
+   "d2",
+   "바깥지름 d2 (호칭)"
+  ],
+  [
+   "h",
+   "두께 h (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M5",
+   5.5,
+   18.0,
+   2.0
+  ],
+  [
+   "M6",
+   6.6,
+   22.0,
+   2.0
+  ],
+  [
+   "M8",
+   9.0,
+   28.0,
+   3.0
+  ],
+  [
+   "M10",
+   11.0,
+   34.0,
+   3.0
+  ],
+  [
+   "M12",
+   13.5,
+   44.0,
+   4.0
+  ],
+  [
+   "M16",
+   17.5,
+   56.0,
+   5.0
+  ],
+  [
+   "M20",
+   22.0,
+   72.0,
+   6.0
+  ],
+  [
+   "M22",
+   24.0,
+   80.0,
+   6.0
+  ],
+  [
+   "M24",
+   26.0,
+   85.0,
+   6.0
+  ],
+  [
+   "M27",
+   30.0,
+   98.0,
+   6.0
+  ]
+ ],
+ "row_support": {
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M27": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/7094/",
+   "site": "fasteners.eu",
+   "what": "ISO 7094 table (preferred M5-M36 + non-preferred M14, M18, M22, M27, M33): d1 nominal/max, d2 nominal/min, h nominal/max/min"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_234.html",
+   "site": "globalfastener.com",
+   "what": "ISO 7094-2000 Plain Washers - Extra Large Series: d, dc, h for M5-M36 incl. bracketed sizes"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_7094.asp",
+   "site": "schrauben-lexikon.de (Wegertseder GmbH)",
+   "what": "ISO 7094 R table d / thread / h / d2 (M5-M27, ten sizes)"
+  },
+  {
+   "url": "https://torqbolt.com/iso-7094-large-plain-washers-for-wood-construction-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "two tables on the page; first (d*, d1, d2, s) agrees with the rows kept, second shows rounded d1 (M12 14, M16 18) -> corroboration only, not counted"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-7094-r",
+   "site": "boltport.com",
+   "what": "same column order and row set as schrauben-lexikon (and its DIN 440 R page = torqbolt table) -> copy, not counted"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M14 row",
+   "why": "fasteners.eu + globalfastener only (2 independent sources); other sites list only 10 DIN 440 sizes"
+  },
+  {
+   "what": "M18 row",
+   "why": "fasteners.eu + globalfastener only"
+  },
+  {
+   "what": "M30 row",
+   "why": "fasteners.eu + globalfastener only (DIN 440 R M30 105/6 in GF also, same site)"
+  },
+  {
+   "what": "M33 row",
+   "why": "fasteners.eu + globalfastener ISO 7094: d2 115, h 8; globalfastener DIN 440 R page: d2 112, h 6 (DIN differs) -> only 2 sources"
+  },
+  {
+   "what": "M36 row",
+   "why": "fasteners.eu + globalfastener only"
+  },
+  {
+   "what": "d1 max / d2 min / h max / h min limit columns",
+   "why": "explicit only in fasteners.eu and globalfastener"
+  },
+  {
+   "what": "DIN 440 V (square hole) variant",
+   "why": "not collected; ISO 7094 V differs (square hole)"
+  }
+ ],
+ "checks": [
+  "each kept row identical (d1, d2, h) in the 3 independent sources (fasteners.eu, globalfastener, schrauben-lexikon); torqbolt table 1 agrees except two rounded d1 cells (M12 14, M16 18) on the same page",
+  "d1, d2 and h strictly/never decrease with size; d1 > thread diameter (d1 - d = 0.5 mm at M5/M6 up to 3 mm at M27)",
+  "d2/d1 between 3.09 and 3.33 and d2 is 3.4-3.7 x thread diameter (extra large series)",
+  "h = 2 mm (M5-M6), 3 (M8-M10), 4 (M12), 5 (M16), 6 (M20-M27): standard steps, no outlier"
+ ],
+ "shape_hint": "A flat round washer with a very wide outside diameter (about 3.1-3.3 times the hole, 3.4-3.7 times the thread diameter), moderately thin disc (2-6 mm) with a round central hole; used under bolt heads/nuts on timber to spread load.",
+ "role_map": {
+  "d_nom_note": "thread size M (washer is named by thread size in ISO 7094; DIN 440 named it by hole size)",
+  "d1": "inside (hole) diameter, nominal = lower limit (clearance wider than ISO 7092/7089)",
+  "d2": "outside diameter, nominal",
+  "h": "thickness, nominal"
+ },
+ "notes": "ISO 7094 round-hole washer, grade C, 100 HV (steel). The rows kept are the DIN 440 R-compatible sizes M5-M27; ISO 7094 additionally lists M30 (d1 33, d2 105, h 6), M33 (36/115/8) and M36 (39/125/8) but only two independent sources were found (fasteners.eu, globalfastener), so they were dropped. At M33 DIN 440 R differs from ISO 7094. The square-hole variants (ISO 7094 V / DIN 440 V) are not part of this table.",
+ "clusters": {
+  "fasteners.eu cluster (STRICT: fasteners.eu + boltport + torqbolt)": [
+   "fasteners.eu/standards/ISO/7094/",
+   "boltport.com iso-7094-r (same 10 rows; also looks copied from schrauben-lexikon -> never counted separately)",
+   "torqbolt.com ISO 7094 page (table 1 agrees; table 2 internally inconsistent: M12 d1 14, M16 d1 18)"
+  ],
+  "Chinese-template standards DB": [
+   "globalfastener.com/standards/detail_234.html (ISO 7094-2000; live fetch needs a Referer header, then 200)"
+  ],
+  "German dataset (Wegertseder)": [
+   "schrauben-lexikon.de/norm/ISO_7094.asp"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Live re-fetch of fasteners.eu, globalfastener (with Referer), schrauben-lexikon, torqbolt, boltport. Matrix 15 sizes (M5..M36 incl. non-preferred) x (d1,d2,h) x 6 tables. All 10 kept rows (M5,M6,M8,M10,M12,M16,M20,M22,M24,M27) x 3 cols = 30 cells identical in fe, gf and sl (3 clusters each), and in boltport and torqbolt table 1 (not counted). Only dissent: torqbolt table 2 M12 d1 14.0 / M16 d1 18.0 (rounded). Dropped rows M14, M18, M30, M33, M36 confirmed to exist only in fe + gf (sl/boltport list 10 DIN 440 sizes). Headers: fe 'd1 nominal min. / d2 nominal max. / h nominal', gf 'd min=nominal size / dc max=nominal size / h Nominal Size', sl 'd mm / d2 mm / h'. Physical sanity: d1,d2,h monotone, d2/d1 3.1-3.3, d1 > thread dia.",
+  "problems": [
+   "Every kept cell has exactly 3 clusters (fe, gf, sl) under the STRICT reading.",
+   "M22 and M27 are 'non-preferred dimensions' of ISO 7094 (fasteners.eu lists them under a separate 'Non-preferred' heading); values still identical in all three clusters.",
+   "globalfastener carries no thread label (only d1 values); the M label for each gf column is matched through the unique d1 value (verified against fe/sl for all 15 columns).",
+   "gf footnotes (circled 1/2) on d1 max 20.84 and h min 5 are on limit columns that the record does not publish.",
+   "ISO 7094 vs DIN 440 R: record claims '= DIN 440 R for these sizes'; DIN page not re-checked here (producer found M33 differs, irrelevant to kept rows). Square-hole V variant excluded."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 7094:2000 (plain washers, extra large series, product grade C, 100 HV; = DIN 440 R round hole for these sizes)"
+}

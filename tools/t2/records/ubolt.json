@@ -1,0 +1,233 @@
+{
+ "id": "ubolt",
+ "status": "partial",
+ "standard": "DIN 3570",
+ "u": "mm",
+ "cols": [
+  [
+   "a",
+   "안쪽 폭 a (관 중심 간 내폭)"
+  ],
+  [
+   "d",
+   "나사 지름 d (M, mm)"
+  ],
+  [
+   "P",
+   "나사 피치 P (보통나사)"
+  ],
+  [
+   "b",
+   "나사부 길이 b"
+  ],
+  [
+   "h",
+   "높이 h1 (전체 높이)"
+  ],
+  [
+   "d1_min",
+   "적용 관 외경 d1 최소"
+  ],
+  [
+   "d1_max",
+   "적용 관 외경 d1 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "DN20",
+   30,
+   10,
+   1.5,
+   40,
+   70,
+   25,
+   26.9
+  ],
+  [
+   "DN25",
+   38,
+   10,
+   1.5,
+   40,
+   76,
+   30,
+   33.7
+  ],
+  [
+   "DN32",
+   46,
+   10,
+   1.5,
+   50,
+   86,
+   38,
+   42.4
+  ],
+  [
+   "DN40",
+   52,
+   10,
+   1.5,
+   50,
+   92,
+   44.5,
+   48.3
+  ],
+  [
+   "DN50",
+   64,
+   12,
+   1.75,
+   50,
+   109,
+   57,
+   60.3
+  ],
+  [
+   "DN80",
+   94,
+   12,
+   1.75,
+   50,
+   138,
+   88.9,
+   88.9
+  ]
+ ],
+ "row_support": {
+  "DN20": 3,
+  "DN25": 3,
+  "DN32": 3,
+  "DN40": 3,
+  "DN50": 3,
+  "DN80": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_3570",
+   "site": "fasten.it",
+   "what": "DIN 3570 (10-1968) dimension table a, d3(thread), d2, b, e, h1, h2, pipe range"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/3570/",
+   "site": "fasteners.eu",
+   "what": "DIN 3570 table: size a, D1 pipe range, B1, D2, D3 thread, E, H1"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/din-3570-u-bolts/",
+   "site": "boltingspecialist.com",
+   "what": "DIN 3570 table: DN, a, thread, b, h, pipe range, inch size (no e)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/download/t_3570.pdf",
+   "site": "schrauben-lexikon.de (Wegertseder GmbH vendor sheet)",
+   "what": "DIN 3570 Rundstahlbuegel Form A: a, d, d1, b, h, e (a 25-94 only)"
+  },
+  {
+   "url": "https://hlhrapid.com/knowledge/metric-thread-chart-guide/",
+   "site": "hlhrapid.com",
+   "what": "coarse pitch P"
+  },
+  {
+   "url": "https://www.trfastenings.com/knowledge-base/thread-geometries/metric-coarse-standard",
+   "site": "trfastenings.com",
+   "what": "coarse pitch P"
+  },
+  {
+   "url": "https://fastenerexperts.com/358-2/",
+   "site": "fastenerexperts.com",
+   "what": "coarse pitch P"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "DN100, DN125, DN150, DN200, DN250 rows (a=120..282)",
+   "why": "outside-width e is given by only 2 sources (fasten.it, fasteners.eu; the vendor sheet stops at a=94). Other columns have 3 sources, see notes. (e = a + d holds in all rows, but that is not a published value.)"
+  },
+  {
+   "what": "DN175 (a=202), DN350, DN400, DN500 rows",
+   "why": "fasteners.eu does not list them -> only fasten.it and boltingspecialist (2 sources)"
+  },
+  {
+   "what": "DN300 (a=332)",
+   "why": "h1 = 382 (fasten.it) vs 385 (fasteners.eu, boltingspecialist) -> only 2 sources for 385"
+  },
+  {
+   "what": "fasteners.eu extra size a=23 (pipe 20-21)",
+   "why": "single source"
+  },
+  {
+   "what": "d2 (rod diameter) column",
+   "why": "fasten.it gives 8.9/10.7/14.6/18.2/21.9, fasteners.eu gives 10/12/16/20/24 (different quantities), fasten.it M10 DN40 value 4.9 is a typo; no 3-source agreement"
+  },
+  {
+   "what": "h2 column (second form with plate)",
+   "why": "only fasten.it"
+  },
+  {
+   "what": "inch-series U-bolts (ASME B18.31.5 / MSS SP-58 Type 24)",
+   "why": "no >=3-source inch table found (search budget exhausted); DIN 3570 chosen"
+  }
+ ],
+ "checks": [
+  "a, b, h, e, d1_min grow monotonically with pipe size",
+  "a + d = e for every row (30+10=40, 38+10=48, 46+10=56, 52+10=62, 64+12=76, 82+12=94, 94+12=106)",
+  "h - a ~ constant offset (40, 38, 40, 40, 45, 43, 44) consistent between sources",
+  "pipe range: d1_min and d1_max follow standard pipe OD series (ISO 4200 / EN 10220: 26.9, 33.7, 42.4, 48.3, 60.3, 76.1, 88.9)",
+  "thread dia M10 for DN20-40, M12 for DN50-80 in all 4 sources; pitch = ISO 261 coarse (1.5 / 1.75)"
+ ],
+ "shape_hint": "A U-shaped bolt bent from round rod: two parallel straight legs a apart (inside width) joined by a semicircular bend wrapping a pipe, with a metric thread of length b cut on the free end of each leg; overall height h from the top of the bend to the leg ends and outside width e across the legs. Drawn in side view as a U with threaded tips, usually shown with two nuts.",
+ "role_map": {
+  "dn": "nominal pipe size DN",
+  "a": "inside width between the legs",
+  "d": "metric thread diameter M(d)",
+  "P": "coarse thread pitch",
+  "b": "thread length on each leg",
+  "h": "overall height of the bolt",
+  "e": "outside width across the legs",
+  "d1_min": "smallest pipe outside diameter served",
+  "d1_max": "largest pipe outside diameter served"
+ },
+ "notes": "DIN 3570 (Rundstahlbuegel / U-bolt, Form A, thread both legs; nuts and washers separate). Row label = DN of the pipe (DN20 = 3/4 in, DN25 = 1 in, DN32 = 1-1/4 in, DN40 = 1-1/2 in, DN50 = 2 in, DN65 = 2-1/2 in, DN80 = 3 in; fasten.it and boltingspecialist agree on the inch labels). a = inside width between legs, b = thread length, h = height (sources call it h1), e = outside width, d1 = pipe OD range the bolt is meant for (single value when only one OD). Additional sizes whose a, thread, b, h and pipe OD agree in 3 sources but whose e has only 2 sources: DN100 (4in): a=120, M16, b=60, h=171, pipe 108-114.3; DN125 (5in): a=148, M16, b=60, h=191, pipe 133-139.7; DN150 (6in): a=176, M16, b=60, h=217, pipe 159-168.3; DN200 (8in): a=228, M20, b=70, h=283, pipe 216-219.1; DN250 (10in): a=282, M20, b=70, h=334, pipe 267-273. fasten.it prints h1 = 15 for DN65 (typo for 125) and pipe 257 for DN250 (typo for 267) - outvoted. The standard's inch pipe U-bolts (MSS SP-58 Type 24 / ASME B18.31.5) are NOT covered. DIN 3570 itself dates from 1968 (no ISO equivalent); rod diameter d2 is not published.",
+ "clusters": {
+  "fasteners.eu": [
+   "fasteners.eu/standards/DIN/3570"
+  ],
+  "fasten.it": [
+   "fasten.it/en/norms/norm/din_3570"
+  ],
+  "Boltport family": [
+   "boltingspecialist.com/dimensions/din-3570-u-bolts"
+  ],
+  "P thread charts": [
+   "hlhrapid.com",
+   "trfastenings.com",
+   "fastenerexperts.com",
+   "engineeringtoolbox.com"
+  ],
+  "NOT counted (PDF)": [
+   "schrauben-lexikon.de/download/t_3570.pdf (Wegertseder sheet; a=25..94, d1 = lower value only, has e and h)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live fasten.it, fasteners.eu, boltingspecialist (200) + lexikon PDF (read, not counted). Parsed rows keyed by a (FEU: blocks of Size/D1/B1/D2/D3/E/H1). 7 rows x {d,b,h,e,pipe lower/upper} x 4 sources compared; P vs 4 thread charts (M10 1.5, M12 1.75 equal everywhere). Results: a,d,b,h,d1_min,d1_max = fasten.it + fasteners.eu + Boltport agree for DN20,25,32,40,50,80; e = fasten.it + fasteners.eu (+PDF) only; DN65 h=125 = fasteners.eu + Boltport (+PDF) while fasten.it prints 15.",
+  "problems": [
+   "column e: only 2 web clusters (fasten.it, fasteners.eu); Boltport has no e; third value is the vendor PDF -> fails, dropped.",
+   "DN65 h=125: fasten.it prints 15 (typo), so only fasteners.eu + Boltport (+PDF) -> 2 web clusters; row dropped (no 3-cluster alternative value, so no fix_cell).",
+   "d1_min/d1_max semantics: sources print '25 / 26.9' (fasten.it, Boltport header 'To use by pipes from'), '25 - 26,9' (fasteners.eu) and the PDF gives only the lower value; min/max = range ends is a reading of the notation. For DN80 (single OD 88.9) min=max is a duplicated value, not printed twice. Kept, but flag.",
+   "row key 'DNxx' is printed only by Boltport (DN 20 + 3/4\"); fasten.it labels rows by inch pipe size and fasteners.eu by a. DN<->pipe-OD mapping is standard (26.9->DN20 ... 88.9->DN80) and consistent.",
+   "record role text for a ('관 중심 간 내폭' = inner width between pipe centres) is not what the sources say (inside width between the legs); header key 'd' in record = source symbol d3 (thread).",
+   "fasten.it typos: DN40 d2 4.9, DN65 h1 15, DN250 pipe 257 (not kept)."
+  ],
+  "dropped_rows": [
+   "DN65"
+  ],
+  "dropped_cols": [
+   "e"
+  ]
+ },
+ "standard_full": "DIN 3570 (Form A)"
+}

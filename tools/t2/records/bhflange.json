@@ -1,0 +1,158 @@
+{
+ "id": "bhflange",
+ "status": "ok",
+ "standard": "ISO 7380-2",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "dc_max",
+   "플랜지(칼라) 지름 dc 최대"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대"
+  ],
+  [
+   "s",
+   "육각 구멍 대변 s (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   0.5,
+   6.9,
+   1.65,
+   2
+  ],
+  [
+   "M4",
+   0.7,
+   9.4,
+   2.2,
+   2.5
+  ],
+  [
+   "M5",
+   0.8,
+   11.8,
+   2.75,
+   3
+  ],
+  [
+   "M6",
+   1,
+   13.6,
+   3.3,
+   4
+  ],
+  [
+   "M8",
+   1.25,
+   17.8,
+   4.4,
+   5
+  ],
+  [
+   "M10",
+   1.5,
+   21.9,
+   5.5,
+   6
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/iso-7380-2-specifications-hex-socket-button-head-screws/",
+   "site": "fullerfasteners.com",
+   "what": "ISO 7380-2 Specifications, 2 tables (M3-M6, M8-M16): P, h, dc, dk, ds, e, k, s, t, tensile load. Layout identical to kslekou.com page (e①, s①, tensile load②) so counted together with it as ONE source"
+  },
+  {
+   "url": "http://www.kslekou.com/product/790.html",
+   "site": "kslekou.com",
+   "what": "ISO7380-2 table M3-M16 (Chinese manufacturer): same data/layout as Fuller; counted with Fuller as one source"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/ScrewBolt-SHBtnFlg-M.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "ISO 7380-2 table M3-M16: p, b, c, da, dc, dk, dL, ds, dw, e, k, rf, rt, s, t, w"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/iso-7380-2",
+   "site": "woodstockindustrial.com",
+   "what": "table Diameter, Pitch, Flange diameter, Head depth, Key size, Full thread up to (M3-M12)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "rows M12 and M16",
+   "why": "M12: Woodstock says dc=24.0, Fuller/kslekou/Westfield say 26.0 -> only 2 independent groups for dc (and no Woodstock page for M16); M16 appears in only 2 independent sources"
+  },
+  {
+   "what": "columns dk (dome diameter), dc min, k min, h (collar thickness), ds, e, t, b, s max/min",
+   "why": "only 2 independent sources (Westfield + the Fuller/kslekou Chinese-template group); Woodstock lists only P, dc, k, s"
+  },
+  {
+   "what": "sunhyings.com 'Button-Head-Flange-Screws' typical table",
+   "why": "typical values for a family (dk 5.7, dc 7.5 for M3) that contradict the standard-style tables of the other three; excluded"
+  },
+  {
+   "what": "fasenco.com and nfgab.com ISO 7380 pages",
+   "why": "they tabulate ISO 7380-1 (no collar), not -2"
+  }
+ ],
+ "checks": [
+  "dc_max > d, dc_max/d between 2.19 and 2.35",
+  "k_max grows with d and k_max < d for M4..M10 (low button head)",
+  "P, dc_max, k_max, s strictly increase over M3..M10",
+  "no disagreement among the 3 independent groups on any kept cell; only conflict is Woodstock M12 dc 24.0 (typo, row dropped)"
+ ],
+ "shape_hint": "Low domed (button) head with a hexagon socket in the centre and a thin flat flange/collar disc at the base that is wider than the dome; unthreaded shank is equal to the thread diameter and the thread runs along the shank to the tip. Head height k is measured from the underside of the collar to the top of the dome.",
+ "role_map": {
+  "d": "nominal thread diameter",
+  "P": "coarse thread pitch",
+  "dc_max": "collar (flange) diameter max",
+  "k_max": "head height max (collar underside to top of dome)",
+  "s": "hexagon socket width across flats (nominal)"
+ },
+ "notes": "ISO 7380-2 is the collar version of ISO 7380-1; the dome diameter dk is smaller than in ISO 7380-1 (e.g. M5 8.8 vs 9.5) so do not take dk/dc from ISO 7380-1 tables (they are different standards). Sizes M3-M10 only; M12, M16 exist in the standard (Fuller/Westfield) but could not be confirmed by 3 independent pages. Dome diameter dk, collar thickness h and socket depth t are known from 2 independent sources only and were withheld. Property class 10.9 (also A2 stainless).",
+ "clusters": {
+  "Fuller + kslekou (identical Chinese-template layout: h,dc,dk,ds,e(1),k,s(1),t, tensile load(2))": [
+   "fullerfasteners.com",
+   "kslekou.com"
+  ],
+  "Westfield Fasteners UK (ISO 7380 part 2 spec; symbols p,b,c,da,dc,dk,dL,ds,dw,e,k,rf,rt,s,t,w)": [
+   "westfieldfasteners.co.uk"
+  ],
+  "Woodstock Industrial UK (Diameter, Pitch, Flange diameter, Head depth, Key size, Full thread)": [
+   "woodstockindustrial.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched Fuller, kslekou, Westfield, Woodstock live and parsed tables (kslekou label and value tables are separate, aligned by order). 6 rows x 4 cols (24 cells, plus M12/M16 looked at): all 24 equal in Fuller, kslekou, Westfield and Woodstock; no dissent for M3-M10. Headers read: Fuller/kslekou 'dc max', 'k max', 's nominal', 'P'; Westfield 'dc max','k max','s nom','p'. Physical: dc/d 2.19-2.36, k_max<d, all four columns strictly increasing.",
+  "problems": [
+   "Exactly 3 clusters for every cell (Fuller+kslekou count as one). Woodstock headers carry no max/min ('Flange diameter', 'Head depth'); the role is fixed only because its numbers equal dc max / k max of the other two - acceptable under numeric equality but the role is not independently read. Woodstock is not a Westfield copy (its M12 dc 24.0 vs 26.0 elsewhere).",
+   "Edition risk: sunhyings.com 'typical' table lists dk 5.7..17.5 and dc 7.5,10,12,14,18,22 (different edition / generic values, explicitly 'example dimensions - confirm against your standard edition'). Not counted, but it shows another set of numbers circulates for ISO 7380-2; the 3 clusters here agree with each other.",
+   "M12 (dc Woodstock 24.0) and M16 correctly dropped (2 clusters).",
+   "P is the generic ISO 261 coarse pitch (also confirmed by many other pages)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 7380-2",
+ "scope": "플랜지 버튼머리 ISO 7380-2"
+}

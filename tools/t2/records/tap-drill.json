@@ -1,0 +1,229 @@
+{
+ "id": "tap-drill",
+ "status": "ok",
+ "standard": "ISO 15480",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "나사 피치 P"
+  ],
+  [
+   "c_min",
+   "좌면(와셔) 두께 c 최소"
+  ],
+  [
+   "dc_max",
+   "와셔(플랜지) 지름 dc 최대"
+  ],
+  [
+   "e_min",
+   "육각 대각 지름 e 최소"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대(=호칭)"
+  ],
+  [
+   "s_max",
+   "육각 대변 s 최대(=호칭)"
+  ],
+  [
+   "dp_max",
+   "드릴 끝 지름 dp 최대"
+  ],
+  [
+   "t_min",
+   "드릴 가능 판 두께 최소"
+  ],
+  [
+   "t_max",
+   "드릴 가능 판 두께 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "ST3.5",
+   1.3,
+   0.6,
+   8.3,
+   5.96,
+   3.4,
+   5.5,
+   2.8,
+   0.7,
+   2.25
+  ],
+  [
+   "ST4.2",
+   1.4,
+   0.8,
+   8.8,
+   7.59,
+   4.1,
+   7.0,
+   3.6,
+   1.75,
+   3.0
+  ],
+  [
+   "ST4.8",
+   1.6,
+   0.9,
+   10.5,
+   8.71,
+   4.3,
+   8.0,
+   4.1,
+   1.75,
+   4.4
+  ],
+  [
+   "ST5.5",
+   1.8,
+   1.0,
+   11.0,
+   8.71,
+   5.4,
+   8.0,
+   4.8,
+   1.75,
+   5.25
+  ],
+  [
+   "ST6.3",
+   1.8,
+   1.0,
+   13.5,
+   10.95,
+   5.9,
+   10.0,
+   5.8,
+   2.0,
+   6.0
+  ]
+ ],
+ "row_support": {
+  "ST3.5": 3,
+  "ST4.2": 3,
+  "ST4.8": 3,
+  "ST5.5": 3,
+  "ST6.3": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_22321.html",
+   "site": "globalfastener.com",
+   "what": "ISO 15480:2019 dimension table ST2.9-ST6.3 (detail_5281 = DIN EN ISO 15480 page of same site, same numbers)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_en_iso_15480",
+   "site": "fasten.it",
+   "what": "Dimensions table DIN EN ISO 15480 (2000 edition incl. e min and drilling range; 2019 table identical)"
+  },
+  {
+   "url": "https://www.cvtcivata.com/en-US/din_7504_k/457/464/572/0/0",
+   "site": "cvtcivata.com",
+   "what": "DIN 7504 K table: d, P, dp, dc, c, k, s, l, sheet thickness"
+  },
+  {
+   "url": "https://www.wegertseder.com/DIN-7504-Bohrschrauben-K-Sechskant-Flanschkopf-Blechschraubengewinde",
+   "site": "wegertseder.com (identical tables on schrauben-lexikon.de and tf-werkzeughandel.de = 1 source)",
+   "what": "DIN 7504 K Maße: dp, dc, k, s, Blechdicke"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1629-self-drilling-screw-hexagon-with-collar-iso-15480-din-7504-k",
+   "site": "nfgab.com",
+   "what": "ISO 15480 / DIN 7504 K: d2 max, k max, s, plate thickness (ST3.5-ST6.3)"
+  },
+  {
+   "url": "https://itafasteners.com/products-machine-screws-screw-hex.php",
+   "site": "itafasteners.com",
+   "what": "older table 'according to ISO 15480': used ONLY for e, dp, s, drilling range (identical in both editions)"
+  },
+  {
+   "url": "https://degademir.com/en/urun/din-7504-k-hexagon-head-self-drilling-screw",
+   "site": "degademir.com",
+   "what": "DIN 7504 K, ST4.2-ST6.3: s, dp, P, drilling capacity (extra confirmation only)"
+  },
+  {
+   "url": "https://www.sunthrough-industrial.com/product/88/44",
+   "site": "sunthrough-industrial.com",
+   "what": "head dimension reference: e min (extra confirmation only)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "ST2.9 row",
+   "why": "e_min (4.28) only 2 sources (globalfastener, fasten.it) and dp_max (2.3) only 2 (cvtcivata, wegertseder); all other ST2.9 cells have >=3 (P 1.1, c 0.4, dc 6.3, k 2.8, s 4, sheet 0.7-1.9)"
+  },
+  {
+   "what": "ST3.9 and ST5.5 (DIN 7504 K non-ISO sizes: ST3.9)",
+   "why": "ST3.9 not in ISO 15480; sources for it are cvtcivata/ita/nfg/wegert with conflicting k"
+  },
+  {
+   "what": "dc_min, k_min, kw_min, r1, r2, a columns",
+   "why": "only globalfastener (ISO 2019) lists them; older tables give different values (dc_min ST4.2 8.2 vs 8.1) - fewer than 3 agreeing"
+  }
+ ],
+ "checks": [
+  "dp_max < nominal thread diameter for all rows",
+  "dc_max > e_min > s_max (flange larger than hex corners)",
+  "e_min = 1.12 x s_min (s_min = s_max - 0.18/0.22) within 0.02 for all rows",
+  "k_max, dc_max, s_max, P, t_max non-decreasing with size",
+  "drilling range t_max > t_min; ranges identical in 5 sources",
+  "all cells >=3 independent sites (min row_support 3)"
+ ],
+ "shape_hint": "Hexagon washer head: a hex head with an integral round flange (washer) of diameter dc under it, flat top. Below it a tapping-screw thread (ST, coarse spaced thread, full length under head to near the tip) ending in a drill point (fluted self-drilling tip of diameter dp) instead of a cone point.",
+ "role_map": {
+  "P": "thread pitch",
+  "c_min": "min flange/collar thickness at rim",
+  "dc_max": "max flange (washer) diameter",
+  "e_min": "min hexagon width across corners",
+  "k_max": "max head height incl. flange (= nominal)",
+  "s_max": "width across flats (= nominal)",
+  "dp_max": "max diameter of the drill point (per ISO 10666)",
+  "t_min": "min total sheet thickness drillable",
+  "t_max": "max total sheet thickness drillable"
+ },
+ "notes": "Governing standard ISO 15480 (:1999, :2019; same numbers per fasten.it) which replaced DIN 7504 K. WARNING - an older table (DIN 7504 K edition) still appears on 3 sites (itafasteners, sunthrough-industrial, degademir) with larger head heights k_max 4.25/4.45/5.45/6.45 (ST4.2/4.8/5.5/6.3), dc_max 13.2 for ST6.3 and c_min 0.9 for ST4.2; the ISO 15480 values (5 sources) were used. ST2.9 omitted only because e_min and dp_max have 2 sources; other ST2.9 values: P 1.1, c 0.4, dc 6.3, k 2.8, s 4, sheet 0.7-1.9 (>=3 sources each) if the maintainer wants a reduced-column row. ISO 15481-15483 (pan/CSK cross-recess drilling screws) NOT covered. Web search budget ran out before ST2.9/e/dp third sources could be sought. Nominal lengths (gf/ita): 9.5 13 16 19 22 25 32 38 45 50 (further 60-80 in DIN 7504 K lists); length availability per size not verified. Independence caveat: globalfastener.com and fasten.it are standards-data aggregator pages (they reproduce the ISO/DIN tables); they count as 2 of the 3-5 sources per cell. Without them only cvtcivata, wegertseder and nfgab remain (enough for dc_max, k_max, s_max, t_min/t_max, dp_max) but P, c_min and e_min would drop below 3.",
+ "clusters": {
+  "gf Chinese-template DB": [
+   "globalfastener.com detail_22321 (ISO 15480:2019)",
+   "globalfastener.com detail_5281 (DIN EN ISO 15480)"
+  ],
+  "fastenit (aggregator, independent layout)": [
+   "fasten.it din_en_iso_15480 (2019 and 2000 tables)"
+  ],
+  "cvt": [
+   "cvtcivata.com din_7504_k"
+  ],
+  "wegert German dataset": [
+   "wegertseder.com din-7504-k (schrauben-lexikon/tf-werkzeughandel same)"
+  ],
+  "nfg": [
+   "nfgab.com 1629 (d2=dc, k, s, plate thickness)"
+  ],
+  "old DIN 7504 K dataset (one cluster: identical head-height/washer ranges 4.00-4.25, 8.2-8.8 ...)": [
+   "itafasteners.com",
+   "degademir.com",
+   "sunthrough-industrial.com"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 9 listed URLs (+ gf detail_5281) live, HTTP 200. Built matrix 5 rows x 9 cols x 10 pages (gf22321, gf5281, fasten.it 2019/2000, cvt, wegert, nfg, ita, degademir, sunthrough) and clustered. Min clusters per column: P 3, c_min 3, dc_max 5, e_min 3, k_max 5, s_max 6, dp_max 3, t_min 6, t_max 6. Dissent only from the old-DIN cluster (k_max 3.45/4.25/4.45/5.45/6.45, dc_max ST6.3 13.2, c_min ST4.2/ST4.8 0.9 vs 0.8) and degademir typo t_min ST4.2 0.7. Sanity: dc>e>s, dp<d, monotone P/dc/k/t_max, t_max>t_min.",
+  "problems": [
+   "Margin is thin: P (ST3.5 only gf, fasten.it, cvt), c_min ST4.2 (gf, fasten.it, cvt vs old-cluster 0.9), e_min (gf, fasten.it, old-cluster ita) and dp_max (cvt, wegert, old-cluster) are exactly 3 clusters; two of the votes for P/c_min/e_min are the aggregator pages gf and fasten.it (they transcribe the standard; no shared layout/typos found, so counted as 2 independent clusters).",
+   "Edition split: older DIN 7504 K table (ita, degademir, sunthrough: k_max 4.25/4.45/5.45/6.45, dc_max 13.2 at ST6.3, c_min 0.9) vs ISO 15480 values used (5 clusters). OK but cvt/wegert/nfg pages are titled DIN 7504 K while printing ISO numbers.",
+   "dp_max is not tabulated in ISO 15480 itself (gf: 'function of drilling point dp is specified in ISO 10666'); values come from DIN 7504 K-style pages (cvt, wegert) and ita - header text 'dp max' is explicit in all three, so semantics OK, but the standard note should mention ISO 10666.",
+   "t_min/t_max are the producer's key names for 'Drilling range (sheet or plate thickness) from/to'; they collide with the 't' column (t min/max) of the old ita table. Rename (e.g. drill_from/drill_to) if keys must be unambiguous.",
+   "ST2.9 row correctly excluded (e_min and dp_max only 2 clusters); ST3.9 correctly excluded."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 15480 (= DIN EN ISO 15480; replaces DIN 7504 K)",
+ "scope": "ISO 15480 육각 셀프드릴링 나사"
+}

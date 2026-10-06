@@ -1,0 +1,464 @@
+{
+ "id": "ring-misc",
+ "status": "ok",
+ "standard": "DIN 7993 B형",
+ "u": "mm",
+ "cols": [
+  [
+   "Dh_nom",
+   "구멍 지름 Dh"
+  ],
+  [
+   "dw",
+   "선(와이어) 지름 dw"
+  ],
+  [
+   "Df",
+   "링 자유 지름 Df"
+  ],
+  [
+   "Dg",
+   "홈 지름 Dg"
+  ],
+  [
+   "g",
+   "끝단 간격(갭) g"
+  ],
+  [
+   "r",
+   "홈 바닥 반경 r"
+  ]
+ ],
+ "rows": [
+  [
+   "7",
+   7.0,
+   0.8,
+   7.9,
+   7.8,
+   4.0,
+   0.5
+  ],
+  [
+   "8",
+   8.0,
+   0.8,
+   8.9,
+   8.8,
+   4.0,
+   0.5
+  ],
+  [
+   "10",
+   10.0,
+   0.8,
+   10.9,
+   10.8,
+   4.0,
+   0.5
+  ],
+  [
+   "12",
+   12.0,
+   1.0,
+   13.2,
+   13.0,
+   6.0,
+   0.6
+  ],
+  [
+   "14",
+   14.0,
+   1.0,
+   15.2,
+   15.0,
+   6.0,
+   0.6
+  ],
+  [
+   "16",
+   16.0,
+   1.6,
+   17.8,
+   17.6,
+   8.0,
+   0.9
+  ],
+  [
+   "18",
+   18.0,
+   1.6,
+   19.8,
+   19.6,
+   8.0,
+   0.9
+  ],
+  [
+   "20",
+   20.0,
+   2.0,
+   22.3,
+   22.0,
+   10.0,
+   1.1
+  ],
+  [
+   "22",
+   22.0,
+   2.0,
+   24.3,
+   24.0,
+   10.0,
+   1.1
+  ],
+  [
+   "24",
+   24.0,
+   2.0,
+   26.3,
+   26.0,
+   10.0,
+   1.1
+  ],
+  [
+   "25",
+   25.0,
+   2.0,
+   27.3,
+   27.0,
+   10.0,
+   1.1
+  ],
+  [
+   "26",
+   26.0,
+   2.0,
+   28.3,
+   28.0,
+   10.0,
+   1.1
+  ],
+  [
+   "28",
+   28.0,
+   2.0,
+   30.3,
+   30.0,
+   10.0,
+   1.1
+  ],
+  [
+   "30",
+   30.0,
+   2.0,
+   32.3,
+   32.0,
+   10.0,
+   1.1
+  ],
+  [
+   "32",
+   32.0,
+   2.5,
+   34.9,
+   34.5,
+   12.0,
+   1.4
+  ],
+  [
+   "35",
+   35.0,
+   2.5,
+   37.9,
+   37.5,
+   12.0,
+   1.4
+  ],
+  [
+   "38",
+   38.0,
+   2.5,
+   40.9,
+   40.5,
+   12.0,
+   1.4
+  ],
+  [
+   "40",
+   40.0,
+   2.5,
+   42.9,
+   42.5,
+   12.0,
+   1.4
+  ],
+  [
+   "42",
+   42.0,
+   2.5,
+   45.0,
+   44.5,
+   16.0,
+   1.4
+  ],
+  [
+   "48",
+   48.0,
+   2.5,
+   51.0,
+   50.5,
+   16.0,
+   1.4
+  ],
+  [
+   "50",
+   50.0,
+   2.5,
+   53.0,
+   52.5,
+   16.0,
+   1.4
+  ],
+  [
+   "55",
+   55.0,
+   3.2,
+   58.9,
+   58.2,
+   20.0,
+   1.8
+  ],
+  [
+   "60",
+   60.0,
+   3.2,
+   63.9,
+   63.2,
+   20.0,
+   1.8
+  ],
+  [
+   "65",
+   65.0,
+   3.2,
+   68.9,
+   68.2,
+   20.0,
+   1.8
+  ],
+  [
+   "70",
+   70.0,
+   3.2,
+   74.0,
+   73.2,
+   25.0,
+   1.8
+  ],
+  [
+   "75",
+   75.0,
+   3.2,
+   79.0,
+   78.2,
+   25.0,
+   1.8
+  ],
+  [
+   "80",
+   80.0,
+   3.2,
+   84.0,
+   83.2,
+   25.0,
+   1.8
+  ],
+  [
+   "85",
+   85.0,
+   3.2,
+   89.0,
+   88.2,
+   25.0,
+   1.8
+  ],
+  [
+   "90",
+   90.0,
+   3.2,
+   94.0,
+   93.2,
+   25.0,
+   1.8
+  ],
+  [
+   "95",
+   95.0,
+   3.2,
+   99.0,
+   98.2,
+   25.0,
+   1.8
+  ],
+  [
+   "100",
+   100.0,
+   3.2,
+   104.2,
+   103.2,
+   32.0,
+   1.8
+  ],
+  [
+   "105",
+   105.0,
+   3.2,
+   109.2,
+   108.2,
+   32.0,
+   1.8
+  ],
+  [
+   "110",
+   110.0,
+   3.2,
+   114.2,
+   113.2,
+   32.0,
+   1.8
+  ],
+  [
+   "115",
+   115.0,
+   3.2,
+   119.2,
+   118.2,
+   32.0,
+   1.8
+  ],
+  [
+   "120",
+   120.0,
+   3.2,
+   124.2,
+   123.2,
+   32.0,
+   1.8
+  ]
+ ],
+ "row_support": {
+  "7": 3,
+  "8": 3,
+  "10": 3,
+  "12": 3,
+  "14": 3,
+  "16": 3,
+  "18": 3,
+  "20": 3,
+  "22": 3,
+  "24": 3,
+  "25": 3,
+  "26": 3,
+  "28": 3,
+  "30": 3,
+  "32": 3,
+  "35": 3,
+  "38": 3,
+  "40": 3,
+  "42": 3,
+  "48": 3,
+  "50": 3,
+  "55": 3,
+  "60": 3,
+  "65": 3,
+  "70": 3,
+  "75": 3,
+  "80": 3,
+  "85": 3,
+  "90": 3,
+  "95": 3,
+  "100": 3,
+  "105": 3,
+  "110": 3,
+  "115": 3,
+  "120": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/din/7993-B/",
+   "site": "fasteners.eu",
+   "what": "DIN 7993 Form B table: bore diameter d1, d4 wire, d5 free dia, d6 groove dia, e gap, r"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/retaining-rings-standards/din-7993-b.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 7993 B table: housing Dh, groove Dg, radius r, wire dw, free dia Df, gap g, weight (same page as .../din-7993.html)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_7993B.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Runddraht-Sprengringe DIN 7993 B technical data (transposed table B,t,D,g,G,r)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "Dh=45 row",
+   "why": "free diameter Df: fasteners.eu 48, lexikon 48, boltsfastener 48.8 (typo) -> only 2 sources agree"
+  },
+  {
+   "what": "Dh=125 row",
+   "why": "free diameter Df: boltsfastener 129.2, lexikon 129.2, fasteners.eu 129.5 (typo) -> only 2 sources agree"
+  },
+  {
+   "what": "weight column",
+   "why": "only boltsfastener lists it"
+  },
+  {
+   "what": "DIN 983 / DIN 984 (lugged rings), DIN 7993 Form A (shafts), ASME B18.27, ASME B27.6",
+   "why": "one defined type chosen; DIN 7993 A has only 2 sources (fasteners.eu, lexikon); 983/984 only fasteners.eu + beneri found; inch types not researched (web search budget exhausted)"
+  }
+ ],
+ "checks": [
+  "Dg > Dh and Df > Dg for all 35 rows (ring sits in a groove deeper than the bore; free ring larger than groove)",
+  "wire dia dw, gap g, groove dia, free dia all grow monotonically with bore size",
+  "groove radius r about 0.55-0.65 x dw in every row",
+  "all 37 sizes compared cell by cell across 3 sources; the only disagreements are the 2 typos listed under dropped"
+ ],
+ "shape_hint": "A split circular ring formed from round spring-steel wire, with a gap of g between the two ends that are bent slightly inward/outward; it sits in a circular groove cut into a bore and retains a part against the bore shoulder. In 2D it is a thin circle (wire cross-section dw) with a small break; free outer size Df, seated in a groove of diameter Dg.",
+ "role_map": {
+  "Dh": "bore (housing) diameter the ring is intended for, buyer's size",
+  "Dh_nom": "same value as a number",
+  "dw": "wire diameter",
+  "Df": "free (unstressed) outside diameter of the ring",
+  "Dg": "groove diameter in the bore",
+  "g": "gap between the wire ends (reference value)",
+  "r": "groove bottom radius"
+ },
+ "notes": "Only DIN 7993 Form B (for bores/housings, sizes 7-125 mm) is tabulated. DIN 7993 Form A (for shafts) has the same wire sizes but different groove/free diameters (not tabulated: only 2 sources). DIN 7993 is withdrawn (hint: replaced by DIN 9925/9926); the dimension tables are still widely published. The family also names DIN 983/984 lugged rings, inch rings (ASME B18.27) and spiral rings (ASME B27.6): these are NOT covered. Groove-diameter tolerances (+-0.05...+-0.15) and Df tolerances (+0.3...+1.2) are not included. Only 3 sources exist, so any single typo drops a row.",
+ "clusters": {
+  "fasteners.eu": [
+   "fasteners.eu"
+  ],
+  "boltsfastener.com (own transcription for this page: different layout with weights/tolerances, own typo 48.8, and correct 129.2 where fasteners.eu has the typo 129.5 -> NOT a copy of fasteners.eu here; counted, but see problems)": [
+   "boltsfastener.com"
+  ],
+  "German dataset (schrauben-lexikon/wegertseder)": [
+   "schrauben-lexikon.de"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched fasteners.eu /standards/din/7993-B/, boltsfastener din-7993-b.html, schrauben-lexikon DIN_7993B.asp (all 200). Parsed with tbl.py (fasteners.eu tolerance cells filtered; lexikon 3 transposed blocks). Union = 37 sizes (7..125) x 6 value cols x 3 sources. 35 record rows x 6 cols x 3 sources = 630 comparisons, 0 mismatches. Only disagreements in the 37 rows: Df(45) fe 48.0 / bolts 48.8 / lex 48.0 and Df(125) fe 129.5 / bolts 129.2 / lex 129.2, exactly the two rows the producer dropped (agreed: 2 clusters only). Sanity: Dg>Dh, Df>Dg for all rows; dw, g, Dg, Df, r non-decreasing.",
+  "problems": [
+   "Exactly 3 clusters for every cell, zero slack. Independence of boltsfastener rests on the pairwise-different typos (bolts 48.8 vs fe/lex 48.0; fe 129.5 vs bolts/lex 129.2): a copy of fasteners.eu would carry 129.5, a copy of lexikon would carry 48.0. On the key-wood page boltsfastener IS a verbatim fasteners.eu copy; if the maintainer applies a blanket 'boltsfastener = fasteners.eu' rule, every row drops to 2 clusters and the record must be rejected.",
+   "boltsfastener page title says 'Round Wire Snap Rings for shaft' although it is Form B (bores) - sloppy compilation; column heads themselves (Dh, Dg, r, dw, Df, (g)) are explicit and match the record roles.",
+   "Role check: fasteners.eu header symbols d1,d4,d5,d6,e,r are not defined by words; its legend uses B=hole diameter, G=groove, D=ring diameter, g=opening range, r=radius. Lexikon rows are B,t,D,g,G,r - 't' (wire dia) is never defined and is inferred by equality with fe d4 / bolts dw. Only boltsfastener names all columns in words (wire dia, free diameter, gap, radius).",
+   "r is 'approx.' in fasteners.eu; g is a parenthesised reference value in boltsfastener ('(g)') - record already says reference; groove-diameter tolerances +-0.05/0.1/0.15 not published (fine).",
+   "Form A (shafts) correctly not published (2 sources)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 7993 Form B (round-wire snap ring for bores/housings)"
+}

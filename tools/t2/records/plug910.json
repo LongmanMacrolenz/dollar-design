@@ -1,0 +1,354 @@
+{
+ "id": "plug910",
+ "status": "ok",
+ "standard": "DIN 910",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P"
+  ],
+  [
+   "c",
+   "칼라 두께 c (공칭, 최소=공칭)"
+  ],
+  [
+   "dk_max",
+   "칼라 지름 dk(d2) 최대=공칭"
+  ],
+  [
+   "i",
+   "나사부 길이 i (공칭)"
+  ],
+  [
+   "h",
+   "전체 길이 h (약)"
+  ],
+  [
+   "m",
+   "머리 높이 m (칼라 위, 공칭)"
+  ],
+  [
+   "s",
+   "육각 대변 s (DIN 475-1/ISO 272 시판 치수)"
+  ]
+ ],
+ "rows": [
+  [
+   "M10",
+   1,
+   3,
+   14,
+   8,
+   17,
+   6,
+   10
+  ],
+  [
+   "M12",
+   1.5,
+   3,
+   17,
+   12,
+   21,
+   6,
+   13
+  ],
+  [
+   "M14",
+   1.5,
+   3,
+   19,
+   12,
+   21,
+   6,
+   13
+  ],
+  [
+   "M16",
+   1.5,
+   3,
+   21,
+   12,
+   21,
+   6,
+   17
+  ],
+  [
+   "M18",
+   1.5,
+   4,
+   23,
+   12,
+   24,
+   8,
+   17
+  ],
+  [
+   "M20",
+   1.5,
+   4,
+   25,
+   14,
+   26,
+   8,
+   19
+  ],
+  [
+   "M22",
+   1.5,
+   4,
+   27,
+   14,
+   26,
+   8,
+   19
+  ],
+  [
+   "M24",
+   1.5,
+   4,
+   29,
+   14,
+   27,
+   9,
+   22
+  ],
+  [
+   "M26",
+   1.5,
+   4,
+   31,
+   16,
+   30,
+   10,
+   24
+  ],
+  [
+   "M27",
+   2,
+   4,
+   32,
+   16,
+   30,
+   10,
+   24
+  ],
+  [
+   "M30",
+   1.5,
+   4,
+   36,
+   16,
+   30,
+   10,
+   24
+  ],
+  [
+   "M33",
+   2,
+   5,
+   39,
+   16,
+   32,
+   11,
+   27
+  ],
+  [
+   "M36",
+   1.5,
+   5,
+   42,
+   16,
+   32,
+   11,
+   27
+  ],
+  [
+   "M38",
+   1.5,
+   5,
+   44,
+   16,
+   32,
+   11,
+   27
+  ],
+  [
+   "M42",
+   1.5,
+   5,
+   49,
+   16,
+   33,
+   12,
+   30
+  ],
+  [
+   "M45",
+   1.5,
+   5,
+   52,
+   16,
+   33,
+   12,
+   30
+  ],
+  [
+   "M48",
+   1.5,
+   5,
+   55,
+   16,
+   33,
+   12,
+   30
+  ],
+  [
+   "M52",
+   1.5,
+   5,
+   60,
+   16,
+   33,
+   12,
+   30
+  ],
+  [
+   "M56",
+   2,
+   5,
+   64,
+   20,
+   40,
+   15,
+   36
+  ]
+ ],
+ "row_support": {
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3,
+  "M18": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M26": 3,
+  "M27": 3,
+  "M30": 3,
+  "M33": 3,
+  "M36": 3,
+  "M38": 3,
+  "M42": 3,
+  "M45": 3,
+  "M48": 3,
+  "M52": 3,
+  "M56": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/din-910-specifications-hex-head-screw-plugs/",
+   "site": "fullerfasteners.com",
+   "what": "DIN 910 Specifications - 10 transposed tables (rows P,c,dk,e,i,h,m,s; columns by size)"
+  },
+  {
+   "url": "https://torqbolt.com/din-910-hexagon-head-screw-plugs-with-collar",
+   "site": "torqbolt.com",
+   "what": "DIN 910 dimension table 1 (c, dc, e, i, lt, m, kw, s, mass)"
+  },
+  {
+   "url": "https://www.ssfastenersmfgr.com/hexagon-head-screw-plugs-specifications-din910.html",
+   "site": "ssfastenersmfgr.com",
+   "what": "DIN 910 specifications table (d1,d2,s,c,i,l,m)"
+  },
+  {
+   "url": "https://www.ganternorm.com/de/produkte/3.5-Kontrollieren-Entlueften-Verschliessen-von-Fluessigkeiten-und-Gasen/Verschlussschrauben-Verschlussstopfen/DIN-910-Verschlussschrauben-Stahl-Edelstahl-mit-Bund-mit-Aussensechskant",
+   "site": "ganternorm.com",
+   "what": "manufacturer table (d2,l1=i,l3=m,sw=s) - extra corroboration of dk,i,m,s for 12 rows"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-910",
+   "site": "theo-schrauben.de (+schrauben-lexikon.de, wegertseder.com = one lineage)",
+   "what": "DIN 910 Technische Daten (c,d2,m,s) - older dataset, corroborates c,dk,m,s except 4 typo cells"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "M64 row",
+   "why": "Fuller header says 'M63' for the M64 column (typo); without it only ssfast+torqbolt give i/h -> 2 independent sources"
+  },
+  {
+   "what": "M39 and M60 rows",
+   "why": "only torqbolt and Fuller (2 independent sources); ssfast/German shops/Ganter do not list them"
+  },
+  {
+   "what": "M8 row (M8x1)",
+   "why": "only Ganter lists it (1 source)"
+  },
+  {
+   "what": "G 1/8 A ... G 2 A pipe-thread (ISO 228-1) rows",
+   "why": "different thread series; label/pitch columns do not fit the metric table (dims identical-looking to M rows in Fuller/torqbolt/German shops but P column would be a TPI value); not published here"
+  },
+  {
+   "what": "e (across-corners min) and s ISO 272 alternative (M16..M24: 16,16,18,18,21)",
+   "why": "only torqbolt+Fuller (+Chinese standards-DB copies of the same layout) give them; not 3 independent"
+  },
+  {
+   "what": "M30/M36/M42/M45/M48/M52/M20 second pitch (x2) rows",
+   "why": "same dimensions as fine-pitch row; only the finer pitch row is kept (P col)"
+  }
+ ],
+ "checks": [
+  "h = i + c + m for every kept row (e.g. M10 8+3+6=17, M18 12+4+8=24, M56 20+5+15=40) -> i, c, m, h mutually consistent across 3 sources",
+  "c, dk, i, h, m, s are non-decreasing with thread size for all 19 rows",
+  "dk (collar dia) >= d+4 and dk > s for all 19 rows (collar larger than shank and than the hex flats)",
+  "hex AF s = 10,13,13,17,17,19,19,22,24,24,24,27,27,27,30,30,30,30,36 equals the standard ISO 272/DIN 475-1 wrench-size series; s/dk ranges 0.50-0.81",
+  "c steps 3,4,5 and m steps 6,8,9,10,11,12,15 identical in all three sources (Ganter l2 = c+m also consistent)"
+ ],
+ "shape_hint": "Cylindrical-threaded plug: a short hexagon head (height m) sitting on a round collar (diameter dk, thickness c) that has a flat/undercut seat for a sealing ring (DIN 7603), below which a short fully threaded cylindrical shank of length i is used. Overall length h = i + c + m. No drive recess; the plug is turned by an external hex of width across flats s.",
+ "role_map": {
+  "d": "nominal thread diameter (metric fine thread)",
+  "P": "thread pitch",
+  "c": "collar thickness (min = nominal, tolerance +0.5)",
+  "dk_max": "collar diameter d2, max = nominal (tol h14)",
+  "i": "threaded shank length (nominal, +-0.2)",
+  "h": "overall length approx = i+c+m",
+  "m": "hex head height above the collar (nominal, +-1/2 IT15)",
+  "s": "hex width across flats (DIN 475-1 value where the standard lists one, else ISO 272)"
+ },
+ "notes": "Metric fine-pitch sizes only (Form A cylindrical thread, DIN 13-x / ISO 965). Pitch shown is the finest series pitch; M20, M30, M36, M42, M45, M48, M52 are also available in P=2 with the same other dimensions. Two sources (ISO 272 values M16 16, M18 16, M20 18, M22 18, M24 21) show a smaller across-flats than DIN 475-1; the table keeps the DIN 475-1 value (17,17,19,19,22), which is what distributors stock. Dissenting cells found on the older German shop dataset (theo-schrauben.de / schrauben-lexikon.de / wegertseder.com, all identical): M18 m=6, M38 c=4, M45 dk=55, M48 s=36 - overruled by >=3 independent sources, and monotonic checks. Pipe-thread (G 1/8 A .. G 2 A) variants exist and are not in this table. Stainless/steel/brass use the same dimensions; DIN 910 is used with DIN 7603 sealing rings (see sealw). Chinese standards-database pages (globalfastener.com, partscad.com, 164580.com) carry the same numbers as Fuller in the same layout; treated as copies of Fuller, not counted.",
+ "clusters": {
+  "Fuller / Chinese standards-DB template (globalfastener, partscad, 164580 are copies, not counted)": [
+   "fullerfasteners.com"
+  ],
+  "torqbolt (own transcription, newer DIN edition; layout/footnotes/typos differ from Fuller)": [
+   "torqbolt.com"
+  ],
+  "ssfastenersmfgr.com (Mumbai, MID/GID site template)": [
+   "ssfastenersmfgr.com"
+  ],
+  "Ganter manufacturer catalog (HTML)": [
+   "ganternorm.com"
+  ],
+  "German shop dataset (one lineage)": [
+   "theo-schrauben.de"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched all 5 listed URLs live (HTTP 200) and parsed tables with Python. 19 rows x 8 cols (152 cells) matrix vs Fuller (10 transposed tables, 3 cols each), torqbolt table 0, ssfast, Ganter (d2,l1=i,l3=m,sw=s), theo/lexikon. Clusters agreeing per column (min over rows): P 4, c 3, dk_max 3, i 3, h 3, m 4, s 4. h is supported only by Fuller (h approx), torqbolt ((lt) approx) and ssfast (l approx) - Ganter has no overall length (l2=c+m only, not counted). s checked per row: M10=10, M12=13, M14=13 (Fuller/torqbolt DIN 475-1 column is '-', ISO 272 column gives 10/13/13); M16..M24=17,17,19,19,22 (DIN 475-1 column; ISO 272 column = 16,16,18,18,21); M26..M56 = 24,24,24,27,27,27,30,30,30,30,36 (DIN 475-1 '-', ISO 272 value). ssfast, Ganter (sw) and theo (s) print the same unlabelled series for every row they carry, so each s cell has 4-5 clusters. Physical: h=i+c+m all 19 rows, all columns non-decreasing, dk>s.",
+  "problems": [
+   "s column mixes series by construction: DIN 475-1 value where the standard prints one (M16-M24), otherwise the single ISO 272 value (DIN 475-1 column is '-', i.e. identical). Per-row values are right and multi-source; label must say 'wrench size per DIN 475-1' and must not be read as ISO 272 (alt for M16-M24 would be 16,16,18,18,21).",
+   "h has exactly 3 clusters; it only passes if Fuller and torqbolt count as independent. Evidence for independence: different layout (Fuller transposed with computed min/max rows; torqbolt row table with kw/mass), different footnote markers ('16^' vs '16d'), no shared typo (Fuller header 'M63' for M64; torqbolt has none). If lead rules them one cluster, h fails for all rows (and c M38 / dk M45 drop to 2).",
+   "German shop dataset typos (not counted): M18 m=6, M38 c=4, M45x1.5 dk=55 (its own M45x2 row says 52), M48x1.5 s=36.",
+   "P: M20,M30,M36,M42,M45,M48,M52 also exist as x2 with identical dimensions; record lists the finer pitch only. Ganter lists M42/M48 only as x2 (not counted for P). Row key is d only, so P is not a unique key.",
+   "fasteners.eu live page titled 'DIN 910' actually contains DIN 908 data (socket s/t, l=i+c): unusable for 910, do not add as a source."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 910 (cylindrical fine/metric thread, Form A, hexagon head screw plug with collar)",
+ "scope": "육각머리 칼라 플러그 DIN 910 (미터 가는나사)"
+}

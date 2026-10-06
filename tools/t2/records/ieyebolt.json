@@ -1,0 +1,268 @@
+{
+ "id": "ieyebolt",
+ "status": "partial",
+ "standard": "ASME B18.15",
+ "u": "in",
+ "cols": [
+  [
+   "tpi",
+   "나사산 수 (산/인치, UNC)"
+  ],
+  [
+   "D",
+   "아이 바깥지름 D (공칭)"
+  ],
+  [
+   "GA",
+   "최소 완전나사 길이 G (A형)"
+  ],
+  [
+   "GB",
+   "최소 완전나사 길이 G (B형)"
+  ]
+ ],
+ "rows": [
+  [
+   "1/4",
+   20,
+   1.19,
+   0.75,
+   0.75
+  ],
+  [
+   "5/16",
+   18,
+   1.44,
+   0.81,
+   0.75
+  ],
+  [
+   "3/8",
+   16,
+   1.69,
+   0.88,
+   0.75
+  ],
+  [
+   "7/16",
+   14,
+   1.81,
+   1.0,
+   0.75
+  ],
+  [
+   "1/2",
+   13,
+   2.12,
+   1.12,
+   0.75
+  ],
+  [
+   "9/16",
+   12,
+   2.25,
+   1.25,
+   0.84
+  ],
+  [
+   "5/8",
+   11,
+   2.56,
+   1.38,
+   0.94
+  ],
+  [
+   "3/4",
+   10,
+   2.81,
+   1.62,
+   1.13
+  ],
+  [
+   "7/8",
+   9,
+   3.19,
+   1.81,
+   1.31
+  ],
+  [
+   "1",
+   8,
+   3.56,
+   2.06,
+   1.5
+  ],
+  [
+   "1-1/4",
+   7,
+   4.44,
+   2.5,
+   1.88
+  ],
+  [
+   "1-1/2",
+   6,
+   5.19,
+   3.0,
+   2.25
+  ],
+  [
+   "1-3/4",
+   5,
+   6.0,
+   3.19,
+   2.62
+  ],
+  [
+   "2-1/2",
+   4,
+   8.5,
+   4.25,
+   3.75
+  ]
+ ],
+ "row_support": {
+  "1/4": 3,
+  "5/16": 3,
+  "3/8": 3,
+  "7/16": 3,
+  "1/2": 3,
+  "9/16": 3,
+  "5/8": 3,
+  "3/4": 3,
+  "7/8": 3,
+  "1": 3,
+  "1-1/4": 3,
+  "1-1/2": 3,
+  "1-3/4": 3,
+  "2-1/2": 3
+ },
+ "sources": [
+  {
+   "url": "https://amesweb.info/Fasteners/Bolts/forged-eye-bolt-sizes.aspx",
+   "site": "amesweb.info",
+   "what": "Forged Eye Bolt Sizes (ASME B18.15 inch series): plain-pattern table and shoulder-pattern table, two lines per size"
+  },
+  {
+   "url": "https://torqbolt.com/asme-b18-15-forged-eye-bolts-dimensions-standards-specifications",
+   "site": "torqbolt.com",
+   "what": "ASME B18.15 Type 1 (plain) and Type 2 (shoulder) inch tables, 2nd line per size staggered"
+  },
+  {
+   "url": "https://www.fastenerz.com/eyeboltfrg.html",
+   "site": "fastenerz.com",
+   "what": "FORGED EYEBOLTS, PLAIN PATTERN / SHOULDER PATTERN tables (two values per cell)"
+  },
+  {
+   "url": "https://www.nan-long.com/GPAGE/FASTENER/IFI%20Fastener/Detail%20IFI%20Series/ASME%20B18.15%20Forged%20Eyebolts.htm",
+   "site": "nan-long.com",
+   "what": "Type 1 Styles A/B plain pattern and Type 2 shoulder pattern tables (some typos)"
+  },
+  {
+   "url": "https://boltingspecialist.com/dimensions/asme-b18-15-forged-eye-bolts-type-2/index.html",
+   "site": "boltingspecialist.com",
+   "what": "Type 2 shoulder table only (a193gradeb7.com / Boltport page is identical = same source) - used only for shoulder extras in notes"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "1-1/8 row",
+   "why": "Style B shank length B: 2.13 (torqbolt, fastenerz, nan-long plain) vs 2.23 (amesweb, nan-long shoulder, boltingspecialist) - same part dimension, sources split 2-2 once both tables are considered -> no reliable majority"
+  },
+  {
+   "what": "2 row",
+   "why": "Style B shank length: (3.62,3.87) torqbolt+fastenerz vs (3.62,3.79) amesweb vs (4.00,4.25) nan-long -> only 2 agree; plain-pattern A-length max also differs between plain (4.25) and shoulder (4.12) tables"
+  },
+  {
+   "what": "1-3/8 and other sizes",
+   "why": "1-3/8 appears only in the rated-load table, not in the dimension tables"
+  },
+  {
+   "what": "Metric-thread eyebolts (ASME B18.15 Appendix D)",
+   "why": "out of scope for the inch family"
+  },
+  {
+   "what": "rated loads (WLL)",
+   "why": "load table not part of dimension verification; only torqbolt in the set lists them"
+  }
+ ],
+ "checks": [
+  "every min <= max (A, BA, BB, C, E, F) and BB <= BA, GB <= GA for all 14 rows",
+  "D (nominal eye OD) equals the mean of (C+2E) at the lower and upper limits (|diff| <= 0.01 in) -> confirms that the two values printed per cell are lower/upper limits",
+  "F_min = BA_min + C_min + 2*E_min and F_max = BA_max + C_max + 2*E_max within 0.01 in -> the plain-pattern overall length F belongs to Style A (long shank)",
+  "all dimension columns grow monotonically with nominal size (D 1.19..8.50, tpi falls 20..4)",
+  "UNC tpi values match the UNC series (1/4-20, 5/16-18, 3/8-16, 7/16-14, 1/2-13, 9/16-12, 5/8-11, 3/4-10, 7/8-9, 1-8, 1-1/4-7, 1-1/2-6, 1-3/4-5, 2-1/2-4) in 4 sources"
+ ],
+ "shape_hint": "A forged steel eye bolt: a closed circular ring (eye) of round section E with inside diameter C and nominal outside diameter D forms the head; a straight cylindrical shank of diameter A runs down from the eye to a UNC threaded end (full thread length G, shank length B, overall length F measured from the top of the eye). The shoulder pattern adds a flat round collar (shoulder diameter J, height K, fillet radius R under it) between the eye and the shank.",
+ "role_map": {
+  "d_nom": "nominal thread size (UNC 2A)",
+  "tpi": "threads per inch",
+  "A_min": "shank diameter lower limit",
+  "A_max": "shank diameter upper limit",
+  "BA_min": "shank length, Style A (long), lower limit",
+  "BA_max": "shank length, Style A (long), upper limit",
+  "BB_min": "shank length, Style B (short), lower limit",
+  "BB_max": "shank length, Style B (short), upper limit",
+  "C_min": "eye inside diameter lower limit",
+  "C_max": "eye inside diameter upper limit",
+  "D": "nominal eye outside diameter",
+  "E_min": "eye section (ring wire) diameter lower limit",
+  "E_max": "eye section diameter upper limit",
+  "F_min": "overall length lower limit (plain pattern, Style A)",
+  "F_max": "overall length upper limit (plain pattern, Style A)",
+  "GA": "minimum full-thread length, Style A",
+  "GB": "minimum full-thread length, Style B"
+ },
+ "notes": "ASME B18.15 forged eyebolts, inch. TABLE = Type 1 PLAIN pattern (straight shank) only, Styles A (long) and B (short). The sources print two values in each toleranced cell (e.g. eye ID '0.69 0.81'); they are not labelled in the web tables, but arithmetic shows they are lower/upper limits (D = mean of C+2E at both limits; F = B + C + 2E), so they are published here as _min/_max by inference - confirm labels against the standard's table before printing as 'min/max'. F (overall length) is for Style A (long shank); Style B overall length is not tabulated in these sources. Nominal sizes 1-1/8 and 2 dropped (see dropped); 2-1/2 has no shoulder pattern. SHOULDER PATTERN (Type 2) extras verified by >=3 sources, as lower/upper pairs (min/max), inches: shoulder-pattern overall length F_sh, eye-to-shoulder H, shoulder diameter J, shoulder height K, radius under shoulder R; the B, C, D, E, G dimensions are the same as the plain table. 1/4: F_sh=2.22/2.53, H=0.69/0.81, J=0.5/0.56, K=0.12/0.19, R=0.015/0.025 ; 5/16: F_sh=2.66/2.97, H=0.88/1.0, J=0.56/0.62, K=0.12/0.19, R=0.015/0.025 ; 3/8: F_sh=3.09/3.47, H=1.06/1.19, J=0.62/0.69, K=0.12/0.19, R=0.015/0.025 ; 7/16: F_sh=3.41/3.78, H=1.19/1.31, J=0.75/0.81, K=0.19/0.25, R=0.015/0.025 ; 1/2: F_sh=3.81/4.19, H=1.31/1.44, J=0.88/0.94, K=0.19/0.25, R=0.015/0.025 ; 9/16: F_sh=4.19/4.56, H=1.5/1.62, J=0.94/1.0, K=0.22/0.28, R=0.02/0.045 ; 5/8: F_sh=4.56/4.94, H=1.59/1.72, J=1.0/1.06, K=0.25/0.31, R=0.02/0.045 ; 3/4: F_sh=5.06/5.5, H=1.72/1.91, J=1.12/1.25, K=0.25/0.31, R=0.02/0.045 ; 7/8: F_sh=5.75/6.19, H=2.03/2.22, J=1.31/1.44, K=0.31/0.38, R=0.04/0.065 ; 1: F_sh=6.44/6.88, H=2.22/2.41, J=1.5/1.62, K=0.38/0.44, R=0.06/0.095 ; 1-1/4: F_sh=8.0/8.44, H=2.84/3.03, J=1.88/2.0, K=0.5/0.56, R=0.06/0.095 ; 1-1/2: F_sh=9.22/9.72, H=3.19/3.44, J=2.12/2.25, K=0.5/0.62, R=0.06/0.095 ; 1-3/4: F_sh=10.5/11.12, H=3.88/4.12, J=2.5/2.62, K=0.5/0.62, R=0.06/0.095 ; 2-1/2: (no shoulder-pattern row in the sources). 9/16 row: nan-long (and boltingspecialist for shoulder) print the size as '9/15' (typo) with identical values; these were not counted for the 9/16 plain row (support 3 = amesweb, torqbolt, fastenerz). Outliers found: amesweb plain F column is contaminated with shoulder-pattern F values (1, 1-1/8 ... 2 rows); nan-long plain table repeats B-style-B values in the C column for 1-1/4..2-1/2 sizes and prints 2.23/2.26 at 1-1/8; boltingspecialist 1-1/2 J=2.52 typo. Material/capacity standards: ASTM A489 (carbon steel), ASTM F541 (alloy steel) govern strength; not dimension sources.",
+ "clusters": {
+  "amesweb.info (AmesWeb; engineersedge/amesweb cluster)": [
+   "amesweb.info"
+  ],
+  "torqbolt.com": [
+   "torqbolt.com (identical to fastenerz in all 288 plain-pattern numbers incl. shared 1-1/8 BB=2.13 -> possibly same upstream as fastenerz)"
+  ],
+  "fastenerz.com": [
+   "fastenerz.com (counted separately; if merged with torqbolt cluster count stays >=3)"
+  ],
+  "Boltport family": [
+   "nan-long.com (shares '9/15' typo and 1-1/2 K=2.52 typo with Boltport pages)",
+   "boltingspecialist.com type-2",
+   "boltport.com type-2",
+   "a193gradeb7.com type-2"
+  ],
+  "NOT usable": [
+   "boltdepot.com (Cloudflare)",
+   "clevelandcityforge.com (captcha)",
+   "fastenerdata.co.uk (BS 4278 different part)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched live: amesweb.info, torqbolt.com, fastenerz.com, nan-long.com, boltingspecialist type-2 (all 200); parsed plain-pattern tables (16 sizes x A,BA,BB,C,D,E,F,GA,GB, both limits) and shoulder tables (15 sizes). Matrix of the 14 record rows x 17 cols x 4 sources: every record cell found in >=3 sources; deviations only in dropped cols (AMES F col contaminated by shoulder-F at 1,1-1/8..2; AMES E at 1-1/4,1-3/4; nan-long BB at 1-1/4..2-1/2). Kept columns d_nom, tpi, D, GA, GB: 4/4 pages agree for ALL 16 sizes (also 1-1/8 and 2). tpi checked vs UNC series.",
+  "problems": [
+   "ALL 12 *_min/*_max columns: no source header says min/max. Sources print two unlabeled numbers per cell (ames: two table lines per size; torq: staggered second line; fastenerz/nan-long/boltport: 'a b' in one cell; none has 'Min'/'Max'/'lower/upper' header or legend). Roles inferred by the producer from arithmetic (D=mean(C+2E), F=B+C+2E) -> dropped per instruction. Style A/B mapping of BA/BB and 'F belongs to Style A' also arithmetic-inferred.",
+   "Only d_nom, tpi, D (header 'Nominal Eye O.D.'), GA, GB ('Min Full Thread' Style A/B) survive: too thin to draw an eyebolt (no shank dia, eye ID, section dia, length). Publisher may prefer to reject the family.",
+   "torqbolt and fastenerz are numerically identical in the whole plain table and share the odd 1-1/8 BB=2.13 (4 other pages: 2.23) -> treat as one cluster to be safe; still AMES + TORQ/FZ + NL = 3 clusters on kept columns.",
+   "nan-long is a Boltport-family copy (shared '9/15' typo) - counted as one cluster; its 9/16 row cannot be matched by label (size printed '9/15').",
+   "rows 1-1/8 and 2 were dropped by the producer only because of BB; with BB columns dropped, D/GA/GB/tpi for these rows are agreed by all 4 pages (D 4.06/6.88, GA 2.31/3.38, GB 1.69/3.00, tpi 7/4.5) and could be restored (tpi for 2 is 4.5, non-integer).",
+   "shoulder-pattern extras in notes also rely on the same unlabeled min/max pairs and on Boltport-family pages -> do not publish them."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "A_max",
+   "A_min",
+   "BA_max",
+   "BA_min",
+   "BB_max",
+   "BB_min",
+   "C_max",
+   "C_min",
+   "E_max",
+   "E_min",
+   "F_max",
+   "F_min"
+  ]
+ },
+ "standard_full": "ASME B18.15 (Type 1 plain pattern, UNC 2A; shoulder-pattern extras in notes)"
+}

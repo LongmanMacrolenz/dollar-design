@@ -1,0 +1,174 @@
+{
+ "id": "blindrivet",
+ "status": "ok",
+ "standard": "DIN 7337 A형",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "몸통 지름 d1 공칭"
+  ],
+  [
+   "dk",
+   "머리 지름 d2(dk) 공칭"
+  ],
+  [
+   "k",
+   "머리 높이 k 공칭"
+  ],
+  [
+   "d3",
+   "권장 체결 구멍 지름 d3 공칭"
+  ]
+ ],
+ "rows": [
+  [
+   "2.4",
+   2.4,
+   5,
+   0.55,
+   2.5
+  ],
+  [
+   "3",
+   3.0,
+   6.5,
+   0.8,
+   3.1
+  ],
+  [
+   "3.2",
+   3.2,
+   6.5,
+   0.8,
+   3.3
+  ],
+  [
+   "4",
+   4.0,
+   8,
+   1,
+   4.1
+  ],
+  [
+   "4.8",
+   4.8,
+   9.5,
+   1.1,
+   4.9
+  ],
+  [
+   "5",
+   5.0,
+   9.5,
+   1.1,
+   5.1
+  ],
+  [
+   "6",
+   6.0,
+   12,
+   1.5,
+   6.1
+  ],
+  [
+   "6.4",
+   6.4,
+   13,
+   1.8,
+   6.5
+  ]
+ ],
+ "row_support": {
+  "2.4": 3,
+  "3": 3,
+  "3.2": 3,
+  "4": 3,
+  "4.8": 3,
+  "5": 3,
+  "6": 3,
+  "6.4": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/BlindRivet_DomePlain7337.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "Table 1 (d1,d2,k nominal + tolerances; merged cells decoded via colspan) and Table 4 (hole d3)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/rivets-standard/din-7337.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 7337 dimension table d1/d2/k/Drill dia (typo '63.3' at 3.2 hole)"
+  },
+  {
+   "url": "https://yiwan.net/blogs/rivet-size-chart-standard-diameters-lengths-materials/",
+   "site": "yiwan.net",
+   "what": "Table 'Body dia. d1 / Head dia. d2 / Head height k / Hole dia. d3'"
+  },
+  {
+   "url": "http://media.wuerth.com/stmedia/shop/masterpages0000/LANG_de/17720.pdf",
+   "site": "media.wuerth.com",
+   "what": "Wuerth vendor product list 'Blindniet Flachrundkopf DIN EN ISO 15977' (4.8,5,6,6.4: hole, dk, k) - vendor catalog PDF"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/ISO-15977",
+   "site": "theo-schrauben.de",
+   "what": "Technische Daten table 'Blindniet Flachrundkopf DIN EN ISO 15977' (2.4-4.8) - same layout as Wuerth, counted as one source with it"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "mandrel diameter, shear/tensile force, grip ranges, rivet length columns",
+   "why": "not collected: only Wuerth/theo (one source) list mandrel diameter; strengths/grips are product data not outline dimensions"
+  },
+  {
+   "what": "pizy.net, rivetfast.com, Bossard, Keller-Kalmbach values",
+   "why": "disagree with the 3-source set (e.g. pizy k=0.9/1.1/1.2/1.4; rivetfast dk 4.8/5.6/6.0/7.2 (looks generic/derived); Bossard dk 4.7/6.4/7.9 inch-derived; Keller k=1.3/1.4 are k_max-like product values); not used"
+  }
+ ],
+ "checks": [
+  "dk, k, d3 grow monotonically with d1 (non-decreasing; 3/3.2 and 4.8/5 share dk/k by standard)",
+  "d3 (hole) = d1 + 0.1 for 3..6 and d1 + 0.1 for 2.4/6.4 (2.5, 6.5): hole always slightly larger than body",
+  "dk/d1 ratio 1.9-2.2 (flat dome head about twice shank diameter) for every row",
+  "k < dk/4 for every row (low dome)",
+  "Cross-checked d3 against Westfield Table 4: identical for all 8 sizes"
+ ],
+ "shape_hint": "Open-end blind (pop) rivet: a plain cylindrical tubular body of diameter d1 with a low dome (pan) head of diameter dk and small height k at one end; a thin steel mandrel (break stem) passes through the bore and protrudes from the head side, snapping off after setting. The body is drawn straight (pre-set) and the length L is chosen from the grip range.",
+ "role_map": {
+  "d1": "nominal rivet body diameter",
+  "dk": "head diameter (DIN 7337 symbol d2) nominal",
+  "k": "head height nominal",
+  "d3": "recommended drilled hole diameter (nominal, +0.05..+0.2 tol.)"
+ },
+ "notes": "Values are DIN 7337 (Form A, dome head) nominals as printed by 3 independent pages. Wuerth and theo-schrauben, which label the same part DIN EN ISO 15977, print identical dk/k/d3 for 3-6.4 but theo lists k=0.7 for 2.4 (row 2.4 keeps k=0.55 as agreed by Westfield, boltsfastener, yiwan; 0.7 = 0.55+0.15 tolerance = k max). Other vendors (Keller-Kalmbach ISO 15977 product pages) list k as roughly nominal+tolerance (k_max: 3.2:1.0, 4:1.3, 4.8:1.4), and dk 6.3 for d=3/3.2 - so ISO 15977 max-limit values are NOT the same numbers; do not mix. Sizes 3 and 5 and 6 are metric-only sizes (3.0/5.0/6.0); 2.4/3.2/4.8/6.4 correspond to inch 3/32,1/8,3/16,1/4. Row 3.2: boltsfastener has hole typo '63.3' so only 3 sources support the full row (Westfield, yiwan, theo).",
+ "clusters": {
+  "Westfield Fasteners UK (DIN 7337, own tables incl. joint hole d3)": [
+   "westfieldfasteners.co.uk"
+  ],
+  "boltsfastener.com (template site; same template as fasenco: 'Cooper' typo, 'dimension ... as below')": [
+   "boltsfastener.com"
+  ],
+  "yiwan.net (Yueqing manufacturer blog)": [
+   "yiwan.net"
+  ],
+  "German shop dataset = Wuerth product list data re-presented as ISO 15977 (rows 2.4-4.8 only); Wuerth 17720.pdf is a vendor PDF = corroboration only": [
+   "theo-schrauben.de"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-fetched Westfield, boltsfastener, yiwan, theo and Wuerth PDF (read with PyMuPDF) live. Westfield Table 1 decoded from the real colspan/rowspan attributes (d1 metric row 3,4,5,6 + imperial row 2.4,3.2,4.8,6.4; d2 5,6.5(x2),8,9.5(x2),12,13; k 0.55,0.8(x2),1,1.1(x2),1.5,1.8) - decode is exact; Table 4 d3 gives all 8 values explicitly. 8 rows x 3 data cols = 24 cells. Clusters per cell (non-PDF): dk 4 for 2.4-4.8, 3 for 5/6/6.4; k 4 for 3,3.2,4,4.8, 3 for 2.4 (theo 0.7 dissents) and 5/6/6.4; d3 4 for 2.4,3,4,4.8, 3 for 3.2 (Westfield, yiwan, theo; boltsfastener typo '63.3') and 5/6/6.4. Wuerth PDF equals the record for 4.8,5,6,6.4 (dk 9.5,9.5,12,13; k 1.1,1.1,1.5,1.8; hole 4.9,5.1,6.1,6.5) but is not counted. No dissent besides theo k(2.4)=0.7 and the boltsfastener typo. Physical: monotone, d3=d1+0.1, dk/d1 1.9-2.2.",
+  "problems": [
+   "Rows 5, 6, 6.4 (all three columns) and k of 2.4 rest on exactly Westfield + boltsfastener + yiwan. yiwan is a marketing blog whose numbers equal Westfield's with no distinguishing typo, so its independence is unproven (not provable either way).",
+   "boltsfastener page heading says 'Countersunk head Open Type Blind Rivets' although the numbers (k 0.55 ... d2 5 ...) are the dome-head DIN 7337 values; heading judged a mislabel (a countersunk head with d2=5, d1=2.4 would have k>0.7). 'Drill dia.' is the d3 hole; its 3.2 value is the typo '63.3'.",
+   "d3 of row 3.2 needs the German dataset (Wuerth-derived product list) as 3rd cluster. That table is vendor product data under the ISO 15977 label; its Kopfhoehe for 2.4 (0.7) is k max, for 3-4.8 it equals k nominal - i.e. its k semantics are inconsistent, so it is not trusted for k. If the lead refuses theo/Wuerth-derived data, drop row 3.2 (d3 would have only Westfield + yiwan) - not done here because the German dataset is an HTML source under the lead's own rule.",
+   "Supplementary (not counted): rivetfast.com hole table equals all 8 d3 values but its head diameters are generic and wrong; fasteners.eu DIN 7337 has d2 only for 3.0,3.2,4.0,4.8,5.0 (agrees).",
+   "Producer status 'ok' is right only because of the 3-source minimum above; producer row_support (4) wrongly counts the Wuerth PDF for rows 5,6,6.4."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 7337 Form A (nominal values; ISO 15977 replaces it)",
+ "scope": "DIN 7337 A형(돔머리) 공칭값 — ISO 15977 값과 다를 수 있습니다"
+}

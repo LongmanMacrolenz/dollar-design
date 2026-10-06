@@ -1,0 +1,182 @@
+{
+ "id": "solidrivet",
+ "status": "ok",
+ "standard": "DIN 660",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "축 지름 d1 공칭"
+  ],
+  [
+   "dk",
+   "머리 지름 dk 공칭 (DIN 660·661 공통)"
+  ],
+  [
+   "k_round",
+   "둥근머리 높이 k (DIN 660)"
+  ],
+  [
+   "k_csk",
+   "접시머리 높이 k ≈ (DIN 661)"
+  ]
+ ],
+ "rows": [
+  [
+   "2",
+   2.0,
+   3.5,
+   1.2,
+   1.0
+  ],
+  [
+   "2.5",
+   2.5,
+   4.4,
+   1.5,
+   1.2
+  ],
+  [
+   "3",
+   3.0,
+   5.2,
+   1.8,
+   1.4
+  ],
+  [
+   "4",
+   4.0,
+   7.0,
+   2.4,
+   2.0
+  ],
+  [
+   "5",
+   5.0,
+   8.8,
+   3.0,
+   2.5
+  ],
+  [
+   "6",
+   6.0,
+   10.5,
+   3.6,
+   3.0
+  ],
+  [
+   "8",
+   8.0,
+   14.0,
+   4.8,
+   4.0
+  ]
+ ],
+ "row_support": {
+  "2": 3,
+  "2.5": 3,
+  "3": 3,
+  "4": 3,
+  "5": 3,
+  "6": 3,
+  "8": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_660",
+   "site": "fasten.it",
+   "what": "DIN 660 (2012 and 1993 editions) d1, dk nom, d min, k, e max, sizes 1-8"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_661",
+   "site": "fasten.it",
+   "what": "DIN 661 (2011 and 1993 editions) d1, dk nom, k approx, e max, d min"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/rivets-standard/din-660.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 660 table d1,d2(dk),d3 min,e max,k (2-10)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/rivets-standard/din-661.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 661 table d1,d2,k,d3 min,e (2-9)"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-660",
+   "site": "theo-schrauben.de",
+   "what": "DIN 660 Technische Daten d1,k,r,d2 (2-8)"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-661",
+   "site": "theo-schrauben.de",
+   "what": "DIN 661 Technische Daten d,k,d2 (2-8)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "rows 1, 1.2, 1.4, 1.6, 3.5",
+   "why": "only fasten.it lists them (1 source)"
+  },
+  {
+   "what": "row 7",
+   "why": "fasten.it and boltsfastener only (2 sources); theo-schrauben omits d=7"
+  },
+  {
+   "what": "row 10",
+   "why": "boltsfastener only (and DIN 660 d>8 not in fasten.it/theo)"
+  },
+  {
+   "what": "columns d_min (shank min), e_max (undersize/edge), r (head radius)",
+   "why": "d_min and e_max are listed by fasten.it and boltsfastener only (2 sources); r only by theo-schrauben (1 source)"
+  },
+  {
+   "what": "ISO 1051, KS B 1101/1102/1103, ASME B18.1.1/B18.1.2, ASTM A502, DIN 124/302 hot-formed large rivets (d>=10)",
+   "why": "no web table with 3 independent public sources found within the search budget (web search quota was exhausted); inch/large rivets not covered"
+  }
+ ],
+ "checks": [
+  "dk/d1 ratio 1.73-1.76 for every row (DIN 660 round head dk ~ 1.75 d); same dk for 661 (equal across both standards in all 3 sources)",
+  "k_round/d1 = 0.6 for every row; k_csk/d1 = 0.47-0.5 (2:1.0, 2.5:1.2, 3:1.4, 4:2.0, 5:2.5, 6:3.0, 8:4.0)",
+  "k_csk < k_round and k < dk/2 for every row",
+  "dk, k grow monotonically with d1",
+  "fasten.it editions (1993 vs 2011/2012) give identical dk and k for the 7 rows (no edition conflict)",
+  "programmatic cross-check: all 3 sources identical for dk, k_round and k_csk for all 7 rows (assertion in parse script passed)"
+ ],
+ "shape_hint": "Solid rivet: a plain cylindrical shank of diameter d1 and length l (chosen by user) with a head formed on one end. DIN 660 head is a low round (button/snap) head of diameter dk ~ 1.75 d1 and height k ~ 0.6 d1 with a rounded dome of radius r; DIN 661 head is a 90 degree countersunk (flat conical) head of diameter dk and height k ~ 0.5 d1. The other end is plain and gets upset after setting.",
+ "role_map": {
+  "d1": "nominal shank diameter",
+  "dk": "head diameter nominal (same for DIN 660 and 661)",
+  "k_round": "head height of the round (snap/button) head DIN 660",
+  "k_csk": "head height of the countersunk head DIN 661 (approx.)"
+ },
+ "notes": "Cold-formed solid rivets, shank diameters 2-8 mm. DIN 660 and DIN 661 share the dk column; heads differ in k. Shank length l is a free choice (standard lists l=2..40+; mass tables exist but are not part of this table). ISO 1051 (cold-formed rivets, d 1-8 style) and KS B 1101 are not separately verified; values equal DIN 660/661 as far as these sources show. Rows 1-1.6, 3.5, 7, 10 exist in the standards but are not published for lack of a third source.",
+ "clusters": {
+  "fasten.it (Italian norm portal; 2012/2011 and 1993 editions = one source)": [
+   "fasten.it din_660",
+   "fasten.it din_661"
+  ],
+  "boltsfastener.com (exporter standards page; carries rows d=9,10 that fasten.it lacks -> not a copy of fasten.it)": [
+   "boltsfastener din-660",
+   "boltsfastener din-661"
+  ],
+  "German shop dataset (theo-schrauben.de; only one member used)": [
+   "theo-schrauben.de DIN-660",
+   "theo-schrauben.de DIN-661"
+  ]
+ },
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Re-downloaded all 6 URLs live (HTTP 200) and parsed the HTML tables. Matrix: 7 rows (2,2.5,3,4,5,6,8) x 3 value columns (dk, k_round, k_csk) x 3 clusters (fasten.it both editions, boltsfastener, theo-schrauben; German decimal commas converted) = 63/63 cells numerically equal to the record; dk compared in both the 660 and the 661 tables (identical in every source). Headers: dk = 'dk nom'/'d2'/'d2'; k_round = 'k js14'/'k'/'k'; k_csk = 'k ~'/'k'/'k' (all read from headers). Physical: dk/d1 = 1.73-1.76 on every row, k_round = 0.6 d1 exactly, k_csk grows 1.0..4.0 with d1 and k_csk < k_round < dk/2, dk/k monotonic.",
+  "problems": [
+   "Every cell sits at exactly 3 clusters (no margin); if any of fasten.it / boltsfastener / theo-schrauben is later judged a copy of another, the whole table falls below T2.",
+   "theo-schrauben.de belongs to the 'German shop dataset' family of clusters; only that one member is used, so it counts once (correct).",
+   "Row label is the bare number ('2','2.5',...); column d1 duplicates it. dk is shared by DIN 660 and 661 (identical in all sources). k_csk is 'k approx.' (DIN 661), k_round is nominal 'k js14' (DIN 660).",
+   "Covers cold-formed rivets d 2-8 only; rows 7 and 10 (2 sources) and 1-1.6, 3.5 (1 source) correctly dropped; ISO 1051 / KS / ASME not covered."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "DIN 660 (round head) / DIN 661 (countersunk 90 deg), shank d1 2-8 mm"
+}

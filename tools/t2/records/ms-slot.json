@@ -1,0 +1,285 @@
+{
+ "id": "ms-slot",
+ "status": "partial",
+ "standard": "ISO 1207",
+ "u": "mm",
+ "cols": [
+  [
+   "P",
+   "피치 P (보통나사)"
+  ],
+  [
+   "dk_max",
+   "머리 지름 dk 최대(=호칭)"
+  ],
+  [
+   "dk_min",
+   "머리 지름 dk 최소"
+  ],
+  [
+   "k_max",
+   "머리 높이 k 최대(=호칭)"
+  ],
+  [
+   "k_min",
+   "머리 높이 k 최소"
+  ],
+  [
+   "n_max",
+   "홈 폭 n 최대"
+  ],
+  [
+   "n_min",
+   "홈 폭 n 최소"
+  ],
+  [
+   "t_min",
+   "홈 깊이 t 최소"
+  ],
+  [
+   "r_min",
+   "머리 아래 모서리 반지름 r 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "M1.6",
+   0.35,
+   3.0,
+   2.86,
+   1.1,
+   0.96,
+   0.6,
+   0.46,
+   0.45,
+   0.1
+  ],
+  [
+   "M2",
+   0.4,
+   3.8,
+   3.62,
+   1.4,
+   1.26,
+   0.7,
+   0.56,
+   0.6,
+   0.1
+  ],
+  [
+   "M2.5",
+   0.45,
+   4.5,
+   4.32,
+   1.8,
+   1.66,
+   0.8,
+   0.66,
+   0.7,
+   0.1
+  ],
+  [
+   "M3",
+   0.5,
+   5.5,
+   5.32,
+   2.0,
+   1.86,
+   1.0,
+   0.86,
+   0.85,
+   0.1
+  ],
+  [
+   "M3.5",
+   0.6,
+   6.0,
+   5.82,
+   2.4,
+   2.26,
+   1.2,
+   1.06,
+   1.0,
+   0.1
+  ],
+  [
+   "M4",
+   0.7,
+   7.0,
+   6.78,
+   2.6,
+   2.46,
+   1.51,
+   1.26,
+   1.1,
+   0.2
+  ],
+  [
+   "M5",
+   0.8,
+   8.5,
+   8.28,
+   3.3,
+   3.12,
+   1.51,
+   1.26,
+   1.3,
+   0.2
+  ],
+  [
+   "M6",
+   1.0,
+   10.0,
+   9.78,
+   3.9,
+   3.6,
+   1.91,
+   1.66,
+   1.6,
+   0.25
+  ],
+  [
+   "M8",
+   1.25,
+   13.0,
+   12.73,
+   5.0,
+   4.7,
+   2.31,
+   2.06,
+   2.0,
+   0.4
+  ],
+  [
+   "M10",
+   1.5,
+   16.0,
+   15.73,
+   6.0,
+   5.7,
+   2.81,
+   2.56,
+   2.4,
+   0.4
+  ]
+ ],
+ "row_support": {
+  "M1.6": 3,
+  "M2": 3,
+  "M2.5": 3,
+  "M3": 3,
+  "M3.5": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3
+ },
+ "sources": [
+  {
+   "url": "https://fullerfasteners.com/tech/iso-1207-specifications-slotted-cheese-head-screws/",
+   "site": "fullerfasteners.com",
+   "what": "ISO 1207 specification tables (3 tables M1.6..M10); same row wording as globalfastener -> Fuller + globalfastener counted as ONE source"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_2984.html",
+   "site": "globalfastener.com",
+   "what": "ISO 1207:2011 dimension table (counted together with Fuller)"
+  },
+  {
+   "url": "https://china-bolts.com/iso1207-slotted-cheese-head-screws",
+   "site": "china-bolts.com",
+   "what": "ISO1207 table P, dk, da, k, n, r, t"
+  },
+  {
+   "url": "https://itafasteners.com/products-machine-screws-cheese-head-slotted.php",
+   "site": "itafasteners.com",
+   "what": "second table on the page (slotted cheese head ISO 1207 values; first table on that page is a pan head ISO 1580 table)"
+  }
+ ],
+ "dropped": [
+  {
+   "what": "column a_max (max incomplete thread at head)",
+   "why": "only Fuller/gf (one source) and ITA list it"
+  },
+  {
+   "what": "column n_nom (slot width nominal)",
+   "why": "only Fuller/gf and ITA list it"
+  },
+  {
+   "what": "column x_max",
+   "why": "only Fuller/gf and ITA list it"
+  },
+  {
+   "what": "thread length b",
+   "why": "only Fuller and ITA list b and they disagree (ITA 25/38 mm; Fuller 15..40 mm lists)"
+  },
+  {
+   "what": "da (max, fillet diameter under head)",
+   "why": "only china-bolts and ITA"
+  },
+  {
+   "what": "slotted pan head ISO 1580 (DIN 85) table",
+   "why": "only gf and ITA give ISO 1580 values; Fuller DIN 85 values differ at M3 and M5 (6/10 vs 5.6/9.5); no third independent ISO 1580 source found"
+  },
+  {
+   "what": "slotted countersunk ISO 2009 / raised countersunk ISO 2010",
+   "why": "two value sets (dk M3 5.5/min 5.2 in Fuller and gf ISO 2009:1994 vs 5.6/5.3 in china-bolts, ITA): neither set has 3 independent sources; ISO 2010 not examined"
+  },
+  {
+   "what": "M1, M1.2, M1.4, M1.8 (DIN 84 only sizes)",
+   "why": "not in ISO 1207; DIN 84 page of Fuller used only as cross-check"
+  }
+ ],
+ "checks": [
+  "no disagreement among the sources on any kept cell",
+  "dk_max>dk_min, k_max>k_min, n_max>n_min, t_min<k_min on every row",
+  "dk, k, n, t, r monotone non-decreasing with size",
+  "ISO 1207 k (M1.6..M2.5) differs from DIN 84 k (1.0/1.3/1.6 vs 1.1/1.4/1.8): all sources used carry the ISO values, confirmed against the Fuller DIN 84 page",
+  "row_support counts Fuller+globalfastener as one site (identical row labels 'max=nominal size'), so every kept cell has exactly 3 independent sites: Fuller/gf, china-bolts, ITA"
+ ],
+ "shape_hint": "Cheese head screw: a tall cylindrical head with a flat top and flat bearing face (diameter dk, height k, small under-head radius r) with one straight slot across the top (width n, depth t), on a fully threaded or partly threaded straight shank with a chamfered end.",
+ "role_map": {
+  "d_nom": "nominal thread diameter M",
+  "P": "coarse pitch",
+  "dk_max": "head diameter max (nominal)",
+  "dk_min": "head diameter min",
+  "k_max": "head height max (nominal)",
+  "k_min": "head height min",
+  "n_max": "slot width max",
+  "n_min": "slot width min",
+  "t_min": "slot depth min",
+  "r_min": "min radius under head"
+ },
+ "notes": "Covers ISO 1207 cheese head only (M1.6..M10; (M3.5) is a non-preferred size kept because all sources list it). The ms-slot family also names pan (ISO 1580), countersunk (ISO 2009) and raised countersunk (ISO 2010) heads: not verifiable here (see dropped). Web search quota ran out, so no further sources could be discovered. Slot width nominal values (0.4,0.5,0.6,0.8,1,1.2,1.2,1.6,2,2.5) exist in 2 sources only (not published). Thread length b = 25 mm for d<=M3 and 38 mm for d>=M3.5 is shown only by ITA. Lengths range not included.",
+ "clusters": {
+  "Fuller + globalfastener (ONE cluster: identical row wording 'dk max=nominal size', 'n Nominal Size', same row order)": [
+   "fullerfasteners.com/tech/iso-1207...",
+   "globalfastener.com detail_2984 (ISO 1207:2011; live fetch 403, producer's saved copy parsed)"
+  ],
+  "china-bolts (Ningbo Teng Qi Fasteners, own template, has 'da max' which gf/Fuller lack)": [
+   "china-bolts.com/iso1207-slotted-cheese-head-screws"
+  ],
+  "fasteners.eu + ITA (ITA's ISO 1207 table is a cell-for-cell copy of fasteners.eu: 160/160 raw strings identical incl. stray period decimals 0.5, 2.5, 3.9, 3.6, 4.7, 1.6 and the same typo pattern; ONE cluster)": [
+   "itafasteners.com cheese head page (2nd table)",
+   "fasteners.eu/standards/ISO/1207/ (not cited by producer; fetched by me, identical numbers)"
+  ]
+ },
+ "verification": {
+  "verdict": "fix",
+  "cell_support_min": 3,
+  "checks_done": "Re-downloaded Fuller, china-bolts, ITA live (200); globalfastener detail_2984 returns 403 live (tried plain and with Referer) so I parsed the producer's saved copy raw/ms-slot/gf_2984.html (title 'ISO 1207 - 2011 Slotted Cheese Head Screws'). Parsed all four into M-size dicts and compared the full record, 10 rows x 9 value columns = 90 cells, against each source: 0 disagreements, all 4 sites agree on all 90 cells; clusters (Fuller+gf merged, ITA merged with fasteners.eu) = exactly 3 on every cell. ITA table is the 2nd table on a page headed 'Table according to ISO 1207' (1st table = ISO 1580 pan head, page title wrongly says DIN 84 & 85); ITA table contains #NAME?/#REF! spreadsheet error cells that shift columns - I removed them before aligning. Also fetched fasteners.eu ISO 1207 / DIN 84 / ISO 1580: ISO 1207 and DIN 84 tables identical to the record (and to each other); ISO 1580 table differs from cheese (M3 dk 5.6 k 1.8, M6 dk 12 k 3.6, M10 dk 20 k 6). Sanity: dk_max>dk_min, k_max>k_min, n_max>n_min, t_min<k_min, all columns non-decreasing, dk_max = nominal head diameter 3.0..16, P = ISO coarse pitches 0.35..1.5.",
+  "problems": [
+   "LABEL: family 'ms-slot' = '일자 홈 작은나사 (치즈·냄비·접시)', enStd ISO 1207 · 1580 · 2009 · 2010 · KS B 1021. The table is ISO 1207 CHEESE head only; pan (ISO 1580) and countersunk heads have different dk/k/t (e.g. M3 dk 5.5 k 2.0 cheese vs dk 5.6 k 1.8 pan; M6 dk 10 k 3.9 vs dk 12 k 3.6; M10 dk 16 k 6.0 vs 20/6.0). The family label therefore cannot honestly carry this table. Publish only if the item is relabelled to '일자 홈 치즈머리 작은나사 (ISO 1207)' and the column labels carry 치즈머리; under the 3-head label it must not be published (-> reject).",
+   "Exactly 3 clusters on every one of the 90 cells; the count depends on china-bolts being independent of Fuller/globalfastener (judged independent: different layout/transposed, includes da, no shared typo; not in any known copy cluster) - if china-bolts were merged into the Chinese-template cluster, every cell falls to 2 and the record is rejected.",
+   "Producer's third source ITA is not independent of fasteners.eu (copy); the cluster itself survives because fasteners.eu carries the same numbers, but it must be cited as fasteners.eu (+ITA mirror), not as a separate site.",
+   "boltingspecialist ISO 1207 page (not cited) disagrees on slot depth: t M3 0.9, M4 1.2, M5 1.5, M6 1.8, M8 2.1 vs 0.85/1.1/1.3/1.6/2.0; has an M12 row dk 22; column meaning unclear ('t','t max'). Treated as unreliable (3 clusters vs 1), not counted.",
+   "'(M3.5)' is a non-preferred size shown in parentheses by ISO; kept with label 'M3.5' (all 4 sites list it) - acceptable but should be marked non-preferred.",
+   "Dropped producer columns (a, n_nom, x, b, da) rightly dropped or optional; da has china-bolts + ITA/fasteners.eu = 2 clusters only; n_nom/a/x = Fuller/gf + ITA/fasteners.eu = 2 clusters."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ },
+ "standard_full": "ISO 1207 (slotted cheese head screws, product grade A; DIN 84 / KS B 1021 not used)",
+ "scope": "치즈머리 일자홈(ISO 1207)만 — 냄비머리·접시머리 값은 싣지 않았습니다"
+}
