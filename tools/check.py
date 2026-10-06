@@ -57,6 +57,10 @@ def main():
     step("체결 영상의 피치·좌면·공구 동작", r.returncode == 0,
          "6종 물리 조건" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
 
+    r = run([PY, "tools/test_material_film.py"])
+    step("규격·재료 영상의 탄성 복귀·반복하중·장면 경계", r.returncode == 0,
+         "5종 표현 조건" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
+
     node = shutil.which("node")
     if node:
         r = run(["node", "tools/build_bom_reader.mjs", "--check"])

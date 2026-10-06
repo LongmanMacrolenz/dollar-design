@@ -1,0 +1,57 @@
+/* Engineering film and its synchronized, selectable explanation cards. */
+.bn-science { position:relative; margin:0 38px 22px; padding:18px 20px; border:1px solid #324051; border-radius:4px; background:linear-gradient(135deg,#162332,#0f1926); min-width:0; }
+.bn-science-heading { display:flex; justify-content:space-between; gap:12px; margin-bottom:14px; color:#a2b5c6; font-family:var(--f-mono); font-size:10px; letter-spacing:.09em; }
+.bn-science-heading > span:last-child { font-family:var(--f-sans); letter-spacing:0; color:#ef9a76; }
+.bn-science-diagram { max-width:100%; overflow-x:auto; overscroll-behavior-inline:contain; }
+.bn-science svg { display:block; width:100%; height:auto; overflow:visible; }
+.bn-science svg text { fill:#b9c9d8; font-family:var(--f-sans); font-size:11px; }
+.bn-sv-datum { stroke:#708da4; stroke-width:1; stroke-dasharray:4 4; fill:none; }
+.bn-sv-axis { fill:none; stroke:#5a728a; stroke-width:1; }
+.bn-sv-orange { fill:#e98b62; }
+.bn-sv-blue { fill:#497d9e; }
+.bn-sv-outline { fill:#233747; stroke:#95b3ca; stroke-width:1.5; }
+.bn-sv-heavy { fill:#504339; stroke:#ef9a76; }
+.bn-sv-line { fill:none; stroke:#ec916d; stroke-width:2; }
+.bn-sv-unknown { fill:none; stroke:#879aab; stroke-width:1.4; stroke-dasharray:4 4; }
+.bn-science p { margin:10px 0 0; color:#aec0d1; font-size:11px; line-height:1.8; word-break:keep-all; }
+.bn-science .bn-science-status { color:#f4ab85; padding-top:8px; border-top:1px solid #354353; font-size:11px; }
+.bn-science-controls { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:10px; }
+.bn-science-segments { display:flex; gap:5px; flex-wrap:wrap; }
+.bn-science-segments button { border:1px solid #506376; background:#182534; padding:7px 9px; color:#c0cddd; border-radius:3px; font-size:11px; min-height:38px; cursor:pointer; }
+.bn-science-segments button[aria-pressed=true] { color:#172431; background:#f0a781; border-color:#f0a781; }
+.bn-science-chip { color:#aac1d5; font-size:10px; }
+.bn-science-pair { display:flex; justify-content:space-around; color:#ecaa89; font-family:var(--f-mono); font-size:12px; }
+.bn-science-select { display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:#b6c5d4; font-size:11px; margin-bottom:8px; }
+.bn-science-select select { max-width:100%; background:#182a3a; color:#ebf1f7; border:1px solid #4e6278; border-radius:3px; padding:6px 9px; font-size:12px; min-height:36px; }
+.bn-science-drawing { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#c6d6e5; font-family:var(--f-mono); font-size:10px; }
+.bn-science-drawing i { color:#f0a17a; font-size:15px; }
+.bn-coating-key { display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 12px; }
+.bn-coating-key span { display:flex; align-items:center; gap:6px; font-size:11px; color:#c4d3e0; }
+.bn-coating-key i { display:inline-block; width:10px; height:10px; border:1px solid #798da0; border-radius:50%; }
+.bn-coating-key .bare { background:#929da4; }.bn-coating-key .blue { background:#3d79b6; }.bn-coating-key .white { background:#d3dae1; }.bn-coating-key .black { background:#202932; }
+.bn-science-details { color:#d6e1eb; margin-top:12px; font-size:11px; line-height:1.8; }
+.bn-science-details summary { cursor:pointer; color:#efab87; min-height:30px; }
+.bn-science-details dt { color:#e5eaf0; margin-top:10px; }.bn-science-details dd { margin:3px 0 0; color:#adc0d0; }
+.bn-studio .bn-film-chapters { gap:13px; }.bn-studio .bn-film-chapters button { white-space:normal; word-break:keep-all; }
+.bn-studio .bn-film-stage { flex-shrink:0; }.bn-film-corner { font-size:10px; }
+@media (min-width:761px) { .bn-cinema .bn-hero-copy { position:sticky; top:78px; align-self:start; } }
+@media (max-width:1100px) { .bn-science { margin-inline:26px; padding:14px; }.bn-studio .bn-film-chapters { gap:8px; } }
+@media (max-width:760px) { .bn-science { margin:0 20px 22px; padding:14px; }.bn-studio .bn-film-chapters { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px 10px; }.bn-studio .bn-film-play { grid-row:2; }.bn-studio .bn-film-note { grid-row:3; max-width:none; }.bn-science svg { min-width:480px; }.bn-science svg text { font-size:12px; }.bn-science-pair { font-size:11px; } }
+
+/* Keep scene selection beside the image, so choosing a chapter does not scroll
+   the playing video out of view while visitors read its explanation. */
+.bn-film-controls { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:12px; margin:20px 28px 4px; }
+.bn-studio .bn-film-controls .bn-film-chapters { gap:9px; }
+.bn-studio .bn-film-controls .bn-film-chapters button { color:#a8bccd; font-size:10px; flex-direction:column; align-items:start; gap:4px; min-height:48px; }
+.bn-studio .bn-film-controls .bn-film-chapters button:hover,.bn-studio .bn-film-controls .bn-film-chapters button[aria-pressed=true] { color:#fff; }
+.bn-studio .bn-film-controls .bn-film-chapter-no { color:#93a9bd; }
+.bn-studio .bn-film-controls .bn-film-chapters button[aria-pressed=true] .bn-film-chapter-no { color:#f0a17a; }
+.bn-studio .bn-film-controls .bn-film-play { min-width:75px; background:#192c3e; color:#edf3f8; border-color:#516a81; border-radius:4px; }
+.bn-studio .bn-film-controls .bn-film-track { background:#374d61; }
+.bn-studio .bn-film-navigation { grid-template-columns:1fr; gap:10px; }
+.bn-studio .bn-film-navigation .bn-film-check { grid-row:1; }
+.bn-studio .bn-film-navigation .bn-film-note { grid-row:2; }
+@media(max-width:760px) { .bn-film-controls { margin:18px 24px 4px; grid-template-columns:minmax(0,1fr) auto; }.bn-studio .bn-film-controls .bn-film-chapters { grid-template-columns:repeat(4,minmax(0,1fr)); }.bn-studio .bn-film-controls .bn-film-play { grid-column:2; grid-row:1; font-size:10px; min-width:67px; } }
+
+.bn-diagram-hint { display:none; }
+@media(max-width:760px) { .bn-diagram-hint { display:block; margin-top:6px; font-size:10px; color:#97aec2; } }
