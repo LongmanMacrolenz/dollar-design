@@ -1,7 +1,7 @@
 /* Original pre-rendered assemblies. No remote player, tracking, or 3D dependency.
    The film is an illustration of applications, not a tightening procedure. */
 const BN_FILM_CHAPTERS = [
-  {start:0,still:3.8,label:'2D → 3D',en:'FROM DRAWING TO SOLID',title:'형상에서, 구매 사양으로.',parts:'볼트 · 너트 · 와셔 · 키 / 도면에서 입체로',check:'형상 · 규격 · 재질 · 표면처리를 함께 지정하세요.',link:'lib?topic=bolt-nut-washer'},
+  {start:0,still:3.8,label:'2D → 3D',en:'FROM DRAWING TO SOLID',title:'형상에서, 구매 사양으로.',parts:'스터드 · 헤비너트 · 와셔 / 도면에서 입체·나사 확대로',check:'형상 · 규격 · 재질 · 표면처리를 함께 지정하세요.',link:'lib?topic=bolt-nut-washer'},
   {start:6,still:9.5,label:'나사 공차',en:'THREAD SERIES & FIT',title:'UNC와 UNF. 공차까지.',parts:'3/4″-10 UNC · 3/4″-16 UNF / 1A·2A·3A와 1B·2B·3B',check:'호칭 · 산 수 · A/B 등급 · 도금 후 치수를 확인하세요.',link:'lib-t-inch-class'},
   {start:12,still:15.5,label:'헤비너트',en:'HEAVY HEX GEOMETRY',title:'같은 호칭, 다른 너트.',parts:'2면폭과 높이 · 물림 길이 / RCSC 구조용 호칭 형상 예',check:'헤비 형상 · 높이 · 등급 · 지정 치수 규격을 확인하세요.',link:'lib-p-heavy-hex-nut'},
   {start:18,still:20.9,label:'탄성·인장',en:'ELASTIC LOAD & RECOVERY',title:'늘어나고, 돌아옵니다.',parts:'탄성 영역의 인장 · 하중 제거 / 인장강도 기준값 별도 표시',check:'인장강도와 탄성 한도를 구분하고 성적서를 확인하세요.',link:'lib-t-yield-tensile'},
@@ -16,10 +16,10 @@ function bnFilmMarkup() {
     <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="규격·재료 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
     </div>
     <div class="bn-film-stage"><div class="bn-film-blueprint" id="bn-film-blueprint" aria-hidden="true">${bnBlueprint()}</div>
-      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-engineering-poster.webp" aria-label="2D에서 3D로 변하는 체결부품, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
-        <source data-src="media/boltnote-engineering-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
-        <source data-src="media/boltnote-engineering.webm" type="video/webm">
-        <source data-src="media/boltnote-engineering.mp4" type="video/mp4">
+      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-sourcing-poster.webp" aria-label="2D 도면에서 스터드·너트 입체와 나사 확대로 이어지는 장면, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
+        <source data-src="media/boltnote-engineering-v2-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
+        <source data-src="media/boltnote-engineering-v2.webm" type="video/webm">
+        <source data-src="media/boltnote-engineering-v2.mp4" type="video/mp4">
       </video>
       <div class="bn-film-badge"><span aria-hidden="true"></span><span lang="en">ENGINEERING IN VIEW</span></div>
       <div class="bn-film-corner" aria-hidden="true">BOLTNOTE<br>ENGINEERING SERIES</div>

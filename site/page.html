@@ -3755,6 +3755,48 @@ footer.foot.ia-foot { background:#142234; }
  .bn-brand-stage video{height:150px}.bn-brand-story{height:82px}.bn-brand-story strong{font-size:18px}.bn-brand-story p{font-size:9px}.bn-brand-progress li{font-size:8px}
 }
 @media(prefers-reduced-motion:reduce){.bn-brand-story li{transition:none}}
+/* ── zzzzzzzz_sourcing.css ── */
+/* Fill the film frame; show an actual specification example with every message. */
+.bn-studio .bn-brand-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,48px);padding-block:28px}
+.bn-brand-film{background:#edf0e9;box-shadow:0 18px 42px #1a302d12}
+.bn-brand-stage{background:#edf0e9;isolation:isolate}
+.bn-brand-stage video{width:100%;height:auto;aspect-ratio:8/5;object-fit:contain}
+.bn-brand-video-label{z-index:4;color:#30483a;top:16px;left:20px;font-weight:600;background:#eff3ecdb;padding:6px 8px;border-radius:3px}
+.bn-brand-hero[data-drawing="true"] .bn-brand-video-label{opacity:0}
+.bn-sourcing-drawing{position:absolute;inset:0;z-index:3;pointer-events:none;opacity:var(--bn-draft-opacity,0)}
+.bn-sourcing-drawing svg{display:block;width:100%;height:100%}
+.bn-sourcing-tags{position:absolute;inset:0;z-index:2;pointer-events:none}
+.bn-sourcing-tags>span{position:absolute;display:block;font-family:var(--f-mono);font-size:11px;color:#244834;background:#f4f7f0e8;box-shadow:0 2px 12px #18372513;border:1px solid #a5b6a7;padding:5px 8px;border-radius:4px;opacity:0;transform:translate(-50%,calc(-100% - 12px));white-space:nowrap}
+.bn-sourcing-tags>span::after{content:"";width:5px;height:5px;background:#3d6245;border-radius:50%;display:block;position:absolute;top:calc(100% + 9px);left:50%;box-shadow:0 0 0 3px #eff4ecaa}
+.bn-sourcing-tags>span[data-active="true"]{opacity:1}
+.bn-brand-caption{background:#14241d;padding-top:16px}
+.bn-brand-story{height:76px}.bn-brand-story strong{font-size:clamp(18px,1.55vw,24px)}.bn-brand-story p{margin-top:7px}
+.bn-sourcing-proof{position:relative;height:68px;margin:0 0 14px;border:1px solid #486252;border-radius:5px;background:#1c3227;overflow:hidden}
+.bn-sourcing-proof>[data-bn-proof]{position:absolute;inset:0;padding:9px 12px;opacity:0;visibility:hidden;transition:opacity .18s}
+.bn-sourcing-proof>[data-active="true"]{opacity:1;visibility:visible}
+.bn-sourcing-proof [data-bn-proof]>span{font-size:9px;color:#a7c1ad;display:block;margin-bottom:6px}
+.bn-sourcing-proof [data-bn-proof]>div{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px;line-height:1.4;color:#eef4ec}
+.bn-sourcing-proof code{font-size:11px;color:#ecf3e9}.bn-sourcing-proof b{font-weight:500}.bn-sourcing-proof i{font-style:normal;color:#9aae9e}
+.bn-sourcing-proof .bn-proof-deviation{background:#503d28;color:#ffcf91;padding:3px 6px;border-radius:3px;font-size:9px}
+.bn-brand-progress i{background:#415a4b}.bn-brand-progress i::after{background:#ffa77f}.bn-brand-foot{color:#a7bcad}
+.bn-brand-copy .bn-brand-lead{max-width:410px}
+.bn-studio .bn-engineering .bn-film-blueprint{background:#eef1eb}
+.bn-studio .bn-engineering .bn-film-blueprint svg{object-fit:contain}
+@media(max-width:900px){.bn-brand-story{height:84px}.bn-brand-story strong{font-size:19px}.bn-sourcing-proof{height:76px}.bn-sourcing-proof [data-bn-proof]>div{gap:7px;font-size:10px}.bn-sourcing-proof code{font-size:10px}.bn-sourcing-tags>span{font-size:9px;padding:4px 6px}}
+@media(max-width:700px){
+ .bn-studio .bn-brand-layout{grid-template-columns:1fr;gap:14px;padding-block:18px}
+ .bn-brand-stage video{height:auto;aspect-ratio:8/5}.bn-brand-caption{padding:12px 14px 3px}
+ .bn-brand-story{height:66px}.bn-brand-story strong{font-size:18px}.bn-brand-story p{font-size:10px;line-height:1.55;margin-top:4px}.bn-brand-story li{gap:8px}
+ .bn-sourcing-proof{height:58px;margin-bottom:10px}.bn-sourcing-proof>[data-bn-proof]{padding:7px 10px}.bn-sourcing-proof [data-bn-proof]>span{font-size:8px;margin-bottom:5px}.bn-sourcing-proof [data-bn-proof]>div{font-size:9px;gap:7px}.bn-sourcing-proof code{font-size:9px}.bn-sourcing-proof .bn-proof-deviation{font-size:8px;padding:2px 5px}
+ .bn-brand-video-label{font-size:7px;left:12px;top:10px;padding:4px 5px}.bn-sourcing-tags>span{font-size:8px;padding:3px 5px}.bn-brand-progress{gap:8px}.bn-brand-progress li{font-size:8px}.bn-brand-progress i{margin-top:6px}.bn-brand-foot{min-height:36px}.bn-brand-foot button{min-height:36px}
+}
+@media(max-width:360px),(max-height:720px) and (max-width:700px){
+ .bn-studio .bn-brand-layout{padding-block:12px;gap:10px}.bn-brand-eyebrow{display:none}
+ .bn-brand-caption{padding:8px 12px 2px}.bn-brand-story{height:67px}.bn-brand-story strong{font-size:16px}.bn-brand-story p{font-size:9px}
+ .bn-sourcing-proof{height:60px;margin-bottom:8px}.bn-sourcing-proof code,.bn-sourcing-proof [data-bn-proof]>div{font-size:8px;gap:5px}
+ .bn-brand-foot{min-height:32px}.bn-brand-foot button{min-height:32px}
+}
+@media(prefers-reduced-motion:reduce){.bn-sourcing-proof>[data-bn-proof]{transition:none}}
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -12259,10 +12301,16 @@ V.terms = () => sheet(
 /* A company introduction, started on arrival. Copy follows the decoded video
    rather than a separate timer; pausing stops both the images and the story. */
 const BN_BRAND_STORY = [
-  {title:'BOM을 읽고.', text:'나사 · 재질 · 등급 · 표면처리. 구매 사양부터 확인합니다.', label:'BOM 검토'},
-  {title:'특수요건을 짚고.', text:'사용 조건과 요구 서류, 빠진 사양을 함께 확인합니다.', label:'특수요건'},
-  {title:'공급처에 확인하고.', text:'사양 · 수량 · 납기 · 서류의 제공 가능 여부를 확인합니다.', label:'공급 확인'},
-  {title:'견적에 정확히 담습니다.', text:'확인된 조건과 미확인 사항 · 편차를 견적과 C&D로 구분합니다.', label:'견적 · C&D'}
+  {title:'BOM 한 줄을, 구매 사양으로.', text:'나사 · 재질 · 길이 · 수량을 구분해 읽습니다.', label:'BOM 검토'},
+  {title:'짝 부품과 사용 조건까지.', text:'너트 등급 · 도금 후 나사 맞춤 · 요구 서류를 함께 확인합니다.', label:'특수요건'},
+  {title:'회신을 사양과 대조합니다.', text:'같은 호칭도 나사 계열이 다르면 편차로 구분합니다.', label:'공급 확인'},
+  {title:'견적과 C&D로 답합니다.', text:'확인된 공급 조건과 질문 · 편차 · 제외 사유를 구분합니다.', label:'견적 · C&D'}
+];
+const BN_SOURCING_PROOF = [
+  '<span>요청 사양 예시</span><div><code>3/4″–10 UNC–2A</code><b>ASTM A193 B7</b></div>',
+  '<span>추가 확인 항목</span><div><b>너트 등급</b><b>표면처리</b><b>요구 서류</b></div>',
+  '<span>나사 계열 대조 예시</span><div><code>UNC 요청</code><i aria-hidden="true">↔</i><code>UNF 후보</code><b class="bn-proof-deviation">불일치</b></div>',
+  '<span>결과물 구성</span><div><b>견적 / 확인된 조건</b><b>C&D / 질문 · 편차</b></div>'
 ];
 function bnBrandMarkup() {
   return `<section class="bn-hero bn-cinema bn-brand-hero" aria-labelledby="h-z-a">
@@ -12276,15 +12324,18 @@ function bnBrandMarkup() {
       </div>
       <figure class="bn-brand-film">
         <div class="bn-brand-stage">
-          <video id="bn-brand-video" width="1200" height="900" autoplay muted loop playsinline preload="none" poster="media/boltnote-brand-poster.webp" aria-label="볼트노트 회사 소개: 체결부품 사양 검토에서 공급처 확인과 견적까지">
-            <source data-src="media/boltnote-brand-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
-            <source data-src="media/boltnote-brand.mp4" media="(min-width: 701px)" type="video/mp4">
+          <video id="bn-brand-video" width="960" height="600" autoplay muted loop playsinline preload="none" poster="media/boltnote-sourcing-poster.webp" aria-label="스터드·헤비너트의 도면과 입체, 외부·내부 나사 확대, UNC·UNF 후보 대조로 이어지는 볼트노트 조달 소개">
+            <source data-src="media/boltnote-sourcing-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
+            <source data-src="media/boltnote-sourcing.mp4" media="(min-width: 701px)" type="video/mp4">
           </video>
+          <div class="bn-sourcing-drawing" aria-hidden="true">${bnSourcingDrawing('bn-brand-draft')}</div>
+          <div class="bn-sourcing-tags" aria-hidden="true"><span data-bn-part="0">UNC · 10 TPI</span><span data-bn-part="1">헤비너트</span><span data-bn-part="2">UNF · 16 TPI</span></div>
           <span class="bn-brand-video-label" lang="en">FROM BOM TO QUOTATION</span>
         </div>
         <figcaption class="bn-brand-caption" aria-live="off"><ol class="bn-brand-story">${BN_BRAND_STORY.map((s,i)=>`<li data-bn-story="${i}" ${i ? 'aria-hidden="true"' : 'data-active="true" aria-hidden="false"'}><span class="bn-brand-count" aria-hidden="true">0${i+1} / 04</span><div><strong>${s.title}</strong><p>${s.text}</p></div></li>`).join('')}</ol>
+          <div class="bn-sourcing-proof">${BN_SOURCING_PROOF.map((html,i)=>`<div data-bn-proof="${i}" ${i===0?'data-active="true"':'aria-hidden="true"'}>${html}</div>`).join('')}</div>
           <ol class="bn-brand-progress" aria-label="볼트노트의 조달 절차">${BN_BRAND_STORY.map((s,i)=>`<li data-bn-progress="${i}" ${i===0?'data-active="true"':''}><span>${s.label}</span><i aria-hidden="true"></i></li>`).join('')}</ol>
-          <div class="bn-brand-foot"><span>제품·재료 원리의 3D 시각화</span><button type="button" id="bn-brand-pause" aria-controls="bn-brand-video" aria-label="회사 소개 일시정지"><span aria-hidden="true">Ⅱ</span><span>소개 일시정지</span></button></div>
+          <div class="bn-brand-foot"><span>형상·사양 검토 예시</span><button type="button" id="bn-brand-pause" aria-controls="bn-brand-video" aria-label="회사 소개 일시정지"><span aria-hidden="true">Ⅱ</span><span>소개 일시정지</span></button></div>
         </figcaption>
       </figure>
     </div>
@@ -12305,14 +12356,29 @@ function bnBrandInit() {
   const abort = new AbortController(), options = {signal:abort.signal};
   const stories = [...root.querySelectorAll('[data-bn-story]')];
   const progress = [...root.querySelectorAll('[data-bn-progress]')];
+  const proofs = [...root.querySelectorAll('[data-bn-proof]')];
+  const tags = [...root.querySelectorAll('[data-bn-part]')];
   let desired = !motion.matches && !connection?.saveData;
   let visible = false, attached = false, frame = null;
   video.muted = true; video.defaultMuted = true;
   // Do not start an unsolicited download for a reduced-motion/data-saving user.
   video.autoplay = desired;
-  const update = () => {
-    const time = video.currentTime || 0, scene = Math.min(3, Math.floor(time / 4));
+  const update = decodedTime => {
+    const time = typeof decodedTime==='number' ? decodedTime : video.currentTime || 0, scene = Math.min(3, Math.floor(time / 4));
     root.dataset.story = String(scene);
+    proofs.forEach((item,i)=>{item.dataset.active=String(i===scene);item.setAttribute('aria-hidden',String(i!==scene));});
+    const fade=Math.max(0,Math.min(1,(time-.8)/1.3));
+    const opacity=(desired||video.readyState>=2)?1-fade*fade*(3-2*fade):0;
+    root.style.setProperty('--bn-draft-opacity',String(opacity));root.dataset.drawing=String(opacity>.25);
+    if(typeof BN_SOURCING_TRACK!=='undefined') {
+      const at=Math.min(BN_SOURCING_TRACK.length-2,Math.floor(time*4));
+      const left=BN_SOURCING_TRACK[at],right=BN_SOURCING_TRACK[at+1],q=Math.min(1,Math.max(0,(time-left[0])/(right[0]-left[0])));
+      tags.forEach((tag,i)=>{
+        const x=left[1+i*2]+(right[1+i*2]-left[1+i*2])*q,y=left[2+i*2]+(right[2+i*2]-left[2+i*2])*q;
+        tag.style.left=`${x*100}%`;tag.style.top=`${y*100}%`;
+        tag.dataset.active=String(time>2.2 && x>.1 && x<.9 && y>.2 && y<.9 && ((i===1&&scene===1)||(i!==1&&scene===2)));
+      });
+    }
     stories.forEach((item,i)=>{
       item.dataset.active=String(i===scene);
       item.setAttribute('aria-hidden',String(i!==scene));
@@ -12344,13 +12410,13 @@ function bnBrandInit() {
     }
     video.play()?.catch(error=>{
       if(error.name==='AbortError' || abort.signal.aborted) return;
-      desired=false;video.autoplay=false;updateToggle();
+      desired=false;video.autoplay=false;update();updateToggle();
       // The poster and complete company message remain visible if autoplay is blocked.
     });
   };
-  const onFrame = () => {
+  const onFrame = (_now,metadata) => {
     if(abort.signal.aborted || video.paused) return;
-    update();frame=video.requestVideoFrameCallback(onFrame);
+    update(metadata.mediaTime);frame=video.requestVideoFrameCallback(onFrame);
   };
   video.addEventListener('play',()=>{
     if(!desired || !visible || document.hidden) {pause();return;}
@@ -12361,9 +12427,11 @@ function bnBrandInit() {
     }
   },options);
   video.addEventListener('pause',updateToggle,options);
-  video.addEventListener('timeupdate',update,options);
-  video.addEventListener('seeked',update,options);
-  video.addEventListener('error',()=>{desired=false;video.autoplay=false;updateToggle();},options);
+  // Use one clock while frames are decoded. Mixing currentTime with mediaTime
+  // can briefly jump back a chapter at a cut or the end-to-start loop boundary.
+  video.addEventListener('timeupdate',()=>{if(!video.requestVideoFrameCallback) update();},options);
+  video.addEventListener('seeked',()=>{if(!video.requestVideoFrameCallback || video.paused) update();},options);
+  video.addEventListener('error',()=>{desired=false;video.autoplay=false;update();updateToggle();},options);
   toggle.addEventListener('click',()=>{
     desired=!desired;video.autoplay=false;
     if(desired) play();else pause();
@@ -13362,7 +13430,7 @@ Object.entries(CAT_COLL).forEach(([k, c]) => INDEX.push({ t: c.ko, s: '모아 �
 /* Original pre-rendered assemblies. No remote player, tracking, or 3D dependency.
    The film is an illustration of applications, not a tightening procedure. */
 const BN_FILM_CHAPTERS = [
-  {start:0,still:3.8,label:'2D → 3D',en:'FROM DRAWING TO SOLID',title:'형상에서, 구매 사양으로.',parts:'볼트 · 너트 · 와셔 · 키 / 도면에서 입체로',check:'형상 · 규격 · 재질 · 표면처리를 함께 지정하세요.',link:'lib?topic=bolt-nut-washer'},
+  {start:0,still:3.8,label:'2D → 3D',en:'FROM DRAWING TO SOLID',title:'형상에서, 구매 사양으로.',parts:'스터드 · 헤비너트 · 와셔 / 도면에서 입체·나사 확대로',check:'형상 · 규격 · 재질 · 표면처리를 함께 지정하세요.',link:'lib?topic=bolt-nut-washer'},
   {start:6,still:9.5,label:'나사 공차',en:'THREAD SERIES & FIT',title:'UNC와 UNF. 공차까지.',parts:'3/4″-10 UNC · 3/4″-16 UNF / 1A·2A·3A와 1B·2B·3B',check:'호칭 · 산 수 · A/B 등급 · 도금 후 치수를 확인하세요.',link:'lib-t-inch-class'},
   {start:12,still:15.5,label:'헤비너트',en:'HEAVY HEX GEOMETRY',title:'같은 호칭, 다른 너트.',parts:'2면폭과 높이 · 물림 길이 / RCSC 구조용 호칭 형상 예',check:'헤비 형상 · 높이 · 등급 · 지정 치수 규격을 확인하세요.',link:'lib-p-heavy-hex-nut'},
   {start:18,still:20.9,label:'탄성·인장',en:'ELASTIC LOAD & RECOVERY',title:'늘어나고, 돌아옵니다.',parts:'탄성 영역의 인장 · 하중 제거 / 인장강도 기준값 별도 표시',check:'인장강도와 탄성 한도를 구분하고 성적서를 확인하세요.',link:'lib-t-yield-tensile'},
@@ -13377,10 +13445,10 @@ function bnFilmMarkup() {
     <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="규격·재료 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
     </div>
     <div class="bn-film-stage"><div class="bn-film-blueprint" id="bn-film-blueprint" aria-hidden="true">${bnBlueprint()}</div>
-      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-engineering-poster.webp" aria-label="2D에서 3D로 변하는 체결부품, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
-        <source data-src="media/boltnote-engineering-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
-        <source data-src="media/boltnote-engineering.webm" type="video/webm">
-        <source data-src="media/boltnote-engineering.mp4" type="video/mp4">
+      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-sourcing-poster.webp" aria-label="2D 도면에서 스터드·너트 입체와 나사 확대로 이어지는 장면, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
+        <source data-src="media/boltnote-engineering-v2-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
+        <source data-src="media/boltnote-engineering-v2.webm" type="video/webm">
+        <source data-src="media/boltnote-engineering-v2.mp4" type="video/mp4">
       </video>
       <div class="bn-film-badge"><span aria-hidden="true"></span><span lang="en">ENGINEERING IN VIEW</span></div>
       <div class="bn-film-corner" aria-hidden="true">BOLTNOTE<br>ENGINEERING SERIES</div>
@@ -13625,7 +13693,7 @@ function bnScienceCyclicPath() {
 function bnScienceDetailedContent(index) {
   const mat=BN_SCIENCE_MATERIALS.find(m=>m.id===bnScienceState.material)||BN_SCIENCE_MATERIALS[0];
   const select=`<label class="bn-science-select">재질·등급 <select id="bn-science-material">${BN_SCIENCE_MATERIALS.map(m=>`<option value="${m.id}"${m.id===mat.id?' selected':''}>${m.name}</option>`).join('')}</select></label>`;
-  if(index===0) return `${bnScienceSVG('볼트의 측면·끝면과 나사 표기',`<g class="bn-sv-outline"><path d="M69 44H99V108H69ZM99 64H290L296 70V87L290 93H99Z"/><polygon points="389,42 421,60 421,96 389,114 357,96 357,60"/></g><path class="bn-sv-datum" d="M51 78H312M340 78H438M389 27V128"/><path class="bn-sv-line" d="M111 69H290M111 88H290"/><path class="bn-sv-axis" d="M99 51V26H296V51M99 29H296"/><text x="189" y="21" text-anchor="middle">L · 길이 기준</text><text x="164" y="142" text-anchor="middle">측면도 · 나사부와 좌면</text><text x="389" y="142" text-anchor="middle">끝면도 · 공구 맞춤</text>`)}<p>정면·측면 형상을 입체와 연결해 읽습니다. 길이 기준과 나사 표기는 구매 사양에 따로 지정합니다.</p>`;
+  if(index===0) return `${bnScienceSVG('스터드의 측면·끝면과 헤비너트 정면 형상',`<g class="bn-sv-outline"><path d="M76 60H236L242 66V94L236 100H76L70 94V66Z"/><circle cx="44" cy="80" r="20"/><polygon points="385,41.5 418.34,60.75 418.34,99.25 385,118.5 351.66,99.25 351.66,60.75"/><circle cx="385" cy="80" r="17"/></g><path class="bn-sv-datum" d="M15 80H264M44 48V112M337 80H433M385 29V130"/><path class="bn-sv-line" d="M79 63H233M79 97H233M61 80A17 17 0 1 1 44 63M405 80A20 20 0 1 1 385 60"/><path class="bn-sv-axis" d="M70 54V27H242V54M70 30H242"/><text x="156" y="21" text-anchor="middle">L · 고객 도면의 길이</text><text x="154" y="142" text-anchor="middle">스터드 · 나사와 길이</text><text x="385" y="142" text-anchor="middle">너트 · 등급과 형상</text>`)}<p>스터드의 나사·재질·길이와 짝 너트의 등급·형상을 구분합니다. 길이와 치수 규격은 고객 도면으로 확인합니다.</p>`;
   if(index===1) {
     const c=bnScienceState.threadClass;
     return `<div class="bn-science-controls"><div class="bn-science-segments" role="group" aria-label="인치 나사 공차 등급">${['1','2','3'].map(n=>`<button type="button" data-bn-class="${n}" aria-pressed="${n===c}">${n}A / ${n}B</button>`).join('')}</div><span class="bn-science-chip">A 수나사 · B 암나사</span></div>${bnScienceSVG('나사 등급별 유효지름 공차대 개념도',`<line x1="236" y1="22" x2="236" y2="125" class="bn-sv-datum"/><text x="245" y="20">기본 유효지름</text><text x="14" y="57">${c}A</text><rect id="bn-tolerance-a" x="100" y="37" width="108" height="28" rx="2" class="bn-sv-orange"/><text x="14" y="110">${c}B</text><rect id="bn-tolerance-b" x="236" y="90" width="108" height="28" rx="2" class="bn-sv-blue"/><text x="310" y="57" id="bn-thread-allowance">수나사 여유 있음</text>`)}<div class="bn-science-pair"><b>3/4″-10 UNC</b><b>3/4″-16 UNF</b></div><p id="bn-thread-note">공차대 폭과 여유는 설명을 위해 과장했습니다. 실제 한계치·물림 길이·도금 후 치수는 적용 규격과 게이지로 확인합니다.</p><p class="bn-science-status">2A 참조 예 · 3/4″-10 UNC 도금 전 외경 상한 0.7482″<br>기본 0.7500″와의 차이 0.0018″ = 45.72 µm</p><p>이 값은 2A 외경 상한의 예이며 공차대 전체 폭이 아닙니다. 실제 유효지름·리드·도금 후 치수는 별도로 확인합니다.</p>`;
@@ -13686,6 +13754,45 @@ function bnScienceUpdate(root,index,time) {
     panel.querySelector('#bn-coating-environment-note').textContent=BN_SCIENCE_ENV[env].desc;
   }
 }
+/* ── v7_sourcing_drawing.js ── */
+/* Original orthographic study of the film's stud/nut set. Symbolic dimensions
+   are deliberately not manufacturing values. Thread notation reuses the library. */
+function bnSourcingDrawing(prefix='bn-sourcing') {
+  return `<svg class="bn-sourcing-sheet bn-blueprint" viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="스터드 측면·끝면과 헤비너트 정면·단면의 형상 참고도. 길이와 너트 치수는 고객 도면으로 확인합니다.">
+    <defs>
+      <marker id="${prefix}-arrow" viewBox="0 0 8 6" refX="4" refY="3" markerWidth="6" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L8 3L0 6Z" fill="#547565"/></marker>
+      <pattern id="${prefix}-hatch" width="7" height="7" patternUnits="userSpaceOnUse"><path d="M-2 2L2-2M0 7L7 0M5 9L9 5" fill="none" stroke="#84988c" stroke-width=".65"/></pattern>
+    </defs>
+    <rect width="640" height="400" fill="#eef1eb"/>
+    <g fill="none" stroke="#c7d1c8" stroke-width=".8"><path d="M24 60H616M24 355H616M24 24H616V376H24ZM440 76V341M462 220H594"/></g>
+    <g fill="#304b3d" font-family="monospace"><text x="32" y="45" font-size="12" letter-spacing="1.5">BOLTNOTE / SPECIFICATION STUDY</text><text x="32" y="376" font-size="9">FORM REFERENCE · NTS · SYMBOLIC DIMENSIONS</text><text x="572" y="45" font-size="11">01—02</text></g>
+    <g fill="none" stroke="#20392c" stroke-width="1.8" stroke-linejoin="round">
+      <path d="M123 126H335L341 132V172L335 178H123L117 172V132Z"/>
+      <circle cx="65" cy="152" r="26"/>
+      <path d="M126 130H332M126 174H332" stroke-width=".8"/>
+      <path d="M87.5 152A22.5 22.5 0 1 1 65 129.5" stroke-width=".8"/>
+      <path d="M531 89L574.3 114V164L531 189L487.7 164V114Z"/>
+      <circle cx="531" cy="139" r="22.5"/>
+      <path d="M557 139A26 26 0 1 1 531 113" stroke-width=".8"/>
+      <path d="M501 249L508 241H545L552 249V318L545 326H508L501 318Z" fill="url(#${prefix}-hatch)"/>
+      <path d="M501 262H552V305H501" fill="#eef1eb" stroke-width="1.5"/>
+      <path d="M501 258H552M501 309H552" stroke-width=".7"/>
+    </g>
+    <g fill="none" stroke="#90a195" stroke-width=".65" stroke-dasharray="14 3 2 3"><path d="M30 152H384M65 111V195M475 139H587M531 83V195M480 284H571"/></g>
+    <g fill="none" stroke="#547565" stroke-width=".8">
+      <path d="M117 184V235M341 178V235M34 126H24M34 178H24M481 114H474M481 164H474M501 333V348M552 326V348"/>
+      <path d="M117 225H341M26 126V178M474 114V164M501 341H552" marker-start="url(#${prefix}-arrow)" marker-end="url(#${prefix}-arrow)"/>
+      <path d="M314 130L351 100H412M549 155L581 197H596"/>
+    </g>
+    <g fill="#547565" font-family="monospace" font-size="12"><text x="227" y="218">L</text><text x="18" y="154" transform="rotate(-90 18 154)">d</text><text x="465" y="142">s</text><text x="522" y="337">m</text></g>
+    <g fill="#2e4b3b" font-family="monospace" font-size="11"><text x="133" y="88">3/4″–10 UNC–2A</text><text x="464" y="211">UNC–2B</text></g>
+    <g fill="#536b5c" font-family="sans-serif" font-size="10"><text x="44" y="256">끝면</text><text x="184" y="256">스터드 · 측면</text><text x="482" y="232">헤비너트 · 정면</text><text x="485" y="351">나사 구멍 · 단면</text></g>
+    <g fill="#294b38" font-family="sans-serif"><text x="43" y="294" font-size="15" font-weight="600">형상을 보고, 표기를 읽습니다.</text><text x="43" y="320" font-size="11">길이 · 짝 너트 · 표면처리 · 서류 조건은 함께 확인합니다.</text></g>
+  </svg>`;
+}
+/* ── v7_sourcing_track.js ── */
+/* Generated from the original camera/part projections by encode_brand_film.py. */
+const BN_SOURCING_TRACK = [[0.0,0.4757,0.4133,0.1363,0.3264,0.5993,0.6852],[0.25,0.4763,0.4144,0.1375,0.3301,0.6025,0.6878],[0.5,0.4769,0.4154,0.1387,0.3337,0.6057,0.6904],[0.75,0.4776,0.4164,0.14,0.3373,0.6089,0.6929],[1.0,0.4783,0.4174,0.1414,0.3408,0.612,0.6954],[1.25,0.4812,0.4181,0.1408,0.3453,0.6222,0.7015],[1.5,0.4884,0.4183,0.1372,0.3524,0.6466,0.7139],[1.75,0.4999,0.4175,0.1322,0.3633,0.6859,0.7307],[2.0,0.5153,0.4148,0.129,0.3798,0.7417,0.748],[2.25,0.5339,0.4089,0.1329,0.4038,0.8136,0.7586],[2.5,0.5532,0.3982,0.1534,0.435,0.8956,0.7516],[2.75,0.5687,0.3827,0.2021,0.4671,0.9723,0.7173],[3.0,0.5751,0.3653,0.2842,0.4864,1.0234,0.658],[3.25,0.5708,0.3515,0.3852,0.4814,1.0387,0.5929],[3.5,0.5603,0.3449,0.4742,0.4585,1.0287,0.5435],[3.75,0.5515,0.3436,0.5268,0.4379,1.0145,0.5179],[4.0,0.5498,0.3436,0.5362,0.434,1.0116,0.5138],[4.25,0.5497,0.3436,0.5353,0.4345,1.0113,0.5138],[4.5,0.5493,0.3436,0.5327,0.4354,1.0104,0.514],[4.75,0.5449,0.3454,0.523,0.442,1.002,0.5146],[5.0,0.5343,0.3506,0.503,0.458,0.981,0.5161],[5.25,0.5191,0.3587,0.4761,0.4803,0.9511,0.5188],[5.5,0.5014,0.3692,0.4456,0.5059,0.9159,0.5228],[5.75,0.4826,0.3813,0.4141,0.5322,0.8786,0.5282],[6.0,0.4641,0.3943,0.3836,0.5574,0.8416,0.5346],[6.25,0.4466,0.4073,0.355,0.5803,0.8066,0.5415],[6.5,0.4308,0.4197,0.329,0.6001,0.7747,0.5485],[6.75,0.417,0.4308,0.3058,0.6166,0.7467,0.5552],[7.0,0.4054,0.4403,0.2855,0.6295,0.723,0.5612],[7.25,0.3961,0.4476,0.2679,0.6387,0.7041,0.5662],[7.5,0.3894,0.4524,0.2529,0.6442,0.6902,0.5698],[7.75,0.3854,0.4544,0.2405,0.6457,0.6818,0.5719],[8.0,0.3834,0.4542,0.23,0.644,0.6775,0.5728],[8.25,0.3814,0.4539,0.2199,0.6413,0.6733,0.5736],[8.5,0.3797,0.4514,0.1991,0.637,0.6704,0.5774],[8.75,0.3788,0.446,0.1651,0.6284,0.6689,0.585],[9.0,0.3793,0.4377,0.1228,0.6115,0.6675,0.5962],[9.25,0.3822,0.4274,0.079,0.5826,0.665,0.6104],[9.5,0.3882,0.4161,0.0419,0.5404,0.6598,0.6265],[9.75,0.3976,0.4055,0.0188,0.4884,0.6512,0.6423],[10.0,0.4097,0.3975,0.0132,0.4339,0.6393,0.6555],[10.25,0.423,0.393,0.0231,0.3851,0.6251,0.6642],[10.5,0.4361,0.392,0.0433,0.3471,0.6105,0.6682],[10.75,0.4478,0.3935,0.0677,0.3209,0.5969,0.6682],[11.0,0.4572,0.3962,0.0911,0.3047,0.5855,0.6658],[11.25,0.4641,0.3992,0.1105,0.2957,0.5769,0.6627],[11.5,0.4685,0.4015,0.1237,0.2912,0.5713,0.66],[11.75,0.4704,0.4025,0.1295,0.2895,0.5687,0.6585],[12.0,0.4704,0.4025,0.1297,0.2893,0.5685,0.6584],[12.25,0.4705,0.4025,0.1297,0.2894,0.5687,0.6585],[12.5,0.4705,0.4027,0.1297,0.29,0.5691,0.6589],[12.75,0.4706,0.4029,0.1298,0.2908,0.5698,0.6595],[13.0,0.4708,0.4033,0.1299,0.292,0.5707,0.6604],[13.25,0.4709,0.4038,0.13,0.2936,0.572,0.6615],[13.5,0.4712,0.4043,0.1301,0.2954,0.5734,0.6629],[13.75,0.4714,0.4049,0.1304,0.2976,0.5752,0.6645],[14.0,0.4717,0.4057,0.1307,0.3,0.5771,0.6662],[14.25,0.4721,0.4065,0.131,0.3027,0.5793,0.6682],[14.5,0.4725,0.4073,0.1315,0.3056,0.5817,0.6703],[14.75,0.4729,0.4082,0.132,0.3087,0.5843,0.6726],[15.0,0.4734,0.4092,0.1327,0.312,0.5871,0.6749],[15.25,0.4739,0.4102,0.1334,0.3155,0.59,0.6774],[15.5,0.4745,0.4112,0.1343,0.319,0.593,0.68],[15.75,0.4751,0.4123,0.1352,0.3227,0.5961,0.6826],[16.0,0.4757,0.4133,0.1363,0.3264,0.5993,0.6852]];
 /* ── v8_lib.js ── */
 /* ── v8_lib.js: 체결부품 규격 사전 (2026-10, 대표 요청: 엔지니어 고객이 믿고 찾아오는 사전) ──
    경로: lib (첫 화면: 찾기 · 분류 · 기관) · lib-<id> (항목). 데이터는 ea_lib.js의 LIB (검토를 마친 항목만).
@@ -13947,9 +14054,7 @@ iaDrawSvg=(f,s)=>{
  const raw=v=>v==null?null:v;
  return bnDraftSvg({kind:k,title:f.ko+' '+s.size,std:f.enStd,inch:f.sys==='inch',L:raw(g.L),lengthSymbol:g.L?.key?.includes('Min')?'L min':'L',d:raw(g.d||g.h),width:raw(g.b),af:raw(g.s),height:raw(g.m||g.h),inner:raw(g.a),outer:raw(g.b),thread:s.size})||original;
 };
-function bnBlueprint(){
- return `<svg class="bn-blueprint" viewBox="0 0 720 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="볼트·너트·와셔·키의 정면·측면 형상 참고도"><defs><pattern id="bn-bp-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#243646" stroke-width=".6"/></pattern><marker id="bn-bp-arrow" viewBox="0 0 8 6" refX="4" refY="3" markerWidth="5" markerHeight="4" orient="auto-start-reverse"><path d="M0 0L8 3L0 6" fill="none" stroke="#7db9cd"/></marker></defs><rect width="720" height="420" fill="#102030"/><rect x="18" y="18" width="684" height="384" fill="url(#bn-bp-grid)" stroke="#405769"/><g fill="none" stroke="#d7e6ed" stroke-width="2"><path d="M84 85H127V103H314L322 110V136L314 143H127V160H84ZM84 105H127M84 140H127"/><path d="M141 109H317M141 137H317" stroke-width=".8"/><polygon points="418,86 448,104 448,140 418,158 388,140 388,104"/><circle cx="418" cy="122" r="17"/><path d="M490 92H523V152H490ZM490 105H523M490 139H523"/><circle cx="144" cy="291" r="39"/><circle cx="144" cy="291" r="20"/><path d="M242 252H251V330H242ZM390 272H574V312H390Z"/><path d="M390 312L396 304H574M574 272V304" stroke-width="1"/></g><g fill="none" stroke="#647e93" stroke-width=".8" stroke-dasharray="14 4 2 4"><path d="M68 122H339M373 122H540M418 72V174M93 291H262M144 238V346"/></g><g fill="none" stroke="#7db9cd" stroke-width=".9" marker-start="url(#bn-bp-arrow)" marker-end="url(#bn-bp-arrow)"><path d="M127 68H322M388 73H448M390 250H574M591 272V312"/></g><g fill="#91c0d2" font-family="monospace" font-size="14"><text x="222" y="60">L</text><text x="414" y="66">s</text><text x="480" y="244">L</text><text x="600" y="296">h</text></g><g fill="#a7becc" font-family="sans-serif" font-size="13"><text x="82" y="194">01 · 볼트 / 측면도</text><text x="387" y="194">02 · 너트 / 정면·측면</text><text x="103" y="365">03 · 와셔 / 정면·측면</text><text x="389" y="365">04 · 평행키 / 형상도</text></g><text x="36" y="44" fill="#b9ced9" font-family="monospace" font-size="11">BOLTNOTE / FORM STUDY · NOT TO SCALE</text></svg>`;
-}
+function bnBlueprint(){return bnSourcingDrawing('bn-detail-draft');}
 // Enlarge in an accessible dialog, then export the actual vector with embedded styling.
 document.addEventListener('click',e=>{
  const b=e.target.closest('[data-drawing-expand],[data-drawing-save]');if(!b)return;
