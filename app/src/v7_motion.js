@@ -30,7 +30,7 @@ function bnFilmMarkup() {
 }
 function bnFilmNavigation() {
   return `<div class="bn-wrap bn-film-navigation">
-    <p class="bn-film-note">규격·재료·시험 원리를 설명하는 개념 영상입니다. 변형·공차 폭·부식 진행은 확대 표현이며 실제 시험값이나 수명 예측이 아닙니다.</p><a class="bn-film-check" id="bn-film-check" href="#lib?path=purchase" data-go="lib?path=purchase"><span>구매 전 확인</span><b id="bn-film-check-text">호칭 · 피치 · 길이 · 등급을 함께 확인하세요.</b><i aria-hidden="true">↗</i></a>
+    <p class="bn-film-note">규격·재료·시험 원리를 설명하는 개념 영상입니다. 변형·공차 폭·부식 진행은 확대 표현이며 실제 시험값이나 수명 예측이 아닙니다. 조립 검증·토크 계산·현장 시공 인증을 대신하지 않습니다.</p><a class="bn-film-check" id="bn-film-check" href="#lib?path=purchase" data-go="lib?path=purchase"><span>구매 전 확인</span><b id="bn-film-check-text">호칭 · 피치 · 길이 · 등급을 함께 확인하세요.</b><i aria-hidden="true">↗</i></a>
   </div>`;
 }
 let bnFilmCleanup = null;
@@ -43,7 +43,7 @@ function bnFilmInit() {
   const preference = matchMedia('(prefers-reduced-motion: reduce)');
   const plantVideo = view().querySelector('.pm-video');
   const abort = new AbortController(), eventOptions = {signal: abort.signal};
-  let desired = !preference.matches && !navigator.connection?.saveData;
+  let desired = false; // Quote first: load video only after an explicit play or chapter selection.
   let visible = true, plantVisible = false, attached = false, pendingSeek = null;
   let filePromise = null, fileURL = null;
   const updateToggle = () => {

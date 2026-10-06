@@ -243,9 +243,9 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
     <div class="bn-wrap bn-hero-grid">
       <div class="bn-hero-copy">
         <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
-        <h1 id="h-z-a" tabindex="-1">정확한 부품.<br><em>견고한 연결.</em></h1>
-        <p class="bn-hero-lead">형상과 공차에서 재료와 표면처리까지.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
-        <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 살펴보기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a></div>
+        <h1 id="h-z-a" tabindex="-1">BOM은 그대로.<br><em>구매 조건은 정확하게.</em></h1>
+        <p class="bn-hero-lead">부품표와 도면을 보내 주세요.<br>빠진 사양과 특수요건을 확인하고, 공급처 확인 결과를 견적에 담습니다.</p>
+        <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">BOM 견적 요청 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#lib?path=purchase" data-go="lib?path=purchase">특수요건 확인 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
         <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>
       </div>
@@ -262,7 +262,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
   <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
     <div class="bn-wrap">
       <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / THE PRODUCT COLLECTION</p><h2 id="bn-h-products">작지만,<br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><p>볼트 하나부터 플랜트 볼팅 세트까지.<br>형상과 용도에 맞는 제품을 살펴보세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
-      <div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
+      ${purchaseLineup()}<div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
       <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요.</p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
     </div>
   </section>
@@ -291,7 +291,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
     <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">05 / FROM BOM TO QUOTATION</p><h2 id="bn-h-rfq">목록은 그대로.<br>견적은 한 줄씩.</h2><p>엑셀이나 부품표의 표기를 그대로 붙여 넣으세요.<br>규격·등급·수량을 읽고, 확인할 내용을 보여 드립니다.</p><ol class="bn-rfq-points"><li><span>01</span> 목록과 도면을 보냅니다</li><li><span>02</span> 빠진 사양을 함께 확인합니다</li><li><span>03</span> 공급처 확인 뒤 견적서로 답합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">목록 견적 화면 열기 <span aria-hidden="true">↗</span></a><button type="button" data-ia-file aria-expanded="false" aria-controls="ia-filep">PDF·도면은 파일로 보내기 <span aria-hidden="true">↗</span></button></div></div>
     <div class="bn-rfq-input"><div class="bn-input-heading"><span class="bn-input-dot" aria-hidden="true"></span><span>빠른 사양 확인</span><small>BOM · 엑셀 · CSV</small></div>${sbBox('home')}<div class="bn-rfq-notice">${ORDER_LIVE?'단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.':'<a class="ia-status" href="#about" data-go="about">검증 운영 중 · 참고 견적을 드립니다 <span aria-hidden="true">↗</span></a>'}</div></div>
   </div><div class="bn-wrap"><div id="ia-filep" class="ia-filep-w" hidden></div></div></section>
-  <section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET’S MAKE THE CONNECTION.</p><h2 id="bn-h-cta">목록 하나로,<br>다음 연결을 시작하세요.</h2></div><a class="bn-cta-circle" href="#list" data-go="list"><span aria-hidden="true">↗</span><b>견적 요청</b></a></div></section>
+  ${purchaseTrust()}<section class="bn-cta" aria-labelledby="bn-h-cta"><div class="bn-wrap"><div><p class="bn-eyebrow" lang="en">LET’S MAKE THE CONNECTION.</p><h2 id="bn-h-cta">목록 하나로,<br>다음 연결을 시작하세요.</h2></div><a class="bn-cta-circle" href="#list" data-go="list"><span aria-hidden="true">↗</span><b>견적 요청</b></a></div></section>
 </div>`;
 
 V.after.home = () => {
@@ -580,8 +580,8 @@ function iaFamAct(f) {
 }
 const iaFamCard = f => `<div class="ia-fam"><span class="th${shapeHas(f.id) ? ' ph' : ''}">${shapeHas(f.id) ? shapeThumb(f.id) : iaTh(iaThKey(f), 64, 42)}</span>
   <span class="nm"><a href="#${f.route || 'c-' + f.id}" data-go="${f.route || 'c-' + f.id}">${esc(f.ko)}</a><span class="en" lang="en">${esc(f.en)}</span></span>
-  <span class="meta">${iaSysTag(f)}<span>${iaStdShort(f)}</span></span>
-  <span class="act">${iaFamPriced(f) ? `<span class="pv">${PRICE_LAB()} 확인 품목</span>` : '<span class="tag q">견적</span>'}${iaFamAct(f)}</span></div>`;
+  <span class="meta"><span class="purchase-badge">${purchaseScope(f)}</span>${iaSysTag(f)}<span>${iaStdShort(f)}</span></span>
+  <span class="act">${iaFamPriced(f) ? `<span class="pv">${PRICE_LAB()} 확인 품목</span>` : '<span class="tag q">견적</span>'}${iaFamAct(f)}<button class="purchase-link" type="button" data-purchase-product="${f.id}">사양·서류 확인 →</button></span></div>`;
 const iaFilt = (state.iaFilt = state.iaFilt || {});
 function iaFilterBar() {
   return `<div class="ia-filt" role="group" aria-label="거르기"><span class="ia-seg" role="group" aria-label="체계">${[['all', '전체'], ['metric', '미터'], ['inch', '인치']].map(([k, t]) => `<button type="button" data-ia-sys="${k}" aria-pressed="${state.iaSys === k}">${t}</button>`).join('')}</span>
@@ -631,7 +631,7 @@ function iaProductsBody() {
 }
 V.products = () => iaPage(iaHead([['제품']], '제품', 'Products', `${Object.keys(CAT_F).length}종을 6칸에 나눴습니다. 미터·인치는 칸이 아니라 거르기로 고릅니다. 바로 주문은 공급처 단가를 확인한 품목에만 열립니다.`)
   + `<div class="ia-filt" role="group" aria-label="체계"><span class="ia-seg" role="group" aria-label="체계">${[['all', '전체'], ['metric', '미터'], ['inch', '인치']].map(([k, t]) => `<button type="button" data-ia-sys="${k}" aria-pressed="${state.iaSys === k}">${t}</button>`).join('')}</span><a class="small" href="#buy" data-go="buy">규격품 바로 주문 →</a></div>
-  <div id="ia-pbody">${iaProductsBody()}</div>`);
+  ${purchaseLineup()}<div id="ia-pbody">${iaProductsBody()}</div>`);
 V.after.products = () => iaBindFilter(() => { const b = $('ia-pbody'); if (b) b.innerHTML = iaProductsBody(); document.querySelectorAll('[data-ia-sys]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.iaSys === state.iaSys))); });
 V.buy = () => {
   const pf = Object.values(CAT_F).filter(iaFamPriced), steps = ['담기', `${ORDER_DOC()} 만들기`, '메일·카카오톡으로 보내기', '확인 메일', '입금'];

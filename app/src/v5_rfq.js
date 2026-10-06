@@ -60,6 +60,7 @@ function rfqMail(pkg) {
     pkg.total == null ? '' : bo ? `합계(VAT 포함${pkg.freight ? ', 운임 별도' : ''}): ${pkg.words}` : `자동 견적 합계(참고, VAT 포함${pkg.freight ? ', 운임 별도' : ''}): ${won(pkg.total)}`,
     short > 1 ? terms.map(s => cut(s, 60)).join(' / ') : terms.join(' / '),
     ...(short ? [] : pkg.extra || []),
+    ...(purchaseChecklistText() ? [short ? '특수요건 체크리스트를 별도로 첨부해 주세요.' : purchaseChecklistText()] : []),
     `첨부해 주세요: ${pkg.attach}${!short && pkg.files && pkg.files.length ? ` (선택한 파일: ${pkg.files.join(', ')})` : ''}`,
     '메일 링크로는 파일이 붙지 않으니 직접 첨부 부탁드립니다.',
   ].filter(Boolean).map(x => bo ? rfqBoW(x) : x);
@@ -82,7 +83,7 @@ function rfqSheetHTML(pkg) {
   const kakao = rfqOk('kakaoChat') ? `<a class="btn sm" id="rs-kakao" href="${esc(String(CONTACT.kakaoChat).trim())}" target="_blank" rel="noopener">카카오톡으로 문의</a>` : rfqC('kakaoChat');
   return (bo ? rfqBoW : (s => s))(`<section id="rfq-send" class="tblock rfq-send" role="region" aria-labelledby="rfq-send-h">${bo ? `<div class="s4 e rs-h"><h3>${ORDER_LIVE ? '발주서 보내기' : '주문 요청서 보내기 (확인 후 진행)'}</h3></div>` : ''}
   <div class="s4 e rs-h"><h3 id="rfq-send-h" tabindex="-1">보낼 방법을 고르세요 <span class="mono rs-no">${esc(pkg.no)}</span></h3><p>이 페이지는 입력하신 내용을 서버로 보내지 않습니다. 아래 방법 가운데 하나로 직접 보내 주세요. 메일로 보내실 때는 1번에서 받은 파일과 도면을 첨부해 주세요(메일 링크로는 파일이 붙지 않습니다).</p></div>
-  <div class="s4 e"><span class="lab">1 · ${what} 내려받기</span><div class="rs-btns"><button class="btn sm" type="button" id="rs-xlsx" data-rs="xlsx">${what} 내려받기 (엑셀)</button><button class="btn sm" type="button" id="rs-json" data-rs="json">JSON 내려받기</button>${pdf}</div><span class="sub">파일 이름 <span class="mono">${esc(pkg.fileBase)}.xlsx</span> · <span class="mono">${esc(pkg.fileBase)}.json</span> — 번호가 이 ${what}의 번호입니다. JSON은 재견적·재주문 때 그대로 씁니다.</span></div>
+  ${purchaseChecklistText() ? `<div class="s4 e"><p>특수요건은 원래 BOM과 별도 문서로 함께 보내 주세요.</p><button class="btn sm" type="button" data-purchase-download>특수요건 체크리스트 내려받기</button></div>` : ''}<div class="s4 e"><span class="lab">1 · ${what} 내려받기</span><div class="rs-btns"><button class="btn sm" type="button" id="rs-xlsx" data-rs="xlsx">${what} 내려받기 (엑셀)</button><button class="btn sm" type="button" id="rs-json" data-rs="json">JSON 내려받기</button>${pdf}</div><span class="sub">파일 이름 <span class="mono">${esc(pkg.fileBase)}.xlsx</span> · <span class="mono">${esc(pkg.fileBase)}.json</span> — 번호가 이 ${what}의 번호입니다. JSON은 재견적·재주문 때 그대로 씁니다.</span></div>
   <div class="s2"><span class="lab">2 · 메일</span><span class="val">${rfqC('rfq')}</span><div class="rs-btns">${mail}${addr}<button class="btn sm" type="button" id="rs-copy" data-rs="body">본문 복사</button></div><span class="sub">메일 창이 열리지 않으면 주소와 본문을 복사해 쓰세요.</span></div>
   <div class="s2 e"><span class="lab">2 · 카카오톡 채널</span><span class="val">${kakao}</span><span class="sub">첫 메시지: <b>${esc(pkg.first)}</b> <button class="btn sm" type="button" id="rs-first" data-rs="first">복사</button></span><span class="sub">사진·간단 문의용입니다. 정식 견적서·발주 확인서는 메일로 드립니다. 카드번호·주민등록번호는 보내지 마세요.</span></div>
   <div class="s2"><span class="lab">2 · 팩스</span><span class="val">${rfqC('fax')}</span><span class="sub">인쇄한 ${what}를 보내 주세요.</span></div>
