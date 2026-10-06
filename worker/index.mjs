@@ -14,9 +14,9 @@ const store=env=>env.PROCUREMENT.get(env.PROCUREMENT.idFromName('boltnote-privat
 export default {
   async fetch(request,env) {
     const path=new URL(request.url).pathname;
-    if(path==='/googlee7950c29a2b5a35e.html') {
-      // Serve Google's uploaded file at the exact URL, without asset URL normalization.
-      const url=new URL(request.url);url.pathname='/googlee7950c29a2b5a35e';
+    if(path==='/googlee7950c29a2b5a35e.html'||path==='/naver873356c1ec7239a24ea882fae7172928.html') {
+      // Serve uploaded ownership files at their exact URLs, without asset URL normalization.
+      const url=new URL(request.url);url.pathname=path.slice(0,-5);
       return env.ASSETS.fetch(new Request(url,request));
     }
     if(path==='/admin'||path==='/admin/') {
