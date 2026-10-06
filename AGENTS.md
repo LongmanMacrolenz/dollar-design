@@ -21,6 +21,9 @@
 | `site/build.py`, `site/build_lib.py` | 문서 감싸기, 규격 사전 정적 페이지 만들기 | 예 |
 | `site/page.html`, `docs/` | **만들어지는 결과물**. 배포되는 파일 | **아니오** — `python3 tools/build_all.py`로만 |
 | `tools/` | `build_all.py`(전체 빌드·검증), `sync_lib.py`(규격 사전 반영), `check.py`(점검 한 번에) | 예 |
+| `tools/shapes/` | 품목 형상 이미지 만드는 도구 (Blender 렌더, `README.md` 참고). CI에서는 돌리지 않음 | 예 |
+| `docs/media/shape/*.webp` | 품목별·마감별 형상 이미지(참고용 렌더링)와 썸네일. **`tools/shapes/render_all.py`로만** 만든다 | **아니오** |
+| `app/src/v9_shape.js` | 형상 이미지를 화면에 붙이는 모듈. `SHAPE_IMG` 목록은 `render_all.py --manifest`가 쓴다 | 목록 블록은 아니오 |
 
 ## 2. 일하는 순서
 
@@ -68,6 +71,7 @@ python3 tools/check.py          # 빌드 일치, 자바스크립트 문법, 금�
 - **홈 화면 문구·구성**: `app/src/v7_ia.js`(`V.home`), 디자인은 `app/src/zz_premium.css`. 영상·GIF는 `docs/media/`.
 - **규격 사전 항목**: `site/lib.json`(항목 모양과 규칙은 [`app/LIB_SPEC.md`](app/LIB_SPEC.md)) → `python3 tools/sync_lib.py` → `python3 tools/build_all.py`. 사전 화면은 `app/src/v8_lib.js`, 정적 페이지는 `site/build_lib.py`.
 - **카탈로그 품목(치수표·안내)**: `app/src/ea_catdata.js`를 직접 고칩니다. 예전에는 비공개 원본 JSON에서 이 파일을 만들었으나, 원본에서 출처 없는 값을 걷어낸 결과가 지금 이 파일이라 **이 파일이 원본입니다.** 없는 값을 새로 채워 넣지 마세요(4번 규칙).
+- **품목 형상 이미지**: `tools/shapes/fams/*.py`에서 품목군별 모양을 고치고 `render_all.py`로 다시 그린 뒤 `--manifest`로 목록을 갱신합니다 (`tools/shapes/README.md`). 화면에는 **"참고용 렌더링 · 실제 제품 사진 아님"**을 항상 함께 적습니다. 3D 형상이 있는 품목은 2D 치수 도면을 `치수 도면 (2D) 보기`로 접어 두고, 첫 화면은 3D입니다(`app/src/v9_shape.js`의 `shapeFold2d`). 상표·제조사 각인은 넣지 않습니다.
 - **서류 계획 규칙(C&D)**: `app/src/c1_cd.js`. 규칙을 바꾸면 `app/tests/cdtest.py`가 요구하는 짝(규칙 표·시험)도 함께 고칩니다.
 - **BOM 읽기**: `app/src/e*.js`, 표 붙여넣기 읽기는 `e9_rows.js`. 시험 줄은 `app/tests/corpus.json`.
 - **문구 시험**: 엔진이 내는 문구를 바꾸면 `app/tests/test.py`가 기대하는 문구도 바뀔 수 있습니다. 기대값을 고칠 때는 PR에 이유를 적습니다.

@@ -1,0 +1,36 @@
+/* 품목 형상 이미지 (v9_shape.js) ─ 참고용 렌더링 · 마감 색 칩 · 품목 카드 썸네일 */
+.shp { margin: 0; max-width: 560px; border: 1px solid var(--hair); background: var(--sheet); }
+.shp[hidden] { display: none; }
+.shp-img { aspect-ratio: 4 / 3; background: #E9ECEF; }
+.shp-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.shp-looks { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 9px 10px 4px; border-top: 1px solid var(--hair-2); }
+.shp-looks .lab { margin-right: 4px; }
+.shp-looks .chipbtn { font-family: var(--f-sans); }
+.shp figcaption { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px 9px; font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-3); }
+.shp-looks + figcaption { padding-top: 5px; }
+.shp:not(:has(.shp-looks)) figcaption { border-top: 1px solid var(--hair-2); }
+.shp figcaption b { color: var(--ink-2); font-weight: 700; }
+#shp-slot:empty { display: none; }
+/* 품목 카드 썸네일: 사진이 있으면 선화 대신 4:3 사진 */
+.ia-fam .th.ph { width: 96px; height: 72px; padding: 0; overflow: hidden; background: #E9ECEF; }
+.ia-fam .th.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ia-fam:has(.th.ph) { grid-template-columns: 96px minmax(0, 1fr); }
+/* 좁은 화면: 사양 칸(.fam-r)이 먼저 오는 기존 배치에서, 형상 이미지가 있으면 이미지를 맨 위로 */
+@media (max-width: 1020px) {
+  .fam:has(> .fam-l > #shp-slot:not(:empty)) { gap: 20px; }
+  .fam-l:has(> #shp-slot:not(:empty)) { display: contents; }
+  .fam-l > #shp-slot:not(:empty) { order: -2; }
+  .shp { max-width: none; }
+}
+@media (max-width: 680px) {
+  .shp figcaption { font-size: var(--fs-cap); }
+}
+/* 3D가 첫 화면이고, 2D 치수 도면은 접어 둔다 */
+.shp-2d { margin-top: 12px; max-width: 560px; border: 1px solid var(--hair); background: var(--sheet); }
+.shp-2d > summary { cursor: pointer; padding: 11px 14px; font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.shp-2d > summary::-webkit-details-marker { display: none; }
+.shp-2d > summary::after { content: '+'; font-weight: 400; font-size: 18px; line-height: 1; }
+.shp-2d[open] > summary::after { content: '−'; }
+.shp-2d > summary:hover { color: var(--ink); }
+.shp-2d > .dbox { margin: 0; border: 0; border-top: 1px solid var(--hair-2); }
+@media (max-width: 1020px) { .shp-2d { max-width: none; } }

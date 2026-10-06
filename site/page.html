@@ -2707,6 +2707,43 @@ footer.foot.ia-foot { background: var(--pm-night); color: var(--pm-tx-2); paddin
 .ia-q .ia-fh { margin: 8px 0 0; line-height: 1.5; }
 /* 목록 견적: 칸 제목(h2)과 겹치는 판 제목은 화면에서만 숨긴다 (읽기 프로그램용 이름은 남김) */
 .ia-two .ia-filep > h3 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* ── zz_shape.css ── */
+/* 품목 형상 이미지 (v9_shape.js) ─ 참고용 렌더링 · 마감 색 칩 · 품목 카드 썸네일 */
+.shp { margin: 0; max-width: 560px; border: 1px solid var(--hair); background: var(--sheet); }
+.shp[hidden] { display: none; }
+.shp-img { aspect-ratio: 4 / 3; background: #E9ECEF; }
+.shp-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.shp-looks { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 9px 10px 4px; border-top: 1px solid var(--hair-2); }
+.shp-looks .lab { margin-right: 4px; }
+.shp-looks .chipbtn { font-family: var(--f-sans); }
+.shp figcaption { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px 9px; font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-3); }
+.shp-looks + figcaption { padding-top: 5px; }
+.shp:not(:has(.shp-looks)) figcaption { border-top: 1px solid var(--hair-2); }
+.shp figcaption b { color: var(--ink-2); font-weight: 700; }
+#shp-slot:empty { display: none; }
+/* 품목 카드 썸네일: 사진이 있으면 선화 대신 4:3 사진 */
+.ia-fam .th.ph { width: 96px; height: 72px; padding: 0; overflow: hidden; background: #E9ECEF; }
+.ia-fam .th.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ia-fam:has(.th.ph) { grid-template-columns: 96px minmax(0, 1fr); }
+/* 좁은 화면: 사양 칸(.fam-r)이 먼저 오는 기존 배치에서, 형상 이미지가 있으면 이미지를 맨 위로 */
+@media (max-width: 1020px) {
+  .fam:has(> .fam-l > #shp-slot:not(:empty)) { gap: 20px; }
+  .fam-l:has(> #shp-slot:not(:empty)) { display: contents; }
+  .fam-l > #shp-slot:not(:empty) { order: -2; }
+  .shp { max-width: none; }
+}
+@media (max-width: 680px) {
+  .shp figcaption { font-size: var(--fs-cap); }
+}
+/* 3D가 첫 화면이고, 2D 치수 도면은 접어 둔다 */
+.shp-2d { margin-top: 12px; max-width: 560px; border: 1px solid var(--hair); background: var(--sheet); }
+.shp-2d > summary { cursor: pointer; padding: 11px 14px; font-weight: 700; font-size: var(--fs-sm); color: var(--ink-2); list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.shp-2d > summary::-webkit-details-marker { display: none; }
+.shp-2d > summary::after { content: '+'; font-weight: 400; font-size: 18px; line-height: 1; }
+.shp-2d[open] > summary::after { content: '−'; }
+.shp-2d > summary:hover { color: var(--ink); }
+.shp-2d > .dbox { margin: 0; border: 0; border-top: 1px solid var(--hair-2); }
+@media (max-width: 1020px) { .shp-2d { max-width: none; } }
 /* ── zz_site.css ── */
 /* 제품 카탈로그 중심의 사이트 디자인. 엔진과 규격 데이터는 변경하지 않는다. */
 :root {
@@ -9299,7 +9336,7 @@ V.family = id => {
   const fn = FNOTE[f.id] || [];
   return sheet(
     zone('A', 'z-a', shd({ trail: [['미터 규격품', 'metric'], [f.name]], no: sheetOf(f.id), title: `${esc(f.name)}<span class="h-en" lang="en">${esc(f.en)} <span class="tag en-std">${esc(f.enStd)}</span></span>`, p: esc(f.use), right: stdrow })
-      + `<div class="fam"><div class="fam-l"><div class="dbox" id="fam-draw"></div><div class="cad-blk" id="cad-blk"></div><dl class="kv" id="fam-kv"></dl><p class="pair" id="fam-pair"></p>
+      + `<div class="fam"><div class="fam-l"><div id="shp-slot"></div><div class="dbox" id="fam-draw"></div><div class="cad-blk" id="cad-blk"></div><dl class="kv" id="fam-kv"></dl><p class="pair" id="fam-pair"></p>
         ${fn.length ? `<div class="fnote"><h3>이 품목에서 자주 확인하는 것</h3><dl>${fn.map(([t, d, red]) => `<dt${red ? ' class="redp"' : ''}>${t}</dt><dd>${d}</dd>`).join('')}</dl></div>` : ''}</div>
         <div class="fam-r"><div class="cfg" id="cfg"></div></div></div>`)
     + zone('B', 'z-b', `<div class="listbar"><h2 id="h-z-b" tabindex="-1">규격표</h2><span class="small muted" id="count"></span><span class="row-wrap"><button class="btn sm ftoggle" type="button" id="ftoggle" aria-controls="filters" aria-expanded="${L0.open === '1'}">거르기</button><button class="btn sm txt" type="button" id="freset">거르기 지우기</button></span></div>
@@ -9338,6 +9375,7 @@ V.after.m = id => {
         ${(['109', '129'].includes(s.g) || s.g === 'SPR') && ['ZW', 'ZB'].includes(s.fin) ? noteSm('warn', `${s.g === 'SPR' ? '스프링와셔는 경화품이라' : '10.9·12.9 볼트는'} 전기도금 뒤 베이킹으로 수소취성을 관리합니다 (ISO 4042).`) : ''}
         <div class="actions"><button class="btn pri" type="button" data-add="${v.pn}" data-qty-from="cfg-qty">견적함에 담기</button><button class="btn" type="button" data-go="custom" data-prefill-pn="${v.pn}">이 사양으로 변형 견적</button></div></div>`;
     $('fam-draw').innerHTML = drawing(f, s.size, s.L);
+    shapeShow(f.id, f.name, GRADE[s.g].label, FINISH[s.fin].label); /* shape hook: 형상 이미지 (v9_shape.js) */
     cadMount('cad-blk', { sys: 'm', f, size: s.size, L: s.L, g: s.g, fin: s.fin }); /* CAD hook (cad.hooks.json): CAD · 데이터시트 칸 */
     const d = dnum(s.size);
     const kv = [
@@ -9396,7 +9434,7 @@ V.after.m = id => {
       if (b.dataset.cfg === 'size') { s.size = b.dataset.v; if (f.len) { const ls = f.len(s.size); if (!ls.includes(s.L)) s.L = ls.reduce((a, c) => Math.abs(c - s.L) < Math.abs(a - s.L) ? c : a, ls[0]); }
         const cs = combosFor(f, s.size); if (!cs.some(c => c[0] === s.g && c[1] === s.fin)) [s.g, s.fin] = cs.find(c => c[0] === s.g) || cs[0]; }
       if (b.dataset.cfg === 'L') s.L = +b.dataset.v;
-      if (b.dataset.cfg === 'combo') [s.g, s.fin] = b.dataset.v.split('|');
+      if (b.dataset.cfg === 'combo') { [s.g, s.fin] = b.dataset.v.split('|'); state.shapePick[f.id] = null; } /* shape hook */
       renderCfg();
       remember(pnOf(f, s.size, s.L, s.g, s.fin), s.qty);
       const nb = $('cfg').querySelector(`[data-cfg="${b.dataset.cfg}"][data-v="${b.dataset.v}"]`); if (nb) nb.focus();
@@ -9477,7 +9515,7 @@ V.inchFam = id => {
   const flz = f.stud && (FL_FAM.includes(f.id) || f.id === 'ats');
   return sheet(
     zone('A', 'z-a', shd({ trail: [['인치·플랜트 볼트', 'inch'], [f.short]], no: sheetOf(f.id), title: `${esc(f.name)}<span class="h-en" lang="en">${esc(f.en)} <span class="tag en-std">${esc(f.enStd)}</span></span>`, below: stdrow })
-      + `<div class="fam"><div class="fam-l"><div class="dbox" id="i-draw"></div><div class="cad-blk" id="cad-blk"></div>
+      + `<div class="fam"><div class="fam-l"><div id="shp-slot"></div><div class="dbox" id="i-draw"></div><div class="cad-blk" id="cad-blk"></div>
         <dl class="kv"><dt>용도</dt><dd>${esc(f.use)}</dd><dt>등급</dt><dd>${f.grades.map(esc).join('<br>')}</dd><dt>표면처리</dt><dd>${fins}</dd><dt>서류</dt><dd id="i-docs">${f.docsHtml || esc(f.docs)}</dd><dt>나사</dt><dd>${thread}</dd>${API610_TOOL && (f.stud || f.nut) ? `<dt>펌프 볼팅</dt><dd>API 610 재질 클래스(C-6, S-6 등)로 적혀 있으면 <a href="#tools" data-go="tools" data-tab="api610">5장 상세 ${TABS.findIndex(t => t[0] === 'api610') + 1}</a>에서 판과 클래스를 읽어 견적 질문을 정리합니다.</dd>` : ''}<dt>공급·납기</dt><dd><b>${esc(f.lead)}</b> · ${esc(LEAD_TIER[f.lead])}</dd>${bomInchCatNote(f)}</dl>
         ${note(f.ruleTone ? 'warn' : 'info', esc(f.rule))}
         <div class="fnote"><h3>견적 전에 확인하는 것</h3><dl>${CHECKS.map(c => `<dt>${esc(c[0])}</dt><dd>${esc(c[1])}</dd>`).join('')}</dl></div></div>
@@ -9569,13 +9607,14 @@ V.after.i = id => {
     $('i-qty-t').textContent = `${Math.max(1, Math.round(+$('i-qty').value || 1)).toLocaleString()}${f.stud ? '세트' : 'EA'}`;
     $('i-head').textContent = `${thread}${len && !f.nut ? ` × ${len}"` : ''}`;
     $('i-draw').innerHTML = drawInch(f, size, len);
+    shapeShow(f.id, f.name, grade, fin); /* shape hook */
     cadMount('cad-blk', { sys: 'i', f, size, len, grade, fin, spec }); /* CAD hook (cad.hooks.json): CAD · 데이터시트 칸 */
     $('i-warn').innerHTML = inchWarn(f, d, grade, fin, len).map(([t, m]) => noteSm(t, esc(m))).join('');
     return spec;
   };
   const cfg = $('icfg');
-  cfg.addEventListener('input', e => { if (e.target.id === 'i-grade') fillSizes(); calc(); });
-  cfg.addEventListener('change', e => { if (e.target.id === 'i-grade') fillSizes(); calc(); });
+  cfg.addEventListener('input', e => { if (/^i-(grade|fin)$/.test(e.target.id)) state.shapePick[f.id] = null; /* shape hook */ if (e.target.id === 'i-grade') fillSizes(); calc(); });
+  cfg.addEventListener('change', e => { if (/^i-(grade|fin)$/.test(e.target.id)) state.shapePick[f.id] = null; /* shape hook */ if (e.target.id === 'i-grade') fillSizes(); calc(); });
   fillSizes(); calc();
   state.redraw = calc;
   cfg.addEventListener('click', e => { if (!e.target.closest('[data-iadd]')) return; addQuote({ fam: f.id, title: f.name, en: f.en, spec: calc(), qty: Math.max(1, Math.round(+$('i-qty').value || 1)), unit: f.stud ? '세트' : 'EA' }); toast('견적함에 담았습니다'); });
@@ -12609,7 +12648,7 @@ function iaFamAct(f) {
   if (f.p === 'A') return `<a class="btn sm" href="#c-${f.id}" data-go="c-${f.id}">보기 →</a>`;
   return `<a class="btn sm" href="#c-${f.id}" data-go="c-${f.id}" data-ia-spec="1">사양 적어 담기</a>`;
 }
-const iaFamCard = f => `<div class="ia-fam"><span class="th">${iaTh(iaThKey(f), 64, 42)}</span>
+const iaFamCard = f => `<div class="ia-fam"><span class="th${shapeHas(f.id) ? ' ph' : ''}">${shapeHas(f.id) ? shapeThumb(f.id) : iaTh(iaThKey(f), 64, 42)}</span>
   <span class="nm"><a href="#${f.route || 'c-' + f.id}" data-go="${f.route || 'c-' + f.id}">${esc(f.ko)}</a><span class="en" lang="en">${esc(f.en)}</span></span>
   <span class="meta">${iaSysTag(f)}<span>${iaStdShort(f)}</span></span>
   <span class="act">${iaFamPriced(f) ? `<span class="pv">${PRICE_LAB()} 확인 품목</span>` : '<span class="tag q">견적</span>'}${iaFamAct(f)}</span></div>`;
@@ -12805,7 +12844,7 @@ V.c = id => {
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';
   const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag wait">준비 중</span></div><p class="note warn small"><span class="nk">준비 중</span><span>CAD 준비 중 — 이 품목은 원문 대조 치수와 CAD 생성기를 맞춘 뒤 STEP·DXF를 드립니다. 견적 요청 시 도면으로 회신합니다.</span></p></section>`}</div>` : '';
   return sheet(zone('A', 'z-a', shd({ trail: [['제품', 'products'], ...(t ? [[t.ko, 't-' + t.id]] : []), [f.ko]], no: 'P', title: `${esc(f.ko)}<span class="h-en" lang="en">${esc(f.en)}${f.enStd ? ` <span class="tag en-std">${esc(f.enStd)}</span>` : ''}</span>`, p: `${sub ? esc(sub.ko) + ' · ' : ''}${mode}${f.use ? ' · ' + esc(f.use) : ''}`, right: stdrow, below: safety + na })
-    + `<div class="fam ia-cfam"><div class="fam-l">${dw ? `<div class="dbox" id="ia-draw">${dw}</div>` : ''}<dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
+    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div>${dw ? `<div class="dbox" id="ia-draw">${dw}</div>` : ''}<dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
       <div class="fam-r">${iaCfgHTML(f, s)}</div></div>`, 'ia-z')
     + (f.p === 'A' ? zone('B', 'z-b', `<div class="listbar"><h2 id="h-z-b" tabindex="-1">치수표</h2></div>${iaDimsHTML(f, s)}`) : '')
     + zone(f.p === 'A' ? 'C' : 'B', f.p === 'A' ? 'z-c' : 'z-b', `<div class="listbar"><h2>서류·납기</h2></div><p class="small">${esc(CAD_TRUST_COPY ? CAD_TRUST_COPY.always.ko : '')}</p><p class="small muted">재고를 두지 않습니다. 주문마다 국내 도매처에서 조달하고, 납기는 공급처를 확인한 뒤 견적서에 적습니다.</p>`));
@@ -12813,13 +12852,14 @@ V.c = id => {
 V.after.c = id => {
   const f = CAT_F[id]; if (!f) return;
   const s = iaSelOf(f);
+  shapeShow(f.id, f.ko, s.mat, s.fin);
   const upd = (redrawDw = true) => {
     const o = $('ia-spec-out'); if (o) o.textContent = iaSpecText(f, s);
     if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d && svg) d.innerHTML = svg; document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
   };
   view().addEventListener('change', e => {
     const k = { 'ia-size': 'size', 'ia-len': 'L', 'ia-mat': 'mat', 'ia-fin': 'fin', 'ia-unit': 'unit' }[e.target.id];
-    if (k) { s[k] = e.target.value === '__free' ? '' : e.target.value; upd(k === 'size' || k === 'L'); }
+    if (k) { s[k] = e.target.value === '__free' ? '' : e.target.value; upd(k === 'size' || k === 'L'); if (k === 'mat' || k === 'fin') { state.shapePick[f.id] = null; shapeShow(f.id, f.ko, s.mat, s.fin); } }
     if (e.target.id === 'ia-qty') { s.qty = Math.max(1, Math.round(+e.target.value || 1)); e.target.value = s.qty; }
   });
   view().addEventListener('input', e => { if (e.target.id === 'ia-memo' || (e.target.id === 'ia-len' && e.target.tagName === 'INPUT')) { s[e.target.id === 'ia-memo' ? 'memo' : 'L'] = e.target.value.trim(); upd(e.target.id === 'ia-len'); } });
@@ -13496,6 +13536,73 @@ function bnUpdateReading() {
 window.addEventListener('scroll',()=> { if(!bnReadingFrame) bnReadingFrame=requestAnimationFrame(()=> { bnReadingFrame=0; bnUpdateReading(); }); },{passive:true});
 window.addEventListener('resize',bnUpdateReading);
 document.querySelector('.bn-top').addEventListener('click',()=> { const h=view().querySelector('h1'); h?.focus({preventScroll:true}); scrollTo({top:0,behavior:reduced()?'instant':'smooth'}); });
+/* ── v9_shape.js ── */
+/* ── v9_shape.js: 품목 형상 이미지 (현실 같은 참고용 렌더링) ──
+   이미지: docs/media/shape/<품목군id>-<룩>.webp (576×432), 목록 썸네일 docs/media/shape/<id>-s.webp (240×180).
+   만드는 법: tools/shapes/README.md (Blender 렌더). 규격 공칭 치수 기준 대표 호칭으로 그린 그림이며 실제 공급품 사진이 아니다 — 화면에도 그렇게 적는다.
+   룩(마감 색) 규칙은 tools/shapes/looks.py 와 같게 둔다. 이미지가 없는 품목은 아무것도 보이지 않는다.
+   쓰는 곳: 품목 페이지 c-<id> (v7_ia.js), 기존 장 m-·i- (src/shape.hooks.json), 품목 카드 썸네일 (iaFamCard). 이름 접두사 shape…/SHAPE_ */
+
+/* SHAPE_IMG:BEGIN (tools/shapes/render_all.py --manifest 가 만듭니다. 손으로 고치지 않습니다) */
+const SHAPE_IMG = {"hbf":["ZW","ZB","BO","PL","HD","GM","SS"],"hbp":["ZW","BO","PL","HD","GM","SS"],"flangebolt":["ZW","ZB","BO","PL","GM","SS"],"hvset":["PL","HD"],"tcbolt":["PL"],"carriage":["ZW","PL","HD","SS"],"tslotbolt":["BO","PL"],"tnut":["BO","PL"],"jack":["PL","BO","ZW","SS"],"eyebolt":["ZW","PL","HD","SS"],"ieyebolt":["PL","HD"],"swingbolt":["ZW","PL","SS"],"sqbolt":["ZW"],"tbolt":["ZW"],"fitbolt":["ZW"],"lag":["ZW"],"cskbolt":["ZW"],"hoistring":["ZW"],"j429":["PL","ZW","BO","HD","ZY"],"a574":["BO","PL","ZW"],"ifhc":["BO","SS"],"ibhc":["BO","SS"],"iss":["BO","PL","SS"],"f593":["SS"],"a307":["PL","HD","MZ"],"a354":["PL","HD","MZ","GM"],"hhb":["PL","HD"],"a325":["PL","HD","MZ","GM"],"f837":["SS"],"ms-inch":["ZW","BO","SS","ZY"],"scs":["BO","ZW","ZB","GM","SS","PL"],"csk":["BO","ZW","ZB","GM","SS"],"bhcs":["BO","ZW","ZB","SS"],"ss":["PL","BO","GM","SS"],"plug910":["PL","ZW","SS","BR"],"lowhead":["BO","ZW","SS"],"shoulder":["BO","SS"],"plug906":["PL","ZW","SS","BR"],"plug908":["PL","ZW","SS","BR"],"plugnpt":["BO","SS","BR"],"plugbar":["PL","SS"],"sealw":["CU","AL","SS"],"bhflange":["ZW"],"torx":["ZW"],"ss-slot":["ZW"],"ss-sq":["ZW"],"ss-soft":["BO"],"ss-knurl":["BO"],"orbplug":["ZW","SS","ZY"],"bondseal":["ZW"],"ms-pan":["ZW","ZB","NI","SS"],"ms-csk":["ZW","ZB","NI","SS"],"ms-truss":["ZW","ZB","NI","SS"],"ms-slot":["ZW","NI","SS","PL"],"tap":["ZW","ZB","NI","SS"],"sems":["ZW","ZB","NI","SS"],"standoff":["NI","ZW","SS"],"blindrivet":["SS","ZW","AL"],"rivnut":["ZW","SS","PL","AL"],"rivstud":["ZW","SS","PL"],"wti":["SS"],"ms-rcsk":["ZW"],"tap-hex":["ZW"],"tap-drill":["ZW"],"tap-form":["ZW"],"thumb":["ZW"],"blindrivet-csk":["ZW","AL","SS"],"solidrivet":["AL","BR","CU","PL"],"clinch":["ZW","AL","BR","SS"],"lockbolt":["ZW","PL"],"keyinsert":["ZW","PL","SS"],"woodinsert":["ZW","BR","SS"],"weldstud":["ZW"],"tr":["ZW","HD","PL","SS"],"coupling":["ZW","HD","PL","SS"],"rod-in":["PL","ZW","HD","PT","SS"],"rod-hanger":["ZW","HD","SS"],"stud-ft":["PL","ZW","HD","PT","SS"],"channelnut":["ZW","HD","SS"],"ubolt":["ZW","HD","PL","SS"],"f1554":["PL","HD","MZ","ZW"],"fbolt":["PL","HD","ZW"],"wedge":["ZW","HD","SS"],"stronganchor":["ZW","HD","SS"],"dropin":["ZW","SS"],"sleeve":["ZW"],"b7":["PL","PT","HD","ZN","GM"],"b7m":["PL","PT","ZN"],"b8":["SS","PT"],"l7":["PL","PT","ZN"],"mstud":["PL","PT","HD","ZN","GM"],"stud-te":["PL","ZW","HD","SS"],"b16":["PL"],"b8lt":["SS","PT"],"smo":["SS"],"istud-te":["PL","SS"],"ats":["PL","PT","HD","SS"],"ksflset":["PL","ZW","HD","SS"],"a453":["SS"],"b6":["SS"],"f468":["NIA"],"tstud":["PL","PT"],"stud-rs":["PL"],"hn":["ZW","ZB","BO","PL","HD","GM","SS"],"hnthin":["ZW","ZB","BO","PL","SS"],"nyloc":["ZW","ZB","SS"],"capnut":["ZW","NI","SS"],"ihn":["ZW","PL","SS","HD","ZY"],"hh":["PL","PT","HD","ZN"],"mhh":["PL","PT","HD","ZN"],"allmetal":["ZW","ZB","PL","SS"],"flangenut":["ZW","ZB","SS"],"castle":["ZW","PL","SS"],"wing":["ZW","SS"],"eyenut":["ZW","PL","HD","SS"],"hn2":["ZW"],"sqnut":["ZW"],"weldnut":["PL"],"fixturenut":["ZW"],"cagenut":["ZW"],"profilenut":["ZW"],"oemnut":["PL","SS"],"pw":["ZW","ZB","HD","BO","GM","PL","SS"],"pwl":["ZW","ZB","HD","BO","GM","PL","SS"],"sw":["ZW","BO","SS","GM"],"ifw":["PL","HD","MZ","GM"],"ilw":["ZW","SS","PL","MZ"],"pws":["ZW","BO","GM","PL","SS"],"thickw":["ZW","BO","PL","SS"],"ipw":["PL","ZW","MZ","HD","SS"],"tooth":["ZW","PL","SS","BO"],"conical":["BO","GM","MZ","SS","PH"],"disc":["MZ","PL","SS","PH"],"taperw":["PL","ZW","HD","SS"],"pwxl":["PL","ZW","HD"],"wedgelock":["ZW","GM","SS"],"sqw":["PL","HD","ZW"],"sphw":["BO","PL","SS"],"dti":["PL","MZ"],"dowel-h":["PL","SS"],"dowel-u":["PL","BO","ZW","SS","PH"],"dowel-it":["PL","BO","SS"],"taper":["PL","BO","ZW","SS","PH"],"spring-sl":["PL","SS"],"cotter":["PL","ZW","SS","BR"],"taper-th":["PL","BO","ZW","PH"],"spring-co":["PL","SS"],"clevis":["PL","BO","ZW","PH"],"ipin":["PL","SS"],"rclip":["ZW","SS"],"grooved":["ZW","PL","SS"],"splittaper":["PL"],"ring-ext":["BO","SS","PH"],"ring-int":["BO","SS","PH"],"key-par":["PL","SS"],"kmnut":["PL","SS"],"mbw":["PL","SS"],"ering":["BO","ZW","SS","PH"],"key-wood":["PL","SS"],"key-inch":["PL","SS"],"keystock":["PL","SS"],"tabw":["PL","ZW","SS"],"ring-misc":["BO","PH","SS"],"key-gib":["PL","SS"],"ilocknut":["PL"]};
+/* SHAPE_IMG:END */
+const SHAPE_DIR = 'media/shape/';
+const SHAPE_NAME = { ZW: '백색아연', ZY: '황색아연', ZB: '흑색아연', BO: '흑착색', PL: '무처리(생지)', HD: '용융아연', GM: '아연 플레이크', ZN: '아연-니켈', NI: '니켈', PT: 'PTFE 코팅', PH: '인산염', MZ: '기계 아연', SS: '스테인리스', BR: '황동', CU: '구리', AL: '알루미늄', NIA: '니켈합금' };
+const SHAPE_FIN_RX = [[/스테인리스/, 'SS'], [/옐로우|황색/, 'ZY'], [/흑색아연/, 'ZB'], [/흑착색/, 'BO'], [/아연-니켈|아연 ?니켈/, 'ZN'], [/용융아연/, 'HD'], [/아연 ?플레이크/, 'GM'], [/기계(적)? ?아연/, 'MZ'],
+  [/PTFE|불소수지/, 'PT'], [/인산염/, 'PH'], [/니켈/, 'NI'], [/백색아연|전기아연|아연도금/, 'ZW'], [/무처리|무도금|생지|브라이트|방청유|토크계수|갈링|윤활|고착방지/, 'PL']];
+const SHAPE_STAINLESS = /\bA[24]\b|스테인리스|STS|SUS|\b304|\b316|18-8|F59[34]|F837|F87[89]|F880|\bB8|S3\d{4}|S32\d{3}|\b410\b|1\.4\d{3}|\bSS\b/i;
+// 재질이 룩을 정해 버리는 경우(스테인리스·황동·구리·알루미늄·니켈합금)만. 나머지는 표면처리가 정한다
+function shapeLookOfMat(m) {
+  m = String(m || '');
+  if (/황동|CuZn/i.test(m)) return 'BR';
+  if (/^구리$/.test(m)) return 'CU';
+  if (/알루미늄/.test(m) && !SHAPE_STAINLESS.test(m)) return 'AL';
+  if (/\bNi\s*\d|F468|니켈합금/.test(m) && !SHAPE_STAINLESS.test(m)) return 'NIA';
+  return SHAPE_STAINLESS.test(m) ? 'SS' : null;
+}
+function shapeLookOfFin(f) { f = String(f || ''); for (const [rx, k] of SHAPE_FIN_RX) if (rx.test(f)) return k; return null; }
+// 품목군 id + 고른 재질·표면처리 → 그 품목에 이미지가 있는 룩 (없으면 기본 룩). pick = 고객이 칩으로 직접 고른 룩
+function shapeLook(id, mat, fin, pick) {
+  const list = Object.hasOwn(SHAPE_IMG, id) ? SHAPE_IMG[id] : null;
+  if (!list || !list.length) return null;
+  if (pick && list.includes(pick)) return pick;
+  const want = shapeLookOfMat(mat) || shapeLookOfFin(fin);
+  return want && list.includes(want) ? want : list[0];
+}
+const shapeHas = id => Object.hasOwn(SHAPE_IMG, id) && SHAPE_IMG[id].length > 0;
+const shapeThumb = (id, w = 96, h = 72) => shapeHas(id) ? `<img src="${SHAPE_DIR}${id}-s.webp" width="${w}" height="${h}" alt="" loading="lazy" decoding="async">` : '';
+state.shapePick = state.shapePick || {};   // 품목군 id → 고객이 칩으로 고른 룩 (재질·표면처리 칸을 바꾸면 지운다)
+function shapeFigHtml(id, name, look) {
+  const list = SHAPE_IMG[id], nm = SHAPE_NAME[look] || look;
+  return `<figure class="shp"><div class="shp-img"><img src="${SHAPE_DIR}${id}-${look}.webp" width="576" height="432" alt="${esc(name)} 형상 렌더링 · ${esc(nm)}" decoding="async" onerror="this.closest('.shp').hidden=true"></div>
+    ${list.length > 1 ? `<div class="shp-looks" role="group" aria-label="마감 색 미리보기"><span class="lab">마감 색</span>${list.map(k => `<button type="button" class="chipbtn${k === look ? ' on' : ''}" data-shp="${k}" aria-pressed="${k === look}">${esc(SHAPE_NAME[k] || k)}</button>`).join('')}</div>` : ''}
+    <figcaption><b>형상 · ${esc(nm)}</b><span>참고용 렌더링입니다. 규격 공칭 형상의 대표 호칭 그림이며 실제 제품 사진이 아닙니다. 색은 도금·로트에 따라 다릅니다.</span></figcaption></figure>`;
+}
+// 3D 형상이 있으면 2D 치수 도면은 접어 둔다: 첫 화면은 3D, 도면은 '치수 도면 (2D) 보기'를 눌러 펼친다.
+// 도면 칸(.dbox)은 그대로 두고 details로 감싸기만 하므로, 호칭·길이를 바꿀 때 다시 그리는 코드는 그대로 동작한다.
+function shapeFold2d(slot) {
+  const box = slot.nextElementSibling;
+  if (!box || !box.classList.contains('dbox') || box.closest('details.shp-2d')) return;
+  const d = document.createElement('details'); d.className = 'shp-2d';
+  const s = document.createElement('summary'); s.textContent = '치수 도면 (2D) 보기'; d.append(s);
+  box.before(d); d.append(box);
+}
+// 자리 #shp-slot 에 그림을 넣거나 바꾼다. 같은 룩이면 그대로 둔다 (칸을 바꿀 때마다 깜박이지 않게)
+function shapeShow(id, name, mat, fin) {
+  const slot = document.getElementById('shp-slot'); if (!slot) return;
+  const look = shapeLook(id, mat, fin, state.shapePick[id]);
+  if (!look) { slot.innerHTML = ''; slot.dataset.look = ''; return; }
+  shapeFold2d(slot);
+  slot.dataset.id = id; slot.dataset.name = name; slot.dataset.mat = mat || ''; slot.dataset.fin = fin || '';
+  if (slot.dataset.look === look && slot.dataset.shown === id) return;
+  slot.dataset.look = look; slot.dataset.shown = id;
+  slot.innerHTML = shapeFigHtml(id, name, look);
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-shp]'), slot = b && b.closest('#shp-slot'); if (!slot) return;
+  state.shapePick[slot.dataset.id] = b.dataset.shp;
+  shapeShow(slot.dataset.id, slot.dataset.name, slot.dataset.mat, slot.dataset.fin);
+});
 /* ── t_api610.js ── */
 /* 5장 규격 도구 · 상세 11: API 610 재질 클래스 → 볼팅
    - 데이터와 판별은 엔진 트랙의 e0_api610.js(API610, API610_ALIASES, parseApi610)를 읽기만 한다. 다시 선언하지 않는다.
