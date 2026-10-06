@@ -251,6 +251,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
     <div class="bn-wrap">
       <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">01 / THE PRODUCT COLLECTION</p><h2 id="bn-h-products">작지만,<br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><p>볼트 하나부터 플랜트 볼팅 세트까지.<br>형상과 용도에 맞는 제품을 살펴보세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
       ${purchaseLineup()}<div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
+      <p class="bn-catalog-note"><a class="bn-text-link" href="/products/">제품별 규격·구매 안내 <span aria-hidden="true">↗</span></a> · 품목 이름과 적용 규격으로 먼저 살펴보세요.</p>
       <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요.</p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
     </div>
   </section>
