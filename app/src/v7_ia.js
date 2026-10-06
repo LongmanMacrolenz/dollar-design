@@ -244,7 +244,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
       <div class="bn-hero-copy">
         <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
         <h1 id="h-z-a" tabindex="-1">정확한 부품.<br><em>견고한 연결.</em></h1>
-        <p class="bn-hero-lead">플랜지에서 회전축까지, 연결의 시작은 사양입니다.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
+        <p class="bn-hero-lead">형상과 공차에서 재료와 표면처리까지.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
         <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 살펴보기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
         <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>

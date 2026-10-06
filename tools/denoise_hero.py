@@ -7,6 +7,8 @@ Use a persistent library device/filter to avoid loading weights for every frame.
 import argparse
 import ctypes as C
 from pathlib import Path
+import hashlib
+import shutil
 import numpy as np
 from PIL import Image
 
@@ -29,9 +31,17 @@ lib.oidnReleaseFilter.argtypes=[C.c_void_p];lib.oidnReleaseDevice.argtypes=[C.c_
 device=lib.oidnNewDevice(1);lib.oidnSetDeviceInt(device,b'numThreads',a.threads);lib.oidnCommitDevice(device)
 filter=lib.oidnNewFilter(device,b'RT');lib.oidnSetFilterBool(filter,b'hdr',False);lib.oidnSetFilterBool(filter,b'srgb',True)
 message=C.c_char_p()
+cache={}
 for i,path in enumerate(sorted(a.frames.glob('*.png'))):
  target=a.out/path.name
- if target.exists(): continue
+ digest=hashlib.sha256(path.read_bytes()).digest()
+ if target.exists():
+  cache[digest]=target
+  continue
+ if digest in cache:
+  shutil.copyfile(cache[digest],target)
+  print(f'DENOISE_REUSED {path.name}',flush=True)
+  continue
  color=np.asarray(Image.open(path).convert('RGB'),dtype=np.float32)/255
  output=np.empty_like(color);h,w,_=color.shape
  for name,array in [(b'color',color),(b'output',output)]:
@@ -40,5 +50,6 @@ for i,path in enumerate(sorted(a.frames.glob('*.png'))):
  error=lib.oidnGetDeviceError(device,C.byref(message))
  if error: raise RuntimeError(message.value.decode())
  Image.fromarray(np.uint8(np.clip(output,0,1)*255+.5)).save(target)
+ cache[digest]=target
  print(f'DENOISED {path.name}',flush=True)
 lib.oidnReleaseFilter(filter);lib.oidnReleaseDevice(device)

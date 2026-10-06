@@ -3534,6 +3534,64 @@ footer.foot.ia-foot { background:#142234; }
  .bn-studio .bn-products { scroll-behavior:auto; }
  .bn-studio *, .bn-menu-links *, .bn-top { transition:none!important; }
 }
+/* ── zzzz_science.css ── */
+/* Engineering film and its synchronized, selectable explanation cards. */
+.bn-science { position:relative; margin:0 38px 22px; padding:18px 20px; border:1px solid #324051; border-radius:4px; background:linear-gradient(135deg,#162332,#0f1926); min-width:0; }
+.bn-science-heading { display:flex; justify-content:space-between; gap:12px; margin-bottom:14px; color:#a2b5c6; font-family:var(--f-mono); font-size:10px; letter-spacing:.09em; }
+.bn-science-heading > span:last-child { font-family:var(--f-sans); letter-spacing:0; color:#ef9a76; }
+.bn-science-diagram { max-width:100%; overflow-x:auto; overscroll-behavior-inline:contain; }
+.bn-science svg { display:block; width:100%; height:auto; overflow:visible; }
+.bn-science svg text { fill:#b9c9d8; font-family:var(--f-sans); font-size:11px; }
+.bn-sv-datum { stroke:#708da4; stroke-width:1; stroke-dasharray:4 4; fill:none; }
+.bn-sv-axis { fill:none; stroke:#5a728a; stroke-width:1; }
+.bn-sv-orange { fill:#e98b62; }
+.bn-sv-blue { fill:#497d9e; }
+.bn-sv-outline { fill:#233747; stroke:#95b3ca; stroke-width:1.5; }
+.bn-sv-heavy { fill:#504339; stroke:#ef9a76; }
+.bn-sv-line { fill:none; stroke:#ec916d; stroke-width:2; }
+.bn-sv-unknown { fill:none; stroke:#879aab; stroke-width:1.4; stroke-dasharray:4 4; }
+.bn-science p { margin:10px 0 0; color:#aec0d1; font-size:11px; line-height:1.8; word-break:keep-all; }
+.bn-science .bn-science-status { color:#f4ab85; padding-top:8px; border-top:1px solid #354353; font-size:11px; }
+.bn-science-controls { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:10px; }
+.bn-science-segments { display:flex; gap:5px; flex-wrap:wrap; }
+.bn-science-segments button { border:1px solid #506376; background:#182534; padding:7px 9px; color:#c0cddd; border-radius:3px; font-size:11px; min-height:38px; cursor:pointer; }
+.bn-science-segments button[aria-pressed=true] { color:#172431; background:#f0a781; border-color:#f0a781; }
+.bn-science-chip { color:#aac1d5; font-size:10px; }
+.bn-science-pair { display:flex; justify-content:space-around; color:#ecaa89; font-family:var(--f-mono); font-size:12px; }
+.bn-science-select { display:flex; flex-wrap:wrap; gap:8px; align-items:center; color:#b6c5d4; font-size:11px; margin-bottom:8px; }
+.bn-science-select select { max-width:100%; background:#182a3a; color:#ebf1f7; border:1px solid #4e6278; border-radius:3px; padding:6px 9px; font-size:12px; min-height:36px; }
+.bn-science-drawing { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#c6d6e5; font-family:var(--f-mono); font-size:10px; }
+.bn-science-drawing i { color:#f0a17a; font-size:15px; }
+.bn-coating-key { display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 12px; }
+.bn-coating-key span { display:flex; align-items:center; gap:6px; font-size:11px; color:#c4d3e0; }
+.bn-coating-key i { display:inline-block; width:10px; height:10px; border:1px solid #798da0; border-radius:50%; }
+.bn-coating-key .bare { background:#929da4; }.bn-coating-key .blue { background:#3d79b6; }.bn-coating-key .white { background:#d3dae1; }.bn-coating-key .black { background:#202932; }
+.bn-science-details { color:#d6e1eb; margin-top:12px; font-size:11px; line-height:1.8; }
+.bn-science-details summary { cursor:pointer; color:#efab87; min-height:30px; }
+.bn-science-details dt { color:#e5eaf0; margin-top:10px; }.bn-science-details dd { margin:3px 0 0; color:#adc0d0; }
+.bn-studio .bn-film-chapters { gap:13px; }.bn-studio .bn-film-chapters button { white-space:normal; word-break:keep-all; }
+.bn-studio .bn-film-stage { flex-shrink:0; }.bn-film-corner { font-size:10px; }
+@media (min-width:761px) { .bn-cinema .bn-hero-copy { position:sticky; top:78px; align-self:start; } }
+@media (max-width:1100px) { .bn-science { margin-inline:26px; padding:14px; }.bn-studio .bn-film-chapters { gap:8px; } }
+@media (max-width:760px) { .bn-science { margin:0 20px 22px; padding:14px; }.bn-studio .bn-film-chapters { grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px 10px; }.bn-studio .bn-film-play { grid-row:2; }.bn-studio .bn-film-note { grid-row:3; max-width:none; }.bn-science svg { min-width:480px; }.bn-science svg text { font-size:12px; }.bn-science-pair { font-size:11px; } }
+
+/* Keep scene selection beside the image, so choosing a chapter does not scroll
+   the playing video out of view while visitors read its explanation. */
+.bn-film-controls { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:start; gap:12px; margin:20px 28px 4px; }
+.bn-studio .bn-film-controls .bn-film-chapters { gap:9px; }
+.bn-studio .bn-film-controls .bn-film-chapters button { color:#a8bccd; font-size:10px; flex-direction:column; align-items:start; gap:4px; min-height:48px; }
+.bn-studio .bn-film-controls .bn-film-chapters button:hover,.bn-studio .bn-film-controls .bn-film-chapters button[aria-pressed=true] { color:#fff; }
+.bn-studio .bn-film-controls .bn-film-chapter-no { color:#93a9bd; }
+.bn-studio .bn-film-controls .bn-film-chapters button[aria-pressed=true] .bn-film-chapter-no { color:#f0a17a; }
+.bn-studio .bn-film-controls .bn-film-play { min-width:75px; background:#192c3e; color:#edf3f8; border-color:#516a81; border-radius:4px; }
+.bn-studio .bn-film-controls .bn-film-track { background:#374d61; }
+.bn-studio .bn-film-navigation { grid-template-columns:1fr; gap:10px; }
+.bn-studio .bn-film-navigation .bn-film-check { grid-row:1; }
+.bn-studio .bn-film-navigation .bn-film-note { grid-row:2; }
+@media(max-width:760px) { .bn-film-controls { margin:18px 24px 4px; grid-template-columns:minmax(0,1fr) auto; }.bn-studio .bn-film-controls .bn-film-chapters { grid-template-columns:repeat(4,minmax(0,1fr)); }.bn-studio .bn-film-controls .bn-film-play { grid-column:2; grid-row:1; font-size:10px; min-width:67px; } }
+
+.bn-diagram-hint { display:none; }
+@media(max-width:760px) { .bn-diagram-hint { display:block; margin-top:6px; font-size:10px; color:#97aec2; } }
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -12275,7 +12333,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
       <div class="bn-hero-copy">
         <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
         <h1 id="h-z-a" tabindex="-1">정확한 부품.<br><em>견고한 연결.</em></h1>
-        <p class="bn-hero-lead">플랜지에서 회전축까지, 연결의 시작은 사양입니다.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
+        <p class="bn-hero-lead">형상과 공차에서 재료와 표면처리까지.<br>필요한 체결부품을 찾고, BOM 그대로 견적을 요청하세요.</p>
         <div class="bn-actions"><a class="bn-btn" href="#products" data-go="products">제품 살펴보기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
         <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>
@@ -13006,37 +13064,36 @@ Object.entries(CAT_COLL).forEach(([k, c]) => INDEX.push({ t: c.ko, s: '모아 �
 /* Original pre-rendered assemblies. No remote player, tracking, or 3D dependency.
    The film is an illustration of applications, not a tightening procedure. */
 const BN_FILM_CHAPTERS = [
-  {start: 0, still: .3, label: '체결부품', en: 'FASTENER COLLECTION', title: '연결마다, 필요한 부품.', parts: '볼트 · 스터드 · 너트 · 와셔 · 핀 · 키 · 멈춤링', check: '형상과 적용 규격을 먼저 정합니다.', link: 'lib?topic=bolt-nut-washer'},
-  {start: 6, still: 8.7, label: '나사 맞물림', en: 'MATCHED THREADS', title: '같은 호칭. 같은 피치.', parts: 'M16×2 기본 나사형상 단면 · 회전과 전진을 같은 피치로 연결', check: '호칭 · 피치 · 미터/인치 · 나사 공차를 확인하세요.', link: 'lib?topic=thread-fit'},
-  {start: 10, still: 15.2, label: '플랜지', en: 'FLANGE CONNECTION', title: '나사와 좌면을 맞춥니다.', parts: '3/4"-10 UNC 스터드 · 헤비 육각너트 / 링 스패너', check: '길이 기준 · 너트 조합 · 플랜지와 가스켓 조건을 확인하세요.', link: 'lib?path=flange'},
-  {start: 17, still: 21.8, label: '보울 하우징', en: 'THREADED HOUSING', title: '하우징의 나사에 맞게.', parts: 'M12×1.75 렌치볼트 · 평와셔 / 라쳇 · 육각 비트', check: '머리 형상 · 나사 깊이 · 길이 · 공구 치수를 확인하세요.', link: 'lib?path=machine'},
-  {start: 23, still: 28.7, label: '샤프트', en: 'SHAFT & HUB', title: '키와 홈. 위치를 잡습니다.', parts: '평행 키 · 축용 멈춤링 · 평끝 멈춤나사 / 육각 렌치', check: '키 · 홈 · 멈춤링과 멈춤나사 끝 형상을 도면으로 확인하세요.', link: 'lib?path=machine'},
-  {start: 30, still: 34.5, label: '대형 볼팅', en: 'HYDRAULIC DRIVE', title: '구동과 반력을 함께.', parts: '1-1/2"-8 UN 스터드 · 헤비 육각너트 / 유압 토크렌치', check: '목표 토크는 윤활 · 마찰 · 가스켓 등 조인트 조건에 따라 정합니다.', link: 'lib?path=purchase'}
-];
-const BN_FILM_PARTS = [
-  ['육각볼트', 'HEX BOLT'], ['렌치볼트', 'SOCKET-HEAD CAP SCREW'], ['스터드볼트', 'STUD BOLT'],
-  ['헤비 육각너트', 'HEAVY HEX NUT'], ['평와셔', 'FLAT WASHER'], ['다웰핀', 'DOWEL PIN'],
-  ['평행 키', 'PARALLEL KEY'], ['축용 멈춤링', 'EXTERNAL RETAINING RING']
+  {start:0,still:3.8,label:'2D → 3D',en:'FROM DRAWING TO SOLID',title:'형상에서, 구매 사양으로.',parts:'볼트 · 너트 · 와셔 · 키 / 도면에서 입체로',check:'형상 · 규격 · 재질 · 표면처리를 함께 지정하세요.',link:'lib?topic=bolt-nut-washer'},
+  {start:6,still:9.5,label:'나사 공차',en:'THREAD SERIES & FIT',title:'UNC와 UNF. 공차까지.',parts:'3/4″-10 UNC · 3/4″-16 UNF / 1A·2A·3A와 1B·2B·3B',check:'호칭 · 산 수 · A/B 등급 · 도금 후 치수를 확인하세요.',link:'lib-t-inch-class'},
+  {start:12,still:15.5,label:'헤비너트',en:'HEAVY HEX GEOMETRY',title:'같은 호칭, 다른 너트.',parts:'2면폭과 높이 · 물림 길이 / RCSC 구조용 호칭 형상 예',check:'헤비 형상 · 높이 · 등급 · 지정 치수 규격을 확인하세요.',link:'lib-p-heavy-hex-nut'},
+  {start:18,still:20.9,label:'탄성·인장',en:'ELASTIC LOAD & RECOVERY',title:'늘어나고, 돌아옵니다.',parts:'탄성 영역의 인장 · 하중 제거 / 인장강도 기준값 별도 표시',check:'인장강도와 탄성 한도를 구분하고 성적서를 확인하세요.',link:'lib-t-yield-tensile'},
+  {start:24,still:26.7,label:'반복하중',en:'CYCLIC LOAD & FATIGUE',title:'한 번의 강도, 반복의 조건.',parts:'반복 인장과 S–N 개념도 / 피로한도는 시험 조건으로 확인',check:'평균응력 · 예압 · 전조 · 나사 골 · 환경을 확인하세요.',link:'lib-t-fatigue'},
+  {start:30,still:34.9,label:'경도 시험',en:'HARDNESS ON A COUPON',title:'작은 압흔으로 확인합니다.',parts:'별도 시편 압입 · 압입자 제거 · 남는 압흔 / 볼트는 그대로',check:'시험 척도 · 하중 · 측정 위치와 표면처리를 확인하세요.',link:'lib-t-hardness'},
+  {start:36,still:41.7,label:'표면처리',en:'PROTECTIVE LAYERS',title:'색보다, 보호층의 사양.',parts:'건조 · 습윤 · 염분 / 무코팅과 보호층의 부식 원리 개념도',check:'코팅 계통 · 두께 · 손상 · 나사 맞춤 · 시험 기준을 확인하세요.',link:'lib?path=purchase'}
 ];
 function bnFilmMarkup() {
   return `<figure class="bn-film">
-    <div class="bn-film-stage">
-      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-precision-poster.webp" aria-label="주요 체결부품과 플랜지·보울 하우징·샤프트 조립, 렌치·라쳇·유압 토크렌치의 3D 적용 장면">
-        <source data-src="media/boltnote-precision-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
-        <source data-src="media/boltnote-precision.webm" type="video/webm">
-        <source data-src="media/boltnote-precision.mp4" type="video/mp4">
-      </video>
-      <div class="bn-film-badge"><span aria-hidden="true"></span><span lang="en">FASTENERS IN MOTION</span></div>
-      <div class="bn-film-corner" aria-hidden="true">BOLTNOTE<br>APPLICATION SERIES</div>
+    <div class="bn-film-controls">
+    <div class="bn-film-chapters" style="--bn-chapter-count:${BN_FILM_CHAPTERS.length}" role="group" aria-label="체결부품 영상 장면 선택">${BN_FILM_CHAPTERS.map((chapter, i) => `<button type="button" data-bn-scene="${i}" aria-pressed="false" aria-controls="bn-film-video"><span class="bn-film-chapter-no" aria-hidden="true">0${i+1}</span><span>${chapter.label}</span><span class="bn-film-track" aria-hidden="true"><i></i></span></button>`).join('')}</div>
+    <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="규격·재료 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
     </div>
-    <figcaption class="bn-film-caption"><span class="bn-film-number" id="bn-film-number" aria-hidden="true">01 / 06</span><div><span id="bn-film-en" lang="en">ENGINEERED CONNECTIONS</span><strong id="bn-film-title">플랜지 · 보울 · 샤프트</strong><p id="bn-film-parts">체결부품과 공구의 적용 장면</p></div></figcaption>
+    <div class="bn-film-stage">
+      <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-engineering-poster.webp" aria-label="2D에서 3D로 변하는 체결부품, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
+        <source data-src="media/boltnote-engineering-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
+        <source data-src="media/boltnote-engineering.webm" type="video/webm">
+        <source data-src="media/boltnote-engineering.mp4" type="video/mp4">
+      </video>
+      <div class="bn-film-badge"><span aria-hidden="true"></span><span lang="en">ENGINEERING IN VIEW</span></div>
+      <div class="bn-film-corner" aria-hidden="true">BOLTNOTE<br>ENGINEERING SERIES</div>
+    </div>
+    <figcaption class="bn-film-caption"><span class="bn-film-number" id="bn-film-number" aria-hidden="true">01 / 07</span><div><span id="bn-film-en" lang="en">ENGINEERED CONNECTIONS</span><strong id="bn-film-title">형상 · 공차 · 재료 · 표면처리</strong><p id="bn-film-parts">규격과 시험을 이해하는 일곱 장면</p></div></figcaption>
+    ${bnSciencePanel()}
   </figure>`;
 }
 function bnFilmNavigation() {
   return `<div class="bn-wrap bn-film-navigation">
-    <div class="bn-film-chapters" style="--bn-chapter-count:${BN_FILM_CHAPTERS.length}" role="group" aria-label="체결부품 영상 장면 선택">${BN_FILM_CHAPTERS.map((chapter, i) => `<button type="button" data-bn-scene="${i}" aria-pressed="false" aria-controls="bn-film-video"><span class="bn-film-chapter-no" aria-hidden="true">0${i+1}</span><span>${chapter.label}</span><span class="bn-film-track" aria-hidden="true"><i></i></span></button>`).join('')}</div>
-    <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="조립 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
-    <p class="bn-film-note">공칭 형상과 체결 동작을 보여 주는 참고 장면입니다. 실제 조인트의 치수·공차·토크는 도면과 적용 규격으로 확인합니다.</p><a class="bn-film-check" id="bn-film-check" href="#lib?path=purchase" data-go="lib?path=purchase"><span>구매 전 확인</span><b id="bn-film-check-text">호칭 · 피치 · 길이 · 등급을 함께 확인하세요.</b><i aria-hidden="true">↗</i></a>
+    <p class="bn-film-note">규격·재료·시험 원리를 설명하는 개념 영상입니다. 변형·공차 폭·부식 진행은 확대 표현이며 실제 시험값이나 수명 예측이 아닙니다.</p><a class="bn-film-check" id="bn-film-check" href="#lib?path=purchase" data-go="lib?path=purchase"><span>구매 전 확인</span><b id="bn-film-check-text">호칭 · 피치 · 길이 · 등급을 함께 확인하세요.</b><i aria-hidden="true">↗</i></a>
   </div>`;
 }
 let bnFilmCleanup = null;
@@ -13055,26 +13112,26 @@ function bnFilmInit() {
   const updateToggle = () => {
     const playing = !video.paused && !video.ended;
     root.dataset.playing = String(playing);
-    toggle.setAttribute('aria-label', `조립 영상 ${playing ? '일시정지' : '재생'}`);
+    toggle.setAttribute('aria-label', `규격·재료 영상 ${playing ? '일시정지' : '재생'}`);
     toggle.innerHTML = `<span aria-hidden="true">${playing ? 'Ⅱ' : '▶'}</span><span>${playing ? '일시정지' : '재생'}</span>`;
   };
   const updateScene = () => {
     const posterOnly = video.readyState === 0 && pendingSeek === null;
-    const time = posterOnly ? BN_FILM_CHAPTERS.at(-1).still : video.currentTime;
+    const time = posterOnly ? BN_FILM_CHAPTERS[0].still : video.currentTime;
     const index = BN_FILM_CHAPTERS.reduce((current, chapter, i) => time >= chapter.start ? i : current, 0);
     const chapter = BN_FILM_CHAPTERS[index];
     const checklist=root.querySelector('#bn-film-check');
     checklist.href='#'+chapter.link;checklist.dataset.go=chapter.link;
     root.querySelector('#bn-film-check-text').textContent=chapter.check;
     root.dataset.scene = String(index);
-    root.querySelector('#bn-film-number').textContent = posterOnly ? '미리보기' : `0${index+1} / 06`;
-    const part = BN_FILM_PARTS[Math.min(7, Math.floor(time / (6 / 8)))];
-    root.querySelector('#bn-film-en').textContent = index === 0 ? part[1] : chapter.en;
-    root.querySelector('#bn-film-title').textContent = index === 0 ? part[0] : chapter.title;
-    root.querySelector('#bn-film-parts').textContent = index === 0 ? '주요 품목을 하나씩 살펴보세요.' : chapter.parts;
+    root.querySelector('#bn-film-number').textContent = posterOnly ? '미리보기' : `0${index+1} / 0${BN_FILM_CHAPTERS.length}`;
+    root.querySelector('#bn-film-en').textContent = chapter.en;
+    root.querySelector('#bn-film-title').textContent = chapter.title;
+    root.querySelector('#bn-film-parts').textContent = chapter.parts;
+    bnScienceUpdate(root,index,time);
     buttons.forEach((button, i) => {
       button.setAttribute('aria-pressed', String(!posterOnly && i === index));
-      const end = BN_FILM_CHAPTERS[i+1]?.start || video.duration || 36;
+      const end = BN_FILM_CHAPTERS[i+1]?.start || video.duration || 42;
       const progress = posterOnly ? 0 : Math.max(0, Math.min(1, (time - BN_FILM_CHAPTERS[i].start)/(end-BN_FILM_CHAPTERS[i].start)));
       button.style.setProperty('--film-progress', `${progress*100}%`);
     });
@@ -13099,7 +13156,7 @@ function bnFilmInit() {
     video.setAttribute('aria-busy', String(active));
     const badge = root.querySelector('.bn-film-badge > span:last-child');
     badge.lang = active ? 'ko' : 'en';
-    badge.textContent = active ? '선택한 장면을 불러옵니다' : 'FASTENERS IN MOTION';
+    badge.textContent = active ? '선택한 장면을 불러옵니다' : 'ENGINEERING IN VIEW';
   };
   const loadFile = () => {
     if (filePromise || fileURL) return;
@@ -13127,6 +13184,39 @@ function bnFilmInit() {
       root.querySelector('#bn-film-parts').textContent = '장면을 불러오지 못했습니다. 장면 버튼을 다시 눌러 주세요.';
     });
   };
+  root.querySelector('#bn-science').addEventListener('click', event => {
+    const button=event.target.closest('[data-bn-class]');
+    if(!button) return;
+    bnScienceState.threadClass=button.dataset.bnClass;
+    root.querySelector('#bn-science-content').dataset.chapter='';
+    updateScene();
+    root.querySelector(`[data-bn-class="${bnScienceState.threadClass}"]`)?.focus({preventScroll:true});
+  },eventOptions);
+  root.querySelector('#bn-science').addEventListener('change', event => {
+    if(event.target.id==='bn-science-material') {
+      bnScienceState.material=event.target.value;
+      root.querySelector('#bn-science-content').dataset.chapter='';updateScene();
+      root.querySelector('#bn-science-material')?.focus({preventScroll:true});
+    }
+    if(event.target.id==='bn-science-environment') {
+      const environment=BN_SCIENCE_ENV[Number(event.target.value)];
+      pendingSeek=desired?environment.at:environment.still;
+      if(fileURL && video.currentSrc===fileURL && video.readyState>=1) {
+        video.currentTime=pendingSeek;pendingSeek=null;
+      } else loadFile();
+    }
+  },eventOptions);
+  // Synchronize schematic cursors with decoded frames, never a free-running timer.
+  let frameCallback=null;
+  const frameUpdate=()=>{
+    if(abort.signal.aborted || video.paused) return;
+    updateScene();
+    frameCallback=video.requestVideoFrameCallback(frameUpdate);
+  };
+  if(video.requestVideoFrameCallback) video.addEventListener('play',()=>{
+    if(frameCallback!==null) video.cancelVideoFrameCallback(frameCallback);
+    frameCallback=video.requestVideoFrameCallback(frameUpdate);
+  },eventOptions);
   video.addEventListener('loadedmetadata', () => {
     if (pendingSeek !== null) {
       if (!fileURL || video.currentSrc !== fileURL) { loadFile(); return; }
@@ -13145,7 +13235,7 @@ function bnFilmInit() {
     if (desired) { attach(); play(); } else { video.pause(); }
   }, eventOptions);
   buttons.forEach((button, index) => button.addEventListener('click', () => {
-    // A paused/reduced-motion visitor gets a representative tool/assembly still.
+    // A paused/reduced-motion visitor gets a representative engineering still.
     pendingSeek = desired ? BN_FILM_CHAPTERS[index].start + .1 : BN_FILM_CHAPTERS[index].still;
     if (fileURL && video.currentSrc === fileURL && video.readyState >= 1) {
       video.currentTime = pendingSeek; pendingSeek = null; play();
@@ -13176,7 +13266,7 @@ function bnFilmInit() {
   }, {threshold: .15});
   if (plantVideo) plantIntersection.observe(plantVideo);
   const cleanup = () => {
-    abort.abort(); intersection.disconnect(); plantIntersection.disconnect(); removed.disconnect();
+    abort.abort(); if(frameCallback!==null) video.cancelVideoFrameCallback?.(frameCallback); intersection.disconnect(); plantIntersection.disconnect(); removed.disconnect();
     plantVideo?.pause();
     video.pause();
     video.removeAttribute('src');
@@ -13191,6 +13281,77 @@ function bnFilmInit() {
   bnFilmCleanup = cleanup;
   updateScene();
   updateToggle();
+}
+/* ── v7_science.js ── */
+/* Engineering explanations beside the original film. These are schematic
+   animations, not FEA, measured S-N curves, or salt-spray hour predictions.
+   Numerical strength/envelope references reuse the reviewed library data. */
+const BN_SCIENCE_MATERIALS = [
+  {id:'8.8',name:'탄소·합금강 / 8.8',strength:800,basis:'공칭 인장강도 · ISO 강도 구분의 의미',source:'lib-pc-steel'},
+  {id:'10.9',name:'탄소·합금강 / 10.9',strength:1000,basis:'공칭 인장강도 · ISO 강도 구분의 의미',source:'lib-pc-steel'},
+  {id:'A4-80',name:'스테인리스 / A4-80',strength:800,basis:'최소 인장강도 · ISO 3506-1',source:'lib-pc-a2-a4'}
+];
+const BN_SCIENCE_ENV = [
+  {name:'건조 실내',at:36.1,still:37.7,desc:'수분 노출이 적은 조건을 표현합니다. 검정색이라는 이유만으로 흑착색인지 판단할 수는 없습니다.'},
+  {name:'습윤·결로',at:38.1,still:39.7,desc:'습윤 노출과 보호층 결함을 표현합니다. 흑착색은 방청유·실링 유지 여부를, 아연계는 백청과 기재의 적청을 구분해 확인합니다.'},
+  {name:'염분 노출',at:40.1,still:41.7,desc:'염분과 보호층 결함을 표현합니다. 해안·비말 환경은 코팅 계통·두께·전처리·손상과 실제 노출 조건을 함께 검토합니다.'}
+];
+let bnScienceState={threadClass:'2',material:'8.8'};
+function bnSciencePanel() {
+  return `<div class="bn-science" id="bn-science"><div class="bn-science-heading"><span lang="en">ENGINEERING VIEW</span><span id="bn-science-kind">개념 시각화</span></div><div id="bn-science-content"></div></div>`;
+}
+const bnScienceSVG = (label,inside) => `<div class="bn-science-diagram" tabindex="0" aria-label="${esc(label)} 상세 그림"><svg viewBox="0 0 480 150" role="img" aria-label="${esc(label)}" xmlns="http://www.w3.org/2000/svg">${inside}</svg></div><span class="bn-diagram-hint">↔ 상세 그림은 좌우로 이동해 보세요.</span>`;
+function bnScienceSmooth(t,a,b) { const q=Math.max(0,Math.min(1,(t-a)/(b-a)));return q*q*(3-2*q); }
+function bnScienceFatigueLoad(t) {
+  if(t<.7 || t>=5.3) return 0;
+  return bnScienceSmooth(t,.7,1.2)*(1-bnScienceSmooth(t,4.8,5.3))*(.20+.12*Math.sin(2*Math.PI*(t-.7)/.6));
+}
+function bnScienceCyclicPath() {
+  return Array.from({length:145},(_,i)=>{const t=i/24;return `${i?'L':'M'}${(31+t/6*192).toFixed(2)} ${(126-bnScienceFatigueLoad(t)*180).toFixed(2)}`;}).join(' ');
+}
+function bnScienceContent(index) {
+  const mat=BN_SCIENCE_MATERIALS.find(m=>m.id===bnScienceState.material)||BN_SCIENCE_MATERIALS[0];
+  const select=`<label class="bn-science-select">재질·등급 <select id="bn-science-material">${BN_SCIENCE_MATERIALS.map(m=>`<option value="${m.id}"${m.id===mat.id?' selected':''}>${m.name}</option>`).join('')}</select></label>`;
+  if(index===0) return `<div class="bn-science-drawing"><span>01 / 2D DRAWING</span><i aria-hidden="true">→</i><span>02 / SOLID GEOMETRY</span><i aria-hidden="true">→</i><span>03 / PURCHASE SPEC</span></div><p>도면의 형상에 깊이를 더합니다. 볼트·너트·와셔·키의 규격, 재질, 표면처리는 별도로 지정합니다.</p>`;
+  if(index===1) {
+    const c=bnScienceState.threadClass;
+    return `<div class="bn-science-controls"><div class="bn-science-segments" role="group" aria-label="인치 나사 공차 등급">${['1','2','3'].map(n=>`<button type="button" data-bn-class="${n}" aria-pressed="${n===c}">${n}A / ${n}B</button>`).join('')}</div><span class="bn-science-chip">A 수나사 · B 암나사</span></div>${bnScienceSVG('나사 등급별 유효지름 공차대 개념도',`<line x1="236" y1="22" x2="236" y2="125" class="bn-sv-datum"/><text x="245" y="20">기본 유효지름</text><text x="14" y="57">${c}A</text><rect id="bn-tolerance-a" x="100" y="37" width="108" height="28" rx="2" class="bn-sv-orange"/><text x="14" y="110">${c}B</text><rect id="bn-tolerance-b" x="236" y="90" width="108" height="28" rx="2" class="bn-sv-blue"/><text x="310" y="57" id="bn-thread-allowance">수나사 여유 있음</text>`)}<div class="bn-science-pair"><b>3/4″-10 UNC</b><b>3/4″-16 UNF</b></div><p id="bn-thread-note">공차대 폭과 여유는 설명을 위해 과장했습니다. 실제 한계치·물림 길이·도금 후 치수는 적용 규격과 게이지로 확인합니다.</p><p class="bn-science-status">2A 참조 예 · 3/4″-10 UNC 도금 전 외경 상한 0.7482″<br>기본 0.7500″와의 차이 0.0018″ = 45.72 µm</p><p>이 값은 2A 외경 상한의 예이며 공차대 전체 폭이 아닙니다. 실제 유효지름·리드·도금 후 치수는 별도로 확인합니다.</p>`;
+  }
+  if(index===2) return `${bnScienceSVG('일반 육각과 헤비 육각의 형상 확인 기준',`<text x="34" y="28">일반 육각</text><text x="270" y="28">헤비 육각 / 3/4″</text><path d="M43 59 H133 V106 H43 Z" class="bn-sv-outline"/><path d="M279 43 H395 V106 H279 Z" class="bn-sv-outline bn-sv-heavy"/><path d="M408 43 V106 M404 43 H415 M404 106 H415" class="bn-sv-datum"/><text x="20" y="138">높이: 적용 규격 확인</text><text x="253" y="138">호칭 높이 0.734″ ≈ 18.64 mm</text>`)}<p>헤비는 2면폭과 높이를 함께 확인합니다. 오른쪽은 RCSC 2025 구조용 헤비너트의 호칭 형상 예입니다. 일반 너트 높이는 개념도로, 실제 치수 비교값이 아닙니다. 플랜트용은 지정 치수 규격을 별도로 확인합니다.</p>`;
+  if(index===3) return `${select}<div class="bn-science-charts">${bnScienceSVG('응력과 변형률: 탄성 영역의 하중 및 제거',`<path d="M32 20 V126 H235" class="bn-sv-axis"/><text x="36" y="15">응력 · 개념</text><text x="175" y="145">변형률</text><path d="M32 126 L157 34" class="bn-sv-line"/><path d="M157 34 L207 12" class="bn-sv-unknown"/><circle id="bn-elastic-dot" cx="32" cy="126" r="6" class="bn-sv-orange"/><text x="165" y="51">선형 영역 밖은</text><text x="165" y="68">표현하지 않습니다</text><text x="280" y="22">인장강도 기준값</text><rect x="281" y="52" width="${mat.strength/7}" height="25" rx="2" class="bn-sv-orange"/><text x="280" y="103">${mat.id} · ${mat.strength.toLocaleString()} MPa</text><text x="280" y="127">${mat.id==='A4-80'?'최소값':'공칭값'} / 시험 결과 아님</text>`)}<p>${mat.basis}. 공칭값과 최소값은 같은 판정 기준이 아닙니다. 강도 구분만으로 재질이나 실제 탄성 한도를 확정하지 않습니다.</p></div><p id="bn-elastic-status" class="bn-science-status">무하중 · 원래 형상</p><p>변형을 크게 표현한 탄성 개념도입니다. 인장강도·0.2% 내력을 탄성 한도와 동일하게 취급하지 않으며, 실제 시험곡선은 성적서로 확인합니다.</p>`;
+  if(index===4) return `${select}${bnScienceSVG('반복 하중과 S-N 피로 시험곡선 개념',`<path d="M30 20 V126 H231 M273 20 V126 H461" class="bn-sv-axis"/><text x="31" y="15">반복 인장하중</text><path d="${bnScienceCyclicPath()}" class="bn-sv-line"/><circle id="bn-fatigue-dot" cx="31" cy="91" r="5" class="bn-sv-orange"/><text x="163" y="146">시간 · 개념</text><text x="275" y="15">응력 진폭 · 개념</text><path d="M281 39 Q340 97 449 109" class="bn-sv-unknown"/><text x="301" y="66">S–N 곡선: 시험자료 필요</text><text x="328" y="146">반복 횟수 · log N</text>`)}<p>${esc(mat.name)}도 인장강도만으로 피로한도를 정할 수 없습니다. 평균응력·나사 골·전조·예압·굽힘·환경을 함께 봅니다. 점선은 개념도이며 등급별 측정곡선이나 수명 보장이 아닙니다.</p><p class="bn-science-status">균열·파괴 없이 반복 변형 후 복귀</p><p>이번 장면은 제한된 반복하중의 표현입니다. 탄성 범위 안의 하중도 반복되면 피로 손상을 일으킬 수 있습니다.</p>`;
+  if(index===5) return `${bnScienceSVG('경도 시험: 별도 시편에 압흔을 남겨 측정',`<path d="M36 101 H239 V124 H36 Z" class="bn-sv-outline"/><path d="M132 20 V55 L114 65 L150 65 L132 55" class="bn-sv-line"/><path d="M36 101 H120 Q132 121 144 101 H239" class="bn-sv-unknown"/><text x="270" y="40">별도 시편</text><text x="270" y="66">압입 → 제거 → 압흔 확인</text><text x="270" y="97">척도·시험력·측정 위치 확인</text>`)}<p>볼트 옆 별도 시편에 압입합니다. 실제 경도시험은 국부적인 영구 압흔을 이용하므로, 압입자를 뺀 뒤에도 시편의 자국은 남습니다. 볼트 자체의 탄성 복귀 장면과 구분했습니다.</p><p class="bn-science-status">HRC · HBW · HV — 규격이 정한 방법으로 판정</p>`;
+  return `<div class="bn-science-controls"><label class="bn-science-select">노출 환경 <select id="bn-science-environment">${BN_SCIENCE_ENV.map((e,i)=>`<option value="${i}">${e.name}</option>`).join('')}</select></label><span class="bn-science-chip" id="bn-exposure-label">건조 실내</span></div><div class="bn-coating-key"><span><i class="bare"></i>무코팅</span><span><i class="blue"></i>파랑</span><span><i class="white"></i>하양</span><span><i class="black"></i>검정</span></div><p id="bn-coating-environment-note"></p><p class="bn-science-status">시간 압축 개념도 · 실사용 기간 및 부식률 아님</p><p>세 색은 보호층의 시각적 구분입니다. 같은 부식 진행을 적용해 색상별 성능 순위를 만들지 않았습니다. 손상·수분 노출에 따른 기재 부식 원리를 보여줍니다.</p><details class="bn-science-details"><summary>실제 코팅을 고를 때 확인할 것</summary><dl><dt>파란색의 예: PTFE계 상도</dt><dd>색만으로 PTFE를 식별하지 않습니다. 전처리·하도·두께·밀착·마찰 특성·온도와 화학 환경을 함께 지정합니다.</dd><dt>백색·은색의 예: 아연계</dt><dd>전기아연·용융아연·아연플레이크를 구분합니다. 희생 보호, 백청·적청 기준, 도금 두께와 나사 맞춤을 확인합니다.</dd><dt>검정색의 예: 흑착색 + 방청유</dt><dd>검정 아연계나 다른 코팅일 수도 있습니다. 흑착색은 방청유·실링 상태를 확인하고, 색만으로 해안 환경 적합성을 정하지 않습니다.</dd></dl><p>염수분무 시간은 실제 옥외 수명으로 환산하지 않습니다. 코팅 사양·시험 방법·판정 기준·시험성적서를 비교합니다.</p></details>`;
+}
+function bnScienceUpdate(root,index,time) {
+  const panel=root.querySelector('#bn-science-content');
+  if(panel.dataset.chapter!==String(index)) {
+    panel.dataset.chapter=String(index);panel.innerHTML=bnScienceContent(index);
+  }
+  const local=Math.max(0,time-BN_FILM_CHAPTERS[index].start);
+  const smooth=(t,a,b)=>{const q=Math.max(0,Math.min(1,(t-a)/(b-a)));return q*q*(3-2*q);};
+  if(index===1) {
+    const c=bnScienceState.threadClass;
+    const widths={1:136,2:98,3:58};const width=widths[c],end=c==='3'?236:211;
+    const ext=panel.querySelector('#bn-tolerance-a');ext.setAttribute('x',end-width);ext.setAttribute('width',width);
+    panel.querySelector('#bn-tolerance-b').setAttribute('width',width);
+    panel.querySelector('#bn-thread-allowance').textContent=c==='3'?'3A 여유 없음':'1A·2A: 같은 여유';
+    panel.querySelector('#bn-thread-note').textContent=`${c==='1'?'1등급은 넓은 공차대':c==='2'?'2등급은 일반 체결용':'3등급은 좁은 공차대'}를 보여줍니다. 폭·틈은 과장한 개념도입니다. B1.1의 일반 등급은 A(수)·B(암)이며 C는 없습니다. 실제 한계치·도금 후 치수는 규격과 게이지로 확인합니다.`;
+  }
+  if(index===3) {
+    const load=.65*(smooth(local,.7,2.8)-smooth(local,3.4,5.3));
+    const dot=panel.querySelector('#bn-elastic-dot');dot.setAttribute('cx',32+load*156);dot.setAttribute('cy',126-load*115);
+    panel.querySelector('#bn-elastic-status').textContent=load<.001?'무하중 · 원래 형상':local<3.4?'탄성 영역의 하중 증가 · 변형 확대 표현':'하중 제거 · 원래 형상으로 복귀';
+  }
+  if(index===4) {
+    const dot=panel.querySelector('#bn-fatigue-dot');dot.setAttribute('cx',31+Math.min(6,local)/6*192);dot.setAttribute('cy',126-bnScienceFatigueLoad(local)*180);
+  }
+  if(index===6) {
+    const env=Math.min(2,Math.floor(local/2));
+    panel.querySelector('#bn-science-environment').value=String(env);
+    panel.querySelector('#bn-exposure-label').textContent=BN_SCIENCE_ENV[env].name;
+    panel.querySelector('#bn-coating-environment-note').textContent=BN_SCIENCE_ENV[env].desc;
+  }
 }
 /* ── v8_lib.js ── */
 /* ── v8_lib.js: 체결부품 규격 사전 (2026-10, 대표 요청: 엔지니어 고객이 믿고 찾아오는 사전) ──
