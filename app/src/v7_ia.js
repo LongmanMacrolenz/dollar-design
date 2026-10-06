@@ -578,7 +578,7 @@ function iaFamAct(f) {
   if (f.p === 'A') return `<a class="btn sm" href="#c-${f.id}" data-go="c-${f.id}">보기 →</a>`;
   return `<a class="btn sm" href="#c-${f.id}" data-go="c-${f.id}" data-ia-spec="1">사양 적어 담기</a>`;
 }
-const iaFamCard = f => `<div class="ia-fam"><span class="th">${iaTh(iaThKey(f), 64, 42)}</span>
+const iaFamCard = f => `<div class="ia-fam"><span class="th${shapeHas(f.id) ? ' ph' : ''}">${shapeHas(f.id) ? shapeThumb(f.id) : iaTh(iaThKey(f), 64, 42)}</span>
   <span class="nm"><a href="#${f.route || 'c-' + f.id}" data-go="${f.route || 'c-' + f.id}">${esc(f.ko)}</a><span class="en" lang="en">${esc(f.en)}</span></span>
   <span class="meta">${iaSysTag(f)}<span>${iaStdShort(f)}</span></span>
   <span class="act">${iaFamPriced(f) ? `<span class="pv">${PRICE_LAB()} 확인 품목</span>` : '<span class="tag q">견적</span>'}${iaFamAct(f)}</span></div>`;
@@ -774,7 +774,7 @@ V.c = id => {
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';
   const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag wait">준비 중</span></div><p class="note warn small"><span class="nk">준비 중</span><span>CAD 준비 중 — 이 품목은 원문 대조 치수와 CAD 생성기를 맞춘 뒤 STEP·DXF를 드립니다. 견적 요청 시 도면으로 회신합니다.</span></p></section>`}</div>` : '';
   return sheet(zone('A', 'z-a', shd({ trail: [['제품', 'products'], ...(t ? [[t.ko, 't-' + t.id]] : []), [f.ko]], no: 'P', title: `${esc(f.ko)}<span class="h-en" lang="en">${esc(f.en)}${f.enStd ? ` <span class="tag en-std">${esc(f.enStd)}</span>` : ''}</span>`, p: `${sub ? esc(sub.ko) + ' · ' : ''}${mode}${f.use ? ' · ' + esc(f.use) : ''}`, right: stdrow, below: safety + na })
-    + `<div class="fam ia-cfam"><div class="fam-l">${dw ? `<div class="dbox" id="ia-draw">${dw}</div>` : ''}<dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
+    + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div>${dw ? `<div class="dbox" id="ia-draw">${dw}</div>` : ''}<dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
       <div class="fam-r">${iaCfgHTML(f, s)}</div></div>`, 'ia-z')
     + (f.p === 'A' ? zone('B', 'z-b', `<div class="listbar"><h2 id="h-z-b" tabindex="-1">치수표</h2></div>${iaDimsHTML(f, s)}`) : '')
     + zone(f.p === 'A' ? 'C' : 'B', f.p === 'A' ? 'z-c' : 'z-b', `<div class="listbar"><h2>서류·납기</h2></div><p class="small">${esc(CAD_TRUST_COPY ? CAD_TRUST_COPY.always.ko : '')}</p><p class="small muted">재고를 두지 않습니다. 주문마다 국내 도매처에서 조달하고, 납기는 공급처를 확인한 뒤 견적서에 적습니다.</p>`));
@@ -782,13 +782,14 @@ V.c = id => {
 V.after.c = id => {
   const f = CAT_F[id]; if (!f) return;
   const s = iaSelOf(f);
+  shapeShow(f.id, f.ko, s.mat, s.fin);
   const upd = (redrawDw = true) => {
     const o = $('ia-spec-out'); if (o) o.textContent = iaSpecText(f, s);
     if (redrawDw) { const d = $('ia-draw'), svg = iaDrawSvg(f, s); if (d && svg) d.innerHTML = svg; document.querySelectorAll('[data-ia-size]').forEach(tr => { const on = tr.dataset.iaSize === s.size; tr.classList.toggle('on', on); if (on) tr.setAttribute('aria-current', 'true'); else tr.removeAttribute('aria-current'); }); iaCadMount(f, s); }
   };
   view().addEventListener('change', e => {
     const k = { 'ia-size': 'size', 'ia-len': 'L', 'ia-mat': 'mat', 'ia-fin': 'fin', 'ia-unit': 'unit' }[e.target.id];
-    if (k) { s[k] = e.target.value === '__free' ? '' : e.target.value; upd(k === 'size' || k === 'L'); }
+    if (k) { s[k] = e.target.value === '__free' ? '' : e.target.value; upd(k === 'size' || k === 'L'); if (k === 'mat' || k === 'fin') { state.shapePick[f.id] = null; shapeShow(f.id, f.ko, s.mat, s.fin); } }
     if (e.target.id === 'ia-qty') { s.qty = Math.max(1, Math.round(+e.target.value || 1)); e.target.value = s.qty; }
   });
   view().addEventListener('input', e => { if (e.target.id === 'ia-memo' || (e.target.id === 'ia-len' && e.target.tagName === 'INPUT')) { s[e.target.id === 'ia-memo' ? 'memo' : 'L'] = e.target.value.trim(); upd(e.target.id === 'ia-len'); } });

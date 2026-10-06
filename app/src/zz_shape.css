@@ -1,0 +1,46 @@
+/* 품목 형상 이미지 (v9_shape.js) ─ 참고용 렌더링 · 마감 색 칩 · 품목 카드 썸네일 */
+.shp { margin: 0; max-width: 560px; border: 1px solid var(--hair); background: var(--sheet); }
+.shp[hidden] { display: none; }
+.shp-img { aspect-ratio: 4 / 3; background: #E9ECEF; }
+.shp-img img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.shp-looks { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 9px 10px 4px; border-top: 1px solid var(--hair-2); }
+.shp-looks .lab { margin-right: 4px; }
+.shp-looks .chipbtn { font-family: var(--f-sans); }
+.shp figcaption { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px 9px; font-size: var(--fs-sm); line-height: 1.5; color: var(--ink-3); }
+.shp-looks + figcaption { padding-top: 5px; }
+.shp:not(:has(.shp-looks)) figcaption { border-top: 1px solid var(--hair-2); }
+.shp figcaption b { color: var(--ink-2); font-weight: 700; }
+#shp-slot:empty { display: none; }
+/* 품목 카드 썸네일: 사진이 있으면 선화 대신 4:3 사진 */
+.ia-fam .th.ph { width: 96px; height: 72px; padding: 0; overflow: hidden; background: #E9ECEF; }
+.ia-fam .th.ph img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ia-fam:has(.th.ph) { grid-template-columns: 96px minmax(0, 1fr); }
+/* 좁은 화면: 사양 칸(.fam-r)이 먼저 오는 기존 배치에서, 형상 이미지가 있으면 이미지를 맨 위로 */
+@media (max-width: 1020px) {
+  .fam:has(> .fam-l > #shp-slot:not(:empty)) { gap: 20px; }
+  .fam-l:has(> #shp-slot:not(:empty)) { display: contents; }
+  .fam-l > #shp-slot:not(:empty) { order: -2; }
+  .shp { max-width: none; }
+}
+@media (max-width: 680px) {
+  .shp figcaption { font-size: var(--fs-cap); }
+}
+/* 3D가 첫 화면. 위의 탭(3D 형상 | 2D 치수 도면)과 3D 그림 위 '2D 치수 보기 →' 단추로 치수 도면을 한 번에 연다 */
+.shp-tabs { min-width: 0; }
+.shp-tb { display: flex; max-width: 560px; margin-bottom: 8px; border: 1px solid var(--ink); border-radius: 6px; overflow: hidden; }
+.shp-tab { flex: 1 1 0; min-height: 40px; padding: 8px 10px; border: 0; background: var(--sheet); color: var(--ink-2); font-family: var(--f-sans); font-size: var(--fs-sm); font-weight: 700; cursor: pointer; }
+.shp-tab + .shp-tab { border-left: 1px solid var(--ink); }
+.shp-tab:hover { color: var(--ink); background: var(--sheet-2); }
+.shp-tab.on { background: var(--ink); color: var(--sheet); }
+.shp-tabs[data-tab="2d"] > .shp-tb { max-width: none; }   /* 2D 도면 칸은 3D 그림보다 넓다: 탭 줄도 같은 너비로 */
+.shp-tabs.only2d > .shp-tb { display: none; }
+.shp-img { position: relative; }
+.shp-go2d { display: inline-flex; align-items: center; position: absolute; right: 10px; bottom: 10px; min-height: 36px; padding: 7px 13px; border: 0; border-radius: 6px; background: rgba(23, 32, 42, .9); color: #FBFCFA; font-family: var(--f-sans); font-size: var(--fs-sm); font-weight: 700; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .25); }
+.shp-go2d:hover { background: var(--ink); }
+@media (max-width: 1020px) {
+  .fam:has(> .fam-l > .shp-tabs) { gap: 20px; }
+  .fam-l:has(> .shp-tabs) { display: contents; }
+  .fam-l > .shp-tabs { order: -2; }
+  .fam-l > .shp-tabs.only2d { order: 0; }
+  .shp-tb { max-width: none; }
+}
