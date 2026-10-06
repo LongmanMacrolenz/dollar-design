@@ -1,0 +1,4 @@
+Pillow==12.3.0
+cryptography==50.0.0
+sherpa-onnx==1.12.39
+numpy==2.4.6
