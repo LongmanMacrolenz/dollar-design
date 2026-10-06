@@ -7,7 +7,7 @@
   "assets": {
     "directory": "./docs",
     "binding": "ASSETS",
-    "run_worker_first": ["/api/*", "/admin", "/admin/"]
+    "run_worker_first": ["/api/*", "/admin", "/admin/", "/googlee7950c29a2b5a35e.html", "/naver873356c1ec7239a24ea882fae7172928.html"]
   },
   "durable_objects": {
     "bindings": [{"name": "PROCUREMENT", "class_name": "ProcurementStore"}]
