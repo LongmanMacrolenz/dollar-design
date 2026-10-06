@@ -64,6 +64,11 @@ def validate(r):
     srcs = r.get("sources") or []
     if len({s.get("site") for s in srcs if s.get("site")}) < 3:
         e.append("서로 다른 사이트 출처가 3곳 미만")
+    # 검증 담당이 서로 베낀 사이트를 묶은 결과(clusters)가 있으면, 묶음 기준으로도 3곳 이상이어야 한다
+    if r.get("clusters") is not None and len(r["clusters"]) < 3:
+        e.append("서로 독립된 출처 묶음이 3곳 미만")
+    if r.get("clusters") is not None and int((r.get("verification") or {}).get("cell_support_min", 0)) < 3:
+        e.append("검증된 최소 일치 출처가 3곳 미만")
     for k in ("standard", "shape_hint", "role_map"):
         if not r.get(k):
             e.append(f"{k}가 비었습니다")
