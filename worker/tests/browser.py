@@ -73,6 +73,85 @@ def check_channel(page, BASE, OUT):
 CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
+def check_sales(page, BASE, OUT):
+  """Sales shows an address and RFQ example without launching a mail client."""
+  page.context.grant_permissions(['clipboard-read','clipboard-write'])
+  page.emulate_media(reduced_motion='reduce')
+  page.goto(BASE+'/#list');page.locator('#sales-copy-address').wait_for()
+  requests=[];page.on('request',lambda r:requests.append(r.url) if '/api/' in r.url else None)
+  for width,height in [(320,668),(390,844),(768,1024),(1440,900)]:
+   page.set_viewport_size({'width':width,'height':height});page.evaluate('document.fonts.ready')
+   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
+   button=page.locator('#sales-copy-address').bounding_box();assert button['y']+button['height']<=height,(width,button)
+   assert page.locator('.sales-page input:visible,.sales-page textarea:visible,.sales-page select:visible').count()==0
+   assert page.locator('#sb').count()==0
+  assert page.locator('#sales-email').inner_text()=='a8wlhg942@naver.com'
+  assert page.locator('.sales-page a[href^="mailto:"]').count()==0
+  assert page.locator('#sales-example-heading').inner_text()=='RFQ 이메일 예시'
+  subject=page.locator('#sales-example-subject').inner_text();assert subject.startswith('[RFQ] Q-')
+  body=page.locator('#sales-example-body').text_content()
+  assert '단가, 공급 가능 수량, 납기, 서류 제공 범위' in body
+  assert '모든 항목을 채울 필요는 없습니다' in page.locator('.sales-example-heading').inner_text()
+  assert page.locator('.sales-chat a').get_attribute('href')==CHANNEL_CHAT
+  pages=len(page.context.pages)
+  page.locator('#sales-copy-address').click();page.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
+  assert page.evaluate('navigator.clipboard.readText()')=='a8wlhg942@naver.com'
+  page.locator('[data-sales-copy=subject]').click();page.locator('#sales-example-status').filter(has_text='제목을 복사').wait_for()
+  assert page.evaluate('navigator.clipboard.readText()')==subject
+  page.locator('.sales-example [data-sales-copy=body]').click();page.locator('#sales-example-status').filter(has_text='본문 전체를 복사').wait_for()
+  assert page.evaluate('navigator.clipboard.readText()')==body
+  assert page.evaluate('window.__purchaseMetrics.handoff>=1')
+  assert page.url.endswith('#list') and len(page.context.pages)==pages
+  page.locator('#sales-memo-details summary').click()
+  memo='RFQ 원문 그대로\n스터드 24 EA · 대체 불가\n<img src=x onerror=alert(1)> & 특수요건'
+  page.locator('#sales-memo').fill(memo)
+  assert memo in page.locator('#sales-example-body').text_content()
+  page.locator('#sales-memo-details [data-sales-copy=body]').click();page.locator('#sales-memo-status').filter(has_text='본문 전체를 복사').wait_for()
+  text=page.evaluate('navigator.clipboard.readText()');assert memo in text
+  assert page.locator('.sales-page img').count()==0
+  with page.expect_download() as dl:page.locator('.sales-example [data-sales-download]').click()
+  dl.value.save_as(OUT/'sales-memo.txt');assert (OUT/'sales-memo.txt').read_text()==text
+  long_memo=('고객 원문 RFQ · 특수요건·개정·수량 확인\n'*120)+'END-요구사항-보존'
+  page.locator('#sales-memo').fill(long_memo)
+  page.locator('.sales-example [data-sales-copy=body]').click()
+  copied=page.evaluate('navigator.clipboard.readText()');assert long_memo in copied and copied.endswith('END-요구사항-보존')
+  assert long_memo in page.locator('#sales-example-body').text_content()
+  assert page.evaluate('(memo)=>!JSON.stringify(localStorage).includes(memo)',long_memo)
+  # Clipboard API fallback and blocked copying preserve the complete body.
+  page.evaluate('window.__salesClipboard=navigator.clipboard;Object.defineProperty(navigator,"clipboard",{value:undefined,configurable:true})')
+  page.locator('.sales-example [data-sales-copy=body]').click()
+  assert page.evaluate('window.__salesClipboard.readText()')==copied
+  page.evaluate('document.execCommand=()=>false')
+  page.locator('.sales-example [data-sales-copy=body]').click();page.locator('#sales-example-status').filter(has_text='복사가 제한됩니다').wait_for()
+  assert long_memo in page.locator('#sales-example-body').text_content()
+  with page.expect_download() as dl:page.locator('#sales-memo-details [data-sales-download]').click()
+  dl.value.save_as(OUT/'sales-long.txt');assert long_memo in (OUT/'sales-long.txt').read_text()
+  page.reload();page.locator('#sales-copy-address').wait_for();assert page.locator('#sales-memo').input_value()==''
+  page.locator('#sales-manual-details summary').click();page.locator('#sb').wait_for()
+  page.locator('[data-sb-ex=__list]').click();page.locator('[data-sb-rq]').wait_for()
+  page.locator('#sales-manual-details summary').click();assert not page.locator('#sb').is_visible()
+  page.goto(BASE+'/#sales');page.locator('#sales-copy-address').wait_for();assert page.url.endswith('#list')
+  page.goto(BASE+'/#home');page.locator('#sales-home-copy').wait_for();assert page.locator('#sb').count()==0
+  primary=page.locator('.bn-brand-copy a[data-purchase-event=start]')
+  assert primary.get_attribute('href')=='#list' and primary.get_attribute('target') is None
+  primary.click();page.locator('#sales-email').wait_for()
+  assert page.url.endswith('#list') and len(page.context.pages)==pages
+  assert page.locator('#sales-example-heading').is_visible()
+  assert page.evaluate('window.__purchaseMetrics.start>=1')
+  page.locator('header nav a[data-go=list]').click();page.locator('#sales-copy-address').wait_for()
+  assert page.locator('.sales-page input:visible,.sales-page textarea:visible').count()==0
+  # Prepared specification questions appear in the visible, copied example.
+  page.goto(BASE+'/#lib?path=purchase');page.locator('[data-purchase-line]').fill('RFQ line 12')
+  page.locator('[data-purchase-field="3"]').fill('사용 조건 원문 · 개정 B · 대체 불가')
+  page.locator('[data-purchase-continue]').click();page.locator('.sales-requirements').wait_for()
+  page.locator('.sales-example [data-sales-copy=body]').click()
+  page.locator('#sales-example-status').filter(has_text='본문 전체를 복사').wait_for()
+  copied=page.evaluate('navigator.clipboard.readText()');assert 'RFQ line 12' in copied and '사용 조건 원문 · 개정 B · 대체 불가' in copied
+  assert copied==page.locator('#sales-example-body').text_content()
+  assert not requests,requests
+  print('Sales · 내부 이동/주소·RFQ 예시 복사/메모 보존/선택 분석/특수요건: PASS')
+
+
 def check(BASE, OUT):
  with sync_playwright() as p:
   browser=p.chromium.launch(executable_path=os.environ.get('BN_CHROMIUM') or None,headless=True,args=['--no-sandbox'])
@@ -197,6 +276,7 @@ def check(BASE, OUT):
   assert len(attempts)==2
   assert page.get_by_role('link',name='카카오 채널',exact=True).get_attribute('href')=='/admin/channel.html'
   check_channel(page,BASE,OUT)
+  check_sales(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()

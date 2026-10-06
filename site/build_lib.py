@@ -99,10 +99,10 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 
 def header(on: str = "lib") -> str:
-    nav = [("/#products", "제품", ""), ("/#list", "목록 견적", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
+    nav = [("/#products", "제품", ""), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
-            + '</nav><a class="cta" href="/#list">목록 견적 →</a></div></header>')
+            + '</nav><a class="cta" href="/#list">Sales 문의 →</a></div></header>')
 
 
 def footer(info: dict) -> str:
@@ -163,7 +163,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + f'<div class="box"><h2>지식 지도 · {e(topic["title"])}</h2><p>{e(topic["desc"])}</p><a href="/lib/#topic-{topic["id"]}">이 주제 전체 보기 →</a></div>' + reading
             + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
             + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="/#c-{e(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
-            + '<div class="box dark"><h2>이 규격이 들어간 BOM이 있으신가요?</h2><p>표기 그대로 보내 주시면 줄마다 규격·등급과 필요한 서류를 맞춰 견적합니다.</p><a class="cta" href="/#list">목록 견적으로 →</a></div>'
+            + '<div class="box dark"><h2>이 규격이 들어간 BOM이 있으신가요?</h2><p>표기 그대로 보내 주시면 줄마다 규격·등급과 필요한 서류를 맞춰 견적합니다.</p><a class="cta" href="/#list">Sales로 보내기 →</a></div>'
             + "</aside></div></div></main>" + footer(info))
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": x["t"], "alternateName": [x.get("ko", "")] + x.get("aka", [])[:6],
           "description": x.get("sum", ""), "url": f"{SITE_URL}lib/{x['id']}",
@@ -193,7 +193,7 @@ def index_html(L: list, info: dict) -> str:
             + '<div id="overview"><h2>무엇을 확인하고 계신가요?</h2><div class="library-paths">' + paths + '</div>'
             + '<h2>체결부품 지식의 전체 지도</h2><nav class="library-map" aria-label="라이브러리 주제">' + topics + '</nav></div>'
             + f'<p class="search-note" id="count" aria-live="polite" aria-atomic="true">{len(L)}개 항목</p>'
-            + '<div class="no-results" id="empty" hidden><p>현재 검색어에 맞는 항목이 없습니다. 단어를 줄여 다시 찾아보세요.</p><button id="reset" type="button">검색 지우기</button><p>사전에 없는 사양은 <a href="/#list">목록 견적</a>에 보내 주세요.</p></div>'
+            + '<div class="no-results" id="empty" hidden><p>현재 검색어에 맞는 항목이 없습니다. 단어를 줄여 다시 찾아보세요.</p><button id="reset" type="button">검색 지우기</button><p>사전에 없는 사양은 <a href="/#list">Sales</a>로 보내 주세요.</p></div>'
             + "".join(secs) + "</div></main>" + footer(info) + js)
     ld = {"@context": "https://schema.org", "@type": "DefinedTermSet", "name": "볼트노트 체결부품 규격 사전", "url": f"{SITE_URL}lib/",
           "hasDefinedTerm": [{"@type": "DefinedTerm", "name": x["t"], "url": f"{SITE_URL}lib/{x['id']}"} for x in L]}

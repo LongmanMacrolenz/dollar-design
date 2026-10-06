@@ -60,4 +60,4 @@ document.addEventListener('click',e=>{
  }
 });
 const purchaseOriginalList=V.list;
-V.list=()=>{purchaseMetrics.listViews++;return purchaseOriginalList()+ (purchaseChecklistText()?`<section class="purchase-guide"><h2>함께 보낼 특수요건</h2><pre class="purchase-draft">${esc(purchaseChecklistText())}</pre><button class="btn" type="button" data-purchase-download>체크리스트 내려받기</button><a href="#lib?path=purchase" data-go="lib?path=purchase">질문 수정 →</a><p>요청서·원본 BOM과 함께 첨부해 주세요. 이 문서는 서버로 자동 전송되지 않습니다.</p></section>`:'');};
+V.list=()=>{purchaseMetrics.listViews++;return purchaseOriginalList();};
