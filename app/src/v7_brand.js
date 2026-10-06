@@ -40,7 +40,7 @@ function bnBrandMarkup() {
         <p class="bn-brand-eyebrow" lang="en">BOLTNOTE / ENGINEERING SOURCING</p>
         <h1 id="h-z-a" tabindex="-1">체결부품 조달,<br><em>BOM부터 정확하게.</em></h1>
         <p class="bn-brand-lead">볼트노트는 사양·특수요건을 검토하고<br>공급처 확인 결과를 견적으로 연결합니다.</p>
-        <div class="bn-actions"><a class="bn-btn" href="${esc(salesMailPackage(false).url||'#list')}" ${rfqOk('rfq')?'data-sales-open data-sales-home target="_blank" rel="noopener noreferrer"':'data-go="list"'} data-purchase-event="start">Sales에 보내기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#lib?path=purchase" data-go="lib?path=purchase">특수요건 확인 <span aria-hidden="true">↗</span></a></div>
+        <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">Sales · 견적 문의 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#lib?path=purchase" data-go="lib?path=purchase">특수요건 확인 <span aria-hidden="true">↗</span></a></div>
         <p class="bn-brand-scope" lang="en">METRIC &amp; INCH <span>·</span> INDUSTRIAL FASTENERS</p>
       </div>
       <figure class="bn-brand-film">
