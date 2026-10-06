@@ -21,8 +21,8 @@ const SHOP_TERMS = {
 };
 // 견적 요청 통로 (Phase 1, b2b_site_changes.json channel.config). 운영자가 채움. 빈 값 = 미설정: 화면에는 .ph 자리표시를 보여 주고,
 // 그 값에 의존하는 버튼은 disabled + title='운영 정보 등록 후 사용'. href·mailto는 값이 있을 때만 만든다 (v5_rfq.js rfqC).
-// kakaoName: 채널 이름(대표 확인 2026-10-04). kakaoChat(URL)은 채널을 공개한 날 넣는다. 그 전에는 이름만 보이고 링크·버튼은 만들지 않는다
-const CONTACT = { rfq: 'a8wlhg942@naver.com', tel: '010-2093-0196', fax: '', kakaoChat: '', kakaoName: '볼트노트' };
+// 카카오 비즈니스채널 승인: 대표 확인 2026-10-06. 관리자 화면의 채널 식별자 _ZlHxiX를 사용한다.
+const CONTACT = { rfq: 'a8wlhg942@naver.com', tel: '010-2093-0196', fax: '', kakaoChat: 'https://pf.kakao.com/_ZlHxiX/chat', kakaoName: '볼트노트', kakaoHours: '평일 09:00–18:00' };
 
 /* ── 사이트 스위치 (IA 명세 2장, 한 곳). 기본값 = 근거 쪽. 대표만 바꾼다 ──
    ORDER_LIVE: 통신판매업 신고 뒤 ordersOpen + 신고번호 + 사업자번호가 모두 있어야 켜진다 (하나라도 비면 '주문 요청서 (확인 후 진행)').

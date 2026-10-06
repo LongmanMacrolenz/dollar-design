@@ -11,8 +11,66 @@ import subprocess
 import tempfile
 import time
 import urllib.request
+import struct
 
 ROOT = Path(__file__).resolve().parents[2]
+
+
+def check_channel(page, BASE, OUT):
+  """The channel kit edits local copy and exports assets without sending requests."""
+  page.context.grant_permissions(['clipboard-read','clipboard-write'])
+  page.goto(BASE+'/admin/channel.html')
+  page.locator('#ch-intro').wait_for()
+  page.evaluate('localStorage.removeItem("bn-kakao-channel-copy-v1")')
+  page.reload();page.locator('#ch-intro').wait_for()
+  assert page.locator('meta[name=robots]').get_attribute('content')=='noindex,nofollow'
+  assert page.locator('#ch-hours').input_value()=='평일 09:00–18:00'
+  assert '자동 저장하거나 메시지를 발송하지 않습니다' in page.locator('.channel-warning').inner_text()
+  assert page.locator('a[href="https://pf.kakao.com/_ZlHxiX/chat"]').count()==1
+  requests=[];page.on('request',lambda r:requests.append(r.url) if '/api/' in r.url else None)
+  # A draft survives reload, renders as text, and is the value copied/exported.
+  draft='BOM 상담 · <img src=x onerror=alert(1)> & 정확한 사양'
+  page.locator('#ch-intro').fill(draft)
+  page.locator('[data-copy=intro]').click()
+  assert page.evaluate('navigator.clipboard.readText()')==draft
+  assert page.locator('.channel-preview p').inner_text()==draft
+  assert page.locator('.channel-preview p img').count()==0
+  page.reload();page.locator('#ch-intro').wait_for()
+  assert page.locator('#ch-intro').input_value()==draft
+  page.locator('.channel-checklist summary').click();page.locator('[data-check=profile]').check()
+  page.reload();page.locator('#ch-intro').wait_for();assert page.locator('[data-check=profile]').is_checked()
+  assert page.locator('#check-progress').inner_text()=='1 / 5'
+  page.locator('[data-group=chat]').click();assert '09:00–18:00' in page.locator('#ch-welcome').input_value()
+  assert '실제 파일' not in page.locator('#ch-welcome').input_value()
+  page.locator('[data-copy=bom-template]').click();text=page.evaluate('navigator.clipboard.readText()')
+  assert '적용 도면·사양서 번호 / 개정:' in text and '대체품 검토 가능 여부:' in text
+  page.locator('[data-group=faq]').click();page.locator('[data-group=faq]').focus();page.keyboard.press('ArrowRight')
+  assert page.locator('[data-group=menu]').get_attribute('aria-selected')=='true'
+  assert page.locator('#ch-menu-special-url').input_value().endswith('#lib?path=purchase')
+  page.locator('[data-action=copy-all]').click();all_text=page.evaluate('navigator.clipboard.readText()')
+  assert draft in all_text and '소식 3 · 구매 확인' in all_text and CHANNEL_CHAT in all_text
+  with page.expect_download() as dl:page.locator('[data-action=export]').click()
+  dl.value.save_as(OUT/'channel-copy.txt');assert (OUT/'channel-copy.txt').read_text()==all_text
+  # The copy fallback remains usable when the Clipboard API is unavailable.
+  page.evaluate('window.__channelClipboard=navigator.clipboard;Object.defineProperty(navigator,"clipboard",{value:undefined,configurable:true})')
+  page.locator('[data-group=profile]').click();page.locator('[data-copy=intro]').click()
+  assert page.evaluate('window.__channelClipboard.readText()')==draft
+  for action,dimensions in [('profile-image',(400,400)),('cover-image',(1200,600))]:
+   with page.expect_download() as dl:page.locator('[data-action='+action+']').click()
+   path=OUT/(action+'.png');dl.value.save_as(path);image=path.read_bytes()
+   assert image.startswith(b'\x89PNG\r\n\x1a\n') and struct.unpack('>II',image[16:24])==dimensions
+  for width in [320,390,768,1440]:
+   page.set_viewport_size({'width':width,'height':900})
+   for group in ['profile','chat','faq','menu','posts']:
+    page.locator('[data-group='+group+']').click()
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),(width,group)
+  assert not requests,requests
+  page.once('dialog',lambda d:d.accept());page.locator('[data-action=clear]').click();page.locator('[data-group=profile]').click()
+  assert page.locator('#ch-intro').input_value()!=draft and page.locator('#check-progress').inner_text()=='0 / 5'
+  print('카카오 입력 자료 · 수정/복사/로컬 저장/PNG/모바일: PASS')
+
+
+CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
 def check(BASE, OUT):
@@ -137,6 +195,8 @@ def check(BASE, OUT):
   page.get_by_role('button',name='메일 수집',exact=True).click()
   banner=page.locator('.banner').filter(has_text='메일 수집 연결 성공');banner.wait_for();assert 'IMAP_UIDVALIDITY_MISSING' not in banner.inner_text();assert '2026-10-06 00:30 KST' in banner.inner_text(),banner.inner_text()
   assert len(attempts)==2
+  assert page.get_by_role('link',name='카카오 채널',exact=True).get_attribute('href')=='/admin/channel.html'
+  check_channel(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()
