@@ -1,0 +1,51 @@
+/* A single engineering viewer: the picture and its interpretation share a card. */
+.bn-studio .bn-cinema .bn-hero-grid{display:block;min-height:0;padding-top:22px;padding-bottom:0}
+.bn-studio .bn-cinema .bn-hero-copy{position:static;padding:0 0 18px;display:grid;grid-template-columns:1fr auto;gap:8px 24px;align-items:center}
+.bn-studio .bn-cinema .bn-eyebrow{grid-column:1;margin:0;font-size:10px}
+.bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em{font-size:clamp(24px,2.5vw,38px);line-height:1.2;letter-spacing:-.05em;margin:0}
+.bn-studio .bn-cinema h1{grid-column:1}.bn-studio .bn-cinema h1 em{display:inline}
+.bn-studio .bn-cinema .bn-hero-lead{grid-column:1;margin:0;font-size:12px;line-height:1.5}
+.bn-studio .bn-cinema .bn-actions{grid-column:2;grid-row:1/4;display:flex;gap:8px;margin:0}
+.bn-studio .bn-cinema .bn-btn{min-height:44px;padding:8px 18px;font-size:12px;gap:12px}
+.bn-studio .bn-cinema .bn-hero-standards,.bn-studio .bn-cinema .bn-scroll-cue{display:none}
+.bn-studio .bn-film{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-rows:auto auto 1fr auto;margin:0;border-radius:12px;align-items:start}
+.bn-studio .bn-film-controls{grid-column:1/-1;grid-row:1;margin:0;padding:12px 18px;border-bottom:1px solid #304351;align-items:center}
+.bn-studio .bn-film-controls .bn-film-chapters{display:flex;overflow-x:auto;gap:6px;scrollbar-width:thin}
+.bn-studio .bn-film-controls .bn-film-chapters button{flex:1 0 auto;min-height:36px;padding:5px 9px;flex-direction:row;font-size:11px;align-items:center;gap:6px;white-space:nowrap}
+.bn-film-chapter-no,.bn-film-track{display:none}
+.bn-studio .bn-film-controls .bn-film-play{min-height:36px;padding:6px 12px}
+.bn-studio .bn-film-stage{grid-column:1;grid-row:2/4;width:100%;position:relative;align-self:center}
+.bn-studio .bn-film video{display:block;width:100%;height:clamp(260px,45svh,410px);aspect-ratio:auto;object-fit:contain}
+.bn-studio .bn-film-caption{grid-column:2;grid-row:2;min-height:0;padding:18px 20px 8px;margin:0;gap:10px}
+.bn-studio .bn-film-caption strong{font-size:19px}.bn-studio .bn-film-caption p{font-size:11px;margin-top:4px;line-height:1.5}
+.bn-studio .bn-film-caption>div>span{font-size:9px}.bn-studio .bn-film-caption .bn-film-number{font-size:9px}
+.bn-studio .bn-science{grid-column:2;grid-row:3;margin:0 20px 12px;padding:0;border:0;background:transparent;min-width:0}
+.bn-science-heading{display:none}.bn-science svg{min-width:0;width:100%;overflow:visible}.bn-science svg text{font-size:12px}.bn-science-diagram{overflow:visible;border:1px solid #324755;border-radius:6px;padding:8px 4px;background:#132331}
+.bn-science p{font-size:12px;line-height:1.65;margin:10px 0 0}.bn-science .bn-science-status{font-size:11px;line-height:1.6;padding-top:9px}
+.bn-science-select{font-size:11px;gap:6px;margin-bottom:8px}.bn-science-select select{font-size:11px;min-height:32px;padding:4px 7px}.bn-science-segments button{min-height:32px;font-size:11px;padding:5px 8px}
+.bn-science-details{font-size:11px;margin-top:8px}.bn-science-details summary{min-height:26px}.bn-diagram-hint{display:none}
+.bn-film-footer{grid-column:1/-1;display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:10px 18px;border-top:1px solid #304351;color:#b3c4ce;font-size:10px}
+.bn-film-footer>span{margin-right:auto}.bn-film-footer button{border:1px solid #516976;background:transparent;color:#c5d6df;padding:6px 9px;font-size:11px;border-radius:4px;cursor:pointer;min-height:32px}
+.bn-film-footer button[aria-pressed=true]{background:#c8e0e8;color:#18303e;border-color:#c8e0e8}
+.bn-film-blueprint{position:absolute;inset:0;z-index:2;opacity:0;pointer-events:none;background:#102030;display:flex;align-items:center;justify-content:center}.bn-film-blueprint svg{width:100%;height:100%;object-fit:contain}.bn-film-badge{z-index:3}
+.bn-studio .bn-film-navigation{padding:10px 0 18px;display:grid;grid-template-columns:1.1fr 1fr;gap:10px 20px}
+.bn-studio .bn-film-navigation .bn-film-check{grid-column:2;grid-row:1;min-height:0;padding:10px 14px;border-radius:6px;gap:10px}
+.bn-studio .bn-film-navigation .bn-film-note{grid-column:1;grid-row:1;margin:0;font-size:10px;line-height:1.6}
+.dbox:has(.bn-drawing){background:#fff;padding:0;border-color:#cad6dc;border-radius:6px;overflow:hidden}
+.bn-drawing-tools{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid #dde5e9;background:#f4f7f8;color:#486472;font-size:10px}
+.bn-drawing-tools>span{margin-right:auto;letter-spacing:.08em}.bn-drawing-tools button{border:0;background:transparent;color:#23576b;font-size:12px;cursor:pointer;padding:5px;min-height:32px}
+.bn-drawing{display:block;width:100%;height:auto;max-height:none!important}.bn-drawing-dialog{width:min(1100px,96vw);max-height:94svh;padding:16px;border:1px solid #c8d6dd;border-radius:10px;overflow:auto;background:#fff;color:#213744}.bn-drawing-dialog::backdrop{background:#10202ec9}.bn-drawing-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:14px}.bn-drawing-dialog p{font-size:12px;color:#486472}.bn-drawing-full{overflow:auto}.bn-drawing-full svg{width:100%;min-width:650px;height:auto}.bn-drawing-dialog .dw{background:white}.bn-drawing-dialog .bn-drawing-tools{display:none}
+@media(max-width:900px){.bn-studio .bn-cinema .bn-hero-copy{grid-template-columns:1fr}.bn-studio .bn-cinema .bn-actions{grid-column:1;grid-row:4;gap:8px}.bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em{font-size:26px}.bn-studio .bn-cinema .bn-hero-copy{gap:7px;padding-bottom:14px}.bn-studio .bn-film-caption{padding:12px 14px 6px}.bn-studio .bn-science{margin:0 14px 12px}.bn-studio .bn-film video{height:clamp(230px,38svh,350px)}}
+@media(max-width:600px){.bn-studio .bn-cinema .bn-hero-grid{padding-top:14px}.bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em{font-size:23px}.bn-studio .bn-cinema .bn-eyebrow{display:none}.bn-studio .bn-cinema .bn-hero-lead{font-size:11px;line-height:1.5}.bn-studio .bn-cinema .bn-actions{grid-row:3;display:flex}.bn-studio .bn-cinema .bn-btn{min-height:38px;font-size:11px;padding:6px 14px}.bn-studio .bn-film{grid-template-columns:1fr;grid-template-rows:auto auto auto auto auto;margin:0}.bn-studio .bn-film-controls{grid-column:1;grid-row:1;padding:8px 10px;gap:6px}.bn-studio .bn-film-controls .bn-film-chapters button{font-size:10px;padding:4px 8px;min-height:32px}.bn-studio .bn-film-controls .bn-film-play{font-size:10px;min-width:56px;padding:4px 8px;min-height:32px}.bn-studio .bn-film-stage{grid-row:2;grid-column:1}.bn-studio .bn-film video{height:clamp(150px,25svh,210px)}.bn-studio .bn-film-badge{font-size:8px;top:10px;left:14px}.bn-studio .bn-film-caption{grid-column:1;grid-row:3;padding:8px 14px 6px;gap:8px}.bn-studio .bn-film-caption strong{font-size:15px}.bn-studio .bn-film-caption>div>span{display:none}.bn-studio .bn-film-caption p{font-size:10px;margin:2px 0 0}.bn-studio .bn-science{grid-column:1;grid-row:4;margin:0 14px 8px}.bn-science-diagram{padding:4px 2px}.bn-science svg{height:clamp(90px,15svh,125px);width:100%;min-width:0}.bn-science p{font-size:11px;line-height:1.55;margin-top:7px}.bn-science .bn-science-status{font-size:10px;padding-top:6px}.bn-science-controls{margin-bottom:6px;gap:6px}.bn-science-details summary{min-height:24px;font-size:10px}.bn-science-pair{font-size:10px}.bn-film-footer{grid-row:5;grid-column:1;padding:7px 10px;gap:6px}.bn-film-footer>span{display:none}.bn-film-footer button{font-size:10px;min-height:28px;padding:4px 8px}.bn-studio .bn-film-navigation{grid-template-columns:1fr;padding:10px 0 16px}.bn-studio .bn-film-navigation .bn-film-check{grid-column:1;grid-row:1;padding:10px 12px}.bn-studio .bn-film-navigation .bn-film-note{grid-column:1;grid-row:2;font-size:9px}.bn-drawing-tools{gap:6px;padding:6px 8px}.bn-drawing-tools button{font-size:11px}.bn-drawing-dialog{padding:10px}}
+@media(prefers-reduced-motion:reduce){.bn-film-blueprint{transition:none}}
+@media print{.bn-drawing-tools{display:none}.bn-drawing-dialog{display:none}}
+#bn-science-content{max-height:340px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#577689 #122331;padding-right:4px}
+@media(max-width:600px){#bn-science-content{max-height:clamp(150px,calc(100svh - 540px),280px);padding-right:3px}.bn-studio .bn-film-navigation{max-width:calc(100% - 40px);margin-inline:auto}.bn-science-reference{padding-bottom:6px}}
+.bn-drawing-tools{display:flex!important}
+@media(max-width:340px){.bn-studio .bn-cinema h1,.bn-studio .bn-cinema h1 em{font-size:21px}.bn-studio .bn-cinema .bn-hero-lead{font-size:10px}.bn-studio .bn-cinema .bn-hero-copy{padding-bottom:10px;gap:5px}.bn-studio .bn-cinema .bn-btn{padding-inline:12px;font-size:10px;min-height:34px}}
+@media(max-width:600px){#bn-science-content{max-height:clamp(140px,calc(100svh - 540px),280px)}.bn-studio .bn-film-caption p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:calc(100vw - 105px)}}
+.bn-drawing-values{display:none}
+@media(max-width:680px){.bn-drawing-values{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px 12px}.bn-drawing-values>span{font-family:var(--f-mono);font-size:12px;line-height:1.5;color:#23566a;background:#f1f6f8;border:1px solid #d8e4e9;padding:3px 7px;border-radius:3px}}
+@media print{.bn-drawing-values{display:none}}
+@media(max-width:600px){.bn-science-controls .bn-science-chip{display:none}}
+@media(max-width:340px){.bn-studio .bn-film video{height:150px}.bn-science svg{height:90px}#bn-science-content{max-height:170px}}

@@ -243,8 +243,8 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
     <div class="bn-wrap bn-hero-grid">
       <div class="bn-hero-copy">
         <p class="bn-eyebrow" lang="en"><span></span> INDUSTRIAL FASTENERS &amp; ENGINEERING</p>
-        <h1 id="h-z-a" tabindex="-1">BOM은 그대로.<br><em>구매 조건은 정확하게.</em></h1>
-        <p class="bn-hero-lead">부품표와 도면을 보내 주세요.<br>빠진 사양과 특수요건을 확인하고, 공급처 확인 결과를 견적에 담습니다.</p>
+        <h1 id="h-z-a" tabindex="-1">BOM은 그대로. <em>구매 조건은 정확하게.</em></h1>
+        <p class="bn-hero-lead">부품표·도면으로 사양과 특수요건을 확인하고 견적을 요청하세요.</p>
         <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">BOM 견적 요청 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#lib?path=purchase" data-go="lib?path=purchase">특수요건 확인 <span aria-hidden="true">↗</span></a></div>
         <div class="bn-hero-standards" aria-label="다루는 규격"><span>METRIC &amp; INCH</span><span>ASTM / ASME</span><span>KS / ISO / DIN / JIS</span></div>
         <button class="bn-scroll-cue" type="button" data-bn-scroll="bn-h-products"><span aria-hidden="true">↓</span> 제품 라인업으로</button>
@@ -733,7 +733,7 @@ function iaDrawSvg(f, s) {
 const IA_CAD_NEW = { hnthin: 'nut', pwl: 'washer' };
 const iaCadFam = f => !!(f.route && typeof CAD_FAM !== 'undefined' && CAD_FAM[f.id]) || !!(IA_CAD_NEW[f.id] && f.dims);
 function iaDimsHTML(f, s) {
-  if (!f.dims) return f.dimsHeld ? `<div class="note info small"><span class="nk">준비 중</span><span>치수표는 규격 원문 대조를 마친 뒤 싣습니다${f.gate ? ` (${esc(f.gate)})` : ''}. 지금은 사양을 확인해 견적합니다.</span></div>`
+  if (!f.dims) return f.dimsHeld ? `<div class="note info small"><span class="nk">도면 기준 견적</span><span>이 품목의 상세 치수는 적용 규격과 고객 도면을 기준으로 확인합니다${f.gate ? ` (${esc(f.gate)})` : ''}. 공개 치수표 대신 요구 사양으로 견적을 검토합니다.</span></div>`
     : `<div class="note info small"><span class="nk">치수</span><span>표준 치수표는 싣지 않았습니다. 도면이나 규격 번호를 보내 주시면 그 기준으로 견적합니다.</span></div>`;
   const cols = f.dims.cols, u = f.dims.u || (f.sys === 'inch' ? 'in' : 'mm');
   return `<div class="tblw ia-dimt"><table class="tbl mid"><caption>치수 근거 ${esc(f.enStd || '')} · 원문 대조 행만 · 단위 ${esc(u)}${f.dims.dropped ? ` · 원문 미대조 ${f.dims.dropped}행은 싣지 않음` : ''}</caption><thead><tr><th scope="col">호칭</th>${cols.map(([k, ko]) => `<th scope="col" class="r"><span class="mono">${esc(k)}</span><span class="sub">${esc(ko)}</span></th>`).join('')}</tr></thead><tbody>${f.dims.rows.map(r => `<tr${r[0] === s.size ? ' aria-current="true" class="on"' : ''} data-ia-size="${esc(r[0])}"><th scope="row" class="mono">${esc(r[0])}</th>${r.slice(1).map(v => `<td class="r mono">${v == null ? '<span class="faint">—</span>' : esc(v)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -756,7 +756,7 @@ function iaCfgHTML(f, s) {
     <p class="ia-spec-out mono" id="ia-spec-out" aria-live="polite">${esc(iaSpecText(f, s))}</p>
     <div class="ia-tiers-q" aria-hidden="true"><span>견적 후 확정</span><span>견적 후 확정</span><span>견적 후 확정</span><span>견적 후 확정</span></div>
     <p class="small muted">수량별 단가는 사양 확인 뒤 회신합니다. ${PRICE_ON(f.id) ? `${PRICE_LAB()} 기준일 ${esc(SHOP.priceBasis)}.` : '공급처 단가 확인 전이라 가격을 적지 않았습니다.'}</p>
-    <div class="ia-ship"><span class="tag q">견적</span><b>${esc(f.tier || '견적 문의')}</b><span class="t">공급처 확인 후 보통 ${SHOP.leadRange[f.id] ? esc(SHOP.leadRange[f.id]) : IA_PH('n~m')}영업일 · 견적 시 확정</span></div>
+    <div class="ia-ship"><span class="tag q">견적</span><b>${esc(f.tier || '견적 문의')}</b><span class="t">${SHOP.leadRange[f.id] ? `납기 참고 ${esc(SHOP.leadRange[f.id])}영업일 · 견적 시 확정` : '납기는 공급처 확인 뒤 견적서에 안내합니다'}</span></div>
     <div class="actions"><button class="btn pri" type="button" id="ia-add">견적함에 담기</button><a class="btn" href="#custom" data-go="custom">도면 첨부해 요청</a></div>
   </fieldset>`;
 }
@@ -772,7 +772,7 @@ V.c = id => {
   const docs = (() => { try { return cadTrustLine({ fam: f.id, cat: f.g, system: f.sys === 'inch' ? 'inch' : 'metric' }); } catch { return '제조사 MTR(EN 10204 3.1) 제공 여부: 공급처 확인 중 — 견적 시 회신'; } })();
   const kv = [['규격', f.std.map(x => x[1]).join(' · ')], ['체계', f.sys === 'inch' ? '인치' : f.sys === 'both' ? '미터·인치' : '미터'], ['공급 구분', f.tier || '견적 문의'], ['서류', `CoC 기본 · ${docs}`], ...(f.use ? [['용도', f.use]] : []), ...(f.quoteNote ? [['견적', f.quoteNote]] : [])];
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';
-  const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag wait">준비 중</span></div><p class="note warn small"><span class="nk">준비 중</span><span>CAD 준비 중 — 이 품목은 원문 대조 치수와 CAD 생성기를 맞춘 뒤 STEP·DXF를 드립니다. 견적 요청 시 도면으로 회신합니다.</span></p></section>`}</div>` : '';
+  const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag doc">도면 기반 검토</span></div><p class="note warn small"><span class="nk">제공 범위</span><span>이 품목은 자동 STEP·DXF 다운로드 대상이 아닙니다. 고객 도면과 규격 번호로 요구 형상을 검토합니다.</span></p></section>`}</div>` : '';
   return sheet(zone('A', 'z-a', shd({ trail: [['제품', 'products'], ...(t ? [[t.ko, 't-' + t.id]] : []), [f.ko]], no: 'P', title: `${esc(f.ko)}<span class="h-en" lang="en">${esc(f.en)}${f.enStd ? ` <span class="tag en-std">${esc(f.enStd)}</span>` : ''}</span>`, p: `${sub ? esc(sub.ko) + ' · ' : ''}${mode}${f.use ? ' · ' + esc(f.use) : ''}`, right: stdrow, below: safety + na })
     + `<div class="fam ia-cfam"><div class="fam-l"><div id="shp-slot"></div>${dw ? `<div class="dbox" id="ia-draw">${dw}</div>` : ''}<dl class="kv">${kv.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>${f.mats.length || f.fins.length ? `<p class="small muted">재질·강도: ${esc(f.mats.join(' · ') || '견적 시 확인')} │ 표면처리: ${esc(f.fins.join(' · ') || '견적 시 확인')}</p>` : ''}${notes}${cad}</div>
       <div class="fam-r">${iaCfgHTML(f, s)}</div></div>`, 'ia-z')
@@ -818,7 +818,7 @@ function iaCadMount(f, s) {
   el.querySelectorAll('[data-cad="print"], [data-cad="dshtml"], [data-cad="table"]').forEach(x => x.remove());
   el.querySelector('.cad-hint')?.remove();
   const hd = el.querySelector('#cad-h'), tg = el.querySelector('.cad-hd .tag.doc'); if (hd) hd.textContent = 'CAD'; if (tg) tg.textContent = 'STEP · DXF';
-  el.querySelector('.cad-btns')?.insertAdjacentHTML('afterend', '<p class="small muted">A4 데이터시트는 이 품목에 아직 없습니다 (준비 중).</p>');
+  el.querySelector('.cad-btns')?.insertAdjacentHTML('afterend', '<p class="small muted">제공 형식: STEP·DXF. A4 데이터시트는 이 품목의 제공 범위에 포함되지 않습니다.</p>');
   if (!el.dataset.cadOn) { el.dataset.cadOn = '1'; el.addEventListener('click', cadOnClick); }
 }
 function iaCadSpec(f, s) {
@@ -868,7 +868,7 @@ V.after.list = () => {
 };
 V.ref = () => iaPage(iaHead([['도면·규격']], '도면·규격 보기', 'Drawings and Standards', '치수 도면, 각인·표기 읽기, 규격 대조표, 플랜지 계산을 가입 없이 씁니다.')
   + `<section class="ia-rsec"><h2 class="ia-h2">도면·CAD</h2><div class="ia-rtiles">${CAT_TILES.map(t => `<a href="#t-${t.id}" data-go="t-${t.id}">${iaTh(IA_TH_TILE[t.id], 64, 40)}<span>${esc(t.ko)}</span></a>`).join('')}</div>
-    <p class="small muted">기존 ${typeof CAD_FAM !== 'undefined' ? Object.keys(CAD_FAM).length : 26}개 품목은 품목 페이지에서 치수 도면과 STEP·DXF·A4 데이터시트를 받습니다. 새 품목은 원문 대조를 마친 치수표부터 싣고, 생성기에 맞는 품목(지금 ${Object.keys(IA_CAD_NEW).length}종)은 STEP·DXF도 받습니다. 나머지는 'CAD 준비 중'입니다. DWG는 제공하지 않습니다. DXF R12는 AutoCAD에서 바로 열립니다.</p></section>
+    <p class="small muted">기존 ${typeof CAD_FAM !== 'undefined' ? Object.keys(CAD_FAM).length : 26}개 품목은 품목 페이지에서 치수 도면과 STEP·DXF·A4 데이터시트를 받습니다. 새 품목은 원문 대조를 마친 치수표부터 싣고, 생성기에 맞는 품목(지금 ${Object.keys(IA_CAD_NEW).length}종)은 STEP·DXF도 받습니다. 그 밖의 품목은 고객 도면으로 요구 형상을 검토합니다. DWG는 제공하지 않습니다. DXF R12는 AutoCAD에서 바로 열립니다.</p></section>
   <section class="ia-rsec" id="ia-dec"><h2 class="ia-h2">표기·사양 읽기</h2><p class="small muted">해외 도면·사양서의 한 줄을 항목별로 나누고, 빠진 칸은 빗금으로, 맞지 않는 조합은 검토 의견으로 표시합니다. 이 화면 안에서만 읽습니다.</p>
     <div class="dec-in"><label class="sr" for="dec-in">사양 표기</label><input id="dec-in" value="${esc('1-1/8"-7 UNC-2A x 6-1/2" ASTM A193 B7 / 2H HDG')}" spellcheck="false" autocomplete="off"><button class="btn pri" type="button" id="dec-go">읽기</button></div>
     <div class="dec-ex" id="dec-ex"></div><div class="dec-out" id="dec-out" aria-live="polite"></div>

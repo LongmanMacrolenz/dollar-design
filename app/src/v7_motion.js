@@ -15,7 +15,7 @@ function bnFilmMarkup() {
     <div class="bn-film-chapters" style="--bn-chapter-count:${BN_FILM_CHAPTERS.length}" role="group" aria-label="체결부품 영상 장면 선택">${BN_FILM_CHAPTERS.map((chapter, i) => `<button type="button" data-bn-scene="${i}" aria-pressed="false" aria-controls="bn-film-video"><span class="bn-film-chapter-no" aria-hidden="true">0${i+1}</span><span>${chapter.label}</span><span class="bn-film-track" aria-hidden="true"><i></i></span></button>`).join('')}</div>
     <button class="bn-film-play" id="bn-film-play" type="button" aria-controls="bn-film-video" aria-label="규격·재료 영상 재생"><span aria-hidden="true">▶</span><span>재생</span></button>
     </div>
-    <div class="bn-film-stage">
+    <div class="bn-film-stage"><div class="bn-film-blueprint" id="bn-film-blueprint" aria-hidden="true">${bnBlueprint()}</div>
       <video id="bn-film-video" width="1200" height="900" muted loop playsinline preload="none" poster="media/boltnote-engineering-poster.webp" aria-label="2D에서 3D로 변하는 체결부품, 나사 공차, 헤비너트, 탄성·반복하중, 경도 시편과 보호층의 3D 개념 영상">
         <source data-src="media/boltnote-engineering-mobile.mp4" media="(max-width: 700px)" type="video/mp4">
         <source data-src="media/boltnote-engineering.webm" type="video/webm">
@@ -26,6 +26,7 @@ function bnFilmMarkup() {
     </div>
     <figcaption class="bn-film-caption"><span class="bn-film-number" id="bn-film-number" aria-hidden="true">01 / 07</span><div><span id="bn-film-en" lang="en">ENGINEERED CONNECTIONS</span><strong id="bn-film-title">형상 · 공차 · 재료 · 표면처리</strong><p id="bn-film-parts">규격과 시험을 이해하는 일곱 장면</p></div></figcaption>
     ${bnSciencePanel()}
+    <div class="bn-film-footer"><span>형상·재료·시험 원리의 개념 시각화</span><button type="button" data-bn-view="2d" aria-pressed="false">2D 형상 보기</button><button type="button" data-bn-view="3d" aria-pressed="true">3D 영상 보기</button></div>
   </figure>`;
 }
 function bnFilmNavigation() {
@@ -46,6 +47,7 @@ function bnFilmInit() {
   let desired = false; // Quote first: load video only after an explicit play or chapter selection.
   let visible = true, plantVisible = false, attached = false, pendingSeek = null;
   let filePromise = null, fileURL = null;
+  let blueprintMode = false;
   const updateToggle = () => {
     const playing = !video.paused && !video.ended;
     root.dataset.playing = String(playing);
@@ -54,20 +56,25 @@ function bnFilmInit() {
   };
   const updateScene = () => {
     const posterOnly = video.readyState === 0 && pendingSeek === null;
-    const time = posterOnly ? BN_FILM_CHAPTERS[0].still : video.currentTime;
+    const time = blueprintMode ? 0 : posterOnly ? BN_FILM_CHAPTERS[0].still : video.currentTime;
     const index = BN_FILM_CHAPTERS.reduce((current, chapter, i) => time >= chapter.start ? i : current, 0);
     const chapter = BN_FILM_CHAPTERS[index];
+    const blueprint = root.querySelector("#bn-film-blueprint");
+    const opacity = blueprintMode ? 1 : !posterOnly && index===0 ? 1-bnScienceSmooth(time,1.1,2.3) : 0;
+    blueprint.style.opacity=String(opacity);blueprint.setAttribute("aria-hidden",String(opacity<.5));
+    root.dataset.blueprint=String(blueprintMode);
+    root.querySelectorAll("[data-bn-view]").forEach(x=>x.setAttribute("aria-pressed",String((x.dataset.bnView==="2d")===blueprintMode)));
     const checklist=root.querySelector('#bn-film-check');
     checklist.href='#'+chapter.link;checklist.dataset.go=chapter.link;
     root.querySelector('#bn-film-check-text').textContent=chapter.check;
     root.dataset.scene = String(index);
-    root.querySelector('#bn-film-number').textContent = posterOnly ? '미리보기' : `0${index+1} / 0${BN_FILM_CHAPTERS.length}`;
+    root.querySelector('#bn-film-number').textContent = `0${index+1} / 0${BN_FILM_CHAPTERS.length}`;
     root.querySelector('#bn-film-en').textContent = chapter.en;
     root.querySelector('#bn-film-title').textContent = chapter.title;
     root.querySelector('#bn-film-parts').textContent = chapter.parts;
     bnScienceUpdate(root,index,time);
     buttons.forEach((button, i) => {
-      button.setAttribute('aria-pressed', String(!posterOnly && i === index));
+      button.setAttribute('aria-pressed', String(i === index));
       const end = BN_FILM_CHAPTERS[i+1]?.start || video.duration || 42;
       const progress = posterOnly ? 0 : Math.max(0, Math.min(1, (time - BN_FILM_CHAPTERS[i].start)/(end-BN_FILM_CHAPTERS[i].start)));
       button.style.setProperty('--film-progress', `${progress*100}%`);
@@ -168,16 +175,24 @@ function bnFilmInit() {
   video.addEventListener('pause', updateToggle, eventOptions);
   video.addEventListener('error', () => { desired = false; updateToggle(); }, eventOptions);
   toggle.addEventListener('click', () => {
+    blueprintMode=false;
     desired = video.paused;
     if (desired) { attach(); play(); } else { video.pause(); }
   }, eventOptions);
   buttons.forEach((button, index) => button.addEventListener('click', () => {
+    blueprintMode=false;
     // A paused/reduced-motion visitor gets a representative engineering still.
     pendingSeek = desired ? BN_FILM_CHAPTERS[index].start + .1 : BN_FILM_CHAPTERS[index].still;
     if (fileURL && video.currentSrc === fileURL && video.readyState >= 1) {
       video.currentTime = pendingSeek; pendingSeek = null; play();
     } else loadFile();
   }, eventOptions));
+  root.querySelectorAll('[data-bn-view]').forEach(b=>b.addEventListener('click',()=>{
+    blueprintMode=b.dataset.bnView==='2d';
+    if(blueprintMode){desired=false;video.pause();}
+    root.querySelectorAll('[data-bn-view]').forEach(x=>x.setAttribute('aria-pressed',String((x.dataset.bnView==='2d')===blueprintMode)));
+    updateScene();
+  },eventOptions));
   preference.addEventListener('change', () => {
     if (preference.matches) { desired = false; video.pause(); plantVideo?.pause(); }
   }, eventOptions);
