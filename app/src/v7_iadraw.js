@@ -1,6 +1,6 @@
 /* ── v7_iadraw.js: 품목 페이지(#c-…)의 2D 치수 도면 칸 ──
    원문 대조 행(f.dims)의 값만 그린다. 값이 없는 호칭·품목은 그림 대신 이유와 견적 방법을 보인다 (없는 치수를 만들어 내지 않는다. SOURCE_RULE.md).
-   iaDrawSvg (v7_ia.js)가 맡지 않는 품목의 도면 iaDwMore, 도면이 없을 때의 안내 칸 iaDwNone, 수치 없는 치수 기호 도면 iaDwSym.
+   iaDrawSvg (v7_ia.js)가 맡지 않는 품목의 도면 iaDwMore, 도면이 없을 때의 안내 칸 iaDwNone.
    품목 페이지는 3D 형상(v9_shape.js)과 이 칸을 탭으로 묶는다. 이름 접두사 iaDw… / IA_DW… */
 
 const iaDwLab = k => String(k).replace(/^(b1)_939$/, '$1').replace(/^b_(le125|125_200|gt200)$/, 'b').replace('_max_sharp', ' max(이론)').replace('_ref', ' 참고').replace(/_/g, ' ');
@@ -14,7 +14,7 @@ function iaDwDia(f, size) {
 }
 function iaDwFrame(f, s, body, note, H = 250) {
   const P = 'iaAr', u = f.sys === 'inch' ? 'in' : 'mm';
-  return `<svg class="dw ia-dw" viewBox="0 0 560 ${H}" role="img" aria-label="${esc(f.ko)} ${esc(s.size)} 치수 도면"><defs>${marker(P)}</defs>${body}<text class="cap" x="552" y="${H - 8}" text-anchor="end">${esc(f.enStd || '')} · 단위 ${u} · 비례 없음${note ? ' · ' + esc(note) : ''}</text></svg>`;
+  return `<svg class="dw ia-dw" viewBox="0 0 560 ${H}" role="img" aria-label="${esc(f.ko)} ${esc(s.size)} 치수 도면"><defs>${marker(P)}</defs>${body}<text class="cap" x="552" y="${H - 8}" text-anchor="end">${esc(f.enStd || '')} · 단위 ${u} · 비례 없음${f.dims && f.dims.basis === 'T2' ? ' · 공개 자료 3곳 대조(원문 대조 전)' : ''}${note ? ' · ' + esc(note) : ''}</text></svg>`;
 }
 const iaDwLen = s => { const v = iaQty(s.L); return v > 0 ? v : null; };
 
@@ -82,24 +82,30 @@ function iaDwMore(f, s) {
   }
   if (f.eng === 'setscrew') { const D = iaDwDia(f, size), J = fmtC('J'), T = fmtC('T_min'); return D && J ? iaDwScrew(f, s, { head: 'none', D, labs: { D: '호칭 D' }, sock: { w: +J, t: T ? +T : 0, tv: T, tLab: '구멍 깊이 T min', lab: '육각 구멍 J', v: J } }) : null; }
   if (f.id === 'ms-pan' || f.id === 'ms-csk') { const D = iaDwDia(f, size), A = fmtC('dk'), hh = fmtC('k'); return D && A && hh ? iaDwScrew(f, s, { head: f.id === 'ms-csk' ? 'csk' : 'pan', D, A, hh, labs: { D: '호칭 d', A: 'dk', hh: 'k' } }) : null; }
+  if (f.dims.cols && f.dims.cols.some(c => c[0] === 'F_basic') && f.dims.cols.some(c => c[0] === 'LT_s')) return iaDwHexBolt(f, s);
   if (f.id === 'stud-te') return iaDwStud(f, s);
   if (f.id === 'capnut') return iaDwCapnut(f, s);
   return undefined;
 }
 
-// 치수 기호 도면 (수치 없음): 규격이 정하는 치수가 모양의 어디를 가리키는지만 보인다. 모양이 확실한 품목만
-const IA_DW_SYM = { hhb: 'hex', a307: 'hex' };
-function iaDwSym(f) {
-  const k = IA_DW_SYM[f.id]; if (!k) return '';
-  const P = 'iaAr', cy = 112, x0 = 110, hl = 56, hh = 96, dd = 46, xEnd = 440, xs = x0 + hl, tl = 130;
-  let b = `<path class="cl" d="M${x0 - 14} ${cy}H${xEnd + 14}"/>`;
-  b += `<path class="pt" d="M${x0 + 6} ${cy - hh / 2}H${xs}V${cy + hh / 2}H${x0 + 6}L${x0} ${cy + hh / 2 - 6}V${cy - hh / 2 + 6}Z"/><path class="eg" d="M${x0} ${cy - hh / 6}H${xs}M${x0} ${cy + hh / 6}H${xs}"/>`;
-  b += `<path class="pt" d="M${xs} ${cy - dd / 2}H${xEnd - 4}L${xEnd} ${cy - dd / 2 + 4}V${cy + dd / 2 - 4}L${xEnd - 4} ${cy + dd / 2}H${xs}Z"/>`;
-  b += `<path class="th" d="M${xEnd - tl} ${cy - dd / 2 + 5}H${xEnd}M${xEnd - tl} ${cy + dd / 2 - 5}H${xEnd}"/><path class="eg" d="M${xEnd - tl} ${cy - dd / 2}V${cy + dd / 2}"/>`;
-  b += dimLine(x0, cy - hh / 2, x0, cy + hh / 2, 'F (2면폭)', 'left', 20, P) + dimLine(x0, cy - hh / 2, xs, cy - hh / 2, 'H (머리 높이)', 'top', 16, P);
-  b += dimLine(xEnd, cy - dd / 2, xEnd, cy + dd / 2, 'D (몸통 지름)', 'right', 24, P);
-  b += dimLine(xs, cy + hh / 2, xEnd, cy + hh / 2, 'L (머리 아래~끝)', 'bottom', 18, P) + dimLine(xEnd - tl, cy + hh / 2 + 36, xEnd, cy + hh / 2 + 36, 'LT (나사부)', 'bottom', 0, P);
-  return `<svg class="dw ia-dw ia-dw-sym" viewBox="0 0 560 250" role="img" aria-label="${esc(f.ko)} 치수 기호 도면 (수치 없음)"><defs>${marker(P)}</defs>${b}<text class="cap" x="552" y="242" text-anchor="end">${esc(f.enStd || '')} · 치수 기호만 · 수치 없음 · 비례 없음</text></svg>`;
+// 육각머리 볼트 (ASME B18.2.1 일반·헤비): 왼쪽 끝면(2면폭 F·대각폭 G), 오른쪽 옆모양(머리 높이 H·몸통 E·길이 L·나사부 LT)
+function iaDwHexBolt(f, s) {
+  const P = 'iaAr', fmt = iaDwFmt(f), cy = 112, cx = 150, size = s.size;
+  const E = iaCv(f, size, 'E_max'), F = iaCv(f, size, 'F_basic'), G = iaCv(f, size, 'G_max'), H = iaCv(f, size, 'H_basic'), LTs = iaCv(f, size, 'LT_s'), LTl = iaCv(f, size, 'LT_l');
+  if (!E || !F || !G || !H || !LTs || !LTl) return null;
+  const L = iaDwLen(s), shown = L || Math.max(+E * 5.5, +H * 4), sc = Math.min(104 / +G, 196 / (shown + +H));
+  const fh = +F * sc / 2, a = fh / Math.sin(Math.PI / 3), eh = +E * sc / 2, x0 = 236, hl = +H * sc, xh = x0 + hl, xEnd = xh + shown * sc, ch = Math.min(3, eh * .18);
+  const pts = [0, 1, 2, 3, 4, 5].map(i => `${r2(cx + a * Math.cos(i * Math.PI / 3))},${r2(cy + a * Math.sin(i * Math.PI / 3))}`).join(' ');
+  let b = `<polygon class="ol" points="${pts}"/><circle class="eg" cx="${cx}" cy="${cy}" r="${r2(fh * .96)}"/><circle class="th" cx="${cx}" cy="${cy}" r="${r2(eh)}"/><path class="cl" d="M${r2(cx - a - 12)} ${cy}H${r2(cx + a + 12)}M${cx} ${r2(cy - fh - 12)}V${r2(cy + fh + 12)}"/>`;
+  b += dimLine(cx - a / 2, cy - fh, cx - a / 2, cy + fh, `F ${fmt(F)}`, 'left', a / 2 + 26, P) + dimLine(cx - a, cy, cx + a, cy, `G max ${fmt(G)}`, 'bottom', fh + 24, P);
+  b += `<path class="cl" d="M${x0 - 12} ${cy}H${r2(xEnd + 14)}"/><path class="pt" d="M${x0 + 2} ${r2(cy - fh)}H${r2(xh)}V${r2(cy + fh)}H${x0 + 2}L${x0} ${r2(cy + fh - 2)}V${r2(cy - fh + 2)}Z"/><path class="eg" d="M${x0} ${cy}H${r2(xh)}"/>`;
+  b += `<path class="pt" d="M${r2(xh)} ${r2(cy - eh)}H${r2(xEnd - ch)}L${r2(xEnd)} ${r2(cy - eh + ch)}V${r2(cy + eh - ch)}L${r2(xEnd - ch)} ${r2(cy + eh)}H${r2(xh)}Z"/>`;
+  const lt = L ? (L > 6 ? +LTl : +LTs) : +LTs, ltp = Math.min(lt, shown) * sc, ti = Math.max(ch + 1, eh * .14);
+  b += `<path class="th" d="M${r2(xEnd - ltp)} ${r2(cy - eh + ti)}H${xEnd}M${r2(xEnd - ltp)} ${r2(cy + eh - ti)}H${xEnd}"/><path class="eg" d="M${r2(xEnd - ltp)} ${r2(cy - eh)}V${r2(cy + eh)}"/>`;
+  const yb = cy + Math.max(fh, eh) + 2;
+  b += dimLine(x0, cy - fh, xh, cy - fh, `H ${fmt(H)}`, 'top', 16, P) + dimLine(xEnd, cy - eh, xEnd, cy + eh, `E max ${fmt(E)}`, 'right', 24, P);
+  b += dimLine(xh, yb, xEnd, yb, L ? `L ${s.L}"` : 'L', 'bottom', 18, P) + dimLine(xEnd - ltp, yb, xEnd, yb, `LT ${fmt(lt === +LTs ? LTs : LTl)}${L ? '' : ' (L ≤ 6")'}`, 'bottom', 44, P);
+  return iaDwFrame(f, s, b, L ? '' : '길이 L은 주문 사양', 262);
 }
 
 // 견적 때 알려 주실 치수 (품목 종류별 일반 안내. 규격 수치가 아니다)
@@ -120,12 +126,12 @@ const iaDwAsk = f => IA_DW_ASK[String(f.eng).split(' / ')[0]] || ['호칭 지름
 
 // 2D 칸에 그림이 없을 때의 안내 (그림이 있으면 이 함수는 쓰이지 않는다)
 function iaDwNone(f, s) {
-  const sym = iaDwSym(f), hasTable = !!(f.dims && f.dims.rows && f.dims.rows.length), size = s && s.size ? s.size : '';
+  const hasTable = !!(f.dims && f.dims.rows && f.dims.rows.length), size = s && s.size ? s.size : '';
   const why = hasTable
     ? (iaRowOf(f, size) ? '이 품목은 도면 대신 치수표로 확인합니다. 아래 치수표에서 호칭 줄을 고르세요.' : `이 호칭(${esc(size)})은 규격 원문 대조 값이 없어 도면을 그리지 않습니다. 다른 호칭을 고르세요.`)
     : f.dimsHeld ? `치수표는 규격 원문 대조를 마친 뒤 싣습니다${f.gate ? ` (${esc(f.gate)})` : ''}.`
     : '이 품목의 표준 치수표는 규격서 원문과 대조한 값만 싣는 원칙 때문에 아직 싣지 않았습니다. 없는 치수를 추정해서 그리지 않습니다.';
-  return `<div class="ia-nd">${sym}<p class="ia-nd-h"><b>2D 치수 도면</b><span class="tag q">${hasTable ? '치수표' : '준비 중'}</span></p><p class="small">${why}</p>
+  return `<div class="ia-nd"><p class="ia-nd-h"><b>2D 치수 도면</b><span class="tag q">${hasTable ? '치수표' : '준비 중'}</span></p><p class="small">${why}</p>
     <p class="small"><b>견적 때 알려 주실 치수</b></p><ul class="ia-nd-ask small">${iaDwAsk(f).map(x => `<li>${esc(x)}</li>`).join('')}</ul>
     <div class="actions">${hasTable ? '<button type="button" class="btn sm" data-shp-jump="z-b">치수표 보기 ↓</button>' : ''}<a class="btn sm" href="#custom" data-go="custom">도면·규격 번호 보내 견적 요청</a></div></div>`;
 }
