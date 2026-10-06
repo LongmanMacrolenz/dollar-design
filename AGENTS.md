@@ -19,6 +19,7 @@
 | `app/INTERFACE.md` | 모듈 사이 약속과 구조 설명(길다. 필요할 때만) | 예 |
 | `site/lib.json` | **규격 사전 원본**(항목 배열) | 예 |
 | `site/build.py`, `site/build_lib.py` | 문서 감싸기, 규격 사전 정적 페이지 만들기 | 예 |
+| `site/build_products.py`, `site/product-paths.json` | 제품별 구매 안내와 고정 검색 주소. 관리 안내는 `site/SEARCH.md` | 예 |
 | `site/page.html`, `docs/` | **만들어지는 결과물**. 배포되는 파일 | **아니오** — `python3 tools/build_all.py`로만 |
 | `tools/` | `build_all.py`(전체 빌드·검증), `sync_lib.py`(규격 사전 반영), `check.py`(점검 한 번에) | 예 |
 | `tools/shapes/` | 품목 형상 이미지 만드는 도구 (Blender 렌더, `README.md` 참고). CI에서는 돌리지 않음 | 예 |

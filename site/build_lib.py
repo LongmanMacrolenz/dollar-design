@@ -11,9 +11,10 @@ import json
 import pathlib
 import re
 
+from catalog import SITE_URL, product_path, product_urls, compact_description
+
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
-SITE_URL = "https://boltnote.boltnote.workers.dev/"
 CHECKED = "2026-10"
 KIND = {"std": "규격", "grade": "등급", "mat": "재질", "thread": "나사", "concept": "개념·설계", "doc": "서류", "test": "시험", "coat": "코팅·부식", "part": "부품 용어"}
 KIND_ORDER = ["std", "grade", "mat", "thread", "concept", "doc", "test", "coat", "part"]
@@ -82,9 +83,11 @@ FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link href="
 
 def page(title: str, desc: str, path: str, body: str, ld: dict | None = None) -> str:
     url = SITE_URL + path
+    desc = compact_description(desc)
     return (
         '<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         '<link rel="icon" href="/brand/boltnote-mark.svg" type="image/svg+xml">\n'
+        '<meta name="robots" content="index,follow">\n'
         f"<title>{e(title)}</title>\n<meta name=\"description\" content=\"{e(desc)}\">\n<link rel=\"canonical\" href=\"{url}\">\n"
         f'<meta property="og:type" content="article"><meta property="og:site_name" content="볼트노트"><meta property="og:locale" content="ko_KR">'
         f'<meta property="og:url" content="{url}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
@@ -99,7 +102,7 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 
 def header(on: str = "lib") -> str:
-    nav = [("/#products", "제품", ""), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
+    nav = [("/products/", "제품", "products"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
             + '</nav><a class="cta" href="/#list">Sales 문의 →</a></div></header>')
@@ -112,7 +115,7 @@ def footer(info: dict) -> str:
     r1.append(f"통신판매업 {e(info['mailOrderNo'])}" if info["mailOrderNo"] else "통신판매업 신고 전 (검증 운영 중)")
     r2 = []
     if info["tel"]: r2.append(f'전화 <a href="tel:{re.sub(r"[^0-9]", "", info["tel"])}">{e(info["tel"])}</a> (평일 19~21시)')
-    if info["rfq"]: r2.append(f'견적 메일 <a href="mailto:{e(info["rfq"])}">{e(info["rfq"])}</a>')
+    if info["rfq"]: r2.append(f'견적 메일 <a href="/#list">{e(info["rfq"])}</a>')
     if info["kakaoChat"]: r2.append(f'카카오톡 <a href="{e(info["kakaoChat"])}">{e(info["kakao"] or "볼트노트")} 채널</a>')
     elif info["kakao"]: r2.append(f"카카오톡 {e(info['kakao'])} (채널 공개 준비 중)")
     r2.append("호스팅 Cloudflare, Inc. (미국)")
@@ -162,7 +165,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + "</article><aside>"
             + f'<div class="box"><h2>지식 지도 · {e(topic["title"])}</h2><p>{e(topic["desc"])}</p><a href="/lib/#topic-{topic["id"]}">이 주제 전체 보기 →</a></div>' + reading
             + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
-            + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="/#c-{e(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
+            + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="{product_path(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
             + '<div class="box dark"><h2>이 규격이 들어간 BOM이 있으신가요?</h2><p>표기 그대로 보내 주시면 줄마다 규격·등급과 필요한 서류를 맞춰 견적합니다.</p><a class="cta" href="/#list">Sales로 보내기 →</a></div>'
             + "</aside></div></div></main>" + footer(info))
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": x["t"], "alternateName": [x.get("ko", "")] + x.get("aka", [])[:6],
@@ -211,7 +214,7 @@ def main() -> None:
     for x in L:
         (out / f'{x["id"]}.html').write_text(entry_html(x, by, info), encoding="utf-8")
     (out / "index.html").write_text(index_html(L, info), encoding="utf-8")
-    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L]
+    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls()
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")

@@ -53,6 +53,9 @@ def main():
     r = run([PY, "tools/build_all.py", "--check"])
     step("결과물이 원본과 같음", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
 
+    r = run([PY, "tools/check_search.py"])
+    step("검색 페이지·사이트맵·구매 링크", r.returncode == 0, (r.stdout + r.stderr).strip()[-600:])
+
     r = run([PY, "tools/test_precision.py"])
     step("체결 영상의 피치·좌면·공구 동작", r.returncode == 0,
          "6종 물리 조건" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-600:])
@@ -69,7 +72,7 @@ def main():
         step("견적·메일·접근 제어 점검", r.returncode == 0, "" if r.returncode == 0 else (r.stdout + r.stderr).strip()[-1000:])
     page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
     if node:
-        scripts = re.findall(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", page, re.S)
+        scripts = re.findall(r"<script(?![^>]*\b(?:src=|type=\"application/ld\+json\"))[^>]*>(.*?)</script>", page, re.S)
         bad = []
         for i, js in enumerate(scripts):
             with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as t:
@@ -85,6 +88,8 @@ def main():
     base, extra = banned_words()
     texts = {"docs/index.html": page}
     for p in sorted((ROOT / "docs" / "lib").glob("*.html")):
+        texts[str(p.relative_to(ROOT))] = p.read_text(encoding="utf-8")
+    for p in sorted((ROOT / "docs" / "products").rglob("*.html")):
         texts[str(p.relative_to(ROOT))] = p.read_text(encoding="utf-8")
     hits = []
     for name, t in texts.items():

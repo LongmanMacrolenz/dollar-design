@@ -1445,7 +1445,7 @@ footer.foot { padding-block: 0 48px; }
     <div class="pm-ft">
       <a class="pm-ft-brand" href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><span><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"><small>체결부품 목록 견적 · 엔지니어가 줄마다 읽습니다</small></span></a>
       <nav class="pm-ft-nav" aria-label="바닥글 메뉴">
-        <div><b>견적</b><a href="#list" data-go="list">Sales · 견적 문의</a><a href="#cart" data-go="cart">견적함</a><a href="#products" data-go="products">제품</a></div>
+        <div><b>견적</b><a href="#list" data-go="list">Sales · 견적 문의</a><a href="#cart" data-go="cart">견적함</a><a href="#products" data-go="products">제품</a><a href="/products/">제품별 구매 안내</a></div>
         <div><b>모아 보기</b><a href="#k-plant" data-go="k-plant">플랜트 볼팅</a><a href="#k-pump" data-go="k-pump">펌프 정비 볼트</a><a href="#k-flange" data-go="k-flange">KS·JIS 플랜지 세트</a></div>
         <div><b>도면·규격</b><a href="#lib" data-go="lib" data-lib>규격 사전</a><a href="#ref" data-go="ref">도면·규격 보기</a><a href="#tools" data-go="tools">계산·대조표</a><a href="#notes" data-go="notes">규격 노트</a></div>
       </nav>
@@ -2559,7 +2559,7 @@ function setNav(r) {
   if (fam) { no = sheetOf(fam.id); nm = fam.short; }
   $('sheet-no').textContent = `${no} / 7`;
   $('sheet-nm').textContent = nm;
-  document.title = key === 'home' ? '볼트노트' : `볼트노트 · ${nm}`;
+  document.title = key === 'home' ? (document.querySelector('meta[property="og:title"]')?.content || '볼트노트') : `볼트노트 · ${nm}`;
   iaAfterNav(r, nm);
 }
 function go(route, push = true) {

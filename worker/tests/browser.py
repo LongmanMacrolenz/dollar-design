@@ -132,6 +132,8 @@ def check_sales(page, BASE, OUT):
   page.locator('#sales-manual-details summary').click();assert not page.locator('#sb').is_visible()
   page.goto(BASE+'/#sales');page.locator('#sales-copy-address').wait_for();assert page.url.endswith('#list')
   page.goto(BASE+'/#home');page.locator('#sales-home-copy').wait_for();assert page.locator('#sb').count()==0
+  assert page.title()==page.locator('meta[property="og:title"]').get_attribute('content')
+  assert 'BOM' in page.title() and page.locator('a[href="/products/"]').count()>0
   primary=page.locator('.bn-brand-copy a[data-purchase-event=start]')
   assert primary.get_attribute('href')=='#list' and primary.get_attribute('target') is None
   primary.click();page.locator('#sales-email').wait_for()
