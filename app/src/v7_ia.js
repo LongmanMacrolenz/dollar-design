@@ -319,7 +319,7 @@ function iaFilePanel() {
   return `<section class="ia-filep" aria-labelledby="ia-fp-h"><h3 id="ia-fp-h">파일 보내기 (메일·카카오톡)</h3>
     <div class="ia-kv"><span>요청번호</span><span><b class="mono" id="ia-fp-no">${esc(iaReqNo)}</b> <button class="btn sm" type="button" data-ia-copy="${esc(iaReqNo)}">번호 복사</button></span>
     <span>메일</span><span>${rfqC('rfq')} <button class="btn sm" type="button" data-ia-copy="${esc(String(CONTACT.rfq || ''))}"${rfqOk('rfq') ? '' : dis}>주소 복사</button> ${mail}</span>
-    <span>카카오톡</span><span>${kakao} <span class="small muted">첫 메시지에 요청번호를 적어 주세요</span></span></div>
+    <span>카카오톡</span><span>${kakao} <span class="small muted">${CONTACT.kakaoHours ? `${esc(CONTACT.kakaoHours)} · ` : ''}첫 메시지에 요청번호를 적어 주세요</span></span></div>
     <p class="small">엑셀·PDF·사진·도면 모두 됩니다. 엑셀 양식은 상관없습니다. 함께 적어 주시면 빨라집니다: 필요한 날짜·납품지 · 필요한 서류(3.1, CoC) · 코팅·재질 조건 · 목표 단가(선택)</p>
     <p class="small muted">받으시는 것: 견적서 · C&amp;D 1장 · 공급 불가 목록. ${esc(SLA().box)}. 보내신 목록과 도면은 견적에만 쓰고 공개하지 않습니다.</p>
     <p class="small ia-fp-msg" id="ia-fp-msg" role="status" aria-live="polite"></p></section>`;

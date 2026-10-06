@@ -4897,8 +4897,8 @@ const SHOP_TERMS = {
 };
 // 견적 요청 통로 (Phase 1, b2b_site_changes.json channel.config). 운영자가 채움. 빈 값 = 미설정: 화면에는 .ph 자리표시를 보여 주고,
 // 그 값에 의존하는 버튼은 disabled + title='운영 정보 등록 후 사용'. href·mailto는 값이 있을 때만 만든다 (v5_rfq.js rfqC).
-// kakaoName: 채널 이름(대표 확인 2026-10-04). kakaoChat(URL)은 채널을 공개한 날 넣는다. 그 전에는 이름만 보이고 링크·버튼은 만들지 않는다
-const CONTACT = { rfq: 'a8wlhg942@naver.com', tel: '010-2093-0196', fax: '', kakaoChat: '', kakaoName: '볼트노트' };
+// 카카오 비즈니스채널 승인: 대표 확인 2026-10-06. 관리자 화면의 채널 식별자 _ZlHxiX를 사용한다.
+const CONTACT = { rfq: 'a8wlhg942@naver.com', tel: '010-2093-0196', fax: '', kakaoChat: 'https://pf.kakao.com/_ZlHxiX/chat', kakaoName: '볼트노트', kakaoHours: '평일 09:00–18:00' };
 
 /* ── 사이트 스위치 (IA 명세 2장, 한 곳). 기본값 = 근거 쪽. 대표만 바꾼다 ──
    ORDER_LIVE: 통신판매업 신고 뒤 ordersOpen + 신고번호 + 사업자번호가 모두 있어야 켜진다 (하나라도 비면 '주문 요청서 (확인 후 진행)').
@@ -11906,7 +11906,7 @@ function rfqC(k, o = {}) {
   if (k === 'kakaoChat' && !rfqOk(k) && CONTACT.kakaoName) return `<span${id} data-contact="kakaoChat">${esc(CONTACT.kakaoName)} <span class="small muted">(채널 공개 준비 중)</span></span>`;
   if (!rfqOk(k)) return `<span class="ph${k === 'kakaoChat' ? '' : ' mono'}"${id} data-contact="${k}">${RFQ_PH[k]}</span>`;
   const v = String(CONTACT[k]).trim();
-  if (k === 'kakaoChat') return `<a${id} href="${esc(v)}" target="_blank" rel="noopener">${o.label || '볼트노트 채널 1:1 채팅'}</a>`;
+  if (k === 'kakaoChat') return `<a${id} href="${esc(v)}" target="_blank" rel="noopener">${o.label || '볼트노트 채널 1:1 채팅'}</a>${CONTACT.kakaoHours ? ` <span class="small muted">(${esc(CONTACT.kakaoHours)})</span>` : ''}`;
   if (k === 'tel' && o.link) return `<a class="mono"${id} href="tel:${esc(v.replace(/[^0-9]/g, ''))}">${esc(v)}</a>`;
   return `<span class="mono"${id}>${esc(v)}</span>`;
 }
@@ -11961,7 +11961,7 @@ function rfqSheetHTML(pkg) {
     : m.url ? `<a class="btn sm pri" id="rs-mail" href="${esc(m.url)}" data-rs="mail">메일로 보내기</a>` : `<button class="btn sm" type="button" id="rs-mail"${dis}>메일로 보내기</button>`;
   const addr = QD_CANPRINT ? `<button class="btn sm" type="button" id="rs-copy-addr" data-rs="addr"${rfqOk('rfq') ? '' : dis}>주소 복사</button>` : '';
   const pdf = pkg.printable && QD_CANPRINT ? '<button class="btn sm" type="button" id="rs-pdf" data-rs="pdf">PDF로 저장 (인쇄)</button>' : '<span class="small muted">인쇄는 공개 사이트에서 됩니다.</span>';
-  const kakao = rfqOk('kakaoChat') ? `<a class="btn sm" id="rs-kakao" href="${esc(String(CONTACT.kakaoChat).trim())}" target="_blank" rel="noopener">카카오톡으로 문의</a>` : rfqC('kakaoChat');
+  const kakao = rfqOk('kakaoChat') ? `<a class="btn sm" id="rs-kakao" href="${esc(String(CONTACT.kakaoChat).trim())}" target="_blank" rel="noopener">카카오톡으로 문의</a>${CONTACT.kakaoHours ? ` <span class="small muted">${esc(CONTACT.kakaoHours)}</span>` : ''}` : rfqC('kakaoChat');
   return (bo ? rfqBoW : (s => s))(`<section id="rfq-send" class="tblock rfq-send" role="region" aria-labelledby="rfq-send-h">${bo ? `<div class="s4 e rs-h"><h3>${ORDER_LIVE ? '발주서 보내기' : '주문 요청서 보내기 (확인 후 진행)'}</h3></div>` : ''}
   <div class="s4 e rs-h"><h3 id="rfq-send-h" tabindex="-1">보낼 방법을 고르세요 <span class="mono rs-no">${esc(pkg.no)}</span></h3><p>이 페이지는 입력하신 내용을 서버로 보내지 않습니다. 아래 방법 가운데 하나로 직접 보내 주세요. 메일로 보내실 때는 1번에서 받은 파일과 도면을 첨부해 주세요(메일 링크로는 파일이 붙지 않습니다).</p></div>
   ${purchaseChecklistText() ? `<div class="s4 e"><p>특수요건은 원래 BOM과 별도 문서로 함께 보내 주세요.</p><button class="btn sm" type="button" data-purchase-download>특수요건 체크리스트 내려받기</button></div>` : ''}<div class="s4 e"><span class="lab">1 · ${what} 내려받기</span><div class="rs-btns"><button class="btn sm" type="button" id="rs-xlsx" data-rs="xlsx">${what} 내려받기 (엑셀)</button><button class="btn sm" type="button" id="rs-json" data-rs="json">JSON 내려받기</button>${pdf}</div><span class="sub">파일 이름 <span class="mono">${esc(pkg.fileBase)}.xlsx</span> · <span class="mono">${esc(pkg.fileBase)}.json</span> — 번호가 이 ${what}의 번호입니다. JSON은 재견적·재주문 때 그대로 씁니다.</span></div>
@@ -12256,7 +12256,7 @@ V.privacy = () => sheet(
   + zone('C', 'z-c', zh('C', 'z-c', '제3자 제공과 처리 위탁', '개인정보를 제3자에게 제공하지 않습니다(법령에 특별한 규정이 있는 경우는 예외). 아래 업무는 맡겨서 처리합니다(개인정보 보호법 제26조).')
     + pvTable(['맡는 곳 (수탁자)', '맡기는 일', '적용'], [
       [PV_PH('메일 서비스 업체명'), '견적 요청·발주 메일과 첨부 파일의 수신·보관', '견적 메일 주소를 개설한 뒤 (국내 메일 서비스)'],
-      ['주식회사 카카오', '카카오톡 채널 1:1 채팅 상담', '채널을 개설한 뒤'],
+      ['주식회사 카카오', '카카오톡 채널 1:1 채팅 상담', '카카오 채널로 문의하신 경우'],
       [PV_PH('택배사명'), '상품 배송 (받는 분 이름·전화·주소)', '출고할 때'],
       [PV_PH('결제대행사명'), '카드 결제 링크의 결제 처리', '카드 결제를 요청하신 경우'],
       [PV_PH('인터넷 팩스 업체명'), '팩스 수신 (받은 팩스를 메일함으로 전달)', '팩스 번호를 개통한 뒤'],
@@ -12845,7 +12845,7 @@ function iaFilePanel() {
   return `<section class="ia-filep" aria-labelledby="ia-fp-h"><h3 id="ia-fp-h">파일 보내기 (메일·카카오톡)</h3>
     <div class="ia-kv"><span>요청번호</span><span><b class="mono" id="ia-fp-no">${esc(iaReqNo)}</b> <button class="btn sm" type="button" data-ia-copy="${esc(iaReqNo)}">번호 복사</button></span>
     <span>메일</span><span>${rfqC('rfq')} <button class="btn sm" type="button" data-ia-copy="${esc(String(CONTACT.rfq || ''))}"${rfqOk('rfq') ? '' : dis}>주소 복사</button> ${mail}</span>
-    <span>카카오톡</span><span>${kakao} <span class="small muted">첫 메시지에 요청번호를 적어 주세요</span></span></div>
+    <span>카카오톡</span><span>${kakao} <span class="small muted">${CONTACT.kakaoHours ? `${esc(CONTACT.kakaoHours)} · ` : ''}첫 메시지에 요청번호를 적어 주세요</span></span></div>
     <p class="small">엑셀·PDF·사진·도면 모두 됩니다. 엑셀 양식은 상관없습니다. 함께 적어 주시면 빨라집니다: 필요한 날짜·납품지 · 필요한 서류(3.1, CoC) · 코팅·재질 조건 · 목표 단가(선택)</p>
     <p class="small muted">받으시는 것: 견적서 · C&amp;D 1장 · 공급 불가 목록. ${esc(SLA().box)}. 보내신 목록과 도면은 견적에만 쓰고 공개하지 않습니다.</p>
     <p class="small ia-fp-msg" id="ia-fp-msg" role="status" aria-live="polite"></p></section>`;
