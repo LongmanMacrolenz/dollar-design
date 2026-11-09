@@ -107,6 +107,55 @@ def check_channel(page, BASE, OUT):
 CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
+def check_landed(page, BASE, OUT):
+  """The landed-cost calculator works only from typed numbers, keeps them in this browser, and sends nothing."""
+  page.context.grant_permissions(['clipboard-read','clipboard-write'])
+  page.set_viewport_size({'width':1280,'height':800})
+  page.goto(BASE+'/admin/landed.html');page.locator('[data-f=qty]').wait_for()
+  page.evaluate('localStorage.removeItem("bn-landed-cost-v1")');page.reload();page.locator('[data-f=qty]').wait_for()
+  assert page.locator('meta[name=robots]').get_attribute('content')=='noindex,nofollow'
+  assert '아무것도 서버로 보내지 않습니다' in page.locator('.channel-warning').inner_text()
+  requests=[];page.on('request',lambda r:requests.append(r.url) if '/api/' in r.url else None)
+  # Nothing ships prefilled: every box starts empty and no result is shown until quantity, price and rate are typed.
+  assert all(v=='' for v in page.locator('#landed-app input[type=text]').evaluate_all('els=>els.map(e=>e.value)'))
+  assert '빠진 값: 수량, 가격, 환율' in page.locator('#r-empty').inner_text() and page.locator('#r-unit').count()==0
+  for key,value in {'qty':'1000','unit':'kg','price':'1','currency':'USD','fx':'1000','fxNote':'시험','freight':'100','insurance':'10','dutyPct':'10','adPct':'0','arrival':'100000','broker':'50000','truck':'150000','sellUnit':'2000','targetMarginPct':'20','markupPct':'20'}.items():page.locator(f'[data-f={key}]').fill(value)
+  result=lambda:[page.locator(s).inner_text() for s in ('#r-unit','#r-cost','#r-profit','#r-margin','#r-cash')]
+  assert result()==['1,521원','1,521,000원','479,000원','24%','1,673,100원'],result()
+  assert page.locator('#r-price-margin').inner_text()=='1,902원' and page.locator('#r-price-markup').inner_text()=='1,826원'
+  assert '통관 비용 371,000원 · 운송비 150,000원' in page.locator('#r-admin').inner_text()
+  assert page.locator('#r-lots tbody tr').count()==5 and '2,751원' in page.locator('#r-lots tbody tr').first.inner_text()
+  assert '1,521원' in page.locator('#landed-bar').inner_text()
+  # Anti-dumping duty, freight already in the price, and a non-number change the result at once.
+  page.locator('[data-f=adPct]').fill('30');assert page.locator('#r-cost').inner_text()=='1,854,000원'
+  page.locator('[data-f=adPct]').fill('0');page.locator('[data-f=freightIncluded]').check()
+  assert page.locator('#r-cost').inner_text()=='1,400,000원' and '계산에 넣지 않았습니다' in page.locator('#r-warnings').inner_text()
+  page.locator('[data-f=freightIncluded]').uncheck();assert page.locator('#r-cost').inner_text()=='1,521,000원'
+  page.locator('[data-f=price]').fill('1x');assert '숫자로 읽을 수 없는 칸' in page.locator('#r-empty').inner_text();page.locator('[data-f=price]').fill('1')
+  # Weight from dimensions needs a typed density.
+  page.locator('.landed-weight summary').click();page.locator('[data-f=wShape]').select_option('plate')
+  for key,value in {'wT':'10','wW':'1000','wL':'2000','wCount':'1'}.items():page.locator(f'[data-f={key}]').fill(value)
+  assert '넣으면 무게가 나옵니다' in page.locator('#weight-out').inner_text()
+  page.locator('[data-f=wDensity]').fill('8');assert page.locator('#weight-out').inner_text()=='약 160 kg'
+  page.locator('[data-action=use-weight]').click();assert page.locator('[data-f=weightKg]').input_value()=='160'
+  # Saved cases persist, their names render as text, and a reload restores the inputs.
+  page.locator('#sc-name').fill('<img src=x onerror=alert(1)> 수입');page.locator('[data-action=save-scenario]').click();page.locator('#sc-table tbody tr').wait_for()
+  page.reload();page.locator('[data-f=qty]').wait_for()
+  assert page.locator('[data-f=qty]').input_value()=='1000' and page.locator('#r-unit').inner_text()=='1,521원'
+  assert page.locator('#sc-table tbody tr').count()==1 and '<img src=x' in page.locator('#sc-table tbody th').inner_text() and page.locator('#landed-app img').count()==0
+  page.locator('[data-f=qty]').fill('500');assert page.locator('#r-unit').inner_text()=='1,942원'
+  page.locator('[data-load="0"]').click();assert page.locator('[data-f=qty]').input_value()=='1000'
+  page.locator('[data-action=copy]').click();text=page.evaluate('navigator.clipboard.readText()');assert '총 원가: 1,521,000원' in text and '어림 계산입니다' in text
+  with page.expect_download() as dl:page.locator('[data-action=export]').click()
+  dl.value.save_as(OUT/'landed.txt');assert (OUT/'landed.txt').read_text(encoding='utf-8')==text
+  for width in (320,390,768,1440):
+   page.set_viewport_size({'width':width,'height':800});assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
+  page.set_viewport_size({'width':1280,'height':800})
+  assert page.get_by_role('link',name='견적 관리',exact=True).first.get_attribute('href')=='/admin/'
+  page.once('dialog',lambda d:d.accept());page.locator('[data-action=clear]').click()
+  assert page.locator('[data-f=qty]').input_value()=='' and page.locator('#sc-table').count()==0 and page.evaluate('localStorage.getItem("bn-landed-cost-v1")') is None
+  assert not requests,requests
+
 def check_home(page, BASE, OUT):
   """The home hero keeps its message and CTA visible; the tightening pose obeys thread kinematics; fallbacks render."""
   import math
@@ -373,8 +422,10 @@ def check(BASE, OUT):
   assert len(attempts)==2
   assert page.get_by_role('link',name='카카오 채널',exact=True).get_attribute('href')=='/admin/channel.html'
   assert page.get_by_role('link',name='메일 문안',exact=True).get_attribute('href')=='/admin/mail.html'
+  assert page.get_by_role('link',name='수입 원가 계산',exact=True).get_attribute('href')=='/admin/landed.html'
   check_channel(page,BASE,OUT)
   check_mail(page,BASE,OUT)
+  check_landed(page,BASE,OUT)
   check_home(page,BASE,OUT)
   check_sales(page,BASE,OUT)
   assert not errors,errors
