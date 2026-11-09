@@ -1,0 +1,32 @@
+/* 수입 원가 계산 화면 (/admin/landed.html). 공통 모양은 admin.css·channel.css를 쓰고, 여기는 이 화면의 배치만 둔다. */
+.landed-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:22px;align-items:start}
+.landed-bar{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 18px;margin:0 0 18px;padding:12px 18px;background:#142234;color:#fff;border-radius:9px}
+.landed-bar small{display:block;color:#b9c3cc;font-size:11px}
+.landed-bar b{font-size:17px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.landed-bar .good{color:#8fe0b4}
+.landed-bar .bad{color:#ffb4a3}
+.landed-bar-empty{grid-column:1/-1;color:#d5dbe0}
+.landed-group h2,.landed-result h2{margin:0}
+.landed-group>p{margin:4px 0 12px}
+.landed-group label small{display:block;margin-top:4px;font-size:12px;line-height:1.5}
+.landed-check{display:flex;align-items:flex-start;gap:6px;margin:12px 0}
+.landed-check input{margin-top:6px;flex:none}
+.landed-shape{display:contents}
+.landed-weight{margin:18px 0 0;padding-top:14px;border-top:1px solid #dce1e4}
+.landed-weight .bar{margin:12px 0 0}
+.landed-big{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:14px 0 4px;color:#142234}
+.landed-big span{flex-basis:100%;font-size:13px;color:#526170}
+.landed-kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 18px;margin:16px 0}
+.landed-kv dt{font-size:12px;color:#607184}
+.landed-kv dd{margin:0;font-size:18px;font-weight:bold;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.landed-result caption{caption-side:top;text-align:left;color:#526170;font-size:13px;padding-bottom:4px}
+.landed-result h3{margin:22px 0 6px}
+.landed-list{margin:6px 0;padding-left:18px}
+.landed-list li{padding:3px 0}
+.landed-warn{border-left:3px solid #ee5735;padding-left:30px}
+.landed-now th,.landed-now td{background:#f6f7f6;font-weight:bold}
+.landed-name{flex:1;min-width:180px;margin:0}
+th.n,td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.muted th,tr.muted td{color:#607184;font-weight:normal}
+@media(max-width:900px){.landed-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:560px){.landed-bar{grid-template-columns:repeat(2,minmax(0,1fr));margin-inline:-14px;padding:10px 14px;border-radius:0}.landed-bar b{font-size:15px}}
