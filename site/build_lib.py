@@ -38,6 +38,8 @@ def site_info() -> dict:
         "bizNo": val(r"bizNo: '([^']*)'"), "owner": val(r"ownerName: '([^']*)'"),
         "rfq": val(r"rfq: '([^']*)'"), "tel": val(r"tel: '([^']*)'"), "kakao": val(r"kakaoName: '([^']*)'"), "kakaoChat": val(r"kakaoChat: '([^']*)'"),
         "mailOrderNo": val(r"mailOrderNo: '([^']*)'"),
+        # 전화 응대 시간: SHOP.sla가 가리키는 SLA_COPY 항목의 tel 값 (e1_data.js 한 곳에서만 바꾼다)
+        "telHours": val(r"\b" + re.escape(val(r"sla: '(\w+)'") or "parttime") + r": \{[^}]*?tel: '([^']*)'"),
     }
 
 
@@ -114,7 +116,7 @@ def footer(info: dict) -> str:
     if info["bizNo"]: r1.append(f"사업자등록번호 {e(info['bizNo'])}")
     r1.append(f"통신판매업 {e(info['mailOrderNo'])}" if info["mailOrderNo"] else "통신판매업 신고 전 (검증 운영 중)")
     r2 = []
-    if info["tel"]: r2.append(f'전화 <a href="tel:{re.sub(r"[^0-9]", "", info["tel"])}">{e(info["tel"])}</a> (평일 19~21시)')
+    if info["tel"]: r2.append(f'전화 <a href="tel:{re.sub(r"[^0-9]", "", info["tel"])}">{e(info["tel"])}</a>' + (f' ({e(info["telHours"])})' if info.get("telHours") else ""))
     if info["rfq"]: r2.append(f'견적 메일 <a href="/#list">{e(info["rfq"])}</a>')
     if info["kakaoChat"]: r2.append(f'카카오톡 <a href="{e(info["kakaoChat"])}">{e(info["kakao"] or "볼트노트")} 채널</a>')
     elif info["kakao"]: r2.append(f"카카오톡 {e(info['kakao'])} (채널 공개 준비 중)")
