@@ -6,9 +6,12 @@
      오른나사, 한 바퀴에 정확히 1피치 전진(advance = pitch × turns), 좌면에 닿으면 더 돌지도 파고들지도 않는다,
      판 간격은 너트가 닿은 뒤의 전진량만큼만 줄고 0 아래로 내려가지 않는다. 토크·축력·합격 같은 수치는 주장하지 않는다.
    - 문구·버튼은 조작 없이 항상 보인다. 움직임 줄이기면 조여진 정지 장면, WebGL이 안 되면 정지 이미지로 바꾼다 (오류를 내지 않는다).
+   - 글씨도 같은 이야기를 한다 (대표 요청 2026-11-10): 「작은 것이,」는 가늘게, 「전부를 붙잡습니다.」는 조여질수록 굵어져 고정 순간 가장 굵다.
+     제목 글꼴은 굵기가 이어지는 가변 글꼴 Hahmlet(SIL OFL). bnHomeFontInit이 홈 제목에 쓰인 글자만 Google Fonts에 요청한다.
    순수 함수 bnTightenPose(p)가 스크롤 진행률 p(0–1)를 자세로 바꾼다. 화면 연결은 bnTightenInit (V.after.home). */
-const BN_TIGHTEN = { size: 'M16', free: 9, clamp: 5, p0: .06, p1: .5, p2: .8, plate: 16, len: 80,
+const BN_TIGHTEN = { size: 'M16', free: 9, clamp: 5, p0: .06, p1: .5, p2: .8, plate: 16, len: 80, w0: 520, w1: 800,
   h1: ['작은 것이,', '전부를 붙잡습니다.'], stamp: '볼트는, 볼트노트.', lead: '체결부품 조달, BOM부터 정확하게.' };
+const BN_DISPLAY_SEL = '.bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2';   // zzzzzzzzzz_home.css의 제목 글꼴 규칙과 같은 목록
 let bnTightenCleanup = null;
 
 function bnTightenPose(p) {
@@ -25,8 +28,8 @@ function bnTightenPose(p) {
 
 function bnTightenMarkup() {
   const c = BN_TIGHTEN;
-  const line = t => `<span class="bn-tl">${[...t].map((ch, i, a) => `<span class="bn-tc${ch === ' ' ? ' sp' : ''}" style="--i:${i}">${ch === ' ' ? '&nbsp;' : esc(ch)}</span>`).join('')}</span>`;
-  return `<section class="bn-tighten" id="bn-tighten" aria-labelledby="h-z-a" data-seated="false" style="--p:0;--e:0">
+  const line = (t, n) => `<span class="bn-tl${n ? '' : ' bn-thin'}">${[...t].map((ch, i, a) => `<span class="bn-tc${ch === ' ' ? ' sp' : ''}" style="--i:${i}">${ch === ' ' ? '&nbsp;' : esc(ch)}</span>`).join('')}</span>`;
+  return `<section class="bn-tighten" id="bn-tighten" aria-labelledby="h-z-a" data-seated="false" style="--p:0;--e:0;--w:${c.w0}">
     <div class="bn-tighten-stage">
       <canvas class="bn-tighten-canvas" aria-hidden="true"></canvas>
       <img class="bn-tighten-poster" alt="" width="1600" height="1000" decoding="async" hidden>
@@ -239,7 +242,7 @@ function bnTightenInit() {
   }
   function paint(now) {
     const pose = bnTightenPose(cur), ease = Math.min(1, Math.max(0, (cur - .01) / (C.p2 - .01))), e = ease * ease * (3 - 2 * ease);
-    root.style.setProperty('--p', cur.toFixed(4)); root.style.setProperty('--e', e.toFixed(4));
+    root.style.setProperty('--p', cur.toFixed(4)); root.style.setProperty('--e', e.toFixed(4)); root.style.setProperty('--w', String(Math.round(C.w0 + (C.w1 - C.w0) * e)));
     const s = cur >= C.p2 - 1e-4;
     if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; root.classList.remove('is-hit'); void root.offsetWidth; root.classList.add('is-hit'); } seated = s; root.dataset.seated = String(s); }
     if (!R) return false;
@@ -276,4 +279,17 @@ function bnTightenInit() {
   canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); fallback(); }, { signal: abort.signal });
   window.__tightenTest = { pose: bnTightenPose, cfg: C, pitch: DIM.pitch[C.size], state: () => ({ p: cur, target, webgl: !!R, pinned, seated, quality, size: [canvas.width, canvas.height] }) };
   layout();
+}
+
+/* 홈 제목 글꼴: 홈 제목들(BN_DISPLAY_SEL)에 실제로 쓰인 글자만 골라 Google Fonts에 요청한다 (text= → 작은 파일 하나).
+   문구가 바뀌면 글자 목록도 저절로 바뀐다. 글꼴이 오기 전이나 받지 못하면 기본 글꼴로 보인다. 데이터 절약 모드에서는 요청하지 않는다. */
+function bnHomeFontInit() {
+  if (navigator.connection?.saveData) return;
+  const chars = [...new Set([...view().querySelectorAll(BN_DISPLAY_SEL)].map(el => el.textContent).join('').replace(/\s/g, ''))].sort().join('');
+  if (!chars) return;
+  const href = 'https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap&text=' + encodeURIComponent(chars);
+  let link = document.getElementById('bn-home-font');
+  if (link?.getAttribute('href') === href) return;
+  if (!link) { link = document.createElement('link'); link.id = 'bn-home-font'; link.rel = 'stylesheet'; document.head.appendChild(link); }
+  link.href = href;
 }

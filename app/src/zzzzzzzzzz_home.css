@@ -1,6 +1,12 @@
 /* 홈 리뉴얼 (2026-11-10): 어두운 금속 무대 + 조임 장면(v9_tighten.js). 모든 규칙은 .bn-home / .ia-at-home 아래에만 둔다 (다른 화면은 그대로). */
 .bn-home { --paper:#0a0e13; --sheet:#111922; --sheet-2:#18222d; --ink:#f2f3ef; --ink-2:#c3ccd4; --ink-3:#93a0ac; --hair:#4d5965; --hair-2:#27323d; --bn-orange-ink:#ff8f73; background:var(--paper); color:var(--ink); }
 
+/* ── 제목 글꼴 (대표 요청 2026-11-10): 가변 글꼴 Hahmlet. 가는 첫 줄 + 굵은 둘째 줄. 목록은 v9_tighten.js BN_DISPLAY_SEL과 같게 둔다 ── */
+.bn-home { --bn-display:"Hahmlet", var(--f-sans); }
+.bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2 { font-family:var(--bn-display); }
+.bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2 { font-weight:800; letter-spacing:-.03em; }
+.bn-home h2 .bn-thin { font-weight:200; letter-spacing:-.035em; }
+
 /* ── 조임 장면 ── */
 .bn-tighten { position:relative; height:calc((100svh - var(--tight-top,0px) - var(--tight-head,0px)) * 2.6); background:#06090d; }
 .bn-tighten-stage { position:sticky; top:var(--tight-top,0px); height:calc(100svh - var(--tight-top,0px) - var(--tight-head,0px)); min-height:520px; overflow:hidden; isolation:isolate;
@@ -14,14 +20,15 @@
 .bn-tighten-eyebrow { margin:0 0 26px; font-family:var(--bn-en, 'Manrope', sans-serif); font-size:11px; font-weight:700; letter-spacing:.2em; color:#8b98a5; }
 .bn-tighten-eyebrow span { color:#f15a38; padding:0 6px; }
 .bn-tighten h1 { margin:0; font-size:clamp(36px, 4.3vw, 72px); line-height:1.18; font-weight:800; letter-spacing:-.045em; color:#c4ccd4; word-break:keep-all; }
-.bn-tl { display:block; white-space:nowrap; }
-.bn-tc { display:inline-block; transform:translateX(calc(var(--i) * (1 - var(--e)) * .15em)); opacity:calc(.74 + .26 * var(--e)); will-change:transform; }
+.bn-tl { display:block; white-space:nowrap; letter-spacing:-.025em; font-variation-settings:"wght" var(--w, 800); }
+.bn-tl.bn-thin { font-weight:200; font-variation-settings:"wght" 200; letter-spacing:-.03em; }
+.bn-tc { display:inline-block; transform:translateX(calc(var(--i) * (1 - var(--e)) * .15em)); opacity:calc(.86 + .14 * var(--e)); will-change:transform; }
 .bn-tc.sp { width:.26em; }
 .bn-tighten[data-seated="true"] h1 { color:#fff; transition:color .18s ease-out; }
 .bn-tighten h1::after { content:""; display:block; width:clamp(120px, 15vw, 240px); height:5px; margin-top:22px; background:#f15a38; transform:scaleX(0); transform-origin:left; transition:transform .12s ease-in; }
 .bn-tighten[data-seated="true"] h1::after { transform:scaleX(1); transition:transform .32s cubic-bezier(.2,.9,.2,1) .06s; }
-.bn-tighten-stamp { display:flex; align-items:center; gap:12px; margin:22px 0 0; font-size:clamp(17px, 1.6vw, 24px); letter-spacing:-.03em; color:#fff; opacity:0; transform:scale(1.16); transform-origin:left center; transition:opacity .12s ease-in, transform .12s ease-in; }
-.bn-tighten-stamp b { font-weight:800; }
+.bn-tighten-stamp { display:flex; align-items:center; gap:12px; margin:22px 0 0; font-size:clamp(17px, 1.6vw, 24px); letter-spacing:-.015em; color:#fff; opacity:0; transform:scale(1.16); transform-origin:left center; transition:opacity .12s ease-in, transform .12s ease-in; }
+.bn-tighten-stamp b { font-weight:700; }
 .bn-tighten[data-seated="true"] .bn-tighten-stamp { opacity:1; transform:none; transition:opacity .16s ease-out .12s, transform .34s cubic-bezier(.18,1.4,.3,1) .12s; }
 .bn-tighten-lead { margin:26px 0 30px; font-size:clamp(14px, 1.15vw, 17px); line-height:1.7; color:#b9c3cc; }
 .bn-tighten .bn-actions { display:flex; flex-wrap:wrap; gap:10px; margin:0; }

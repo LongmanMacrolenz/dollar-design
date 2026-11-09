@@ -121,6 +121,10 @@ def check_home(page, BASE, OUT):
   assert page.locator('#sales-home-copy').count()==1 and page.locator('#bn-brand-video').count()==0 and page.locator('#sb').count()==0
   assert page.locator('#bn-engineering-details').count()==1 and page.locator('.purchase-trust').count()==0
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  # Headline type: the display face is requested for exactly the characters in use; line one stays thin, line two gains weight as the nut tightens.
+  font=page.evaluate('()=>{const l=document.getElementById("bn-home-font"),u=l&&new URL(l.href),need=[...new Set([...document.querySelectorAll(".bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2")].map(e=>e.textContent).join("").replace(/\\s/g,""))],cs=s=>getComputedStyle(document.querySelector(s)),T=window.__tightenTest;return{host:u&&u.host,family:u&&u.searchParams.get("family"),missing:u?need.filter(c=>!u.searchParams.get("text").includes(c)):need,h1:cs(".bn-tighten h1").fontFamily,thin:cs(".bn-tl.bn-thin").fontVariationSettings,heavy:cs(".bn-tl:not(.bn-thin)").fontVariationSettings,want:T.state().pinned?T.cfg.w0:T.cfg.w1}}')
+  assert font['host']=='fonts.googleapis.com' and font['family']=='Hahmlet:wght@100..900' and font['missing']==[],font
+  assert font['h1'].startswith('Hahmlet') and font['thin']=='"wght" 200' and font['heavy']==f'"wght" {font["want"]}',font
   # Kinematics of the pure pose function: right-hand thread, one pitch per turn, stop at seat, gap closes only after contact.
   data=page.evaluate('()=>{const T=window.__tightenTest;return{pitch:T.pitch,cfg:T.cfg,rows:Array.from({length:1001},(_,i)=>{const s=T.pose(i/1000);return[s.turns,s.advance,s.gap,s.seated,s.theta,s.contact]})}}')
   pitch,cfg,rows=data['pitch'],data['cfg'],data['rows'];total=cfg['free']+cfg['clamp']
@@ -144,6 +148,7 @@ def check_home(page, BASE, OUT):
    assert page.locator('.bn-tighten').get_attribute('data-seated')=='true'
    page.wait_for_function('getComputedStyle(document.querySelector(".bn-tighten-stamp")).opacity==="1"')
    assert page.locator('.bn-tighten-stamp').inner_text().strip()=='볼트는, 볼트노트.'
+   assert page.evaluate('getComputedStyle(document.querySelector(".bn-tl:not(.bn-thin)")).fontVariationSettings')==f'"wght" {cfg["w1"]}' and cfg['w0']<cfg['w1']
    page.evaluate('scrollTo(0,0)');page.wait_for_function('window.__tightenTest.state().p<0.001',timeout=20000)
    assert page.locator('.bn-tighten').get_attribute('data-seated')=='false'
   # Reduced motion: no scroll pinning, the seated still and the full message.
