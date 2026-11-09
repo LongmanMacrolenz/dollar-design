@@ -130,6 +130,14 @@ def badges(x: dict) -> str:
             + (f'<span class="st">{e(st.split(" ")[0])}</span>' if st and not st.startswith("현행") else ""))
 
 
+def entry_title(x: dict) -> str:
+    """검색 결과에 보이는 제목. 영문 제목과 한국어 이름이 같은 말로 시작하면 한 번만 쓴다 (예: 분할핀 · 분할핀 (코터핀))."""
+    t, ko = x["t"], x.get("ko", "")
+    head = lambda s: s.split(" (")[0].strip()
+    name = t if not ko or ko == t else ko if head(ko) == head(t) else f"{t} · {ko}"
+    return f"{name} | 볼트노트 규격 사전"
+
+
 def entry_html(x: dict, by: dict, info: dict) -> str:
     topic = next(t for t in GUIDE["topics"] if x["id"] in t["entries"])
     path = next((p for p in GUIDE["paths"] if any(x["id"] in s["entries"] for s in p["steps"])), None)
@@ -171,7 +179,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": x["t"], "alternateName": [x.get("ko", "")] + x.get("aka", [])[:6],
           "description": x.get("sum", ""), "url": f"{SITE_URL}lib/{x['id']}",
           "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "볼트노트 체결부품 규격 사전", "url": f"{SITE_URL}lib/"}}
-    return page(f'{x["t"]} · {x.get("ko", "")} | 볼트노트 규격 사전', x.get("sum", ""), f'lib/{x["id"]}', body, ld)
+    return page(entry_title(x), x.get("sum", ""), f'lib/{x["id"]}', body, ld)
 
 
 def index_html(L: list, info: dict) -> str:

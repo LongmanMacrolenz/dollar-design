@@ -288,6 +288,7 @@
         "p-blind-rivet",
         "p-rivet-nut",
         "p-thread-insert",
+        "p-key-locking-insert",
         "p-machine-screw"
       ]
     },
