@@ -107,6 +107,67 @@ def check_channel(page, BASE, OUT):
 CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
+def check_home(page, BASE, OUT):
+  """The home hero keeps its message and CTA visible; the tightening pose obeys thread kinematics; fallbacks render."""
+  import math
+  page.emulate_media(reduced_motion='no-preference');page.set_viewport_size({'width':1280,'height':800})
+  page.goto(BASE+'/#home');page.locator('.bn-tighten h1').wait_for();page.wait_for_function('window.__tightenTest')
+  assert page.locator('#view h1').count()==1 and page.locator('#h-z-a').get_attribute('aria-label')=='작은 것이, 전부를 붙잡습니다.'
+  assert page.locator('#h-z-a').inner_text().replace('\n','').replace('\xa0',' ')=='작은 것이,전부를 붙잡습니다.'
+  assert '참고용 실시간 렌더링 · 실제 제품 사진 아님' in page.locator('.bn-tighten-note').inner_text()
+  cta=page.locator('.bn-brand-copy a[data-purchase-event=start]');assert cta.get_attribute('href')=='#list' and cta.is_visible()
+  box=cta.bounding_box();assert box['y']+box['height']<=800,box   # CTA is on the first screen without scrolling
+  assert [a.get_attribute('href') for a in page.locator('.bn-door').all()]==['#products','#lib','#list']
+  assert page.locator('#sales-home-copy').count()==1 and page.locator('#bn-brand-video').count()==0 and page.locator('#sb').count()==0
+  assert page.locator('#bn-engineering-details').count()==1 and page.locator('.purchase-trust').count()==0
+  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  # Headline type: the display face is requested for exactly the characters in use; line one stays thin, line two gains weight as the nut tightens.
+  font=page.evaluate('()=>{const l=document.getElementById("bn-home-font"),u=l&&new URL(l.href),need=[...new Set([...document.querySelectorAll(".bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2")].map(e=>e.textContent).join("").replace(/\\s/g,""))],cs=s=>getComputedStyle(document.querySelector(s)),T=window.__tightenTest;return{host:u&&u.host,family:u&&u.searchParams.get("family"),missing:u?need.filter(c=>!u.searchParams.get("text").includes(c)):need,h1:cs(".bn-tighten h1").fontFamily,thin:cs(".bn-tl.bn-thin").fontVariationSettings,heavy:cs(".bn-tl:not(.bn-thin)").fontVariationSettings,want:T.state().pinned?T.cfg.w0:T.cfg.w1}}')
+  assert font['host']=='fonts.googleapis.com' and font['family']=='Hahmlet:wght@100..900' and font['missing']==[],font
+  assert font['h1'].startswith('Hahmlet') and font['thin']=='"wght" 200' and font['heavy']==f'"wght" {font["want"]}',font
+  # Kinematics of the pure pose function: right-hand thread, one pitch per turn, stop at seat, gap closes only after contact.
+  data=page.evaluate('()=>{const T=window.__tightenTest;return{pitch:T.pitch,cfg:T.cfg,rows:Array.from({length:1001},(_,i)=>{const s=T.pose(i/1000);return[s.turns,s.advance,s.gap,s.seated,s.theta,s.contact]})}}')
+  pitch,cfg,rows=data['pitch'],data['cfg'],data['rows'];total=cfg['free']+cfg['clamp']
+  assert pitch==2 and cfg['size']=='M16'
+  previous=-1
+  for i,(turns,advance,gap,seated,theta,contact) in enumerate(rows):
+   p=i/1000
+   assert turns>=previous-1e-12,(p,turns,previous);previous=turns
+   assert abs(advance-pitch*turns)<1e-9 and abs(theta-2*math.pi*turns)<1e-9,p
+   assert -1e-12<=gap<=pitch*cfg['clamp']+1e-9,(p,gap)
+   assert abs(gap-(pitch*cfg['clamp'] if turns<cfg['free'] else pitch*(total-turns)))<1e-9,(p,gap,turns)
+   assert contact==(turns>=cfg['free']) and seated==(p>=cfg['p2'])
+   if seated:assert turns==total and gap==0,(p,turns,gap)
+  assert rows[0][0]==0 and rows[int(cfg['p0']*1000)][0]==0 and rows[-1][0]==total
+  state=page.evaluate('window.__tightenTest.state()')
+  if state['pinned']:
+   # Scrolling drives the scene; the stamp appears only once seated and the hero releases afterwards.
+   assert state['webgl'] and page.locator('.bn-tighten').get_attribute('data-seated')=='false'
+   page.evaluate('()=>{const r=document.querySelector(".bn-tighten"),s=r.querySelector(".bn-tighten-stage");scrollTo(0,r.offsetTop+r.offsetHeight-s.offsetHeight)}')
+   page.wait_for_function('window.__tightenTest.state().p>0.999',timeout=20000)
+   assert page.locator('.bn-tighten').get_attribute('data-seated')=='true'
+   page.wait_for_function('getComputedStyle(document.querySelector(".bn-tighten-stamp")).opacity==="1"')
+   assert page.locator('.bn-tighten-stamp').inner_text().strip()=='볼트는, 볼트노트.'
+   assert page.evaluate('getComputedStyle(document.querySelector(".bn-tl:not(.bn-thin)")).fontVariationSettings')==f'"wght" {cfg["w1"]}' and cfg['w0']<cfg['w1']
+   page.evaluate('scrollTo(0,0)');page.wait_for_function('window.__tightenTest.state().p<0.001',timeout=20000)
+   assert page.locator('.bn-tighten').get_attribute('data-seated')=='false'
+  # Reduced motion: no scroll pinning, the seated still and the full message.
+  page.emulate_media(reduced_motion='reduce');page.reload();page.locator('.bn-tighten.is-static').wait_for()
+  assert page.locator('.bn-tighten').get_attribute('data-seated')=='true'
+  assert page.evaluate('document.querySelector(".bn-tighten").offsetHeight<=innerHeight*1.2')
+  assert page.locator('.bn-tighten-stamp').is_visible() and page.locator('.bn-brand-copy a[data-purchase-event=start]').is_visible()
+  # No WebGL: the poster replaces the canvas and nothing throws.
+  context=page.context.browser.new_context(viewport={'width':1280,'height':800});other=context.new_page();problems=[];other.on('pageerror',lambda e:problems.append(str(e)))
+  other.add_init_script('const g=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(t,...a){return /webgl/.test(t)?null:g.call(this,t,...a)}')
+  other.goto(BASE+'/#home');other.locator('.bn-tighten.is-fallback.is-static').wait_for()
+  poster=other.locator('.bn-tighten-poster');assert poster.is_visible() and poster.get_attribute('src')=='media/boltnote-tighten-poster.webp'
+  other.wait_for_function('document.querySelector(".bn-tighten-poster").naturalWidth===1600')
+  assert other.locator('.bn-tighten-canvas').is_hidden() and other.locator('.bn-tighten').get_attribute('data-seated')=='true'
+  assert not problems,problems;context.close()
+  page.emulate_media(reduced_motion='no-preference')
+  print('홈 조임 장면 · 문구/CTA/자세 함수/스크롤 고정/움직임 줄이기/WebGL 대체: PASS')
+
+
 def check_sales(page, BASE, OUT):
   """Sales shows an address and RFQ example without launching a mail client."""
   page.context.grant_permissions(['clipboard-read','clipboard-write'])
@@ -314,6 +375,7 @@ def check(BASE, OUT):
   assert page.get_by_role('link',name='메일 문안',exact=True).get_attribute('href')=='/admin/mail.html'
   check_channel(page,BASE,OUT)
   check_mail(page,BASE,OUT)
+  check_home(page,BASE,OUT)
   check_sales(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
