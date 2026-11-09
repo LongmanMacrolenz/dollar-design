@@ -46,6 +46,26 @@ SEARCH_META = {
         "title": "분할핀(코터핀) 규격 ISO 1234·KS B ISO 1234·DIN 94 | 볼트노트",
         "desc": "분할핀 규격: ISO 1234(구 DIN 94), KS B ISO 1234, 인치는 ASME B18.8.1. 호칭은 구멍 지름입니다.",
         "aka": ["코터핀", "할핀", "와리핀", "스플릿핀", "분할 핀"]},
+    "ipw": {
+        "title": "인치 평와셔 SAE·USS(Type A·B) 규격 ASME B18.21.1 | 볼트노트",
+        "desc": "인치 평와셔(SAE 좁은형·USS 넓은형·펜더와셔). ASME B18.21.1·ASTM F844, 미국산 장비 일반 체결용.",
+        "aka": ["인치 와셔", "SAE 와셔", "USS 와셔", "인치 펜더와셔", "Flat Washer", "Fender Washer"]},
+    "mhh": {
+        "title": "미터 헤비 육각너트 A194M 2H·2HM·8M 단품 | 볼트노트",
+        "desc": "Heavy Hex 너트 미터(A194M 2H·2HM·8M). 미터 스터드볼트와 짝이 되는 고온·고압용 헤비너트 단품입니다.",
+        "aka": ["heavy hex 너트", "미터 헤비너트", "헤비 육각너트", "2H 너트", "8M 너트", "Metric Heavy Hex Nut"]},
+    "fbolt": {
+        "title": "기초볼트 L형·J형(앵커볼트) KS B 1016·JIS B 1178 | 볼트노트",
+        "desc": "J형·L형 기초볼트와 앵커판 LA형·JA형. KS B 1016·JIS B 1178, 인치 ASME B18.31.5·ASTM F1554.",
+        "aka": ["J형 기초볼트", "J볼트", "L볼트", "L형 앵커볼트", "J형 앵커볼트", "매립볼트", "LA형", "JA형"]},
+    "weldstud": {
+        "title": "용접 볼트·머리붙이 스터드 규격 KS B 1057·KS B 1062 | 볼트노트",
+        "desc": "머리붙이 스터드볼트(용접 볼트) 규격: KS B 1057(용접 볼트)·KS B 1062(머리붙이 스터드)·ISO 13918.",
+        "aka": ["머리붙이 스터드", "머리붙이 스터드볼트", "weld볼트", "용접볼트", "웰드 스터드", "Weld Stud"]},
+    "weldnut": {
+        "title": "용접너트 육각·사각·플랜지 규격 DIN 929·DIN 928·KS B 1058 | 볼트노트",
+        "desc": "사각 weld nut은 DIN 928, 육각은 DIN 929, 플랜지형은 ISO 21670, KS는 KS B 1058. 보통 생지로 공급합니다.",
+        "aka": ["사각 용접너트", "사각 weld nut", "육각 용접너트", "웰드너트", "weld nut", "플랜지 용접너트"]},
 }
 EXTRA_CSS = """
 .product-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center;margin:24px 0 32px}
