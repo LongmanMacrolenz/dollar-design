@@ -40,7 +40,19 @@ def site_info() -> dict:
         "mailOrderNo": val(r"mailOrderNo: '([^']*)'"),
         # 전화 응대 시간: SHOP.sla가 가리키는 SLA_COPY 항목의 tel 값 (e1_data.js 한 곳에서만 바꾼다)
         "telHours": val(r"\b" + re.escape(val(r"sla: '(\w+)'") or "parttime") + r": \{[^}]*?tel: '([^']*)'"),
+        "analyticsToken": val(r"analyticsToken: '([^']*)'"),
     }
+
+
+def beacon_tag(info: dict | None = None) -> str:
+    """Cloudflare Web Analytics 스크립트. SHOP.analyticsToken(e1_data.js)이 비어 있으면 아무것도 넣지 않는다.
+    토큰은 공개 값이며 쿠키 없는 집계용이다. 켜고 끄는 곳은 e1_data.js 한 곳이고, 처리방침(v6_policy.js)도 같은 값을 본다."""
+    token = (info or site_info()).get("analyticsToken", "")
+    if not token:
+        return ""
+    if not re.fullmatch(r"[A-Za-z0-9_-]{8,}", token):
+        raise ValueError("SHOP.analyticsToken 형식이 이상합니다")
+    return f'<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{{"token": "{token}"}}\'></script>\n'
 
 
 CSS = """
@@ -80,6 +92,7 @@ footer{background:var(--night);color:var(--tx-2);font-size:13px;padding:36px 0}f
 @media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}nav.top{order:3;flex-basis:100%}}
 """
 MARK = '<img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote">'
+BEACON = beacon_tag()   # 정적 페이지 435장에 같은 값. page.html을 한 번만 읽는다
 FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700;800&display=swap" rel="stylesheet">'
 
 
@@ -95,7 +108,7 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None) ->
         f'<meta property="og:url" content="{url}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
         f'<meta property="og:image" content="{SITE_URL}brand/boltnote-social.png"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
-        + f"{FONTS}\n<style>{CSS}</style>\n</head>\n<body>\n{body}\n</body>\n</html>\n"
+        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}</head>\n<body>\n{body}\n</body>\n</html>\n"
     )
 
 
