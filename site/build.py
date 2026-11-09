@@ -10,7 +10,7 @@ import re
 import sys
 
 from catalog import catalog, SITE_URL, HOME_TITLE, HOME_DESC
-from build_lib import site_info
+from build_lib import site_info, beacon_tag
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "page.html"
@@ -91,6 +91,7 @@ def build(out: pathlib.Path) -> None:
         f"<title>{html.escape(SEO_TITLE)}</title>\n"
         "<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}.search-overview{padding:40px 0;max-width:900px}.search-overview a{overflow-wrap:anywhere}.search-overview li{margin:10px 0}</style>\n"
         f"{head_meta()}"
+        f"{beacon_tag()}"
         "</head>\n<body>\n"
         f"{body}\n"
         "</body>\n</html>\n"
