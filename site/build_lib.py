@@ -46,13 +46,13 @@ def site_info() -> dict:
 
 def beacon_tag(info: dict | None = None) -> str:
     """Cloudflare Web Analytics 스크립트. SHOP.analyticsToken(e1_data.js)이 비어 있으면 아무것도 넣지 않는다.
-    토큰은 공개 값이며 쿠키 없는 집계용이다. 켜고 끄는 곳은 e1_data.js 한 곳이고, 처리방침(v6_policy.js)도 같은 값을 본다."""
+    토큰은 공개 값이며 쿠키 없는 집계용이다. 수동 삽입 스니펫은 type="module"이 필요하다(Cloudflare FAQ). 켜고 끄는 곳은 e1_data.js 한 곳이고, 처리방침(v6_policy.js)도 같은 값을 본다."""
     token = (info or site_info()).get("analyticsToken", "")
     if not token:
         return ""
     if not re.fullmatch(r"[A-Za-z0-9_-]{8,}", token):
         raise ValueError("SHOP.analyticsToken 형식이 이상합니다")
-    return f'<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{{"token": "{token}"}}\'></script>\n'
+    return f'<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{{"token": "{token}"}}\'></script>\n'
 
 
 CSS = """
