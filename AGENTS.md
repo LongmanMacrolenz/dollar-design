@@ -23,6 +23,7 @@
 | `site/page.html`, `docs/` | **만들어지는 결과물**. 배포되는 파일 | **아니오** — `python3 tools/build_all.py`로만 |
 | `tools/` | `build_all.py`(전체 빌드·검증), `sync_lib.py`(규격 사전 반영), `check.py`(점검 한 번에) | 예 |
 | `tools/shapes/` | 품목 형상 이미지 만드는 도구 (Blender 렌더, `README.md` 참고). CI에서는 돌리지 않음 | 예 |
+| `tools/quote/` | 대표 전용 견적서 도구: 입력 JSON → 사이트 양식 PDF·메일 문안·내부 원가표 (`README.md`). 고객 입력·결과(`out/`)와 `local.json`(계좌)은 git 무시 | 예 (예시·도구만) |
 | `docs/media/shape/*.webp` | 품목별·마감별 형상 이미지(참고용 렌더링)와 썸네일. **`tools/shapes/render_all.py`로만** 만든다 | **아니오** |
 | `app/src/v9_shape.js` | 형상 이미지를 화면에 붙이는 모듈. `SHAPE_IMG` 목록은 `render_all.py --manifest`가 쓴다 | 목록 블록은 아니오 |
 
