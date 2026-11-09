@@ -16,6 +16,40 @@ import struct
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def check_mail(page, BASE, OUT):
+  """The customer-mail kit edits local drafts, keeps the checklist, and sends nothing."""
+  page.context.grant_permissions(['clipboard-read','clipboard-write'])
+  page.goto(BASE+'/admin/mail.html')
+  page.locator('#ms-received').wait_for()
+  page.evaluate('localStorage.removeItem("bn-mail-copy-v1")')
+  page.reload();page.locator('#ms-received').wait_for()
+  assert page.locator('meta[name=robots]').get_attribute('content')=='noindex,nofollow'
+  assert '메일을 보내거나 고객 정보를 저장하지 않습니다' in page.locator('.channel-warning').inner_text()
+  requests=[];page.on('request',lambda r:requests.append(r.url) if '/api/' in r.url else None)
+  # 6 stages, 11 templates; account numbers never ship in the templates.
+  assert page.locator('.channel-nav [role=tab]').count()==6 and page.locator('.channel-field').count()==11
+  page.locator('[data-group=order]').click();body=page.locator('#mb-order-confirm').input_value()
+  assert '[은행 계좌번호' in body and '입금자명' in body
+  assert not any(ch.isdigit() for ch in body.split('입금 계좌')[1].split('입금자명')[0]),'account digits must not ship in templates'
+  page.locator('[data-copy=order-confirm]').click();assert page.evaluate('navigator.clipboard.readText()')==body
+  page.locator('[data-copy-subject=order-confirm]').click();assert page.evaluate('navigator.clipboard.readText()')=='[BNQ-번호] 발주 확인 및 입금 안내 — [건명]'
+  # A draft survives reload and the blank counter follows the text.
+  page.locator('#mb-order-confirm').fill('테스트 [하나] <img src=x onerror=alert(1)>')
+  assert page.locator('[data-count=order-confirm]').inner_text()=='채울 칸 [ ] 3개'   # 제목의 [BNQ-번호]·[건명] + 본문의 [하나]
+  page.reload();page.locator('#ms-received').wait_for();page.locator('[data-group=order]').click()
+  assert page.locator('#mb-order-confirm').input_value().startswith('테스트 [하나]') and page.locator('#panel-order img').count()==0
+  page.once('dialog',lambda d:d.accept());page.locator('[data-reset=order-confirm]').click();assert page.locator('#mb-order-confirm').input_value()==body
+  # Checklist marks persist until a new order is started.
+  page.locator('[data-check=c-rfq]').check();page.locator('[data-check=c-tax]').check()
+  page.reload();page.locator('#ms-received').wait_for();assert page.locator('#check-progress').inner_text()=='2 / 12'
+  page.once('dialog',lambda d:d.accept());page.locator('[data-action=new-order]').click();assert page.locator('#check-progress').inner_text()=='0 / 12'
+  page.locator('[data-group=receive]').focus();page.keyboard.press('End');assert page.locator('[data-group=follow]').get_attribute('aria-selected')=='true'
+  with page.expect_download() as dl:page.locator('[data-action=export]').click()
+  dl.value.save_as(OUT/'mail-copy.txt');text=(OUT/'mail-copy.txt').read_text(encoding='utf-8');assert '## 3. 발주·입금' in text and body in text
+  assert page.get_by_role('link',name='견적 관리',exact=True).first.get_attribute('href')=='/admin/'
+  assert not requests,requests
+
+
 def check_channel(page, BASE, OUT):
   """The channel kit edits local copy and exports assets without sending requests."""
   page.context.grant_permissions(['clipboard-read','clipboard-write'])
@@ -277,7 +311,9 @@ def check(BASE, OUT):
   banner=page.locator('.banner').filter(has_text='메일 수집 연결 성공');banner.wait_for();assert 'IMAP_UIDVALIDITY_MISSING' not in banner.inner_text();assert '2026-10-06 00:30 KST' in banner.inner_text(),banner.inner_text()
   assert len(attempts)==2
   assert page.get_by_role('link',name='카카오 채널',exact=True).get_attribute('href')=='/admin/channel.html'
+  assert page.get_by_role('link',name='메일 문안',exact=True).get_attribute('href')=='/admin/mail.html'
   check_channel(page,BASE,OUT)
+  check_mail(page,BASE,OUT)
   check_sales(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
