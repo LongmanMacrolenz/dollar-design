@@ -3663,6 +3663,12 @@ footer.foot.ia-foot { background:#142234; }
 @media(max-width:760px) { .bn-diagram-hint { display:block; margin-top:6px; font-size:10px; color:#97aec2; } }
 /* ── zzzzz_purchase.css ── */
 .purchase-scope-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0}.purchase-scope-grid article{padding:24px;border:1px solid #d4d9d5;background:#f6f7f4;color:#1c2926}.purchase-scope-grid h3{font-size:20px;margin:14px 0}.purchase-scope-grid p,.purchase-note{font-size:14px;line-height:1.8}.purchase-scope-grid a,.purchase-link,.purchase-source-links a{font-size:13px;color:#235249;text-decoration:underline;margin-right:12px}.purchase-badge{display:inline-block;font-size:11px;padding:5px 8px;border:1px solid #abbab2;color:#274b42;background:#eef3ee}.purchase-link{background:none;border:0;cursor:pointer;margin-top:8px}.purchase-guide{padding:28px;background:#eef2ed;border:1px solid #ccd6ce;color:#1c2926;margin:24px auto;max-width:1160px}.purchase-guide h2{font-size:26px}.purchase-guide p{line-height:1.8}.purchase-guide label{display:block}.purchase-guide input{width:100%;margin:8px 0;background:#fff;box-sizing:border-box}.purchase-question-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;list-style:none;padding:0}.purchase-question-grid a{font-size:13px;text-decoration:underline}.purchase-guide .bn-actions{flex-wrap:wrap}.purchase-sample{border-top:1px solid #cbd4cd;padding:20px 0}.purchase-sample summary{cursor:pointer;font-size:20px}.purchase-draft{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;line-height:1.8}.purchase-source-links{margin:20px 0}.bn-cinema .bn-hero-copy{align-self:start}.bn-cinema .bn-hero-grid{padding-top:48px}.bn-cinema .bn-hero-copy h1{font-size:clamp(40px,4.5vw,70px)}@media(max-width:700px){.purchase-scope-grid,.purchase-question-grid{grid-template-columns:1fr}.purchase-guide{padding:20px;margin:20px 0}.bn-cinema .bn-hero-grid{padding-top:24px}.bn-cinema .bn-actions{display:grid;grid-template-columns:1fr}.bn-cinema .bn-hero-copy{padding-bottom:24px}.purchase-scope-grid article{padding:20px}.purchase-guide .bn-actions{display:flex}}
+/* 소재 문의 화면(#materials): 카드 4장은 넓은 화면에서 2열. min-width로 감싸야 기존 700px 이하 1열 규칙을 이기지 않는다 */
+@media(min-width:701px){.purchase-scope-grid.mat-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mat-grid article{display:flex;flex-direction:column;align-items:flex-start}
+.mat-grid .mat-ask-t{margin:14px 0 4px;font-size:12px;font-weight:700}
+.mat-grid .mat-ask{margin:0 0 20px;padding-left:18px;font-size:14px;line-height:1.8}
+.mat-grid .btn{margin-top:auto}
 /* ── zzzzzz_drawing_polish.css ── */
 /* A single engineering viewer: the picture and its interpretation share a card. */
 .bn-studio .bn-cinema .bn-hero-grid{display:block;min-height:0;padding-top:22px;padding-bottom:0}
@@ -12715,7 +12721,7 @@ function iaNorm(r) {
 }
 function iaNavKey(r) {
   if (/^(products|buy|metric|inch)$/.test(r) || /^[tkcmi]-/.test(r)) return 'products';
-  if (/^(list|bom|quote|custom)$/.test(r)) return 'list';
+  if (/^(list|bom|quote|custom|materials)$/.test(r)) return 'list';
   if (/^(ref|tools|notes|cad)$/.test(r)) return 'ref';
   if (/^lib(-|$)/.test(r)) return 'lib';
   if (/^(about|help|privacy|terms)$/.test(r)) return 'about';
@@ -12944,7 +12950,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
   </div></section>
   <section class="bn-home-more" aria-label="더 보기">
     ${bnEngineeringMarkup()}
-    <div class="bn-wrap bn-home-links"><a href="#about" data-go="about">회사 소개·확인 범위 <i aria-hidden="true">↗</i></a><a href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인 <i aria-hidden="true">↗</i></a><a href="#ref" data-go="ref">도면·CAD <i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools">계산·대조 도구 <i aria-hidden="true">↗</i></a></div>
+    <div class="bn-wrap bn-home-links"><a href="#about" data-go="about">회사 소개·확인 범위 <i aria-hidden="true">↗</i></a><a href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인 <i aria-hidden="true">↗</i></a><a href="#ref" data-go="ref">도면·CAD <i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools">계산·대조 도구 <i aria-hidden="true">↗</i></a><a href="#materials" data-go="materials">소재 문의 <i aria-hidden="true">↗</i></a></div>
   </section>
 </div>`;
 
@@ -13221,7 +13227,7 @@ function iaPick(it) {
 $('q').addEventListener('paste', e => {
   const t = (e.clipboardData || window.clipboardData)?.getData('text') || '';
   if (!/\n/.test(t.trim())) return;
-  e.preventDefault(); state.listPrefill = t; $('q').value = ''; go('list');
+  e.preventDefault(); state.listPrefill = t; state.listTopic = ''; $('q').value = ''; go('list');
 });
 window.__hmTest = { kind: sbKind, list: t => sbListData(t).map(r => ({ k: r.k, why: r.why })), isList: sbIsList };
 
@@ -13285,7 +13291,7 @@ function iaProductsBody() {
 }
 V.products = () => iaPage(iaHead([['제품']], '제품', 'Products', `${Object.keys(CAT_F).length}종을 6칸에 나눴습니다. 미터·인치는 칸이 아니라 거르기로 고릅니다. 바로 주문은 공급처 단가를 확인한 품목에만 열립니다.`)
   + `<div class="ia-filt" role="group" aria-label="체계"><span class="ia-seg" role="group" aria-label="체계">${[['all', '전체'], ['metric', '미터'], ['inch', '인치']].map(([k, t]) => `<button type="button" data-ia-sys="${k}" aria-pressed="${state.iaSys === k}">${t}</button>`).join('')}</span><a class="small" href="#buy" data-go="buy">규격품 바로 주문 →</a></div>
-  ${purchaseLineup()}<div id="ia-pbody">${iaProductsBody()}</div>`);
+  ${purchaseLineup()}<div id="ia-pbody">${iaProductsBody()}</div>${materialsEntry()}`);
 V.after.products = () => iaBindFilter(() => { const b = $('ia-pbody'); if (b) b.innerHTML = iaProductsBody(); document.querySelectorAll('[data-ia-sys]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.iaSys === state.iaSys))); });
 V.buy = () => {
   const pf = Object.values(CAT_F).filter(iaFamPriced), steps = ['담기', `${ORDER_DOC()} 만들기`, '메일·카카오톡으로 보내기', '확인 메일', '입금'];
@@ -14588,6 +14594,42 @@ function bnUpdateReading() {
 window.addEventListener('scroll',()=> { if(!bnReadingFrame) bnReadingFrame=requestAnimationFrame(()=> { bnReadingFrame=0; bnUpdateReading(); }); },{passive:true});
 window.addEventListener('resize',bnUpdateReading);
 document.querySelector('.bn-top').addEventListener('click',()=> { const h=view().querySelector('h1'); h?.focus({preventScroll:true}); scrollTo({top:0,behavior:reduced()?'instant':'smooth'}); });
+/* ── v9_materials.js ── */
+/* 소재 문의 화면 (#materials, 대표 결정 2026-11-10). 심·봉재·판재·단조재는 카탈로그 품목이 아니라 "문의만 받는" 입구다.
+   - 재고·가격·납기·서류 제공을 약속하지 않는다. 등급·두께 범위·원산지도 적지 않는다 (AGENTS.md §3·§4).
+   - 카드 버튼은 견적 문의 화면(#list)의 메모에 문안을 채워 준다. 손님이 이미 적어 둔 메모는 지우지 않고 뒤에 덧붙인다.
+   - 메모가 있으면 기본 본문 전체가 메모로 바뀌므로(v9_sales.js), 문안에 요청사항·담당자·연락처 줄을 직접 넣는다.
+   - 목록 분석기는 체결부품만 읽는다 (PLATE·SHAFT 줄은 "공급 불가"로 표시됨, e3_parse.js). 소재는 이 화면의 문안으로 받는다.
+   이 파일은 v9_sales.js보다 먼저 붙으므로 salesDraft는 클릭 처리 안에서만 쓴다. */
+Object.assign(SHEETS, { materials: ['L', '소재 문의'] });
+const MATERIAL_INQ = [
+  { id: 'shim', ko: '심', en: 'Shim', d: '틈을 메우고 높이를 맞추는 얇은 판입니다.', ask: ['재질', '두께', '크기 또는 도면', '수량'],
+    lines: ['재질: [모르면 사용 조건을 적어 주세요]', '두께: [ ]', '크기 또는 도면: [ ]', '수량: [ ]'] },
+  { id: 'bar', ko: '봉재', en: 'Bar stock', d: '가공하기 전의 둥근·각·육각 막대입니다.', ask: ['재질 규격', '단면 모양과 치수', '길이(절단 길이)', '수량', '열처리 상태'],
+    lines: ['재질 규격: [ ]', '단면 모양과 치수: [둥근·각·육각 / 치수]', '길이(절단 길이): [ ]', '수량: [ ]', '열처리 상태: [정해진 경우만]'] },
+  { id: 'plate', ko: '판재', en: 'Plate', d: '필요한 크기로 잘라 쓰는 금속판입니다.', ask: ['재질 규격', '두께', '폭 × 길이(절단 치수)', '수량'],
+    lines: ['재질 규격: [ ]', '두께: [ ]', '폭 × 길이(절단 치수): [ ]', '수량: [ ]'] },
+  { id: 'forged', ko: '단조재', en: 'Forged bar · plate', d: '두드려 성형한 봉·판 형태의 소재입니다.', ask: ['재질 규격', '치수 또는 도면', '열처리·검사 요구', '수량'],
+    lines: ['재질 규격: [ ]', '치수 또는 도면: [ ]', '열처리·검사 요구: [ ]', '수량: [ ]'] },
+];
+const materialMemo = m => [`${m.ko}(${m.en}) 견적을 요청드립니다.`, '', ...m.lines, '필요한 서류: [성적서 필요 여부 등]', '사용처·조건: [ ]', '',
+  '요청사항: 단가, 공급 가능 수량, 납기, 서류 제공 범위', '희망 시점: [정해진 경우만 적어 주세요]', '회사 / 담당자: [회사명 / 성함]', '회신 연락처: [이메일 또는 전화번호]'].join('\n');
+// 제품 화면 맨 아래의 안내 상자 (거르기를 눌러도 다시 그려지지 않는 자리에 둔다)
+const materialsEntry = () => `<div class="ia-box blue mat-entry"><p><b>소재도 문의할 수 있습니다.</b> 심(Shim)·봉재(Bar stock)·판재(Plate)·단조재는 카탈로그 품목이 아닙니다. 사양을 받아 공급처를 확인한 뒤 회신합니다. 재고·납기·공급 보장을 뜻하지 않습니다.</p><div class="actions"><a class="btn pri" href="#materials" data-go="materials">소재 문의 →</a></div></div>`;
+V.materials = () => iaPage(iaHead([['Sales · 견적 문의', 'list'], ['소재 문의']], '소재 문의', 'Materials',
+  '심·봉재·판재·단조재, 사양만 알려 주세요. 볼트노트는 소재를 쌓아 두고 팔지 않습니다. 보내 주신 사양으로 공급처를 확인한 뒤, 가능 여부와 조건을 견적으로 회신합니다.')
+  + `<h2 class="sr">문의할 수 있는 소재</h2><div class="purchase-scope-grid mat-grid">${MATERIAL_INQ.map(m => `<article><span class="purchase-badge" lang="en">${esc(m.en)}</span><h3>${esc(m.ko)}</h3><p>${esc(m.d)}</p><p class="mat-ask-t">적어 주실 것</p><ul class="mat-ask">${m.ask.map(a => `<li>${esc(a)}</li>`).join('')}</ul><button type="button" class="btn pri" data-material-inquiry="${m.id}" data-purchase-event="start">${esc(m.ko)} 문의 문안 만들기 →</button></article>`).join('')}</div>
+  <p class="purchase-note">필요한 서류와 사용 조건, 희망 시점을 함께 적어 주세요. 성적서가 필요하면 규격 사전의 <a href="#lib-t-mtr" data-go="lib-t-mtr">밀시트(MTR)</a>, <a href="#lib-t-en10204-types" data-go="lib-t-en10204-types">성적서 종류 2.1·2.2·3.1·3.2</a>, <a href="#lib-t-heat-lot" data-go="lib-t-heat-lot">히트 번호·로트 추적</a>을 먼저 읽어 보세요.</p>
+  <div class="ia-box blue"><p><b>약속하지 않는 것.</b> 단가·납기·서류 제공 범위는 공급처 확인 뒤 견적서에 적습니다. 재고·납기·공급을 보장하는 안내가 아닙니다.</p><p>목록 분석 기능은 체결부품만 읽습니다. 소재는 이 화면의 문안으로 보내 주세요.</p><div class="actions"><a class="btn" href="#list" data-go="list">견적 문의 화면으로 →</a></div></div>`);
+INDEX.push({ t: '소재 문의', s: '심 · 봉재 · 판재 · 단조재 — 사양을 받아 공급처를 확인', k: '소재 문의 원소재 심 shim 심플레이트 라이너 봉재 환봉 각봉 육각봉 bar stock round bar 판재 철판 plate 단조재 단조 forged forging material', go: 'materials', g: '도구·안내' });
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-material-inquiry]'), m = b && MATERIAL_INQ.find(x => x.id === b.dataset.materialInquiry);
+  if (!m) return;
+  const memo = salesDraft.memo.trim(), text = materialMemo(m);
+  if (!memo || MATERIAL_INQ.some(x => materialMemo(x) === memo)) { state.listPrefill = text; state.listTopic = '소재'; }   // 비었거나 손대지 않은 문안이면 바꾼다
+  else if (!memo.includes(text)) state.listPrefill = memo + '\n\n' + text;   // 적어 둔 메모는 지우지 않고 덧붙인다. 제목의 주제는 그대로 둔다
+  go('list');
+});
 /* ── v9_purchase.js ── */
 /* Purchase questions stay separate from the source BOM. No customer data or analytics leave this page. */
 const purchaseDraft = { line:'', values:['','','','','',''], references:[] };
@@ -14655,10 +14697,10 @@ V.list=()=>{purchaseMetrics.listViews++;return purchaseOriginalList();};
 /* ── v9_sales.js ── */
 /* Sales email guide: address and editable examples work with any mail service.
    Free text stays in memory; copying an example is never a receipt confirmation. */
-const salesDraft = { number:'', memo:'' };
+const salesDraft = { number:'', memo:'', topic:'' };   // topic: 제목의 주제. 소재 문의 화면(v9_materials.js)에서 오면 '소재', 아니면 체결부품
 function salesMailPackage() {
   if (!salesDraft.number) salesDraft.number=rfqNo('Q');
-  const subject=`[RFQ] ${salesDraft.number} 체결부품 견적 문의`;
+  const subject=`[RFQ] ${salesDraft.number} ${salesDraft.topic||'체결부품'} 견적 문의`;
   const memo=salesDraft.memo;
   const requirements=purchaseChecklistText();
   const body=[
@@ -14704,7 +14746,8 @@ function salesExampleMarkup() {
   </section>`;
 }
 function salesPage() {
-  if (state.listPrefill) {salesDraft.memo=state.listPrefill;state.listPrefill=null;}
+  if (state.listPrefill) {salesDraft.memo=state.listPrefill;if(state.listTopic!=null)salesDraft.topic=state.listTopic;state.listPrefill=null;}
+  state.listTopic=null;
   const requirements=purchaseChecklistText();
   return `<section class="sales-page" aria-labelledby="h-z-a"><div class="bn-wrap sales-wrap">
     <div class="sales-hero"><div class="sales-heading"><p class="sales-label" lang="en">SALES / QUOTATION DESK</p>
@@ -14730,7 +14773,7 @@ function salesPage() {
 }
 function salesInit() {
   const memo=$('sales-memo');
-  memo.addEventListener('input',()=>{salesDraft.memo=memo.value;$('sales-example-body').textContent=salesMailPackage().body;});
+  memo.addEventListener('input',()=>{salesDraft.memo=memo.value;if(!memo.value.trim())salesDraft.topic='';const p=salesMailPackage();$('sales-example-body').textContent=p.body;$('sales-example-subject').textContent=p.subject;});
   const manual=$('sales-manual-details');
   manual.addEventListener('toggle',()=>{if(manual.open&&!$('sb')){$('sales-manual-body').innerHTML=sbBox('list');sbInit('list');}});
 }

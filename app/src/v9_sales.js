@@ -1,9 +1,9 @@
 /* Sales email guide: address and editable examples work with any mail service.
    Free text stays in memory; copying an example is never a receipt confirmation. */
-const salesDraft = { number:'', memo:'' };
+const salesDraft = { number:'', memo:'', topic:'' };   // topic: 제목의 주제. 소재 문의 화면(v9_materials.js)에서 오면 '소재', 아니면 체결부품
 function salesMailPackage() {
   if (!salesDraft.number) salesDraft.number=rfqNo('Q');
-  const subject=`[RFQ] ${salesDraft.number} 체결부품 견적 문의`;
+  const subject=`[RFQ] ${salesDraft.number} ${salesDraft.topic||'체결부품'} 견적 문의`;
   const memo=salesDraft.memo;
   const requirements=purchaseChecklistText();
   const body=[
@@ -49,7 +49,8 @@ function salesExampleMarkup() {
   </section>`;
 }
 function salesPage() {
-  if (state.listPrefill) {salesDraft.memo=state.listPrefill;state.listPrefill=null;}
+  if (state.listPrefill) {salesDraft.memo=state.listPrefill;if(state.listTopic!=null)salesDraft.topic=state.listTopic;state.listPrefill=null;}
+  state.listTopic=null;
   const requirements=purchaseChecklistText();
   return `<section class="sales-page" aria-labelledby="h-z-a"><div class="bn-wrap sales-wrap">
     <div class="sales-hero"><div class="sales-heading"><p class="sales-label" lang="en">SALES / QUOTATION DESK</p>
@@ -75,7 +76,7 @@ function salesPage() {
 }
 function salesInit() {
   const memo=$('sales-memo');
-  memo.addEventListener('input',()=>{salesDraft.memo=memo.value;$('sales-example-body').textContent=salesMailPackage().body;});
+  memo.addEventListener('input',()=>{salesDraft.memo=memo.value;if(!memo.value.trim())salesDraft.topic='';const p=salesMailPackage();$('sales-example-body').textContent=p.body;$('sales-example-subject').textContent=p.subject;});
   const manual=$('sales-manual-details');
   manual.addEventListener('toggle',()=>{if(manual.open&&!$('sb')){$('sales-manual-body').innerHTML=sbBox('list');sbInit('list');}});
 }

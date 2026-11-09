@@ -107,6 +107,49 @@ def check_channel(page, BASE, OUT):
 CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
+def check_materials(page, BASE, OUT):
+  """The materials entrance is inquiry-only: four cards prefill the RFQ memo, never drop a typed memo, and promise nothing."""
+  page.emulate_media(reduced_motion='no-preference');page.set_viewport_size({'width':1280,'height':800})
+  page.goto(BASE+'/#materials');page.reload();page.locator('.mat-grid').wait_for()   # hash navigation keeps JS state, so start from a fresh document
+  requests=[];page.on('request',lambda r:requests.append(r.url) if '/api/' in r.url else None)
+  assert '소재 문의' in page.title() and page.locator('#view h1').count()==1 and page.locator('#h-z-a').inner_text().startswith('소재 문의')
+  assert page.locator('.mat-grid article').count()==4 and [b.get_attribute('data-material-inquiry') for b in page.locator('[data-material-inquiry]').all()]==['shim','bar','plate','forged']
+  text=page.locator('#view').inner_text()
+  for word in ('재고 보유','당일 출고','바로 공급','보증합니다','저희가 공급'):assert word not in text,word
+  assert '공급처 확인 뒤 견적서에 적습니다' in text and '보장하는 안내가 아닙니다' in text and '체결부품만 읽습니다' in text
+  assert [a.get_attribute('href') for a in page.locator('.purchase-note a').all()]==['#lib-t-mtr','#lib-t-en10204-types','#lib-t-heat-lot']
+  # A card fills the memo with its template, opens the memo, and changes only the topic word of the subject.
+  before=page.evaluate('window.__purchaseMetrics.start')
+  page.locator('[data-material-inquiry=shim]').click();page.locator('#sales-memo').wait_for()
+  assert page.evaluate('location.hash')=='#list' and page.evaluate('window.__purchaseMetrics.start')==before+1
+  assert page.locator('#sales-memo-details').get_attribute('open') is not None
+  memo=page.locator('#sales-memo').input_value()
+  assert memo.startswith('심(Shim) 견적을 요청드립니다.') and '요청사항: 단가, 공급 가능 수량, 납기, 서류 제공 범위' in memo and '회사 / 담당자' in memo and '회신 연락처' in memo
+  subject=page.locator('#sales-example-subject').inner_text();assert subject.startswith('[RFQ] Q-') and subject.endswith(' 소재 견적 문의'),subject
+  assert memo in page.locator('#sales-example-body').inner_text()
+  # An untouched template is replaced by the next card.
+  page.goto(BASE+'/#materials');page.locator('.mat-grid').wait_for();page.locator('[data-material-inquiry=plate]').click();page.locator('#sales-memo').wait_for()
+  memo=page.locator('#sales-memo').input_value();assert memo.startswith('판재(Plate) 견적을 요청드립니다.') and '심(Shim)' not in memo
+  # Emptying the memo returns the subject to fasteners; a typed memo is kept and the template is appended after it.
+  page.locator('#sales-memo').fill('');assert page.locator('#sales-example-subject').inner_text().endswith(' 체결부품 견적 문의')
+  page.locator('#sales-memo').fill('기존 설비용 스터드 24개가 필요합니다.')
+  page.goto(BASE+'/#materials');page.locator('.mat-grid').wait_for();page.locator('[data-material-inquiry=bar]').click();page.locator('#sales-memo').wait_for()
+  memo=page.locator('#sales-memo').input_value()
+  assert memo.startswith('기존 설비용 스터드 24개가 필요합니다.\n\n봉재(Bar stock) 견적을 요청드립니다.'),memo
+  assert page.locator('#sales-example-subject').inner_text().endswith(' 체결부품 견적 문의')
+  page.goto(BASE+'/#materials');page.locator('.mat-grid').wait_for();page.locator('[data-material-inquiry=bar]').click();page.locator('#sales-memo').wait_for()
+  assert page.locator('#sales-memo').input_value()==memo   # the same template is not appended twice
+  # Entrances: the home footer links and a box under the product list that survives the filter redraw.
+  page.goto(BASE+'/#home');page.locator('.bn-home-links').wait_for();assert page.locator('.bn-home-links a[href="#materials"]').count()==1
+  page.goto(BASE+'/#products');page.locator('.mat-entry').wait_for();assert page.locator('.mat-entry a[href="#materials"]').count()==1
+  page.locator('[data-ia-sys=inch]').click();assert page.locator('.mat-entry').count()==1;page.locator('[data-ia-sys=all]').click()
+  page.set_viewport_size({'width':390,'height':844})
+  for route in ('materials','products'):
+   page.goto(BASE+'/#'+route);page.locator('.mat-grid' if route=='materials' else '.mat-entry').wait_for();assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),route
+  page.set_viewport_size({'width':1280,'height':800})
+  assert not requests,requests
+  page.goto(BASE+'/#home');page.reload()   # leave no memo behind
+
 def check_landed(page, BASE, OUT):
   """The landed-cost calculator works only from typed numbers, keeps them in this browser, and sends nothing."""
   page.context.grant_permissions(['clipboard-read','clipboard-write'])
@@ -428,6 +471,7 @@ def check(BASE, OUT):
   check_landed(page,BASE,OUT)
   check_home(page,BASE,OUT)
   check_sales(page,BASE,OUT)
+  check_materials(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()
