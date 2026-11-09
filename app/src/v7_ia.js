@@ -31,7 +31,7 @@ function iaNorm(r) {
 }
 function iaNavKey(r) {
   if (/^(products|buy|metric|inch)$/.test(r) || /^[tkcmi]-/.test(r)) return 'products';
-  if (/^(list|bom|quote|custom)$/.test(r)) return 'list';
+  if (/^(list|bom|quote|custom|materials)$/.test(r)) return 'list';
   if (/^(ref|tools|notes|cad)$/.test(r)) return 'ref';
   if (/^lib(-|$)/.test(r)) return 'lib';
   if (/^(about|help|privacy|terms)$/.test(r)) return 'about';
@@ -260,7 +260,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
   </div></section>
   <section class="bn-home-more" aria-label="더 보기">
     ${bnEngineeringMarkup()}
-    <div class="bn-wrap bn-home-links"><a href="#about" data-go="about">회사 소개·확인 범위 <i aria-hidden="true">↗</i></a><a href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인 <i aria-hidden="true">↗</i></a><a href="#ref" data-go="ref">도면·CAD <i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools">계산·대조 도구 <i aria-hidden="true">↗</i></a></div>
+    <div class="bn-wrap bn-home-links"><a href="#about" data-go="about">회사 소개·확인 범위 <i aria-hidden="true">↗</i></a><a href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인 <i aria-hidden="true">↗</i></a><a href="#ref" data-go="ref">도면·CAD <i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools">계산·대조 도구 <i aria-hidden="true">↗</i></a><a href="#materials" data-go="materials">소재 문의 <i aria-hidden="true">↗</i></a></div>
   </section>
 </div>`;
 
@@ -537,7 +537,7 @@ function iaPick(it) {
 $('q').addEventListener('paste', e => {
   const t = (e.clipboardData || window.clipboardData)?.getData('text') || '';
   if (!/\n/.test(t.trim())) return;
-  e.preventDefault(); state.listPrefill = t; $('q').value = ''; go('list');
+  e.preventDefault(); state.listPrefill = t; state.listTopic = ''; $('q').value = ''; go('list');
 });
 window.__hmTest = { kind: sbKind, list: t => sbListData(t).map(r => ({ k: r.k, why: r.why })), isList: sbIsList };
 
@@ -601,7 +601,7 @@ function iaProductsBody() {
 }
 V.products = () => iaPage(iaHead([['제품']], '제품', 'Products', `${Object.keys(CAT_F).length}종을 6칸에 나눴습니다. 미터·인치는 칸이 아니라 거르기로 고릅니다. 바로 주문은 공급처 단가를 확인한 품목에만 열립니다.`)
   + `<div class="ia-filt" role="group" aria-label="체계"><span class="ia-seg" role="group" aria-label="체계">${[['all', '전체'], ['metric', '미터'], ['inch', '인치']].map(([k, t]) => `<button type="button" data-ia-sys="${k}" aria-pressed="${state.iaSys === k}">${t}</button>`).join('')}</span><a class="small" href="#buy" data-go="buy">규격품 바로 주문 →</a></div>
-  ${purchaseLineup()}<div id="ia-pbody">${iaProductsBody()}</div>`);
+  ${purchaseLineup()}<div id="ia-pbody">${iaProductsBody()}</div>${materialsEntry()}`);
 V.after.products = () => iaBindFilter(() => { const b = $('ia-pbody'); if (b) b.innerHTML = iaProductsBody(); document.querySelectorAll('[data-ia-sys]').forEach(x => x.setAttribute('aria-pressed', String(x.dataset.iaSys === state.iaSys))); });
 V.buy = () => {
   const pf = Object.values(CAT_F).filter(iaFamPriced), steps = ['담기', `${ORDER_DOC()} 만들기`, '메일·카카오톡으로 보내기', '확인 메일', '입금'];
