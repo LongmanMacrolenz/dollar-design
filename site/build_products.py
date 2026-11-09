@@ -27,6 +27,26 @@ QUESTIONS = {
     "pin": ["핀·키·링의 종류와 적용 도면", "축·구멍 또는 홈 치수와 끼워맞춤 요구", "재질·경도와 조립 조건"],
     "rivet": ["리벳·인서트 종류와 적용 도면", "판 두께·그립 범위, 구멍 또는 나사 치수", "본체·심재 재질과 설치 공구 조건"],
 }
+# 네이버 서치어드바이저 검색어(2026-11)에 맞춰 제목·설명·다른 이름을 손본 품목.
+# 값은 모두 공개 카탈로그(ea_catdata.js)의 품목명·kw 별칭·안내 문구에서 가져왔습니다. 80자를 넘기지 않습니다.
+SEARCH_META = {
+    "clinch": {
+        "title": "클린칭 너트(압입 너트)·스터드·스탠드오프 선택·견적 | 볼트노트",
+        "desc": "Self-Clinching Fastener. 판금에 눌러 박는 너트·스터드·스탠드오프, 판 두께·판 재질에 맞춰 고릅니다.",
+        "aka": ["클린칭너트", "압입너트", "셀프클린칭", "압입스터드", "클린칭 스터드", "압입 스탠드오프"]},
+    "standoff": {
+        "title": "육각 서포트(스페이서) 암-암·암-수 선택·견적 | 볼트노트",
+        "desc": "기판·패널을 띄워 고정하는 육각서포트. 나사 호칭·몸통 길이·형식(암-암·암-수)·맞변·재질로 견적합니다.",
+        "aka": ["육각서포트", "서포트", "육각 스페이서", "기판 서포트", "PCB 서포트", "암수 서포트", "암암 서포트"]},
+    "keyinsert": {
+        "title": "키인서트(키 잠금 인서트) 선택·견적 | 볼트노트",
+        "desc": "키를 박아 돌림을 막는 키인서트(키 잠금 인서트). 나사 호칭·길이·재질을 알려 주시면 사양을 확인합니다.",
+        "aka": ["키인서트", "키 인서트", "키락 인서트", "셀프태핑 인서트", "자체 탭 인서트"]},
+    "cotter": {
+        "title": "분할핀(코터핀) 규격 ISO 1234·KS B ISO 1234·DIN 94 | 볼트노트",
+        "desc": "분할핀 규격: ISO 1234(구 DIN 94), KS B ISO 1234, 인치는 ASME B18.8.1. 호칭은 구멍 지름입니다.",
+        "aka": ["코터핀", "할핀", "와리핀", "스플릿핀", "분할 핀"]},
+}
 EXTRA_CSS = """
 .product-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:center;margin:24px 0 32px}
 .product-hero figure{margin:0;background:#edf0f4;border-radius:12px;padding:20px;text-align:center}
@@ -88,6 +108,9 @@ def product_html(id, f, families, tiles, paths, library, shapes, info):
     if len(title) > 70:
         title = f'{name} 규격·구매·견적 | 볼트노트'
     desc = compact_description(f'{name} 구매·견적 안내. {f["en"]}. 사양·규격과 필요한 서류를 확인하고 BOM·RFQ로 문의하세요.')
+    search = SEARCH_META.get(id, {})
+    title, desc = search.get("title", title), search.get("desc", desc)
+    aka = f'<p class="product-note" style="margin:-6px 0 14px">다른 이름·검색어: {e(" · ".join(search["aka"]))}</p>' if search.get("aka") else ""
     image = image_for(id, shapes)
     visual = (f'<figure><img src="{image}" width="576" height="432" alt="{e(name)} 참고용 3D 형상" fetchpriority="high">'
               '<figcaption>참고용 렌더링 · 실제 제품 사진 아님<br>치수·재질·표면처리는 요청 사양으로 확인합니다.</figcaption></figure>') if image else ""
@@ -109,7 +132,7 @@ def product_html(id, f, families, tiles, paths, library, shapes, info):
     body = (header("products") + f'<main><div class="w"><p class="crumbs">{crumbs}</p>'
             + '<section class="product-hero"><div><p class="eyebrow">FASTENER PRODUCT GUIDE</p>'
             + f'<h1>{e(name)}</h1><p class="product-en" lang="en">{e(f["en"])}</p>'
-            + f'<div class="product-meta"><span>{TIERS[f["p"]]}</span><span>{SYSTEM[f["sys"]]} 표기 확인</span></div><p class="lead">{e(public_label(intro))}</p>'
+            + f'<div class="product-meta"><span>{TIERS[f["p"]]}</span><span>{SYSTEM[f["sys"]]} 표기 확인</span></div>{aka}<p class="lead">{e(public_label(intro))}</p>'
             + f'<div class="product-actions"><a class="cta" href="/#list">BOM·RFQ로 Sales 문의 →</a><a href="/#c-{id}">2D 도면·사양 선택 보기 ↗</a></div></div>{visual}</section>'
             + '<div class="product-grid"><article><h2>적용 규격·구매 시 구분할 표기</h2>'
             + '<p class="product-note">아래 규격은 같은 치수·요건을 보장하는 대체 규격 목록이 아닙니다. BOM의 규격과 판본, 도면 요구를 기준으로 대조합니다.</p>'
