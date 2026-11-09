@@ -24,6 +24,7 @@
 <meta name="twitter:description" content="산업설비 볼트·너트 구매와 BOM 견적. 미터·인치, ASTM 스터드·헤비너트의 사양과 서류를 확인합니다.">
 <meta name="twitter:image" content="https://boltnote.boltnote.workers.dev/brand/boltnote-social.png">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://boltnote.boltnote.workers.dev/#organization", "name": "볼트노트", "alternateName": "Boltnote", "url": "https://boltnote.boltnote.workers.dev/", "logo": "https://boltnote.boltnote.workers.dev/brand/boltnote-mark.svg"}, {"@type": "WebSite", "@id": "https://boltnote.boltnote.workers.dev/#website", "name": "볼트노트", "url": "https://boltnote.boltnote.workers.dev/", "publisher": {"@id": "https://boltnote.boltnote.workers.dev/#organization"}}, {"@type": "WebPage", "@id": "https://boltnote.boltnote.workers.dev/", "url": "https://boltnote.boltnote.workers.dev/", "name": "볼트·너트 구매·BOM 견적 | 볼트노트", "description": "산업설비 볼트·너트 구매와 BOM 견적. 미터·인치, ASTM 스터드·헤비너트의 사양과 서류를 확인합니다.", "inLanguage": "ko", "isPartOf": {"@id": "https://boltnote.boltnote.workers.dev/#website"}}]}</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "30e74e7c6eec4d9bbd8439bc695b18a9"}'></script>
 </head>
 <body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -4993,7 +4994,7 @@ const SHOP = {
   leadRange: {},            // 품목 id → '2~4' 같은 보통 영업일. 빈 값이면 [n~m] 자리표시
   payLink: false,           // 카드 결제 링크 서비스를 연 뒤 true
   wbPublic: false,          // true면 목록 붙여넣기 뒤 4A 작업대를 바로 보여 줌
-  analyticsToken: '',       // Cloudflare Web Analytics 비컨 토큰(공개 값, 대시보드 → Web Analytics). 비우면 분석 스크립트를 넣지 않고 처리방침 B·D항도 '쓰지 않음'으로 표시. 값을 넣으면 site/build.py·build_lib.py가 모든 페이지에 스크립트를 넣는다
+  analyticsToken: '30e74e7c6eec4d9bbd8439bc695b18a9',   // 대표 전달 2026-11-09 (Cloudflare Web Analytics, 공개 값)       // Cloudflare Web Analytics 비컨 토큰(공개 값, 대시보드 → Web Analytics). 비우면 분석 스크립트를 넣지 않고 처리방침 B·D항도 '쓰지 않음'으로 표시. 값을 넣으면 site/build.py·build_lib.py가 모든 페이지에 스크립트를 넣는다
 };
 const ANALYTICS_ON = /^[A-Za-z0-9_-]{8,}$/.test(SHOP.analyticsToken || '');
 const ORDER_LIVE = SHOP.ordersOpen && /\S/.test(SHOP.mailOrderNo) && /\S/.test(SHOP.bizNo);
@@ -12323,7 +12324,7 @@ V.privacy = () => sheet(
     ])
     + `<ul class="pv-l"><li>주민등록번호는 받지 않습니다.</li><li>카드번호는 메일·채팅·팩스로 받지 않습니다. 카드 결제는 결제대행사의 결제 링크 화면에서 직접 입력하십니다.</li><li>견적 회신 메일은 광고가 아닙니다. 소식 메일은 동의하신 분께만 보내고, 메일마다 수신 거부 방법을 적습니다.</li></ul>`)
   + zone('B', 'z-b', zh('B', 'z-b', '이 사이트가 자동으로 처리하는 정보', ANALYTICS_ON ? '쿠키를 쓰지 않습니다. 방문 통계는 쿠키 없는 집계 도구로만 봅니다.' : '쿠키와 방문 분석 도구를 쓰지 않습니다.')
-    + `<ul class="pv-l">${ANALYTICS_ON ? `<li><b>방문 통계</b>: 페이지를 열면 Cloudflare Web Analytics 스크립트가 열어 본 페이지 주소, 유입 경로(참조 주소), 접속 국가, 기기·브라우저·운영체제 종류를 Cloudflare, Inc.(미국)에 보내 건수로 집계합니다. Cloudflare는 이 집계에 쿠키·localStorage를 쓰지 않고, IP 주소나 브라우저 정보로 개별 방문자를 시간에 걸쳐 추적하지 않는다고 밝힙니다(Cloudflare 공개 문서). 볼트노트는 집계된 숫자만 보며 개인을 식별하지 않습니다. 보관 기간은 ${PV_PH('Cloudflare 문서 확인 후 기재')}.</li>` : ''}<li>견적함, 4A장 BOM 작업(고객사·담당자 이름 같은 RFQ 머리 정보 포함), 화면 밝기 설정, 마지막 요청번호와 만든 시각은 <b>이 브라우저의 저장소(localStorage)에만</b> 남고 볼트노트로 보내지지 않습니다. 요청서·발주서 칸에 적은 이름·이메일은 저장하지 않습니다.</li>
+    + `<ul class="pv-l">${ANALYTICS_ON ? `<li><b>방문 통계</b>: 페이지를 열면 Cloudflare Web Analytics 스크립트가 열어 본 페이지 주소, 유입 경로(참조 주소), 접속 국가, 기기·브라우저·운영체제 종류를 Cloudflare, Inc.(미국)에 보내 건수로 집계합니다. Cloudflare는 이 집계에 쿠키·localStorage를 쓰지 않고, IP 주소나 브라우저 정보로 개별 방문자를 시간에 걸쳐 추적하지 않는다고 밝힙니다(Cloudflare 공개 문서). 볼트노트는 집계된 숫자만 보며 개인을 식별하지 않습니다. 보관은 표본 없는 원자료 7일이고 그 뒤 약 10%로 집계·축약되며, 최근 6개월치를 조회합니다(Cloudflare FAQ).</li>` : ''}<li>견적함, 4A장 BOM 작업(고객사·담당자 이름 같은 RFQ 머리 정보 포함), 화면 밝기 설정, 마지막 요청번호와 만든 시각은 <b>이 브라우저의 저장소(localStorage)에만</b> 남고 볼트노트로 보내지지 않습니다. 요청서·발주서 칸에 적은 이름·이메일은 저장하지 않습니다.</li>
 <li>이 웹페이지 파일은 호스팅 업체 Cloudflare, Inc.(미국)를 거쳐 전송됩니다. 호스팅 업체가 접속 기록(IP 주소 등)을 처리하는 범위와 보관 기간은 확인한 뒤 여기에 적습니다 (${PV_PH('처리 범위·보관 기간')}). 이 기록이 국외 이전(D)에 해당하는지도 함께 확인합니다.</li>
 <li>글꼴은 Google Fonts에서, 엑셀 기능을 쓸 때는 엑셀 도구(SheetJS)를 cdnjs에서 받아 옵니다. 이때 브라우저가 그 서버에 접속하며, 볼트노트는 그 접속 정보를 받지 않습니다.</li></ul>
 <div class="pv-clear" id="pv-clear"><button class="btn sm" type="button" id="pv-clear-1">이 브라우저에 남은 볼트노트 정보 지우기</button><span class="small muted">견적함·BOM 작업·발행한 Rev 기록·화면 설정이 모두 지워집니다.</span></div>`, 'tight')
