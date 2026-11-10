@@ -9,7 +9,7 @@ HOME_TITLE = "볼트·너트 구매·BOM 견적 | 볼트노트"
 HOME_DESC = "산업설비 볼트·너트 구매와 BOM 견적. 미터·인치, ASTM 스터드·헤비너트의 사양과 서류를 확인합니다."
 # 링크를 공유할 때 뜨는 그림(og:image), 1280×720. 원본은 app/brand/social.html → python3 tools/render_brand.py.
 # 카카오톡은 그림 주소가 같으면 예전에 만들어 둔 미리보기 그림을 계속 쓴다. 그림을 바꾸면 파일 이름은 두고 ?v= 숫자만 올린다.
-SOCIAL_IMAGE = "brand/boltnote-social.png?v=3"
+SOCIAL_IMAGE = "brand/boltnote-social.png?v=4"
 SOCIAL_NOTE = "참고용 렌더링 · 실제 제품 사진 아님"
 
 

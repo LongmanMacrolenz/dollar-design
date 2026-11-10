@@ -2,10 +2,11 @@
    같은 날 대표 요청으로 볼트 한 개에서 "제품이 조립되는 장면"으로 바꿨다: 위아래로 나뉜 펌프 케이싱과 양옆 베어링 하우징).
    화면을 내리면 한 번에 조립된다: ① 떠 있던 케이싱 상부와 베어링 하우징 상부가 함께 내려와 하부와 만난다 →
    ② 테이퍼 다월 핀이 박혀 위치를 잡는다 → ③ 케이싱은 스터드에 캡 너트(cap hex nut), 베어링 하우징은 육각머리 볼트(HHCS)가 돌며 체결된다 →
-   ④ 고정 순간 주황빛이 이음매를 한 바퀴 돈다. 글자 사이도 같이 조여지고, 체결 계산의 일반식이 차례로 겹쳐 보인다.
+   ④ 고정 순간 주황빛이 이음매를 한 바퀴 돈다. 글자 사이도 같이 조여진다. 옆의 계산 용지가 두루마리처럼 넘어가며 일반식을 보이고,
+      그 아래 인장력–늘어남 곡선(개략도) 위로 예압이 올라간다.
    - 그리는 방식: 라이브러리 없는 WebGL. 형상은 코드로 만든다. 외부 요청이 없고 사진·영상 파일을 쓰지 않는다.
      특정 제품을 그린 것이 아닌 개념 형상이다 (비율·치수는 실제 제품과 다르다). 회사·제품·도면 번호를 적지 않는다.
-     체결부품은 DIM의 공칭 치수(스터드·캡 너트·와셔 M16, 육각머리 볼트 M12)를 화면에서 읽히도록 k배 키웠다.
+     체결부품은 DIM의 공칭 치수(스터드·캡 너트·와셔 M16, 육각머리 볼트 M12)를 화면에서 읽히도록 k배 키웠다. 캡 너트는 위가 막힌 육각이다.
      "참고용 실시간 렌더링 · 실제 제품 사진 아님"을 화면에 적는다.
    - 틀리면 안 되는 것 (worker/tests/browser.py check_home이 자세 함수를 확인한다):
      순서 — 상·하부가 만나기 전에는 핀이 들어가지 않고, 핀이 다 들어가기 전에는 체결부품이 오지 않으며, 나사 시작점에 닿기 전에는 돌지 않는다.
@@ -14,23 +15,26 @@
    - 문구·버튼은 조작 없이 항상 보인다. 움직임 줄이기면 조립된 정지 장면, WebGL이 안 되면 정지 이미지로 바꾼다 (오류를 내지 않는다).
    - 글씨도 같은 이야기를 한다: 「작은 것이,」는 가늘게, 「전부를 붙잡습니다.」는 조립될수록 굵어져 고정 순간 가장 굵다.
      제목 글꼴은 굵기가 이어지는 가변 글꼴 Hahmlet(SIL OFL). bnHomeFontInit이 홈 제목에 쓰인 글자만 Google Fonts에 요청한다.
-   - 길이: 무대 높이의 3.4배(휴대폰 3배)를 내리는 동안 조립된다.
+   - 길이: 무대 높이의 4.6배(휴대폰 4배)를 내리는 동안 조립된다 (대표 요청 2026-11-10: 더 천천히).
    순수 함수 bnTightenPose(p, s)가 스크롤 진행률 p(0–1)와 체결 순번 s(0–1)를 자세로 바꾼다. 화면 연결은 bnTightenInit (V.after.home). */
 const BN_TIGHTEN = { stud: 'M16', screw: 'M12', k: 1.9, lift: 78, nutTurns: 9, screwTurns: 7, p0: .04, pa: .3, pb: .42, p2: .84, lag: .3, start: .16, w0: 520, w1: 800,
   h1: ['작은 것이,', '전부를 붙잡습니다.'], stamp: '볼트는, 볼트노트.', lead: '체결부품 조달, BOM부터 정확하게.' };
-/* 겹쳐 보이는 식: 교과서에 있는 일반식을 기호로만 적는다 (값·허용치·합격 여부를 말하지 않는다). [식(HTML), 설명] */
+/* 계산 용지에 적히는 식: 교과서에 있는 일반식을 기호로만 적는다 (값·허용치·합격 여부를 말하지 않는다). 조립 순서대로 구역을 나눈다.
+   [구역 이름, [[식(HTML), 설명], …]] */
 const BN_TIGHTEN_MATH = [
-  ['A<sub>s</sub> = (π/4)·(d − 0.9382·P)²', 'tensile stress area, metric thread'],
-  ['F<sub>u</sub> = R<sub>m</sub> · A<sub>s</sub>', 'ultimate tensile load'],
-  ['F<sub>p</sub> = S<sub>p</sub> · A<sub>s</sub>', 'proof load'],
-  ['T = K · d · F<sub>i</sub>', 'tightening torque ↔ preload'],
-  ['σ = F<sub>i</sub> / A<sub>s</sub>', 'tensile stress in the bolt'],
-  ['δ = F<sub>i</sub> · L / (A · E)', 'bolt elongation'],
-  ['θ = 360° · x / P', 'turn ↔ axial advance'],
-  ['F<sub>b</sub> = F<sub>i</sub> + C·F<sub>e</sub>,  C = k<sub>b</sub> / (k<sub>b</sub> + k<sub>m</sub>)', 'bolt load in a clamped joint'],
-  ['d<sub>2</sub> = d<sub>1</sub> + L / 50', 'taper pin, taper 1:50'],
-  ['τ = 4·F / (π · d²)', 'pin in single shear'],
+  ['LOCATE · taper pin', [['d<sub>2</sub> = d<sub>1</sub> + L / 50', 'taper 1:50'], ['τ = 4·F / (π · d²)', 'pin in single shear']]],
+  ['THREAD · strength', [['A<sub>s</sub> = (π/4)·(d − 0.9382·P)²', 'tensile stress area'], ['F<sub>p</sub> = S<sub>p</sub> · A<sub>s</sub>', 'proof load'], ['F<sub>u</sub> = R<sub>m</sub> · A<sub>s</sub>', 'ultimate tensile load']]],
+  ['TIGHTEN · torque → preload', [['T = K · d · F<sub>i</sub>', 'tightening torque'], ['θ = 360° · x / P', 'turn ↔ axial advance'], ['σ = F<sub>i</sub> / A<sub>s</sub>', 'tensile stress in the bolt'], ['δ = F<sub>i</sub> · L / (A · E)', 'bolt elongation']]],
+  ['JOINT · load share', [['F<sub>b</sub> = F<sub>i</sub> + C · F<sub>e</sub>', 'bolt load under external load'], ['C = k<sub>b</sub> / (k<sub>b</sub> + k<sub>m</sub>)', 'joint stiffness ratio']]],
 ];
+/* 인장력–늘어남 곡선 (개략도, 눈금·값 없음): 탄성 직선 → 항복 → 최대 하중 → 파단. 주황 선과 점은 조이는 동안 예압 F_i까지 올라간다.
+   곡선의 모양은 설명용이며 특정 재질·등급의 시험 곡선이 아니다. viewBox 240×136, 원점 (28,112) */
+const BN_TIGHTEN_CHART = `<svg viewBox="0 0 240 136" aria-hidden="true"><path class="g" d="M28 16H232M28 40H232M28 64H232M28 88H232M76 8V112M124 8V112M172 8V112M220 8V112"/><path class="ax" d="M28 6V112H234"/>
+  <path class="gd" d="M28 18H176M28 47H102"/><path class="gd on" d="M28 64.5H82.1"/>
+  <path class="cv" pathLength="1" d="M28 112L110 40C124 27.7 146 19 176 18C192 17.5 204 21 214 29"/><path class="now" pathLength="1" d="M28 112L82.1 64.5"/>
+  <path class="mk" d="M211 26l6 6m0-6l-6 6"/><circle class="yp" cx="110" cy="40" r="2"/><circle class="dot" cx="28" cy="112" r="3.4"/>
+  <text x="24" y="21" text-anchor="end">F<tspan dy="2" font-size="6">u</tspan></text><text x="24" y="50" text-anchor="end">F<tspan dy="2" font-size="6">p</tspan></text><text class="on" x="24" y="67.5" text-anchor="end">F<tspan dy="2" font-size="6">i</tspan></text>
+  <text x="116" y="50">yield</text><text x="182" y="12">max</text><text x="232" y="126" text-anchor="end">δ  elongation →</text><text x="32" y="10">F  tension</text></svg>`;
 const BN_DISPLAY_SEL = '.bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2';   // zzzzzzzzzz_home.css의 제목 글꼴 규칙과 같은 목록
 let bnTightenCleanup = null;
 
@@ -51,11 +55,15 @@ function bnTightenPose(p, s) {
 function bnTightenMarkup() {
   const c = BN_TIGHTEN;
   const line = (t, n) => `<span class="bn-tl${n ? '' : ' bn-thin'}">${[...t].map((ch, i, a) => `<span class="bn-tc${ch === ' ' ? ' sp' : ''}" style="--i:${i}">${ch === ' ' ? '&nbsp;' : esc(ch)}</span>`).join('')}</span>`;
-  return `<section class="bn-tighten" id="bn-tighten" aria-labelledby="h-z-a" data-seated="false" style="--p:0;--e:0;--m:0;--w:${c.w0}">
+  return `<section class="bn-tighten" id="bn-tighten" aria-labelledby="h-z-a" data-seated="false" style="--p:0;--e:0;--m:0;--r:0;--t:0;--w:${c.w0}">
     <div class="bn-tighten-stage">
       <canvas class="bn-tighten-canvas" aria-hidden="true"></canvas>
       <img class="bn-tighten-poster" alt="" width="1600" height="1000" decoding="async" hidden>
-      <div class="bn-tighten-math" aria-hidden="true" lang="en">${BN_TIGHTEN_MATH.map(([f, t], j) => `<p style="--j:${j}"><b>${f}</b><small>${t}</small></p>`).join('')}</div>
+      <div class="bn-tighten-math" aria-hidden="true" lang="en">
+        <div class="bn-math-head"><b>BOLTED JOINT</b><span>calc sheet · general formulas · symbols only</span></div>
+        <div class="bn-math-roll"><div class="bn-math-strip">${BN_TIGHTEN_MATH.map(([name, rows], n) => `<i>0${n + 1} · ${name}</i>${rows.map(([f, t]) => `<p><b>${f}</b><small>${t}</small></p>`).join('')}`).join('')}</div></div>
+        <figure class="bn-math-chart">${BN_TIGHTEN_CHART}<figcaption>TENSION — ELONGATION · schematic, not to scale</figcaption></figure>
+      </div>
       <div class="bn-wrap bn-tighten-inner">
         <div class="bn-brand-copy bn-tighten-copy">
           <p class="bn-tighten-eyebrow" lang="en">BOLTNOTE <span>/</span> INDUSTRIAL FASTENERS</p>
@@ -137,11 +145,10 @@ function bnTightenParts() {
   const stud = builder();
   stud.ring(24, [{ x: -T - 5, r: .01 }, { x: -T - 5, r: rM - 1.4 }, { x: -T - 3.6, r: rM }]); stud.ring(24, [{ x: -T - 3.6, r: rM }, { x: T - 8, r: rM }]);
   thread(stud, T - 8 - P, top, P, rM, 20, 1);
-  // 캡 너트 (자체 좌표 0 = 좌면): 육각 몸체 + 둥근 뚜껑. 스터드 끝을 덮는다
-  const nut = builder(), hexR = hexRf(S), Hh = .82 * d, Hd = 2 * d, rDome = .43 * S;
-  const n0 = hexEnd(nut, S, 0, 1, rM, .6), n1 = hexEnd(nut, S, Hh, -1, rDome, 1);
+  // 캡 너트 (자체 좌표 0 = 좌면): 위가 막힌 육각 너트 (대표 지적 2026-11-10: 끝은 둥글지 않고 육각이다). 스터드 끝을 덮는다
+  const nut = builder(), hexR = hexRf(S), Hd = 1.6 * d;   // 높이: 스터드가 들어갈 깊이(nutTurns × P)에 막힌 윗벽을 더한 것보다 크다
+  const n0 = hexEnd(nut, S, 0, 1, rM, .6), n1 = hexEnd(nut, S, Hd, -1, .01, 1);
   nut.ring(48, [{ x: n0, r: hexR }, { x: n1, r: hexR }]);
-  nut.ring(32, Array.from({ length: 11 }, (_, i) => { const f = i / 10 * PI / 2; return { x: Hh + (Hd - Hh) * Math.sin(f), r: Math.max(.01, rDome * Math.cos(f)) }; }));
   nut.ring(24, [{ x: 0, r: rM, ao: .3 }, { x: 4, r: rM, ao: .2 }]);
   // 평와셔 (0 … WH)
   const washer = builder(), wb = .5;
@@ -227,7 +234,7 @@ void main(){ vec3 n = normalize(vN); if (!gl_FrontFacing) n = -n;
   vec3 v = normalize(uCam - vP); float nv = clamp(dot(n, v), 0., 1.);
   vec3 f = uTint + (1. - uTint) * pow(1. - nv, 5.);
   vec3 col = env(reflect(-v, n), uRough) * f;
-  col += uTint * uRough * .16 * max(dot(n, normalize(vec3(.22, 1., .34))), 0.);
+  col += uTint * uRough * .56 * (.25 + .75 * max(dot(n, normalize(vec3(.22, 1., .34))), 0.));   // 거친 면(주물)의 퍼지는 빛: 형태가 어둠에 묻히지 않게
   col *= mix(.22, 1., vA) * mix(1., .34, uRough * 2. * smoothstep(430., 900., length(vP.xz)));   // 거친 면은 가운데에서 멀수록 어둡게 (체결부에 시선이 가도록)
   col += uEmis * vA * vA;
   float da = atan(vP.z, vP.x) - uOrbit.x; da = atan(sin(da), cos(da));
@@ -259,18 +266,18 @@ void main(){ vec3 n = normalize(vN); if (!gl_FrontFacing) n = -n;
     gl.bindBuffer(gl.ARRAY_BUFFER, b.a); gl.enableVertexAttribArray(aA); gl.vertexAttribPointer(aA, 1, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, b.i); gl.drawElements(gl.TRIANGLES, b.count, gl.UNSIGNED_SHORT, 0);
   }
-  const C = BN_TIGHTEN, body = [.125, .142, .165], cap = [.15, .168, .195], mach = [.56, .58, .61], steel = [.80, .82, .85], darkc = [.03, .034, .04], bronze = [.74, .6, .4], hot = [2.6, .52, .07];
+  const C = BN_TIGHTEN, body = [.27, .3, .345], cap = [.33, .365, .415], mach = [.62, .64, .67], steel = [.80, .82, .85], darkc = [.03, .034, .04], bronze = [.74, .6, .4], hot = [2.6, .52, .07];
   /* vw: { p, bob(첫 화면에서 기다릴 때 상부가 떠서 흔들리는 높이), px, py, narrow, orbit: [각도, 세기] } */
   function render(vw) {
     const w = canvas.width, h = canvas.height, asp = w / h, wide = !vw.narrow;   // narrow = 글이 아래, 그림이 위 (CSS 820px 분기와 같다)
     gl.viewport(0, 0, w, h); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    const az = (1.2 - .2 * vw.p) + vw.px * .05, el = (.5 - .12 * vw.p) - vw.py * .035, dist = 2760 * Math.max(1, (wide ? 1.5 : .9) / asp) * (1 - .1 * vw.p);
+    const az = (1.2 - .2 * vw.p) + vw.px * .05, el = (.5 - .12 * vw.p) - vw.py * .035, dist = 3080 * Math.max(1, (wide ? 1.5 : .9) / asp) * (1 - .05 * vw.p);
     const tgt = [0, 14, 0], eye = [tgt[0] + dist * Math.cos(el) * Math.cos(az), tgt[1] + dist * Math.sin(el), tgt[2] + dist * Math.cos(el) * Math.sin(az)];
     gl.uniformMatrix4fv(u.VP, false, mul(persp(.36, asp, 300, 9000), look(eye, tgt)));
-    gl.uniform2f(u.Shift, wide ? .36 : 0, wide ? -.04 : .4); gl.uniform3fv(u.Cam, eye); gl.uniform2f(u.Orbit, vw.orbit[0], vw.orbit[1]);
+    gl.uniform2f(u.Shift, wide ? .2 : 0, wide ? -.04 : .4);   // 넓은 화면: 글(왼쪽)과 계산 용지(오른쪽) 사이에 놓는다 gl.uniform3fv(u.Cam, eye); gl.uniform2f(u.Orbit, vw.orbit[0], vw.orbit[1]);
     const q0 = bnTightenPose(vw.p), lift = q0.lift + vw.bob, k = D.k, open = lift > .02, glow = hot.map(x => x * (open ? Math.exp(-lift / 13) : 0)), I = place(0, 0, 0), up = place(0, lift, 0);
     // 고정된 것: 받침, 하부, 축, 노즐, 스터드
-    draw(B.base, I, [.07, .08, .095], .5);
+    draw(B.base, I, [.12, .135, .155], .5);
     draw(B.lower, I, body, .42, undefined, 1); draw(B.faceL, I, mach, .3, glow); draw(B.pit, I, darkc, .6);
     draw(B.nozS, place(-52, -84, -100, 'nz'), body, .42); draw(B.nozD, place(52, -84, 100, 'z'), body, .42);
     draw(B.shaft, I, steel, .16); draw(B.imp, I, bronze, .24);
@@ -313,6 +320,8 @@ function bnTightenInit() {
     const tb = document.querySelector('.tb'), sticky = tb && getComputedStyle(tb).position === 'sticky', th = tb ? tb.offsetHeight : 0;
     root.style.setProperty('--tight-top', (sticky ? th : 0) + 'px'); root.style.setProperty('--tight-head', (sticky ? 0 : th) + 'px');
     root.style.setProperty('--tight-mini', ($('tb-mini')?.offsetHeight || 0) + 'px');   // 휴대폰 고정 막대 높이: 렌더링 안내를 그 아래에 둔다
+    const roll = root.querySelector('.bn-math-roll'), strip = root.querySelector('.bn-math-strip');
+    if (roll && strip) root.style.setProperty('--roll', Math.max(0, strip.offsetHeight - roll.clientHeight) + 'px');   // 계산 용지가 창을 지나 넘어갈 길이
     resize(); measure(); request();
   }
   function resize() {
@@ -329,7 +338,9 @@ function bnTightenInit() {
   function paint(now) {
     const ease = Math.min(1, Math.max(0, (cur - .01) / (C.p2 - .01))), e = ease * ease * (3 - 2 * ease);
     root.style.setProperty('--p', cur.toFixed(4)); root.style.setProperty('--e', e.toFixed(4)); root.style.setProperty('--w', String(Math.round(C.w0 + (C.w1 - C.w0) * e)));
-    root.style.setProperty('--m', Math.min(1, Math.max(0, (cur - C.pa) / (C.p2 - C.pa))).toFixed(4));   // 식이 겹쳐 보이는 정도: 상·하부가 만난 뒤부터 고정까지
+    root.style.setProperty('--m', Math.min(1, Math.max(0, (cur - C.pa) / (C.p2 - C.pa))).toFixed(4));   // 상·하부가 만난 뒤부터 고정까지
+    root.style.setProperty('--r', Math.min(1, Math.max(0, cur / C.p2)).toFixed(4));                      // 계산 용지가 넘어간 정도: 조립 내내 조금씩
+    root.style.setProperty('--t', Math.pow(Math.min(1, Math.max(0, (cur - C.pb) / (C.p2 - C.pb))), 2.2).toFixed(4));   // 곡선 위의 예압: 조일수록, 끝에서 빠르게 오른다
     const s = cur >= C.p2 - 1e-4;
     if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; bnImpact(root, 'slam'); } seated = s; root.dataset.seated = String(s); }   // 고정 순간: 화면이 흔들리고 주황빛이 한 바퀴 돈다 (v9_tighten_scenes.js)
     if (!R) return false;

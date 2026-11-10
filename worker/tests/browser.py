@@ -292,6 +292,7 @@ def check_home(page, BASE, OUT):
    assert rows[0][0]==cfg['lift'] and rows[0][3]==0 and rows[-1][3]==cfg['nutTurns'] and rows[-1][7]==cfg['screwTurns']
   later=[next(i for i,r in enumerate(rows) if r[3]>0) for rows in data['sets']];assert later[0]<later[1]<later[2],later   # fasteners start one after another
   assert page.locator('.bn-tighten-math p').count()>=8 and page.locator('.bn-tighten-math').get_attribute('aria-hidden')=='true'
+  assert page.locator('.bn-math-roll .bn-math-strip').count()==1 and page.locator('.bn-math-chart svg path.cv').count()==1 and page.locator('.bn-math-chart svg path.now').count()==1   # the calc sheet roll and the tension curve
   state=page.evaluate('window.__tightenTest.state()')
   if state['pinned']:
    # Scrolling drives the scene; the stamp appears only once seated and the hero releases afterwards.
@@ -302,7 +303,8 @@ def check_home(page, BASE, OUT):
    page.wait_for_function('getComputedStyle(document.querySelector(".bn-tighten-stamp")).opacity==="1"')
    assert page.locator('.bn-tighten-stamp').inner_text().strip()=='볼트는, 볼트노트.'
    assert page.evaluate('getComputedStyle(document.querySelector(".bn-tl:not(.bn-thin)")).fontVariationSettings')==f'"wght" {cfg["w1"]}' and cfg['w0']<cfg['w1']
-   assert page.evaluate('+getComputedStyle(document.querySelector(".bn-tighten")).getPropertyValue("--m")')==1   # every formula line has come in by the time it seats
+   roll=page.evaluate('()=>{const c=getComputedStyle(document.querySelector(".bn-tighten")),s=document.querySelector(".bn-math-strip").getBoundingClientRect(),w=document.querySelector(".bn-math-roll").getBoundingClientRect();return{m:+c.getPropertyValue("--m"),r:+c.getPropertyValue("--r"),t:+c.getPropertyValue("--t"),gap:Math.abs(s.bottom-w.bottom)}}')
+   assert roll['m']==1 and roll['r']==1 and roll['t']==1 and roll['gap']<=1.5,roll   # seated: the sheet has rolled to its end and the preload marker is at F_i
    page.evaluate('scrollTo(0,0)');page.wait_for_function('window.__tightenTest.state().p<0.001',timeout=20000)
    assert page.locator('.bn-tighten').get_attribute('data-seated')=='false'
   # Scenes below the hero: each one is held in place, tightens with the scroll, and hits exactly once when it seats.
