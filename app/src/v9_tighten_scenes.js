@@ -36,16 +36,18 @@ function bnImpact(scene, kind) {
 }
 
 /* 제품군 장면의 "작은 자리": 타일 전부가 한 화면에 들어오는 배율과 위치를 실제 폭으로 잰다 (CSS가 --sx·--sy·--ss로 쓴다).
-   한 줄에 2장 이상 보이는 화면은 전부를 한 줄로, 1장만 보이는 휴대폰은 두 줄로 놓는다. 조여진 모양(제자리)에서 재야 한다. */
+   한 줄에 2장 이상 보이는 화면은 전부를 한 줄로, 1장만 보이는 휴대폰은 두 줄로 놓는다. 조여진 모양(제자리)에서 재야 한다.
+   돌려주는 값 = 작은 그림들의 아래 끝(그림 윗변에서 잰 높이). 붙잡았을 때 여기까지는 화면에 들어와야 한다. */
 function bnLineupSlots(scene) {
   const track = scene.querySelector('.bn-products'), items = track ? [...track.children] : [], visual = items[0]?.querySelector('.bn-product-visual');
-  if (items.length < 2 || !visual) return;
+  if (items.length < 2 || !visual) return 0;
   const cs = getComputedStyle(track), gap = parseFloat(cs.columnGap) || 0, w = items[0].offsetWidth, vh = visual.offsetHeight;
   const room = track.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
   const perView = Math.max(1, Math.round((room + gap) / (w + gap))), cols = perView >= 2 ? items.length : Math.ceil(items.length / 2), rows = Math.ceil(items.length / cols), g = Math.min(gap, 12);
-  const scale = Math.min(1, (room - (cols - 1) * g) / (cols * w)), y0 = Math.max(0, (vh - (rows * vh * scale + (rows - 1) * g)) / 2);
+  const scale = Math.min(1, (room - (cols - 1) * g) / (cols * w)), tall = rows * vh * scale + (rows - 1) * g, y0 = Math.max(0, (vh - tall) * .12);   // 위쪽에 가깝게: 낮은 화면에서도 작은 그림이 다 보이게
   items.forEach((li, i) => { const c = i % cols, r = Math.floor(i / cols);
     li.style.setProperty('--sx', (c * (w * scale + g) - i * (w + gap)).toFixed(1) + 'px'); li.style.setProperty('--sy', (y0 + r * (vh * scale + g)).toFixed(1) + 'px'); li.style.setProperty('--ss', scale.toFixed(4)); });
+  return y0 + tall;
 }
 
 function bnScenesInit() {
@@ -67,9 +69,10 @@ function bnScenesInit() {
       s.el.style.setProperty('--scene-top', top + 'px'); s.el.style.setProperty('--scene-mini', mini + 'px');
       s.el.style.setProperty('--e', '1'); s.shown = -1;   // 조여진 모양으로 놓고 잰다 (풀린 모양의 이동·확대가 높이 계산에 섞이지 않게). 아래에서 다시 그린다
       c.add('is-live', 'is-pin', 'is-center'); const room = s.stage.offsetHeight;   // 한 화면 높이 (100svh − 머리띠)
-      if (s.kind === 'lineup') bnLineupSlots(s.el);
+      const dealt = s.kind === 'lineup' ? bnLineupSlots(s.el) : 0;
       c.remove('is-center');                                                        // 위에 맞춘 상태로 내용 높이를 잰다
-      const need = (s.need || s.body).getBoundingClientRect().bottom - s.stage.getBoundingClientRect().top;
+      // 붙잡았을 때 꼭 보여야 하는 높이. 제품군은 큰 그림 전체가 아니라 작게 나타나는 그림들까지만 들어오면 된다 (노트북처럼 낮은 화면에서도 움직이게)
+      const nr = (s.need || s.body).getBoundingClientRect(), need = (dealt ? nr.top + dealt : nr.bottom) - s.stage.getBoundingClientRect().top;
       const center = s.el.dataset.scenePin !== 'top' && s.body.offsetHeight + mini + 32 <= room;
       s.pin = center ? 'center' : need + 12 <= room ? 'top' : '';
       c.toggle('is-center', center); c.toggle('is-pin', !!s.pin); c.toggle('is-live', !!s.pin);
