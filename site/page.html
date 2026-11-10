@@ -3862,6 +3862,25 @@ footer.foot.ia-foot { background:#142234; }
 .sales-example-body pre:focus-visible{outline:3px solid #b44123;outline-offset:4px}
 .sales-example-note{border-top:1px solid #e2e5df;padding-top:16px;font-size:12px;line-height:1.8;color:#64786b;margin:0}
 @media(max-width:700px){.sales-example{margin-top:28px;padding:20px;border-radius:10px}.sales-example-heading{display:block;margin-bottom:18px}.sales-example-heading h2{font-size:21px;margin-bottom:12px}.sales-example-subject{gap:10px;flex-wrap:wrap;padding:12px 0}.sales-example-subject code{flex-basis:calc(100% - 42px);font-size:13px}.sales-example-subject button{margin-left:34px}.sales-example-body pre{font-size:13px}.sales-recipient{margin:10px 0 15px}.sales-example-note{font-size:11px}}
+
+/* 명함 (대표 요청 2026-11-10): 「자료 보내실 곳」의 윗부분을 명함처럼 보이게 한다. 종이 빛깔, 왼쪽의 주황 띠, 옅은 마크, 살짝 기운 자세.
+   명함 밖의 단추·안내는 그대로다. 카카오톡은 노란 단추와 말풍선으로 알아보게 한다. */
+.sales-biz{position:relative;overflow:hidden;margin:2px 0 18px;padding:22px 24px 20px 30px;border:1px solid #dcd8cc;border-radius:9px;background:linear-gradient(135deg,#fffefb 0%,#f5f2ea 100%);box-shadow:0 1px 0 #fff inset,0 14px 28px #1728201f,0 2px 5px #17282014;transform:rotate(-1.1deg);transform-origin:50% 60%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.sales-biz::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:#f15a38}
+.sales-contact:hover .sales-biz,.sales-contact:focus-within .sales-biz{transform:none}
+.sales-biz .sales-card-top{align-items:center}
+.sales-biz-logo{display:block;width:132px;height:auto}
+.sales-biz h2{font-size:12px!important;font-weight:700;letter-spacing:.02em;line-height:1.5;margin:22px 0 4px!important;color:#64786b!important}
+.sales-biz-name{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:0 0 10px;color:#182a23}
+.sales-biz-name b{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.sales-biz-name span{font-size:12px;color:#64786b}
+.sales-biz .sales-recipient{margin:0;padding-top:12px;border-top:1px solid #e2ded2;font-size:clamp(17px,1.7vw,21px)}
+.sales-biz-mark{position:absolute;right:-14px;bottom:-18px;width:108px;height:108px;fill:#f15a38;opacity:.09;pointer-events:none}
+.sales-chat .sales-kakao{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 15px 0 11px;border-radius:9px;background:#fee500;color:#191919;font-size:13px;font-weight:700;text-decoration:none}
+.sales-chat .sales-kakao:hover{background:#f2d900;color:#191919}
+.sales-chat .sales-kakao svg{flex:none}
+@media(max-width:700px){.sales-biz{padding:18px 18px 16px 24px}.sales-biz-name b{font-size:18px}.sales-biz-logo{width:112px}}
+@media(prefers-reduced-motion:reduce){.sales-biz{transform:none;transition:none}}
 /* ── zzzzzzzzzz_home.css ── */
 /* 홈 리뉴얼 (2026-11-10): 어두운 금속 무대 + 조임 장면(v9_tighten.js). 모든 규칙은 .bn-home / .ia-at-home 아래에만 둔다 (다른 화면은 그대로). */
 .bn-home { --paper:#0a0e13; --sheet:#111922; --sheet-2:#18222d; --ink:#f2f3ef; --ink-2:#c3ccd4; --ink-3:#93a0ac; --hair:#4d5965; --hair-2:#27323d; --bn-orange-ink:#ff8f73; background:var(--paper); color:var(--ink); }
@@ -14874,17 +14893,32 @@ function salesMailPackage() {
   const to=String(CONTACT.rfq||'').trim();
   return {to,subject,body};
 }
+/* 카카오톡 표시: 노란 바탕에 검은 말풍선 (카카오톡 채널 버튼에 쓰는 흔한 모양. 로고 그림을 그대로 베끼지 않고 단순한 말풍선으로 그린다) */
+const BN_KAKAO_BUBBLE='<path d="M12 5.6c-3.9 0-7 2.4-7 5.5 0 2 1.300 3.700 3.300 4.700l-.7 2.700c-.1.4.3.7.6.4l3.200-2.100c.200 0 .400 0 .600 0 3.900 0 7-2.500 7-5.700s-3.100-5.500-7-5.500z"/>';
+/* 자료 보내실 곳 (대표 요청 2026-11-10: 명함 하나 파서 이메일 주소를 복사할 수 있게, 카카오톡에는 마크를).
+   명함에는 이미 공개한 것만 적는다: 상호, 대표 이름, 견적 메일. 자택 주소는 적지 않는다. 버튼은 주소를 복사할 뿐 메일 앱을 열지 않는다.
+   명함은 홈에만 둔다. Sales 화면은 작은 휴대폰에서도 「이메일 주소 복사」가 첫 화면에 들어와야 하므로(check_sales) 간결한 머리 부분을 그대로 쓴다.
+   점검이 쓰는 id·속성(#sales-email, #sales-home-copy / #sales-copy-address, data-sales-copy, .sales-chat a, #sales-status)은 그대로 둔다. */
 function salesContactMarkup(home=false) {
-  const id=home?'sales-home-copy':'sales-copy-address';
-  const address=rfqOk('rfq')?`<p class="sales-recipient" id="sales-email">${esc(String(CONTACT.rfq).trim())}</p><button type="button" class="sales-primary" id="${id}" data-sales-copy="address">이메일 주소 복사 <svg aria-hidden="true" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button>`:'<p class="sales-unset">견적 이메일 확인 후 상담을 연결합니다.</p>';
-  const kakao=rfqOk('kakaoChat')?`<a href="${esc(CONTACT.kakaoChat)}" target="_blank" rel="noopener noreferrer">카카오톡으로 문의 <span aria-hidden="true">↗</span></a>`:'';
-  return `<section class="sales-contact" aria-label="Sales 이메일 상담">
-    <div class="sales-card-top"><span class="sales-label" lang="en">TO / BOLTNOTE SALES</span><span class="sales-envelope" aria-hidden="true">↗</span></div>
+  const id=home?'sales-home-copy':'sales-copy-address',owner=String(SHOP.ownerName||'').trim(),ok=rfqOk('rfq');
+  const address=ok?`<p class="sales-recipient" id="sales-email">${esc(String(CONTACT.rfq).trim())}</p>`:'<p class="sales-unset">견적 이메일 확인 후 상담을 연결합니다.</p>';
+  const copy=ok?`<button type="button" class="sales-primary" id="${id}" data-sales-copy="address">이메일 주소 복사 <svg aria-hidden="true" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg></button>`:'';
+  const kakao=rfqOk('kakaoChat')?`<a class="sales-kakao" href="${esc(CONTACT.kakaoChat)}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="#191919">${BN_KAKAO_BUBBLE}</svg><span>카카오톡으로 문의</span><span aria-hidden="true">↗</span></a>`:'';
+  const head=home?`<div class="sales-biz">
+      <div class="sales-card-top"><img class="sales-biz-logo" src="brand/boltnote-logo.svg" alt="볼트노트" width="132" height="28"><span class="sales-label" lang="en">SALES · RFQ</span></div>
+      <h2>자료 보내실 곳</h2>
+      ${owner?`<p class="sales-biz-name"><b>${esc(owner)}</b><span>대표 · 체결부품 견적·공급</span></p>`:''}
+      ${address}
+      <svg class="sales-biz-mark" viewBox="0 0 104 104" aria-hidden="true"><path fill-rule="evenodd" d="M28 4H72L94 34V40L83 51L98 66V77L73 100H28L2 52Z M36 23V49L66 39V33Z M36 58V85L66 75V69Z"/></svg>
+    </div>`:`<div class="sales-card-top"><span class="sales-label" lang="en">TO / BOLTNOTE SALES</span><span class="sales-envelope" aria-hidden="true">↗</span></div>
     <h2>자료 보내실 곳</h2>
-    ${address}
+    ${address}`;
+  return `<section class="sales-contact" aria-label="Sales 이메일 상담">
+    ${head}
+    ${copy}
     <p class="sales-attach">사용하시는 메일에서 BOM·RFQ·도면·사진을 첨부하거나 메모를 적어 보내 주세요.</p>
     ${home?'<a class="sales-example-link" href="#list" data-go="list">RFQ 이메일 예시 보기 ↗</a>':'<p class="sales-formats">아래 RFQ 예시는 필요한 내용만 바꿔 사용하세요.</p>'}
-    ${kakao?`<div class="sales-chat"><span>사진·짧은 문의는</span>${kakao}<small>${esc(CONTACT.kakaoHours||'')}</small></div>`:''}
+    ${kakao?`<div class="sales-chat">${kakao}<small>사진·짧은 문의 · ${esc(CONTACT.kakaoHours||'')}</small></div>`:''}
     <p class="sales-status" id="sales-status" data-sales-status role="status" aria-live="polite"></p>
   </section>`;
 }

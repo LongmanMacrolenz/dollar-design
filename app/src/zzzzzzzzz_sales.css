@@ -20,3 +20,22 @@
 .sales-example-body pre:focus-visible{outline:3px solid #b44123;outline-offset:4px}
 .sales-example-note{border-top:1px solid #e2e5df;padding-top:16px;font-size:12px;line-height:1.8;color:#64786b;margin:0}
 @media(max-width:700px){.sales-example{margin-top:28px;padding:20px;border-radius:10px}.sales-example-heading{display:block;margin-bottom:18px}.sales-example-heading h2{font-size:21px;margin-bottom:12px}.sales-example-subject{gap:10px;flex-wrap:wrap;padding:12px 0}.sales-example-subject code{flex-basis:calc(100% - 42px);font-size:13px}.sales-example-subject button{margin-left:34px}.sales-example-body pre{font-size:13px}.sales-recipient{margin:10px 0 15px}.sales-example-note{font-size:11px}}
+
+/* 명함 (대표 요청 2026-11-10): 「자료 보내실 곳」의 윗부분을 명함처럼 보이게 한다. 종이 빛깔, 왼쪽의 주황 띠, 옅은 마크, 살짝 기운 자세.
+   명함 밖의 단추·안내는 그대로다. 카카오톡은 노란 단추와 말풍선으로 알아보게 한다. */
+.sales-biz{position:relative;overflow:hidden;margin:2px 0 18px;padding:22px 24px 20px 30px;border:1px solid #dcd8cc;border-radius:9px;background:linear-gradient(135deg,#fffefb 0%,#f5f2ea 100%);box-shadow:0 1px 0 #fff inset,0 14px 28px #1728201f,0 2px 5px #17282014;transform:rotate(-1.1deg);transform-origin:50% 60%;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.sales-biz::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:#f15a38}
+.sales-contact:hover .sales-biz,.sales-contact:focus-within .sales-biz{transform:none}
+.sales-biz .sales-card-top{align-items:center}
+.sales-biz-logo{display:block;width:132px;height:auto}
+.sales-biz h2{font-size:12px!important;font-weight:700;letter-spacing:.02em;line-height:1.5;margin:22px 0 4px!important;color:#64786b!important}
+.sales-biz-name{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:0 0 10px;color:#182a23}
+.sales-biz-name b{font-size:20px;font-weight:800;letter-spacing:-.02em}
+.sales-biz-name span{font-size:12px;color:#64786b}
+.sales-biz .sales-recipient{margin:0;padding-top:12px;border-top:1px solid #e2ded2;font-size:clamp(17px,1.7vw,21px)}
+.sales-biz-mark{position:absolute;right:-14px;bottom:-18px;width:108px;height:108px;fill:#f15a38;opacity:.09;pointer-events:none}
+.sales-chat .sales-kakao{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 15px 0 11px;border-radius:9px;background:#fee500;color:#191919;font-size:13px;font-weight:700;text-decoration:none}
+.sales-chat .sales-kakao:hover{background:#f2d900;color:#191919}
+.sales-chat .sales-kakao svg{flex:none}
+@media(max-width:700px){.sales-biz{padding:18px 18px 16px 24px}.sales-biz-name b{font-size:18px}.sales-biz-logo{width:112px}}
+@media(prefers-reduced-motion:reduce){.sales-biz{transform:none;transition:none}}
