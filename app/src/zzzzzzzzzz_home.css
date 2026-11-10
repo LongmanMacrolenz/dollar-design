@@ -19,7 +19,7 @@
    용지는 조립 내내 위로 넘어가고(--r, 넘어갈 길이 --roll은 스크립트가 잰다), 곡선 위의 예압은 조일수록 오른다(--t). 기본값은 다 넘어간 정지 상태다.
    장식이라 읽기 순서에서 뺀다 (aria-hidden). 값은 적지 않는다 (v9_tighten.js BN_TIGHTEN_MATH·BN_TIGHTEN_CHART). */
 .bn-tighten-math { position:absolute; z-index:1; right:clamp(16px, 2.6vw, 44px); top:50%; transform:translateY(-50%); width:clamp(236px, 20.5vw, 300px); pointer-events:none; font-family:var(--f-mono); color:#aeb9c4;
-  border:1px solid #2b3743; border-left:2px solid #f15a38; border-radius:5px; background:linear-gradient(180deg, #0c1219e6, #0a0f15d9); box-shadow:0 18px 50px #0009; backdrop-filter:blur(3px); }
+  border:1px solid #2b3743; border-left:2px solid #f15a38; border-radius:5px; background:linear-gradient(180deg, #0c1219e6, #0a0f15d9); box-shadow:0 18px 50px #0009; }   /* 뒤 흐림(backdrop-filter)은 쓰지 않는다: 움직이는 그림 위에서는 매 프레임 부담이 된다 */
 .bn-math-head { display:flex; flex-direction:column; gap:3px; padding:11px 14px 10px; border-bottom:1px solid #26313c; }
 .bn-math-head b { font-size:11px; font-weight:700; letter-spacing:.2em; color:#eef2f5; }
 .bn-math-head span { font-size:8.5px; letter-spacing:.08em; text-transform:uppercase; color:#7b8996; }
@@ -96,7 +96,7 @@ body:has(.tb-mini.on) .bn-tighten:not(.is-static) .bn-tighten-note { top:calc(va
   .bn-tighten .bn-btn { min-height:50px; padding:0 20px; gap:14px; font-size:13px; }
   .bn-tighten-hint { bottom:14px; font-size:11px; } .bn-tighten-hint i { height:22px; }
   .bn-tighten-note { left:26px; right:auto; bottom:auto; top:14px; font-size:9.5px; }
-  .bn-tighten-math { top:36px; right:8px; transform:none; width:132px; backdrop-filter:none; }
+  .bn-tighten-math { top:36px; right:8px; transform:none; width:132px; }
   .bn-math-head, .bn-math-strip small, .bn-math-chart text, .bn-math-chart figcaption { display:none; }
   .bn-math-roll { height:40px; }
   .bn-math-strip { padding:8px 8px 8px 22px; background-position:6px 0, 3px 0; }
