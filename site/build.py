@@ -37,7 +37,7 @@ BOOT_SCRIPT = (
 def social_alt() -> str:
     """공유 그림의 설명. 그림에 적힌 문구(홈과 같은 문구)를 그대로 읽는다."""
     copy = brand_copy()
-    return f"볼트노트 — {' '.join(copy['h1'])} {copy['stamp']} 조여진 볼트와 너트의 참고용 렌더링."
+    return f"볼트노트 — {' '.join(copy['h1'])} {copy['stamp']} 체결부품으로 조립된 펌프 케이싱의 참고용 렌더링(개념 형상)."
 
 
 def head_meta() -> str:

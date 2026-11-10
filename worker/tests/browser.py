@@ -271,20 +271,27 @@ def check_home(page, BASE, OUT):
   font=page.evaluate('()=>{const l=document.getElementById("bn-home-font"),u=l&&new URL(l.href),need=[...new Set([...document.querySelectorAll(".bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2")].map(e=>e.textContent).join("").replace(/\\s/g,""))],cs=s=>getComputedStyle(document.querySelector(s)),T=window.__tightenTest;return{host:u&&u.host,family:u&&u.searchParams.get("family"),missing:u?need.filter(c=>!u.searchParams.get("text").includes(c)):need,h1:cs(".bn-tighten h1").fontFamily,thin:cs(".bn-tl.bn-thin").fontVariationSettings,heavy:cs(".bn-tl:not(.bn-thin)").fontVariationSettings,want:T.state().pinned?T.cfg.w0:T.cfg.w1}}')
   assert font['host']=='fonts.googleapis.com' and font['family']=='Hahmlet:wght@100..900' and font['missing']==[],font
   assert font['h1'].startswith('Hahmlet') and font['thin']=='"wght" 200' and font['heavy']==f'"wght" {font["want"]}',font
-  # Kinematics of the pure pose function: right-hand thread, one pitch per turn, stop at seat, gap closes only after contact.
-  data=page.evaluate('()=>{const T=window.__tightenTest;return{pitch:T.pitch,cfg:T.cfg,rows:Array.from({length:1001},(_,i)=>{const s=T.pose(i/1000);return[s.turns,s.advance,s.gap,s.seated,s.theta,s.contact]})}}')
-  pitch,cfg,rows=data['pitch'],data['cfg'],data['rows'];total=cfg['free']+cfg['clamp']
-  assert pitch==2 and cfg['size']=='M16'
-  previous=-1
-  for i,(turns,advance,gap,seated,theta,contact) in enumerate(rows):
-   p=i/1000
-   assert turns>=previous-1e-12,(p,turns,previous);previous=turns
-   assert abs(advance-pitch*turns)<1e-9 and abs(theta-2*math.pi*turns)<1e-9,p
-   assert -1e-12<=gap<=pitch*cfg['clamp']+1e-9,(p,gap)
-   assert abs(gap-(pitch*cfg['clamp'] if turns<cfg['free'] else pitch*(total-turns)))<1e-9,(p,gap,turns)
-   assert contact==(turns>=cfg['free']) and seated==(p>=cfg['p2'])
-   if seated:assert turns==total and gap==0,(p,turns,gap)
-  assert rows[0][0]==0 and rows[int(cfg['p0']*1000)][0]==0 and rows[-1][0]==total
+  # The pure pose function. Order: halves meet -> taper pins go in -> fasteners come down -> they turn. Threads: one pitch per turn, stop at the seat.
+  data=page.evaluate('()=>{const T=window.__tightenTest;return{pitch:T.pitch,cfg:T.cfg,sets:[0,.5,1].map(s=>Array.from({length:1001},(_,i)=>{const q=T.pose(i/1000,s);return[q.lift,q.pin,q.drop,q.nut.turns,q.nut.advance,q.nut.theta,q.nut.left,q.screw.turns,q.screw.advance,q.screw.left,q.mated,q.seated]}))}}')
+  pitch,cfg=data['pitch'],data['cfg']
+  assert pitch=={'nut':2,'screw':1.75} and cfg['stud']=='M16' and cfg['screw']=='M12' and 0<cfg['p0']<cfg['pa']<cfg['pb']<cfg['p2']<1
+  for rows in data['sets']:
+   previous=None
+   for i,(lift,pin,drop,nt,na,ntheta,nleft,st,sa,sleft,mated,seated) in enumerate(rows):
+    p=i/1000
+    assert 0<=lift<=cfg['lift']+1e-9 and 0<=pin<=1 and 0<=drop<=1 and 0<=nt<=cfg['nutTurns'] and 0<=st<=cfg['screwTurns'],p
+    assert abs(na-pitch['nut']*nt)<1e-9 and abs(sa-pitch['screw']*st)<1e-9 and abs(ntheta-2*math.pi*nt)<1e-9,p
+    assert abs(nleft-pitch['nut']*(cfg['nutTurns']-nt))<1e-9 and abs(sleft-pitch['screw']*(cfg['screwTurns']-st))<1e-9 and nleft>=-1e-12 and sleft>=-1e-12,p
+    assert mated==(p>=cfg['pa']) and seated==(p>=cfg['p2']) and (lift==0)==mated,p
+    if pin>0:assert lift==0,p            # pins only after the halves have met
+    if drop>0:assert pin==1,p            # fasteners only after the pins are home
+    if nt>0 or st>0:assert drop==1,p     # no turning before the thread start
+    if seated:assert nt==cfg['nutTurns'] and st==cfg['screwTurns'] and nleft==0 and sleft==0,p
+    if previous:assert lift<=previous[0]+1e-12 and pin>=previous[1]-1e-12 and drop>=previous[2]-1e-12 and nt>=previous[3]-1e-12 and st>=previous[4]-1e-12,p
+    previous=(lift,pin,drop,nt,st)
+   assert rows[0][0]==cfg['lift'] and rows[0][3]==0 and rows[-1][3]==cfg['nutTurns'] and rows[-1][7]==cfg['screwTurns']
+  later=[next(i for i,r in enumerate(rows) if r[3]>0) for rows in data['sets']];assert later[0]<later[1]<later[2],later   # fasteners start one after another
+  assert page.locator('.bn-tighten-math p').count()>=8 and page.locator('.bn-tighten-math').get_attribute('aria-hidden')=='true'
   state=page.evaluate('window.__tightenTest.state()')
   if state['pinned']:
    # Scrolling drives the scene; the stamp appears only once seated and the hero releases afterwards.
@@ -295,6 +302,7 @@ def check_home(page, BASE, OUT):
    page.wait_for_function('getComputedStyle(document.querySelector(".bn-tighten-stamp")).opacity==="1"')
    assert page.locator('.bn-tighten-stamp').inner_text().strip()=='볼트는, 볼트노트.'
    assert page.evaluate('getComputedStyle(document.querySelector(".bn-tl:not(.bn-thin)")).fontVariationSettings')==f'"wght" {cfg["w1"]}' and cfg['w0']<cfg['w1']
+   assert page.evaluate('+getComputedStyle(document.querySelector(".bn-tighten")).getPropertyValue("--m")')==1   # every formula line has come in by the time it seats
    page.evaluate('scrollTo(0,0)');page.wait_for_function('window.__tightenTest.state().p<0.001',timeout=20000)
    assert page.locator('.bn-tighten').get_attribute('data-seated')=='false'
   # Scenes below the hero: each one is held in place, tightens with the scroll, and hits exactly once when it seats.

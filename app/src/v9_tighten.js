@@ -1,40 +1,61 @@
-/* 홈 첫 화면 "조임 장면" (대표 결정 2026-11-10: 파스너의 기능 — 조이고 고정한다 — 을 설명 대신 그림으로 보인다).
-   화면을 내리면 너트가 돌아 조여지고, 떨어져 있던 두 판이 붙으며 멈춘다. 글자 사이도 같이 조여진다.
-   - 그리는 방식: 라이브러리 없는 WebGL. 형상은 코드로 만든다 (M16×2 공칭: DIM의 피치·맞변·머리 높이·너트 높이·와셔, ISO 68-1 기본 산형).
-     외부 요청이 없고 사진·영상 파일을 쓰지 않는다. "참고용 실시간 렌더링 · 실제 제품 사진 아님"을 화면에 적는다.
-   - 틀리면 안 되는 것 (tools/test_precision.py와 같은 기준, worker/tests/browser.py check_home이 확인):
-     오른나사, 한 바퀴에 정확히 1피치 전진(advance = pitch × turns), 좌면에 닿으면 더 돌지도 파고들지도 않는다,
-     판 간격은 너트가 닿은 뒤의 전진량만큼만 줄고 0 아래로 내려가지 않는다. 토크·축력·합격 같은 수치는 주장하지 않는다.
-   - 문구·버튼은 조작 없이 항상 보인다. 움직임 줄이기면 조여진 정지 장면, WebGL이 안 되면 정지 이미지로 바꾼다 (오류를 내지 않는다).
-   - 글씨도 같은 이야기를 한다 (대표 요청 2026-11-10): 「작은 것이,」는 가늘게, 「전부를 붙잡습니다.」는 조여질수록 굵어져 고정 순간 가장 굵다.
+/* 홈 첫 화면 "조립 장면" (대표 결정 2026-11-10: 파스너의 기능 — 조이고 고정한다 — 을 설명 대신 그림으로 보인다.
+   같은 날 대표 요청으로 볼트 한 개에서 "제품이 조립되는 장면"으로 바꿨다: 위아래로 나뉜 펌프 케이싱과 양옆 베어링 하우징).
+   화면을 내리면 한 번에 조립된다: ① 떠 있던 케이싱 상부와 베어링 하우징 상부가 함께 내려와 하부와 만난다 →
+   ② 테이퍼 다월 핀이 박혀 위치를 잡는다 → ③ 케이싱은 스터드에 캡 너트(cap hex nut), 베어링 하우징은 육각머리 볼트(HHCS)가 돌며 체결된다 →
+   ④ 고정 순간 주황빛이 이음매를 한 바퀴 돈다. 글자 사이도 같이 조여지고, 체결 계산의 일반식이 차례로 겹쳐 보인다.
+   - 그리는 방식: 라이브러리 없는 WebGL. 형상은 코드로 만든다. 외부 요청이 없고 사진·영상 파일을 쓰지 않는다.
+     특정 제품을 그린 것이 아닌 개념 형상이다 (비율·치수는 실제 제품과 다르다). 회사·제품·도면 번호를 적지 않는다.
+     체결부품은 DIM의 공칭 치수(스터드·캡 너트·와셔 M16, 육각머리 볼트 M12)를 화면에서 읽히도록 k배 키웠다.
+     "참고용 실시간 렌더링 · 실제 제품 사진 아님"을 화면에 적는다.
+   - 틀리면 안 되는 것 (worker/tests/browser.py check_home이 자세 함수를 확인한다):
+     순서 — 상·하부가 만나기 전에는 핀이 들어가지 않고, 핀이 다 들어가기 전에는 체결부품이 오지 않으며, 나사 시작점에 닿기 전에는 돌지 않는다.
+     나사 — 오른나사, 한 바퀴에 정확히 1피치 전진(advance = pitch × turns), 좌면에 닿으면 더 돌지도 파고들지도 않는다.
+     테이퍼 핀은 1:50. 토크·축력·합격 같은 수치는 주장하지 않는다. 겹쳐 보이는 식은 기호로 쓴 일반식뿐이다 (값을 넣지 않는다).
+   - 문구·버튼은 조작 없이 항상 보인다. 움직임 줄이기면 조립된 정지 장면, WebGL이 안 되면 정지 이미지로 바꾼다 (오류를 내지 않는다).
+   - 글씨도 같은 이야기를 한다: 「작은 것이,」는 가늘게, 「전부를 붙잡습니다.」는 조립될수록 굵어져 고정 순간 가장 굵다.
      제목 글꼴은 굵기가 이어지는 가변 글꼴 Hahmlet(SIL OFL). bnHomeFontInit이 홈 제목에 쓰인 글자만 Google Fonts에 요청한다.
-   - 길이 (대표 요청 2026-11-10: 이 체험을 더 길게): 무대 높이의 3.4배(휴대폰 3배)를 내리는 동안 15바퀴. 너트는 볼트 끝과 나란한 자리에서 출발한다
-     (M16 너트 높이 14.8 + 시작 위치 49 = 63.8 ≤ 나사 끝 64. free를 더 늘리면 너트가 볼트 밖에서 시작하므로 len과 포스터를 함께 바꿔야 한다).
-   순수 함수 bnTightenPose(p)가 스크롤 진행률 p(0–1)를 자세로 바꾼다. 화면 연결은 bnTightenInit (V.after.home). */
-const BN_TIGHTEN = { size: 'M16', free: 10, clamp: 5, p0: .05, p1: .52, p2: .84, plate: 16, len: 80, w0: 520, w1: 800,
+   - 길이: 무대 높이의 3.4배(휴대폰 3배)를 내리는 동안 조립된다.
+   순수 함수 bnTightenPose(p, s)가 스크롤 진행률 p(0–1)와 체결 순번 s(0–1)를 자세로 바꾼다. 화면 연결은 bnTightenInit (V.after.home). */
+const BN_TIGHTEN = { stud: 'M16', screw: 'M12', k: 1.9, lift: 78, nutTurns: 9, screwTurns: 7, p0: .04, pa: .3, pb: .42, p2: .84, lag: .3, start: .16, w0: 520, w1: 800,
   h1: ['작은 것이,', '전부를 붙잡습니다.'], stamp: '볼트는, 볼트노트.', lead: '체결부품 조달, BOM부터 정확하게.' };
+/* 겹쳐 보이는 식: 교과서에 있는 일반식을 기호로만 적는다 (값·허용치·합격 여부를 말하지 않는다). [식(HTML), 설명] */
+const BN_TIGHTEN_MATH = [
+  ['A<sub>s</sub> = (π/4)·(d − 0.9382·P)²', 'tensile stress area, metric thread'],
+  ['F<sub>u</sub> = R<sub>m</sub> · A<sub>s</sub>', 'ultimate tensile load'],
+  ['F<sub>p</sub> = S<sub>p</sub> · A<sub>s</sub>', 'proof load'],
+  ['T = K · d · F<sub>i</sub>', 'tightening torque ↔ preload'],
+  ['σ = F<sub>i</sub> / A<sub>s</sub>', 'tensile stress in the bolt'],
+  ['δ = F<sub>i</sub> · L / (A · E)', 'bolt elongation'],
+  ['θ = 360° · x / P', 'turn ↔ axial advance'],
+  ['F<sub>b</sub> = F<sub>i</sub> + C·F<sub>e</sub>,  C = k<sub>b</sub> / (k<sub>b</sub> + k<sub>m</sub>)', 'bolt load in a clamped joint'],
+  ['d<sub>2</sub> = d<sub>1</sub> + L / 50', 'taper pin, taper 1:50'],
+  ['τ = 4·F / (π · d²)', 'pin in single shear'],
+];
 const BN_DISPLAY_SEL = '.bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2';   // zzzzzzzzzz_home.css의 제목 글꼴 규칙과 같은 목록
 let bnTightenCleanup = null;
 
-function bnTightenPose(p) {
-  const c = BN_TIGHTEN, P = DIM.pitch[c.size], total = c.free + c.clamp;
-  p = Math.min(1, Math.max(0, +p || 0));
-  // 자유 회전(빠르게) → 접촉 뒤 조임(점점 느리게). 두 구간의 속도가 p1에서 이어지도록 지수를 맞춘다.
-  const a = 1.6, k = a * c.free * (c.p2 - c.p1) / ((c.p1 - c.p0) * c.clamp);
-  let turns = total;
-  if (p <= c.p0) turns = 0;
-  else if (p < c.p1) turns = c.free * Math.pow((p - c.p0) / (c.p1 - c.p0), a);
-  else if (p < c.p2) turns = c.free + c.clamp * (1 - Math.pow(1 - (p - c.p1) / (c.p2 - c.p1), k));
-  return { turns, theta: 2 * Math.PI * turns, advance: P * turns, gap: P * Math.min(c.clamp, Math.max(0, total - turns)), contact: turns >= c.free, seated: p >= c.p2 };
+/* p: 스크롤 진행률. s: 체결 순번(0 = 가장 먼저, 1 = 가장 나중) — 체결부품이 차례로 돌게 한다. 모두 p2에서 끝난다.
+   lift = 상부가 떠 있는 높이, pin = 핀이 들어간 정도(0–1), drop = 체결부품이 나사 시작점까지 내려온 정도(0–1),
+   nut·screw = { turns, theta, advance(공칭 mm), left(좌면까지 남은 거리) } */
+function bnTightenPose(p, s) {
+  const c = BN_TIGHTEN, t01 = v => Math.min(1, Math.max(0, v));
+  p = t01(+p || 0); s = t01(+s || 0);
+  const a = t01((p - c.p0) / (c.pa - c.p0)), b = t01((p - c.pa) / (c.pb - c.pa));
+  const u = p >= c.p2 ? 1 : t01((p - c.pb) / (c.p2 - c.pb) * (1 + c.lag) - s * c.lag), v = t01((u - c.start) / (1 - c.start));
+  const run = v >= 1 ? 1 : 1 - Math.pow(1 - v, 1.8);   // 좌면에 가까울수록 느리게
+  const part = (size, total) => { const P = DIM.pitch[size], turns = total * run; return { turns, theta: 2 * Math.PI * turns, advance: P * turns, left: P * (total - turns) }; };
+  return { lift: p >= c.pa ? 0 : c.lift * Math.pow(1 - a, 2.2), mated: p >= c.pa, pin: p >= c.pb ? 1 : b * b * (3 - 2 * b), drop: t01(u / c.start),
+    nut: part(c.stud, c.nutTurns), screw: part(c.screw, c.screwTurns), seated: p >= c.p2 };
 }
 
 function bnTightenMarkup() {
   const c = BN_TIGHTEN;
   const line = (t, n) => `<span class="bn-tl${n ? '' : ' bn-thin'}">${[...t].map((ch, i, a) => `<span class="bn-tc${ch === ' ' ? ' sp' : ''}" style="--i:${i}">${ch === ' ' ? '&nbsp;' : esc(ch)}</span>`).join('')}</span>`;
-  return `<section class="bn-tighten" id="bn-tighten" aria-labelledby="h-z-a" data-seated="false" style="--p:0;--e:0;--w:${c.w0}">
+  return `<section class="bn-tighten" id="bn-tighten" aria-labelledby="h-z-a" data-seated="false" style="--p:0;--e:0;--m:0;--w:${c.w0}">
     <div class="bn-tighten-stage">
       <canvas class="bn-tighten-canvas" aria-hidden="true"></canvas>
       <img class="bn-tighten-poster" alt="" width="1600" height="1000" decoding="async" hidden>
+      <div class="bn-tighten-math" aria-hidden="true" lang="en">${BN_TIGHTEN_MATH.map(([f, t], j) => `<p style="--j:${j}"><b>${f}</b><small>${t}</small></p>`).join('')}</div>
       <div class="bn-wrap bn-tighten-inner">
         <div class="bn-brand-copy bn-tighten-copy">
           <p class="bn-tighten-eyebrow" lang="en">BOLTNOTE <span>/</span> INDUSTRIAL FASTENERS</p>
@@ -44,21 +65,17 @@ function bnTightenMarkup() {
           <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">BOM·RFQ 보내기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#products" data-go="products">제품 보기 <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
-      <p class="bn-tighten-hint" aria-hidden="true"><i></i>내려서 조여 보세요</p>
-      <p class="bn-tighten-note">참고용 실시간 렌더링 · 실제 제품 사진 아님 · ${c.size}×${DIM.pitch[c.size]} 공칭 형상</p>
+      <p class="bn-tighten-hint" aria-hidden="true"><i></i>내려서 조립해 보세요</p>
+      <p class="bn-tighten-note">참고용 실시간 렌더링 · 실제 제품 사진 아님 · 개념 형상</p>
     </div>
   </section>`;
 }
 
-/* ── 형상: 격자(grid)로 면을 만들고 법선은 이웃 점의 차로 구한다. 면마다 격자를 나눠 모서리를 날카롭게 둔다 ── */
+/* ── 형상: 격자(grid)로 면을 만들고 법선은 이웃 점의 차로 구한다. 면마다 격자를 나눠 모서리를 날카롭게 둔다.
+   부품은 모두 자기 축을 x로 두고 만든다 (세워 쓰는 것은 렌더러가 축을 돌려 놓는다). 좌표 단위는 mm (개념 형상) ── */
 function bnTightenParts() {
-  const c = BN_TIGHTEN, s = c.size, TAU = Math.PI * 2;
-  const P = DIM.pitch[s], d = parseFloat(s.slice(1)), S = DIM.hexS[s], K = DIM.hexK[s], M = DIM.nutM[s], W1 = DIM.pwD1[s] / 2, W2 = DIM.pwD2[s] / 2, WH = DIM.pwH[s];
-  const T = c.plate, rM = d / 2, rm = rM - .5413 * P, xEnd = c.len - T, xt0 = 6, HY = 210, ZN = 35, ZF = 300;
-  const hexR = a => (S / 2) / Math.cos(((a % (TAU / 6)) + TAU / 6) % (TAU / 6) - TAU / 12);
-  // 큰 사각 판: 위아래(y ±HY)와 뒤(z −ZF)는 화면 밖으로 이어지고, 앞 모서리(z +ZN)만 볼트 가까이 보인다
-  const sq = a => Math.min(HY / Math.max(1e-6, Math.abs(Math.cos(a))), (Math.sin(a) > 0 ? ZN : ZF) / Math.max(1e-6, Math.abs(Math.sin(a))));
-  const PLATE_A = [...new Set([...Array.from({ length: 96 }, (_, i) => i / 96 * TAU), Math.atan2(ZN, HY), Math.PI - Math.atan2(ZN, HY), Math.PI + Math.atan2(ZF, HY), TAU - Math.atan2(ZF, HY)])].sort((a, b) => a - b);
+  const c = BN_TIGHTEN, k = c.k, TAU = Math.PI * 2, PI = Math.PI;
+  const sm = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
   function builder() {
     const pos = [], nor = [], ao = [], idx = [];
     function grid(nu, nv, f, wrap) {
@@ -75,50 +92,107 @@ function bnTightenParts() {
       for (let j = 0; j < nv; j++) for (let i = 0; i < nu; i++) { const a = base + j * W + i, b = a + 1, e = a + W, g = e + 1; idx.push(a, b, e, b, g, e); }
     }
     // 축(x) 둘레의 띠: sections = [{x, r(a), ao}]
-    // nu가 배열이면 그 각도들을 쓴다 (사각 판의 모서리를 정확히 지나게)
-    const ring = (nu, sec) => { const A = Array.isArray(nu) ? [...nu, nu[0] + TAU] : null, n = A ? A.length - 1 : nu; return grid(n, sec.length - 1, (i, j) => { const a = A ? A[i] : i / n * TAU, q = sec[j], r = typeof q.r === 'function' ? q.r(a) : q.r; return [q.x, r * Math.cos(a), r * Math.sin(a), q.ao ?? 1]; }, true); };
-    return { grid, ring, done: () => ({ pos: new Float32Array(pos), nor: new Float32Array(nor), ao: new Float32Array(ao), idx: new Uint16Array(idx) }) };
+    const ring = (nu, sec) => grid(nu, sec.length - 1, (i, j) => { const a = i / nu * TAU, q = sec[j], r = typeof q.r === 'function' ? q.r(a) : q.r; return [q.x, r * Math.cos(a), r * Math.sin(a), q.ao ?? 1]; }, true);
+    // 반쪽 회전체 (up: y ≥ 0 쪽). 축 x, 반지름 R(x). 양 끝은 구멍(bore)까지 막는다
+    function half(R, x0, x1, nx, up, bore) {
+      const a0 = up ? 0 : PI, na = 30, pt = (x, r, i, o) => { const a = a0 + PI * i / na; return [x, r * Math.sin(a), r * Math.cos(a), o]; };
+      grid(na, nx, (i, j) => { const x = x0 + (x1 - x0) * j / nx; return pt(x, R(x), i, 1); }, false);
+      [x0, x1].forEach(x => grid(na, 1, (i, j) => pt(x, j ? R(x) : bore, i, j ? 1 : .45), false));
+    }
+    // 판: x0…x1, y0…y1, z는 ±W(x). faces: t 윗면, b 아랫면, s 옆면, e 끝면
+    function slab(W, x0, x1, y0, y1, nx, faces) {
+      const X = j => x0 + (x1 - x0) * j / nx, has = f => !faces || faces.includes(f);
+      for (const [f, y] of [['t', y1], ['b', y0]]) if (has(f)) grid(1, nx, (i, j) => [X(j), y, (i ? 1 : -1) * W(X(j))], false);
+      if (has('s')) for (const sg of [1, -1]) grid(1, nx, (i, j) => [X(j), i ? y1 : y0, sg * W(X(j))], false);
+      if (has('e')) for (const x of [x0, x1]) grid(1, 1, (i, j) => [x, j ? y1 : y0, (i ? 1 : -1) * W(x)], false);
+    }
+    // 수평 원판 (y 높이, 중심 cx·cz). r0 > 0이면 고리
+    const disc = (cx, y, cz, r, r0 = 0, o = 1) => grid(20, 1, (i, j) => { const a = i / 20 * TAU, q = j ? r : r0; return [cx + q * Math.cos(a), y, cz + q * Math.sin(a), o]; }, true);
+    return { grid, ring, half, slab, disc, done: () => ({ pos: new Float32Array(pos), nor: new Float32Array(nor), ao: new Float32Array(ao), idx: new Uint16Array(idx) }) };
   }
+  const hexRf = S => a => (S / 2) / Math.cos(((a % (TAU / 6)) + TAU / 6) % (TAU / 6) - TAU / 12);
   // 육각 몸체 한쪽 끝의 30° 모따기: 면(안쪽 반지름 r0 – 모따기 원) + 원뿔과 육각의 교선
-  function hexEnd(b, x, dir, r0, aoFace) {
-    const rch = .47 * S, cmax = (S / 2 / Math.cos(TAU / 12) - rch) * Math.tan(TAU / 12), n = 7;
-    b.ring(96, [{ x, r: r0, ao: aoFace }, { x, r: rch, ao: 1 }]);
-    b.ring(96, Array.from({ length: n + 1 }, (_, i) => { const t = i / n * cmax; return { x: x + dir * t, r: a => Math.min(hexR(a), rch + t / Math.tan(TAU / 12)) }; }));
+  function hexEnd(b, S, x, dir, r0, aoFace) {
+    const hexR = hexRf(S), rch = .47 * S, cmax = (S / 2 / Math.cos(TAU / 12) - rch) * Math.tan(TAU / 12), n = 5;
+    b.ring(48, [{ x, r: r0, ao: aoFace }, { x, r: rch, ao: 1 }]);
+    b.ring(48, Array.from({ length: n + 1 }, (_, i) => { const t = i / n * cmax; return { x: x + dir * t, r: a => Math.min(hexR(a), rch + t / Math.tan(TAU / 12)) }; }));
     return x + dir * cmax;
   }
-  // 볼트: 머리(x −T−K … −T) + 원통부 + 나사부(xt0 … xEnd). 고정되어 돌지 않는다.
-  const bolt = builder(), xh = hexEnd(bolt, -T - K, 1, .01, 1);
-  bolt.ring(96, [{ x: xh, r: hexR }, { x: -T, r: hexR }]);
-  bolt.ring(48, [{ x: -T, r: rM }, { x: xt0 + P, r: rM }]);
-  const turns = (xEnd - xt0) / P, seg = 64, nu = Math.ceil(turns * seg), rEnd = rm - .25;
-  // ISO 68-1 기본 산형: 골 평탄부 P/4, 플랭크 30°, 산 평탄부 P/8. 오른나사 = 각도가 늘면 +x로 전진
-  [[0, 0, .25, 0], [.25, 0, .5625, 1], [.5625, 1, .6875, 1], [.6875, 1, 1, 0]].forEach(([f0, h0, f1, h1]) => bolt.grid(nu, 1, (i, j) => {
-    const a = i / seg * TAU, f = j ? f1 : f0, h = j ? h1 : h0, x0 = xt0 + P * (i / seg + f), x = Math.min(x0, xEnd);
-    const r = Math.min(rm + (rM - rm) * h, rEnd + (xEnd - x));   // 끝 45° 모따기
-    return [x, r * Math.cos(a), r * Math.sin(a), .42 + .58 * h];
-  }, false));
-  bolt.ring(48, [{ x: xEnd, r: .01 }, { x: xEnd, r: rEnd }]);
-  // 너트 (자체 좌표 x 0 … M, 0 = 와셔 쪽 면). 양쪽 모따기 + 구멍 입구 접시
-  const nut = builder(), rcs = rM + .9, n0 = hexEnd(nut, 0, 1, rM, .6), n1 = hexEnd(nut, M, -1, rcs, 1);
-  nut.ring(96, [{ x: n0, r: hexR }, { x: n1, r: hexR }]);
-  nut.ring(48, [{ x: M, r: rcs, ao: .8 }, { x: M - .9, r: rM, ao: .35 }]);
-  // 평와셔 (x 0 … WH)
-  const washer = builder(), wb = .3;
-  washer.ring(64, [{ x: 0, r: W2 - wb }, { x: wb, r: W2 }]); washer.ring(64, [{ x: wb, r: W2 }, { x: WH - wb, r: W2 }]); washer.ring(64, [{ x: WH - wb, r: W2 }, { x: WH, r: W2 - wb }]);
-  washer.ring(64, [{ x: WH, r: W2 - wb }, { x: WH, r: S / 2 + .6, ao: .55 }, { x: WH, r: W1, ao: .4 }]); washer.ring(64, [{ x: WH, r: W1, ao: .3 }, { x: 0, r: W1, ao: .3 }]);
-  // 판 (x 0 … T): 큰 사각 판, 모서리 모따기, 볼트 구멍
-  function plate(front) {
-    const b = builder(), bv = 1.4, rh = rM + .7, A = PLATE_A;
-    b.ring(A, [{ x: 0, r: a => sq(a) - bv }, { x: bv, r: sq }]); b.ring(A, [{ x: bv, r: sq }, { x: T - bv, r: sq }]); b.ring(A, [{ x: T - bv, r: sq }, { x: T, r: a => sq(a) - bv }]);
-    b.ring(A, [{ x: T, r: a => sq(a) - bv }, { x: T, r: W2 + 12 }, { x: T, r: W2 + 2, ao: front ? .45 : 1 }, { x: T, r: rh, ao: front ? .25 : 1 }]);
-    b.ring(A, [{ x: 0, r: a => sq(a) - bv }, { x: 0, r: rh }]); b.ring(48, [{ x: T, r: rh, ao: .3 }, { x: 0, r: rh, ao: .3 }]);
-    return b.done();
+  // ISO 68-1 기본 산형: 골 평탄부 P/4, 플랭크 30°, 산 평탄부 P/8. 오른나사 = 각도가 늘면 +x로 전진. tip: 모따기할 끝 (1 = x1, -1 = x0)
+  function thread(b, x0, x1, P, rM, seg, tip) {
+    const rm = rM - .5413 * P, nu = Math.ceil((x1 - x0) / P * seg), rEnd = rm - .12 * P, xe = tip > 0 ? x1 : x0;
+    [[0, 0, .25, 0], [.25, 0, .5625, 1], [.5625, 1, .6875, 1], [.6875, 1, 1, 0]].forEach(([f0, h0, f1, h1]) => b.grid(nu, 1, (i, j) => {
+      const a = i / seg * TAU, f = j ? f1 : f0, h = j ? h1 : h0, x = Math.min(x1, x0 + P * (i / seg + f)), r = Math.min(rm + (rM - rm) * h, rEnd + Math.abs(xe - x));   // 끝 45° 모따기
+      return [x, r * Math.cos(a), r * Math.sin(a), .42 + .58 * h];
+    }, false));
+    b.ring(24, [{ x: xe, r: .01 }, { x: xe, r: rEnd }]);
   }
-  // 판 사이의 빛: 간격만큼 늘어나는 띠 (x 0 … 1을 간격으로 늘린다) + 앞 모서리 둘레로 번지는 빛(halo, 덧셈 합성)
-  const glow = builder(); glow.ring(PLATE_A, [[0, .05], [.3, .3], [.5, 1], [.7, .3], [1, .05]].map(([x, ao]) => ({ x, r: a => sq(a) - 2, ao })));
-  const halo = builder(), HW = 34, hn = 12;
-  halo.grid(hn, 1, (i, j) => { const t = i / hn * 2 - 1; return [t * HW, j ? HY : -HY, ZN + .5, Math.exp(-t * t * 5.5)]; }, false);
-  return { dims: { P, d, S, K, M, WH, T, xEnd }, bolt: bolt.done(), nut: nut.done(), washer: washer.done(), plateA: plate(false), plateB: plate(true), glow: glow.done(), halo: halo.done() };
+  /* 치수 (세운 부품의 x = 높이. 케이싱 맞댐면이 0) */
+  const P = DIM.pitch[c.stud] * k, d = parseFloat(c.stud.slice(1)) * k, rM = d / 2, S = DIM.hexS[c.stud] * k, WH = DIM.pwH[c.stud] * k, W1 = DIM.pwD1[c.stud] * k / 2, W2 = DIM.pwD2[c.stud] * k / 2;
+  const Ps = DIM.pitch[c.screw] * k, ds = parseFloat(c.screw.slice(1)) * k, Ss = DIM.hexS[c.screw] * k, Ks = DIM.hexK[c.screw] * k;
+  const T = 30, Tb = 22, seat = T + WH, top = seat + c.nutTurns * P;          // 케이싱·베어링 하우징 플랜지 두께, 캡 너트 좌면 높이, 스터드 끝
+  const XC = 204, Rc = x => 70 + 78 * sm(170, 86, Math.abs(x)), Wc = x => Rc(x) + 74, zStud = x => Rc(x) + 37;   // 케이싱: 길이의 반, 몸통 반지름, 플랜지 폭의 반
+  const XB = 292, LB = 48, Rb = 74, Wb = 124, zScrew = 99, RS = 26;           // 베어링 하우징 중심·길이의 반·반지름·플랜지 폭의 반, 축 반지름
+  // 스터드: 하부 플랜지에 심겨 있다 (x −T−5 … top). 위쪽이 나사부
+  const stud = builder();
+  stud.ring(24, [{ x: -T - 5, r: .01 }, { x: -T - 5, r: rM - 1.4 }, { x: -T - 3.6, r: rM }]); stud.ring(24, [{ x: -T - 3.6, r: rM }, { x: T - 8, r: rM }]);
+  thread(stud, T - 8 - P, top, P, rM, 20, 1);
+  // 캡 너트 (자체 좌표 0 = 좌면): 육각 몸체 + 둥근 뚜껑. 스터드 끝을 덮는다
+  const nut = builder(), hexR = hexRf(S), Hh = .82 * d, Hd = 2 * d, rDome = .43 * S;
+  const n0 = hexEnd(nut, S, 0, 1, rM, .6), n1 = hexEnd(nut, S, Hh, -1, rDome, 1);
+  nut.ring(48, [{ x: n0, r: hexR }, { x: n1, r: hexR }]);
+  nut.ring(32, Array.from({ length: 11 }, (_, i) => { const f = i / 10 * PI / 2; return { x: Hh + (Hd - Hh) * Math.sin(f), r: Math.max(.01, rDome * Math.cos(f)) }; }));
+  nut.ring(24, [{ x: 0, r: rM, ao: .3 }, { x: 4, r: rM, ao: .2 }]);
+  // 평와셔 (0 … WH)
+  const washer = builder(), wb = .5;
+  washer.ring(32, [{ x: 0, r: W2 - wb }, { x: wb, r: W2 }]); washer.ring(32, [{ x: wb, r: W2 }, { x: WH - wb, r: W2 }]); washer.ring(32, [{ x: WH - wb, r: W2 }, { x: WH, r: W2 - wb }]);
+  washer.ring(32, [{ x: WH, r: W2 - wb }, { x: WH, r: S / 2 + 1, ao: .55 }, { x: WH, r: W1, ao: .4 }]);
+  // 육각머리 볼트 (0 = 머리 밑 좌면, 몸통은 −x). 아래쪽이 나사부
+  const screw = builder(), hexRs = hexRf(Ss), sLen = Tb + c.screwTurns * Ps + 5, s1 = hexEnd(screw, Ss, Ks, -1, .01, 1);
+  screw.ring(48, [{ x: s1, r: hexRs }, { x: 1.2, r: hexRs }]); screw.ring(48, [{ x: 1.2, r: hexRs }, { x: 1.2, r: .46 * Ss }, { x: 0, r: .46 * Ss }, { x: 0, r: ds / 2, ao: .5 }]);
+  screw.ring(24, [{ x: 0, r: ds / 2 }, { x: -Tb + 4, r: ds / 2 }]);
+  thread(screw, -sLen, -Tb + 4, Ps, ds / 2, 20, -1);
+  // 테이퍼 핀 1:50 (0 = 상부 플랜지 윗면. 굵은 끝이 위로 조금 나온다)
+  const pin = builder(), Lp = 2 * T + 14, d2 = 20, d1 = d2 - Lp / 50, xp = 7 - Lp;
+  pin.ring(24, [{ x: xp, r: .01 }, { x: xp, r: d1 / 2 - 1.3 }, { x: xp + 1.3, r: d1 / 2 }]); pin.ring(24, [{ x: xp + 1.3, r: d1 / 2 }, { x: 5.6, r: d2 / 2 }]);
+  pin.ring(24, [{ x: 5.6, r: d2 / 2 }, { x: 7, r: d2 / 2 - 1.4 }, { x: 7, r: .01 }]);
+  // 케이싱 하부·상부 (몸통 반쪽 + 플랜지). 맞댐면은 따로 만든다 (열려 있을 때 빛난다)
+  const NX = 48, lower = builder(), upper = builder(), faceL = builder(), faceU = builder(), pit = builder(), holes = builder();
+  lower.half(Rc, -XC, XC, NX, false, RS + 12); lower.slab(Wc, -XC, XC, -T, 0, NX, 'bse');
+  upper.half(Rc, -XC, XC, NX, true, RS + 12); upper.slab(Wc, -XC, XC, 0, T, NX, 'tse');
+  faceL.slab(Wc, -XC, XC, -T, 0, NX, 't'); faceU.slab(Wc, -XC, XC, 0, T, NX, 'b');
+  // 하부 맞댐면의 속(어두운 자리): 축이 놓이는 홈과 임펠러 자리
+  pit.slab(() => RS + 9, -XC, XC, 0, .3, 1, 't'); pit.slab(() => 128, -34, 34, 0, .35, 1, 't');
+  // 베어링 하우징 하부·상부 (중심을 0에 두고 만들어 양쪽에 놓는다)
+  const bLower = builder(), bUpper = builder(), bFaceL = builder(), bFaceU = builder(), bHoles = builder();
+  bLower.half(() => Rb, -LB, LB, 4, false, RS + 5); bLower.slab(() => Wb, -LB, LB, -Tb, 0, 2, 'bse');
+  bUpper.half(() => Rb, -LB, LB, 4, true, RS + 5); bUpper.slab(() => Wb, -LB, LB, 0, Tb, 2, 'tse');
+  bFaceL.slab(() => Wb, -LB, LB, -Tb, 0, 2, 't'); bFaceU.slab(() => Wb, -LB, LB, 0, Tb, 2, 'b');
+  // 축과 임펠러
+  const shaft = builder(), imp = builder();
+  shaft.ring(32, [{ x: -XB - LB - 14, r: .01 }, { x: -XB - LB - 14, r: RS }, { x: XB + LB + 14, r: RS }]);
+  shaft.ring(32, [{ x: XB + LB + 14, r: RS }, { x: XB + LB + 14, r: RS - 7 }, { x: XB + LB + 78, r: RS - 7 }, { x: XB + LB + 78, r: .01 }]);
+  imp.ring(48, [{ x: -44, r: RS }, { x: -30, r: 46 }, { x: -15, r: 108 }, { x: 15, r: 108 }, { x: 30, r: 46 }, { x: 44, r: RS }]);
+  // 흡입·토출 노즐 (하부에 붙는다. 0 = 케이싱 쪽, 끝에 플랜지)
+  const nozzle = (r, L, rf) => { const b = builder(); b.ring(40, [{ x: 0, r }, { x: L - 24, r }]); b.ring(40, [{ x: L - 24, r }, { x: L - 24, r: rf }]); b.ring(40, [{ x: L - 24, r: rf }, { x: L, r: rf }]);
+    b.ring(40, [{ x: L, r: rf }, { x: L, r: r - 9 }]); b.ring(40, [{ x: L, r: r - 9, ao: .5 }, { x: L - 70, r: r - 9, ao: .12 }]); return b.done(); };
+  // 받침: 바닥판과 다리
+  const base = builder();
+  base.slab(() => 186, -XB - LB - 16, XB + LB + 16, -192, -180, 1);
+  for (const x of [-112, 112]) base.slab(() => 124, x - 40, x + 40, -180, -60, 1, 'se');
+  for (const x of [-XB, XB]) base.slab(() => 66, x - 34, x + 34, -180, -40, 1, 'se');
+  // 체결 위치. 순번 s는 앞줄 왼쪽부터 차례로
+  const sx = [-150, -90, -30, 30, 90, 150], studs = [], screws = [], pins = [];
+  [1, -1].forEach((sg, row) => sx.forEach((x, i) => studs.push({ x, z: sg * zStud(x), s: (row * sx.length + i) / (2 * sx.length - 1) })));
+  [-XB, XB].forEach((x0, e) => [1, -1].forEach((sg, row) => [-26, 26].forEach((dx, i) => screws.push({ x: x0 + dx, z: sg * zScrew, s: (e * 4 + row * 2 + i) / 7 }))));
+  pins.push({ x: -184, z: zStud(184), big: 1 }, { x: 184, z: -zStud(184), big: 1 });
+  [-XB, XB].forEach(x0 => pins.push({ x: x0, z: zScrew }, { x: x0, z: -zScrew }));
+  // 구멍 자리 (어두운 원판): 상부 플랜지 윗면의 스터드·핀 구멍, 베어링 하우징 상부의 볼트·핀 구멍
+  studs.forEach(q => holes.disc(q.x, T + .25, q.z, rM + 1.6, 0, .2)); pins.filter(q => q.big).forEach(q => holes.disc(q.x, T + .25, q.z, d2 / 2 + .6, 0, .2));
+  [1, -1].forEach(sg => { [-26, 26].forEach(dx => bHoles.disc(dx, Tb + .25, sg * zScrew, ds / 2 + 1.4, 0, .2)); bHoles.disc(0, Tb + .25, sg * zScrew, d2 * .4 + .6, 0, .2); });
+  return { dims: { k, P, Ps, T, Tb, WH, seat, XB }, studs, screws, pins,
+    stud: stud.done(), nut: nut.done(), washer: washer.done(), screw: screw.done(), pin: pin.done(), lower: lower.done(), upper: upper.done(), faceL: faceL.done(), faceU: faceU.done(), pit: pit.done(), holes: holes.done(),
+    bLower: bLower.done(), bUpper: bUpper.done(), bFaceL: bFaceL.done(), bFaceU: bFaceU.done(), bHoles: bHoles.done(), shaft: shaft.done(), imp: imp.done(), nozS: nozzle(60, 120, 98), nozD: nozzle(48, 120, 84), base: base.done() };
 }
 
 /* ── 렌더러: 스튜디오 조명(소프트박스)을 식으로 계산해 금속 반사를 만든다 ── */
@@ -138,70 +212,80 @@ function bnTightenRenderer(canvas) {
   ].map(L => { const c = N(L.dir), t1 = N(X(c, Math.abs(c[1]) > .9 ? [1, 0, 0] : [0, 1, 0])), t2 = X(t1, c); return `col += ${v3(L.col.map(x => x * L.k))} * pane(d, ${v3(c)}, ${v3(t1)}, ${v3(t2)}, vec2(${L.size.join(',')}), s);`; }).join('\n');
   const VS = `attribute vec3 aP, aN; attribute float aA; uniform mat4 uVP, uM; uniform vec2 uShift; varying vec3 vP, vN; varying float vA;
 void main(){ vec4 w = uM * vec4(aP, 1.); vP = w.xyz; vN = (uM * vec4(aN, 0.)).xyz; vA = aA; vec4 c = uVP * w; c.xy += uShift * c.w; gl_Position = c; }`;
-  const FS = `precision highp float; varying vec3 vP, vN; varying float vA; uniform vec3 uCam, uTint, uEmis; uniform float uRough, uSweep, uFlash;
+  // uOrbit = (주황빛이 도는 각도, 세기): 고정 순간 빛이 장면을 한 바퀴 돈다. uSeam = 이음매(맞댐면 높이)에 그 빛이 맺히는 정도
+  const FS = `precision highp float; varying vec3 vP, vN; varying float vA; uniform vec3 uCam, uTint, uEmis; uniform float uRough, uSeam; uniform vec2 uOrbit;
 float pane(vec3 d, vec3 c, vec3 t1, vec3 t2, vec2 hs, float s){ float f = dot(d, c); if (f <= 0.) return 0.; vec2 q = abs(vec2(dot(d, t1), dot(d, t2)) / f); vec2 e = smoothstep(hs + s, hs - s, q); return e.x * e.y; }
 vec3 env(vec3 d, float r){ float s = .03 + r * .85;
   vec3 col = mix(vec3(.010, .012, .016), vec3(.055, .064, .08), smoothstep(-.25, .9, d.y));
   col += vec3(.85, .92, 1.) * .09 * exp(-pow(d.y * 5.5, 2.)) * (1. - r);
   ${LIGHTS}
-  vec3 c = normalize(vec3(.62, .3, mix(-1.5, 1.5, uSweep))), t1 = normalize(cross(c, vec3(0., 1., 0.))), t2 = cross(t1, c);
-  col += vec3(1., .97, .92) * 5. * uFlash * pane(d, c, t1, t2, vec2(.11, 1.2), s + .05);
+  vec3 c = normalize(vec3(cos(uOrbit.x), .3, sin(uOrbit.x))), t1 = normalize(cross(c, vec3(0., 1., 0.))), t2 = cross(t1, c);
+  col += vec3(1., .44, .14) * 7. * uOrbit.y * pane(d, c, t1, t2, vec2(.2, .9), s + .06);
   return col; }
 void main(){ vec3 n = normalize(vN); if (!gl_FrontFacing) n = -n;
-  float g = fract(sin(floor(vP.y * 7.) * 91.7) * 43758.5) - .5; n = normalize(n + vec3(0., g, 0.) * uRough * uRough * .22);   // 판의 가공 결
+  float g = fract(sin(floor(vP.y * 2.2) * 91.7) * 43758.5) - .5; n = normalize(n + vec3(0., g, 0.) * uRough * uRough * .16);   // 주물·가공 결
   vec3 v = normalize(uCam - vP); float nv = clamp(dot(n, v), 0., 1.);
   vec3 f = uTint + (1. - uTint) * pow(1. - nv, 5.);
   vec3 col = env(reflect(-v, n), uRough) * f;
   col += uTint * uRough * .16 * max(dot(n, normalize(vec3(.22, 1., .34))), 0.);
-  col *= mix(.22, 1., vA) * mix(1., .38, uRough * 2. * smoothstep(34., 230., length(vP.yz)));   // 거친 판은 볼트에서 멀수록 어둡게 (볼트에 시선이 가도록)
+  col *= mix(.22, 1., vA) * mix(1., .34, uRough * 2. * smoothstep(430., 900., length(vP.xz)));   // 거친 면은 가운데에서 멀수록 어둡게 (체결부에 시선이 가도록)
   col += uEmis * vA * vA;
+  float da = atan(vP.z, vP.x) - uOrbit.x; da = atan(sin(da), cos(da));
+  col += vec3(2.8, .56, .08) * uSeam * uOrbit.y * exp(-da * da * 2.4) * exp(-vP.y * vP.y / 256.);
   col = 1. - exp(-col * 1.3); gl_FragColor = vec4(pow(col, vec3(.4545)), 1.); }`;
   const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null; };
   const vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS); if (!vs || !fs) return null;
   const prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.bindAttribLocation(prog, 0, 'aP'); gl.linkProgram(prog);
   if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return null;
   gl.useProgram(prog);
-  const U = n => gl.getUniformLocation(prog, n), u = { VP: U('uVP'), M: U('uM'), Shift: U('uShift'), Cam: U('uCam'), Tint: U('uTint'), Emis: U('uEmis'), Rough: U('uRough'), Sweep: U('uSweep'), Flash: U('uFlash') };
+  const U = n => gl.getUniformLocation(prog, n), u = { VP: U('uVP'), M: U('uM'), Shift: U('uShift'), Cam: U('uCam'), Tint: U('uTint'), Emis: U('uEmis'), Rough: U('uRough'), Seam: U('uSeam'), Orbit: U('uOrbit') };
   const parts = bnTightenParts(), D = parts.dims;
   const buf = m => { const mk = (data, target = gl.ARRAY_BUFFER) => { const b = gl.createBuffer(); gl.bindBuffer(target, b); gl.bufferData(target, data, gl.STATIC_DRAW); return b; }; return { p: mk(m.pos), n: mk(m.nor), a: mk(m.ao), i: mk(m.idx, gl.ELEMENT_ARRAY_BUFFER), count: m.idx.length }; };
-  const B = { bolt: buf(parts.bolt), nut: buf(parts.nut), washer: buf(parts.washer), plateA: buf(parts.plateA), plateB: buf(parts.plateB), glow: buf(parts.glow), halo: buf(parts.halo) };
+  const B = {}; for (const [name, m] of Object.entries(parts)) if (m && m.pos) B[name] = buf(m);
   const aN = gl.getAttribLocation(prog, 'aN'), aA = gl.getAttribLocation(prog, 'aA');
   gl.enable(gl.DEPTH_TEST); gl.clearColor(0, 0, 0, 0);
   // 행렬 (열 우선)
   const mul = (a, b) => { const o = new Float32Array(16); for (let c = 0; c < 4; c++) for (let r = 0; r < 4; r++) o[c * 4 + r] = a[r] * b[c * 4] + a[4 + r] * b[c * 4 + 1] + a[8 + r] * b[c * 4 + 2] + a[12 + r] * b[c * 4 + 3]; return o; };
   const persp = (fy, asp, n, f) => { const t = 1 / Math.tan(fy / 2); return new Float32Array([t / asp, 0, 0, 0, 0, t, 0, 0, 0, 0, (f + n) / (n - f), -1, 0, 0, 2 * f * n / (n - f), 0]); };
   const look = (e, c) => { const z = N([e[0] - c[0], e[1] - c[1], e[2] - c[2]]), x = N(X([0, 1, 0], z)), y = X(z, x); return new Float32Array([x[0], y[0], z[0], 0, x[1], y[1], z[1], 0, x[2], y[2], z[2], 0, -(x[0] * e[0] + x[1] * e[1] + x[2] * e[2]), -(y[0] * e[0] + y[1] * e[1] + y[2] * e[2]), -(z[0] * e[0] + z[1] * e[1] + z[2] * e[2]), 1]); };
-  // 모델: x로 옮기고 x축 둘레로 돌린다 (sx = x 방향 배율)
-  const model = (x, ang = 0, sx = 1) => { const c = Math.cos(ang), s = Math.sin(ang); return new Float32Array([sx, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, x, 0, 0, 1]); };
-  function draw(b, m, tint, rough, emis = [0, 0, 0]) {
-    gl.uniformMatrix4fv(u.M, false, m); gl.uniform3fv(u.Tint, tint); gl.uniform1f(u.Rough, rough); gl.uniform3fv(u.Emis, emis);
+  // 놓기: 부품의 축(자기 x)을 axis 방향으로 세우고, 자기 축 둘레로 spin만큼 돌린 뒤 (x, y, z)로 옮긴다. 오른손 좌표를 지킨다 (나사 방향이 뒤집히지 않게)
+  const AX = { x: [[1, 0, 0], [0, 1, 0], [0, 0, 1]], y: [[0, 1, 0], [-1, 0, 0], [0, 0, 1]], z: [[0, 0, 1], [0, 1, 0], [-1, 0, 0]], nz: [[0, 0, -1], [0, 1, 0], [1, 0, 0]] };
+  const place = (x, y, z, axis = 'x', spin = 0, sc = 1) => { const [bx, by, bz] = AX[axis], c = Math.cos(spin) * sc, s = Math.sin(spin) * sc;
+    return new Float32Array([bx[0] * sc, bx[1] * sc, bx[2] * sc, 0, c * by[0] + s * bz[0], c * by[1] + s * bz[1], c * by[2] + s * bz[2], 0, -s * by[0] + c * bz[0], -s * by[1] + c * bz[1], -s * by[2] + c * bz[2], 0, x, y, z, 1]); };
+  function draw(b, m, tint, rough, emis = [0, 0, 0], seam = 0) {
+    gl.uniformMatrix4fv(u.M, false, m); gl.uniform3fv(u.Tint, tint); gl.uniform1f(u.Rough, rough); gl.uniform3fv(u.Emis, emis); gl.uniform1f(u.Seam, seam);
     gl.bindBuffer(gl.ARRAY_BUFFER, b.p); gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ARRAY_BUFFER, b.n); gl.enableVertexAttribArray(aN); gl.vertexAttribPointer(aN, 3, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ARRAY_BUFFER, b.a); gl.enableVertexAttribArray(aA); gl.vertexAttribPointer(aA, 1, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, b.i); gl.drawElements(gl.TRIANGLES, b.count, gl.UNSIGNED_SHORT, 0);
   }
-  const total = BN_TIGHTEN.free + BN_TIGHTEN.clamp;
-  /* st: { turns, gap } (bnTightenPose 결과에 흔들림을 더한 값), view: { p, px, py, flash, sweep } */
-  function render(st, vw) {
+  const C = BN_TIGHTEN, body = [.125, .142, .165], cap = [.15, .168, .195], mach = [.56, .58, .61], steel = [.80, .82, .85], darkc = [.03, .034, .04], bronze = [.74, .6, .4], hot = [2.6, .52, .07];
+  /* vw: { p, bob(첫 화면에서 기다릴 때 상부가 떠서 흔들리는 높이), px, py, narrow, orbit: [각도, 세기] } */
+  function render(vw) {
     const w = canvas.width, h = canvas.height, asp = w / h, wide = !vw.narrow;   // narrow = 글이 아래, 그림이 위 (CSS 820px 분기와 같다)
     gl.viewport(0, 0, w, h); gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-    const az = (1.10 - .12 * vw.p) + vw.px * .05, el = (.17 + .05 * vw.p) - vw.py * .035, dist = 318 * Math.max(1, (wide ? 1.5 : .92) / asp) * (1 - .08 * vw.p);
-    const tgt = [20, 0, 0], eye = [tgt[0] + dist * Math.cos(el) * Math.cos(az), tgt[1] + dist * Math.sin(el), tgt[2] + dist * Math.cos(el) * Math.sin(az)];
-    gl.uniformMatrix4fv(u.VP, false, mul(persp(.36, asp, 40, 2400), look(eye, tgt)));
-    gl.uniform2f(u.Shift, wide ? .46 : -.12, wide ? 0 : .44); gl.uniform3fv(u.Cam, eye); gl.uniform1f(u.Sweep, vw.sweep); gl.uniform1f(u.Flash, vw.flash);
-    const gap = st.gap, xNut = D.T + D.WH + D.P * (total - st.turns);   // 너트의 와셔 쪽 면. 조일수록 −x(머리 쪽)로 간다
-    const steel = [.80, .82, .85], dark = [.105, .12, .14], lit = Math.min(1, gap / 2.5), hot = [2.6, .52, .07];
-    draw(B.plateA, model(-D.T), dark, .42);
-    draw(B.plateB, model(gap), dark, .42);
-    if (gap > .02) draw(B.glow, model(0, 0, gap), [0, 0, 0], 1, hot.map(x => x * lit));
-    draw(B.bolt, model(0), steel, .16);
-    draw(B.washer, model(gap + D.T), [.7, .72, .75], .24);
-    draw(B.nut, model(xNut, -st.turns * Math.PI * 2), steel, .12);   // 시계 방향(보는 쪽 +x 기준)으로 돌며 조여진다
-    if (gap > .02) {   // 틈에서 번지는 빛: 색만 더하고(알파는 그대로) 깊이는 쓰지 않는다
-      gl.enable(gl.BLEND); gl.blendFuncSeparate(gl.ONE, gl.ONE, gl.ZERO, gl.ONE); gl.depthMask(false);
-      draw(B.halo, model(gap / 2), [0, 0, 0], 1, [.15, .034, .006].map(x => x * lit * Math.min(1, gap / 6 + .35)));
-      gl.depthMask(true); gl.disable(gl.BLEND);
-    }
+    const az = (1.2 - .2 * vw.p) + vw.px * .05, el = (.5 - .12 * vw.p) - vw.py * .035, dist = 2760 * Math.max(1, (wide ? 1.5 : .9) / asp) * (1 - .1 * vw.p);
+    const tgt = [0, 14, 0], eye = [tgt[0] + dist * Math.cos(el) * Math.cos(az), tgt[1] + dist * Math.sin(el), tgt[2] + dist * Math.cos(el) * Math.sin(az)];
+    gl.uniformMatrix4fv(u.VP, false, mul(persp(.36, asp, 300, 9000), look(eye, tgt)));
+    gl.uniform2f(u.Shift, wide ? .36 : 0, wide ? -.04 : .4); gl.uniform3fv(u.Cam, eye); gl.uniform2f(u.Orbit, vw.orbit[0], vw.orbit[1]);
+    const q0 = bnTightenPose(vw.p), lift = q0.lift + vw.bob, k = D.k, open = lift > .02, glow = hot.map(x => x * (open ? Math.exp(-lift / 13) : 0)), I = place(0, 0, 0), up = place(0, lift, 0);
+    // 고정된 것: 받침, 하부, 축, 노즐, 스터드
+    draw(B.base, I, [.07, .08, .095], .5);
+    draw(B.lower, I, body, .42, undefined, 1); draw(B.faceL, I, mach, .3, glow); draw(B.pit, I, darkc, .6);
+    draw(B.nozS, place(-52, -84, -100, 'nz'), body, .42); draw(B.nozD, place(52, -84, 100, 'z'), body, .42);
+    draw(B.shaft, I, steel, .16); draw(B.imp, I, bronze, .24);
+    for (const x of [-D.XB, D.XB]) { const m = place(x, 0, 0); draw(B.bLower, m, body, .42, undefined, 1); draw(B.bFaceL, m, mach, .3, glow); }
+    for (const q of parts.studs) draw(B.stud, place(q.x, 0, q.z, 'y'), steel, .16);
+    // 내려오는 것: 케이싱 상부, 베어링 하우징 상부 (같이 내려온다)
+    draw(B.upper, up, cap, .42, undefined, 1); draw(B.faceU, up, mach, .3, glow); draw(B.holes, up, darkc, .6);
+    for (const q of parts.studs) draw(B.washer, place(q.x, D.T + lift, q.z, 'y'), [.7, .72, .75], .24);
+    for (const x of [-D.XB, D.XB]) { const m = place(x, lift, 0); draw(B.bUpper, m, cap, .42, undefined, 1); draw(B.bFaceU, m, mach, .3, glow); draw(B.bHoles, m, darkc, .6); }
+    // 핀: 상·하부가 만난 뒤에 박힌다
+    const pinUp = (1 - q0.pin) * 132 + lift * .35;
+    for (const q of parts.pins) draw(B.pin, place(q.x, (q.big ? D.T : D.Tb) + lift + pinUp, q.z, 'y', 0, q.big ? 1 : .8), steel, .14);
+    // 캡 너트·육각머리 볼트: 나사 시작점까지 내려온 뒤 돌며 조여진다 (시계 방향 = 위에서 볼 때. 한 바퀴에 1피치)
+    for (const q of parts.studs) { const f = bnTightenPose(vw.p, q.s); draw(B.nut, place(q.x, D.seat + f.nut.left * k + (1 - f.drop) * 96 + lift * .7, q.z, 'y', -f.nut.theta), steel, .12); }
+    for (const q of parts.screws) { const f = bnTightenPose(vw.p, q.s); draw(B.screw, place(q.x, D.Tb + f.screw.left * k + (1 - f.drop) * 84 + lift * .7, q.z, 'y', -f.screw.theta), steel, .14); }
   }
   const info = gl.getExtension('WEBGL_debug_renderer_info'), name = info ? String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL)) : '';
   return { gl, render, soft: /swiftshader|llvmpipe|software/i.test(name), lose: () => gl.getExtension('WEBGL_lose_context')?.loseContext() };
@@ -243,17 +327,18 @@ function bnTightenInit() {
     target = span > 0 ? Math.min(1, Math.max(0, (top - r.top) / span)) : 1;
   }
   function paint(now) {
-    const pose = bnTightenPose(cur), ease = Math.min(1, Math.max(0, (cur - .01) / (C.p2 - .01))), e = ease * ease * (3 - 2 * ease);
+    const ease = Math.min(1, Math.max(0, (cur - .01) / (C.p2 - .01))), e = ease * ease * (3 - 2 * ease);
     root.style.setProperty('--p', cur.toFixed(4)); root.style.setProperty('--e', e.toFixed(4)); root.style.setProperty('--w', String(Math.round(C.w0 + (C.w1 - C.w0) * e)));
+    root.style.setProperty('--m', Math.min(1, Math.max(0, (cur - C.pa) / (C.p2 - C.pa))).toFixed(4));   // 식이 겹쳐 보이는 정도: 상·하부가 만난 뒤부터 고정까지
     const s = cur >= C.p2 - 1e-4;
     if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; bnImpact(root, 'kick'); } seated = s; root.dataset.seated = String(s); }   // 고정 순간: 빛이 한 번 훑고 화면이 흔들린다 (v9_tighten_scenes.js)
     if (!R) return false;
-    // 첫 화면에서 기다릴 때: 너트가 조금 돌았다 풀렸다 한다 (회전과 전진은 같은 피치로 묶인다)
-    const idle = pinned && !auto && cur < .02 && now - idleAt < 9000, wob = idle ? .09 * (1 - Math.cos((now - idleAt) / 1900 * Math.PI * 2)) * Math.min(1, (9000 - (now - idleAt)) / 1500) : 0;
-    const sw = (now - sweepAt) / 900, sweeping = sw >= 0 && sw < 1;
+    // 첫 화면에서 기다릴 때: 떠 있는 상부가 조금 오르내린다
+    const idle = pinned && !auto && cur < .02 && now - idleAt < 9000, bob = idle ? 5 * (1 - Math.cos((now - idleAt) / 2100 * Math.PI * 2)) * Math.min(1, (9000 - (now - idleAt)) / 1500) : 0;
+    const sw = (now - sweepAt) / 2200, sweeping = sw >= 0 && sw < 1;   // 고정 순간: 주황빛이 이음매를 따라 한 바퀴 돈다 (보는 쪽 왼편에서 시작해 앞을 지나 뒤로 돌아온다)
     px += (tx - px) * .08; py += (ty - py) * .08;
     const moving = Math.abs(tx - px) + Math.abs(ty - py) > .002;
-    R.render({ turns: pose.turns + wob, gap: pose.gap }, { p: cur, px, py, narrow: narrowMq.matches, sweep: sweeping ? sw : 0, flash: sweeping ? Math.sin(sw * Math.PI) : 0 });
+    R.render({ p: cur, bob, px, py, narrow: narrowMq.matches, orbit: [2.5 - (sweeping ? sw : 0) * Math.PI * 2, sweeping ? Math.pow(Math.sin(sw * Math.PI), .35) : 0] });
     return idle || sweeping || moving;
   }
   function frame(now) {
@@ -279,7 +364,7 @@ function bnTightenInit() {
   document.addEventListener('visibilitychange', () => { if (!document.hidden) { last = 0; request(); } }, opt);
   stage.addEventListener('pointermove', e => { if (e.pointerType !== 'mouse' || still) return; const r = stage.getBoundingClientRect(); tx = (e.clientX - r.left) / r.width * 2 - 1; ty = (e.clientY - r.top) / r.height * 2 - 1; if (cur < .02 && performance.now() - idleAt > 9000) idleAt = performance.now(); request(); }, opt);
   canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); fallback(); }, { signal: abort.signal });
-  window.__tightenTest = { pose: bnTightenPose, cfg: C, pitch: DIM.pitch[C.size], state: () => ({ p: cur, target, webgl: !!R, pinned, seated, quality, size: [canvas.width, canvas.height] }) };
+  window.__tightenTest = { pose: bnTightenPose, cfg: C, pitch: { nut: DIM.pitch[C.stud], screw: DIM.pitch[C.screw] }, state: () => ({ p: cur, target, webgl: !!R, pinned, seated, quality, size: [canvas.width, canvas.height] }) };
   layout();
 }
 
