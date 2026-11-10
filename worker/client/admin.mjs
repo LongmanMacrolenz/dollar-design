@@ -22,7 +22,7 @@ function area(name,title,value=''){return `<label>${h(title)}<textarea name="${h
 function options(items,value){return items.map(([id,title])=>`<option value="${h(id)}"${id===value?' selected':''}>${h(title)}</option>`).join('');}
 function select(name,title,items,value){return `<label>${h(title)}<select name="${h(name)}" aria-label="${h(title)}">${options(items,value)}</select></label>`;}
 function object(form){return Object.fromEntries(new FormData(form));}
-async function refresh(){data=await api('state');if(activeId){detail=await api('requests/'+activeId);}render();}
+async function refresh(){data=await api('state');if(activeId){detail=await api('requests/'+activeId);}if(tab==='counts')counts=await api('counts');render();}
 function login(error='') {
   document.querySelector('#logout').hidden=true;app.innerHTML=`<div class="card login"><small>PRIVATE WORKSPACE</small><h1>견적의 시작부터<br>발송까지.</h1><p>받은 메일 → 품목 확인 → 공급처 확인 → 원가 + 20% → 견적서</p><form id="login">${input('key','관리자 비밀키','','password','required autocomplete="off" minlength="32"')}<p class="error">${h(error)}</p><button class="primary">관리자 연결</button></form><details><summary>최초 연결 설정</summary><p>Cloudflare Worker 설정에서 PROCUREMENT_ADMIN_KEY(32자 이상)와 NAVER_APP_PASSWORD를 비밀정보로 등록하세요. 네이버 메일에서 IMAP/SMTP를 켭니다. 계정 비밀번호를 이 화면이나 채팅에 입력하지 마세요.</p><p>관리자 비밀키는 현재 탭에만 보관합니다. 잠금 버튼으로 지울 수 있습니다.</p></details></div>`;
   app.querySelector('form').onsubmit=async e=>{e.preventDefault();key=e.target.elements.key.value;try{await refresh();sessionStorage.setItem('bn-procurement-key',key);}catch(err){key='';login(err.message);}};
@@ -30,7 +30,7 @@ function login(error='') {
 function shell(content) {
   const ready=data.readiness;document.querySelector('#logout').hidden=false;
   const mailState=!ready.mailConfigured?'네이버 메일 미연결 · Cloudflare에서 NAVER_APP_PASSWORD 설정이 필요합니다.':`${ready.sync?.status==='connected'?'메일 수집 연결 성공':ready.sync?.status==='error'?'메일 수집 오류':'네이버 계정 설정됨 · 수집 확인 전'} · 최근 성공 ${h(ready.sync?.lastSuccess?businessTime(ready.sync.lastSuccess):'아직 없음')}${ready.sync?.errorCode?' · ['+h(ready.sync.errorCode)+']':''}`;
-  app.innerHTML=`<small>PROCUREMENT / QUOTATIONS</small><h1>조건을 확인하고,<br>견적을 완성합니다.</h1><div class="banner">${mailState}<br>계정 ${h(ready.account)} · 기본 가산율 ${h(data.settings.markupPct)}% · 발송은 최종 검토 후 실행합니다.</div><nav class="bar tabs" aria-label="관리 업무">${[['requests','요청·조달'],['quotes','견적서·발송'],['settings','공급처·원가 설정']].map(([id,title])=>`<button data-tab="${id}" aria-current="${tab===id}">${title}</button>`).join('')}<a class="button" href="/admin/channel.html">카카오 채널</a><a class="button" href="/admin/mail.html">메일 문안</a><a class="button" href="/admin/landed.html">수입 원가 계산</a><button data-action="refresh">새로고침</button><button data-action="sync"${!ready.mailConfigured?' disabled':''}>메일 수집</button></nav>${content}<footer>웹 가격은 후보입니다. 사양·포장·납기·서류·운송비를 공급처에 확인한 조건만 견적에 반영합니다.<br>서버 접수는 고객 수신 확인과 다릅니다. 접수 여부 불명확 상태는 네이버 메일에서 확인 후 처리하세요.</footer>`;
+  app.innerHTML=`<small>PROCUREMENT / QUOTATIONS</small><h1>조건을 확인하고,<br>견적을 완성합니다.</h1><div class="banner">${mailState}<br>계정 ${h(ready.account)} · 기본 가산율 ${h(data.settings.markupPct)}% · 발송은 최종 검토 후 실행합니다.</div><nav class="bar tabs" aria-label="관리 업무">${[['requests','요청·조달'],['quotes','견적서·발송'],['settings','공급처·원가 설정'],['counts','문의 집계']].map(([id,title])=>`<button data-tab="${id}" aria-current="${tab===id}">${title}</button>`).join('')}<a class="button" href="/admin/channel.html">카카오 채널</a><a class="button" href="/admin/mail.html">메일 문안</a><a class="button" href="/admin/landed.html">수입 원가 계산</a><button data-action="refresh">새로고침</button><button data-action="sync"${!ready.mailConfigured?' disabled':''}>메일 수집</button></nav>${content}<footer>웹 가격은 후보입니다. 사양·포장·납기·서류·운송비를 공급처에 확인한 조건만 견적에 반영합니다.<br>서버 접수는 고객 수신 확인과 다릅니다. 접수 여부 불명확 상태는 네이버 메일에서 확인 후 처리하세요.</footer>`;
 }
 function requestView() {
   const r=detail?.request;const list=`<aside class="card request-list"><div class="bar"><h3>견적 요청 ${data.requests.length}</h3><button data-action="new">직접 등록</button></div>${data.requests.map(x=>`<button class="request ${x.id===activeId?'selected':''}" data-request="${h(x.id)}"><b>${h(x.number)}</b><span>${h(x.subject||'제목 없음')}</span><small>${h(x.customerName||x.customerEmail)} · ${x.lines?.length||0}개 품목</small></button>`).join('')||'<p class="empty">메일을 수집하거나 직접 등록하세요.</p>'}<details><summary>연결 확인이 필요한 공급처 회신</summary>${data.mail.filter(m=>m.supplierId&&!m.requestId).map(m=>`<button data-reply="${h(m.id)}">${h(m.subject)}</button>`).join('')||'<p>없음</p>'}<div id="unmatched-replies"></div></details></aside>`;
@@ -66,7 +66,29 @@ function settingsView() {
 function quotesView() {
   return `<div class="card"><h2>고객 견적서</h2>${data.quotes.map(q=>`<details><summary>${h(q.number)} · ${h(q.customerName)} · ${won(q.totalKRW)}</summary><div class="quote-paper"><p>수신 ${h(q.customerEmail)} · 유효기간 ${h(businessTime(q.validUntil))}</p><div class="table"><table><thead><tr><th>품목·사양</th><th>수량</th><th>단가</th><th>금액</th><th>납기·서류</th></tr></thead><tbody>${q.lines.map(l=>`<tr><td>${h(l.description)}<br>${h(l.spec)}</td><td>${l.qty} ${h(l.unit)}</td><td>${won(l.unitPriceKRW)}</td><td>${won(l.amountKRW)}</td><td>${l.leadDays}일<br>${h(l.documents)}</td></tr>`).join('')}</tbody></table></div><p>공급가액 ${won(q.netKRW)} · 부가세 ${won(q.vatKRW)} · 합계 ${won(q.totalKRW)}</p><pre>${h(q.terms)}</pre><div class="bar"><button data-pdf="${h(q.id)}">PDF 다운로드</button><button class="accent" data-send-quote="${h(q.id)}"${(!data.readiness.mailConfigured||data.outbox.some(o=>o.quoteId===q.id))?' disabled':''}>검토 후 고객 발송</button></div></div></details>`).join('')||'<p class="empty">공급 조건을 확인한 뒤 견적서를 작성하세요.</p>'}</div><div class="card"><h2>공급처 문의·메일 발송 상태</h2>${data.outbox.map(o=>`<details><summary>${h(o.subject)} · ${h(status[o.status]||o.status)}</summary><p>수신 ${h(o.to)} · ${h(o.errorCode||'')}</p><pre>${h(o.plain)}</pre>${o.status==='draft'?`<button class="primary" data-send-inquiry="${h(o.id)}"${!data.readiness.mailConfigured?' disabled':''}>검토 후 공급처 발송</button>`:''}${o.status==='failed'?`<button data-retry="${h(o.id)}">실패 원인 해결 후 재시도</button>`:''}</details>`).join('')||'<p class="empty">발송 기록이 없습니다.</p>'}</div>`;
 }
-function render(){bomSources=[];shell(tab==='settings'?settingsView():tab==='quotes'?quotesView():requestView());}
+// 문의 집계: 공개 사이트가 /count로 보낸 화면·버튼 이름의 날짜별 합계 (누가 눌렀는지는 저장하지 않는다). 이름은 worker/index.mjs COUNT_EVENTS와 같다.
+const countNames={visit:'홈페이지를 연 횟수 (홈·문의 화면 등)','s-view':'사전·제품 페이지를 연 횟수',home:'홈을 봄',list:'문의 화면을 봄',materials:'소재 문의 화면을 봄',copy:'이메일 주소 복사',rfq:'RFQ 예시·본문 복사',kakao:'카카오톡 누름',tel:'전화 누름',mail:'메일 앱 열기','s-list':'사전·제품 페이지에서 문의 버튼','s-kakao':'사전·제품 페이지에서 카카오톡'};
+let counts=null,countDays=30;
+const dayShift=(day,d)=>new Date(Date.parse(day+'T00:00:00Z')+d*86400000).toISOString().slice(0,10);
+const per100=(a,b)=>b?`100번 중 ${Math.round(a/b*1000)/10}번`:'아직 없음';
+function countSkip(){try{return localStorage.getItem('bn.nocount')==='1';}catch{return false;}}
+function countsView(){
+  const from=dayShift(counts.today,1-countDays),sum=Object.fromEntries(Object.keys(countNames).map(k=>[k,0])),byDay=new Map();
+  for(const [day,name,n] of counts.rows){if(day<from||!(name in sum))continue;sum[name]+=n;const d=byDay.get(day)||{};d[name]=n;byDay.set(day,d);}
+  const of=(d,...names)=>names.reduce((t,k)=>t+(d[k]||0),0),opened=of(sum,'visit','s-view'),contact=of(sum,'copy','kakao','s-kakao','tel','mail');
+  return `<div class="card" id="counts"><div class="bar tabs"><h2>문의 집계</h2>${[7,30,90].map(n=>`<button data-count-days="${n}" aria-current="${countDays===n}">최근 ${n}일</button>`).join('')}</div>
+<p>${h(from)} ~ ${h(counts.today)}. 방문이 문의까지 얼마나 가는지 봅니다.</p>
+<div class="table"><table><thead><tr><th>한눈에</th><th>횟수</th><th>견주어 보기</th></tr></thead><tbody>
+<tr><td><b>사이트를 연 횟수</b></td><td data-count="opened">${opened}</td><td>홈페이지 ${sum.visit} + 사전·제품 페이지 ${sum['s-view']}</td></tr>
+<tr><td><b>문의 화면을 본 횟수</b></td><td data-count="list">${sum.list}</td><td>연 횟수 ${per100(sum.list,opened)}</td></tr>
+<tr><td><b>연락하려고 누른 횟수</b></td><td data-count="contact">${contact}</td><td>주소 복사 + 카카오톡 + 전화 + 메일 · 연 횟수 ${per100(contact,opened)}</td></tr>
+</tbody></table></div>
+<details open><summary>항목별</summary><div class="table"><table><thead><tr><th>항목</th><th>횟수</th></tr></thead><tbody>${Object.entries(countNames).map(([k,title])=>`<tr><td>${h(title)}</td><td data-count="${h(k)}">${sum[k]}</td></tr>`).join('')}</tbody></table></div></details>
+<details><summary>날짜별</summary><div class="table"><table><thead><tr><th>날짜</th><th>연 횟수</th><th>문의 화면</th><th>주소 복사</th><th>카카오톡</th><th>전화·메일·RFQ 복사</th></tr></thead><tbody>${[...byDay].map(([day,d])=>`<tr><td>${h(day)}</td><td>${of(d,'visit','s-view')}</td><td>${of(d,'list')}</td><td>${of(d,'copy')}</td><td>${of(d,'kakao','s-kakao')}</td><td>${of(d,'tel','mail','rfq')}</td></tr>`).join('')||'<tr><td colspan="6">아직 기록이 없습니다.</td></tr>'}</tbody></table></div></details></div>
+<div class="card"><h2>읽는 법</h2><p>사람 수가 아니라 방문(페이지를 연 횟수) 기준입니다. 한 번 들어와 같은 버튼을 여러 번 눌러도 한 번으로 셉니다.</p><p>저장하는 것은 날짜·항목 이름·횟수뿐입니다. 자동 프로그램의 방문이 조금 섞일 수 있고, 추적 거부를 켠 브라우저는 세지 않습니다. 날짜는 한국 시간 기준이며 약 13개월 뒤 지웁니다.</p><p>방문이 적을 때는 비율이 크게 흔들립니다. 몇 주 쌓인 뒤에 보세요.</p>
+<label class="checkbox-label"><input type="checkbox" id="count-skip"${countSkip()?' checked':''}>이 브라우저에서 내가 연 것은 세지 않기</label><p>대표 본인의 방문을 빼려면 켭니다. 쓰는 기기마다(PC, 휴대폰) 이 화면에서 한 번씩 켜야 합니다.</p></div>`;
+}
+function render(){bomSources=[];shell(tab==='settings'?settingsView():tab==='quotes'?quotesView():tab==='counts'&&counts?countsView():requestView());}
 async function pdfFor(q){fontBytes??=new Uint8Array(await (await fetch('/admin/GothicA1-Regular.ttf')).arrayBuffer());return quotePDF(q,data.business,fontBytes);}
 function encoded(bytes){let s='';for(let i=0;i<bytes.length;i+=8192)s+=String.fromCharCode(...bytes.subarray(i,i+8192));return btoa(s);}
 function download(bytes,name,type){const url=URL.createObjectURL(new Blob([bytes],{type}));const a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
@@ -74,7 +96,8 @@ async function reviewSend(q){if(!confirm(`${q.customerEmail}로 ${q.number} 견�
 app.addEventListener('click',async e=>{
   const b=e.target.closest('button');if(!b||busy)return;let rerender=false;
   try {
-    if(b.dataset.tab){tab=b.dataset.tab;render();return;}
+    if(b.dataset.tab){if(b.dataset.tab==='counts'){setBusy(true);counts=await api('counts');}tab=b.dataset.tab;render();return;}
+    if(b.dataset.countDays){countDays=Number(b.dataset.countDays);render();return;}
     if(b.dataset.request){activeId=b.dataset.request;detail=await api('requests/'+activeId);render();return;}
     if(b.hasAttribute('data-remove-line')){b.closest('[data-line]').remove();return;}
     if(b.dataset.offer){offerForm(detail.offers.find(o=>o.id===b.dataset.offer));return;}
@@ -123,11 +146,12 @@ app.addEventListener('submit',async e=>{
     await refresh();show('저장했습니다.');
   }catch(err){show(err.message);}finally{setBusy(false);}
 });
-document.querySelector('#logout').onclick=()=>{sessionStorage.removeItem('bn-procurement-key');key='';data=null;detail=null;activeId='';login();};
+document.querySelector('#logout').onclick=()=>{sessionStorage.removeItem('bn-procurement-key');key='';data=null;detail=null;counts=null;activeId='';login();};
 if(key){refresh().catch(err=>login(err.message));}else login();
 
 function basisDoc(d){return `<div class="quote-line" data-basis="${h(d.id)}"><div class="grid">${input('basis-name','문서·파일 이름',d.name)}${select('basis-kind','문서 종류',[['other','기타'],['drawing','고객 도면'],['specification','고객 사양서'],['bom','고객 BOM']],d.kind||(/DRAWING|DWG|도면|\.d[wx]g$/i.test(d.name||'')?'drawing':'other'))}${input('basis-reference','문서 번호',d.reference)}${input('basis-revision','문서 개정',d.revision)}</div><label><input type="checkbox" name="basis-reviewed"${d.reviewed?' checked':''}>원본과 개정·전체 요구사항을 검토했습니다.</label></div>`;}
 app.addEventListener('input',e=>{if(e.target.id==='paste')bomSources=[];});
+app.addEventListener('change',e=>{if(e.target.id!=='count-skip')return;try{if(e.target.checked)localStorage.setItem('bn.nocount','1');else localStorage.removeItem('bn.nocount');show(e.target.checked?'이 브라우저의 방문은 세지 않습니다.':'이 브라우저의 방문도 셉니다.');}catch{e.target.checked=false;show('이 브라우저에서는 설정을 저장할 수 없습니다.');}});
 app.addEventListener('change',async e=>{
  if(e.target.id!=='bom-file')return;
  try{const f=e.target.files[0];if(!f)return;bomSources=[];

@@ -45,9 +45,11 @@ const SHOP = {
   leadRange: {},            // 품목 id → '2~4' 같은 보통 영업일. 빈 값이면 [n~m] 자리표시
   payLink: false,           // 카드 결제 링크 서비스를 연 뒤 true
   wbPublic: false,          // true면 목록 붙여넣기 뒤 4A 작업대를 바로 보여 줌
+  funnelCount: true,        // 문의 집계 (대표 요청 2026-11-10): 화면·버튼 이름의 횟수를 /count로 보내 날짜별 합계로 센다 (v9_count.js, site/count.js). false면 보내지 않고 처리방침 B항 문구도 빠짐
   analyticsToken: '30e74e7c6eec4d9bbd8439bc695b18a9',   // 대표 전달 2026-11-09 (Cloudflare Web Analytics, 공개 값)       // Cloudflare Web Analytics 비컨 토큰(공개 값, 대시보드 → Web Analytics). 비우면 분석 스크립트를 넣지 않고 처리방침 B·D항도 '쓰지 않음'으로 표시. 값을 넣으면 site/build.py·build_lib.py가 모든 페이지에 스크립트를 넣는다
 };
 const ANALYTICS_ON = /^[A-Za-z0-9_-]{8,}$/.test(SHOP.analyticsToken || '');
+const COUNT_ON = SHOP.funnelCount === true;
 const ORDER_LIVE = SHOP.ordersOpen && /\S/.test(SHOP.mailOrderNo) && /\S/.test(SHOP.bizNo);
 // API 610 재질 클래스 도구 (5장 상세 · 해독 링크 · 검색): 클래스별 볼팅 자료를 공개 출처로 다시 채우기 전까지 숨긴다 (2026-10 감사, INTEGRATE F).
 // true로 바꾸면 탭·링크·검색 항목이 다시 나온다. 판별 코드(e0_api610.js, t_api610.js)는 그대로 둔다

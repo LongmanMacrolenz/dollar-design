@@ -11,6 +11,33 @@ import {parseBOM,mailBOM,workflowFor,workflowCSV,requirementsFor,supplierSearche
 
 function expectedRevision(body,old){if(old&&body.revision!==old.revision)throw new DomainError('다른 창에서 변경되었습니다. 다시 불러오세요.',409);return body.revision;}
 const store=env=>env.PROCUREMENT.get(env.PROCUREMENT.idFromName('boltnote-private-procurement-v1'));
+// 문의 집계 (대표 요청 2026-11-10). 공개 주소 /count는 화면·버튼 이름 하나만 받아 날짜별 합계에 1을 더한다.
+// 누가 보냈는지(IP·쿠키·기기·참조 주소)는 읽지도 저장하지도 않는다. 이름 목록은 app/src/v9_count.js, site/count.js, worker/client/admin.mjs와 같다.
+// probe는 배포 확인용이다(관리자 화면에 보이지 않는다).
+export const COUNT_EVENTS=['visit','home','list','materials','copy','rfq','kakao','tel','mail','s-view','s-list','s-kakao','probe'];
+const COUNT_DAILY_MAX=20000;   // 하루 합계 상한: Durable Object 무료 쓰기 한도(10만 줄/일) 아래에 둔다. 넘으면 버린다
+const COUNT_PER_MINUTE=60;     // 격리 단위마다 분당 상한: 과한 요청이 저장소까지 가지 않게 한다
+const COUNT_BOT=/bot|crawl|spider|headless|preview|monitor/i;
+let countMinute=0,countSeen=0;
+const countDone=(status=204)=>new Response(null,{status,headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
+async function shortText(request,max){   // 본문을 max바이트까지만 읽는다 (더 길면 null)
+  const reader=request.body?.getReader();if(!reader)return '';
+  const chunks=[];let size=0;
+  for(;;){const {value,done}=await reader.read();if(done)break;size+=value.length;if(size>max){await reader.cancel();return null;}chunks.push(value);}
+  const bytes=new Uint8Array(size);let pos=0;for(const c of chunks){bytes.set(c,pos);pos+=c.length;}
+  return new TextDecoder().decode(bytes);
+}
+async function countPing(request,env){
+  if(request.method!=='POST')return new Response(null,{status:405,headers:{Allow:'POST','Cache-Control':'no-store'}});
+  const site=request.headers.get('sec-fetch-site');
+  try{assertSameOrigin(request);if(site&&site!=='same-origin')throw new DomainError('같은 사이트에서 요청하세요.',403);}catch{return countDone(403);}
+  const name=await shortText(request,32);
+  if(name===null||!COUNT_EVENTS.includes(name))return countDone(400);
+  if(COUNT_BOT.test(request.headers.get('user-agent')||''))return countDone();   // 자동 프로그램: 받되 세지 않는다
+  const minute=Math.floor(Date.now()/60000);if(minute!==countMinute){countMinute=minute;countSeen=0;}
+  if(++countSeen>COUNT_PER_MINUTE)return countDone();
+  try{const saved=await store(env).fetch(new Request('https://private/count',{method:'POST',body:name}));return countDone(saved.ok?204:503);}catch{return countDone(503);}
+}
 export default {
   async fetch(request,env) {
     const path=new URL(request.url).pathname;
@@ -25,6 +52,7 @@ export default {
       headers.set('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; font-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'");
       return new Response(response.body,{status:response.status,headers});
     }
+    if(path==='/count') return countPing(request,env);   // 공개: 이름 하나만 받는다. 관리자 키가 없어도 동작한다
     if(!path.startsWith('/api/')) return env.ASSETS.fetch(request);
     if(!env.PROCUREMENT_ADMIN_KEY||env.PROCUREMENT_ADMIN_KEY.length<32) return json({error:'관리자 비밀키 설정이 필요합니다.',code:'ADMIN_NOT_CONFIGURED'},503);
     if(!await authorized(request,env.PROCUREMENT_ADMIN_KEY)) return json({error:'관리자 인증이 필요합니다.'},401);
@@ -45,6 +73,7 @@ export class ProcurementStore extends DurableObject {
     this.sql.exec('CREATE TABLE IF NOT EXISTS documents (kind TEXT NOT NULL,id TEXT NOT NULL,data TEXT NOT NULL,revision INTEGER NOT NULL,updated TEXT NOT NULL,PRIMARY KEY(kind,id))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS blobs (id TEXT NOT NULL,part INTEGER NOT NULL,data BLOB NOT NULL,PRIMARY KEY(id,part))');
     this.sql.exec('CREATE TABLE IF NOT EXISTS mail_seen (uidvalidity INTEGER NOT NULL,uid INTEGER NOT NULL,message_id TEXT NOT NULL,PRIMARY KEY(uidvalidity,uid))');
+    this.sql.exec('CREATE TABLE IF NOT EXISTS counts (day TEXT NOT NULL,event TEXT NOT NULL,n INTEGER NOT NULL,PRIMARY KEY(day,event))');this.countDay='';   // 문의 집계: 날짜(KST)·항목·횟수뿐이다
     if(!this.get('settings','main')) this.put('settings','main',{markupPct:DEFAULT_MARKUP_PCT,fx:{},logistics:{},autoInquiries:true});
     for(const supplier of SUPPLIERS) if(!this.get('supplier',supplier.id)) this.put('supplier',supplier.id,{...supplier,email:'',contactVerified:false});
     this.syncing=null;this.sending=new Set();
@@ -60,6 +89,14 @@ export class ProcurementStore extends DurableObject {
   blobPut(id,bytes) {this.ctx.storage.transactionSync(()=>{this.sql.exec('DELETE FROM blobs WHERE id=?',id);for(let i=0;i<bytes.length;i+=65536)this.sql.exec('INSERT INTO blobs VALUES(?,?,?)',id,i/65536,bytes.slice(i,i+65536).buffer);});}
   blobGet(id) {const rows=this.sql.exec('SELECT data FROM blobs WHERE id=? ORDER BY part',id).toArray();let size=0;for(const r of rows)size+=r.data.byteLength;const bytes=new Uint8Array(size);let p=0;for(const r of rows){bytes.set(new Uint8Array(r.data),p);p+=r.data.byteLength;}return bytes;}
   required(kind,id){const value=this.get(kind,id);if(!value)throw new DomainError('항목을 찾을 수 없습니다.',404);return value;}
+  count(name){
+    if(!COUNT_EVENTS.includes(name))throw new DomainError('집계 항목이 아닙니다.',400);
+    const day=businessDate(Date.now());
+    if(day!==this.countDay){this.countDay=day;this.sql.exec('DELETE FROM counts WHERE day<?',businessDate(Date.now()-400*86400000));}   // 약 13개월 지난 합계는 지운다
+    if(this.sql.exec('SELECT COALESCE(SUM(n),0) AS n FROM counts WHERE day=?',day).toArray()[0].n>=COUNT_DAILY_MAX)return false;
+    this.sql.exec('INSERT INTO counts VALUES(?,?,1) ON CONFLICT(day,event) DO UPDATE SET n=n+1',day,name);return true;
+  }
+  counts(days=90){const from=businessDate(Date.now()-(days-1)*86400000);return {today:businessDate(Date.now()),from,rows:this.sql.exec('SELECT day,event,n FROM counts WHERE day>=? ORDER BY day DESC,event',from).toArray().map(r=>[r.day,r.event,r.n])};}
   readiness(){return {account:MAIL_ACCOUNT,mailConfigured:!!this.env.NAVER_APP_PASSWORD,adminConfigured:true,sync:this.get('sync','main'),markupPct:this.get('settings','main').markupPct};}
   plan(id){return optimizeOffers(this.required('request',id),this.list('offer').filter(o=>o.requestId===id),this.list('supplier'),this.get('settings','main'));}
   workflow(id){return workflowFor(this.required('request',id),this.list('offer').filter(o=>o.requestId===id));}
@@ -90,7 +127,9 @@ export class ProcurementStore extends DurableObject {
     const path=new URL(request.url).pathname;
     try {
       if(path==='/scheduled'){await this.sync();await this.flush();return json({ok:true});}
+      if(path==='/count')return json({counted:this.count(await request.text())});   // Worker의 countPing만 부른다 (밖에서는 /api/*만 여기로 온다)
       if(request.method==='GET') {
+        if(path==='/api/counts')return json(this.counts());
         if(path==='/api/state')return json({readiness:this.readiness(),requests:this.list('request'),suppliers:SUPPLIERS.map(s=>this.get('supplier',s.id)),settings:this.get('settings','main'),outbox:this.list('outbox'),quotes:this.list('quote').map(customerQuote),mail:this.list('mail').map(({body,...m})=>m),business:BUSINESS});
         let m=path.match(/^\/api\/requests\/([^/]+)$/);if(m){const req=this.required('request',m[1]);return json({request:req,offers:this.list('offer').filter(o=>o.requestId===m[1]),plan:this.plan(m[1]),workflow:this.workflow(m[1]),requirements:req.lines?.map(l=>({lineId:l.id,rows:requirementsFor(l,req),searches:supplierSearches(l,this.list('supplier'))}))||[],replies:this.list('mail').filter(m=>m.requestId===req.id),inquiries:this.list('outbox').filter(o=>o.requestId===req.id&&o.kind==='inquiry')});}
         m=path.match(/^\/api\/requests\/([^/]+)\/workflow.csv$/);if(m){const req=this.required('request',m[1]);return new Response(workflowCSV(req,this.workflow(req.id)),{headers:{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':`attachment; filename="${req.number}-CD.csv"`,'Cache-Control':'no-store'}});}

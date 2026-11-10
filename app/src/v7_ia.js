@@ -56,6 +56,7 @@ function iaAfterNav(r) {
   iaMenu(false);
   const ml = document.querySelector('.ia-mini-list'); if (ml) ml.hidden = r === 'cart' || r === 'quote';
   bnThemeColor();
+  bnCountView(r);   // 문의 집계: 홈·문의 화면·소재 문의를 연 횟수 (v9_count.js)
 }
 // 장 머리 빵 부스러기: 옛 장 이름 → 새 경로 (제품 › 칸 › 품목)
 function iaTrail(trail) {
