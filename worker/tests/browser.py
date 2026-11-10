@@ -309,10 +309,16 @@ def check_home(page, BASE, OUT):
    page.wait_for_function('k=>Math.abs(__sceneTest.state().find(s=>s.kind===k).q-.4)<.01',arg=k,timeout=20000)
    mid=page.evaluate('k=>{const el=document.querySelector(`.bn-scene[data-scene="${k}"]`);return{e:+el.style.getPropertyValue("--e"),seated:el.dataset.seated,top:el.querySelector(".bn-scene-stage").getBoundingClientRect().top}}',k)
    assert abs(mid['e']-.5)<.02 and mid['seated']=='false' and abs(mid['top']-s['top'])<=1,(k,mid)
+   if k=='lineup':   # halfway: all six product images have been dealt out small and are on screen at once
+    dealt=page.evaluate('()=>{const t=document.querySelector(".bn-lineup .bn-products").getBoundingClientRect();return [...document.querySelectorAll(".bn-lineup .bn-products>li")].map(li=>{const r=li.getBoundingClientRect();return r.left>=t.left-2&&r.right<=t.right+2&&r.width>20&&+getComputedStyle(li).opacity>.9})}')
+    assert dealt==[True]*6,dealt
    page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.95);page.wait_for_function(seat,arg=k,timeout=20000)
    after=scene(k);assert after['hits']==1 and after['mode']=='down' and page.locator(f'.bn-scene[data-scene="{k}"]').get_attribute('data-seated')=='true',(k,after)
    assert page.locator(f'.bn-scene[data-scene="{k}"].is-hit').count()==1 and page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-   if k=='lineup':assert page.evaluate('getComputedStyle(document.querySelector(".bn-lineup .bn-grow")).fontWeight')=='800'   # the heading is at full weight once seated
+   if k=='lineup':   # seated: the heading is at full weight, tiles are back at full size, and the carousel can be paged
+    assert page.evaluate('getComputedStyle(document.querySelector(".bn-lineup .bn-grow")).fontWeight')=='800'
+    page.wait_for_function('()=>{const t=document.querySelector(".bn-lineup .bn-products"),a=t.children[0],b=t.children[5];return Math.abs(a.getBoundingClientRect().width-a.offsetWidth)<1&&b.getBoundingClientRect().left>t.getBoundingClientRect().right}',timeout=20000)
+    assert page.locator('[data-bn-products-step="1"]').is_enabled()
   # Scrolling up from below: a scene that has gone past starts loose again and tightens as the page moves up.
   page.evaluate('scrollTo(0,document.documentElement.scrollHeight)')
   page.wait_for_function('__sceneTest.state().slice(0,2).every(s=>s.mode==="up"&&!s.seated&&s.q<.001)',timeout=20000)
