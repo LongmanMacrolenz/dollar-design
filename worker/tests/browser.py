@@ -107,6 +107,34 @@ def check_channel(page, BASE, OUT):
 CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
+def check_boot(page, BASE, OUT):
+  """Before JavaScript the home already shows the dark hero copy; nothing jumps when the app takes over; other routes do not flash home text."""
+  browser=page.context.browser
+  # No JavaScript: the static overview is the whole page, with one keyword h1 and the footer below the first screen.
+  context=browser.new_context(viewport={'width':1280,'height':800},java_script_enabled=False);still=context.new_page();still.goto(BASE+'/')
+  assert still.locator('html').get_attribute('class')=='bn-boot-home' and still.locator('h1').count()==1
+  assert still.locator('#initial-home-title').inner_text()=='산업설비 볼트·너트 구매와 BOM 견적'
+  assert ' '.join(still.locator('.bn-boot-line').inner_text().split())=='작은 것이, 전부를 붙잡습니다.' and still.locator('.bn-boot-lead').inner_text()=='체결부품 조달, BOM부터 정확하게.'
+  assert still.locator('.bn-boot-btn[href="/#list"]').is_visible() and still.locator('.bn-boot-more a[href="/products/hex-nut"]').is_visible()
+  assert still.evaluate('getComputedStyle(document.body).backgroundColor')=='rgb(10, 14, 19)' and still.locator('meta[name="theme-color"]').get_attribute('content')=='#0a0e13'
+  assert still.evaluate('document.querySelector("footer.foot").getBoundingClientRect().top>=innerHeight')
+  context.close()
+  # With JavaScript: the boot classes are gone, the browser colour follows the screen, and layout shift stays small on both routes.
+  observer='window.__cls=0;new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.__cls+=e.value}).observe({type:"layout-shift",buffered:true})'
+  read='({cls:window.__cls,html:document.documentElement.className,theme:document.documentElement.getAttribute("data-theme"),meta:document.querySelector("meta[name=theme-color]").content,bg:getComputedStyle(document.body).backgroundColor,overview:document.querySelectorAll(".search-overview").length})'
+  for size in ({'width':390,'height':844},{'width':1280,'height':800}):
+   for route,ready,colour in (('','.bn-tighten','rgb(10, 14, 19)'),('#list','#sales-email','rgb(244, 243, 239)')):
+    context=browser.new_context(viewport=size);live=context.new_page();live.add_init_script(observer);live.goto(BASE+'/'+route);live.locator(ready).wait_for();live.wait_for_timeout(1500)
+    state=live.evaluate(read)
+    assert state['html']=='' and state['overview']==0 and state['meta']==state['bg']==colour,(size,route,state)
+    assert state['cls']<0.1,(size,route,state)
+    context.close()
+  # A saved dark theme is set by the head script (no light flash) and the browser colour follows it.
+  context=browser.new_context(viewport={'width':1280,'height':800});dark=context.new_page()
+  dark.add_init_script('try{localStorage.setItem("bn.theme",JSON.stringify("dark"))}catch(e){}');dark.goto(BASE+'/#list');dark.locator('#sales-email').wait_for()
+  state=dark.evaluate(read);assert state['theme']=='dark' and state['meta']==state['bg'] and state['bg']!='rgb(244, 243, 239)',state
+  context.close()
+
 def check_phone_bar(page, BASE, OUT):
   """The sticky phone bar keeps its four items on one row at common phone widths, with the cart still named."""
   page.emulate_media(reduced_motion='no-preference')
@@ -488,6 +516,7 @@ def check(BASE, OUT):
   check_sales(page,BASE,OUT)
   check_materials(page,BASE,OUT)
   check_phone_bar(page,BASE,OUT)
+  check_boot(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()

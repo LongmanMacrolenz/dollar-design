@@ -45,13 +45,17 @@ function iaTitleOf(r) {
   if (m[1] === 'k') return (CAT_COLL[m[2]] || {}).ko || null;
   return (CAT_F[m[2]] || {}).ko || null;
 }
+// 휴대폰 브라우저 위쪽 색(theme-color)을 지금 화면의 바탕색에 맞춘다. 홈은 어둡고 다른 화면은 밝다
+function bnThemeColor() { const m = document.querySelector('meta[name="theme-color"]'); if (m && document.body) m.content = getComputedStyle(document.body).backgroundColor; }
 function iaAfterNav(r) {
   const home = r === 'home';
+  document.documentElement.classList.remove('bn-boot-home', 'bn-boot-route');   // 첫 그림용 클래스(site/build.py)는 본 화면이 그려지면 지운다
   document.body.classList.toggle('ia-at-home', home);
   document.body.dataset.route = r.split('-')[0];
   const t = iaTitleOf(r); if (t) document.title = `볼트노트 · ${t}`;
   iaMenu(false);
   const ml = document.querySelector('.ia-mini-list'); if (ml) ml.hidden = r === 'cart' || r === 'quote';
+  bnThemeColor();
 }
 // 장 머리 빵 부스러기: 옛 장 이름 → 새 경로 (제품 › 칸 › 품목)
 function iaTrail(trail) {
