@@ -3907,7 +3907,7 @@ footer.foot.ia-foot { background:#142234; }
 .bn-home h2 .bn-thin { font-weight:200; letter-spacing:-.035em; }
 
 /* ── 조임 장면 ── */
-.bn-tighten { position:relative; height:calc((100svh - var(--tight-top,0px) - var(--tight-head,0px)) * 2.6); background:#06090d; }
+.bn-tighten { position:relative; height:calc((100svh - var(--tight-top,0px) - var(--tight-head,0px)) * 3.4); background:#06090d; }
 .bn-tighten-stage { position:sticky; top:var(--tight-top,0px); height:calc(100svh - var(--tight-top,0px) - var(--tight-head,0px)); min-height:520px; overflow:hidden; isolation:isolate;
   background:radial-gradient(120% 90% at 72% 46%, #1a2430 0%, #0d131a 46%, #06090d 100%); }
 .bn-tighten-stage::after { content:""; position:absolute; inset:0; z-index:1; pointer-events:none; background:linear-gradient(90deg, #06090de6 0%, #06090d99 26%, #06090d00 56%), linear-gradient(0deg, #06090dcc 0%, #06090d00 22%); }
@@ -3941,14 +3941,15 @@ footer.foot.ia-foot { background:#142234; }
 .bn-tighten-note { position:absolute; z-index:2; right:28px; top:16px; margin:0; font-size:10.5px; color:#6f7c88; transition:top .16s ease-out; }
 /* 휴대폰: 고정 막대(.tb-mini)가 내려오면 그 아래로 옮겨, 렌더링 안내가 가려지지 않게 한다 */
 body:has(.tb-mini.on) .bn-tighten:not(.is-static) .bn-tighten-note { top:calc(var(--tight-mini, 0px) + 10px); }
+/* 고정 순간의 번쩍임. 흔들림은 bnImpact(v9_tighten_scenes.js)가 화면에 보이는 구역 전체에 준다 */
 .bn-tighten.is-hit .bn-tighten-stage { animation:bn-tight-hit .34s cubic-bezier(.3,.7,.2,1); }
-@keyframes bn-tight-hit { 0% { transform:translate3d(0,0,0); filter:brightness(1.5); } 18% { transform:translate3d(-5px,2px,0); } 40% { transform:translate3d(3px,-1px,0); filter:brightness(1.12); } 100% { transform:none; filter:none; } }
+@keyframes bn-tight-hit { 0% { filter:brightness(1.5); } 40% { filter:brightness(1.12); } 100% { filter:none; } }
 /* 움직임 줄이기·WebGL 불가: 스크롤 고정 없이 조여진 장면 */
 .bn-tighten.is-static { height:auto; }
 .bn-tighten.is-static .bn-tighten-stage { position:relative; top:auto; height:min(86svh, 820px); }
 .bn-tighten.is-static .bn-tighten-hint { display:none; }
 @media (max-width:820px) {
-  .bn-tighten { height:calc((100svh - var(--tight-head,0px)) * 2.3); }
+  .bn-tighten { height:calc((100svh - var(--tight-head,0px)) * 3); }
   .bn-tighten-stage { background:radial-gradient(110% 60% at 50% 30%, #1a2430 0%, #0d131a 50%, #06090d 100%); }
   .bn-tighten-stage::after { background:linear-gradient(0deg, #06090df2 0%, #06090dcc 34%, #06090d00 62%); }
   .bn-tighten-inner { align-items:flex-end; padding-bottom:76px; }
@@ -4015,10 +4016,10 @@ html.bn-boot-route .search-overview { visibility:hidden; }
 
 /* ── 입구 3개 ── */
 .bn-doors-sec { background:#0a0e13; border-top:1px solid #1d2731; border-bottom:1px solid #1d2731; }
-.bn-doors { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); }
-.bn-door { display:flex; flex-direction:column; gap:12px; min-height:320px; padding:38px 34px 32px; color:var(--ink); text-decoration:none; border-left:1px solid #1d2731; transition:background .25s ease; }
+.bn-doors { position:relative; display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); }
+.bn-door { position:relative; display:flex; flex-direction:column; gap:12px; min-height:320px; padding:38px 34px 32px; color:var(--ink); text-decoration:none; border-left:1px solid #1d2731; background:linear-gradient(180deg, #0f161e 0%, #0b1016 100%); transition:background .25s ease; }
 .bn-door:last-child { border-right:1px solid #1d2731; }
-.bn-door:hover, .bn-door:focus-visible { background:#111922; }
+.bn-door:hover, .bn-door:focus-visible { background:#131c26; }
 .bn-door-top { display:flex; justify-content:space-between; align-items:center; }
 .bn-door-no { font-family:var(--bn-en, 'Manrope', sans-serif); font-size:11px; font-weight:700; letter-spacing:.16em; color:#f15a38; }
 .bn-door-nut { fill:none; stroke:#5a6673; stroke-width:1.3; transition:transform .55s cubic-bezier(.2,.8,.2,1), stroke .2s ease; }
@@ -4028,6 +4029,67 @@ html.bn-boot-route .search-overview { visibility:hidden; }
 .bn-door-meta { display:flex; justify-content:space-between; gap:12px; margin-top:10px; padding-top:16px; border-top:1px solid #27323d; font-size:13px; color:var(--ink-2); }
 .bn-door-meta i { font-style:normal; color:#f15a38; transition:transform .25s ease; }
 .bn-door:hover .bn-door-meta i { transform:translate(3px, -3px); }
+
+/* ── 아래 구역의 조임 장면 (v9_tighten_scenes.js) ──
+   기본값은 조여진 정지 상태다 (--e:1): 스크립트가 없거나 움직임 줄이기면 아래 규칙의 "풀린 모양"은 하나도 적용되지 않는다.
+   스크립트가 is-live(움직임 켬)·is-pin(화면에 붙잡음)·is-center(한 화면 가운데)를 붙이고 --e(조임 0–1)와 data-seated를 바꾼다.
+   --g = 벌어지는 틈의 크기. --n = 한 줄에 보이는 제품 타일 수 (zzz_experience.css의 800px·520px 분기와 같게 둔다).
+   움직이는 것은 transform·opacity·글자 굵기뿐이다 (자리를 밀지 않는다). 흔들림 때 옆으로 넘치는 부분은 .bn-home이 잘라 낸다. */
+.bn-home { overflow-x:clip; }
+.bn-scene { --e:1; --g:44px; --n:3; position:relative; }
+.bn-lineup.bn-scene, .bn-rfq.bn-scene { --scene-pt:clamp(28px, 6svh, 64px); --scene-pb:clamp(50px, 9vw, 112px); }
+.bn-doors-sec.bn-scene { --scene-pt:14px; --scene-pb:14px; }
+.bn-lineup.bn-scene { --scene-len:.8; } .bn-rfq.bn-scene { --scene-len:.8; }
+.bn-home .bn-scene.is-pin { padding-block:0; }
+.bn-scene.is-pin::after { content:""; display:block; height:calc((100svh - var(--scene-top, 0px)) * var(--scene-len, .9)); }   /* 붙잡아 두는 길이 */
+.bn-scene.is-pin > .bn-scene-stage { position:sticky; top:var(--scene-top, 0px); padding-top:calc(var(--scene-mini, 0px) + var(--scene-pt, 0px)); padding-bottom:var(--scene-pb, 0px); }
+.bn-scene.is-pin.is-center > .bn-scene-stage { height:calc(100svh - var(--scene-top, 0px)); display:flex; flex-direction:column; justify-content:center; padding-top:var(--scene-mini, 0px); padding-bottom:0; }
+.bn-scene.is-live { --e1:clamp(0, calc(var(--e) / .45), 1); --e2:clamp(0, calc((var(--e) - .12) / .88), 1); }
+/* 조여진 순간: 주황 막대가 그어지고(첫 화면 제목 아래 막대와 같은 뜻) 무대가 한 번 번쩍인다 */
+.bn-scene.is-live > .bn-scene-stage::before { content:""; position:absolute; inset:0; z-index:3; pointer-events:none; opacity:0; background:radial-gradient(70% 55% at 50% 50%, #ffc7a338 0%, #f15a3800 72%); }
+.bn-scene.is-hit > .bn-scene-stage::before { animation:bn-scene-flash .52s ease-out; }
+@keyframes bn-scene-flash { 0% { opacity:1; } 100% { opacity:0; } }
+.bn-scene .bn-section-head h2::after, .bn-scene .bn-rfq-copy h2::after, .bn-doors::before { content:""; display:block; background:#f15a38; transform:scaleX(0); transform-origin:left; transition:transform .12s ease-in; }
+.bn-scene .bn-section-head h2::after, .bn-scene .bn-rfq-copy h2::after { width:clamp(90px, 10vw, 150px); height:4px; margin-top:18px; }
+.bn-doors::before { grid-column:1 / -1; height:3px; }   /* 판 3장 위에 걸치는 한 줄 (격자의 첫 줄) */
+.bn-scene[data-seated="true"] .bn-section-head h2::after, .bn-scene[data-seated="true"] .bn-rfq-copy h2::after, .bn-scene[data-seated="true"] .bn-doors::before { transform:scaleX(1); transition:transform .36s cubic-bezier(.2,.9,.2,1) .05s; }
+.bn-grow { font-weight:calc(300 + 500 * var(--e1, 1)); letter-spacing:calc(-.03em + (1 - var(--e1, 1)) * .09em); }   /* 조여질수록 굵고 촘촘하게 */
+/* 입구 3개 = 판 3장. 01의 너트가 돌면 01|02의 틈이, 02가 돌면 02|03의 틈이 닫히고, 03이 다 돌면 고정된다 */
+.bn-scene.is-live .bn-door { --k:clamp(0, calc(var(--e) * 3 - var(--i)), 1); --kp:clamp(0, calc(var(--e) * 3 - var(--i) + 1), 1); --on:clamp(0, calc((var(--k) - .96) * 30), 1); will-change:transform; }
+.bn-scene.is-live .bn-door:first-child { transform:translate3d(calc((var(--k) - 1) * var(--g)), 0, 0); }
+.bn-scene.is-live .bn-door:last-child { transform:translate3d(calc((1 - var(--kp)) * var(--g)), 0, 0); }
+.bn-scene.is-live .bn-door > * { opacity:calc(.4 + .6 * var(--k)); }
+.bn-scene.is-live .bn-door:focus-visible > * { opacity:1; }
+.bn-scene.is-live .bn-door-nut { transform:rotate(calc(var(--k) * 720deg)); stroke:color-mix(in srgb, #f15a38 calc(var(--on) * 100%), #5a6673); transition:none; }
+.bn-scene.is-live .bn-door + .bn-door::before { content:""; position:absolute; top:0; bottom:0; right:100%; width:calc((1 - var(--kp)) * var(--g)); opacity:calc((1 - var(--kp)) * 4); pointer-events:none;
+  background:linear-gradient(90deg, #f15a3800 0%, #f15a38 22%, #ffd9b0 50%, #f15a38 78%, #f15a3800 100%); box-shadow:0 0 70px 4px #f15a3855; }
+.bn-scene.is-center .bn-door { min-height:clamp(320px, 50svh, 470px); }
+/* 제품군: 타일이 왼쪽부터 하나씩 내려앉는다. 타일이 위로 떠 있을 자리를 가로 스크롤 상자 안에 만들어 둔다 */
+.bn-scene.is-live .bn-products { padding-top:46px; margin-top:-40px; overflow-y:hidden; }
+.bn-scene.is-live .bn-products > li { --k:clamp(0, calc(var(--e2) * var(--n) - min(var(--i), var(--n) - 1)), 1); }
+.bn-scene.is-live .bn-product-visual { transform:translate3d(0, calc((var(--k) - 1) * 38px), 0) scale(calc(.9 + .1 * var(--k))); opacity:calc(.18 + .82 * var(--k)); will-change:transform; }
+.bn-scene.is-live .bn-product-info { opacity:var(--k); transform:translate3d(0, calc((1 - var(--k)) * 12px), 0); }
+/* 문의: 순서 01·02·03이 차례로 켜지고, 떠 있던 카드가 제자리에 찍힌다 */
+.bn-scene.is-live .bn-rfq-points li { --k:clamp(0, calc((var(--e) - .12) / .7 * 3 - var(--i)), 1); --on:clamp(0, calc((var(--k) - .96) * 30), 1); opacity:calc(.32 + .68 * var(--k)); transform:translate3d(calc((var(--k) - 1) * 16px), 0, 0); }
+.bn-scene.is-live .bn-rfq-points li > span { color:color-mix(in srgb, #ff8f73 calc(var(--on) * 100%), #6b7884); }
+.bn-scene.is-live .sales-contact { transform:translate3d(calc((1 - var(--e)) * 26px), calc((var(--e) - 1) * 30px), 0) rotate(calc((1 - var(--e)) * 2.4deg)) scale(calc(1.05 - .05 * var(--e))); opacity:calc(.45 + .55 * var(--e)); transform-origin:60% 40%; will-change:transform; }
+.bn-scene.is-hit .sales-contact { animation:bn-scene-ring .7s ease-out; }
+@keyframes bn-scene-ring { 0% { box-shadow:0 0 0 0 #f15a38cc; } 100% { box-shadow:0 0 0 28px #f15a3800; } }
+@media (max-width:1120px) { .bn-scene { --g:28px; } }
+@media (max-width:820px) {
+  .bn-scene { --g:18px; }
+  .bn-scene.is-live .bn-door:first-child { transform:translate3d(0, calc((var(--k) - 1) * var(--g)), 0); }
+  .bn-scene.is-live .bn-door:last-child { transform:translate3d(0, calc((1 - var(--kp)) * var(--g)), 0); }
+  .bn-scene.is-live .bn-door + .bn-door::before { top:auto; bottom:100%; left:0; right:0; width:auto; height:calc((1 - var(--kp)) * var(--g)); background:linear-gradient(180deg, #f15a3800 0%, #f15a38 22%, #ffd9b0 50%, #f15a38 78%, #f15a3800 100%); }
+  .bn-scene.is-center .bn-door { min-height:0; }
+  .bn-scene.is-pin .bn-door { padding-block:20px 18px; }
+  .bn-scene.is-live .sales-contact { transform:translate3d(0, calc((var(--e) - 1) * 24px), 0) rotate(calc((1 - var(--e)) * 1.6deg)) scale(calc(1.04 - .04 * var(--e))); }
+}
+/* 낮은 휴대폰 화면: 입구 3개가 한 화면에 들어오도록 촘촘하게 */
+@media (max-width:820px) and (max-height:700px) { .bn-scene.is-pin .bn-door { padding-block:14px 12px; gap:5px; } .bn-scene.is-pin .bn-door-label { margin-top:8px; } .bn-scene.is-pin .bn-door-meta { margin-top:6px; padding-top:10px; } }
+@media (max-width:800px) { .bn-scene { --n:2; } }
+@media (max-width:520px) { .bn-scene { --n:1; } }
+@media (prefers-reduced-motion:reduce) { .bn-scene.is-hit > .bn-scene-stage::before, .bn-scene.is-hit .sales-contact { animation:none; } }
 
 /* ── 아래 구역: 어두운 바탕에 맞춘 보정 ── */
 .bn-home .bn-section { background:var(--paper); }
@@ -12942,7 +13004,7 @@ function hmTrust() {
   </div><p class="ia-bizline">사업자 ${iaBizNo()} · ${ORDER_LIVE ? '통신판매업 신고' : '신고 전'} · <a href="#about" data-go="about">회사 소개 →</a></p><p class="ia-trust-f"><a href="#about" data-go="about">회사 소개 →</a></p></section>`;
 }
 // 홈과 제품 목록에서 같은 제품군 이미지·실제 카탈로그 수를 사용한다.
-const hmTiles = () => `<ul class="bn-products" role="list">${CAT_TILES.map((t, i) => `<li><a class="bn-product" href="#t-${t.id}" data-go="t-${t.id}"><span class="bn-product-visual bn-product-${t.id}" aria-hidden="true"></span><span class="bn-product-info"><span class="bn-product-top"><span class="bn-index">0${i + 1}</span><span class="bn-product-count">${iaTileN(t)}종</span></span><h3>${esc(t.ko)}</h3><span class="bn-product-en" lang="en">${esc(t.en)}</span><span class="bn-product-desc">${t.subs.slice(0, 3).map(s => esc(s.ko.replace(/ \(.*?\)/g, ''))).join(' · ')}</span><span class="bn-product-link">제품 살펴보기 <span aria-hidden="true">↗</span></span></span></a></li>`).join('')}</ul>`;
+const hmTiles = () => `<ul class="bn-products" role="list">${CAT_TILES.map((t, i) => `<li style="--i:${i}"><a class="bn-product" href="#t-${t.id}" data-go="t-${t.id}"><span class="bn-product-visual bn-product-${t.id}" aria-hidden="true"></span><span class="bn-product-info"><span class="bn-product-top"><span class="bn-index">0${i + 1}</span><span class="bn-product-count">${iaTileN(t)}종</span></span><h3>${esc(t.ko)}</h3><span class="bn-product-en" lang="en">${esc(t.en)}</span><span class="bn-product-desc">${t.subs.slice(0, 3).map(s => esc(s.ko.replace(/ \(.*?\)/g, ''))).join(' · ')}</span><span class="bn-product-link">제품 살펴보기 <span aria-hidden="true">↗</span></span></span></a></li>`).join('')}</ul>`;
 const hmColls = home => `<div class="ia-colls"><span class="lab">모아 보기</span><a class="hi" href="#k-plant" data-go="k-plant">${esc(CAT_COLL.plant.ko)} →</a><a class="ia-d" href="#k-pump" data-go="k-pump">${esc(CAT_COLL.pump.ko)} →</a><a class="ia-d" href="#k-flange" data-go="k-flange">${esc(CAT_COLL.flange.ko)} →</a>${home ? '<a class="ia-m" href="#products" data-go="products">모아 보기 전체 →</a>' : ''}</div>`;
 function sbBox(where) {
   const lg = where === 'list';
@@ -13010,26 +13072,27 @@ function pmMail() {
 }
 /* 홈 (대표 결정 2026-11-10): 첫 화면은 그림 + 한 줄 + 버튼. 파스너가 하는 일(조이고 고정한다)을 조임 장면(v9_tighten.js)으로 보이고,
    설명은 제품·규격 사전·견적·회사 소개 화면으로 보낸다. 그 아래는 입구 3개 → 제품군 줄 → 견적 메일 안내 → 더 보기.
+   입구 3개·제품군 줄·견적 안내는 화면을 내리면(올리면) 그 자리에서 조여지는 장면이다 (.bn-scene, v9_tighten_scenes.js). 내용과 링크는 그대로다.
    품목 수와 사전 수는 공개 데이터에서 계산한다. 용도별 모음은 제품 화면, 구매 전 확인·지식 지도는 규격 사전, 확인 범위·사업자 정보는 회사 소개에 있다. */
-const hmDoor = (no, go, label, title, meta) => `<a class="bn-door" href="#${go}" data-go="${go}"><span class="bn-door-top"><span class="bn-door-no">${no}</span><svg class="bn-door-nut" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 2.2 20.5 7.1v9.8L12 21.8 3.5 16.9V7.1Z"/><circle cx="12" cy="12" r="3.6"/></svg></span><span class="bn-door-label">${label}</span><b>${title}</b><span class="bn-door-meta">${meta} <i aria-hidden="true">↗</i></span></a>`;
+const hmDoor = (no, go, label, title, meta) => `<a class="bn-door" style="--i:${no - 1}" href="#${go}" data-go="${go}"><span class="bn-door-top"><span class="bn-door-no">${no}</span><svg class="bn-door-nut" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 2.2 20.5 7.1v9.8L12 21.8 3.5 16.9V7.1Z"/><circle cx="12" cy="12" r="3.6"/></svg></span><span class="bn-door-label">${label}</span><b>${title}</b><span class="bn-door-meta">${meta} <i aria-hidden="true">↗</i></span></a>`;
 V.home = () => `<div class="bn-home bn-studio" id="z-a">
   ${bnTightenMarkup()}
-  <nav class="bn-doors-sec" aria-label="바로 가기"><div class="bn-wrap bn-doors">
+  <nav class="bn-doors-sec bn-scene" data-scene="doors" data-impact="slam" data-scene-need=".bn-door:last-child b" data-seated="true" aria-label="바로 가기"><div class="bn-scene-stage"><div class="bn-scene-body"><div class="bn-wrap bn-doors">
     ${hmDoor('01', 'products', '제품', '모양과 규격으로 <br>찾습니다.', `${pmCatN()}종 · 미터·인치`)}
     ${hmDoor('02', 'lib', '규격 사전', '판단의 근거를 <br>확인합니다.', `${LIB.length}개 항목`)}
     ${hmDoor('03', 'list', '견적 문의', '목록 그대로 <br>보냅니다.', 'BOM · 메모 · RFQ')}
-  </div></nav>
-  <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
+  </div></div></div></nav>
+  <section class="bn-section bn-lineup bn-scene" data-scene="lineup" data-impact="thud" data-scene-pin="top" data-scene-need=".bn-product-visual" data-seated="true" aria-labelledby="bn-h-products"><div class="bn-scene-stage"><div class="bn-scene-body">
     <div class="bn-wrap">
-      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">THE PRODUCT COLLECTION</p><h2 id="bn-h-products"><span class="bn-thin">작지만,</span><br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">THE PRODUCT COLLECTION</p><h2 id="bn-h-products"><span class="bn-thin">작지만,</span><br><span class="bn-grow">역할은 분명합니다.</span></h2></div><div class="bn-section-aside"><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
       <div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
       <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요. · <a class="bn-text-link" href="/products/">제품별 규격·구매 안내 <span aria-hidden="true">↗</span></a></p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
     </div>
-  </section>
-  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-rfq-grid">
-    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">CONNECT WITH SALES</p><h2 id="bn-h-rfq"><span class="bn-thin">BOM·메모·RFQ,</span><br>Sales로 바로.</h2><p>기존 자료를 그대로 보내 주세요.<br>사양 확인과 공급처 검토는 볼트노트가 이어갑니다.</p><ol class="bn-rfq-points"><li><span>01</span> BOM·메모·RFQ를 보냅니다</li><li><span>02</span> 사양과 공급 조건을 확인합니다</li><li><span>03</span> 견적과 확인 사항을 회신합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">Sales · 견적 문의 <span aria-hidden="true">↗</span></a></div></div>
+  </div></div></section>
+  <section class="bn-section bn-rfq bn-scene" data-scene="rfq" data-impact="punch" data-scene-need=".bn-rfq-copy" data-seated="true" aria-labelledby="bn-h-rfq"><div class="bn-scene-stage"><div class="bn-scene-body"><div class="bn-wrap bn-rfq-grid">
+    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">CONNECT WITH SALES</p><h2 id="bn-h-rfq"><span class="bn-thin">BOM·메모·RFQ,</span><br><span class="bn-grow">Sales로 바로.</span></h2><p>기존 자료를 그대로 보내 주세요.<br>사양 확인과 공급처 검토는 볼트노트가 이어갑니다.</p><ol class="bn-rfq-points"><li style="--i:0"><span>01</span> BOM·메모·RFQ를 보냅니다</li><li style="--i:1"><span>02</span> 사양과 공급 조건을 확인합니다</li><li style="--i:2"><span>03</span> 견적과 확인 사항을 회신합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">Sales · 견적 문의 <span aria-hidden="true">↗</span></a></div></div>
     ${salesContactMarkup(true)}
-  </div></section>
+  </div></div></div></section>
   <section class="bn-home-more" aria-label="더 보기">
     ${bnEngineeringMarkup()}
     <div class="bn-wrap bn-home-links"><a href="#about" data-go="about">회사 소개·확인 범위 <i aria-hidden="true">↗</i></a><a href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인 <i aria-hidden="true">↗</i></a><a href="#ref" data-go="ref">도면·CAD <i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools">계산·대조 도구 <i aria-hidden="true">↗</i></a><a href="#materials" data-go="materials">소재 문의 <i aria-hidden="true">↗</i></a></div>
@@ -13038,7 +13101,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
 
 V.after.home = () => {
   hmBind();
-  bnTightenInit();bnHomeFontInit();bnBrandInit();bnFilmInit();
+  bnTightenInit();bnScenesInit();bnHomeFontInit();bnBrandInit();bnFilmInit();
   const f = $('pm-lib-form');
   if (f) f.addEventListener('submit', e => { e.preventDefault(); go(libURL({ q: $('pm-lib-q').value.trim() })); });
 };
@@ -14971,8 +15034,10 @@ document.addEventListener('click', e => {
    - 문구·버튼은 조작 없이 항상 보인다. 움직임 줄이기면 조여진 정지 장면, WebGL이 안 되면 정지 이미지로 바꾼다 (오류를 내지 않는다).
    - 글씨도 같은 이야기를 한다 (대표 요청 2026-11-10): 「작은 것이,」는 가늘게, 「전부를 붙잡습니다.」는 조여질수록 굵어져 고정 순간 가장 굵다.
      제목 글꼴은 굵기가 이어지는 가변 글꼴 Hahmlet(SIL OFL). bnHomeFontInit이 홈 제목에 쓰인 글자만 Google Fonts에 요청한다.
+   - 길이 (대표 요청 2026-11-10: 이 체험을 더 길게): 무대 높이의 3.4배(휴대폰 3배)를 내리는 동안 15바퀴. 너트는 볼트 끝과 나란한 자리에서 출발한다
+     (M16 너트 높이 14.8 + 시작 위치 49 = 63.8 ≤ 나사 끝 64. free를 더 늘리면 너트가 볼트 밖에서 시작하므로 len과 포스터를 함께 바꿔야 한다).
    순수 함수 bnTightenPose(p)가 스크롤 진행률 p(0–1)를 자세로 바꾼다. 화면 연결은 bnTightenInit (V.after.home). */
-const BN_TIGHTEN = { size: 'M16', free: 9, clamp: 5, p0: .06, p1: .5, p2: .8, plate: 16, len: 80, w0: 520, w1: 800,
+const BN_TIGHTEN = { size: 'M16', free: 10, clamp: 5, p0: .05, p1: .52, p2: .84, plate: 16, len: 80, w0: 520, w1: 800,
   h1: ['작은 것이,', '전부를 붙잡습니다.'], stamp: '볼트는, 볼트노트.', lead: '체결부품 조달, BOM부터 정확하게.' };
 const BN_DISPLAY_SEL = '.bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2';   // zzzzzzzzzz_home.css의 제목 글꼴 규칙과 같은 목록
 let bnTightenCleanup = null;
@@ -15207,7 +15272,7 @@ function bnTightenInit() {
     const pose = bnTightenPose(cur), ease = Math.min(1, Math.max(0, (cur - .01) / (C.p2 - .01))), e = ease * ease * (3 - 2 * ease);
     root.style.setProperty('--p', cur.toFixed(4)); root.style.setProperty('--e', e.toFixed(4)); root.style.setProperty('--w', String(Math.round(C.w0 + (C.w1 - C.w0) * e)));
     const s = cur >= C.p2 - 1e-4;
-    if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; root.classList.remove('is-hit'); void root.offsetWidth; root.classList.add('is-hit'); } seated = s; root.dataset.seated = String(s); }
+    if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; bnImpact(root, 'kick'); } seated = s; root.dataset.seated = String(s); }   // 고정 순간: 빛이 한 번 훑고 화면이 흔들린다 (v9_tighten_scenes.js)
     if (!R) return false;
     // 첫 화면에서 기다릴 때: 너트가 조금 돌았다 풀렸다 한다 (회전과 전진은 같은 피치로 묶인다)
     const idle = pinned && !auto && cur < .02 && now - idleAt < 9000, wob = idle ? .09 * (1 - Math.cos((now - idleAt) / 1900 * Math.PI * 2)) * Math.min(1, (9000 - (now - idleAt)) / 1500) : 0;
@@ -15255,6 +15320,118 @@ function bnHomeFontInit() {
   if (link?.getAttribute('href') === href) return;
   if (!link) { link = document.createElement('link'); link.id = 'bn-home-font'; link.rel = 'stylesheet'; document.head.appendChild(link); }
   link.href = href;
+}
+/* ── v9_tighten_scenes.js ── */
+/* 홈 아래 구역의 조임 장면 (대표 요청 2026-11-10: 첫 화면의 "내리면 조여진다"를 입구 3개·제품군·문의 구역에도. 다 조여지면 화면이 흔들린다).
+   구역마다 모양은 다르지만 규칙은 하나다: 그 구역을 화면에 붙잡아 두고(sticky), 내리는 만큼 조임 정도가 0→1로 찬 뒤, 다 찬 순간에 한 번 "쾅".
+   - doors  = 판 3장. 너트가 01→02→03 차례로 돌며 판 사이의 빛나는 틈이 닫힌다. 가로로 세게 흔들린다.
+   - lineup = 제품 타일이 하나씩 내려앉고 제목이 굵어진다. 세로로 쿵 내려앉는다.
+   - rfq    = 순서 01·02·03이 켜지고 문의 카드가 도장처럼 찍힌다. 화면이 한 번 부푼다.
+   - 방향: 위에서 내려오면 내릴수록, 아래에서 올라오면 올릴수록 조여진다 (올릴 때도 같은 체험). 도중에 되돌리면 풀린다.
+     방향은 구역이 화면 밖에 있을 때만 바꾼다 (보이는 동안에는 튀지 않는다).
+   - 붙잡는 방식: 내용이 한 화면에 들어가면 가운데(center), 길면 위에 맞춰(top) 붙잡는다. 꼭 보여야 할 부분(data-scene-need)도 안 들어가면 붙잡지 않고 정지 상태로 둔다.
+   - 기본값은 조여진 정지 상태다 (CSS --e:1, data-seated="true"). 움직임 줄이기·스크립트 없음이면 그대로 보이고 흔들림도 없다.
+   - 내용·링크·읽는 순서는 바꾸지 않는다. transform·opacity·글자 굵기만 움직이므로 자리(레이아웃)가 밀리지 않는다.
+   순수 함수 bnSceneQ(mode, p)가 붙잡힌 구간의 진행률을 조임 진행으로 바꾼다. 화면 연결은 bnScenesInit (V.after.home). 흔들림은 bnImpact (첫 화면도 함께 쓴다). */
+const BN_SCENE = { seat: .8, release: .72, tau: 110 };   // seat: 이만큼 내리면 다 조여진다(나머지는 조여진 채 머문다). release: 되돌릴 때 풀리는 지점
+/* 흔들림: [시점 0–1, x px, y px, 회전°, 확대]. 휴대폰에서는 조금 약하게 한다 */
+const BN_SHAKES = {
+  kick: { ms: 400, f: [[0, 0, 0, 0, 0], [.14, -8, 3, -.18, 0], [.34, 6, -2, .12, 0], [.56, -3, 1, -.05, 0], [.78, 1, 0, 0, 0], [1, 0, 0, 0, 0]] },
+  slam: { ms: 560, f: [[0, 0, 0, 0, 0], [.1, -13, 5, -.32, 0], [.26, 10, -4, .26, 0], [.44, -7, 3, -.16, 0], [.62, 4, -1, .08, 0], [.8, -2, 0, 0, 0], [1, 0, 0, 0, 0]] },
+  thud: { ms: 480, f: [[0, 0, 0, 0, 0], [.12, 0, 15, 0, 0], [.32, 0, -7, 0, 0], [.54, 0, 4, 0, 0], [.76, 0, -1.5, 0, 0], [1, 0, 0, 0, 0]] },
+  punch: { ms: 460, f: [[0, 0, 0, 0, 0], [.14, 0, 0, 0, .026], [.36, 0, 0, 0, -.008], [.6, 0, 0, 0, .005], [1, 0, 0, 0, 0]] },
+};
+let bnScenesCleanup = null;
+
+const bnSceneQ = (mode, p) => { p = Math.min(1, Math.max(0, +p || 0)); return mode === 'up' ? 1 - p : p; };
+
+/* 조여진 순간의 "쾅": 지금 화면에 보이는 홈 구역들을 함께 흔든다 (머리띠는 그대로 둔다). 흔들림의 중심은 화면 가운데다.
+   scene에는 is-hit을 붙여 CSS가 번쩍임·주황 막대를 다시 그리게 한다. 움직임 줄이기에서는 아무것도 하지 않는다. */
+function bnImpact(scene, kind) {
+  if (reduced()) return;
+  scene.classList.remove('is-hit'); void scene.offsetWidth; scene.classList.add('is-hit');
+  const home = scene.closest('.bn-home'), def = BN_SHAKES[kind] || BN_SHAKES.kick, k = innerWidth <= 820 ? .65 : 1;
+  for (const el of home ? home.children : [scene]) {
+    const r = el.getBoundingClientRect();
+    if (r.bottom <= 0 || r.top >= innerHeight || !el.animate) continue;
+    const origin = `${(innerWidth / 2 - r.left).toFixed(1)}px ${(innerHeight / 2 - r.top).toFixed(1)}px`;
+    el.animate(def.f.map(([offset, x, y, a, s]) => ({ offset, transformOrigin: origin, transform: `translate3d(${x * k}px, ${y * k}px, 0) rotate(${a * k}deg) scale(${1 + s * k})` })), { duration: def.ms, easing: 'linear' });
+  }
+}
+
+function bnScenesInit() {
+  bnScenesCleanup?.();
+  const home = view().querySelector('.bn-home'), els = home ? [...home.querySelectorAll('.bn-scene')] : [];
+  if (!els.length || reduced()) return;   // 움직임 줄이기: CSS 기본값(조여진 정지 상태) 그대로
+  const abort = new AbortController(), opt = { signal: abort.signal, passive: true }, S = BN_SCENE;
+  const scenes = els.map(el => ({ el, stage: el.querySelector('.bn-scene-stage'), body: el.querySelector('.bn-scene-body'), need: el.querySelector(el.dataset.sceneNeed || '.bn-scene-body'),
+    kind: el.dataset.scene, pin: '', mode: 'down', span: 0, target: 0, cur: 0, shown: -1, seated: null, hits: 0 }));
+  let raf = 0, last = 0, top = 0, laidW = 0, laidH = 0;
+  function layout() {
+    laidW = innerWidth; laidH = innerHeight;
+    // 머리띠가 따라오면(sticky) 그 아래에 붙잡고, 휴대폰처럼 고정 막대(.tb-mini)가 덮으면 그 높이만큼 내용을 내린다
+    const tb = document.querySelector('.tb'), sticky = !!tb && getComputedStyle(tb).position === 'sticky';
+    top = sticky ? tb.offsetHeight : 0;
+    const mini = sticky ? 0 : ($('tb-mini')?.offsetHeight || 0);
+    for (const s of scenes) {
+      const c = s.el.classList, was = s.pin;
+      s.el.style.setProperty('--scene-top', top + 'px'); s.el.style.setProperty('--scene-mini', mini + 'px');
+      s.el.style.setProperty('--e', '1'); s.shown = -1;   // 조여진 모양으로 놓고 잰다 (풀린 모양의 이동·확대가 높이 계산에 섞이지 않게). 아래에서 다시 그린다
+      c.add('is-live', 'is-pin', 'is-center'); const room = s.stage.offsetHeight;   // 한 화면 높이 (100svh − 머리띠)
+      c.remove('is-center');                                                        // 위에 맞춘 상태로 내용 높이를 잰다
+      const need = (s.need || s.body).getBoundingClientRect().bottom - s.stage.getBoundingClientRect().top;
+      const center = s.el.dataset.scenePin !== 'top' && s.body.offsetHeight + mini + 32 <= room;
+      s.pin = center ? 'center' : need + 12 <= room ? 'top' : '';
+      c.toggle('is-center', center); c.toggle('is-pin', !!s.pin); c.toggle('is-live', !!s.pin);
+      s.span = s.pin ? s.el.offsetHeight - s.stage.offsetHeight : 0;
+      if (!s.pin) { s.el.style.removeProperty('--e'); s.el.dataset.seated = 'true'; s.seated = null; }
+      else if (!was) { s.seated = null; s.cur = -1; }
+    }
+    measure(); for (const s of scenes) { if (s.cur < 0) s.cur = s.target; } paint(); request();
+  }
+  function measure() {
+    const vh = innerHeight;
+    for (const s of scenes) {
+      if (!s.pin) continue;
+      const r = s.el.getBoundingClientRect(), p = s.span > 0 ? (top - r.top) / s.span : 1, away = r.bottom <= 0 ? 'up' : r.top >= vh ? 'down' : '';
+      if (away && away !== s.mode) { s.mode = away; s.cur = bnSceneQ(away, p); }   // 화면 밖에서만 방향을 바꾼다. 이때 조임은 0이다 (위로 지나갔으면 p=1, 아래에 있으면 p=0)
+      s.target = bnSceneQ(s.mode, p);
+    }
+  }
+  function paint() {
+    for (const s of scenes) {
+      if (!s.pin || s.cur === s.shown) continue;
+      s.shown = s.cur;
+      s.el.style.setProperty('--e', Math.min(1, s.cur / S.seat).toFixed(4));
+      const on = s.cur >= (s.seated ? S.release : S.seat) - 1e-4;   // 한 번 조여지면 조금 되돌려도 바로 풀리지 않는다 (경계에서 깜박이지 않게)
+      if (on === s.seated) continue;
+      const first = s.seated === null; s.seated = on; s.el.dataset.seated = String(on);
+      if (on && !first) { s.hits++; bnImpact(s.el, s.el.dataset.impact); }   // 처음 그릴 때 이미 조여져 있으면(중간에서 새로 고침) 흔들지 않는다
+    }
+  }
+  function frame(now) {
+    raf = 0;
+    if (!home.isConnected) return cleanup();
+    const dt = last ? Math.min(64, now - last) : 16; last = now;
+    let more = false;
+    for (const s of scenes) {
+      if (!s.pin) continue;
+      s.cur += (s.target - s.cur) * (1 - Math.exp(-dt / S.tau)); if (Math.abs(s.target - s.cur) < .0004) s.cur = s.target;
+      if (s.cur !== s.target) more = true;
+    }
+    paint();
+    if (more && !document.hidden) request(); else last = 0;
+  }
+  function request() { if (!raf) raf = requestAnimationFrame(frame); }
+  function cleanup() { abort.abort(); if (raf) cancelAnimationFrame(raf); raf = 0; if (bnScenesCleanup === cleanup) bnScenesCleanup = null; }
+  bnScenesCleanup = cleanup;
+  addEventListener('scroll', () => { if (!home.isConnected) return cleanup(); measure(); request(); }, opt);
+  // 휴대폰에서 주소창이 접히고 펴질 때도 resize가 온다. 무대 높이는 svh라 그때 변하지 않으므로 다시 재지 않는다 (내리는 도중에 자리가 바뀌지 않게)
+  addEventListener('resize', () => { if (innerWidth === laidW && Math.abs(innerHeight - laidH) < 140 && matchMedia('(pointer: coarse)').matches) { measure(); request(); } else layout(); }, opt);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) { last = 0; request(); } }, opt);
+  document.fonts?.ready.then(() => { if (home.isConnected && !abort.signal.aborted) layout(); });   // 제목 글꼴이 오면 높이가 조금 달라진다
+  window.__sceneTest = { cfg: S, q: bnSceneQ, state: () => scenes.map(s => ({ kind: s.kind, pin: s.pin, mode: s.mode, q: s.cur, target: s.target, seated: s.seated, hits: s.hits })) };
+  layout();
 }
 /* ── t_api610.js ── */
 /* 5장 규격 도구 · 상세 11: API 610 재질 클래스 → 볼팅
