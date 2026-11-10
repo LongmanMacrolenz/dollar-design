@@ -26,8 +26,14 @@ def check_mail(page, BASE, OUT):
   assert page.locator('meta[name=robots]').get_attribute('content')=='noindex,nofollow'
   assert '메일을 보내거나 고객 정보를 저장하지 않습니다' in page.locator('.channel-warning').inner_text()
   requests=[];page.on('request',lambda r:requests.append(r.url) if '/api/' in r.url else None)
-  # 6 stages, 11 templates; account numbers never ship in the templates.
-  assert page.locator('.channel-nav [role=tab]').count()==6 and page.locator('.channel-field').count()==11
+  # 6 order stages + 2 sales tabs (first contact, suppliers), 19 templates; account numbers never ship in the templates.
+  assert page.locator('.channel-nav [role=tab]').count()==8 and page.locator('.channel-field').count()==19
+  # First contact asks before sending. The mail I initiate follows the ad-mail format: (광고) subject, sender block with an address blank, opt-out in Korean and English.
+  # The text message is a plain notice (no pitch, no ad label) and the address is never shipped in the template.
+  assert '보내 드려도 될까요' in page.locator('#mb-reach-call').input_value() and page.locator('#ms-reach-mail').input_value().startswith('(광고) ')
+  first=page.locator('#mb-reach-mail').input_value();assert '[사업장 주소]' in first and '수신거부' in first and 'unsubscribe' in first
+  assert '견적' not in page.locator('#mb-reach-sms').input_value() and not page.locator('#ms-reach-reply').input_value().startswith('(광고)')
+  assert '사전 동의' in page.locator('#panel-reach > p').inner_text() and page.get_by_role('link',name='소개서 PDF',exact=True).get_attribute('href')=='/brand/boltnote-intro.pdf'
   page.locator('[data-group=order]').click();body=page.locator('#mb-order-confirm').input_value()
   assert '[은행 계좌번호' in body and '입금자명' in body
   assert not any(ch.isdigit() for ch in body.split('입금 계좌')[1].split('입금자명')[0]),'account digits must not ship in templates'
@@ -43,7 +49,7 @@ def check_mail(page, BASE, OUT):
   page.locator('[data-check=c-rfq]').check();page.locator('[data-check=c-tax]').check()
   page.reload();page.locator('#ms-received').wait_for();assert page.locator('#check-progress').inner_text()=='2 / 12'
   page.once('dialog',lambda d:d.accept());page.locator('[data-action=new-order]').click();assert page.locator('#check-progress').inner_text()=='0 / 12'
-  page.locator('[data-group=receive]').focus();page.keyboard.press('End');assert page.locator('[data-group=follow]').get_attribute('aria-selected')=='true'
+  page.locator('[data-group=receive]').focus();page.keyboard.press('End');assert page.locator('[data-group=supply]').get_attribute('aria-selected')=='true'
   with page.expect_download() as dl:page.locator('[data-action=export]').click()
   dl.value.save_as(OUT/'mail-copy.txt');text=(OUT/'mail-copy.txt').read_text(encoding='utf-8');assert '## 3. 발주·입금' in text and body in text
   assert page.get_by_role('link',name='견적 관리',exact=True).first.get_attribute('href')=='/admin/'
