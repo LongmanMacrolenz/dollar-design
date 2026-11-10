@@ -41,6 +41,30 @@ test('real Worker SQLite flow: authentication, stale revisions, supplier gating,
     const admin=await mf.dispatchFetch('https://example.com/admin');assert.match(admin.headers.get('content-security-policy'),/frame-ancestors 'none'/);assert.match(admin.headers.get('x-robots-tag'),/noindex/);
   }finally{await mf.dispose();}
 });
+test('public funnel counter: a name only, same origin, daily totals readable by the administrator alone',async()=>{
+  const result=await build({entryPoints:['worker/index.mjs'],bundle:true,format:'esm',write:false,external:['cloudflare:workers','cloudflare:sockets'],target:'es2022'});
+  const worker=bindings=>new Miniflare(convertV4MiniflareOptions({modules:true,script:result.outputFiles[0].text,compatibilityDate:'2025-09-01',bindings,durableObjects:{PROCUREMENT:{className:'ProcurementStore',useSQLite:true}},serviceBindings:{ASSETS:async()=>new Response('<html>public asset</html>',{headers:{'Content-Type':'text/html'}})}}));
+  const ping=(mf,body,headers={})=>mf.dispatchFetch('https://example.com/count',{method:'POST',headers:{Origin:'https://example.com','User-Agent':'Mozilla/5.0 (X11; Linux x86_64) Chrome/130.0 Safari/537.36',...headers},body});
+  const mf=worker({PROCUREMENT_ADMIN_KEY:LOCAL_KEY});
+  try{
+    for(const name of ['list','list','home'])assert.equal((await ping(mf,name)).status,204);
+    assert.equal((await ping(mf,'not-a-name')).status,400);
+    assert.equal((await ping(mf,'list?who=someone')).status,400);
+    assert.equal((await ping(mf,'x'.repeat(200))).status,400);
+    assert.equal((await ping(mf,'')).status,400);
+    assert.equal((await ping(mf,'list',{Origin:'https://evil.example'})).status,403);
+    assert.equal((await ping(mf,'list',{'Sec-Fetch-Site':'cross-site'})).status,403);
+    assert.equal((await mf.dispatchFetch('https://example.com/count')).status,405);
+    assert.equal((await ping(mf,'copy',{'User-Agent':'Mozilla/5.0 (compatible; Googlebot/2.1)'})).status,204);   // accepted, not counted
+    assert.equal((await mf.dispatchFetch('https://example.com/api/counts')).status,401);
+    assert.equal((await mf.dispatchFetch('https://example.com/api/count',{method:'POST',headers:{Authorization:'Bearer '+LOCAL_KEY,'Content-Type':'application/json'},body:'{}'})).status,404);
+    const totals=await (await mf.dispatchFetch('https://example.com/api/counts',{headers:{Authorization:'Bearer '+LOCAL_KEY}})).json();
+    assert.match(totals.today,/^\d{4}-\d{2}-\d{2}$/);
+    assert.deepEqual(totals.rows,[[totals.today,'home',1],[totals.today,'list',2]]);   // day, name, count: nothing else is kept
+  }finally{await mf.dispose();}
+  const open=worker({});   // no administrator key yet: counting still works, reading does not
+  try{assert.equal((await ping(open,'home')).status,204);assert.equal((await open.dispatchFetch('https://example.com/api/counts')).status,503);}finally{await open.dispose();}
+});
 test('Korean customer PDF embeds its full Korean font, paginates and has no private prices',async()=>{
   const lines=Array.from({length:40},(_,i)=>({no:i+1,description:'한국어 시험 볼트',spec:'사양 확인 · M12×1.75 · 표면처리 확인',qty:10,unit:'EA',unitPriceKRW:120,amountKRW:1200,leadDays:3,documents:'서류 없음 확인'}));
   const bytes=await quotePDF({number:'BN-TEST',customerName:'테스트',customerEmail:'customer@example.com',createdAt:new Date().toISOString(),validUntil:new Date().toISOString(),lines,netKRW:48000,vatKRW:4800,totalKRW:52800,terms:'결제·배송 조건 테스트'},{name:'볼트노트',owner:'테스트',number:'TEST',email:'test@example.com'},await readFile('worker/assets/GothicA1-Regular.ttf'));

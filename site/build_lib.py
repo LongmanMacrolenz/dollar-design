@@ -41,6 +41,7 @@ def site_info() -> dict:
         # 전화 응대 시간: SHOP.sla가 가리키는 SLA_COPY 항목의 tel 값 (e1_data.js 한 곳에서만 바꾼다)
         "telHours": val(r"\b" + re.escape(val(r"sla: '(\w+)'") or "parttime") + r": \{[^}]*?tel: '([^']*)'"),
         "analyticsToken": val(r"analyticsToken: '([^']*)'"),
+        "funnelCount": val(r"funnelCount: (true|false)") == "true",   # 문의 집계 스위치 (e1_data.js SHOP.funnelCount)
     }
 
 
@@ -99,6 +100,18 @@ footer{background:var(--night);color:var(--tx-2);font-size:13px;padding:36px 0}f
 """
 MARK = '<img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote">'
 BEACON = beacon_tag()   # 정적 페이지 435장에 같은 값. page.html을 한 번만 읽는다
+
+
+def count_tag(info: dict | None = None) -> str:
+    """문의 집계 스크립트 (site/count.js). 사전·제품 페이지를 연 횟수와 문의 버튼을 누른 횟수를 이름만 /count로 보낸다.
+    SHOP.funnelCount(e1_data.js)가 꺼져 있으면 넣지 않는다. 처리방침 B항(v6_policy.js)이 같은 값을 본다. 404 안내 페이지에는 넣지 않는다."""
+    if not (info or site_info()).get("funnelCount"):
+        return ""
+    source = re.sub(r"/\*.*?\*/\s*", "", (ROOT / "count.js").read_text(encoding="utf-8"), count=1, flags=re.S)
+    return "<script>" + source.strip() + "</script>\n"
+
+
+COUNT = count_tag()
 BRAND = brand_copy()    # 홈 조임 장면과 같은 문구 (app/src/v9_tighten.js). 정적 페이지 끝의 띠가 쓴다
 # 띠의 한 줄(도장 문구)만 제목 글꼴로 쓴다. 그 글자만 담아 요청하고, 페이지 아래쪽이라 그리기를 막지 않게 늦게 붙인다. 모든 페이지가 같은 주소라 한 번 받으면 다시 받지 않는다
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;700;800&display=swap" rel="stylesheet">'
@@ -119,7 +132,7 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, in
         + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
         f'<meta property="og:image" content="{SITE_URL}{SOCIAL_IMAGE}"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
-        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}</head>\n<body>\n{body}\n</body>\n</html>\n"
+        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}</head>\n<body>\n{body}\n{COUNT if index else ''}</body>\n</html>\n"
     )
 
 

@@ -5282,9 +5282,11 @@ const SHOP = {
   leadRange: {},            // 품목 id → '2~4' 같은 보통 영업일. 빈 값이면 [n~m] 자리표시
   payLink: false,           // 카드 결제 링크 서비스를 연 뒤 true
   wbPublic: false,          // true면 목록 붙여넣기 뒤 4A 작업대를 바로 보여 줌
+  funnelCount: true,        // 문의 집계 (대표 요청 2026-11-10): 화면·버튼 이름의 횟수를 /count로 보내 날짜별 합계로 센다 (v9_count.js, site/count.js). false면 보내지 않고 처리방침 B항 문구도 빠짐
   analyticsToken: '30e74e7c6eec4d9bbd8439bc695b18a9',   // 대표 전달 2026-11-09 (Cloudflare Web Analytics, 공개 값)       // Cloudflare Web Analytics 비컨 토큰(공개 값, 대시보드 → Web Analytics). 비우면 분석 스크립트를 넣지 않고 처리방침 B·D항도 '쓰지 않음'으로 표시. 값을 넣으면 site/build.py·build_lib.py가 모든 페이지에 스크립트를 넣는다
 };
 const ANALYTICS_ON = /^[A-Za-z0-9_-]{8,}$/.test(SHOP.analyticsToken || '');
+const COUNT_ON = SHOP.funnelCount === true;
 const ORDER_LIVE = SHOP.ordersOpen && /\S/.test(SHOP.mailOrderNo) && /\S/.test(SHOP.bizNo);
 // API 610 재질 클래스 도구 (5장 상세 · 해독 링크 · 검색): 클래스별 볼팅 자료를 공개 출처로 다시 채우기 전까지 숨긴다 (2026-10 감사, INTEGRATE F).
 // true로 바꾸면 탭·링크·검색 항목이 다시 나온다. 판별 코드(e0_api610.js, t_api610.js)는 그대로 둔다
@@ -12243,7 +12245,8 @@ if (window.__bomTest) window.__bomTest.en = {
 };
 /* ── v5_rfq.js ── */
 /* ── 견적 요청 통로 Phase 1 (b2b_site_changes.json "channel") ──
-   이 페이지는 아무것도 서버로 보내지 않는다: 폼 전송·네트워크 호출 없음, 로그인 없음, 결제창 없음.
+   이 페이지는 입력한 내용을 서버로 보내지 않는다: 폼 전송 없음, 로그인 없음, 결제창 없음.
+   (서버로 가는 것은 화면·버튼 이름의 횟수뿐이다: v9_count.js → /count. 요청서 내용·연락처는 보내지 않는다.)
    하는 일 세 가지: ① 요청서·발주서 문서를 만들고 ② 파일(엑셀·JSON, 인쇄 PDF)로 내려 주고 ③ 고객의 메일·카카오톡·팩스를 열거나 주소를 보여 준다.
    전송은 고객이 직접 한다. 연락처는 CONTACT(e1_data.js) 한 곳: 빈 값이면 .ph 자리표시만 보이고, 그 값에 기대는 버튼은 disabled.
    mailto·href는 값이 형식에 맞을 때만 만든다. 가짜 접수 주소, 보내지 않았는데 보냈다고 하는 문구, 예시 주소로 가는 링크는 만들지 않는다.
@@ -12611,8 +12614,8 @@ V.privacy = () => sheet(
       ['소식 메일 (선택)', '이메일', '신제품·규격 소식', '정보주체의 동의 (같은 법 제15조 제1항 제1호, 정보통신망법 제50조). 4장 요청서의 선택 체크', '동의를 철회할 때까지'],
     ])
     + `<ul class="pv-l"><li>주민등록번호는 받지 않습니다.</li><li>카드번호는 메일·채팅·팩스로 받지 않습니다. 카드 결제는 결제대행사의 결제 링크 화면에서 직접 입력하십니다.</li><li>견적 회신 메일은 광고가 아닙니다. 소식 메일은 동의하신 분께만 보내고, 메일마다 수신 거부 방법을 적습니다.</li></ul>`)
-  + zone('B', 'z-b', zh('B', 'z-b', '이 사이트가 자동으로 처리하는 정보', ANALYTICS_ON ? '쿠키를 쓰지 않습니다. 방문 통계는 쿠키 없는 집계 도구로만 봅니다.' : '쿠키와 방문 분석 도구를 쓰지 않습니다.')
-    + `<ul class="pv-l">${ANALYTICS_ON ? `<li><b>방문 통계</b>: 페이지를 열면 Cloudflare Web Analytics 스크립트가 열어 본 페이지 주소, 유입 경로(참조 주소), 접속 국가, 기기·브라우저·운영체제 종류를 Cloudflare, Inc.(미국)에 보내 건수로 집계합니다. Cloudflare는 이 집계에 쿠키·localStorage를 쓰지 않고, IP 주소나 브라우저 정보로 개별 방문자를 시간에 걸쳐 추적하지 않는다고 밝힙니다(Cloudflare 공개 문서). 볼트노트는 집계된 숫자만 보며 개인을 식별하지 않습니다. 보관은 표본 없는 원자료 7일이고 그 뒤 약 10%로 집계·축약되며, 최근 6개월치를 조회합니다(Cloudflare FAQ).</li>` : ''}<li>견적함, 4A장 BOM 작업(고객사·담당자 이름 같은 RFQ 머리 정보 포함), 화면 밝기 설정, 마지막 요청번호와 만든 시각은 <b>이 브라우저의 저장소(localStorage)에만</b> 남고 볼트노트로 보내지지 않습니다. 요청서·발주서 칸에 적은 이름·이메일은 저장하지 않습니다.</li>
+  + zone('B', 'z-b', zh('B', 'z-b', '이 사이트가 자동으로 처리하는 정보', ANALYTICS_ON ? '쿠키를 쓰지 않습니다. 방문 통계는 쿠키 없는 집계 도구로만 봅니다.' : COUNT_ON ? '쿠키를 쓰지 않습니다. 화면과 버튼의 횟수만 합계로 셉니다.' : '쿠키와 방문 분석 도구를 쓰지 않습니다.')
+    + `<ul class="pv-l">${ANALYTICS_ON ? `<li><b>방문 통계</b>: 페이지를 열면 Cloudflare Web Analytics 스크립트가 열어 본 페이지 주소, 유입 경로(참조 주소), 접속 국가, 기기·브라우저·운영체제 종류를 Cloudflare, Inc.(미국)에 보내 건수로 집계합니다. Cloudflare는 이 집계에 쿠키·localStorage를 쓰지 않고, IP 주소나 브라우저 정보로 개별 방문자를 시간에 걸쳐 추적하지 않는다고 밝힙니다(Cloudflare 공개 문서). 볼트노트는 집계된 숫자만 보며 개인을 식별하지 않습니다. 보관은 표본 없는 원자료 7일이고 그 뒤 약 10%로 집계·축약되며, 최근 6개월치를 조회합니다(Cloudflare FAQ).</li>` : ''}${COUNT_ON ? `<li><b>문의 집계</b>: 홈·문의 화면·사전·제품 페이지를 연 횟수와 「이메일 주소 복사」·카카오톡·전화·메일 버튼을 누른 횟수를 볼트노트 서버(Cloudflare Workers)로 보내 날짜별 합계로 셉니다. 보내는 것은 화면이나 버튼의 이름 하나뿐이고, 볼트노트가 저장하는 것은 날짜·이름·횟수입니다. 누가 눌렀는지 알 수 있는 정보(IP 주소, 쿠키, 기기 정보, 입력하신 내용)는 저장하지 않습니다. 브라우저의 추적 거부 신호(GPC·Do Not Track)가 켜져 있으면 세지 않습니다. 합계는 약 13개월 뒤 지웁니다. 전송 과정의 접속 기록은 아래 호스팅 항목과 같습니다.</li>` : ''}<li>견적함, 4A장 BOM 작업(고객사·담당자 이름 같은 RFQ 머리 정보 포함), 화면 밝기 설정, 마지막 요청번호와 만든 시각은 <b>이 브라우저의 저장소(localStorage)에만</b> 남고 볼트노트로 보내지지 않습니다. 요청서·발주서 칸에 적은 이름·이메일은 저장하지 않습니다.</li>
 <li>이 웹페이지 파일은 호스팅 업체 Cloudflare, Inc.(미국)를 거쳐 전송됩니다. 호스팅 업체가 접속 기록(IP 주소 등)을 처리하는 범위와 보관 기간은 확인한 뒤 여기에 적습니다 (${PV_PH('처리 범위·보관 기간')}). 이 기록이 국외 이전(D)에 해당하는지도 함께 확인합니다.</li>
 <li>글꼴은 Google Fonts에서, 엑셀 기능을 쓸 때는 엑셀 도구(SheetJS)를 cdnjs에서 받아 옵니다. 이때 브라우저가 그 서버에 접속하며, 볼트노트는 그 접속 정보를 받지 않습니다.</li></ul>
 <div class="pv-clear" id="pv-clear"><button class="btn sm" type="button" id="pv-clear-1">이 브라우저에 남은 볼트노트 정보 지우기</button><span class="small muted">견적함·BOM 작업·발행한 Rev 기록·화면 설정이 모두 지워집니다.</span></div>`, 'tight')
@@ -12945,6 +12948,7 @@ function iaAfterNav(r) {
   iaMenu(false);
   const ml = document.querySelector('.ia-mini-list'); if (ml) ml.hidden = r === 'cart' || r === 'quote';
   bnThemeColor();
+  bnCountView(r);   // 문의 집계: 홈·문의 화면·소재 문의를 연 횟수 (v9_count.js)
 }
 // 장 머리 빵 부스러기: 옛 장 이름 → 새 경로 (제품 › 칸 › 품목)
 function iaTrail(trail) {
@@ -14550,6 +14554,45 @@ for (const name of ['m', 'i']) {
 if (!LIB_BY || !Object.keys(LIB_BY).length) document.querySelectorAll('[data-lib]').forEach(a => a.remove());
 // 검색 색인: 머리글 찾기에서도 사전 항목이 나오게
 (typeof LIB !== 'undefined' ? LIB : []).forEach(e => INDEX.push({ t: `${e.t} · ${e.ko || ''}`, s: e.sum ? e.sum.slice(0, 60) : '', k: [e.t, e.ko, e.en, ...(e.aka || [])].join(' ').toLowerCase(), go: 'lib-' + e.id, g: '규격 사전' }));
+/* ── v9_count.js ── */
+/* ── 문의 집계 (대표 요청 2026-11-10): 방문이 문의까지 얼마나 가는지 센다 ──
+   보내는 것은 화면·버튼의 이름 하나뿐이다 (POST /count, 본문 예: list). 입력 내용·주소·참조 주소·식별값을 보내지 않는다.
+   서버(worker/index.mjs countPing)는 날짜·이름·횟수만 저장하고, 합계는 관리자 화면(/admin → 문의 집계)에서 본다.
+   - 페이지를 연 동안 이름마다 한 번만 보낸다 (여러 번 눌러도 1건 = 방문 기준).
+   - 보내지 않는 경우: 스위치(SHOP.funnelCount) 꺼짐, 자동화 브라우저, 추적 거부 신호(GPC·Do Not Track),
+     관리자 화면에서 켠 「이 브라우저는 세지 않기」(localStorage bn.nocount).
+   - 이름 목록은 worker/index.mjs COUNT_EVENTS와 같아야 한다. 처리방침 B항(v6_policy.js)이 이 동작을 적는다.
+   window.__bnCountTest는 자동 점검(worker/tests/browser.py)이 켜는 스위치다. */
+const BN_COUNT_NAMES = ['visit', 'home', 'list', 'materials', 'copy', 'rfq', 'kakao', 'tel', 'mail'];
+const BN_COUNT_VIEWS = { home: 'home', list: 'list', materials: 'materials' };
+const bnCounted = new Set();
+function bnCountAllowed() {
+  if (!COUNT_ON || !/^https?:$/.test(location.protocol)) return false;
+  if (navigator.webdriver && !window.__bnCountTest) return false;
+  if (navigator.globalPrivacyControl || navigator.doNotTrack === '1') return false;
+  try { if (localStorage.getItem('bn.nocount') === '1') return false; } catch {}
+  return true;
+}
+function bnCount(name) {
+  if (!BN_COUNT_NAMES.includes(name) || bnCounted.has(name) || !bnCountAllowed()) return;
+  bnCounted.add(name);
+  try { if (!navigator.sendBeacon?.('/count', name)) fetch('/count', { method: 'POST', body: name, keepalive: true }).catch(() => {}); } catch {}
+}
+// 화면: iaAfterNav(v7_ia.js)가 화면이 바뀔 때마다 부른다
+function bnCountView(route) { bnCount('visit'); const name = BN_COUNT_VIEWS[route]; if (name) bnCount(name); }   // visit = 홈페이지를 연 횟수 (어느 화면으로 들어왔든 1건)
+// 누름: 카카오톡·전화·메일 링크, 주소 복사(명함·Sales·견적 보내기 창·회사 소개·파일 보내기 창), RFQ 본문·제목 복사와 내려받기
+document.addEventListener('click', e => {
+  const t = e.target instanceof Element ? e.target : null; if (!t) return;
+  const href = t.closest('a[href]')?.getAttribute('href') || '';
+  if (href.startsWith('https://pf.kakao.com/')) bnCount('kakao');
+  else if (href.startsWith('tel:')) bnCount('tel');
+  else if (href.startsWith('mailto:')) bnCount('mail');
+  const b = t.closest('[data-sales-copy],[data-sales-download],#rs-copy-addr,#rs-copy,#copy-mail,[data-ia-copy]');
+  if (!b || b.disabled) return;
+  if (b.dataset.salesCopy) bnCount(b.dataset.salesCopy === 'address' ? 'copy' : 'rfq');
+  else if (b.hasAttribute('data-sales-download') || b.id === 'rs-copy') bnCount('rfq');
+  else if (!b.dataset.iaCopy || b.dataset.iaCopy === CONTACT.rfq) bnCount('copy');
+}, true);
 /* ── v9_drafting.js ── */
 /* Original vector drawings. Dimension labels come only from existing reviewed
    tables or the customer's selected length; geometry remains NTS. */
@@ -14835,7 +14878,8 @@ document.addEventListener('click', e => {
   go('list');
 });
 /* ── v9_purchase.js ── */
-/* Purchase questions stay separate from the source BOM. No customer data or analytics leave this page. */
+/* Purchase questions stay separate from the source BOM. No customer data leaves this page.
+   (Anonymous screen/button counts are sent by v9_count.js; nothing from this module is sent.) */
 const purchaseDraft = { line:'', values:['','','','','',''], references:[] };
 const PURCHASE_STEPS = [
  ['단위 체계','미터 / 인치 / 도면 확인 필요','t-inch-mm'],
@@ -14872,7 +14916,7 @@ function purchaseSourceLinks(e) {
 function purchaseTrust() {
  return `<section class="bn-section purchase-trust"><div class="bn-wrap"><p class="bn-eyebrow">HOW WE VERIFY</p><h2>확인한 것과,<br>확인할 것을 분리합니다.</h2><div class="purchase-scope-grid"><article><h3>공급 절차</h3><p>BOM 원문 보존 → 사양 질문 → 공급처 회신·근거 대조 → C&D 확인 → 견적. 미확인 단가·재고·납기는 확정하지 않습니다.</p></article><article><h3>문의·서류 확인 범위</h3><p>사양 누락과 공급 가능 여부를 확인합니다. 설계 승인·현장 시공 인증·자체 시험 성적 발급은 제공 범위가 아닙니다. 제조사 문서의 품목·등급·히트/로트 연결을 확인하며 미제공 서류는 명시합니다.</p><a href="#about" data-go="about">문의 시간·운영 범위 →</a></article><article><h3>사업자 정보</h3><p>볼트노트 · 대표 ${esc(SHOP.ownerName)}<br>사업자등록번호 ${esc(SHOP.bizNo)}</p><p>${ORDER_LIVE?'운영 정보와 거래 조건을 확인해 주세요.':'검증 운영 중 · 참고 견적. 통신판매업 신고번호는 등록 전입니다.'}</p><a href="#about" data-go="about">회사·거래 안내 →</a></article></div><details class="purchase-sample"><summary>견적·C&D 작성 예시 보기</summary><p><strong>가상·익명 형식 샘플</strong> — 실제 고객 사례·공급 회신·견적 가격이 아닙니다.</p><div class="tblw"><table class="tbl"><thead><tr><th>BOM 줄</th><th>요청</th><th>견적에 적을 상태</th><th>C&D / 다음 확인</th></tr></thead><tbody><tr><td>DEMO-01</td><td>스터드 + 헤비너트 / 재질·수량은 고객 BOM 참조</td><td>단가·납기·서류: 공급처 확인 전</td><td>C: 나사 공차·코팅·문서 종류 미확인 → 고객 질문</td></tr><tr><td>DEMO-02</td><td>도면 지정 부품 / 대체 불가</td><td>공급 제안 대조 전 · 견적 보류</td><td>D: 공급 제안이 도면과 다를 때 기록 → 차이·근거·고객 승인 필요</td></tr></tbody></table></div><p>C는 확인 질문, D는 요청과 제안의 차이입니다. 차이를 숨기거나 승인 없이 대체하지 않습니다. 실제 고객 사례는 동의와 사실 검증 후 공개합니다.</p></details></div></section>`;
 }
-// Session-local diagnostics: counts only; no BOM, identities, destinations or external tracking.
+// Session-local diagnostics: counts only, kept in memory and never sent; no BOM, identities or destinations. The funnel totals sent to /count live in v9_count.js.
 const purchaseMetrics = {homeViews:0, listViews:0, start:0, prepared:0, handoff:0, checklist:0};
 const purchaseHomeView=V.home;
 V.home=()=>{purchaseMetrics.homeViews++;return purchaseHomeView();};

@@ -463,6 +463,67 @@ def check_sales(page, BASE, OUT):
   print('Sales · 내부 이동/주소·RFQ 예시 복사/메모 보존/선택 분석/특수요건: PASS')
 
 
+def check_count(page, BASE, OUT):
+  """Funnel counter: silent under automation by default. Switched on, it sends one name per screen or button, once per page load,
+  never anything else; the owner's browser and tracking-refusal signals opt out; totals show on the administrator tab."""
+  browser=page.context.browser;KEY='LOCAL_TEST_ONLY_'+'x'*32
+  NAMES={'visit','home','list','materials','copy','rfq','kakao','tel','mail','s-view','s-list','s-kakao'}
+  UA='Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36'   # the Worker ignores a headless user agent
+  def session(*scripts):
+   context=browser.new_context(viewport={'width':1280,'height':800},user_agent=UA);context.grant_permissions(['clipboard-read','clipboard-write'])
+   context.route('https://pf.kakao.com/**',lambda route:route.fulfill(status=200,content_type='text/html',body='<title>channel</title>'))
+   for script in scripts:context.add_init_script(script)
+   sent=[];context.on('request',lambda r:sent.append((r.method,r.post_data)) if r.url.split('?')[0]==BASE+'/count' else None)
+   return context,context.new_page(),sent
+  def walk(tab):
+   tab.goto(BASE+'/');tab.locator('.bn-tighten').wait_for();tab.locator('[data-go="list"]:visible').first.click();tab.locator('#sales-copy-address').wait_for()
+   tab.locator('#sales-copy-address').click();tab.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
+   tab.goto(BASE+'/lib/astm-a193');tab.locator('.bn-strip').wait_for();tab.wait_for_timeout(400)
+  def settled(tab,sent,expected):
+   for _ in range(40):
+    if len(sent)>=len(expected):break
+    tab.wait_for_timeout(100)
+   tab.wait_for_timeout(300);assert [body for _,body in sent]==expected,sent
+  # 1) Automation default (what every other check runs under): nothing is sent.
+  context,tab,sent=session();walk(tab);assert sent==[],sent;context.close()
+  # 2) Switched on: names only, one per page load, in the order of the visit.
+  context,tab,sent=session('window.__bnCountTest=true')
+  tab.goto(BASE+'/');tab.locator('.bn-tighten').wait_for();settled(tab,sent,['visit','home'])
+  tab.locator('[data-go="list"]:visible').first.click();tab.locator('#sales-copy-address').wait_for();settled(tab,sent,['visit','home','list'])
+  for _ in range(2):tab.locator('#sales-copy-address').click();tab.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
+  tab.locator('.sales-example [data-sales-copy="body"]').click();settled(tab,sent,['visit','home','list','copy','rfq'])
+  with context.expect_page() as popup:tab.locator('.sales-chat a').click()
+  popup.value.close();tab.locator('[data-go="home"]:visible').first.click();tab.locator('.bn-tighten').wait_for()
+  settled(tab,sent,['visit','home','list','copy','rfq','kakao'])   # back on the home: already counted in this page load
+  tab.goto(BASE+'/lib/astm-a193');tab.locator('.bn-strip').wait_for();settled(tab,sent,['visit','home','list','copy','rfq','kakao','s-view'])
+  tab.locator('.bn-strip-btn[href="/#list"]').click();tab.locator('#sales-copy-address').wait_for()
+  settled(tab,sent,['visit','home','list','copy','rfq','kakao','s-view','s-list','visit','list'])
+  assert all(method=='POST' and body in NAMES for method,body in sent),sent
+  context.close()
+  # 3) Opt-outs: the owner's switch (set on the administrator tab) and a tracking-refusal signal.
+  for refuse in ('try{localStorage.setItem("bn.nocount","1")}catch(e){}','Object.defineProperty(Navigator.prototype,"globalPrivacyControl",{get:()=>true})'):
+   context,tab,sent=session('window.__bnCountTest=true',refuse);walk(tab);assert sent==[],(refuse,sent);context.close()
+  # 4) Totals: only the administrator reads them, and they match the walk above (nothing else in this run counted).
+  assert page.request.get(BASE+'/api/counts').status==401
+  totals=page.request.get(BASE+'/api/counts',headers={'Authorization':'Bearer '+KEY}).json()
+  today={name:n for day,name,n in totals['rows'] if day==totals['today']}
+  assert today=={'visit':2,'home':1,'list':2,'copy':1,'rfq':1,'kakao':1,'s-view':1,'s-list':1},today
+  context=browser.new_context(viewport={'width':1280,'height':900});admin=context.new_page();problems=[];admin.on('pageerror',lambda e:problems.append(str(e)))
+  admin.goto(BASE+'/admin');admin.get_by_label('관리자 비밀키',exact=True).fill(KEY);admin.get_by_role('button',name='관리자 연결',exact=True).click()
+  admin.get_by_role('button',name='문의 집계',exact=True).click();admin.locator('#counts').wait_for()
+  read=lambda name:admin.locator(f'#counts [data-count="{name}"]').first.inner_text()
+  assert (read('opened'),read('list'),read('contact'),read('copy'),read('kakao'),read('s-view'))==('3','2','2','1','1','1')
+  assert '100번 중 66.7번' in admin.locator('#counts').inner_text() and 'probe' not in admin.locator('#counts').inner_text()
+  admin.get_by_role('button',name='최근 7일',exact=True).click();assert admin.get_by_role('button',name='최근 7일',exact=True).get_attribute('aria-current')=='true' and read('list')=='2'
+  skip=admin.get_by_label('이 브라우저에서 내가 연 것은 세지 않기',exact=True)
+  skip.check();assert admin.evaluate('localStorage.getItem("bn.nocount")')=='1'
+  admin.reload();admin.get_by_role('button',name='문의 집계',exact=True).click();admin.locator('#counts').wait_for();assert skip.is_checked()
+  skip.uncheck();assert admin.evaluate('localStorage.getItem("bn.nocount")') is None
+  admin.set_viewport_size({'width':360,'height':740});assert admin.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  assert not problems,problems
+  context.close()
+  print('문의 집계 · 자동화 기본 꺼짐/이름만 한 번씩/세지 않기·추적 거부/관리자 합계: PASS')
+
 def check(BASE, OUT):
  with sync_playwright() as p:
   browser=p.chromium.launch(executable_path=os.environ.get('BN_CHROMIUM') or None,headless=True,args=['--no-sandbox'])
@@ -597,6 +658,7 @@ def check(BASE, OUT):
   check_phone_bar(page,BASE,OUT)
   check_boot(page,BASE,OUT)
   check_not_found(page,BASE,OUT)
+  check_count(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()

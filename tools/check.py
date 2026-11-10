@@ -85,7 +85,11 @@ def main():
             os.unlink(t.name)
             if r.returncode:
                 bad.append(f"스크립트 {i + 1}: {r.stderr.strip().splitlines()[0] if r.stderr.strip() else '문법 오류'}")
-        step("스크립트 문법", not bad, "; ".join(bad) if bad else f"{len(scripts)}개")
+        for name in ("count.js", "lib-index.js", "product-index.js"):   # 정적 페이지에 인라인으로 들어가는 스크립트
+            r = subprocess.run([node, "--check", str(ROOT / "site" / name)], capture_output=True, text=True)
+            if r.returncode:
+                bad.append(f"site/{name}: {r.stderr.strip().splitlines()[0] if r.stderr.strip() else '문법 오류'}")
+        step("스크립트 문법", not bad, "; ".join(bad) if bad else f"{len(scripts)}개 + 정적 페이지용 3개")
     else:
         print("건너뜀  스크립트 문법 (node 없음)")
 
