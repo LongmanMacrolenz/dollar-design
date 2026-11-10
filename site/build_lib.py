@@ -105,16 +105,18 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link href=
          f'<link href="{html.escape(display_font_href(BRAND["stamp"]))}" rel="stylesheet" media="print" onload="this.media=\'all\'">')
 
 
-def page(title: str, desc: str, path: str, body: str, ld: dict | None = None) -> str:
+def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True) -> str:
+    """정적 페이지의 공통 틀. index=False는 검색에 넣지 않는 페이지(404 안내)로, 표준 주소와 og:url을 내지 않는다."""
     url = SITE_URL + path
     desc = compact_description(desc)
     return (
         '<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         '<link rel="icon" href="/brand/boltnote-mark.svg" type="image/svg+xml">\n'
-        '<meta name="robots" content="index,follow">\n'
-        f"<title>{e(title)}</title>\n<meta name=\"description\" content=\"{e(desc)}\">\n<link rel=\"canonical\" href=\"{url}\">\n"
+        + ('<meta name="robots" content="index,follow">\n' if index else '<meta name="robots" content="noindex,follow">\n')
+        + f"<title>{e(title)}</title>\n<meta name=\"description\" content=\"{e(desc)}\">\n" + (f"<link rel=\"canonical\" href=\"{url}\">\n" if index else "")
+        +
         f'<meta property="og:type" content="article"><meta property="og:site_name" content="볼트노트"><meta property="og:locale" content="ko_KR">'
-        f'<meta property="og:url" content="{url}"><meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
+        + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
         f'<meta property="og:image" content="{SITE_URL}brand/boltnote-social.png"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
         + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}</head>\n<body>\n{body}\n</body>\n</html>\n"
@@ -145,6 +147,17 @@ def brand_strip(info: dict) -> str:
             f'<p class="bn-strip-lead"><b>{e(BRAND["lead"])}</b> 기존 자료를 그대로 보내 주세요. 사양 확인과 공급처 검토는 볼트노트가 이어갑니다.</p>'
             f'<p class="bn-strip-actions"><a class="bn-strip-btn" href="/#list">BOM·RFQ 보내기 <span aria-hidden="true">→</span></a>{kakao}</p>{hours}'
             '</div></aside>')
+
+
+def not_found_html(info: dict) -> str:
+    """없는 주소로 들어왔을 때의 안내 (docs/404.html, wrangler.jsonc의 not_found_handling이 404 상태로 내보낸다).
+    어느 깊이의 주소에서도 나오므로 링크는 모두 루트(/)에서 시작한다. 검색에 넣지 않는다(noindex, 사이트맵에 없음)."""
+    links = [("/", "홈", "볼트노트 첫 화면"), ("/products/", "제품", "품목별 규격·구매 안내"), ("/lib/", "규격 사전", "체결부품 규격과 실무 지식"), ("/#list", "Sales 문의", "BOM·메모·RFQ 보내기")]
+    body = (header("none") + '<main><div class="w"><p class="eyebrow">404</p><h1>찾으시는 주소가 없습니다</h1>'
+            '<p class="intro">주소가 바뀌었거나 잘못 입력되었습니다. 아래에서 다시 찾아보세요.</p><div class="cards">'
+            + "".join(f'<a class="card" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in links)
+            + '</div></div></main>' + brand_strip(info) + footer(info))
+    return page("주소를 찾을 수 없습니다 | 볼트노트", "찾으시는 주소가 없습니다. 홈, 제품, 규격 사전, Sales 문의로 이동할 수 있습니다.", "404", body, index=False)
 
 
 def footer(info: dict) -> str:
@@ -261,6 +274,7 @@ def main() -> None:
     for x in L:
         (out / f'{x["id"]}.html').write_text(entry_html(x, by, info), encoding="utf-8")
     (out / "index.html").write_text(index_html(L, info), encoding="utf-8")
+    (DOCS / "404.html").write_text(not_found_html(info), encoding="utf-8")   # 사이트맵에 넣지 않는다
     urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls()
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")

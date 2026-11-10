@@ -111,6 +111,15 @@ def main():
                 assert "공급처 확인 뒤 견적서" in text, file
                 assert len(text) > 700, f"Thin product guide: {file}"
     assert canonical == set(urls)
+    # 없는 주소 안내(404.html): 검색에 넣지 않고(noindex·표준 주소 없음·사이트맵에 없음), 어느 깊이에서도 링크가 풀리게 루트 주소만 쓴다
+    missing = Document((ROOT / "docs/404.html").read_text(encoding="utf-8"))
+    assert "noindex" in missing.meta.get("robots", "") and not missing.canonical and "og:url" not in missing.meta, "404 page must stay out of search"
+    assert missing.h1 == 1 and missing.title.strip() and not any(urlsplit(u).path in ("/404", "/404.html") for u in urls), "404 page shape"
+    assert {"/", "/products/", "/lib/", "/#list"} <= set(missing.links), "404 page links"
+    for href in [*missing.links, *missing.images]:
+        parsed = urlsplit(href)
+        if parsed.scheme or parsed.netloc or not parsed.path: continue
+        assert parsed.path.startswith("/") and resolve(parsed.path).exists(), ("docs/404.html", href)
     assert set(product_urls()) <= canonical
     directory = Document((ROOT / "docs/products/index.html").read_text())
     assert {"/products/" + x for x in paths.values()} <= set(directory.links)
