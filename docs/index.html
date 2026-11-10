@@ -15381,13 +15381,17 @@ function bnTightenInit() {
   // 느린 기기: 그림 해상도를 낮춰 끊기지 않게 한다 (다시 올리지는 않는다). __bnTightenFull은 포스터 캡처 도구(tools/render_tighten_poster.mjs)가 켠다
   let quality = R?.soft && !window.__bnTightenFull ? .6 : 1, slow = 0, counted = 0;
   const C = BN_TIGHTEN;
+  // 계산 용지가 창을 지나 넘어갈 길이. 글꼴이 늦게 오면 용지 길이가 달라지므로, 크기가 바뀔 때마다 다시 잰다
+  const rollBox = root.querySelector('.bn-math-roll'), strip = root.querySelector('.bn-math-strip');
+  function measureRoll() { if (rollBox && strip) root.style.setProperty('--roll', Math.max(0, strip.offsetHeight - rollBox.clientHeight) + 'px'); }
+  const rollWatch = 'ResizeObserver' in window && rollBox && strip ? new ResizeObserver(measureRoll) : null;
+  rollWatch?.observe(strip); rollWatch?.observe(rollBox);
   function layout() {
     // 머리띠가 따라오면(sticky) 그 아래에 무대를 붙이고, 따라오지 않으면(휴대폰) 첫 화면에서 머리띠 높이만큼 무대를 줄여 버튼이 한 화면에 들어오게 한다
     const tb = document.querySelector('.tb'), sticky = tb && getComputedStyle(tb).position === 'sticky', th = tb ? tb.offsetHeight : 0;
     root.style.setProperty('--tight-top', (sticky ? th : 0) + 'px'); root.style.setProperty('--tight-head', (sticky ? 0 : th) + 'px');
     root.style.setProperty('--tight-mini', ($('tb-mini')?.offsetHeight || 0) + 'px');   // 휴대폰 고정 막대 높이: 렌더링 안내를 그 아래에 둔다
-    const roll = root.querySelector('.bn-math-roll'), strip = root.querySelector('.bn-math-strip');
-    if (roll && strip) root.style.setProperty('--roll', Math.max(0, strip.offsetHeight - roll.clientHeight) + 'px');   // 계산 용지가 창을 지나 넘어갈 길이
+    measureRoll();
     resize(); measure(); request();
   }
   function resize() {
@@ -15432,7 +15436,7 @@ function bnTightenInit() {
     if (live) request();
   }
   function request() { if (!raf) raf = requestAnimationFrame(frame); }
-  function cleanup() { abort.abort(); io?.disconnect(); if (raf) cancelAnimationFrame(raf); raf = 0; try { R?.lose(); } catch (e) {} if (bnTightenCleanup === cleanup) bnTightenCleanup = null; }
+  function cleanup() { abort.abort(); io?.disconnect(); rollWatch?.disconnect(); if (raf) cancelAnimationFrame(raf); raf = 0; try { R?.lose(); } catch (e) {} if (bnTightenCleanup === cleanup) bnTightenCleanup = null; }
   bnTightenCleanup = cleanup;
   const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) { last = 0; request(); } }, { threshold: 0 }) : null;
   io?.observe(root);

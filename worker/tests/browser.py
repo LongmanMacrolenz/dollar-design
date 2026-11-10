@@ -303,8 +303,9 @@ def check_home(page, BASE, OUT):
    page.wait_for_function('getComputedStyle(document.querySelector(".bn-tighten-stamp")).opacity==="1"')
    assert page.locator('.bn-tighten-stamp').inner_text().strip()=='볼트는, 볼트노트.'
    assert page.evaluate('getComputedStyle(document.querySelector(".bn-tl:not(.bn-thin)")).fontVariationSettings')==f'"wght" {cfg["w1"]}' and cfg['w0']<cfg['w1']
-   roll=page.evaluate('()=>{const c=getComputedStyle(document.querySelector(".bn-tighten")),s=document.querySelector(".bn-math-strip").getBoundingClientRect(),w=document.querySelector(".bn-math-roll").getBoundingClientRect();return{m:+c.getPropertyValue("--m"),r:+c.getPropertyValue("--r"),t:+c.getPropertyValue("--t"),gap:Math.abs(s.bottom-w.bottom)}}')
-   assert roll['m']==1 and roll['r']==1 and roll['t']==1 and roll['gap']<=1.5,roll   # seated: the sheet has rolled to its end and the preload marker is at F_i
+   roll=page.evaluate('()=>{const c=getComputedStyle(document.querySelector(".bn-tighten"));return{m:+c.getPropertyValue("--m"),r:+c.getPropertyValue("--r"),t:+c.getPropertyValue("--t")}}')
+   assert roll=={'m':1,'r':1,'t':1},roll   # seated: the sheet has rolled all the way and the preload marker is at F_i
+   page.wait_for_function('Math.abs(document.querySelector(".bn-math-strip").getBoundingClientRect().bottom-document.querySelector(".bn-math-roll").getBoundingClientRect().bottom)<=1.5',timeout=20000)   # the end of the sheet meets the end of its window, also after a late font changed its length
    page.evaluate('scrollTo(0,0)');page.wait_for_function('window.__tightenTest.state().p<0.001',timeout=20000)
    assert page.locator('.bn-tighten').get_attribute('data-seated')=='false'
   # Scenes below the hero: each one is held in place, tightens with the scroll, and hits exactly once when it seats.
