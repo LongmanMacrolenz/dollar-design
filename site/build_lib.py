@@ -95,7 +95,7 @@ footer{background:var(--night);color:var(--tx-2);font-size:13px;padding:36px 0}f
 .bn-strip-line img{width:34px;height:34px;flex:none}.bn-strip-lead{margin:14px 0 0;font-size:15px;line-height:1.75;max-width:640px}.bn-strip-lead b{color:#f2f3ef}
 .bn-strip-actions{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 0}
 .bn-strip-btn{display:inline-flex;align-items:center;gap:14px;min-height:50px;padding:0 22px;border:1px solid #F15A38;border-radius:999px;background:#F15A38;color:#10151B;font-weight:800;font-size:14px;text-decoration:none}
-.bn-strip-btn.ghost{background:transparent;border-color:#5A6673;color:#F2F3EF}.bn-strip-hours{margin:12px 0 0;font-size:12.5px;color:#93A0AC}
+.bn-strip-btn.ghost{background:transparent;border-color:#5A6673;color:#F2F3EF}.bn-strip-btn .bn-kakao{flex:none;margin-left:-8px}.bn-strip-hours{margin:12px 0 0;font-size:12.5px;color:#93A0AC}
 """
 MARK = '<img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote">'
 BEACON = beacon_tag()   # 정적 페이지 435장에 같은 값. page.html을 한 번만 읽는다
@@ -134,13 +134,18 @@ def header(on: str = "lib") -> str:
             + '</nav><a class="cta" href="/#list">Sales 문의 →</a></div></header>')
 
 
+# 카카오톡 표시: 노란 바탕에 검은 말풍선 (app/src/v9_sales.js BN_KAKAO_BUBBLE과 같은 모양)
+KAKAO_MARK = ('<svg class="bn-kakao" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#FEE500"/>'
+              '<path fill="#191919" d="M12 5.6c-3.9 0-7 2.4-7 5.5 0 2 1.3 3.7 3.3 4.7l-.7 2.7c-.1.4.3.7.6.4l3.2-2.1c.2 0 .4 0 .6 0 3.9 0 7-2.500 7-5.700s-3.100-5.500-7-5.500z"/></svg>')
+
+
 def brand_strip(info: dict) -> str:
     """모든 정적 페이지의 끝(꼬리말 앞)에 붙는 볼트노트 띠. 검색으로 들어온 방문자는 홈을 보지 않으므로, 여기서 누가 하는 곳인지와 문의하는 길을 보인다.
     문구는 이미 사이트에 있는 것만 쓴다: 도장 문구·리드는 조임 장면(brand_copy), 설명 한 줄은 홈 견적 구역(app/src/v7_ia.js)과 같다. 재고·가격·납기를 약속하지 않는다.
     카카오톡 버튼은 채널 주소(CONTACT.kakaoChat)가 있을 때만 나온다 (대표 결정 2026-11-10: 정적 페이지에도 크게 보인다)."""
     kakao = hours = ""
     if info.get("kakaoChat"):
-        kakao = f'<a class="bn-strip-btn ghost" href="{e(info["kakaoChat"])}" target="_blank" rel="noopener noreferrer">카카오톡으로 문의 <span aria-hidden="true">↗</span></a>'
+        kakao = f'<a class="bn-strip-btn ghost" href="{e(info["kakaoChat"])}" target="_blank" rel="noopener noreferrer">{KAKAO_MARK}카카오톡으로 문의 <span aria-hidden="true">↗</span></a>'
         if info.get("kakaoHours"): hours = f'<p class="bn-strip-hours">카카오톡 응대 {e(info["kakaoHours"])}</p>'
     return ('<aside class="bn-strip" aria-label="볼트노트 문의"><div class="w">'
             f'<p class="bn-strip-line"><img src="/brand/boltnote-mark.svg" width="34" height="34" alt="">{e(BRAND["stamp"])}</p>'

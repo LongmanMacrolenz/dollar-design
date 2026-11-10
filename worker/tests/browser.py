@@ -265,6 +265,9 @@ def check_home(page, BASE, OUT):
   box=cta.bounding_box();assert box['y']+box['height']<=800,box   # CTA is on the first screen without scrolling
   assert [a.get_attribute('href') for a in page.locator('.bn-door').all()]==['#products','#lib','#list']
   assert page.locator('#sales-home-copy').count()==1 and page.locator('#bn-brand-video').count()==0 and page.locator('#sb').count()==0
+  # The contact panel carries a business card (logo, name, address to copy) and a KakaoTalk button with its speech-bubble mark; no mailto anywhere.
+  assert page.locator('.sales-biz #sales-email').inner_text()=='a8wlhg942@naver.com' and page.locator('.sales-biz img.sales-biz-logo').get_attribute('alt')=='볼트노트'
+  assert page.locator('.sales-chat a.sales-kakao svg').count()==1 and page.locator('.sales-contact a[href^="mailto:"]').count()==0
   assert page.locator('#bn-engineering-details').count()==1 and page.locator('.purchase-trust').count()==0
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   # Headline type: the display face is requested for exactly the characters in use; line one stays thin, line two gains weight as the nut tightens.
