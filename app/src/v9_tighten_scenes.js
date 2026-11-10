@@ -1,7 +1,7 @@
 /* 홈 아래 구역의 조임 장면 (대표 요청 2026-11-10: 첫 화면의 "내리면 조여진다"를 입구 3개·제품군·문의 구역에도. 다 조여지면 화면이 흔들린다).
    구역마다 모양은 다르지만 규칙은 하나다: 그 구역을 화면에 붙잡아 두고(sticky), 내리는 만큼 조임 정도가 0→1로 찬 뒤, 다 찬 순간에 한 번 "쾅".
    - doors  = 판 3장. 너트가 01→02→03 차례로 돌며 판 사이의 빛나는 틈이 닫힌다. 가로로 세게 흔들린다.
-   - lineup = 제품 타일이 하나씩 내려앉고 제목이 굵어진다. 세로로 쿵 내려앉는다.
+   - lineup = 부품 그림 여섯 장이 작게 주르르륵 나타난 뒤 제자리 크기로 커지고 제목이 굵어진다. 세로로 쿵 내려앉는다.
    - rfq    = 순서 01·02·03이 켜지고 문의 카드가 도장처럼 찍힌다. 화면이 한 번 부푼다.
    - 방향: 위에서 내려오면 내릴수록, 아래에서 올라오면 올릴수록 조여진다 (올릴 때도 같은 체험). 도중에 되돌리면 풀린다.
      방향은 구역이 화면 밖에 있을 때만 바꾼다 (보이는 동안에는 튀지 않는다).
@@ -35,6 +35,19 @@ function bnImpact(scene, kind) {
   }
 }
 
+/* 제품군 장면의 "작은 자리": 타일 전부가 한 화면에 들어오는 배율과 위치를 실제 폭으로 잰다 (CSS가 --sx·--sy·--ss로 쓴다).
+   한 줄에 2장 이상 보이는 화면은 전부를 한 줄로, 1장만 보이는 휴대폰은 두 줄로 놓는다. 조여진 모양(제자리)에서 재야 한다. */
+function bnLineupSlots(scene) {
+  const track = scene.querySelector('.bn-products'), items = track ? [...track.children] : [], visual = items[0]?.querySelector('.bn-product-visual');
+  if (items.length < 2 || !visual) return;
+  const cs = getComputedStyle(track), gap = parseFloat(cs.columnGap) || 0, w = items[0].offsetWidth, vh = visual.offsetHeight;
+  const room = track.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0);
+  const perView = Math.max(1, Math.round((room + gap) / (w + gap))), cols = perView >= 2 ? items.length : Math.ceil(items.length / 2), rows = Math.ceil(items.length / cols), g = Math.min(gap, 12);
+  const scale = Math.min(1, (room - (cols - 1) * g) / (cols * w)), y0 = Math.max(0, (vh - (rows * vh * scale + (rows - 1) * g)) / 2);
+  items.forEach((li, i) => { const c = i % cols, r = Math.floor(i / cols);
+    li.style.setProperty('--sx', (c * (w * scale + g) - i * (w + gap)).toFixed(1) + 'px'); li.style.setProperty('--sy', (y0 + r * (vh * scale + g)).toFixed(1) + 'px'); li.style.setProperty('--ss', scale.toFixed(4)); });
+}
+
 function bnScenesInit() {
   bnScenesCleanup?.();
   const home = view().querySelector('.bn-home'), els = home ? [...home.querySelectorAll('.bn-scene')] : [];
@@ -54,6 +67,7 @@ function bnScenesInit() {
       s.el.style.setProperty('--scene-top', top + 'px'); s.el.style.setProperty('--scene-mini', mini + 'px');
       s.el.style.setProperty('--e', '1'); s.shown = -1;   // 조여진 모양으로 놓고 잰다 (풀린 모양의 이동·확대가 높이 계산에 섞이지 않게). 아래에서 다시 그린다
       c.add('is-live', 'is-pin', 'is-center'); const room = s.stage.offsetHeight;   // 한 화면 높이 (100svh − 머리띠)
+      if (s.kind === 'lineup') bnLineupSlots(s.el);
       c.remove('is-center');                                                        // 위에 맞춘 상태로 내용 높이를 잰다
       const need = (s.need || s.body).getBoundingClientRect().bottom - s.stage.getBoundingClientRect().top;
       const center = s.el.dataset.scenePin !== 'top' && s.body.offsetHeight + mini + 32 <= room;
@@ -83,6 +97,7 @@ function bnScenesInit() {
       if (on === s.seated) continue;
       const first = s.seated === null; s.seated = on; s.el.dataset.seated = String(on);
       if (on && !first) { s.hits++; bnImpact(s.el, s.el.dataset.impact); }   // 처음 그릴 때 이미 조여져 있으면(중간에서 새로 고침) 흔들지 않는다
+      s.el.querySelector('.bn-products')?.dispatchEvent(new Event('scroll'));   // 타일이 제자리로 가면 가로로 넘길 수 있는 폭이 달라진다: 넘김 버튼 상태를 다시 계산하게 한다 (v9_experience.js)
     }
   }
   function frame(now) {
