@@ -9,6 +9,30 @@ HOME_TITLE = "볼트·너트 구매·BOM 견적 | 볼트노트"
 HOME_DESC = "산업설비 볼트·너트 구매와 BOM 견적. 미터·인치, ASTM 스터드·헤비너트의 사양과 서류를 확인합니다."
 
 
+def brand_copy():
+    """홈 조임 장면의 문구와 글자 굵기를 app/src/v9_tighten.js(BN_TIGHTEN)에서 읽는다. 정적 첫 화면·정적 페이지·공유 그림이 같은 문구를 쓴다."""
+    source = (ROOT.parent / "app/src/v9_tighten.js").read_text(encoding="utf-8")
+    block = re.search(r"const BN_TIGHTEN\s*=\s*\{(.*?)\};", source, re.S)
+    found = block and {
+        "h1": re.search(r"h1:\s*\[\s*'([^']+)'\s*,\s*'([^']+)'\s*\]", block.group(1)),
+        "stamp": re.search(r"stamp:\s*'([^']+)'", block.group(1)),
+        "lead": re.search(r"lead:\s*'([^']+)'", block.group(1)),
+        "w0": re.search(r"\bw0:\s*(\d+)", block.group(1)),
+        "w1": re.search(r"\bw1:\s*(\d+)", block.group(1)),
+    }
+    if not found or not all(found.values()):
+        raise ValueError("BN_TIGHTEN copy (h1, stamp, lead, w0, w1) not found in app/src/v9_tighten.js")
+    return {"h1": list(found["h1"].groups()), "stamp": found["stamp"].group(1), "lead": found["lead"].group(1),
+            "w0": int(found["w0"].group(1)), "w1": int(found["w1"].group(1))}
+
+
+def display_font_href(text):
+    """제목 글꼴(Hahmlet)을 주어진 글자만 담아 요청하는 Google Fonts 주소. 화면의 bnHomeFontInit과 같은 형식."""
+    from urllib.parse import quote
+    chars = "".join(sorted(set("".join(text.split()))))
+    return "https://fonts.googleapis.com/css2?family=Hahmlet:wght@100..900&display=swap&text=" + quote(chars)
+
+
 def declaration(path, name):
     source = path.read_text(encoding="utf-8")
     match = re.search(r"const " + re.escape(name) + r"\s*=\s*", source)

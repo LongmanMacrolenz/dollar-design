@@ -4132,6 +4132,7 @@ const themePref = () => { const t = store.get('theme', 'light'); return THEME_SE
 function themeApply(t) {
   if (t === 'light') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme', t);
   document.querySelectorAll('[data-theme-set]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.themeSet === t)));
+  if (typeof bnThemeColor === 'function') bnThemeColor();
 }
 document.addEventListener('click', e => { const b = e.target.closest('[data-theme-set]'); if (!b || !THEME_SET.includes(b.dataset.themeSet)) return; store.set('theme', b.dataset.themeSet); themeApply(b.dataset.themeSet); });
 themeApply(themePref());
