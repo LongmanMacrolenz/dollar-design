@@ -25,6 +25,7 @@
 | `tools/shapes/` | 품목 형상 이미지 만드는 도구 (Blender 렌더, `README.md` 참고). CI에서는 돌리지 않음 | 예 |
 | `worker/client/landed*.{html,mjs,css}` | 대표 전용 수입 원가 계산 화면(`/admin/landed.html`, 안내는 `worker/SETUP.md`). 로그인 없이 열리는 주소라 실제 원가·세율·환율을 코드에 적지 않는다 | 예 |
 | `tools/quote/` | 대표 전용 견적서 도구: 입력 JSON → 사이트 양식 PDF·메일 문안·내부 원가표 (`README.md`). 고객 입력·결과(`out/`)와 `local.json`(계좌)은 git 무시 | 예 (예시·도구만) |
+| `app/brand/boltnote-intro.pdf` | 영업용 1쪽 소개서(A4). **`python3 tools/render_intro.py`로만** 만든다(사이트 문구와 연락처를 읽어 그린다). 영업 문안은 `worker/client/mail-content.mjs`, 순서와 광고 메일 규칙은 `worker/SETUP.md` | **아니오** |
 | `docs/media/shape/*.webp` | 품목별·마감별 형상 이미지(참고용 렌더링)와 썸네일. **`tools/shapes/render_all.py`로만** 만든다 | **아니오** |
 | `app/src/v9_shape.js` | 형상 이미지를 화면에 붙이는 모듈. `SHAPE_IMG` 목록은 `render_all.py --manifest`가 쓴다 | 목록 블록은 아니오 |
 
