@@ -7,7 +7,7 @@ import html
 import json
 import pathlib
 
-from build_lib import page, header, footer, site_info
+from build_lib import page, header, footer, site_info, brand_strip
 from catalog import catalog, declaration, public_label, compact_description, SITE_URL
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -167,7 +167,7 @@ def product_html(id, f, families, tiles, paths, library, shapes, info):
             + ('<div class="box"><h2>관련 규격·구매 지식</h2><div class="chips">' + ''.join(f'<a class="chip" href="/lib/{x["id"]}">{e(x["t"])}</a>' for x in related[:8]) + '</div></div>' if related else '')
             + '<div class="box"><h2>구매 결정 경로</h2><p>단위 → 나사 → 재질·등급 → 코팅·환경 → 서류 순서로 확인합니다.</p><a href="/#lib?path=purchase">라이브러리에서 확인하기 →</a></div></aside></div>'
             + ('<section class="product-category"><h2>함께 비교할 품목</h2><p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p><div class="cards">' + ''.join(card(k, families[k], paths) for k in related_products) + '</div></section>' if related_products else '')
-            + '</div></main>' + footer(info))
+            + '</div></main>' + brand_strip(info) + footer(info))
     return document(title, desc, "products/" + paths[id], body, breadcrumb)
 
 
@@ -192,7 +192,7 @@ def listing_html(families, tiles, paths, info, category=None):
             + '<nav class="category-nav" aria-label="제품군">' + ''.join(f'<a class="chip" href="/products/category/{t["id"]}">{e(t["ko"])}</a>' for t in tiles) + '</nav>'
             + '<p class="product-note">주력 품목군 · 조건부 조달 품목 · 원문·도면 검토 품목을 구분합니다. 품목 수는 탐색 분류이며 재고·공급 확약이 아닙니다. 실제 가능 여부와 납기는 견적 시 확인합니다.</p>'
             + '<form class="product-search" role="search" id="product-search"><label for="product-q">품목명·영문명·규격으로 찾기</label><input class="q" id="product-q" type="search" placeholder="예: 육각너트, Hex Nut, A193 B7" autocomplete="off"><p id="product-count" aria-live="polite">제품 카드를 누르면 구매 안내로 이동합니다.</p></form>'
-            + '<p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p>' + ''.join(sections) + '</div></main>' + footer(info)
+            + '<p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p>' + ''.join(sections) + '</div></main>' + brand_strip(info) + footer(info)
             + '<script>' + (ROOT / "product-index.js").read_text(encoding="utf-8") + '</script>')
     return document(title, compact_description(desc), path, body, crumbs, True)
 
