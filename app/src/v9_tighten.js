@@ -331,7 +331,7 @@ function bnTightenInit() {
     root.style.setProperty('--p', cur.toFixed(4)); root.style.setProperty('--e', e.toFixed(4)); root.style.setProperty('--w', String(Math.round(C.w0 + (C.w1 - C.w0) * e)));
     root.style.setProperty('--m', Math.min(1, Math.max(0, (cur - C.pa) / (C.p2 - C.pa))).toFixed(4));   // 식이 겹쳐 보이는 정도: 상·하부가 만난 뒤부터 고정까지
     const s = cur >= C.p2 - 1e-4;
-    if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; bnImpact(root, 'kick'); } seated = s; root.dataset.seated = String(s); }   // 고정 순간: 빛이 한 번 훑고 화면이 흔들린다 (v9_tighten_scenes.js)
+    if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; bnImpact(root, 'slam'); } seated = s; root.dataset.seated = String(s); }   // 고정 순간: 화면이 흔들리고 주황빛이 한 바퀴 돈다 (v9_tighten_scenes.js)
     if (!R) return false;
     // 첫 화면에서 기다릴 때: 떠 있는 상부가 조금 오르내린다
     const idle = pinned && !auto && cur < .02 && now - idleAt < 9000, bob = idle ? 5 * (1 - Math.cos((now - idleAt) / 2100 * Math.PI * 2)) * Math.min(1, (9000 - (now - idleAt)) / 1500) : 0;

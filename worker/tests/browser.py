@@ -363,7 +363,7 @@ def check_home(page, BASE, OUT):
   page.evaluate('y=>scrollTo(0,y)',phone['y']);page.wait_for_function('__sceneTest.state()[0].seated',timeout=20000)
   assert page.evaluate('__sceneTest.state()[0].hits')==1 and page.evaluate('document.documentElement.scrollWidth<=innerWidth')
   page.set_viewport_size({'width':1280,'height':800})
-  print('홈 조임 장면 · 문구/CTA/자세 함수/스크롤 고정/아래 구역 조임·흔들림/올릴 때/움직임 줄이기/WebGL 대체: PASS')
+  print('홈 조립 장면 · 문구/CTA/자세 함수(순서·나사)/스크롤 고정/아래 구역 조임·흔들림/올릴 때/움직임 줄이기/WebGL 대체: PASS')
 
 
 def check_sales(page, BASE, OUT):
