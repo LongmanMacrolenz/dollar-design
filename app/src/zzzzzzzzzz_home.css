@@ -15,6 +15,13 @@
 .bn-tighten-canvas, .bn-tighten-poster { position:absolute; inset:0; width:100%; height:100%; display:block; }
 .bn-tighten-poster { object-fit:cover; object-position:72% 50%; }
 .bn-tighten-canvas[hidden], .bn-tighten-poster[hidden] { display:none; }
+.bn-tighten-math { position:absolute; z-index:1; right:clamp(20px, 3.4vw, 56px); top:clamp(56px, 12%, 118px); width:min(42vw, 540px); display:grid; gap:10px; justify-items:end; pointer-events:none; font-family:var(--f-mono); transition:opacity .6s ease; }
+/* 겹쳐 보이는 일반식: 상·하부가 만난 뒤부터 고정까지 한 줄씩 빠르게 들어온다 (--m, v9_tighten.js). 장식이라 읽기 순서에서 뺀다 (aria-hidden) */
+.bn-tighten-math p { --k:clamp(0, calc(var(--m) * 5.6 - var(--j) * .5), 1); margin:0 calc(var(--j) * 5px) 0 0; display:flex; flex-direction:column; align-items:flex-end; gap:2px; opacity:calc(var(--k) * .82); transform:translate3d(calc((1 - var(--k)) * 30px), 0, 0); white-space:nowrap; }
+.bn-tighten-math b { font-weight:500; font-size:clamp(12px, 1.02vw, 15px); letter-spacing:.01em; color:#e3e9ee; text-shadow:0 1px 10px #06090dcc; }
+.bn-tighten-math sub { font-size:.72em; }
+.bn-tighten-math small { font-size:9.5px; letter-spacing:.09em; text-transform:uppercase; color:#8492a0; }
+.bn-tighten[data-seated="true"] .bn-tighten-math { opacity:.42; }
 .bn-tighten-inner { position:relative; z-index:2; height:100%; display:flex; align-items:center; pointer-events:none; }
 .bn-tighten-copy { pointer-events:auto; max-width:min(680px, 50vw); padding:0; }
 .bn-tighten-eyebrow { margin:0 0 26px; font-family:var(--bn-en, 'Manrope', sans-serif); font-size:11px; font-weight:700; letter-spacing:.2em; color:#8b98a5; }
@@ -64,9 +71,13 @@ body:has(.tb-mini.on) .bn-tighten:not(.is-static) .bn-tighten-note { top:calc(va
   .bn-tighten .bn-btn { min-height:50px; padding:0 20px; gap:14px; font-size:13px; }
   .bn-tighten-hint { bottom:14px; font-size:11px; } .bn-tighten-hint i { height:22px; }
   .bn-tighten-note { left:26px; right:auto; bottom:auto; top:14px; font-size:9.5px; }
+  .bn-tighten-math { left:18px; right:14px; top:40px; width:auto; gap:5px; }
+  .bn-tighten-math p { margin-right:0; }
+  .bn-tighten-math p:nth-child(n+8), .bn-tighten-math small { display:none; }
+  .bn-tighten-math b { font-size:10.5px; }
   .bn-tighten.is-static .bn-tighten-stage { height:min(92svh, 760px); }
 }
-@media (prefers-reduced-motion:reduce) { .bn-tighten-hint i, .bn-tighten.is-hit .bn-tighten-stage { animation:none; } .bn-tc { transform:none; opacity:1; } }
+@media (prefers-reduced-motion:reduce) { .bn-tighten-hint i, .bn-tighten.is-hit .bn-tighten-stage { animation:none; } .bn-tc { transform:none; opacity:1; } .bn-tighten-math { transition:none; } }
 
 /* ── 홈에서만 머리띠(헤더)와 바탕을 어둡게 ── */
 body.ia-at-home, html.bn-boot-home body { background:#0a0e13; }

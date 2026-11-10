@@ -17,7 +17,7 @@
   같은 말로 시작하면 한 번만 씁니다(`entry_title`).
 - `build.py`: 홈 메타정보와 초기 제품 소개. 앱이 로드되면 같은 컨테이너를
   기존 홈페이지 화면으로 교체합니다. 방문자에게 숨긴 검색 전용 본문을 넣지 않습니다.
-  이 개요는 홈의 조임 장면과 같은 자리·같은 문구·같은 어두운 바탕으로 그려, 본 화면으로 바뀔 때 번쩍이거나 꼬리말이 밀리지 않게 합니다(`site/build.py` `initial_home()`, 문구는 `site/catalog.py` `brand_copy()`가 `app/src/v9_tighten.js`에서 읽음). 검색용 h1은 그대로 한 개이고 화면에도 보입니다. 다른 화면(`/#list` 등)으로 바로 들어온 방문자에게만 화면이 그려지기 전 잠깐 가립니다.
+  이 개요는 홈의 조립 장면(첫 화면 그림)과 같은 자리·같은 문구·같은 어두운 바탕으로 그려, 본 화면으로 바뀔 때 번쩍이거나 꼬리말이 밀리지 않게 합니다(`site/build.py` `initial_home()`, 문구는 `site/catalog.py` `brand_copy()`가 `app/src/v9_tighten.js`에서 읽음). 검색용 h1은 그대로 한 개이고 화면에도 보입니다. 다른 화면(`/#list` 등)으로 바로 들어온 방문자에게만 화면이 그려지기 전 잠깐 가립니다.
 
 `python3 tools/build_all.py`로 결과물을 만들고 `python3 tools/check.py`를
 통과시킵니다. `tools/check_search.py`는 모든 검색 문서의 제목·설명·표준 주소,
