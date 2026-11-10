@@ -103,7 +103,7 @@ function bnTightenParts() {
     const ring = (nu, sec) => grid(nu, sec.length - 1, (i, j) => { const a = i / nu * TAU, q = sec[j], r = typeof q.r === 'function' ? q.r(a) : q.r; return [q.x, r * Math.cos(a), r * Math.sin(a), q.ao ?? 1]; }, true);
     // 반쪽 회전체 (up: y ≥ 0 쪽). 축 x, 반지름 R(x). 양 끝은 구멍(bore)까지 막는다
     function half(R, x0, x1, nx, up, bore) {
-      const a0 = up ? 0 : PI, na = 30, pt = (x, r, i, o) => { const a = a0 + PI * i / na; return [x, r * Math.sin(a), r * Math.cos(a), o]; };
+      const a0 = up ? 0 : PI, na = 48, pt = (x, r, i, o) => { const a = a0 + PI * i / na; return [x, r * Math.sin(a), r * Math.cos(a), o]; };
       grid(na, nx, (i, j) => { const x = x0 + (x1 - x0) * j / nx; return pt(x, R(x), i, 1); }, false);
       [x0, x1].forEach(x => grid(na, 1, (i, j) => pt(x, j ? R(x) : bore, i, j ? 1 : .45), false));
     }
@@ -164,7 +164,7 @@ function bnTightenParts() {
   pin.ring(24, [{ x: xp, r: .01 }, { x: xp, r: d1 / 2 - 1.3 }, { x: xp + 1.3, r: d1 / 2 }]); pin.ring(24, [{ x: xp + 1.3, r: d1 / 2 }, { x: 5.6, r: d2 / 2 }]);
   pin.ring(24, [{ x: 5.6, r: d2 / 2 }, { x: 7, r: d2 / 2 - 1.4 }, { x: 7, r: .01 }]);
   // 케이싱 하부·상부 (몸통 반쪽 + 플랜지). 맞댐면은 따로 만든다 (열려 있을 때 빛난다)
-  const NX = 48, lower = builder(), upper = builder(), faceL = builder(), faceU = builder(), pit = builder(), holes = builder();
+  const NX = 64, lower = builder(), upper = builder(), faceL = builder(), faceU = builder(), pit = builder(), holes = builder();
   lower.half(Rc, -XC, XC, NX, false, RS + 12); lower.slab(Wc, -XC, XC, -T, 0, NX, 'bse');
   upper.half(Rc, -XC, XC, NX, true, RS + 12); upper.slab(Wc, -XC, XC, 0, T, NX, 'tse');
   faceL.slab(Wc, -XC, XC, -T, 0, NX, 't'); faceU.slab(Wc, -XC, XC, 0, T, NX, 'b');
@@ -227,10 +227,9 @@ vec3 env(vec3 d, float r){ float s = .03 + r * .85;
   col += vec3(.85, .92, 1.) * .09 * exp(-pow(d.y * 5.5, 2.)) * (1. - r);
   ${LIGHTS}
   vec3 c = normalize(vec3(cos(uOrbit.x), .3, sin(uOrbit.x))), t1 = normalize(cross(c, vec3(0., 1., 0.))), t2 = cross(t1, c);
-  col += vec3(1., .44, .14) * 7. * uOrbit.y * pane(d, c, t1, t2, vec2(.2, .9), s + .06);
+  if (uOrbit.y > 0.) col += vec3(1., .44, .14) * 7. * uOrbit.y * pane(d, c, t1, t2, vec2(.2, .9), s + .06);
   return col; }
 void main(){ vec3 n = normalize(vN); if (!gl_FrontFacing) n = -n;
-  float g = fract(sin(floor(vP.y * 2.2) * 91.7) * 43758.5) - .5; n = normalize(n + vec3(0., g, 0.) * uRough * uRough * .16);   // 주물·가공 결
   vec3 v = normalize(uCam - vP); float nv = clamp(dot(n, v), 0., 1.);
   vec3 f = uTint + (1. - uTint) * pow(1. - nv, 5.);
   vec3 col = env(reflect(-v, n), uRough) * f;
@@ -274,7 +273,7 @@ void main(){ vec3 n = normalize(vN); if (!gl_FrontFacing) n = -n;
     const az = (1.2 - .2 * vw.p) + vw.px * .05, el = (.5 - .12 * vw.p) - vw.py * .035, dist = 3080 * Math.max(1, (wide ? 1.5 : .9) / asp) * (1 - .05 * vw.p);
     const tgt = [0, 14, 0], eye = [tgt[0] + dist * Math.cos(el) * Math.cos(az), tgt[1] + dist * Math.sin(el), tgt[2] + dist * Math.cos(el) * Math.sin(az)];
     gl.uniformMatrix4fv(u.VP, false, mul(persp(.36, asp, 300, 9000), look(eye, tgt)));
-    gl.uniform2f(u.Shift, wide ? .2 : 0, wide ? -.04 : .4);   // 넓은 화면: 글(왼쪽)과 계산 용지(오른쪽) 사이에 놓는다 gl.uniform3fv(u.Cam, eye); gl.uniform2f(u.Orbit, vw.orbit[0], vw.orbit[1]);
+    gl.uniform2f(u.Shift, wide ? .2 + .06 * Math.min(1, Math.max(0, (asp - 1.8) / .4)) : 0, wide ? -.04 : .4);   // 넓은 화면: 글(왼쪽)과 계산 용지(오른쪽) 사이에 놓는다. 아주 넓으면 조금 더 오른쪽 gl.uniform3fv(u.Cam, eye); gl.uniform2f(u.Orbit, vw.orbit[0], vw.orbit[1]);
     const q0 = bnTightenPose(vw.p), lift = q0.lift + vw.bob, k = D.k, open = lift > .02, glow = hot.map(x => x * (open ? Math.exp(-lift / 13) : 0)), I = place(0, 0, 0), up = place(0, lift, 0);
     // 고정된 것: 받침, 하부, 축, 노즐, 스터드
     draw(B.base, I, [.12, .135, .155], .5);
@@ -312,8 +311,11 @@ function bnTightenInit() {
   if (still || !R) root.classList.add('is-static');
   const pinned = !root.classList.contains('is-static');
   let target = pinned ? 0 : 1, cur = target, raf = 0, last = 0, live = false, visible = true, seated = null, sweepAt = -1e9, idleAt = performance.now(), px = 0, py = 0, tx = 0, ty = 0;
-  // 느린 기기: 그림 해상도를 낮춰 끊기지 않게 한다 (다시 올리지는 않는다). __bnTightenFull은 포스터 캡처 도구(tools/render_tighten_poster.mjs)가 켠다
-  let quality = R?.soft && !window.__bnTightenFull ? .6 : 1, slow = 0, counted = 0;
+  // 해상도 (대표 지적 2026-11-10: 화질): 기기 화소에 맞춘다 (최대 2배, 약 420만 화소). 느린 기기에서는 낮추되, 화면 본래 해상도
+  // (그림 1화소 = CSS 1픽셀) 아래로는 내리지 않는다 — 흐릿한 그림보다 조금 끊기는 편이 낫다. 다시 올리지는 않는다.
+  // 자동 점검의 소프트웨어 렌더러만 낮게 둔다 (점검 시간). __bnTightenFull은 포스터 캡처 도구(tools/render_tighten_poster.mjs)가 켠다
+  const lowTest = auto && !!R?.soft && !window.__bnTightenFull;
+  let quality = lowTest ? .6 : 1, slow = 0, counted = 0;
   const C = BN_TIGHTEN;
   // 계산 용지가 창을 지나 넘어갈 길이. 글꼴이 늦게 오면 용지 길이가 달라지므로, 크기가 바뀔 때마다 다시 잰다
   const rollBox = root.querySelector('.bn-math-roll'), strip = root.querySelector('.bn-math-strip');
@@ -330,7 +332,7 @@ function bnTightenInit() {
   }
   function resize() {
     if (!R) return;
-    const cw = stage.clientWidth, ch = stage.clientHeight, k = Math.min(2, devicePixelRatio || 1, Math.sqrt(2.6e6 / Math.max(1, cw * ch))) * quality;   // 최대 약 260만 화소
+    const cw = stage.clientWidth, ch = stage.clientHeight, top = Math.min(2, devicePixelRatio || 1, Math.sqrt(4.2e6 / Math.max(1, cw * ch))), k = Math.max(lowTest ? 0 : Math.min(1, top), top * quality);
     const w = Math.max(2, Math.round(cw * k)), h = Math.max(2, Math.round(ch * k));
     if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
   }
@@ -360,9 +362,9 @@ function bnTightenInit() {
     raf = 0;
     if (!root.isConnected) return cleanup();
     const fresh = !live || !last, gapMs = now - last, dt = fresh ? 16 : Math.min(64, gapMs); last = now;
-    if (!fresh && R && quality > .42 && !window.__bnTightenFull) {   // 이어지는 프레임이 계속 느리면(평균 34 ms 초과) 해상도를 낮춘다
+    if (!fresh && R && quality > .5 && !window.__bnTightenFull) {   // 이어지는 프레임이 계속 느리면(평균 42 ms 초과) 해상도를 조금 낮춘다 (하한은 resize가 지킨다)
       slow += gapMs; counted++;
-      if (counted >= 20) { if (slow / counted > 34) { quality *= .75; resize(); } slow = counted = 0; }
+      if (counted >= 24) { if (slow / counted > 42) { quality *= .8; resize(); } slow = counted = 0; }
     }
     cur += (target - cur) * (1 - Math.exp(-dt / 110)); if (Math.abs(target - cur) < .0004) cur = target;
     const more = paint(now);
