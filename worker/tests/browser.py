@@ -107,6 +107,17 @@ def check_channel(page, BASE, OUT):
 CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
+def check_not_found(page, BASE, OUT):
+  """An unknown address gets the guide page with a 404 status at any depth, and its links work from there."""
+  page.set_viewport_size({'width':1280,'height':800})
+  for path in ('/no-such-page','/lib/no-such-entry','/products/category/no-such'):
+   response=page.goto(BASE+path);assert response.status==404,(path,response.status)
+   assert page.locator('h1').count()==1 and page.locator('h1').inner_text()=='찾으시는 주소가 없습니다',path
+   assert page.locator('meta[name=robots]').get_attribute('content')=='noindex,follow' and page.locator('link[rel=canonical]').count()==0
+   assert [a.get_attribute('href') for a in page.locator('.cards a').all()]==['/','/products/','/lib/','/#list'],path
+  page.locator('.cards a[href="/lib/"]').click();page.wait_for_url(BASE+'/lib/');assert page.locator('h1').count()==1
+  assert page.goto(BASE+'/lib/ks-b-2819').status==200   # a real page is untouched
+
 def check_boot(page, BASE, OUT):
   """Before JavaScript the home already shows the dark hero copy; nothing jumps when the app takes over; other routes do not flash home text."""
   browser=page.context.browser
@@ -517,6 +528,7 @@ def check(BASE, OUT):
   check_materials(page,BASE,OUT)
   check_phone_bar(page,BASE,OUT)
   check_boot(page,BASE,OUT)
+  check_not_found(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()

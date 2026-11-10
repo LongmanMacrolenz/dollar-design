@@ -43,7 +43,7 @@ def build(root: pathlib.Path):
 
 
 def tree(root: pathlib.Path):
-    keep = [root / "site" / "page.html", root / "docs" / "index.html", root / "docs" / "sitemap.xml", root / "docs" / "robots.txt"]
+    keep = [root / "site" / "page.html", root / "docs" / "index.html", root / "docs" / "404.html", root / "docs" / "sitemap.xml", root / "docs" / "robots.txt"]
     keep += sorted((root / "docs" / "lib").glob("*.html"))
     keep += sorted((root / "docs" / "products").rglob("*.html"))
     keep += sorted((root / "docs" / "brand").glob("*"))

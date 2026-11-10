@@ -95,6 +95,7 @@ def main():
         texts[str(p.relative_to(ROOT))] = p.read_text(encoding="utf-8")
     for p in sorted((ROOT / "docs" / "products").rglob("*.html")):
         texts[str(p.relative_to(ROOT))] = p.read_text(encoding="utf-8")
+    texts["docs/404.html"] = (ROOT / "docs" / "404.html").read_text(encoding="utf-8")
     hits = []
     for name, t in texts.items():
         visible = re.sub(r"<script.*?</script>|<style.*?</style>", "", t, flags=re.S) if name != "docs/index.html" else t
