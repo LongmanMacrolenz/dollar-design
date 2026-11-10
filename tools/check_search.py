@@ -9,6 +9,7 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "site"))
 from catalog import SITE_URL, HOME_TITLE, HOME_DESC, catalog, product_urls
+from build_lib import site_info
 
 
 class Document(HTMLParser):
@@ -69,6 +70,7 @@ def main():
     urls = [x.text for x in ET.parse(ROOT / "docs/sitemap.xml").findall("{*}url/{*}loc")]
     assert len(urls) == len(set(urls)), "Duplicate sitemap URLs"
     families, tiles, paths = catalog()
+    kakao = site_info().get("kakaoChat", "")
     assert len(files) == len(urls), "Sitemap and generated pages disagree"
     canonical = set()
     product_titles = set()
@@ -88,6 +90,8 @@ def main():
         assert doc.meta["og:url"] == url, file
         assert "noindex" not in doc.meta.get("robots", ""), file
         assert doc.ld, f"Missing structured data: {file}"
+        if file != files[0]:   # 정적 페이지(사전·제품)는 끝의 볼트노트 띠에 문의 길 두 개를 둔다: 사이트 안의 Sales 화면과 카카오톡 채널
+            assert "/#list" in doc.links and (not kakao or kakao in doc.links), f"Missing inquiry links: {file}"
         for href in [*doc.links, *doc.images]:
             parsed = urlsplit(href)
             if parsed.scheme or parsed.netloc or not parsed.path: continue
