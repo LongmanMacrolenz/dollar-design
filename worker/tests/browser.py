@@ -362,6 +362,10 @@ def check_home(page, BASE, OUT):
   assert all(phone['pins']),phone
   page.evaluate('y=>scrollTo(0,y)',phone['y']);page.wait_for_function('__sceneTest.state()[0].seated',timeout=20000)
   assert page.evaluate('__sceneTest.state()[0].hits')==1 and page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  # Laptop-height windows: every scene must still be held and animated (the product section used to fall back to a still here).
+  for size in ({'width':1536,'height':730},{'width':1366,'height':650}):
+   page.set_viewport_size(size);page.goto(BASE+'/#lib');page.goto(BASE+'/#home');page.wait_for_function('window.__sceneTest')
+   assert all(page.evaluate('__sceneTest.state().map(s=>s.pin)')),(size,page.evaluate('__sceneTest.state()'))
   page.set_viewport_size({'width':1280,'height':800})
   print('홈 조립 장면 · 문구/CTA/자세 함수(순서·나사)/스크롤 고정/아래 구역 조임·흔들림/올릴 때/움직임 줄이기/WebGL 대체: PASS')
 
