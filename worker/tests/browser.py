@@ -107,6 +107,21 @@ def check_channel(page, BASE, OUT):
 CHANNEL_CHAT='https://pf.kakao.com/_ZlHxiX/chat'
 
 
+def check_phone_bar(page, BASE, OUT):
+  """The sticky phone bar keeps its four items on one row at common phone widths, with the cart still named."""
+  page.emulate_media(reduced_motion='no-preference')
+  for width in (320,360,390):
+   page.set_viewport_size({'width':width,'height':780});page.goto(BASE+'/#products');page.locator('#ia-pbody').wait_for()
+   page.evaluate('scrollTo(0,900)');page.locator('#tb-mini.on').wait_for()
+   page.wait_for_function('getComputedStyle(document.querySelector("#tb-mini")).transform==="none"||new DOMMatrix(getComputedStyle(document.querySelector("#tb-mini")).transform).m42===0')
+   boxes=page.locator('#tb-mini > *').evaluate_all('els=>els.map(e=>{const r=e.getBoundingClientRect();return[Math.round(r.top),Math.round(r.left),Math.round(r.right),Math.round(r.height)]})')
+   assert len(boxes)==4 and len({b[0] for b in boxes})==1,(width,boxes)   # one row
+   assert all(boxes[i][2]<=boxes[i+1][1]+1 for i in range(3)) and boxes[-1][2]<=width,(width,boxes)   # left to right, inside the screen
+   assert page.locator('#tb-mini').bounding_box()['height']<=64,width
+   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
+   assert '견적함' in page.locator('#tb-mini a[data-go=cart]').inner_text() and page.locator('#tb-mini .bn-logo').bounding_box()['width']>=70,width
+  page.set_viewport_size({'width':1280,'height':800});page.evaluate('scrollTo(0,0)')
+
 def check_materials(page, BASE, OUT):
   """The materials entrance is inquiry-only: four cards prefill the RFQ memo, never drop a typed memo, and promise nothing."""
   page.emulate_media(reduced_motion='no-preference');page.set_viewport_size({'width':1280,'height':800})
@@ -472,6 +487,7 @@ def check(BASE, OUT):
   check_home(page,BASE,OUT)
   check_sales(page,BASE,OUT)
   check_materials(page,BASE,OUT)
+  check_phone_bar(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))
   browser.close()

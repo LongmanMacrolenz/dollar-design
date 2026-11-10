@@ -996,9 +996,11 @@ footer.foot { padding-block: 0 48px; }
   .tb-grid .revc { display: none; }
   .brand small { display: none; }
   .mark { width: 30px; height: 30px; }
-  .tb-mini { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: stretch; position: fixed; left: 0; right: 0; top: 0; z-index: 35; padding-top: env(safe-area-inset-top, 0px); padding-inline: var(--gut); background: var(--paper); transform: translateY(-110%); transition: transform .16s ease-out; }
+  /* 칸은 4개(로고·찾기·Sales 문의·견적함)다. 한 줄에 들어가도록 로고가 줄어들고, 좁은 화면에서는 견적함 글자를 가리고 숫자만 보인다 */
+  .tb-mini { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; align-items: stretch; position: fixed; left: 0; right: 0; top: 0; z-index: 35; padding-top: env(safe-area-inset-top, 0px); padding-inline: 12px; background: var(--paper); transform: translateY(-110%); transition: transform .16s ease-out; }
   .tb-mini.on { transform: none; box-shadow: 0 6px 18px var(--shadow); }
-  .tb-mini > * { min-height: 52px; display: flex; align-items: center; gap: 8px; border: var(--lw) solid var(--ink); border-top: 0; background: var(--sheet); padding: 0 12px; text-decoration: none; color: inherit; }
+  .tb-mini > * { min-height: 52px; min-width: 0; display: flex; align-items: center; gap: 8px; border: var(--lw) solid var(--ink); border-top: 0; background: var(--sheet); padding: 0 10px; white-space: nowrap; text-decoration: none; color: inherit; }
+  .tb-mini .bn-logo { flex: 0 1 auto; min-width: 0; height: auto; }
   .tb-mini > * + * { border-left: 0; }
   .tb-mini .mark { width: 26px; height: 26px; }
   .tb-mini strong { font-size: 17px; font-weight: 800; letter-spacing: -.03em; }
@@ -1191,6 +1193,7 @@ footer.foot { padding-block: 0 48px; }
   .ftb > div:nth-child(3) { border-right: 0; }
   .ftb > div:nth-child(4) { grid-column: 1 / -1; }
 }
+@media (max-width: 430px) { .tb-mini-lab { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; } }
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
@@ -1434,7 +1437,7 @@ footer.foot { padding-block: 0 48px; }
   <a href="#home" data-go="home" aria-label="Boltnote · 볼트노트 홈"><img class="bn-logo" src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="boltnote"></a>
   <button type="button" id="mini-find">찾기</button>
   <a href="#list" data-go="list" class="ia-mini-list">Sales 문의</a>
-  <a href="#cart" data-go="cart">견적함 <span class="cart-n">0</span></a>
+  <a href="#cart" data-go="cart"><span class="tb-mini-lab">견적함</span> <span class="cart-n">0</span></a>
 </div>
 
 <main id="view" class="wrap" tabindex="-1"></main>
