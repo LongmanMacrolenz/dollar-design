@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "site"))
-from catalog import SITE_URL, HOME_TITLE, HOME_DESC, catalog, product_urls
+from catalog import SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE, SOCIAL_NOTE, brand_copy, catalog, product_urls
 from build_lib import site_info
 
 
@@ -88,6 +88,7 @@ def main():
         assert doc.meta["og:description"] == doc.meta["description"], file
         assert doc.meta["og:title"] == doc.title, file
         assert doc.meta["og:url"] == url, file
+        assert doc.meta["og:image"] == SITE_URL + SOCIAL_IMAGE, file   # 공유 그림 주소는 한 곳(catalog.py)에서만 정한다
         assert "noindex" not in doc.meta.get("robots", ""), file
         assert doc.ld, f"Missing structured data: {file}"
         if file != files[0]:   # 정적 페이지(사전·제품)는 끝의 볼트노트 띠에 문의 길 두 개를 둔다: 사이트 안의 Sales 화면과 카카오톡 채널
@@ -111,6 +112,11 @@ def main():
                 assert "공급처 확인 뒤 견적서" in text, file
                 assert len(text) > 700, f"Thin product guide: {file}"
     assert canonical == set(urls)
+    # 공유 그림: 파일이 있고, 그림 원본(app/brand/social.html)이 홈과 같은 문구와 렌더링 표기를 쓰며, 홈의 그림 설명이 그 문구를 읽는다
+    copy, card = brand_copy(), (ROOT / "app/brand/social.html").read_text(encoding="utf-8")
+    assert resolve("/" + SOCIAL_IMAGE.split("?")[0]).exists() and "?v=" in SOCIAL_IMAGE, "share image"
+    assert all(part in card for part in (*copy["h1"], copy["stamp"], copy["lead"], SOCIAL_NOTE)), "share card copy differs from the home (app/brand/social.html)"
+    assert copy["stamp"] in Document(files[0].read_text(encoding="utf-8")).meta["og:image:alt"], "share image alt"
     # 없는 주소 안내(404.html): 검색에 넣지 않고(noindex·표준 주소 없음·사이트맵에 없음), 어느 깊이에서도 링크가 풀리게 루트 주소만 쓴다
     missing = Document((ROOT / "docs/404.html").read_text(encoding="utf-8"))
     assert "noindex" in missing.meta.get("robots", "") and not missing.canonical and "og:url" not in missing.meta, "404 page must stay out of search"

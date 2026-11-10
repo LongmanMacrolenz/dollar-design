@@ -26,7 +26,7 @@
 | `site/lib.json` | **규격 사전 원본**(검토를 마친 항목만). 고친 뒤 `python3 tools/sync_lib.py` |
 | `site/build_lib.py` | `site/lib.json`으로 `docs/lib/*.html`, `docs/sitemap.xml`을 만들고 `docs/robots.txt`에 사이트맵 줄을 넣습니다. |
 | `docs/lib/`, `docs/sitemap.xml` | 규격 사전 정적 페이지와 사이트맵. 직접 고치지 말고 `python3 site/build_lib.py`로 다시 만듭니다. |
-| `docs/og.png` | 링크 미리보기 이미지(카카오톡·메신저·SNS 공유 시 표시, 1280×720) |
+| `docs/brand/boltnote-social.png` | 링크 미리보기 이미지(카카오톡·메신저·SNS 공유 시 표시, 1280×720). 원본은 `app/brand/social.html`이고 `python3 tools/render_brand.py`로 다시 그린 뒤 `site/catalog.py`의 `SOCIAL_IMAGE` `?v=` 숫자를 올립니다. `docs/og.png`는 쓰지 않는 예전 그림입니다. |
 
 ## 배포
 

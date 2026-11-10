@@ -2,11 +2,20 @@
 <html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=1280">
 <title>Boltnote share card</title>
 <link rel="icon" href="boltnote-mark.svg" type="image/svg+xml">
-<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@500;700&family=Hahmlet:wght@200;700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;width:1280px;height:720px;background:#142234;color:#fff;font-family:'Gothic A1',sans-serif;overflow:hidden}
-main{position:relative;padding:78px 84px;height:100%;isolation:isolate}.logo{width:510px;height:auto}.shape{position:absolute;width:620px;height:620px;right:-120px;bottom:-175px;opacity:.07;z-index:-1}
-p{font-size:21px;letter-spacing:.14em;margin:76px 0 20px;color:#F15A38}h1{font-size:48px;line-height:1.45;letter-spacing:-.055em;margin:0;font-weight:700}.foot{position:absolute;bottom:62px;left:84px;right:84px;display:flex;justify-content:space-between;border-top:1px solid #ffffff35;padding-top:24px;font-size:18px;color:#bac4d0;letter-spacing:.02em}
+*{box-sizing:border-box}body{margin:0;width:1280px;height:720px;background:#0a0e13;color:#fff;font-family:'Gothic A1',sans-serif;overflow:hidden}
+main{position:relative;height:100%;padding:60px 72px;isolation:isolate}
+.scene{position:absolute;top:0;right:0;width:1152px;height:720px;object-fit:cover;z-index:-2}
+main::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#0a0e13 0,#0a0e13 11%,rgba(10,14,19,.9) 40%,rgba(10,14,19,0) 64%)}
+.logo{display:block;width:236px;height:auto}
+h1{margin:104px 0 0;font-family:'Hahmlet',serif;font-size:70px;line-height:1.2;font-weight:800;letter-spacing:-.025em;white-space:nowrap}
+h1 span{display:block;font-weight:200;letter-spacing:-.03em}
+h1::after{content:"";display:block;width:220px;height:6px;margin-top:26px;background:#f15a38}
+.stamp{display:flex;align-items:center;gap:14px;margin:26px 0 0;font-family:'Hahmlet',serif;font-weight:700;font-size:32px;letter-spacing:-.015em}
+.stamp img{width:36px;height:36px}
+.foot{position:absolute;left:72px;right:72px;bottom:46px;display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(255,255,255,.22);padding-top:20px;font-size:20px;font-weight:500;color:#c8ced5}
+.foot small{font-size:14px;color:#aab3bd;letter-spacing:.02em}
 </style>
-<main><img class="logo" src="boltnote-logo-light.svg" alt="boltnote"><img class="shape" src="boltnote-mark.svg" alt=""><p>INDUSTRIAL FASTENERS</p><h1>설비를 잇는 체결부품.<br>사양부터 견적까지, 볼트노트.</h1><div class="foot"><span>제품 · 도면 · 규격 사전 · BOM 견적</span><span>METRIC &amp; INCH</span></div></main>
+<main><img class="scene" src="../../docs/media/boltnote-tighten-poster.webp" alt=""><img class="logo" src="boltnote-logo-light.svg" alt="boltnote"><h1><span>작은 것이,</span>전부를 붙잡습니다.</h1><p class="stamp"><img src="boltnote-mark.svg" alt="">볼트는, 볼트노트.</p><div class="foot"><span>체결부품 조달, BOM부터 정확하게.</span><small>참고용 렌더링 · 실제 제품 사진 아님</small></div></main>
 </html>
