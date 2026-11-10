@@ -9,7 +9,7 @@ import pathlib
 import re
 import sys
 
-from catalog import catalog, brand_copy, display_font_href, SITE_URL, HOME_TITLE, HOME_DESC
+from catalog import catalog, brand_copy, display_font_href, SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE
 from build_lib import site_info, beacon_tag
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -17,7 +17,7 @@ SRC = ROOT / "page.html"
 
 SEO_TITLE = HOME_TITLE
 SEO_DESC = HOME_DESC
-OG_IMAGE = "brand/boltnote-social.png"  # docs/brand/boltnote-social.png, 1280x720
+OG_IMAGE = SOCIAL_IMAGE  # docs/brand/boltnote-social.png, 1280x720 (catalog.py)
 OG_W, OG_H = 1280, 720
 BOOT_BG = "#0a0e13"     # 홈의 어두운 바탕 (app/src/zzzzzzzzzz_home.css). 휴대폰 브라우저 위쪽 색으로도 쓴다
 PAPER_BG = "#f4f3ef"    # 다른 화면의 밝은 바탕 (app/src/zzz_experience.css --paper)
@@ -32,6 +32,12 @@ BOOT_SCRIPT = (
     "document.addEventListener('DOMContentLoaded',function(){if(d.classList.contains('bn-boot-route')){d.classList.remove('bn-boot-route');d.classList.add('bn-boot-home');}});}}catch(e){}"
     "})();"
 )
+
+
+def social_alt() -> str:
+    """공유 그림의 설명. 그림에 적힌 문구(홈과 같은 문구)를 그대로 읽는다."""
+    copy = brand_copy()
+    return f"볼트노트 — {' '.join(copy['h1'])} {copy['stamp']} 조여진 볼트와 너트의 참고용 렌더링."
 
 
 def head_meta() -> str:
@@ -52,7 +58,7 @@ def head_meta() -> str:
         f'<meta property="og:image" content="{img}">\n'
         f'<meta property="og:image:width" content="{OG_W}">\n'
         f'<meta property="og:image:height" content="{OG_H}">\n'
-        '<meta property="og:image:alt" content="볼트노트: 목록 보내고 견적 받기, ASME/ASTM 플랜트 볼팅, 도면·규격 정보">\n'
+        f'<meta property="og:image:alt" content="{html.escape(social_alt())}">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
         f'<meta name="twitter:title" content="{t}">\n'
         f'<meta name="twitter:description" content="{d}">\n'

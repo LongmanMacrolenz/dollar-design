@@ -11,7 +11,7 @@ import json
 import pathlib
 import re
 
-from catalog import SITE_URL, product_path, product_urls, compact_description, brand_copy, display_font_href
+from catalog import SITE_URL, SOCIAL_IMAGE, product_path, product_urls, compact_description, brand_copy, display_font_href
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
@@ -117,7 +117,7 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, in
         +
         f'<meta property="og:type" content="article"><meta property="og:site_name" content="볼트노트"><meta property="og:locale" content="ko_KR">'
         + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
-        f'<meta property="og:image" content="{SITE_URL}brand/boltnote-social.png"><meta name="twitter:card" content="summary_large_image">\n'
+        f'<meta property="og:image" content="{SITE_URL}{SOCIAL_IMAGE}"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
         + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}</head>\n<body>\n{body}\n</body>\n</html>\n"
     )
