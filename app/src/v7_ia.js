@@ -174,7 +174,7 @@ function hmTrust() {
   </div><p class="ia-bizline">사업자 ${iaBizNo()} · ${ORDER_LIVE ? '통신판매업 신고' : '신고 전'} · <a href="#about" data-go="about">회사 소개 →</a></p><p class="ia-trust-f"><a href="#about" data-go="about">회사 소개 →</a></p></section>`;
 }
 // 홈과 제품 목록에서 같은 제품군 이미지·실제 카탈로그 수를 사용한다.
-const hmTiles = () => `<ul class="bn-products" role="list">${CAT_TILES.map((t, i) => `<li><a class="bn-product" href="#t-${t.id}" data-go="t-${t.id}"><span class="bn-product-visual bn-product-${t.id}" aria-hidden="true"></span><span class="bn-product-info"><span class="bn-product-top"><span class="bn-index">0${i + 1}</span><span class="bn-product-count">${iaTileN(t)}종</span></span><h3>${esc(t.ko)}</h3><span class="bn-product-en" lang="en">${esc(t.en)}</span><span class="bn-product-desc">${t.subs.slice(0, 3).map(s => esc(s.ko.replace(/ \(.*?\)/g, ''))).join(' · ')}</span><span class="bn-product-link">제품 살펴보기 <span aria-hidden="true">↗</span></span></span></a></li>`).join('')}</ul>`;
+const hmTiles = () => `<ul class="bn-products" role="list">${CAT_TILES.map((t, i) => `<li style="--i:${i}"><a class="bn-product" href="#t-${t.id}" data-go="t-${t.id}"><span class="bn-product-visual bn-product-${t.id}" aria-hidden="true"></span><span class="bn-product-info"><span class="bn-product-top"><span class="bn-index">0${i + 1}</span><span class="bn-product-count">${iaTileN(t)}종</span></span><h3>${esc(t.ko)}</h3><span class="bn-product-en" lang="en">${esc(t.en)}</span><span class="bn-product-desc">${t.subs.slice(0, 3).map(s => esc(s.ko.replace(/ \(.*?\)/g, ''))).join(' · ')}</span><span class="bn-product-link">제품 살펴보기 <span aria-hidden="true">↗</span></span></span></a></li>`).join('')}</ul>`;
 const hmColls = home => `<div class="ia-colls"><span class="lab">모아 보기</span><a class="hi" href="#k-plant" data-go="k-plant">${esc(CAT_COLL.plant.ko)} →</a><a class="ia-d" href="#k-pump" data-go="k-pump">${esc(CAT_COLL.pump.ko)} →</a><a class="ia-d" href="#k-flange" data-go="k-flange">${esc(CAT_COLL.flange.ko)} →</a>${home ? '<a class="ia-m" href="#products" data-go="products">모아 보기 전체 →</a>' : ''}</div>`;
 function sbBox(where) {
   const lg = where === 'list';
@@ -242,26 +242,27 @@ function pmMail() {
 }
 /* 홈 (대표 결정 2026-11-10): 첫 화면은 그림 + 한 줄 + 버튼. 파스너가 하는 일(조이고 고정한다)을 조임 장면(v9_tighten.js)으로 보이고,
    설명은 제품·규격 사전·견적·회사 소개 화면으로 보낸다. 그 아래는 입구 3개 → 제품군 줄 → 견적 메일 안내 → 더 보기.
+   입구 3개·제품군 줄·견적 안내는 화면을 내리면(올리면) 그 자리에서 조여지는 장면이다 (.bn-scene, v9_tighten_scenes.js). 내용과 링크는 그대로다.
    품목 수와 사전 수는 공개 데이터에서 계산한다. 용도별 모음은 제품 화면, 구매 전 확인·지식 지도는 규격 사전, 확인 범위·사업자 정보는 회사 소개에 있다. */
-const hmDoor = (no, go, label, title, meta) => `<a class="bn-door" href="#${go}" data-go="${go}"><span class="bn-door-top"><span class="bn-door-no">${no}</span><svg class="bn-door-nut" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 2.2 20.5 7.1v9.8L12 21.8 3.5 16.9V7.1Z"/><circle cx="12" cy="12" r="3.6"/></svg></span><span class="bn-door-label">${label}</span><b>${title}</b><span class="bn-door-meta">${meta} <i aria-hidden="true">↗</i></span></a>`;
+const hmDoor = (no, go, label, title, meta) => `<a class="bn-door" style="--i:${no - 1}" href="#${go}" data-go="${go}"><span class="bn-door-top"><span class="bn-door-no">${no}</span><svg class="bn-door-nut" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 2.2 20.5 7.1v9.8L12 21.8 3.5 16.9V7.1Z"/><circle cx="12" cy="12" r="3.6"/></svg></span><span class="bn-door-label">${label}</span><b>${title}</b><span class="bn-door-meta">${meta} <i aria-hidden="true">↗</i></span></a>`;
 V.home = () => `<div class="bn-home bn-studio" id="z-a">
   ${bnTightenMarkup()}
-  <nav class="bn-doors-sec" aria-label="바로 가기"><div class="bn-wrap bn-doors">
+  <nav class="bn-doors-sec bn-scene" data-scene="doors" data-impact="slam" data-scene-need=".bn-door:last-child b" data-seated="true" aria-label="바로 가기"><div class="bn-scene-stage"><div class="bn-scene-body"><div class="bn-wrap bn-doors">
     ${hmDoor('01', 'products', '제품', '모양과 규격으로 <br>찾습니다.', `${pmCatN()}종 · 미터·인치`)}
     ${hmDoor('02', 'lib', '규격 사전', '판단의 근거를 <br>확인합니다.', `${LIB.length}개 항목`)}
     ${hmDoor('03', 'list', '견적 문의', '목록 그대로 <br>보냅니다.', 'BOM · 메모 · RFQ')}
-  </div></nav>
-  <section class="bn-section bn-lineup" aria-labelledby="bn-h-products">
+  </div></div></div></nav>
+  <section class="bn-section bn-lineup bn-scene" data-scene="lineup" data-impact="thud" data-scene-pin="top" data-scene-need=".bn-product-visual" data-seated="true" aria-labelledby="bn-h-products"><div class="bn-scene-stage"><div class="bn-scene-body">
     <div class="bn-wrap">
-      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">THE PRODUCT COLLECTION</p><h2 id="bn-h-products"><span class="bn-thin">작지만,</span><br>역할은 분명합니다.</h2></div><div class="bn-section-aside"><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">THE PRODUCT COLLECTION</p><h2 id="bn-h-products"><span class="bn-thin">작지만,</span><br><span class="bn-grow">역할은 분명합니다.</span></h2></div><div class="bn-section-aside"><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
       <div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
       <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요. · <a class="bn-text-link" href="/products/">제품별 규격·구매 안내 <span aria-hidden="true">↗</span></a></p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
     </div>
-  </section>
-  <section class="bn-section bn-rfq" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-rfq-grid">
-    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">CONNECT WITH SALES</p><h2 id="bn-h-rfq"><span class="bn-thin">BOM·메모·RFQ,</span><br>Sales로 바로.</h2><p>기존 자료를 그대로 보내 주세요.<br>사양 확인과 공급처 검토는 볼트노트가 이어갑니다.</p><ol class="bn-rfq-points"><li><span>01</span> BOM·메모·RFQ를 보냅니다</li><li><span>02</span> 사양과 공급 조건을 확인합니다</li><li><span>03</span> 견적과 확인 사항을 회신합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">Sales · 견적 문의 <span aria-hidden="true">↗</span></a></div></div>
+  </div></div></section>
+  <section class="bn-section bn-rfq bn-scene" data-scene="rfq" data-impact="punch" data-scene-need=".bn-rfq-copy" data-seated="true" aria-labelledby="bn-h-rfq"><div class="bn-scene-stage"><div class="bn-scene-body"><div class="bn-wrap bn-rfq-grid">
+    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">CONNECT WITH SALES</p><h2 id="bn-h-rfq"><span class="bn-thin">BOM·메모·RFQ,</span><br><span class="bn-grow">Sales로 바로.</span></h2><p>기존 자료를 그대로 보내 주세요.<br>사양 확인과 공급처 검토는 볼트노트가 이어갑니다.</p><ol class="bn-rfq-points"><li style="--i:0"><span>01</span> BOM·메모·RFQ를 보냅니다</li><li style="--i:1"><span>02</span> 사양과 공급 조건을 확인합니다</li><li style="--i:2"><span>03</span> 견적과 확인 사항을 회신합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">Sales · 견적 문의 <span aria-hidden="true">↗</span></a></div></div>
     ${salesContactMarkup(true)}
-  </div></section>
+  </div></div></div></section>
   <section class="bn-home-more" aria-label="더 보기">
     ${bnEngineeringMarkup()}
     <div class="bn-wrap bn-home-links"><a href="#about" data-go="about">회사 소개·확인 범위 <i aria-hidden="true">↗</i></a><a href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인 <i aria-hidden="true">↗</i></a><a href="#ref" data-go="ref">도면·CAD <i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools">계산·대조 도구 <i aria-hidden="true">↗</i></a><a href="#materials" data-go="materials">소재 문의 <i aria-hidden="true">↗</i></a></div>
@@ -270,7 +271,7 @@ V.home = () => `<div class="bn-home bn-studio" id="z-a">
 
 V.after.home = () => {
   hmBind();
-  bnTightenInit();bnHomeFontInit();bnBrandInit();bnFilmInit();
+  bnTightenInit();bnScenesInit();bnHomeFontInit();bnBrandInit();bnFilmInit();
   const f = $('pm-lib-form');
   if (f) f.addEventListener('submit', e => { e.preventDefault(); go(libURL({ q: $('pm-lib-q').value.trim() })); });
 };

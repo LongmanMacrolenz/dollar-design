@@ -8,8 +8,10 @@
    - 문구·버튼은 조작 없이 항상 보인다. 움직임 줄이기면 조여진 정지 장면, WebGL이 안 되면 정지 이미지로 바꾼다 (오류를 내지 않는다).
    - 글씨도 같은 이야기를 한다 (대표 요청 2026-11-10): 「작은 것이,」는 가늘게, 「전부를 붙잡습니다.」는 조여질수록 굵어져 고정 순간 가장 굵다.
      제목 글꼴은 굵기가 이어지는 가변 글꼴 Hahmlet(SIL OFL). bnHomeFontInit이 홈 제목에 쓰인 글자만 Google Fonts에 요청한다.
+   - 길이 (대표 요청 2026-11-10: 이 체험을 더 길게): 무대 높이의 3.4배(휴대폰 3배)를 내리는 동안 15바퀴. 너트는 볼트 끝과 나란한 자리에서 출발한다
+     (M16 너트 높이 14.8 + 시작 위치 49 = 63.8 ≤ 나사 끝 64. free를 더 늘리면 너트가 볼트 밖에서 시작하므로 len과 포스터를 함께 바꿔야 한다).
    순수 함수 bnTightenPose(p)가 스크롤 진행률 p(0–1)를 자세로 바꾼다. 화면 연결은 bnTightenInit (V.after.home). */
-const BN_TIGHTEN = { size: 'M16', free: 9, clamp: 5, p0: .06, p1: .5, p2: .8, plate: 16, len: 80, w0: 520, w1: 800,
+const BN_TIGHTEN = { size: 'M16', free: 10, clamp: 5, p0: .05, p1: .52, p2: .84, plate: 16, len: 80, w0: 520, w1: 800,
   h1: ['작은 것이,', '전부를 붙잡습니다.'], stamp: '볼트는, 볼트노트.', lead: '체결부품 조달, BOM부터 정확하게.' };
 const BN_DISPLAY_SEL = '.bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2';   // zzzzzzzzzz_home.css의 제목 글꼴 규칙과 같은 목록
 let bnTightenCleanup = null;
@@ -244,7 +246,7 @@ function bnTightenInit() {
     const pose = bnTightenPose(cur), ease = Math.min(1, Math.max(0, (cur - .01) / (C.p2 - .01))), e = ease * ease * (3 - 2 * ease);
     root.style.setProperty('--p', cur.toFixed(4)); root.style.setProperty('--e', e.toFixed(4)); root.style.setProperty('--w', String(Math.round(C.w0 + (C.w1 - C.w0) * e)));
     const s = cur >= C.p2 - 1e-4;
-    if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; root.classList.remove('is-hit'); void root.offsetWidth; root.classList.add('is-hit'); } seated = s; root.dataset.seated = String(s); }
+    if (s !== seated) { if (s && seated === false && pinned) { sweepAt = now; bnImpact(root, 'kick'); } seated = s; root.dataset.seated = String(s); }   // 고정 순간: 빛이 한 번 훑고 화면이 흔들린다 (v9_tighten_scenes.js)
     if (!R) return false;
     // 첫 화면에서 기다릴 때: 너트가 조금 돌았다 풀렸다 한다 (회전과 전진은 같은 피치로 묶인다)
     const idle = pinned && !auto && cur < .02 && now - idleAt < 9000, wob = idle ? .09 * (1 - Math.cos((now - idleAt) / 1900 * Math.PI * 2)) * Math.min(1, (9000 - (now - idleAt)) / 1500) : 0;

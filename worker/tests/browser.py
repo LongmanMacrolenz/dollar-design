@@ -297,11 +297,42 @@ def check_home(page, BASE, OUT):
    assert page.evaluate('getComputedStyle(document.querySelector(".bn-tl:not(.bn-thin)")).fontVariationSettings')==f'"wght" {cfg["w1"]}' and cfg['w0']<cfg['w1']
    page.evaluate('scrollTo(0,0)');page.wait_for_function('window.__tightenTest.state().p<0.001',timeout=20000)
    assert page.locator('.bn-tighten').get_attribute('data-seated')=='false'
+  # Scenes below the hero: each one is held in place, tightens with the scroll, and hits exactly once when it seats.
+  page.wait_for_function('window.__sceneTest')
+  scenes=page.evaluate('()=>{const tb=document.querySelector(".tb"),top=getComputedStyle(tb).position==="sticky"?tb.offsetHeight:0;return [...document.querySelectorAll(".bn-scene")].map(el=>({kind:el.dataset.scene,top,y0:el.getBoundingClientRect().top+scrollY-top,span:el.offsetHeight-el.querySelector(".bn-scene-stage").offsetHeight}))}')
+  assert [s['kind'] for s in scenes]==['doors','lineup','rfq'] and all(s['span']>200 for s in scenes),scenes
+  scene=lambda kind:page.evaluate('k=>__sceneTest.state().find(s=>s.kind===k)',kind)
+  seat='k=>__sceneTest.state().find(s=>s.kind===k).seated'
+  assert all(scene(s['kind'])['pin'] and scene(s['kind'])['seated'] is False for s in scenes)
+  for s in scenes:
+   k=s['kind'];page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.4)
+   page.wait_for_function('k=>Math.abs(__sceneTest.state().find(s=>s.kind===k).q-.4)<.01',arg=k,timeout=20000)
+   mid=page.evaluate('k=>{const el=document.querySelector(`.bn-scene[data-scene="${k}"]`);return{e:+el.style.getPropertyValue("--e"),seated:el.dataset.seated,top:el.querySelector(".bn-scene-stage").getBoundingClientRect().top}}',k)
+   assert abs(mid['e']-.5)<.02 and mid['seated']=='false' and abs(mid['top']-s['top'])<=1,(k,mid)
+   page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.95);page.wait_for_function(seat,arg=k,timeout=20000)
+   after=scene(k);assert after['hits']==1 and after['mode']=='down' and page.locator(f'.bn-scene[data-scene="{k}"]').get_attribute('data-seated')=='true',(k,after)
+   assert page.locator(f'.bn-scene[data-scene="{k}"].is-hit').count()==1 and page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+   if k=='lineup':assert page.evaluate('getComputedStyle(document.querySelector(".bn-lineup .bn-grow")).fontWeight')=='800'   # the heading is at full weight once seated
+  # Scrolling up from below: a scene that has gone past starts loose again and tightens as the page moves up.
+  page.evaluate('scrollTo(0,document.documentElement.scrollHeight)')
+  page.wait_for_function('__sceneTest.state().slice(0,2).every(s=>s.mode==="up"&&!s.seated&&s.q<.001)',timeout=20000)
+  for s in reversed(scenes[:2]):
+   k=s['kind'];page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.6)
+   page.wait_for_function('k=>Math.abs(__sceneTest.state().find(s=>s.kind===k).q-.4)<.01',arg=k,timeout=20000)
+   assert scene(k)['mode']=='up' and scene(k)['seated'] is False and scene(k)['hits']==1,(k,scene(k))
+   page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.05);page.wait_for_function(seat,arg=k,timeout=20000);assert scene(k)['hits']==2,(k,scene(k))
+  # Turning back mid-scene loosens it without a hit; tightening again hits again.
+  doors=scenes[0];page.evaluate('y=>scrollTo(0,y)',doors['y0']+doors['span']*.7)
+  page.wait_for_function('k=>!__sceneTest.state().find(s=>s.kind===k).seated',arg='doors',timeout=20000);assert scene('doors')['hits']==2
+  page.evaluate('y=>scrollTo(0,y)',doors['y0']);page.wait_for_function(seat,arg='doors',timeout=20000);assert scene('doors')['hits']==3
+  page.evaluate('scrollTo(0,0)')
   # Reduced motion: no scroll pinning, the seated still and the full message.
   page.emulate_media(reduced_motion='reduce');page.reload();page.locator('.bn-tighten.is-static').wait_for()
   assert page.locator('.bn-tighten').get_attribute('data-seated')=='true'
   assert page.evaluate('document.querySelector(".bn-tighten").offsetHeight<=innerHeight*1.2')
   assert page.locator('.bn-tighten-stamp').is_visible() and page.locator('.bn-brand-copy a[data-purchase-event=start]').is_visible()
+  still=page.evaluate('()=>[...document.querySelectorAll(".bn-scene")].map(el=>[el.dataset.seated,el.classList.contains("is-live")||el.classList.contains("is-pin"),el.style.getPropertyValue("--e"),getComputedStyle(el.querySelector(".bn-scene-stage")).position])')
+  assert still==[['true',False,'','static']]*3,still   # no pinning, no loose state: the seated layout as written
   # No WebGL: the poster replaces the canvas and nothing throws.
   context=page.context.browser.new_context(viewport={'width':1280,'height':800});other=context.new_page();problems=[];other.on('pageerror',lambda e:problems.append(str(e)))
   other.add_init_script('const g=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(t,...a){return /webgl/.test(t)?null:g.call(this,t,...a)}')
@@ -311,7 +342,14 @@ def check_home(page, BASE, OUT):
   assert other.locator('.bn-tighten-canvas').is_hidden() and other.locator('.bn-tighten').get_attribute('data-seated')=='true'
   assert not problems,problems;context.close()
   page.emulate_media(reduced_motion='no-preference')
-  print('홈 조임 장면 · 문구/CTA/자세 함수/스크롤 고정/움직임 줄이기/WebGL 대체: PASS')
+  # Phone: the scenes still hold and seat, and nothing overflows sideways.
+  page.set_viewport_size({'width':390,'height':844});page.goto(BASE+'/#lib');page.goto(BASE+'/#home');page.wait_for_function('window.__sceneTest')
+  phone=page.evaluate('()=>{const el=document.querySelector(".bn-doors-sec");return{pins:__sceneTest.state().map(s=>s.pin),y:el.getBoundingClientRect().top+scrollY+(el.offsetHeight-el.querySelector(".bn-scene-stage").offsetHeight)*.95}}')
+  assert all(phone['pins']),phone
+  page.evaluate('y=>scrollTo(0,y)',phone['y']);page.wait_for_function('__sceneTest.state()[0].seated',timeout=20000)
+  assert page.evaluate('__sceneTest.state()[0].hits')==1 and page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  page.set_viewport_size({'width':1280,'height':800})
+  print('홈 조임 장면 · 문구/CTA/자세 함수/스크롤 고정/아래 구역 조임·흔들림/올릴 때/움직임 줄이기/WebGL 대체: PASS')
 
 
 def check_sales(page, BASE, OUT):
