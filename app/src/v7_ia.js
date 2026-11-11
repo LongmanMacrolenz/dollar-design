@@ -896,6 +896,7 @@ function iaMenuHTML() {
   return `<div class="ia-mdoors"><a href="#list" data-go="list">Sales · 견적 문의</a>${SHOP.quickOrder ? '<a href="#buy" data-go="buy">② 규격품 바로 주문</a>' : ''}<a href="#ref" data-go="ref">${SHOP.quickOrder ? '③' : '②'} 도면·규격 보기</a>${typeof LIB !== 'undefined' && LIB.length ? `<a href="#lib" data-go="lib">${SHOP.quickOrder ? '④' : '③'} 체결부품 규격 사전</a>` : ''}</div>
     <div class="ia-chips2">${CAT_TILES.map(t => `<a href="#t-${t.id}" data-go="t-${t.id}">${esc(t.ko)}</a>`).join('')}</div>
     <p><a class="bluep" href="#k-plant" data-go="k-plant"><b>${esc(CAT_COLL.plant.ko)} →</b></a> · <a href="#products" data-go="products">모아 보기 전체 →</a></p>
+    <p><a class="ia-men" href="/en/" lang="en" hreflang="en">English (for plants in Korea) →</a> · <a href="/tables/">규격표 →</a></p>
     <p class="small muted"><a href="#about" data-go="about">회사 소개</a> · 메일 ${rfqC('rfq')} · 카카오톡 ${rfqC('kakaoChat')} · 전화 ${rfqC('tel', { link: true })}</p>`;
 }
 function iaMenu(open) {

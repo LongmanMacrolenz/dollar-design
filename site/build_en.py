@@ -115,7 +115,7 @@ def build():
          "logo": SITE_URL + "brand/boltnote-mark.svg"}]}
     out = DOCS / "en"
     out.mkdir(parents=True, exist_ok=True)
-    (out / "index.html").write_text(page(title, desc, "en/", body, ld, lang="en").replace("</style>", EN_CSS + "</style>", 1), encoding="utf-8")
+    (out / "index.html").write_text(page(title, desc, "en/", body, ld, lang="en", alternates={"ko": "", "en": "en/", "x-default": ""}).replace("</style>", EN_CSS + "</style>", 1), encoding="utf-8")
     print("wrote English page")
 
 

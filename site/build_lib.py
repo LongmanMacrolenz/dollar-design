@@ -118,7 +118,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link href=
          f'<link href="{html.escape(display_font_href(BRAND["stamp"]))}" rel="stylesheet" media="print" onload="this.media=\'all\'">')
 
 
-def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True, lang: str = "ko") -> str:
+def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True, lang: str = "ko", alternates: dict | None = None) -> str:
     """정적 페이지의 공통 틀. index=False는 검색에 넣지 않는 페이지(404 안내)로, 표준 주소와 og:url을 내지 않는다."""
     url = SITE_URL + path
     desc = compact_description(desc)
@@ -127,6 +127,7 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, in
         '<link rel="icon" href="/brand/boltnote-mark.svg" type="image/svg+xml">\n'
         + ('<meta name="robots" content="index,follow">\n' if index else '<meta name="robots" content="noindex,follow">\n')
         + f"<title>{e(title)}</title>\n<meta name=\"description\" content=\"{e(desc)}\">\n" + (f"<link rel=\"canonical\" href=\"{url}\">\n" if index else "")
+        + "".join(f'<link rel="alternate" hreflang="{k}" href="{SITE_URL}{v}">\n' for k, v in (alternates or {}).items())
         +
         f'<meta property="og:type" content="article"><meta property="og:site_name" content="{"Boltnote" if lang == "en" else "볼트노트"}"><meta property="og:locale" content="{"en_US" if lang == "en" else "ko_KR"}">'
         + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
