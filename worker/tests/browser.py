@@ -130,8 +130,9 @@ def check_boot(page, BASE, OUT):
   # No JavaScript: the static overview is the whole page, with one keyword h1 and the footer below the first screen.
   context=browser.new_context(viewport={'width':1280,'height':800},java_script_enabled=False);still=context.new_page();still.goto(BASE+'/')
   assert still.locator('html').get_attribute('class')=='bn-boot-home' and still.locator('h1').count()==1
-  assert still.locator('#initial-home-title').inner_text()=='산업설비 볼트·너트 구매와 BOM 견적'
-  assert ' '.join(still.locator('.bn-boot-line').inner_text().split())=='작은 것이, 전부를 붙잡습니다.' and still.locator('.bn-boot-lead').inner_text()=='체결부품 조달, BOM부터 정확하게.'
+  assert still.locator('#initial-home-title').inner_text().replace('\n','')=='도면 속 사양을,필요한 체결부품으로.'
+  assert '공급처 확인 결과를 견적으로 안내합니다' in still.locator('.bn-boot-lead').inner_text()
+  assert still.locator('.bn-boot-grid img').get_attribute('src')=='/media/boltnote-hero.webp'
   assert still.locator('.bn-boot-btn[href="/#list"]').is_visible() and still.locator('.bn-boot-more a[href="/products/hex-nut"]').is_visible()
   assert still.evaluate('getComputedStyle(document.body).backgroundColor')=='rgb(10, 14, 19)' and still.locator('meta[name="theme-color"]').get_attribute('content')=='#0a0e13'
   assert still.evaluate('document.querySelector("footer.foot").getBoundingClientRect().top>=innerHeight')
@@ -140,7 +141,7 @@ def check_boot(page, BASE, OUT):
   observer='window.__cls=0;new PerformanceObserver(l=>{for(const e of l.getEntries())if(!e.hadRecentInput)window.__cls+=e.value}).observe({type:"layout-shift",buffered:true})'
   read='({cls:window.__cls,html:document.documentElement.className,theme:document.documentElement.getAttribute("data-theme"),meta:document.querySelector("meta[name=theme-color]").content,bg:getComputedStyle(document.body).backgroundColor,overview:document.querySelectorAll(".search-overview").length})'
   for size in ({'width':390,'height':844},{'width':1280,'height':800}):
-   for route,ready,colour in (('','.bn-tighten','rgb(10, 14, 19)'),('#list','#sales-email','rgb(244, 243, 239)')):
+   for route,ready,colour in (('','.bn-company-hero','rgb(10, 14, 19)'),('#list','#sales-email','rgb(244, 243, 239)')):
     context=browser.new_context(viewport=size);live=context.new_page();live.add_init_script(observer);live.goto(BASE+'/'+route);live.locator(ready).wait_for();live.wait_for_timeout(1500)
     state=live.evaluate(read)
     assert state['html']=='' and state['overview']==0 and state['meta']==state['bg']==colour,(size,route,state)
@@ -260,127 +261,52 @@ def check_landed(page, BASE, OUT):
   assert not requests,requests
 
 def check_home(page, BASE, OUT):
-  """The home hero keeps its message and CTA visible; the tightening pose obeys thread kinematics; fallbacks render."""
-  import math
+  """Product-led company home: accessible actions, natural scrolling and the existing inquiry handoff."""
+  page.context.grant_permissions(['clipboard-read','clipboard-write'])
   page.emulate_media(reduced_motion='no-preference');page.set_viewport_size({'width':1280,'height':800})
-  page.goto(BASE+'/#home');page.locator('.bn-tighten h1').wait_for();page.wait_for_function('window.__tightenTest')
-  assert page.locator('#view h1').count()==1 and page.locator('#h-z-a').get_attribute('aria-label')=='작은 것이, 전부를 붙잡습니다.'
-  assert page.locator('#h-z-a').inner_text().replace('\n','').replace('\xa0',' ')=='작은 것이,전부를 붙잡습니다.'
-  assert '참고용 실시간 렌더링 · 실제 제품 사진 아님' in page.locator('.bn-tighten-note').inner_text()
-  cta=page.locator('.bn-brand-copy a[data-purchase-event=start]');assert cta.get_attribute('href')=='#list' and cta.is_visible()
-  box=cta.bounding_box();assert box['y']+box['height']<=800,box   # CTA is on the first screen without scrolling
-  assert [a.get_attribute('href') for a in page.locator('.bn-door').all()]==['#products','#lib','#list']
-  assert page.locator('#sales-home-copy').count()==1 and page.locator('#bn-brand-video').count()==0 and page.locator('#sb').count()==0
-  # The contact panel carries a business card (logo, name, address to copy) and a KakaoTalk button with its speech-bubble mark; no mailto anywhere.
-  assert page.locator('.sales-biz #sales-email').inner_text()=='a8wlhg942@naver.com' and page.locator('.sales-biz img.sales-biz-logo').get_attribute('alt')=='볼트노트'
-  assert page.locator('.sales-chat a.sales-kakao svg').count()==1 and page.locator('.sales-contact a[href^="mailto:"]').count()==0
-  assert page.locator('#bn-engineering-details').count()==1 and page.locator('.purchase-trust').count()==0
-  assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-  # Headline type: the display face is requested for exactly the characters in use; line one stays thin, line two gains weight as the nut tightens.
-  font=page.evaluate('()=>{const l=document.getElementById("bn-home-font"),u=l&&new URL(l.href),need=[...new Set([...document.querySelectorAll(".bn-tighten h1, .bn-tighten-stamp b, .bn-door b, .bn-home .bn-section-head h2, .bn-home .bn-rfq-copy h2")].map(e=>e.textContent).join("").replace(/\\s/g,""))],cs=s=>getComputedStyle(document.querySelector(s)),T=window.__tightenTest;return{host:u&&u.host,family:u&&u.searchParams.get("family"),missing:u?need.filter(c=>!u.searchParams.get("text").includes(c)):need,h1:cs(".bn-tighten h1").fontFamily,thin:cs(".bn-tl.bn-thin").fontVariationSettings,heavy:cs(".bn-tl:not(.bn-thin)").fontVariationSettings,want:T.state().pinned?T.cfg.w0:T.cfg.w1}}')
-  assert font['host']=='fonts.googleapis.com' and font['family']=='Hahmlet:wght@100..900' and font['missing']==[],font
-  assert font['h1'].startswith('Hahmlet') and font['thin']=='"wght" 200' and font['heavy']==f'"wght" {font["want"]}',font
-  # The pure pose function. Order: halves meet -> taper pins go in -> fasteners come down -> they turn. Threads: one pitch per turn, stop at the seat.
-  data=page.evaluate('()=>{const T=window.__tightenTest;return{pitch:T.pitch,cfg:T.cfg,sets:[0,.5,1].map(s=>Array.from({length:1001},(_,i)=>{const q=T.pose(i/1000,s);return[q.lift,q.pin,q.drop,q.nut.turns,q.nut.advance,q.nut.theta,q.nut.left,q.screw.turns,q.screw.advance,q.screw.left,q.mated,q.seated]}))}}')
-  pitch,cfg=data['pitch'],data['cfg']
-  assert pitch=={'nut':2,'screw':1.75} and cfg['stud']=='M16' and cfg['screw']=='M12' and 0<cfg['p0']<cfg['pa']<cfg['pb']<cfg['p2']<1
-  for rows in data['sets']:
-   previous=None
-   for i,(lift,pin,drop,nt,na,ntheta,nleft,st,sa,sleft,mated,seated) in enumerate(rows):
-    p=i/1000
-    assert 0<=lift<=cfg['lift']+1e-9 and 0<=pin<=1 and 0<=drop<=1 and 0<=nt<=cfg['nutTurns'] and 0<=st<=cfg['screwTurns'],p
-    assert abs(na-pitch['nut']*nt)<1e-9 and abs(sa-pitch['screw']*st)<1e-9 and abs(ntheta-2*math.pi*nt)<1e-9,p
-    assert abs(nleft-pitch['nut']*(cfg['nutTurns']-nt))<1e-9 and abs(sleft-pitch['screw']*(cfg['screwTurns']-st))<1e-9 and nleft>=-1e-12 and sleft>=-1e-12,p
-    assert mated==(p>=cfg['pa']) and seated==(p>=cfg['p2']) and (lift==0)==mated,p
-    if pin>0:assert lift==0,p            # pins only after the halves have met
-    if drop>0:assert pin==1,p            # fasteners only after the pins are home
-    if nt>0 or st>0:assert drop==1,p     # no turning before the thread start
-    if seated:assert nt==cfg['nutTurns'] and st==cfg['screwTurns'] and nleft==0 and sleft==0,p
-    if previous:assert lift<=previous[0]+1e-12 and pin>=previous[1]-1e-12 and drop>=previous[2]-1e-12 and nt>=previous[3]-1e-12 and st>=previous[4]-1e-12,p
-    previous=(lift,pin,drop,nt,st)
-   assert rows[0][0]==cfg['lift'] and rows[0][3]==0 and rows[-1][3]==cfg['nutTurns'] and rows[-1][7]==cfg['screwTurns']
-  later=[next(i for i,r in enumerate(rows) if r[3]>0) for rows in data['sets']];assert later[0]<later[1]<later[2],later   # fasteners start one after another
-  assert page.locator('.bn-tighten-math p').count()>=8 and page.locator('.bn-tighten-math').get_attribute('aria-hidden')=='true'
-  assert page.locator('.bn-math-roll .bn-math-strip').count()==1 and page.locator('.bn-math-chart svg path.cv').count()==1 and page.locator('.bn-math-chart svg path.now').count()==1   # the calc sheet roll and the tension curve
-  state=page.evaluate('window.__tightenTest.state()')
-  if state['pinned']:
-   # Scrolling drives the scene; the stamp appears only once seated and the hero releases afterwards.
-   assert state['webgl'] and page.locator('.bn-tighten').get_attribute('data-seated')=='false'
-   page.evaluate('()=>{const r=document.querySelector(".bn-tighten"),s=r.querySelector(".bn-tighten-stage");scrollTo(0,r.offsetTop+r.offsetHeight-s.offsetHeight)}')
-   page.wait_for_function('window.__tightenTest.state().p>0.999',timeout=20000)
-   assert page.locator('.bn-tighten').get_attribute('data-seated')=='true'
-   page.wait_for_function('getComputedStyle(document.querySelector(".bn-tighten-stamp")).opacity==="1"')
-   assert page.locator('.bn-tighten-stamp').inner_text().strip()=='볼트는, 볼트노트.'
-   assert page.evaluate('getComputedStyle(document.querySelector(".bn-tl:not(.bn-thin)")).fontVariationSettings')==f'"wght" {cfg["w1"]}' and cfg['w0']<cfg['w1']
-   roll=page.evaluate('()=>{const c=getComputedStyle(document.querySelector(".bn-tighten"));return{m:+c.getPropertyValue("--m"),r:+c.getPropertyValue("--r"),t:+c.getPropertyValue("--t")}}')
-   assert roll=={'m':1,'r':1,'t':1},roll   # seated: the sheet has rolled all the way and the preload marker is at F_i
-   page.wait_for_function('Math.abs(document.querySelector(".bn-math-strip").getBoundingClientRect().bottom-document.querySelector(".bn-math-roll").getBoundingClientRect().bottom)<=1.5',timeout=20000)   # the end of the sheet meets the end of its window, also after a late font changed its length
-   page.evaluate('scrollTo(0,0)');page.wait_for_function('window.__tightenTest.state().p<0.001',timeout=20000)
-   assert page.locator('.bn-tighten').get_attribute('data-seated')=='false'
-  # Scenes below the hero: each one is held in place, tightens with the scroll, and hits exactly once when it seats.
-  page.wait_for_function('window.__sceneTest')
-  scenes=page.evaluate('()=>{const tb=document.querySelector(".tb"),top=getComputedStyle(tb).position==="sticky"?tb.offsetHeight:0;return [...document.querySelectorAll(".bn-scene")].map(el=>({kind:el.dataset.scene,top,y0:el.getBoundingClientRect().top+scrollY-top,span:el.offsetHeight-el.querySelector(".bn-scene-stage").offsetHeight}))}')
-  assert [s['kind'] for s in scenes]==['doors','lineup','rfq'] and all(s['span']>200 for s in scenes),scenes
-  scene=lambda kind:page.evaluate('k=>__sceneTest.state().find(s=>s.kind===k)',kind)
-  seat='k=>__sceneTest.state().find(s=>s.kind===k).seated'
-  assert all(scene(s['kind'])['pin'] and scene(s['kind'])['seated'] is False for s in scenes)
-  for s in scenes:
-   k=s['kind'];page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.4)
-   page.wait_for_function('k=>Math.abs(__sceneTest.state().find(s=>s.kind===k).q-.4)<.01',arg=k,timeout=20000)
-   mid=page.evaluate('k=>{const el=document.querySelector(`.bn-scene[data-scene="${k}"]`);return{e:+el.style.getPropertyValue("--e"),seated:el.dataset.seated,top:el.querySelector(".bn-scene-stage").getBoundingClientRect().top}}',k)
-   assert abs(mid['e']-.5)<.02 and mid['seated']=='false' and abs(mid['top']-s['top'])<=1,(k,mid)
-   if k=='lineup':   # halfway: all six product images have been dealt out small and are on screen at once
-    dealt=page.evaluate('()=>{const t=document.querySelector(".bn-lineup .bn-products").getBoundingClientRect();return [...document.querySelectorAll(".bn-lineup .bn-products>li")].map(li=>{const r=li.getBoundingClientRect();return r.left>=t.left-2&&r.right<=t.right+2&&r.width>20&&+getComputedStyle(li).opacity>.9})}')
-    assert dealt==[True]*6,dealt
-   page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.95);page.wait_for_function(seat,arg=k,timeout=20000)
-   after=scene(k);assert after['hits']==1 and after['mode']=='down' and page.locator(f'.bn-scene[data-scene="{k}"]').get_attribute('data-seated')=='true',(k,after)
-   assert page.locator(f'.bn-scene[data-scene="{k}"].is-hit').count()==1 and page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-   if k=='lineup':   # seated: the heading is at full weight, tiles are back at full size, and the carousel can be paged
-    assert page.evaluate('getComputedStyle(document.querySelector(".bn-lineup .bn-grow")).fontWeight')=='800'
-    page.wait_for_function('()=>{const t=document.querySelector(".bn-lineup .bn-products"),a=t.children[0],b=t.children[5];return Math.abs(a.getBoundingClientRect().width-a.offsetWidth)<1&&b.getBoundingClientRect().left>t.getBoundingClientRect().right}',timeout=20000)
-    assert page.locator('[data-bn-products-step="1"]').is_enabled()
-  # Scrolling up from below: a scene that has gone past starts loose again and tightens as the page moves up.
-  page.evaluate('scrollTo(0,document.documentElement.scrollHeight)')
-  page.wait_for_function('__sceneTest.state().slice(0,2).every(s=>s.mode==="up"&&!s.seated&&s.q<.001)',timeout=20000)
-  for s in reversed(scenes[:2]):
-   k=s['kind'];page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.6)
-   page.wait_for_function('k=>Math.abs(__sceneTest.state().find(s=>s.kind===k).q-.4)<.01',arg=k,timeout=20000)
-   assert scene(k)['mode']=='up' and scene(k)['seated'] is False and scene(k)['hits']==1,(k,scene(k))
-   page.evaluate('y=>scrollTo(0,y)',s['y0']+s['span']*.05);page.wait_for_function(seat,arg=k,timeout=20000);assert scene(k)['hits']==2,(k,scene(k))
-  # Turning back mid-scene loosens it without a hit; tightening again hits again.
-  doors=scenes[0];page.evaluate('y=>scrollTo(0,y)',doors['y0']+doors['span']*.7)
-  page.wait_for_function('k=>!__sceneTest.state().find(s=>s.kind===k).seated',arg='doors',timeout=20000);assert scene('doors')['hits']==2
-  page.evaluate('y=>scrollTo(0,y)',doors['y0']);page.wait_for_function(seat,arg='doors',timeout=20000);assert scene('doors')['hits']==3
-  page.evaluate('scrollTo(0,0)')
-  # Reduced motion: no scroll pinning, the seated still and the full message.
-  page.emulate_media(reduced_motion='reduce');page.reload();page.locator('.bn-tighten.is-static').wait_for()
-  assert page.locator('.bn-tighten').get_attribute('data-seated')=='true'
-  assert page.evaluate('document.querySelector(".bn-tighten").offsetHeight<=innerHeight*1.2')
-  assert page.locator('.bn-tighten-stamp').is_visible() and page.locator('.bn-brand-copy a[data-purchase-event=start]').is_visible()
-  still=page.evaluate('()=>[...document.querySelectorAll(".bn-scene")].map(el=>[el.dataset.seated,el.classList.contains("is-live")||el.classList.contains("is-pin"),el.style.getPropertyValue("--e"),getComputedStyle(el.querySelector(".bn-scene-stage")).position])')
-  assert still==[['true',False,'','static']]*3,still   # no pinning, no loose state: the seated layout as written
-  # No WebGL: the poster replaces the canvas and nothing throws.
-  context=page.context.browser.new_context(viewport={'width':1280,'height':800});other=context.new_page();problems=[];other.on('pageerror',lambda e:problems.append(str(e)))
-  other.add_init_script('const g=HTMLCanvasElement.prototype.getContext;HTMLCanvasElement.prototype.getContext=function(t,...a){return /webgl/.test(t)?null:g.call(this,t,...a)}')
-  other.goto(BASE+'/#home');other.locator('.bn-tighten.is-fallback.is-static').wait_for()
-  poster=other.locator('.bn-tighten-poster');assert poster.is_visible() and poster.get_attribute('src')=='media/boltnote-tighten-poster.webp'
-  other.wait_for_function('document.querySelector(".bn-tighten-poster").naturalWidth===1600')
-  assert other.locator('.bn-tighten-canvas').is_hidden() and other.locator('.bn-tighten').get_attribute('data-seated')=='true'
-  assert not problems,problems;context.close()
-  page.emulate_media(reduced_motion='no-preference')
-  # Phone: the scenes still hold and seat, and nothing overflows sideways.
-  page.set_viewport_size({'width':390,'height':844});page.goto(BASE+'/#lib');page.goto(BASE+'/#home');page.wait_for_function('window.__sceneTest')
-  phone=page.evaluate('()=>{const el=document.querySelector(".bn-doors-sec");return{pins:__sceneTest.state().map(s=>s.pin),y:el.getBoundingClientRect().top+scrollY+(el.offsetHeight-el.querySelector(".bn-scene-stage").offsetHeight)*.95}}')
-  assert all(phone['pins']),phone
-  page.evaluate('y=>scrollTo(0,y)',phone['y']);page.wait_for_function('__sceneTest.state()[0].seated',timeout=20000)
-  assert page.evaluate('__sceneTest.state()[0].hits')==1 and page.evaluate('document.documentElement.scrollWidth<=innerWidth')
-  # Laptop-height windows: every scene must still be held and animated (the product section used to fall back to a still here).
-  for size in ({'width':1536,'height':730},{'width':1366,'height':650}):
-   page.set_viewport_size(size);page.goto(BASE+'/#lib');page.goto(BASE+'/#home');page.wait_for_function('window.__sceneTest')
-   assert all(page.evaluate('__sceneTest.state().map(s=>s.pin)')),(size,page.evaluate('__sceneTest.state()'))
-  page.set_viewport_size({'width':1280,'height':800})
-  print('홈 조립 장면 · 문구/CTA/자세 함수(순서·나사)/스크롤 고정/아래 구역 조임·흔들림/올릴 때/움직임 줄이기/WebGL 대체: PASS')
-
+  page.goto(BASE+'/#home');page.locator('.bn-company-hero h1').wait_for()
+  assert page.locator('#view h1').count()==1
+  assert page.locator('#h-z-a').inner_text().replace('\n','')=='도면 속 사양을,필요한 체결부품으로.'
+  assert page.locator('.bn-company-hero img').get_attribute('fetchpriority')=='high'
+  assert '참고용 렌더링 · 실제 제품 사진 아님' in page.locator('.bn-company-visual figcaption').inner_text()
+  assert page.locator('.bn-company-products .bn-product').count()==6
+  assert '가상 사양 검토 예시' in page.locator('.bn-review-sheet').inner_text()
+  assert '실제 고객 자료나 공급 가능 판정이 아닙니다' in page.locator('.bn-review-disclaimer').inner_text()
+  assert page.locator('.bn-company-principles article').count()==3
+  assert page.locator('.bn-tighten,.bn-scene,#bn-brand-video,#sb').count()==0
+  assert page.locator('#bn-engineering-details').count()==1
+  assert page.evaluate('window.__tightenTest===undefined && window.__sceneTest===undefined')
+  for width,height in [(320,668),(390,844),(768,1024),(1440,900)]:
+   page.set_viewport_size({'width':width,'height':height});page.evaluate('scrollTo(0,0)')
+   cta=page.locator('.bn-company-copy a[data-purchase-event=start]')
+   box=cta.bounding_box();assert cta.is_visible() and box['y']+box['height']<=height,(width,box)
+   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
+   # The product section follows the hero itself; no invisible scroll runway or gated content.
+   geometry=page.evaluate('()=>{const h=document.querySelector(".bn-company-hero").getBoundingClientRect(),p=document.querySelector(".bn-company-products").getBoundingClientRect();return {gap:p.top-h.bottom,hero:h.height,columns:getComputedStyle(document.querySelector(".bn-company .bn-products")).gridTemplateColumns.split(" ").length}}')
+   assert abs(geometry['gap'])<=1 and geometry['hero']<height*1.65,geometry
+   assert geometry['columns']==(2 if width<=760 else 3),geometry
+  page.set_viewport_size({'width':1440,'height':1000})
+  page.screenshot(path=str(OUT/'company-home-desktop.png'),full_page=True)
+  # Every tile uses the existing category route; choosing one and returning keeps the home usable.
+  assert [a.get_attribute('href') for a in page.locator('.bn-company-products .bn-product').all()]==['#t-bolt','#t-nut','#t-washer','#t-stud','#t-pin','#t-rivet']
+  page.locator('.bn-company-products .bn-product').first.click();page.locator('.ia-phd').wait_for()
+  assert page.evaluate('location.hash')=='#t-bolt'
+  page.goto(BASE+'/#home');page.locator('.bn-company-hero').wait_for()
+  page.locator('#sales-home-copy').click();page.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
+  assert page.evaluate('navigator.clipboard.readText()')=='a8wlhg942@naver.com'
+  assert '접수 완료' not in page.locator('#sales-status').inner_text()
+  assert page.locator('.sales-biz img.sales-biz-logo').get_attribute('alt')=='볼트노트'
+  assert page.locator('.sales-chat a.sales-kakao svg').count()==1
+  assert page.locator('.bn-home a[href^="mailto:"]').count()==0
+  # Technical media stays opt-in and opening its notes does not attach or autoplay a movie.
+  assert page.locator('#bn-film-video source[src]').count()==0
+  page.locator('#bn-engineering-details > summary').click()
+  assert page.locator('#bn-film-play').is_visible() and page.evaluate('document.querySelector("#bn-film-video").paused')
+  page.locator('#bn-engineering-details > summary').click()
+  page.emulate_media(reduced_motion='reduce');page.reload();page.locator('.bn-company-hero').wait_for()
+  assert page.locator('.bn-tighten,.bn-scene').count()==0
+  page.set_viewport_size({'width':390,'height':844});page.screenshot(path=str(OUT/'company-home-mobile.png'),full_page=True)
+  page.emulate_media(reduced_motion='no-preference');page.set_viewport_size({'width':1280,'height':800})
 
 def check_sales(page, BASE, OUT):
   """Sales shows an address and RFQ example without launching a mail client."""
@@ -443,7 +369,7 @@ def check_sales(page, BASE, OUT):
   page.goto(BASE+'/#home');page.locator('#sales-home-copy').wait_for();assert page.locator('#sb').count()==0
   assert page.title()==page.locator('meta[property="og:title"]').get_attribute('content')
   assert 'BOM' in page.title() and page.locator('a[href="/products/"]').count()>0
-  primary=page.locator('.bn-brand-copy a[data-purchase-event=start]')
+  primary=page.locator('.bn-company-copy a[data-purchase-event=start]')
   assert primary.get_attribute('href')=='#list' and primary.get_attribute('target') is None
   primary.click();page.locator('#sales-email').wait_for()
   assert page.url.endswith('#list') and len(page.context.pages)==pages
@@ -510,7 +436,7 @@ def check_count(page, BASE, OUT):
    sent=[];context.on('request',lambda r:sent.append((r.method,r.post_data)) if r.url.split('?')[0]==BASE+'/count' else None)
    return context,context.new_page(),sent
   def walk(tab):
-   tab.goto(BASE+'/');tab.locator('.bn-tighten').wait_for();tab.locator('[data-go="list"]:visible').first.click();tab.locator('#sales-copy-address').wait_for()
+   tab.goto(BASE+'/');tab.locator('.bn-company-hero').wait_for();tab.locator('[data-go="list"]:visible').first.click();tab.locator('#sales-copy-address').wait_for()
    tab.locator('#sales-copy-address').click();tab.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
    tab.goto(BASE+'/lib/astm-a193');tab.locator('.bn-strip').wait_for();tab.wait_for_timeout(400)
   def settled(tab,sent,expected):
@@ -522,12 +448,12 @@ def check_count(page, BASE, OUT):
   context,tab,sent=session();walk(tab);assert sent==[],sent;context.close()
   # 2) Switched on: names only, one per page load, in the order of the visit.
   context,tab,sent=session('window.__bnCountTest=true')
-  tab.goto(BASE+'/');tab.locator('.bn-tighten').wait_for();settled(tab,sent,['visit','home'])
+  tab.goto(BASE+'/');tab.locator('.bn-company-hero').wait_for();settled(tab,sent,['visit','home'])
   tab.locator('[data-go="list"]:visible').first.click();tab.locator('#sales-copy-address').wait_for();settled(tab,sent,['visit','home','list'])
   for _ in range(2):tab.locator('#sales-copy-address').click();tab.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
   tab.locator('.sales-example [data-sales-copy="body"]').click();settled(tab,sent,['visit','home','list','copy','rfq'])
   with context.expect_page() as popup:tab.locator('.sales-chat a').click()
-  popup.value.close();tab.locator('[data-go="home"]:visible').first.click();tab.locator('.bn-tighten').wait_for()
+  popup.value.close();tab.locator('[data-go="home"]:visible').first.click();tab.locator('.bn-company-hero').wait_for()
   settled(tab,sent,['visit','home','list','copy','rfq','kakao'])   # back on the home: already counted in this page load
   tab.goto(BASE+'/lib/astm-a193');tab.locator('.bn-strip').wait_for();settled(tab,sent,['visit','home','list','copy','rfq','kakao','s-view'])
   tab.locator('.bn-strip-btn[href="/#list"]').click();tab.locator('#sales-copy-address').wait_for()

@@ -75,7 +75,7 @@ python3 tools/check.py          # 빌드 일치, 자바스크립트 문법, 금�
 
 ## 5. 어디를 고치나
 
-- **홈 화면 문구·구성**: `app/src/v7_ia.js`(`V.home`). 첫 화면의 조립 장면(문구·개념 형상·스크롤 연출·겹쳐 보이는 일반식)은 `app/src/v9_tighten.js`, 그 아래 구역(입구 3개·제품군·문의)의 조임과 화면 흔들림은 `app/src/v9_tighten_scenes.js`, 홈 디자인은 `app/src/zzzzzzzzzz_home.css`(홈에서만 어두운 바탕)이고 규칙은 [`app/COMPANY_INTRO.md`](app/COMPANY_INTRO.md)에 있습니다. 영상·GIF는 `docs/media/`.
+- **홈 화면 문구·구성**: `app/src/v7_ia.js`(`V.home`), 기업 소개·검토 예시는 `app/src/v7_home.js`, 홈 디자인은 `app/src/zzzzzzzzzzz_company.css`입니다. 제목·소개 문구(`BN_HOME_COPY`)는 `site/catalog.py`가 읽어 JavaScript 없는 첫 화면과 맞춥니다. 제품·사양 검토·대표의 검토 원칙·견적 문의 순서로, 스크롤 고정 없이 읽습니다. 기존 조립 연출(`v9_tighten.js`, `v9_tighten_scenes.js`, `zzzzzzzzzz_home.css`)은 보관하며 홈에서는 초기화하지 않습니다. 규칙은 [`app/COMPANY_INTRO.md`](app/COMPANY_INTRO.md)에 있습니다. 영상·GIF는 `docs/media/`.
 - **소재 문의 화면**(`#materials`, 심·봉재·판재·단조재): `app/src/v9_materials.js`. 문의만 받는 입구라 카탈로그·검색 페이지·치수표에 넣지 않고 재고·가격·납기·등급·원산지를 적지 않습니다. 규칙은 [`app/PURCHASE_FLOW.md`](app/PURCHASE_FLOW.md), 제목의 주제는 [`app/SALES.md`](app/SALES.md).
 - **규격 사전 항목**: `site/lib.json`(항목 모양과 규칙은 [`app/LIB_SPEC.md`](app/LIB_SPEC.md)) → `python3 tools/sync_lib.py` → `python3 tools/build_all.py`. 사전 화면은 `app/src/v8_lib.js`, 정적 페이지는 `site/build_lib.py`.
 - **카탈로그 품목(치수표·안내)**: `app/src/ea_catdata.js`를 직접 고칩니다. 예전에는 비공개 원본 JSON에서 이 파일을 만들었으나, 원본에서 출처 없는 값을 걷어낸 결과가 지금 이 파일이라 **이 파일이 원본입니다.** 없는 값을 새로 채워 넣지 마세요(4번 규칙).

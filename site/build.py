@@ -9,7 +9,7 @@ import pathlib
 import re
 import sys
 
-from catalog import catalog, brand_copy, display_font_href, SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE
+from catalog import catalog, brand_copy, home_copy, SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE
 from build_lib import site_info, beacon_tag
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -35,7 +35,7 @@ BOOT_SCRIPT = (
 
 
 def social_alt() -> str:
-    """공유 그림의 설명. 그림에 적힌 문구(홈과 같은 문구)를 그대로 읽는다."""
+    """공유 그림의 설명. 기존 브랜드 그림에 적힌 문구를 그대로 읽는다."""
     copy = brand_copy()
     return f"볼트노트 — {' '.join(copy['h1'])} {copy['stamp']} 체결부품으로 조립된 펌프 케이싱의 참고용 렌더링(개념 형상)."
 
@@ -75,34 +75,26 @@ def head_meta() -> str:
     )
 
 
-def boot_font() -> str:
-    """첫 그림의 큰 문구에 쓰는 제목 글꼴. 문구 글자만 담아 요청하고, 그리기를 막지 않게 늦게 붙인다. 화면이 뜬 뒤에는 bnHomeFontInit이 더 넓은 글자 묶음을 받는다."""
-    copy = brand_copy()
-    href = html.escape(display_font_href("".join(copy["h1"]) + copy["stamp"]))
-    return ('<link rel="preconnect" href="https://fonts.googleapis.com">\n'
-            '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
-            f'<link id="bn-boot-font" rel="stylesheet" href="{href}" media="print" onload="this.media=\'all\'">\n'
-            f'<noscript><link rel="stylesheet" href="{href}"></noscript>\n')
-
-
 def initial_home() -> str:
-    """자바스크립트가 홈을 그리기 전의 첫 그림. 조임 장면과 같은 자리에 같은 문구를 두어 바뀔 때 번쩍이거나 밀리지 않게 한다.
+    """자바스크립트가 홈을 그리기 전의 첫 그림. 기업 홈과 같은 문구·제품 그림을 보인다.
     검색 엔진과 자바스크립트를 끈 방문자는 이 내용을 그대로 본다 (검색 전용으로 숨긴 본문은 없다, site/SEARCH.md).
     클래스는 bn-boot-*만 쓴다: .bn-tighten·.bn-brand-copy·#h-z-a는 본 화면의 것이라 여기서 쓰면 시험이 헷갈린다. 모양은 app/src/zzzzzzzzzz_home.css."""
     families, tiles, paths = catalog()
-    copy = brand_copy()
+    copy = home_copy()
     products = ["hbf", "hbp", "hn", "hh", "b7", "b8", "l7", "scs", "pw", "tr"]
     links = ''.join(f'<li><a href="/products/{paths[id]}">{html.escape(families[id]["ko"])} · {html.escape(families[id]["en"])}</a></li>' for id in products)
     categories = ' · '.join(f'<a href="/products/category/{t["id"]}">{html.escape(t["ko"])}</a>' for t in tiles)
     email = html.escape(site_info()["rfq"])
     return ('<main id="view" class="wrap" tabindex="-1"><section class="search-overview bn-boot" aria-labelledby="initial-home-title">'
-            '<div class="bn-boot-stage"><div class="bn-wrap bn-boot-copy">'
+            '<div class="bn-boot-stage"><div class="bn-wrap bn-boot-grid"><div class="bn-boot-copy">'
             '<p class="bn-boot-eyebrow" lang="en">BOLTNOTE <span>/</span> INDUSTRIAL FASTENERS</p>'
-            f'<p class="bn-boot-line"><span>{html.escape(copy["h1"][0])}</span><span>{html.escape(copy["h1"][1])}</span></p>'
-            '<h1 id="initial-home-title">산업설비 볼트·너트 구매와 BOM 견적</h1>'
+            f'<h1 id="initial-home-title"><span>{html.escape(copy["h1"][0])}</span><span>{html.escape(copy["h1"][1])}</span></h1>'
             f'<p class="bn-boot-lead">{html.escape(copy["lead"])}</p>'
-            '<p class="bn-boot-actions"><a class="bn-boot-btn" href="/#list">BOM·RFQ 보내기 <span aria-hidden="true">↗</span></a>'
-            '<a class="bn-boot-btn ghost" href="/products/">제품 보기 <span aria-hidden="true">↗</span></a></p>'
+            '<p class="bn-boot-actions"><a class="bn-boot-btn" href="/#list">견적 문의 <span aria-hidden="true">↗</span></a>'
+            '<a class="bn-boot-btn ghost" href="/products/">취급 제품 보기 <span aria-hidden="true">↗</span></a></p>'
+            '<p class="bn-company-invitation">기존 BOM·RFQ·사진으로 시작하셔도 됩니다.</p></div>'
+            '<figure><img src="/media/boltnote-hero.webp" width="1536" height="1024" fetchpriority="high" alt="육각볼트, 렌치볼트, 스터드, 너트, 와셔와 핀의 형상 예시">'
+            '<figcaption>참고용 렌더링 · 실제 제품 사진 아님</figcaption></figure>'
             '</div></div><div class="bn-wrap bn-boot-more">'
             '<p>볼트노트는 기존 BOM·메모·RFQ를 읽고 체결부품의 사양, 공급 조건과 필요한 서류를 확인합니다. 미터·인치 볼트, 육각너트·헤비너트, ASTM 스터드와 기계 체결부품을 품목별로 살펴보세요.</p>'
             f'<p><a href="/#list">BOM·RFQ로 Sales 문의 →</a> · 견적 이메일 {email}</p>'
@@ -131,7 +123,6 @@ def build(out: pathlib.Path) -> None:
         f"<title>{html.escape(SEO_TITLE)}</title>\n"
         "<style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style>\n"
         f"{head_meta()}"
-        f"{boot_font()}"
         f"<script>{BOOT_SCRIPT}</script>\n"
         f"{beacon_tag()}"
         "</head>\n<body>\n"
