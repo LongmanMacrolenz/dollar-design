@@ -118,17 +118,17 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link href=
          f'<link href="{html.escape(display_font_href(BRAND["stamp"]))}" rel="stylesheet" media="print" onload="this.media=\'all\'">')
 
 
-def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True) -> str:
+def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True, lang: str = "ko") -> str:
     """정적 페이지의 공통 틀. index=False는 검색에 넣지 않는 페이지(404 안내)로, 표준 주소와 og:url을 내지 않는다."""
     url = SITE_URL + path
     desc = compact_description(desc)
     return (
-        '<!doctype html>\n<html lang="ko">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+        f'<!doctype html>\n<html lang="{lang}">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         '<link rel="icon" href="/brand/boltnote-mark.svg" type="image/svg+xml">\n'
         + ('<meta name="robots" content="index,follow">\n' if index else '<meta name="robots" content="noindex,follow">\n')
         + f"<title>{e(title)}</title>\n<meta name=\"description\" content=\"{e(desc)}\">\n" + (f"<link rel=\"canonical\" href=\"{url}\">\n" if index else "")
         +
-        f'<meta property="og:type" content="article"><meta property="og:site_name" content="볼트노트"><meta property="og:locale" content="ko_KR">'
+        f'<meta property="og:type" content="article"><meta property="og:site_name" content="{"Boltnote" if lang == "en" else "볼트노트"}"><meta property="og:locale" content="{"en_US" if lang == "en" else "ko_KR"}">'
         + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
         f'<meta property="og:image" content="{SITE_URL}{SOCIAL_IMAGE}"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
@@ -141,7 +141,7 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 
 def header(on: str = "lib") -> str:
-    nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
+    nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", ""), ("/en/", "English", "en")]
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
             + '</nav><a class="cta" href="/#list">Sales 문의 →</a></div></header>')
@@ -308,7 +308,7 @@ def main() -> None:
         (out / f'{x["id"]}.html').write_text(entry_html(x, by, info), encoding="utf-8")
     (out / "index.html").write_text(index_html(L, info), encoding="utf-8")
     (DOCS / "404.html").write_text(not_found_html(info), encoding="utf-8")   # 사이트맵에 넣지 않는다
-    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls() + table_urls()
+    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls() + table_urls() + [SITE_URL + "en/"]
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")

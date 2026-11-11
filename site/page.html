@@ -14527,7 +14527,7 @@ if (!LIB_BY || !Object.keys(LIB_BY).length) document.querySelectorAll('[data-lib
    - 페이지를 연 동안 이름마다 한 번만 보낸다 (여러 번 눌러도 1건 = 방문 기준).
    - 보내지 않는 경우: 스위치(SHOP.funnelCount) 꺼짐, 자동화 브라우저, 추적 거부 신호(GPC·Do Not Track),
      관리자 화면에서 켠 「이 브라우저는 세지 않기」(localStorage bn.nocount).
-   - 이름 목록은 worker/index.mjs COUNT_EVENTS와 같아야 한다. 처리방침 B항(v6_policy.js)이 이 동작을 적는다.
+   - 이름 목록은 worker/index.mjs COUNT_EVENTS와 같아야 한다 (en은 영문 페이지 site/count.js 전용). 처리방침 B항(v6_policy.js)이 이 동작을 적는다.
    window.__bnCountTest는 자동 점검(worker/tests/browser.py)이 켜는 스위치다. */
 const BN_COUNT_NAMES = ['visit', 'home', 'list', 'materials', 'copy', 'rfq', 'kakao', 'tel', 'mail'];
 const BN_COUNT_VIEWS = { home: 'home', list: 'list', materials: 'materials' };

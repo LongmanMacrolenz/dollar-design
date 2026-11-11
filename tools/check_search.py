@@ -108,7 +108,7 @@ def check_tables(families, paths):
 
 def main():
     files = [ROOT / "docs/index.html", *sorted((ROOT / "docs/lib").glob("*.html")), *sorted((ROOT / "docs/products").rglob("*.html")),
-             *sorted((ROOT / "docs/tables").glob("*.html"))]
+             *sorted((ROOT / "docs/tables").glob("*.html")), *sorted((ROOT / "docs/en").glob("*.html"))]
     urls = [x.text for x in ET.parse(ROOT / "docs/sitemap.xml").findall("{*}url/{*}loc")]
     assert len(urls) == len(set(urls)), "Duplicate sitemap URLs"
     families, tiles, paths = catalog()

@@ -20,6 +20,7 @@
 | `site/lib.json` | **규격 사전 원본**(항목 배열) | 예 |
 | `site/build.py`, `site/build_lib.py` | 문서 감싸기, 규격 사전 정적 페이지 만들기 | 예 |
 | `site/build_products.py`, `site/product-paths.json` | 제품별 구매 안내와 고정 검색 주소. 관리 안내는 `site/SEARCH.md` | 예 |
+| `site/build_en.py` | 영문 페이지 `docs/en/` (국내 외국계 공장 대상, 원화 견적). 사이트에 있는 사실만 옮긴다. 관리 안내는 `site/SEARCH.md` | 예 |
 | `site/build_tables.py` | 규격표(품목별 치수표) 정적 페이지 `docs/tables/`. 근거 기록이 있는 표만 올린다(`site/catalog.py` `table_data`, 규칙은 `app/SOURCE_RULE.md`). 값은 카탈로그·`DIM`에서 읽을 뿐 여기서 고치지 않는다 | 예 |
 | `site/page.html`, `docs/` | **만들어지는 결과물**. 배포되는 파일 | **아니오** — `python3 tools/build_all.py`로만 |
 | `tools/` | `build_all.py`(전체 빌드·검증), `sync_lib.py`(규격 사전 반영), `check.py`(점검 한 번에) | 예 |
