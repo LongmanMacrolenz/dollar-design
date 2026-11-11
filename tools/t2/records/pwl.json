@@ -1,0 +1,213 @@
+{
+ "id": "pwl",
+ "status": "partial",
+ "standard": "ISO 7093-1",
+ "standard_full": "ISO 7093-1:2000 (plain washers, large series, product grade A; = DIN EN ISO 7093-1:2000). Not DIN 9021.",
+ "u": "mm",
+ "scope": "ISO 7093-1 호칭 치수(d1·d2·h)만, M3–M24 가운데 12개 호칭 — 허용차(최대·최소)와 M18·M22·M27–M36은 싣지 않았습니다",
+ "cols": [
+  [
+   "d1",
+   "구멍 지름 d1 (호칭 = 최소)"
+  ],
+  [
+   "d2",
+   "바깥지름 d2 (호칭 = 최대)"
+  ],
+  [
+   "h",
+   "두께 h (호칭)"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   3.2,
+   9,
+   0.8
+  ],
+  [
+   "M3.5",
+   3.7,
+   11,
+   0.8
+  ],
+  [
+   "M4",
+   4.3,
+   12,
+   1
+  ],
+  [
+   "M5",
+   5.3,
+   15,
+   1
+  ],
+  [
+   "M6",
+   6.4,
+   18,
+   1.6
+  ],
+  [
+   "M8",
+   8.4,
+   24,
+   2
+  ],
+  [
+   "M10",
+   10.5,
+   30,
+   2.5
+  ],
+  [
+   "M12",
+   13,
+   37,
+   3
+  ],
+  [
+   "M14",
+   15,
+   44,
+   3
+  ],
+  [
+   "M16",
+   17,
+   50,
+   3
+  ],
+  [
+   "M20",
+   21,
+   60,
+   4
+  ],
+  [
+   "M24",
+   25,
+   72,
+   5
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M3.5": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M14": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_232.html",
+   "site": "globalfastener.com",
+   "what": "ISO 7093-1:2000 page: sizes Φ3..Φ36 across, rows d min=nominal size / max, d_c max=nominal size / min, h Nominal Size / max / min. detail_5239 (DIN EN ISO 7093-1:2000) carries the same numbers plus a mass row -> one cluster"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_7093-1",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 7093-1 (11-2000) table, sizes down: Thread size, d nom=min, d1 nom=max, d1 min, s nom, s min, mass; M3-M36. Page states 'source DIN EN ISO 7093-1' and 'Reproduced by permission of DIN'"
+  },
+  {
+   "url": "https://www.keller-kalmbach.de/produkte/verbindungselemente/scheiben/iso-7093-1-flache-scheibe/bp/BP_227542",
+   "site": "keller-kalmbach.de",
+   "what": "shop list 'ISO 7093-1, Flache Scheibe' (rendered with playwright, pages ?page=0..5; 105 articles, 100 of them read row by row): columns Stärke (mm), Innendurchmesser (mm), Außendurchmesser (mm), Geeignet für Schraubendurchmesser; 12 thread sizes M3-M24, every article of one size carries the same three numbers"
+  },
+  {
+   "url": "https://www.odoerfer.com/de_AT/marke/din-und-normteile/iso-7093-1-stahl-200-hv-galv.-verzinkt-flache-scheiben_p000000028702",
+   "site": "odoerfer.com",
+   "what": "shop article list ISO 7093-1 Stahl 200 HV: columns Innen-ø and für Gewinde-ø (hole diameter only), 12 articles in the static HTML: M3, M4, M5, M6, M8, M10, M12, M14, M16, M18, M20, M24 (no M3.5)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/7093/",
+   "site": "fasteners.eu",
+   "what": "NOT counted: page titled ISO 7093 is byte-for-byte the DIN 9021 table of the same site (M5 h 1.2, M20 d1 22, M24 d1 26, M18 d1 20)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_7093.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "NOT counted: ISO_7093 page = DIN_9021 page of the same site (M5 h 1.2, M20 22, M24 26, M22 '23/24')"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-7093/",
+   "site": "boltport.com",
+   "what": "NOT counted: DIN 9021-type numbers under an ISO 7093 title (M5 H 1.2, M20 22, M24 26)"
+  }
+ ],
+ "clusters": {
+  "A globalfastener (ISO 7093-1:2000 page + DIN EN ISO 7093-1:2000 page)": [
+   "globalfastener.com/standards/detail_232.html",
+   "globalfastener.com/standards/detail_5239.html"
+  ],
+  "B fasten.it (DIN EN ISO 7093-1, 11-2000, licensed table)": [
+   "fasten.it/norms/norm/din_en_iso_7093-1"
+  ],
+  "C Keller & Kalmbach shop article data (ISO 7093-1 family)": [
+   "keller-kalmbach.de ... /bp/BP_227542 (rendered, 100 articles)"
+  ],
+  "D Odoerfer shop article list (hole diameter only)": [
+   "odoerfer.com ... _p000000028702"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "d1 max and h max columns",
+   "why": "printed only by globalfastener (1 cluster); fasten.it gives no d max / s max"
+  },
+  {
+   "what": "d2 min and h min columns",
+   "why": "printed by globalfastener and fasten.it only (2 clusters, values identical in both for all 18 sizes); the shop lists give nominal sizes only"
+  },
+  {
+   "what": "M18 row",
+   "why": "d1 19 has 3 clusters (globalfastener, fasten.it, Odoerfer) but d2 56 / h 4 only 2 (globalfastener, fasten.it); Keller & Kalmbach lists no M18"
+  },
+  {
+   "what": "M22, M27, M30, M33, M36 rows",
+   "why": "only globalfastener and fasten.it print ISO 7093-1 values (2 clusters); Keller & Kalmbach stops at M24, the static Odoerfer list at M24 (d1 only)"
+  },
+  {
+   "what": "pages that print the DIN 9021 table under an 'ISO 7093' title (fasteners.eu, schrauben-lexikon, boltport)",
+   "why": "not ISO 7093-1:2000 data: they differ from the three ISO 7093-1 clusters at fe_iso7093 M5 h: 1.2 vs ISO 7093-1 1; fe_iso7093 M18 d1: 20 vs ISO 7093-1 19; fe_iso7093 M20 d1: 22 vs ISO 7093-1 21; fe_iso7093 M24 d1: 26 vs ISO 7093-1 25; bp_iso7093 M5 h: 1.2 vs ISO 7093-1 1; bp_iso7093 M18 d1: 20 vs ISO 7093-1 19; bp_iso7093 M20 d1: 22 vs ISO 7093-1 21; bp_iso7093 M24 d1: 26 vs ISO 7093-1 25; sl_ISO7093 M5 h: 1.2 vs ISO 7093-1 1; sl_ISO7093 M18 d1: 20 vs ISO 7093-1 19; sl_ISO7093 M20 d1: 22 vs ISO 7093-1 21; sl_ISO7093 M24 d1: 26 vs ISO 7093-1 25. Counting them cell by cell would add a third cluster for d1/d2/h of M18(d2,h), M27, M30, M33, M36 - left out on purpose (see notes)"
+  }
+ ],
+ "checks": [
+  "every kept cell identical in >= 3 clusters whose page is labelled ISO 7093-1 (d1: 4 clusters except M3.5 = 3; d2 and h: exactly 3 = globalfastener, fasten.it, Keller & Kalmbach)",
+  "d2 > d1 > thread diameter in every row; d2 / thread diameter between 2.9 and 3.2: True",
+  "d1 and d2 strictly increase, h never decreases with size: True",
+  "Keller & Kalmbach: the 100 articles read row by row give one (d1, d2, h) triple per thread size, in the rendered DOM and in the JSON the page loads alike; the page's filter counts for all 105 articles (thread size, inside diameter, outside diameter, thickness) match one-to-one, so the 5 articles the paging did not serve cannot carry other dimensions",
+  "ISO 7093-1 values differ from the DIN 9021-type pages exactly at M5 h (1 vs 1.2), M20 d1 (21 vs 22), M24 d1 (25 vs 26): all four counted clusters print the ISO 7093-1 numbers there"
+ ],
+ "shape_hint": "Flat round washer with a concentric hole, both faces flat; outside diameter about three times the thread diameter (large series), product grade A.",
+ "role_map": {
+  "d_nom": "thread size the washer is for (row label)",
+  "d1": "hole (inside) diameter, nominal = minimum",
+  "d2": "outside diameter, nominal = maximum",
+  "h": "thickness, nominal"
+ },
+ "notes": "Verified record. Symbols differ by page (globalfastener d / d_c / h, fasten.it d / d1 / s, shop lists Innendurchmesser / Außendurchmesser / Stärke); mapped by header text and each page's drawing. 'nominal = min' (hole) and 'nominal = max' (outside diameter) are printed by globalfastener and fasten.it; the shop lists give the nominal sizes only. M3.5 and M14 are non-preferred sizes. Rows M18, M22, M27-M36 and the limit columns stay out: only globalfastener and fasten.it print them (2 clusters).",
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "All pages re-downloaded by the verifier with curl (browser User-Agent) on 2026-11-11 into a separate directory (HTTP 200, text/html); tables re-read with the verifier's own parser (html.parser grid with rowspan/colspan), not the researcher's scripts or raw files. Pages: globalfastener detail_232 + detail_5239, fasten.it din_en_iso_7093-1 (+ its empty iso_7093-1 page), Odoerfer list (static HTML), Keller & Kalmbach list rendered with playwright (6 result pages; 100 of its 105 articles came back as rows - 5 were served twice instead - and the filter counts cover all 105; DOM rows and the page's own JSON both read), and the DIN 9021-type pages fasteners.eu ISO/7093 + DIN/9021, schrauben-lexikon ISO_7093 + DIN_9021, boltport iso-7093. 12 rows x 3 columns = 36 cells: d1 has 4 clusters (3 for M3.5, which Odoerfer does not list), d2 and h exactly 3 (globalfastener, fasten.it, Keller & Kalmbach). No dissent among counted pages. The DIN 9021-type pages differ from the record at M5 h, M20 d1, M24 d1 and are not counted.",
+  "problems": [
+   "Independence of globalfastener and fasten.it (decided: two clusters, zero slack). Their mass column is identical for all 18 sizes, including three values that do not follow from the dimensions printed beside them (M5 1.46 = the old DIN 9021 mass for h 1.2; M33 479 instead of about 360; M36 520 instead of about 522). Reasons for not merging: (1) both name the DIN edition as their source (fasten.it: 'source DIN EN ISO 7093-1, 11-2000 ... Reproduced by permission of DIN'; globalfastener keeps the mass row only on its DIN EN ISO page, not on its ISO page), so a shared mass table is what two transcriptions of that edition look like; (2) layout, symbols and column sets differ (sizes across vs down, d/d_c/h vs d/d1/s, fasten.it has no d max / h max, globalfastener prints both); (3) elsewhere in this batch the two sites disagree with each other (ISO 8735 c for d 16: 4.6 vs 4.7; ISO 8733 thread depth for d 12/16/20: 12/16/18 vs 10/12/16; DIN 939 fine-thread list), so neither is fed from the other. If the lead prefers to merge them, d2 and h fall to 2 clusters for every row and only the d1 column of 11 rows (without M3.5) would keep 3 (globalfastener+fasten.it, Keller & Kalmbach, Odoerfer) - i.e. the table would fail in practice.",
+   "d2 and h rest on exactly three clusters for all 12 rows; M3.5 rests on a single Keller & Kalmbach article, M3 on three.",
+   "Keller & Kalmbach and Odoerfer are separate shops with different attribute sets, article numbers and size ranges (K&K: M3.5 but no M18; Odoerfer: M18, M30, M36 but no M3.5), and both print the ISO 7093-1 numbers where DIN 9021 differs (K&K: M5 thickness 1, M20 hole 21, M24 hole 25; Odoerfer: M18 19, M20 21, M24 25). Where each shop's article data come from upstream (own product data or a supplier feed) cannot be seen from the pages.",
+   "Column labels: 'nominal = min' / 'nominal = max' is stated by globalfastener and fasten.it only; the two shop lists state the plain nominal dimensions (inside diameter, outside diameter, thickness).",
+   "Not counted, for the lead's information: the publisher-authorised preview service (standards.iteh.ai sample PDF, a T1-type source under app/SOURCE_RULE.md) shows the dimension table of this ISO standard; the kept values equal it. The table could be re-based on that official preview instead of T2. (ISO 7093-1:2000 preview, Tables 1 and 2: all 18 sizes with d1 nom/max, d2 nom/min, h nom/max/min; the 36 kept cells are equal.)"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ }
+}

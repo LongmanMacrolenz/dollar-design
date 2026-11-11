@@ -1,0 +1,293 @@
+{
+ "id": "hnthin",
+ "status": "partial",
+ "standard": "ISO 4035",
+ "standard_full": "ISO 4035 (hexagon thin nuts, chamfered, style 0, product grades A and B, coarse thread); the numbers kept are those of the 1999/2012 editions as published by the sources (= DIN EN ISO 4035)",
+ "u": "mm",
+ "cols": [
+  [
+   "s",
+   "2면폭 s"
+  ],
+  [
+   "e_min",
+   "대각 거리 e 최소"
+  ],
+  [
+   "m",
+   "높이 m 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   5.5,
+   6.01,
+   1.8
+  ],
+  [
+   "M4",
+   7.0,
+   7.66,
+   2.2
+  ],
+  [
+   "M5",
+   8.0,
+   8.79,
+   2.7
+  ],
+  [
+   "M6",
+   10.0,
+   11.05,
+   3.2
+  ],
+  [
+   "M8",
+   13.0,
+   14.38,
+   4.0
+  ],
+  [
+   "M10",
+   16.0,
+   17.77,
+   5.0
+  ],
+  [
+   "M12",
+   18.0,
+   20.03,
+   6.0
+  ],
+  [
+   "M16",
+   24.0,
+   26.75,
+   8.0
+  ],
+  [
+   "M18",
+   27.0,
+   29.56,
+   9.0
+  ],
+  [
+   "M20",
+   30.0,
+   32.95,
+   10.0
+  ],
+  [
+   "M22",
+   34.0,
+   37.29,
+   11.0
+  ],
+  [
+   "M24",
+   36.0,
+   39.55,
+   12.0
+  ],
+  [
+   "M27",
+   41.0,
+   45.2,
+   13.5
+  ],
+  [
+   "M30",
+   46.0,
+   50.85,
+   15.0
+  ],
+  [
+   "M33",
+   50.0,
+   55.37,
+   16.5
+  ],
+  [
+   "M36",
+   55.0,
+   60.79,
+   18.0
+  ],
+  [
+   "M42",
+   65.0,
+   71.3,
+   21.0
+  ]
+ ],
+ "row_support": {
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M18": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 3,
+  "M27": 3,
+  "M30": 3,
+  "M33": 3,
+  "M36": 3,
+  "M42": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_5636.html",
+   "site": "globalfastener.com",
+   "what": "ISO 4035-2012 table (P, da, dw, e, m, mw, s) M1.6-M64"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_4035",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 4035 table (pitch, e min, m max, m min, s nom=max) M1.6-M64"
+  },
+  {
+   "url": "https://www.engineersedge.com/hardware/bs_en_iso_4035_14574.htm",
+   "site": "engineersedge.com",
+   "what": "BS EN ISO 4035 tables: preferred M1.6-M12 and non-preferred M3.5-M60 (m' column not used: no legend)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_4035.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "ISO 4035 technical data (s, e min.) M2-M45; rows 'm' (no max/min) and 'd2' (no legend) not used"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1454-hex-jam-nuts-05d-iso-4035-din-439",
+   "site": "nfgab.com",
+   "what": "product group ISO 4035/DIN 439 (e min, s, m max) M2-M48; M10/M12/M14/M22 listed with DIN widths 17/19/22/32 as the page itself says"
+  }
+ ],
+ "clusters": {
+  "GF: globalfastener ISO 4035-2012 (5636), 1999 (400), DIN EN ISO 4035 (5248)": [
+   "P, s max=nominal, e min, m max, m min"
+  ],
+  "FI: fasten.it din_en_iso_4035": [
+   "Pitch, e min., m max, m min, s nom=max; own values M14 e 23.35, M48 e 83.91"
+  ],
+  "EE: engineersedge bs_en_iso_4035_14574": [
+   "own HTML tables (preferred M1.6-M12, non-preferred M3.5-M60); M14 e min 23.35"
+  ],
+  "SL: schrauben-lexikon ISO_4035": [
+   "s and e min. (drawing defines s, e); bare m not counted"
+  ],
+  "NFG: nfgab 1454 ISO 4035/DIN 439": [
+   "e min, s, m max; DIN widths for M10/M12/M14/M22 (disregarded)"
+  ]
+ },
+ "not_counted": {
+  "not counted - boltport.com": [
+   "boltport.com/standards/iso-4035/ reproduces the standard's scope paragraph, requirements table and normative references (numbers equal to GF/AW except its own typing errors M42 e 71.39, M45 da max 48.00)"
+  ],
+  "not counted - fasteners.eu + torqbolt copy": [
+   "fasteners.eu/standards/ISO/4035/ = DIN 439-2 table under an ISO 4035 title",
+   "torqbolt.com iso-4035 page (identical, same typos)"
+  ],
+  "not counted - amesweb.info (calculator output, lead decision)": [
+   "form-result pages; not fetched by the verifier"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "s_min column (2면폭 최소)",
+   "why": "three clusters (GF, AW, EE) only for the sizes engineersedge lists (M3-M12, M14, M18, M22, M27, M33); M16, M20, M24, M30, M36, M42, M48 have GF and AW only. Column left out to keep all 19 sizes // cells without 3 agreeing clusters -> M16: 23.67 x2 (AW,GF) | M20: 29.16 x2 (AW,GF) | M24: 35 x2 (AW,GF) | M30: 45 x2 (AW,GF) | M36: 53.8 x2 (AW,GF) | M42: 63.1 x2 (AW,GF) | ..."
+  },
+  {
+   "what": "mw_min column (렌치 걸림 높이 최소)",
+   "why": "published by GF and AW only (boltport prints the same numbers but its page reproduces the standard's text and is not counted; fasteners.eu's unexplained m' row is a different, older series) // cells without 3 agreeing clusters -> M3: 1.2 x2 (AW,GF) | M4: 1.6 x2 (AW,GF) | M5: 2 x2 (AW,GF) | M6: 2.3 x2 (AW,GF) | M8: 3 x2 (AW,GF) | M10: 3.8 x2 (AW,GF) | ..."
+  },
+  {
+   "what": "dw_min column (좌면 지름 최소)",
+   "why": "three clusters (GF, AW, EE) only for the sizes engineersedge lists; M16, M20, M24, M30, M36, M42, M48 have GF and AW only. Column left out to keep all 19 sizes // cells without 3 agreeing clusters -> M16: 22.5 x2 (AW,GF) | M20: 27.7 x2 (AW,GF) | M24: 33.2 x2 (AW,GF) | M30: 42.8 x2 (AW,GF) | M36: 51.1 x2 (AW,GF) | M42: 60 x2 (AW,GF) | ..."
+  },
+  {
+   "what": "da_max column (모따기 지름 최대)",
+   "why": "three clusters (GF, AW, EE) only for the sizes engineersedge lists; M16, M20, M24, M30, M36, M42, M48 have GF and AW only. Column left out to keep all 19 sizes // cells without 3 agreeing clusters -> M16: 17.3 x2 (AW,GF) | M20: 21.6 x2 (AW,GF) | M24: 25.9 x2 (AW,GF) | M30: 32.4 x2 (AW,GF) | M36: 38.9 x2 (AW,GF) | M42: 45.4 x2 (AW,GF) | ..."
+  },
+  {
+   "what": "M14 row (verifier)",
+   "why": "e_min=23.36: 2 clusters ['GF', 'SL'], rival {'23.35': ['FI', 'EE']}"
+  },
+  {
+   "what": "M16 row (verifier)",
+   "why": "pitch=2: 2 clusters ['GF', 'FI']; m_min=7.42: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M20 row (verifier)",
+   "why": "pitch=2.5: 2 clusters ['GF', 'FI']; m_min=9.1: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M24 row (verifier)",
+   "why": "pitch=3: 2 clusters ['GF', 'FI']; m_min=10.9: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M30 row (verifier)",
+   "why": "pitch=3.5: 2 clusters ['GF', 'FI']; m_min=13.9: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M36 row (verifier)",
+   "why": "pitch=4: 2 clusters ['GF', 'FI']; m_min=16.9: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M42 row (verifier)",
+   "why": "pitch=4.5: 2 clusters ['GF', 'FI']; m_min=19.7: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M48 row (verifier)",
+   "why": "pitch=5: 2 clusters ['GF', 'FI']; e_min=82.6: 2 clusters ['GF', 'NFG']; m_min=22.7: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "pitch, m_min columns; M48 row",
+   "why": "only 2 independent clusters once the calculator source is excluded"
+  }
+ ],
+ "checks": [
+  "s strictly increases with size - PASS",
+  "m (max) strictly increases with size - PASS",
+  "m_min < m for every row - PASS",
+  "e_min/s between 1.09 and 1.14 for every row (hexagon: e = 1.1547 s, minimum based on s_min) - PASS",
+  "m (max) = 0.5 d for every row (thin nut height is half the nominal diameter, 1.8 for M3 / 2.2 for M4 / 2.7 for M5 / 3.2 for M6 excepted) - PASS",
+  "every kept cell: >= 3 independent clusters with the identical number (see hnthin.evidence.json); minimum cluster count in the kept table = 3"
+ ],
+ "shape_hint": "Low hexagon nut (height about half the thread diameter) with a 30 degree chamfer on both faces (style 0); side view is a short hexagon prism of height m, top view a hexagon with width across flats s and across corners e; countersink of diameter da at the thread ends.",
+ "role_map": {
+  "d": "nominal thread diameter (row label)",
+  "pitch": "coarse thread pitch P",
+  "s": "width across flats, nominal = max",
+  "e_min": "width across corners min",
+  "m": "nut height max (nominal)",
+  "m_min": "nut height min"
+ },
+ "notes": "Kept: pitch, s, e_min, m (max) and m_min for all 19 candidate sizes M3-M48, each cell with 3 to 6 clusters out of globalfastener, amesweb, fasten.it, engineersedge, schrauben-lexikon and nfgab. Choice of rectangle: the nominally largest one is 12 sizes x 8 columns (96 cells: M3, M4, M5, M6, M8, M10, M12, M14, M18, M22, M27, M33 with s_min, dw_min, da_max added) because engineersedge - the third cluster for those tolerance columns - lists only M1.6-M12 and the non-preferred sizes; 19 sizes x 5 columns (95 cells) is kept instead so that M16, M20, M24, M30, M36, M42 and M48 stay in the table. NOT counted: (1) boltport's ISO 4035 page, because it reproduces the standard's scope paragraph, requirements table and normative references (SOURCE_RULE: such pages are not sources); (2) fasteners.eu's 'ISO 4035' page and its torqbolt copy, because the table printed there is the DIN 439-2 table (M1,8, fine-thread designations, s 17/19/22/32, m' row, e M5 9.79). If fasteners.eu is counted where it agrees (as was done for pws), s_min, dw_min and da_max also reach three clusters for M16, M20, M24, M36, M42 and the largest rectangle becomes 17 sizes x 8 columns (or 19 sizes x 7 columns without dw_min): run `python3 -I hnthin_compare.py --count-fe` -> hnthin.alt_fe.json. EDITION CAVEAT for the columns left out: every page read gives the rounded one-decimal numbers of the 1999/2012 editions for mw_min, dw_min and da_max (e.g. M6 mw 2.3, dw 8.9; M12 da 13.0); no public HTML page carries two-decimal numbers such as dw 8.88 or da 12.96 (globalfastener lists an ISO 4035-2023 entry but serves no table for it), so the catalog's present two-decimal values in those three columns could not be confirmed by any fetched page. nfgab's page 'ISO 4035/DIN 439' says itself that M10, M12, M14 and M22 are listed with DIN widths; it dissents there and agrees elsewhere. boltport's pitch column ('pa'), engineersedge's m' and schrauben-lexikon's 'm' (no max/min) and 'd2' rows were not used because the pages do not state what they are.",
+ "scope": "ISO 4035 보통나사 M3–M12, M18, M22, M27, M33",
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Verifier re-fetched every page itself on 2026-11-11 with curl (browser UA, 2.5 s pause per host; HTTP 200 for all; globalfastener detail_400 needed one retry after a 403), wrote its own stdlib HTML table reader (vt.py, gf.py, obs.py) and counting script (count.py) without using the researcher's raw/, extracted tables or scripts. Drawings that define bare symbols (schrauben-lexikon gifs, nfgab pngs) were fetched and viewed. Lead decisions applied: amesweb (calculator) not a source; a rival value printed by 2+ independent lineages removes the row; cells of another standard printed under the target title (verified equal to that standard's table) are neither support nor rival; pages reproducing the standard's text (boltport ISO 4035) excluded. A cluster whose own pages give two different values for a cell is not counted for it. Largest rectangle (cells, then rows) chosen among column subsets that contain the drawing keys. Re-counted 19 x 5 candidate cells; kept 11 x 5; per-cell clusters in hnthin.verify.md. | Lead chose the verifier's stated alternative rectangle: 17 sizes (M3–M42 without M14) × s, e_min, m — every cell ≥3 independent clusters, no rival (hnthin.verify.md). pitch and m_min dropped (2 clusters without the calculator); M14 (rival e min 23.35 on two pages) and M48 dropped.",
+  "problems": [
+   "amesweb removed (calculator): pitch and m_min now rest on GF, FI and EE only, so they have 2 clusters for every size engineersedge does not list (M16, M20, M24, M30, M36, M42, M48).",
+   "M14: e min 23.36 only on globalfastener and schrauben-lexikon (2 clusters); fasten.it AND engineersedge print 23.35 -> rival on two independent pages -> row removed under the lead rule (engineersedge's 23.35 sits in a colspan cell under M14; read from the raw HTML).",
+   "M48: e min 82.6 on GF and nfgab only (fasten.it 83.91) -> 2 clusters.",
+   "Chosen rectangle 11 sizes x 5 columns (55 cells). Equally defensible alternative with more sizes: 17 sizes (M3-M42 without M14) x s, e_min, m (51 cells) - all cells >= 3 clusters, no rival. Lead may prefer it; both are pure removals from the researcher's record.",
+   "Rule-3: nfgab DIN widths (s 17/19/22/32, e 21.1/24.49) and fasteners.eu 'ISO 4035' (= DIN 439-2 table) not counted and not rivals. nfgab M10 e 18.39 and schrauben-lexikon M22 e 39,55 are single-lineage typos."
+  ],
+  "dropped_rows": [
+   "M14",
+   "M48"
+  ],
+  "dropped_cols": [
+   "m_min",
+   "pitch"
+  ]
+ }
+}

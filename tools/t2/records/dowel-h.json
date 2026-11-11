@@ -1,0 +1,231 @@
+{
+ "id": "dowel-h",
+ "status": "partial",
+ "standard": "ISO 8734",
+ "standard_full": "ISO 8734:1997 (parallel pins of hardened steel and martensitic stainless steel, dowel pins; = DIN EN ISO 8734:1998). c and the upper end of the commercial length range as printed by the pages used.",
+ "u": "mm",
+ "cols": [
+  [
+   "d",
+   "호칭 지름 d"
+  ],
+  [
+   "c",
+   "끝 모따기 c (≈)"
+  ],
+  [
+   "lMaxStd",
+   "상업 길이 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "1",
+   1,
+   0.2,
+   10
+  ],
+  [
+   "1.5",
+   1.5,
+   0.3,
+   16
+  ],
+  [
+   "2",
+   2,
+   0.35,
+   20
+  ],
+  [
+   "2.5",
+   2.5,
+   0.4,
+   24
+  ],
+  [
+   "3",
+   3,
+   0.5,
+   30
+  ],
+  [
+   "4",
+   4,
+   0.63,
+   40
+  ],
+  [
+   "5",
+   5,
+   0.8,
+   50
+  ],
+  [
+   "6",
+   6,
+   1.2,
+   60
+  ],
+  [
+   "8",
+   8,
+   1.6,
+   80
+  ],
+  [
+   "10",
+   10,
+   2,
+   100
+  ],
+  [
+   "12",
+   12,
+   2.5,
+   100
+  ],
+  [
+   "16",
+   16,
+   3,
+   100
+  ],
+  [
+   "20",
+   20,
+   3.5,
+   100
+  ]
+ ],
+ "row_support": {
+  "1": 3,
+  "1.5": 3,
+  "2": 3,
+  "2.5": 3,
+  "3": 3,
+  "4": 3,
+  "5": 3,
+  "6": 3,
+  "8": 3,
+  "10": 3,
+  "12": 3,
+  "16": 3,
+  "20": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_260.html",
+   "site": "globalfastener.com",
+   "what": "ISO 8734-1997 table: d Nominal Size (m6), d max, d min, c ≈ (d 1-20); no length table in the HTML -> c only"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_8734",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 8734 (1998): table d / c and matrix headed 'DIN EN ISO 8734 - commercial lengths' (X marks, nominal length 3-100 by size)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/8734/",
+   "site": "fasteners.eu",
+   "what": "ISO 8734 table: d m6, c, l nominal/min/max with '+' marks under the heading 'trade lengths' (the DIN/6325 page of the site is the identical table)"
+  },
+  {
+   "url": "https://engineersedge.com/hardware/iso_metric_dowel_pins_13805.htm",
+   "site": "engineersedge.com",
+   "what": "'ISO Metric Dowel Pins per DIN EN ISO 8734': d = m6, c ≈, L nominal/min/max with x marks, legend 'X = Range of Nominal Lengths'. Its marks start at 16 for d 8 and at 50 for d 16 (others: 18 and 40)"
+  },
+  {
+   "url": "https://www.opac.net/en/producto-166-iso-8734",
+   "site": "opac.net",
+   "what": "manufacturer product page ISO 8734: d m6, c ≈, c tol., and a list of lengths per diameter under the bare heading 'l' (the maker's own programme) -> counted for c, not for the standard's length range"
+  },
+  {
+   "url": "https://www.fastenerdata.co.uk/metric-parallel-dowel-pin-m6-case-hard-steel-iso8734b-iso-8734-b.html",
+   "site": "fastenerdata.co.uk",
+   "what": "ISO 8734 B data page: d (incl. 25), m6 limits, C, unlabelled length list per diameter (wider product range) -> counted for c only"
+  },
+  {
+   "url": "https://www.dm-muehl.de/cgi-local/produkt/produkt_02.pl?wort=8734&link=stifte01.shtml,8734A",
+   "site": "dm-muehl.de",
+   "what": "dealer page 'ISO 8734 -A-': d 1.5-8, d max/min, c ~; the matrix below is stock quantities, not used"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-6325",
+   "site": "theo-schrauben.de",
+   "what": "NOT counted: table headed 'DIN Technische Daten' on a DIN 6325 page (l2, r, z1, z2 of the old standard) with an extra row c; the page does not say that row is ISO 8734, and it prints 0,98 for d 5"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-8734/",
+   "site": "boltport.com",
+   "what": "NOT counted: reproduces the standard's table with its footnotes, the words 'Range of commercial lengths' and the requirements table (material, hardness, surface, workmanship, acceptability) almost verbatim; the range marks are not in the HTML text"
+  }
+ ],
+ "clusters": {
+  "A globalfastener (ISO 8734-1997): c": [
+   "globalfastener.com/standards/detail_260.html"
+  ],
+  "B fasten.it (DIN EN ISO 8734): c, commercial lengths": [
+   "fasten.it/norms/norm/din_en_iso_8734"
+  ],
+  "C fasteners.eu (ISO 8734 = its DIN 6325 page): c, trade lengths": [
+   "fasteners.eu/standards/ISO/8734/",
+   "fasteners.eu/standards/DIN/6325/"
+  ],
+  "D engineersedge.com (per DIN EN ISO 8734): c, range of nominal lengths": [
+   "engineersedge.com/hardware/iso_metric_dowel_pins_13805.htm"
+  ],
+  "E OPAC (manufacturer): c": [
+   "opac.net/en/producto-166-iso-8734"
+  ],
+  "F fastenerdata.co.uk (ISO 8734 B): c": [
+   "fastenerdata.co.uk ... iso8734b-iso-8734-b.html"
+  ],
+  "H dm-muehl.de (ISO 8734 A dealer page): c for d 1.5-8": [
+   "dm-muehl.de ... wort=8734"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "lMinStd column (lower end of the commercial length range)",
+   "why": "d 8: 18 on fasten.it and fasteners.eu, 16 on engineersedge; d 16: 40 on fasten.it and fasteners.eu, 50 on engineersedge -> only 2 clusters that call their marks the standard's commercial / trade / nominal length range. The researcher's third cluster was the OPAC product page, whose length list stands under a bare 'l' heading in a maker's catalogue table (what the company supplies), and fastenerdata's list is a wider unlabelled range (d 8 from 16, d 16 from 30). The other eleven diameters had 3 clusters (3, 4, 5, 6, 8, 10, 12, 14, 22, 26, 50), but the column was dropped rather than the two common diameters."
+  },
+  {
+   "what": "d m6 limits (d max / d min)",
+   "why": "not a candidate column; not evaluated"
+  },
+  {
+   "what": "old DIN 6325 dimensions (l2, r, z1, z2) and d 14",
+   "why": "different standard, not part of the candidate table"
+  }
+ ],
+ "checks": [
+  "c: identical in 6-7 clusters for every diameter (globalfastener, fasten.it, fasteners.eu, engineersedge, OPAC, fastenerdata; + dm-muehl for d 1.5-8)",
+  "lMaxStd: identical in exactly 3 clusters for every diameter (fasten.it 'commercial lengths', fasteners.eu 'trade lengths', engineersedge 'range of nominal lengths'); OPAC's catalogue list ends at the same lengths (not counted)",
+  "c increases strictly with d and c / d lies between 0.15 and 0.21: True",
+  "lMaxStd never decreases with d: True",
+  "each length matrix is contiguous (no gaps between the first and last mark of a diameter)"
+ ],
+ "shape_hint": "Plain cylindrical pin, ground, diameter tolerance m6; one end has a lead-in chamfer of length c, the other end is rounded/chamfered. No head, no thread.",
+ "role_map": {
+  "d": "nominal pin diameter (m6)",
+  "c": "length of the end chamfer, approximate (pages: c ≈, c ~, 'c =', C)",
+  "lMaxStd": "longest nominal length inside the range the pages mark as commercial / trade lengths for that diameter (the table of the standard continues above 100 mm in 20 mm steps)"
+ },
+ "notes": "Verified record: 13 rows x 3 columns (d, c, lMaxStd). lMaxStd is computed by program as the largest marked nominal length per diameter in each matrix. The lower end of the range is not published: pages disagree for d 8 (18 / 18 / 16) and d 16 (40 / 40 / 50). The catalogue code that used lMinStd as a default pin length will find no value.",
+ "scope": "ISO 8734의 끝 모따기 c와 상업 길이 범위의 위쪽 끝만 — 상업 길이의 아래쪽 끝은 공개 자료끼리 d 8·d 16에서 달라 싣지 않았습니다",
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "All pages re-downloaded by the verifier with curl (browser User-Agent) on 2026-11-11 into a separate directory (HTTP 200, text/html); tables re-read with the verifier's own parser (html.parser grid with rowspan/colspan), not the researcher's scripts or raw files. Pages: globalfastener detail_260, fasten.it din_en_iso_8734, fasteners.eu ISO/8734 + DIN/6325, engineersedge 13805, opac producto-166, fastenerdata iso8734b, dm-muehl 8734, theo-schrauben DIN-6325 + ISO-8734, boltport iso-8734. 13 diameters x (c, first and last marked length) re-extracted from every matrix; captions of each length list read to see what the list claims to be.",
+  "problems": [
+   "lMinStd removed (2 clusters at d 8 and d 16). What each page calls its length list: fasten.it 'DIN EN ISO 8734 - commercial lengths' and fasteners.eu 'trade lengths' (standard's range: d 8 from 18, d 16 from 40); engineersedge 'X = Range of Nominal Lengths' per DIN EN ISO 8734 (d 8 from 16, d 16 from 50); OPAC a list under 'l' in a product table with an order reference (company programme, equal to fasten.it/fasteners.eu for all 13 diameters); fastenerdata an unlabelled list incl. d 25 (wider range); dm-muehl stock quantities. Counting OPAC as the standard's range, as the researcher did, is what gave 3.",
+   "lMaxStd kept with zero slack (fasten.it, fasteners.eu, engineersedge for all 13 diameters). The same engineersedge matrix is the one that differs at the lower end for d 8 and d 16, so its upper ends agree but the page is not flawless. The lead may prefer to drop lMaxStd too and keep d and c only (c has 6-7 clusters).",
+   "theo-schrauben's c row (DIN 6325 page, 0,98 for d 5) and dm-muehl's stock matrix are not counted; Boltport's ISO 8734 page is a near-verbatim reproduction and stays excluded.",
+   "Not counted, for the lead's information: the publisher-authorised preview service (standards.iteh.ai sample PDF, a T1-type source under app/SOURCE_RULE.md) shows the dimension table of this ISO standard; the kept values equal it. The table could be re-based on that official preview instead of T2. (ISO 8734:1997 preview: d and c ≈ rows complete and equal; the length-range part of the table is cut off after l = 16, where the stepped line puts the start for d 8 at 18.)"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "lMinStd"
+  ]
+ }
+}

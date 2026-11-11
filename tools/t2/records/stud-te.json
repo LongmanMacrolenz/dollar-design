@@ -1,0 +1,260 @@
+{
+ "id": "stud-te",
+ "status": "partial",
+ "standard": "DIN 939",
+ "standard_full": "DIN 939 (studs, metal end ≈ 1.25 d), values as printed by pages that give the 1995 edition (DIN 939:1995-02); coarse-thread sizes M6-M42",
+ "u": "mm",
+ "scope": "DIN 939(박힘쪽 ≈1.25d)의 M6–M42 — 피치, l > 200 mm일 때의 너트쪽 나사 길이(M6·M8에는 없는 칸), DIN 938·835·940은 싣지 않았습니다",
+ "cols": [
+  [
+   "b1_939",
+   "박힘쪽 b1 (DIN 939)"
+  ],
+  [
+   "b_le125",
+   "너트쪽 나사 b (l ≤ 125)"
+  ],
+  [
+   "b_125_200",
+   "너트쪽 b (125 < l ≤ 200)"
+  ],
+  [
+   "x1",
+   "불완전 나사 x1"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   7.5,
+   18,
+   24,
+   2.5
+  ],
+  [
+   "M8",
+   10,
+   22,
+   28,
+   3.2
+  ],
+  [
+   "M10",
+   12,
+   26,
+   32,
+   3.8
+  ],
+  [
+   "M12",
+   15,
+   30,
+   36,
+   4.3
+  ],
+  [
+   "M14",
+   18,
+   34,
+   40,
+   5
+  ],
+  [
+   "M16",
+   20,
+   38,
+   44,
+   5
+  ],
+  [
+   "M18",
+   22,
+   42,
+   48,
+   6.3
+  ],
+  [
+   "M20",
+   25,
+   46,
+   52,
+   6.3
+  ],
+  [
+   "M22",
+   28,
+   50,
+   56,
+   6.3
+  ],
+  [
+   "M24",
+   30,
+   54,
+   60,
+   7.5
+  ],
+  [
+   "M27",
+   35,
+   60,
+   66,
+   7.5
+  ],
+  [
+   "M30",
+   38,
+   66,
+   72,
+   9
+  ],
+  [
+   "M33",
+   42,
+   72,
+   78,
+   9
+  ],
+  [
+   "M36",
+   45,
+   78,
+   84,
+   10
+  ],
+  [
+   "M39",
+   50,
+   84,
+   90,
+   10
+  ],
+  [
+   "M42",
+   52,
+   90,
+   96,
+   11
+  ]
+ ],
+ "row_support": {
+  "M6": 4,
+  "M8": 4,
+  "M10": 4,
+  "M12": 4,
+  "M14": 4,
+  "M16": 4,
+  "M18": 3,
+  "M20": 3,
+  "M22": 3,
+  "M24": 4,
+  "M27": 4,
+  "M30": 4,
+  "M33": 3,
+  "M36": 3,
+  "M39": 3,
+  "M42": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_411.html",
+   "site": "globalfastener.com",
+   "what": "DIN 939-1995 table: sizes M4..(M52) across, rows P, b_1, b_2 (L≤125 / 125<L≤200 / L>200), x_1, x_2"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_939",
+   "site": "fasten.it",
+   "what": "DIN 939 (02-1995) tables M4-M24 and M27-M52: b1, b2 (l<=125), b2 (l>125<=200), b2 (l>200), x1, x2 (+ mass table, not used)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/939/",
+   "site": "fasteners.eu",
+   "what": "DIN 939 tables M4-M24, (M27)-(M52): b1, b2 l<125mm, b2 125>l<200mm, b2 l>200mm, x1, x2 (+ mass rows, not used)"
+  },
+  {
+   "url": "https://boltport.com/standards/din-939/",
+   "site": "boltport.com",
+   "what": "short table M6, M8, M10, M12, M16, M20: e, b up to 125, b up to 200, b over 200 - kept in one cluster with fasteners.eu (strict), adds nothing"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_939.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "Technische Daten DIN 939: b1, x1, x2, b2 (l < 125 mm), b2 (l < 200 mm), b2 (l > 200 mm); M5-M30 without M18; prints 53 for M20 b2 (l < 200)"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-939",
+   "site": "theo-schrauben.de",
+   "what": "same German dataset (table headed 'DIN 938 Technische Daten' on the DIN 939 page, no M18), M20/M22 rows shifted (42/48/61, 46/53/65) -> one cluster with schrauben-lexikon, not counted where either page differs"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-939",
+   "site": "woodstockindustrial.com",
+   "what": "DIN 939 table M5-M30: Diameter, Pitch, Metal end thread (1.25d), Nut end thread; note under the table: nut-end lengths apply to studs up to 125 mm -> counted for b1 and b (l ≤ 125) only"
+  }
+ ],
+ "clusters": {
+  "A globalfastener (DIN 939-1995)": [
+   "globalfastener.com/standards/detail_411.html"
+  ],
+  "B fasten.it (DIN 939, 02-1995)": [
+   "fasten.it/norms/norm/din_939"
+  ],
+  "C fasteners.eu + Boltport (strict: one cluster)": [
+   "fasteners.eu/standards/DIN/939/",
+   "boltport.com/standards/din-939/"
+  ],
+  "D German shop dataset (schrauben-lexikon + theo-schrauben)": [
+   "schrauben-lexikon.de/norm/DIN_939.asp",
+   "theo-schrauben.de/DIN-939"
+  ],
+  "E woodstockindustrial.com (b1, b l≤125 only)": [
+   "woodstockindustrial.com/specs/din-939"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "b (l > 200) column (b_gt200)",
+   "why": "left out because it does not exist for M6 and M8: every page prints '-' or '/' there and an empty cell is not allowed, so keeping it would cost the two common sizes. For M10-M42 the values (45, 49, 53, 57, 61, 65, 69, 73, 79, 85, 91, 97, 103, 109 = 2d + 25) had >= 3 clusters."
+  },
+  {
+   "what": "pitch column",
+   "why": "coarse pitch is stated only by globalfastener (P / Pitch) and woodstockindustrial (Pitch): 2 clusters for M6-M30, 1 for M33-M42"
+  },
+  {
+   "what": "DIN 938 / DIN 835 / DIN 940 embedment lengths, x2, sizes M4, M5, M7, M45-M52",
+   "why": "not in the candidate table; not evaluated"
+  }
+ ],
+ "checks": [
+  "every kept cell identical in >= 3 clusters (min 3: globalfastener, fasten.it, fasteners.eu for M18, M33-M42 and for b 125<l≤200 of M20/M22)",
+  "b (l ≤ 125) = 2d + 6 and b (125 < l ≤ 200) = 2d + 12 in every row: True",
+  "b1 between 1.2 d and 1.3 d in every row: True",
+  "b1 strictly increases and x1 never decreases with size: True",
+  "fasten.it and fasteners.eu both carry the DIN mass table with different slips of their own (e.g. M8 x 35: 15.31 vs 15,1; M45 x 120: 1693 vs 1963; M52 x 150: 3194 vs 3794) -> separate transcriptions"
+ ],
+ "shape_hint": "Headless stud: a round bar threaded at both ends with a plain shank between. The short 'metal end' (length b1 ≈ 1.25 d) is screwed into the tapped hole; the longer nut end (length b, depending on the nominal length l) takes the nut. Nominal length l is measured without the metal end b1. x1 is the thread run-out next to the shank.",
+ "role_map": {
+  "d": "thread size (row label)",
+  "b1_939": "metal-end (tap-end) thread length b1 of DIN 939",
+  "b_le125": "nut-end thread length b2 for l ≤ 125 mm",
+  "b_125_200": "nut-end thread length b2 for 125 < l ≤ 200 mm",
+  "x1": "thread run-out x1 at the nut-end thread (drawings of globalfastener, fasten.it and schrauben-lexikon mark x1 between the plain shank and the nut-end thread, x2 at the metal end)"
+ },
+ "notes": "Verified record on the layout chosen by the lead: 16 rows x 4 columns (M6-M42; b1, b l≤125, b 125<l≤200, x1), stored by the researcher as alt_rectangle. Range labels differ in spelling: globalfastener 'L≤125 / 125<L≤200', fasten.it 'l<=125 / l>125<=200', fasteners.eu 'l<125mm / 125>l<200mm', schrauben-lexikon 'l < 125 mm / l < 200 mm', Boltport 'b up to 125 / up to 200'. The meaning of x1 is given by the page drawings, not by text. globalfastener lists a newer edition 'DIN 939 - 2025' next to the 1995 page; it could not be opened (HTTP 403) and was not compared.",
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "All pages re-downloaded by the verifier with curl (browser User-Agent) on 2026-11-11 into a separate directory (HTTP 200, text/html); tables re-read with the verifier's own parser (html.parser grid with rowspan/colspan), not the researcher's scripts or raw files. Pages: globalfastener detail_411, fasten.it din_939, fasteners.eu DIN/939, boltport din-939, schrauben-lexikon DIN_939, theo-schrauben DIN-939, woodstockindustrial din-939. Verified the 16 x 4 rectangle (M6-M42; b1_939, b_le125, b_125_200, x1) = 64 cells against 7 pages in 5 clusters: 4-5 clusters for M6-M16 and M24-M30, exactly 3 (globalfastener, fasten.it, fasteners.eu) for M18, M33, M36, M39, M42 (all four columns) and for b_125_200 of M20 and M22. Drawings of four pages opened to confirm what b1, b2 and x1 mark.",
+  "problems": [
+   "German shop dataset is not counted for M20/M22 nut-end lengths: schrauben-lexikon prints 53 for M20 b2 (l < 200) (record 52); theo-schrauben prints M20 42/48 and M22 46/53 (rows shifted by one size).",
+   "M18 and M33-M42 have zero slack: globalfastener, fasten.it and fasteners.eu only. They are three separate transcriptions of the 1995 table (different label spellings; the two mass tables differ by their own typos), fasten.it's is licensed by DIN.",
+   "woodstockindustrial is counted for b (l ≤ 125) because the note under its table says the nut-end lengths apply to studs up to 125 mm (the researcher had not counted it); this changes no minimum.",
+   "x1 has no text legend on any page (fasteners.eu's legend lists only l, d, u, b1, b2 and its drawing labels both run-outs x1); the reading 'run-out at the nut-end thread' comes from the drawings of globalfastener, fasten.it and schrauben-lexikon.",
+   "Edition: a 'DIN 939 - 2025' entry exists on globalfastener; not readable (403), so it is unknown whether the current edition keeps these numbers. The table is the 1995 edition's as far as the pages say."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "b_gt200 (layout decision: no value for M6 and M8)"
+  ]
+ }
+}

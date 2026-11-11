@@ -1,0 +1,254 @@
+{
+ "id": "nyloc",
+ "status": "partial",
+ "standard": "ISO 7040 · ISO 10511",
+ "standard_full": "ISO 7040 (prevailing torque type hexagon regular nuts with non-metallic insert, coarse thread) for pitch, s, e, h, m; ISO 10511 (thin type) for ht; numbers as published for the 1997/2012 editions (= DIN EN ISO 7040 / 10511:2013)",
+ "u": "mm",
+ "cols": [
+  [
+   "s",
+   "2면폭 s"
+  ],
+  [
+   "h",
+   "전체 높이 h 최대 (보통형 ISO 7040)"
+  ],
+  [
+   "m_min",
+   "육각부 높이 최소 (보통형)"
+  ],
+  [
+   "ht",
+   "전체 높이 최대 (낮은형 ISO 10511)"
+  ]
+ ],
+ "rows": [
+  [
+   "M4",
+   7.0,
+   6.0,
+   2.9,
+   5.0
+  ],
+  [
+   "M5",
+   8.0,
+   6.8,
+   4.4,
+   5.0
+  ],
+  [
+   "M6",
+   10.0,
+   8.0,
+   4.9,
+   6.0
+  ],
+  [
+   "M8",
+   13.0,
+   9.5,
+   6.44,
+   6.76
+  ],
+  [
+   "M10",
+   16.0,
+   11.9,
+   8.04,
+   8.56
+  ],
+  [
+   "M12",
+   18.0,
+   14.9,
+   10.37,
+   10.23
+  ],
+  [
+   "M16",
+   24.0,
+   19.1,
+   14.1,
+   12.42
+  ],
+  [
+   "M20",
+   30.0,
+   22.8,
+   16.9,
+   14.9
+  ],
+  [
+   "M24",
+   36.0,
+   27.1,
+   20.2,
+   17.8
+  ]
+ ],
+ "row_support": {
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3,
+  "M20": 3,
+  "M24": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_5304.html",
+   "site": "globalfastener.com",
+   "what": "ISO 7040-2012 table (P, da, dw, e, h, m, mw, s) M3-M36"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_7040",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 7040 table (P, s max, h min÷max, m min, e min.) M3-M36; 'h min÷max' cell split at the ÷ sign (own error: M3 e 6.1)"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-7040/",
+   "site": "boltport.com",
+   "what": "ISO 7040 short table (s, m min.) M5-M24; its 'e' and 'H' columns have no min/max label and are not used (H M24 = 29.1, e M10 = 18.90 are also wrong)"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1426-prevailing-torque-type-hex-lock-nuts-with-polyamide-insert-iso-7040",
+   "site": "nfgab.com",
+   "what": "ISO 7040 product group table (h max, m min, s) M4-M24"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_5327.html",
+   "site": "globalfastener.com",
+   "what": "ISO 10511-2012 table: h max / h min used for the thin type"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_10511",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 10511 table: h max / h min (first table of the page)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_10511.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "ISO 10511 technical data: h max. (values shifted by one column from M18 on: M18 14.90, M20 17.80, M24 25.50)"
+  },
+  {
+   "url": "https://www.mechlabgeek.com/en/fasteners/din-985",
+   "site": "mechlabgeek.com",
+   "what": "DIN 985 / ISO 10511 page, table shown for 'Standard: ISO 10511' ('Values per ISO 10511:2012'): h (mm, max) M3-M24"
+  }
+ ],
+ "clusters": {
+  "GF: globalfastener ISO 7040 (5304, 413, 5413) and ISO 10511 (5327, 454, 23608) + ayafasteners copy": [
+   "s max, h max/min, m min, e min; thin h max/min"
+  ],
+  "FI: fasten.it din_en_iso_7040 / din_en_iso_10511": [
+   "s max, h min/max, m min, e min.; thin h max/min"
+  ],
+  "NFG: nfgab 1426 ISO 7040 (M4-M24)": [
+   "h max, m min, s (drawing 1426r defines h, m, s)"
+  ],
+  "BP: boltport iso-7040 short table (M5-M24)": [
+   "s, m min. only (H and e unlabelled, not used)"
+  ],
+  "MLG: mechlabgeek din-985, Standard ISO 10511, Values per ISO 10511:2012": [
+   "h (mm, max) of the thin type, M3-M24 without M14"
+  ],
+  "SL: schrauben-lexikon ISO_10511 + boltport iso-10511 copy": [
+   "h max. thin type; shifted values from M18 on (one lineage, typo)"
+  ]
+ },
+ "not_counted": {
+  "not counted - fasteners.eu + torqbolt copy": [
+   "fasteners.eu/standards/ISO/7040/ (note on the page: 'Table according to DIN 982')",
+   "torqbolt.com iso-7040 page (identical, same typos)",
+   "fasteners.eu/standards/ISO/10511/ ('Table according to DIN 985')"
+  ],
+  "not counted - amesweb.info (calculator output, lead decision)": [
+   "form-result pages; not fetched by the verifier"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "mw_min column (렌치 걸림 높이 최소 (보통형))",
+   "why": "published by two clusters only (globalfastener, amesweb); ayafasteners.com repeats globalfastener's table and wording, fasteners.eu's m' row belongs to its DIN 982 table // cells without 3 agreeing clusters -> M3: 1.72 x2 (AW,GF) | M4: 2.32 x2 (AW,GF) | M5: 3.52 x2 (AW,GF) | M6: 3.92 x2 (AW,GF) | M8: 5.15 x2 (AW,GF) | M10: 6.43 x2 (AW,GF) | ..."
+  },
+  {
+   "what": "M3 row",
+   "why": "e_min 6.01 on globalfastener and amesweb only - fasten.it prints 6.1; nfgab, boltport and mechlabgeek do not list an ISO 7040 M3 e value. (Without the e_min column M3 would be supported: 13 sizes x 7 columns.) // kept columns without 3 agreeing clusters -> e_min: 6.01 x2 (AW,GF); 6.1 x1 (FI)"
+  },
+  {
+   "what": "M14 row (verifier)",
+   "why": "ht=11.32: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M30 row (verifier)",
+   "why": "s=46: 2 clusters ['GF', 'FI']; h=32.6: 2 clusters ['GF', 'FI']; m_min=24.3: 2 clusters ['GF', 'FI']; ht=22.2: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "M36 row (verifier)",
+   "why": "s=55: 2 clusters ['GF', 'FI']; h=38.9: 2 clusters ['GF', 'FI']; m_min=29.4: 2 clusters ['GF', 'FI']; ht=25.5: 2 clusters ['GF', 'FI']"
+  },
+  {
+   "what": "pitch column (verifier)",
+   "why": "below 3 independent clusters after re-count (amesweb not a source): M4 2, M5 2, M6 2, M8 2, M10 2, M12 2, M14 2, M16 2, M20 2, M24 2, M30 2, M36 2"
+  },
+  {
+   "what": "e_min column (verifier)",
+   "why": "below 3 independent clusters after re-count (amesweb not a source): M4 2, M5 2, M6 2, M8 2, M10 2, M12 2, M14 2, M16 2, M20 2, M24 2, M30 2, M36 2"
+  },
+  {
+   "what": "h_min column (verifier)",
+   "why": "below 3 independent clusters after re-count (amesweb not a source): M4 2, M5 2, M6 2, M8 2, M10 2, M12 2, M14 2, M16 2, M20 2, M24 2, M30 2, M36 2"
+  },
+  {
+   "what": "ht_min column (verifier)",
+   "why": "below 3 independent clusters after re-count (amesweb not a source): M4 2, M5 2, M6 2, M8 2, M10 2, M12 2, M14 2, M16 2, M20 2, M24 2, M30 2, M36 2"
+  }
+ ],
+ "checks": [
+  "s strictly increases with size - PASS",
+  "h (regular type, max) strictly increases with size - PASS",
+  "h_min < h for every row - PASS",
+  "m_min < h_min for every row (hexagon part is lower than the nut including the insert collar) - PASS",
+  "ht_min < ht for every row - PASS",
+  "ht (thin type) < h (regular type) for every row - PASS",
+  "e_min/s between 1.09 and 1.14 for every row - PASS",
+  "h (max) between 0.9 d and 1.5 d - PASS",
+  "every kept cell: >= 3 independent clusters with the identical number (see nyloc.evidence.json); minimum cluster count in the kept table = 3"
+ ],
+ "shape_hint": "Hexagon nut with a raised cylindrical collar on top that holds a nylon (polyamide) ring; side view: hexagon part of height m, total height h including the collar, the ring visible as a band inside the collar; thin type (ISO 10511) has the same hexagon but a lower total height.",
+ "role_map": {
+  "d": "nominal thread diameter (row label)",
+  "s": "width across flats max (nominal)",
+  "h": "total nut height max, regular type ISO 7040",
+  "m_min": "height of the hexagon (wrenchable) part min, regular type",
+  "ht": "total nut height max, thin type ISO 10511"
+ },
+ "notes": "Shared columns (pitch, s, e_min) are taken from ISO 7040 pages only; the ISO 10511 pages are used for ht / ht_min only. Thin margin: pitch, e_min, h_min and ht_min, and every cell of M30 and M36, rest on exactly three clusters - globalfastener, amesweb, fasten.it. amesweb is an engineering reference site (calculator pages that quote one scope sentence of the standard as a note), not a manufacturer or distributor; if a verifier does not accept it, what still has three clusters is s, h (max) and m_min for M4-M24 (globalfastener, fasten.it, nfgab; boltport for s and m_min) and ht for M3-M24 without M14 (globalfastener, fasten.it, mechlabgeek). mw_min is published only by GF and AW (2 clusters) and is dropped (ayafasteners.com also prints the full table, but with globalfastener's row wording - same cluster, raw/aya_iso7040.html, not counted separately). M3 is dropped because e_min 6.01 has two clusters only (GF, AW; fasten.it prints 6.1): the largest rectangle is 12 sizes x 8 columns (96 cells); the alternative 13 sizes x 7 columns without e_min (91 cells) is equally supported. fasteners.eu / torqbolt pages titled ISO 7040 / ISO 10511 say themselves 'Table according to DIN 982 / DIN 985' (h 6.3-8-9.5-11.5-14..., s 17/19/22) and are not counted. The numbers kept are those the sources give for the 1997/2012 editions; mechlabgeek notes that the current edition is ISO 10511:2025 (and globalfastener lists ISO 7040:2025 without a public table) - no public HTML table of the 2025 editions was found, so a change in 2025 cannot be excluded. schrauben-lexikon (and its boltport copy) give h max. of the thin type only, with wrong numbers for M14 (11.23) and shifted values from M18 on - not decisive for any kept cell. fasten.it prints e min = 6.1 for M3 on its ISO 7040 page (6.01 on GF and AW; 6.01 on fasten.it's own ISO 10511 page, which is not counted for the regular type).",
+ "scope": "보통나사 M4–M24 (M14 제외), 보통형(ISO 7040)과 낮은형(ISO 10511) 높이",
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Verifier re-fetched every page itself on 2026-11-11 with curl (browser UA, 2.5 s pause per host; HTTP 200 for all; globalfastener detail_400 needed one retry after a 403), wrote its own stdlib HTML table reader (vt.py, gf.py, obs.py) and counting script (count.py) without using the researcher's raw/, extracted tables or scripts. Drawings that define bare symbols (schrauben-lexikon gifs, nfgab pngs) were fetched and viewed. Lead decisions applied: amesweb (calculator) not a source; a rival value printed by 2+ independent lineages removes the row; cells of another standard printed under the target title (verified equal to that standard's table) are neither support nor rival; pages reproducing the standard's text (boltport ISO 4035) excluded. A cluster whose own pages give two different values for a cell is not counted for it. Largest rectangle (cells, then rows) chosen among column subsets that contain the drawing keys. Re-counted 12 x 8 candidate cells; kept 9 x 4; per-cell clusters in nyloc.verify.md.",
+  "problems": [
+   "amesweb removed (calculator): pitch, e_min, h_min and ht_min now have only GF + fasten.it (2 clusters) for every size -> all four columns dropped; M30 and M36 have 2 clusters in every column (nfgab, boltport, mechlabgeek stop at M24) -> rows dropped; M14 ht has GF + FI only (schrauben-lexikon 11.23, mechlabgeek lacks M14) -> row dropped.",
+   "schrauben-lexikon/boltport thin-type h max is shifted from M18 (M20 17.80, M24 25.50): one lineage, treated as a typo, not counted there; GF, FI and MLG still give 14.9 / 17.8.",
+   "MLG and GF/FI ISO 10511 pages were used only for ht; regular-type columns only from ISO 7040 pages. mechlabgeek notes ISO 10511:2025 exists; no page prints 2025 values, so no newer-edition rival was found (not verifiable).",
+   "fasteners.eu ISO 7040/10511 pages are DIN 982/985 tables (rule 3): not counted, not rivals."
+  ],
+  "dropped_rows": [
+   "M14",
+   "M30",
+   "M36"
+  ],
+  "dropped_cols": [
+   "pitch",
+   "e_min",
+   "h_min",
+   "ht_min"
+  ]
+ }
+}

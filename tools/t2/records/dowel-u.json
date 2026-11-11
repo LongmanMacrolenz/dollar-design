@@ -1,0 +1,238 @@
+{
+ "id": "dowel-u",
+ "status": "partial",
+ "standard": "ISO 2338",
+ "standard_full": "ISO 2338:1997 (parallel pins of unhardened steel and austenitic stainless steel; = DIN EN ISO 2338:1998). Not the withdrawn DIN 7 table.",
+ "u": "mm",
+ "scope": "ISO 2338의 호칭 지름과 끝 모따기 c만 — 상업 길이 범위는 싣지 않았습니다",
+ "cols": [
+  [
+   "d",
+   "호칭 지름 d"
+  ],
+  [
+   "c",
+   "끝 모따기 c (≈)"
+  ]
+ ],
+ "rows": [
+  [
+   "0.6",
+   0.6,
+   0.12
+  ],
+  [
+   "0.8",
+   0.8,
+   0.16
+  ],
+  [
+   "1",
+   1,
+   0.2
+  ],
+  [
+   "1.2",
+   1.2,
+   0.25
+  ],
+  [
+   "1.5",
+   1.5,
+   0.3
+  ],
+  [
+   "2",
+   2,
+   0.35
+  ],
+  [
+   "2.5",
+   2.5,
+   0.4
+  ],
+  [
+   "3",
+   3,
+   0.5
+  ],
+  [
+   "4",
+   4,
+   0.63
+  ],
+  [
+   "5",
+   5,
+   0.8
+  ],
+  [
+   "6",
+   6,
+   1.2
+  ],
+  [
+   "8",
+   8,
+   1.6
+  ],
+  [
+   "10",
+   10,
+   2
+  ],
+  [
+   "12",
+   12,
+   2.5
+  ],
+  [
+   "16",
+   16,
+   3
+  ],
+  [
+   "20",
+   20,
+   3.5
+  ],
+  [
+   "25",
+   25,
+   4
+  ],
+  [
+   "30",
+   30,
+   5
+  ],
+  [
+   "40",
+   40,
+   6.3
+  ],
+  [
+   "50",
+   50,
+   8
+  ]
+ ],
+ "row_support": {
+  "0.6": 3,
+  "0.8": 3,
+  "1": 4,
+  "1.2": 3,
+  "1.5": 4,
+  "2": 4,
+  "2.5": 3,
+  "3": 4,
+  "4": 4,
+  "5": 4,
+  "6": 4,
+  "8": 4,
+  "10": 4,
+  "12": 4,
+  "16": 4,
+  "20": 3,
+  "25": 3,
+  "30": 3,
+  "40": 3,
+  "50": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_5288.html",
+   "site": "globalfastener.com",
+   "what": "ISO 2338-1997 table: d (m6) max/min, d (h8) max=nominal size/min, c ≈; d 0.6-50. detail_5081 (DIN EN ISO 2338-1998) is the same data -> one cluster"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_2338",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 2338 (02/1998): table d / c ≈ (d 0.6-50) and a 'commercial items' length matrix (not used)"
+  },
+  {
+   "url": "https://www.opac.net/en/producto-168-iso-2338",
+   "site": "opac.net",
+   "what": "manufacturer product table ISO 2338: d m6, c (≈, ±0,2), list of lengths per diameter (maker's programme, not used)"
+  },
+  {
+   "url": "https://www.dm-muehl.de/cgi-local/produkt/produkt_02.pl?wort=2338&link=stifte01.shtml,2338",
+   "site": "dm-muehl.de",
+   "what": "dealer page 'ISO 2338 Form A': d 1, 1.5, 2, 3, 4, 5, 6, 8, 10, 12, 16 with d max/min and c ~"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/ISO-2338",
+   "site": "theo-schrauben.de",
+   "what": "NOT counted: table 'Maße | c max. | r' with the DIN 7 radius column (r 1.6 for d 1.5, 32 for d 30, rows 13 and 14) and c labelled 'max.'; its c numbers equal the kept values for its 16 diameters, but the table is a mix of the old and the new standard"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/2338/",
+   "site": "fasteners.eu",
+   "what": "NOT counted: page titled ISO 2338 is the DIN 7 table of the same site (c 0,15 / 0,18 / 0,23 ...)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_2338.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "NOT counted: DIN 7 table (c 0,12 / 0,15 / 0,18 ...) under an ISO 2338 title; ferrofast iso-2338 is the same table"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-2338/",
+   "site": "boltport.com",
+   "what": "NOT counted: near-verbatim reproduction of the standard's table, footnotes and requirements table (its c row equals the kept values)"
+  }
+ ],
+ "clusters": {
+  "A globalfastener (ISO 2338-1997 + DIN EN ISO 2338-1998 pages)": [
+   "globalfastener.com/standards/detail_5288.html",
+   "globalfastener.com/standards/detail_5081.html"
+  ],
+  "B fasten.it (DIN EN ISO 2338, 02/1998)": [
+   "fasten.it/norms/norm/din_en_iso_2338"
+  ],
+  "C OPAC (manufacturer product table ISO 2338)": [
+   "opac.net/en/producto-168-iso-2338"
+  ],
+  "E dm-muehl.de (ISO 2338 dealer page, 11 diameters)": [
+   "dm-muehl.de ... wort=2338"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "lMinStd / lMaxStd columns (commercial length range)",
+   "why": "a per-diameter length range can be read from only 2 pages (fasten.it 'commercial items' matrix and the OPAC catalogue list) and they agree for only 4 of 20 diameters (0.6, 1.2, 40, 50); OPAC lists a wider manufacturer range. fasten.it alone: min ['2', '2', '4', '4', '4', '6', '6', '8', '8', '10', '12', '14', '18', '22', '26', '35', '50', '60', '80', '95'] / max ['6', '8', '10', '12', '16', '20', '24', '30', '40', '50', '60', '80', '95', '140', '180', '200', '200', '200', '200', '200']"
+  },
+  {
+   "what": "d m6 / h8 limits",
+   "why": "not a candidate column; printed by globalfastener only among the pages used"
+  },
+  {
+   "what": "pages that print the DIN 7 table under an ISO 2338 title (fasteners.eu, schrauben-lexikon, ferrofast)",
+   "why": "different (withdrawn) table: c max 0.15 for d 1, 0.3 for d 2, 0.9 for d 6, 3 for d 20 ... -> not ISO 2338:1997 data, not counted"
+  }
+ ],
+ "checks": [
+  "every kept cell identical in >= 3 clusters (globalfastener, fasten.it, OPAC for all 20 diameters; + dm-muehl for d 1, 1.5, 2, 3, 4, 5, 6, 8, 10, 12, 16)",
+  "c increases strictly with d: True",
+  "c / d between 0.15 and 0.21: True",
+  "the DIN 7-type pages (fasteners.eu ISO/2338 = DIN/7, schrauben-lexikon, ferrofast, fasten.it DIN 7) differ from the record at every diameter except 2.5 and 25, so none of them can have been counted by mistake"
+ ],
+ "shape_hint": "Plain cylindrical pin (diameter tolerance m6 or h8) with a chamfer of length c at both ends; no head, no thread.",
+ "role_map": {
+  "d": "nominal pin diameter",
+  "c": "length of the end chamfer, approximate value (pages: c ≈, c ~)"
+ },
+ "notes": "Verified record, unchanged in size (20 x 2). Support: globalfastener + fasten.it + OPAC for all 20 diameters, dm-muehl for 11 of them. theo-schrauben's ISO 2338 table is no longer counted (hybrid with the DIN 7 radius column, c labelled max.), which lowers five rows (d 0.8, 2.5, 20, 25, 30) from 4 to 3 clusters and eleven rows from 5 to 4 but changes no verdict. The commercial length range stays out (one page only).",
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "All pages re-downloaded by the verifier with curl (browser User-Agent) on 2026-11-11 into a separate directory (HTTP 200, text/html); tables re-read with the verifier's own parser (html.parser grid with rowspan/colspan), not the researcher's scripts or raw files. Pages: globalfastener detail_5288 + detail_5081, fasten.it din_en_iso_2338 (+ its DIN 7 page), opac producto-168, dm-muehl 2338, theo-schrauben ISO-2338, fasteners.eu ISO/2338 + DIN/7, schrauben-lexikon ISO_2338, ferrofast iso-2338, boltport iso-2338. 20 diameters x c: 3 clusters for d 0.6, 0.8, 1.2, 2.5, 20, 25, 30, 40, 50 and 4 for the other eleven; no dissent among counted pages.",
+  "problems": [
+   "Nine diameters (0.6, 0.8, 1.2, 2.5, 20, 25, 30, 40, 50) rest on exactly globalfastener, fasten.it and OPAC. globalfastener and fasten.it are treated as separate transcriptions (see the pwl record for the reasons); OPAC is a manufacturer's own table with a c tolerance the others do not print.",
+   "theo-schrauben ISO-2338 not counted (see sources). The researcher had counted it; the difference is 4 -> 3 clusters on d 0.8, 2.5, 20, 25, 30 and 5 -> 4 on eleven others.",
+   "No page that prints the withdrawn DIN 7 table under an ISO 2338 title is counted (checked by value: fasteners.eu, schrauben-lexikon, ferrofast).",
+   "Not counted, for the lead's information: the publisher-authorised preview service (standards.iteh.ai sample PDF, a T1-type source under app/SOURCE_RULE.md) shows the dimension table of this ISO standard; the kept values equal it. The table could be re-based on that official preview instead of T2. (ISO 2338:1997 preview page 2: d and c ≈ rows for all 20 diameters, equal to the record, and the range of commercial lengths.)"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ }
+}

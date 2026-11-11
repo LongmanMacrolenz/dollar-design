@@ -1,0 +1,936 @@
+{
+ "id": "spring-sl",
+ "status": "partial",
+ "standard": "ISO 8752",
+ "standard_full": "ISO 8752:2009 = DIN EN ISO 8752 (spring-type straight pins, slotted, heavy duty); kept cells are also the DIN 1481 numbers except d2 / s at nominal 6",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "호칭 지름 d1 (= 구멍 지름)"
+  ],
+  [
+   "d2_ref",
+   "안지름 d2 (참고)"
+  ],
+  [
+   "s",
+   "두께 s"
+  ]
+ ],
+ "rows": [
+  [
+   "1",
+   1.0,
+   0.8,
+   0.2
+  ],
+  [
+   "1.5",
+   1.5,
+   1.1,
+   0.3
+  ],
+  [
+   "2",
+   2.0,
+   1.5,
+   0.4
+  ],
+  [
+   "2.5",
+   2.5,
+   1.8,
+   0.5
+  ],
+  [
+   "3",
+   3.0,
+   2.1,
+   0.6
+  ],
+  [
+   "3.5",
+   3.5,
+   2.3,
+   0.75
+  ],
+  [
+   "4",
+   4.0,
+   2.8,
+   0.8
+  ],
+  [
+   "4.5",
+   4.5,
+   2.9,
+   1.0
+  ],
+  [
+   "5",
+   5.0,
+   3.4,
+   1.0
+  ],
+  [
+   "8",
+   8.0,
+   5.5,
+   1.5
+  ],
+  [
+   "10",
+   10.0,
+   6.5,
+   2.0
+  ],
+  [
+   "12",
+   12.0,
+   7.5,
+   2.5
+  ],
+  [
+   "13",
+   13.0,
+   8.5,
+   2.5
+  ],
+  [
+   "14",
+   14.0,
+   8.5,
+   3.0
+  ],
+  [
+   "16",
+   16.0,
+   10.5,
+   3.0
+  ],
+  [
+   "20",
+   20.0,
+   12.5,
+   4.0
+  ],
+  [
+   "21",
+   21.0,
+   13.5,
+   4.0
+  ],
+  [
+   "25",
+   25.0,
+   15.5,
+   5.0
+  ],
+  [
+   "28",
+   28.0,
+   17.5,
+   5.5
+  ],
+  [
+   "30",
+   30.0,
+   18.5,
+   6.0
+  ],
+  [
+   "32",
+   32.0,
+   20.5,
+   6.0
+  ],
+  [
+   "38",
+   38.0,
+   23.5,
+   7.5
+  ],
+  [
+   "40",
+   40.0,
+   25.5,
+   7.5
+  ],
+  [
+   "45",
+   45.0,
+   28.5,
+   8.5
+  ],
+  [
+   "50",
+   50.0,
+   31.5,
+   9.5
+  ]
+ ],
+ "row_support": {
+  "1": 3,
+  "1.5": 3,
+  "2": 3,
+  "2.5": 3,
+  "3": 3,
+  "3.5": 3,
+  "4": 3,
+  "4.5": 3,
+  "5": 3,
+  "8": 3,
+  "10": 3,
+  "12": 3,
+  "13": 3,
+  "14": 3,
+  "16": 3,
+  "20": 3,
+  "21": 3,
+  "25": 3,
+  "28": 3,
+  "30": 3,
+  "32": 3,
+  "38": 3,
+  "40": 3,
+  "45": 3,
+  "50": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MTczOA==",
+   "site": "globalfastener.com",
+   "what": "globalfastener ISO 8752-2009 table",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_1738.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=NTE4Mw==",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN EN ISO 8752-2009 table",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_5183.html"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/iso-8752-specifications-spring-type-straight-pins-slotted/",
+   "site": "fullerfasteners.com",
+   "what": "fullerfasteners ISO 8752 (same template/labels as globalfastener) [tier 2]",
+   "cluster": "GF",
+   "raw": "raw/ff_iso8752.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=Mjcy",
+   "site": "globalfastener.com",
+   "what": "globalfastener ISO 8752-1997 (edition note only) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/gf_272.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=Mjcx",
+   "site": "globalfastener.com",
+   "what": "globalfastener ISO 8752-1987 (edition note only) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/gf_271.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjAwOTU=",
+   "site": "globalfastener.com",
+   "what": "globalfastener EN 28752-1993 (edition note only) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_20095.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=ODU1",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN 1481-1978 (edition note only) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_855.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=NTU2Mg==",
+   "site": "globalfastener.com",
+   "what": "globalfastener GB/T 879.1-2018 (edition note only) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_5562.html"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-1481-specifications-spring-type-straight-pins-slotted/",
+   "site": "fullerfasteners.com",
+   "what": "fullerfasteners DIN 1481 (edition note only) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/ff_din1481.html"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/Pin_RollSlot.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "Westfield Fasteners product specification ISO 8752 / DIN 1481, Table 1",
+   "cluster": "WF",
+   "raw": "raw/wf_rollslot.html"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_en_iso_8752",
+   "site": "fasten.it",
+   "what": "fasten.it DIN EN ISO 8752 (10-2009) tech table",
+   "cluster": "FI",
+   "raw": "raw/fi_dineniso8752.html"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_1481",
+   "site": "fasten.it",
+   "what": "fasten.it DIN 1481 tech table (same site) [tier 2]",
+   "cluster": "FI",
+   "raw": "raw/fi_din_1481.html"
+  },
+  {
+   "url": "https://shop.spirol.com/viewitems/slotted-spring-pins/iso-8752-slotted-spring-pins-metric?pcat=euro",
+   "site": "shop.spirol.com",
+   "what": "SPIROL shop item pages, one per diameter (raw/sp_item_d*.html)",
+   "cluster": "SP",
+   "raw": "raw/sp_items.html"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/8752/",
+   "site": "fasteners.eu",
+   "what": "fasteners.eu ISO 8752 page (prints the DIN 1481 numbers, sizes 1-13)",
+   "cluster": "FE",
+   "raw": "raw/fe_iso8752.html"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/1481/",
+   "site": "fasteners.eu",
+   "what": "fasteners.eu DIN 1481 page (same table) [tier 2]",
+   "cluster": "FE",
+   "raw": "raw/fe_din1481.html"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/pins-keys-standard/iso-8752.html",
+   "site": "boltsfastener.com",
+   "what": "boltsfastener ISO 8752 (copy of the fasteners.eu table)",
+   "cluster": "FE",
+   "raw": "raw/bf_iso8752.html"
+  },
+  {
+   "url": "https://digipich.com/en/standards/iso-8752/",
+   "site": "digipich.com",
+   "what": "digipich ISO 8752 (fasteners.eu-derived)",
+   "cluster": "FE",
+   "raw": "raw/dp_iso-8752.html"
+  },
+  {
+   "url": "https://boltport.com/standards/din-1481/",
+   "site": "boltport.com",
+   "what": "boltport DIN 1481 table (Boltport counted with the fasteners.eu group) [tier 2]",
+   "cluster": "FE",
+   "raw": "raw/bp_din-1481.html"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_8752.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "schrauben-lexikon ISO 8752 (prints the DIN 1481 numbers; d1 and Abscherkraft unlabelled)",
+   "cluster": "SL",
+   "raw": "raw/sl_ISO_8752.html"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_1481.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "schrauben-lexikon DIN 1481 [tier 2]",
+   "cluster": "SL",
+   "raw": "raw/sl_DIN_1481.html"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-8752/",
+   "site": "boltport.com",
+   "what": "boltport ISO 8752 = copy of schrauben-lexikon (same rows 7 and 9, same typos 18->16.9, 13->115.12)",
+   "cluster": "SL",
+   "raw": "raw/bp_iso-8752.html"
+  },
+  {
+   "url": "https://ferrofast.com/resources/dimensional-standards/iso/pins/iso-8752/",
+   "site": "ferrofast.com",
+   "what": "ferrofast ISO 8752 = same copy",
+   "cluster": "SL",
+   "raw": "raw/fr_iso8752.html"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-1481",
+   "site": "woodstockindustrial.com",
+   "what": "woodstockindustrial DIN 1481: body diameter min/max only",
+   "cluster": "WS",
+   "raw": "raw/ws_din-1481.html"
+  }
+ ],
+ "clusters": {
+  "GF globalfastener ISO 8752-2009 + DIN EN ISO 8752-2009 pages (fullerfasteners ISO 8752 = same template, values identical, not counted separately)": [
+   "globalfastener.com/standards/detail.php?sid=MTczOA==",
+   "globalfastener.com/standards/detail.php?sid=NTE4Mw==",
+   "fullerfasteners.com/tech/iso-8752-specifications-spring-type-straight-pins-slotted/ (same cluster)"
+  ],
+  "WF Westfield Fasteners product specification, Table 1 according to ISO 8752 (own layout, own typo 22.5 at 18)": [
+   "westfieldfasteners.co.uk/Standards/Pin_RollSlot.html"
+  ],
+  "FI fasten.it DIN EN ISO 8752 (10-2009) sheet": [
+   "fasten.it/en/norms/norm/din_en_iso_8752"
+  ],
+  "NOT COUNTED: SPIROL item pages (only nominal and double shear; shear column dropped)": [
+   "shop.spirol.com item pages 2-12 mm"
+  ],
+  "NOT COUNTED: fasteners.eu group (page says \"Table according to DIN 1481\"; DIN 1481 numbers 3.9/1.25 at 6)": [
+   "fasteners.eu ISO/8752 + DIN/1481",
+   "boltsfastener iso-8752",
+   "digipich iso-8752"
+  ],
+  "NOT COUNTED: schrauben-lexikon group (DIN 1481 numbers under ISO title, sizes 7/9, typos 16.9/115.12/221.5; boltport/ferrofast copies with 22.15)": [
+   "schrauben-lexikon ISO_8752 + DIN_1481",
+   "boltport iso-8752",
+   "ferrofast iso-8752"
+  ],
+  "NOT COUNTED: woodstockindustrial DIN 1481 (body diameter only, not a record column)": [
+   "woodstockindustrial.com/specs/din-1481"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "a_max column (chamfer length a, max)",
+   "why": "printed with the word max only by globalfastener (+fullerfasteners copy) and Westfield = 2 clusters for 19 of 28 sizes. SPIROL item pages (Chamfer Length C Max) agree for 2, 2.5, 3, 4, 5, 6, 8, 10, 12 only -> 3 clusters there (values 0.55, 0.6, 0.7, 0.85, 1.1, 1.4, 2, 2.4, 2.4). fasten.it prints only \"a min/nom\"; fasteners.eu and schrauben-lexikon print an unlabelled a that equals the minimum."
+  },
+  {
+   "what": "row 18 (nominal 18 mm)",
+   "why": "minimum double shear: globalfastener 222.5 and fasten.it 222.5, but Westfield prints 22.5 (typo) -> 2 clusters. schrauben-lexikon also prints 222,5 but under \"Abscherkraft\" without the word double, so it was not counted. d2 11.5 and s 3.5 themselves have 5 clusters."
+  },
+  {
+   "what": "light duty pins (ISO 13337 / DIN 7346)",
+   "why": "not part of the candidate table; only two sites (fasten.it, globalfastener) were fetched for it, no comparison made"
+  },
+  {
+   "what": "row 6",
+   "why": "lead rule (rival printed by >=2 pages): d2 3.9 and s 1.25 printed by fasteners.eu ISO 8752 + DIN 1481, boltsfastener, digipich, schrauben-lexikon ISO 8752 + DIN 1481, boltport iso-8752, ferrofast and globalfastener DIN 1481-1978 (the DIN 1481 numbers) against 4.0 / 1.2 on the three counted ISO pages",
+   "by": "verifier"
+  },
+  {
+   "what": "row 35",
+   "why": "lead rule (rival printed by >=2 pages): d2 221.5 on schrauben-lexikon ISO 8752 and DIN 1481 pages, 22.15 on boltport iso-8752 and ferrofast iso-8752, against 21.5 on the counted pages. Almost certainly copy typos of one lineage, but removed mechanically as instructed",
+   "by": "verifier"
+  },
+  {
+   "what": "row 18 (kept out, as decided by the lead)",
+   "why": "double shear 222.5 on globalfastener and fasten.it vs 22.5 on Westfield",
+   "by": "verifier"
+  },
+  {
+   "what": "shearDoubleKN_min column",
+   "why": "Westfield (the third full-range cluster) heads it \"Minimum shear strength (double shear)\" with NO unit anywhere on the page (no kN in header, legend or notes); reading it as kN is inference from magnitude. Without Westfield only globalfastener + fasten.it (+ SPIROL for 2-12 mm) state kN double shear -> 2 clusters on 16 of 25 rows. Keeping the column would leave only 2, 2.5, 3, 4, 5, 8, 10, 12 (8 rows x 4 = 32 cells) vs 25 x 3 = 75 cells without it, so the column goes. If the lead accepts the unit-less header, the shear values of the 25 kept rows all have >=3 clusters (GF, WF, FI) with no rival except 13 (115.12 on 4 schrauben-lexikon-lineage pages -> row 13 would then go)",
+   "by": "verifier"
+  }
+ ],
+ "checks": [
+  "every kept cell: >= 3 independent clusters print exactly the same number (minimum over kept cells = 3)",
+  "d2 + 2 x s = d1 min (before mounting) exactly in all 27 kept rows: True",
+  "d2 < nominal d1 in every row: True; s and d2 never decrease with size: True",
+  "minimum double shear load strictly increases with size: True",
+  "s / d1 between 0.188 and 0.222 (heavy duty wall is about one fifth of the diameter)",
+  "edition check at nominal 6: ISO-labelled pages of globalfastener, Westfield and fasten.it give d2 4 / s 1.2; the DIN 1481 tables (fasteners.eu group, schrauben-lexikon, globalfastener DIN 1481 page) give 3.9 / 1.25"
+ ],
+ "shape_hint": "A hollow cylindrical pin rolled from spring-steel strip with one straight axial slot along its whole length (C-shaped cross-section, wall thickness s, inner diameter d2), chamfered at both ends; made slightly larger than the hole and compressed when driven in.",
+ "role_map": {
+  "row label": "nominal diameter = diameter of the hole the pin is driven into (H12)",
+  "d1": "nominal diameter d1 (the row label itself, printed as such by every page)",
+  "d2_ref": "inner diameter before mounting, reference value (Westfield \"d2 before mounting\", fasten.it \"d2 before insertion\", globalfastener letter d1 \"before mounting\" in its drawing raw/img/gf_176_en.png)",
+  "s": "wall thickness (s; globalfastener letters it h in the same drawing)"
+ },
+ "notes": "Heavy duty slotted spring pins only. Candidate table had 28 sizes x 5 columns; kept 27 x 4. Exactly three clusters carry the ISO numbers over the whole size range: globalfastener (ISO 8752-2009 and DIN EN ISO 8752-2009 pages; fullerfasteners is the same template and is not counted separately), Westfield Fasteners (own product specification page, with its own typo 22.5 at size 18) and fasten.it (DIN EN ISO 8752 sheet). fasteners.eu / boltsfastener / digipich (one group, sizes 1-13) and schrauben-lexikon (+ boltport and ferrofast, which repeat its typos 16.9 at 18 and 115.12 at 13) print the DIN 1481 numbers under the ISO 8752 title: they agree everywhere except d2 and s at nominal 6 (3.9 / 1.25). Also confirmed by >= 3 clusters for all 28 sizes but not in the candidate table: d1 before mounting max and min (e.g. 1.3 / 1.2 at size 1 ... 50.9 / 50.5 at size 50) and a min; values are in spring-sl.evidence.json. Edition note (globalfastener only, not counted): ISO 8752-1987 and EN 28752-1993 give a max 2.4 / min 2 at nominal 8, the 1997 and 2009 editions 2 / 1.6. The shear column applies to steel and martensitic stainless pins only (stated by globalfastener, Westfield and fasten.it); austenitic pins have no value. Pin length series is not part of this table. Sizes 7 and 9 on schrauben-lexikon/boltport are not ISO 8752 sizes on the other pages.",
+ "scope": "ISO 8752 중하중형 (경하중 ISO 13337 제외), 호칭 6·18·35 제외",
+ "researcher_clusters": {
+  "A globalfastener standards DB (+ fullerfasteners, same template)": [
+   "globalfastener.com/standards/detail.php?sid=MTczOA== (raw/gf_sid_1738.html)",
+   "globalfastener.com/standards/detail.php?sid=NTE4Mw== (raw/gf_sid_5183.html)",
+   "fullerfasteners.com/tech/iso-8752-specifications-spring-type-straight-pins-slotted/ (raw/ff_iso8752.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]",
+   "globalfastener.com/standards/detail.php?sid=Mjcy (raw/gf_272.html) [tier 0, not counted]",
+   "globalfastener.com/standards/detail.php?sid=Mjcx (raw/gf_271.html) [tier 0, not counted]",
+   "globalfastener.com/standards/detail.php?sid=MjAwOTU= (raw/gf_sid_20095.html) [tier 0, not counted]",
+   "globalfastener.com/standards/detail.php?sid=ODU1 (raw/gf_sid_855.html) [tier 0, not counted]",
+   "globalfastener.com/standards/detail.php?sid=NTU2Mg== (raw/gf_sid_5562.html) [tier 0, not counted]",
+   "fullerfasteners.com/tech/din-1481-specifications-spring-type-straight-pins-slotted/ (raw/ff_din1481.html) [tier 0, not counted]"
+  ],
+  "B Westfield Fasteners (UK distributor, own page)": [
+   "westfieldfasteners.co.uk/Standards/Pin_RollSlot.html (raw/wf_rollslot.html)"
+  ],
+  "C fasten.it norm sheets": [
+   "fasten.it/en/norms/norm/din_en_iso_8752 (raw/fi_dineniso8752.html)",
+   "fasten.it/en/norms/norm/din_1481 (raw/fi_din_1481.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]"
+  ],
+  "D SPIROL shop item pages (manufacturer; sizes 2-12 only, no d2 / s)": [
+   "shop.spirol.com/viewitems/slotted-spring-pins/iso-8752-slotted-spring-pins-metric?pcat=euro (raw/sp_items.html)"
+  ],
+  "E fasteners.eu group (fasteners.eu, boltsfastener, digipich, boltport DIN 1481 page): DIN 1481 numbers": [
+   "fasteners.eu/standards/ISO/8752/ (raw/fe_iso8752.html)",
+   "fasteners.eu/standards/DIN/1481/ (raw/fe_din1481.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]",
+   "boltsfastener.com/standards/pins-keys-standard/iso-8752.html (raw/bf_iso8752.html)",
+   "digipich.com/en/standards/iso-8752/ (raw/dp_iso-8752.html)",
+   "boltport.com/standards/din-1481/ (raw/bp_din-1481.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]"
+  ],
+  "F schrauben-lexikon (+ boltport / ferrofast ISO 8752 copies): DIN 1481 numbers": [
+   "schrauben-lexikon.de/norm/ISO_8752.asp (raw/sl_ISO_8752.html)",
+   "schrauben-lexikon.de/norm/DIN_1481.asp (raw/sl_DIN_1481.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]",
+   "boltport.com/standards/iso-8752/ (raw/bp_iso-8752.html)",
+   "ferrofast.com/resources/dimensional-standards/iso/pins/iso-8752/ (raw/fr_iso8752.html)"
+  ],
+  "G woodstockindustrial (body diameter only)": [
+   "woodstockindustrial.com/specs/din-1481 (raw/ws_din-1481.html)"
+  ]
+ },
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Independent re-fetch on 2026-11-11 with curl (browser UA, 2.5 s pause per site) of every counted and rival page; SKF pages rendered with playwright; drawings downloaded and read to confirm letter mappings. Own parser (html.parser with rowspan/colspan expansion) and own per-site extraction in scratchpad t2/g4v/code (v_spring.py, v_sens.py); researcher raw/ and scripts not used. Counted only maker/distributor HTML tables whose header or drawing states the column meaning; 25 rows x 3 cols kept, every kept cell has >= 3 independent clusters with exactly the same number. Sanity checks recomputed on kept rows.",
+  "problems": [
+   "Researcher counted SPIROL as a 4th cluster for some rows; it only prints nominal diameter, d max/min, chamfer and shear - irrelevant once shear is dropped.",
+   "globalfastener letters: drawing 176_en.png labels the inside diameter d1 and the wall h; fetched and checked, mapping d1->d2_ref, h->s is stated by the drawing on the page.",
+   "Edition: the 1997 and 2009 ISO pages of globalfastener and fasten.it DIN 1481 (1978) page all give 4.0/1.2 at 6, while globalfastener DIN 1481-1978 gives 3.9/1.25: the DIN 1481 tables in circulation disagree with each other; row 6 removed either way.",
+   "fasten.it norm sheets end with 'Reproduced by permission of DIN'. Counted (as in the earlier verified records kmnut/clevis/spring-co) because it is a licensed dimension sheet, not the standard's text, but EVERY family here falls to 2 clusters on many cells without it - if the lead rules such licensed reproductions out, all four records fail."
+  ],
+  "dropped_rows": [
+   "row 6",
+   "row 35",
+   "row 18 (kept out, as decided by the lead)"
+  ],
+  "dropped_cols": [
+   "shearDoubleKN_min column"
+  ],
+  "per_cell_clusters": {
+   "1": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "1.5": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "2": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "2.5": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "3": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "3.5": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "4": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "4.5": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "5": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "8": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "10": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "12": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI",
+     "SP"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "13": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "14": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "16": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "20": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "21": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "25": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "28": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "30": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "32": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "38": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "40": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "45": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   },
+   "50": {
+    "d1": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "d2_ref": [
+     "GF",
+     "WF",
+     "FI"
+    ],
+    "s": [
+     "GF",
+     "WF",
+     "FI"
+    ]
+   }
+  }
+ }
+}

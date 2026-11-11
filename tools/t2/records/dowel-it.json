@@ -1,0 +1,266 @@
+{
+ "id": "dowel-it",
+ "status": "partial",
+ "standard": "ISO 8733",
+ "standard_full": "ISO 8733:1997 (parallel pins with internal thread, of unhardened steel and austenitic stainless steel; = DIN EN ISO 8733:1998). Not the withdrawn DIN 7979 table. The hardened pin (ISO 8735:1997) is not covered by this table.",
+ "u": "mm",
+ "scope": "비경화형(ISO 8733) 치수만 — 경화형(ISO 8735)의 모따기 a·c와 길이 범위는 싣지 않았습니다 (경화형의 나사·구멍 치수가 같다는 것은 공개 자료 3곳 이상으로 확인하지 못했습니다)",
+ "cols": [
+  [
+   "d1",
+   "호칭 지름 d1"
+  ],
+  [
+   "d2",
+   "암나사 호칭 d2 (미터 나사, 4 = M4)"
+  ],
+  [
+   "d3",
+   "나사 입구 지름 d3"
+  ],
+  [
+   "t1",
+   "완전 나사 깊이 t1"
+  ],
+  [
+   "t2_min",
+   "구멍 깊이 t2 (최소)"
+  ],
+  [
+   "t3",
+   "입구 깊이 t3"
+  ],
+  [
+   "c1_unhard",
+   "나사 쪽 모따기 c1 (≈, 비경화)"
+  ]
+ ],
+ "rows": [
+  [
+   "6",
+   6,
+   4,
+   4.3,
+   6,
+   10,
+   1,
+   0.8
+  ],
+  [
+   "8",
+   8,
+   5,
+   5.3,
+   8,
+   12,
+   1.2,
+   1
+  ],
+  [
+   "10",
+   10,
+   6,
+   6.4,
+   10,
+   16,
+   1.2,
+   1.2
+  ],
+  [
+   "12",
+   12,
+   6,
+   6.4,
+   12,
+   20,
+   1.2,
+   1.6
+  ],
+  [
+   "16",
+   16,
+   8,
+   8.4,
+   16,
+   25,
+   1.5,
+   2
+  ],
+  [
+   "20",
+   20,
+   10,
+   10.5,
+   18,
+   28,
+   1.5,
+   2.5
+  ],
+  [
+   "25",
+   25,
+   16,
+   17,
+   24,
+   35,
+   2,
+   3
+  ],
+  [
+   "30",
+   30,
+   20,
+   21,
+   30,
+   40,
+   2,
+   4
+  ],
+  [
+   "40",
+   40,
+   20,
+   21,
+   30,
+   40,
+   2.5,
+   5
+  ],
+  [
+   "50",
+   50,
+   24,
+   25,
+   36,
+   50,
+   2.5,
+   6.3
+  ]
+ ],
+ "row_support": {
+  "6": 3,
+  "8": 3,
+  "10": 3,
+  "12": 3,
+  "16": 3,
+  "20": 3,
+  "25": 3,
+  "30": 3,
+  "40": 3,
+  "50": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_257.html",
+   "site": "globalfastener.com",
+   "what": "ISO 8733-1997 table: d Nominal Size (m6), a ≈, c ≈, d_1 (M4 ... M24), P, d_2, t_1, t_2 min, t_3. Page symbols differ from the standard: by the page's own drawing d_1 is the thread, d_2 the entry counterbore, a the chamfer at the threaded end, c the chamfer at the plain end"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_8733",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 8733 (03/1998): d1, c1 ≈, c2 ≈, c3, c4 min, d2 (M4 ... M24), Pitch. By the page drawing c1 is at the threaded end, c3 is the thread depth and c4 the hole depth. Its c3 is 10 / 12 / 16 for d 12 / 16 / 20 (others: 12 / 16 / 18)"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/8733/",
+   "site": "fasteners.eu",
+   "what": "ISO 8733 table: d1 m6, c1, c2, d2 (M4 ... M24), P, d3, t1, t2, t3 and 'Standard lengths' marks; drawing shows c1 at the threaded end, d3 / t3 at the entry"
+  },
+  {
+   "url": "https://www.opac.net/en/producto-170-iso-8733",
+   "site": "opac.net",
+   "what": "manufacturer product table ISO 8733: c_1 ≈, c_2 ≈, d_3, t_1, t_2 min, t_3, d_2 (M4 (x0,7) ... M24 (x3))"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_266.html",
+   "site": "globalfastener.com",
+   "what": "ISO 8735-1997 page (hardened pin), same site as detail_257: NOT part of this table; prints the same d_1, d_2, t_1, t_2 min, t_3 and a ≈ 0.8 ... 6.3"
+  },
+  {
+   "url": "https://www.fastenerdata.co.uk/products/pin/dowel/metric-coarse-extractable-parallel-dowel-pin-case-hard-steel-iso8735b-pull-iso-8735-b-hardened.html",
+   "site": "fastenerdata.co.uk",
+   "what": "ISO 8735 B page (hardened pin): NOT part of this table; d3, t1, t2 min, t3, a approx equal, d2 printed M3 / M4 for d 6 / 8 (typos)"
+  },
+  {
+   "url": "https://www.dm-muehl.de/cgi-local/produkt/produkt_02.pl?wort=8735_c1&link=stifte01.shtml,7979d",
+   "site": "dm-muehl.de",
+   "what": "NOT counted: page titled ISO 8735 is the dealer's DIN 7979 data sheet (drawing file 7979.png, sizes d 4 and 5 which ISO 8735 does not have, values equal to the DIN 7979 table)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_8735.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "NOT counted: withdrawn DIN 7979 table (a2, c1, c2, d2, t1, t2 min; d 4-40) under an ISO 8735 title"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-8735/",
+   "site": "boltport.com",
+   "what": "NOT counted: the same DIN 7979 table (also on its iso-8733 page, ferrofast iso-8735, theo-schrauben DIN-7979); fasteners.eu ISO/8735 = its DIN/7979 page"
+  }
+ ],
+ "clusters": {
+  "A globalfastener (ISO 8733-1997 page)": [
+   "globalfastener.com/standards/detail_257.html"
+  ],
+  "B fasten.it (DIN EN ISO 8733): d2, c1, hole depth, thread depth except d 12/16/20": [
+   "fasten.it/norms/norm/din_en_iso_8733"
+  ],
+  "C fasteners.eu (ISO 8733 page)": [
+   "fasteners.eu/standards/ISO/8733/"
+  ],
+  "D OPAC (manufacturer product table ISO 8733)": [
+   "opac.net/en/producto-170-iso-8733"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "a_hard column (chamfer a at the threaded end of the hardened pin, ISO 8735)",
+   "why": "a dimension of the other standard. Its values (0.8, 1, 1.2, 1.6, 2, 2.5, 3, 4, 5, 6.3 - the same numbers as c1) are printed as 'a' by exactly 3 clusters (globalfastener ISO 8735, fasten.it DIN EN ISO 8735, fastenerdata ISO 8735 B) once the dm-muehl page is removed (it is a DIN 7979 data sheet). But the rest of an ISO 8735 table is not there: on pages for the hardened pin the counterbore d3 and its depth t3 have 2 clusters (globalfastener, fastenerdata) and the thread size for d 6 and d 8 has 2 (fastenerdata prints M3 / M4). The table therefore follows ISO 8733 only."
+  },
+  {
+   "what": "c_hard column (crowned-end chamfer c of ISO 8735)",
+   "why": "already dropped by the researcher: globalfastener and fastenerdata 4.6 for d 16, fasten.it 4.7; fastenerdata 2.36 for d 8"
+  },
+  {
+   "what": "commercial length range, c2 (plain-end chamfer of ISO 8733)",
+   "why": "not candidate columns"
+  },
+  {
+   "what": "pages that print the DIN 7979 table under an ISO 8735 / ISO 8733 title (schrauben-lexikon, boltport, ferrofast, theo-schrauben, fasteners.eu ISO/8735, dm-muehl 'ISO 8735')",
+   "why": "withdrawn table with other depths (d 12: t1 10 / t2 16, d 16: 12 / 20, d 20: 16 / 25) and sizes d 4, 5, 14"
+  }
+ ],
+ "checks": [
+  "every kept cell identical in >= 3 clusters whose page is labelled ISO 8733 (d3 and t3: globalfastener, fasteners.eu, OPAC; d2, t2, c1 and t1 of seven rows: 4 clusters)",
+  "d3 > d2 (entry counterbore wider than the thread) in every row: True",
+  "t2 min > t1 > t3 in every row: True",
+  "thread d2 smaller than d1 / 1.2 in every row: True",
+  "every counted page prints the thread as a metric thread designation (M4, M5, M6, M6, M8, M10, M16, M20, M20, M24)"
+ ],
+ "shape_hint": "Cylindrical dowel pin (m6) with a tapped blind hole in one end for an extraction screw: thread d2 with full thread depth t1, drilled depth t2, and a short counterbore d3 x t3 at the entry. The threaded end has a small chamfer (a / c1); the hardened pin (ISO 8735) has a crowned opposite end, the unhardened pin (ISO 8733) a chamfer at both ends.",
+ "role_map": {
+  "d1": "nominal pin diameter (m6)",
+  "d2": "internal thread, metric coarse thread size (pages print M4 ... M24; stored as the number)",
+  "d3": "diameter of the counterbore at the thread entry",
+  "t1": "depth of the thread",
+  "t2_min": "depth of the drilled hole, minimum",
+  "t3": "depth of the entry counterbore",
+  "c1_unhard": "chamfer at the threaded end (ISO 8733 symbol c1, approximate; globalfastener calls it a)"
+ },
+ "notes": "Verified record narrowed to one standard: ISO 8733 (unhardened), 10 rows x 7 columns. The researcher's table pooled pages of ISO 8733 and ISO 8735; counted per standard, the hardened-pin pages give only 2 clusters for d3, t3 and the thread of d 6 / d 8. d2 is stored as the thread's nominal diameter because the record format takes numbers only; the column label says 4 = M4. Symbol mapping was checked on each page's drawing: globalfastener (d_1 thread, d_2 counterbore, a at the threaded end), fasten.it (c3 thread depth, c4 hole depth, c1 at the threaded end), fasteners.eu (standard symbols). fasteners.eu prints t2 without the word min.",
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "All pages re-downloaded by the verifier with curl (browser User-Agent) on 2026-11-11 into a separate directory (HTTP 200, text/html); tables re-read with the verifier's own parser (html.parser grid with rowspan/colspan), not the researcher's scripts or raw files. Pages: globalfastener detail_257 (ISO 8733) + detail_266 (ISO 8735), fasten.it din_en_iso_8733 + din_en_iso_8735, fasteners.eu ISO/8733 (+ ISO/8735 = DIN/7979), opac producto-170, fastenerdata iso8735b, dm-muehl 8735_c1, schrauben-lexikon ISO_8735, boltport iso-8735 + iso-8733, ferrofast iso-8735, theo-schrauben DIN-7979; the dimension drawings of globalfastener (both pages), fasten.it (both pages), fasteners.eu and dm-muehl were opened to see what each letter marks. Counted three ways: pooled as the researcher did (min 3), ISO 8735 pages alone (min 2), ISO 8733 pages alone (min 3) - the last is the kept table.",
+  "problems": [
+   "Table narrowed to ISO 8733. Per standard, the hardened pin (ISO 8735) has: d3 and t3 on 2 clusters (globalfastener, fastenerdata), thread size of d 6 and d 8 on 2 (globalfastener, fasten.it; fastenerdata prints M3 / M4), t1 / t2 / a on 3. A table titled 'ISO 8735 · ISO 8733' would therefore claim hardened-pin values that only two sources print. If the lead accepts pooling the two sibling standards, the researcher's 10 x 8 table is numerically intact with a minimum of 3 pooled clusters (a_hard exactly 3: globalfastener, fasten.it, fastenerdata).",
+   "dm-muehl 'ISO 8735 C1' page removed from the count: it is the dealer's DIN 7979 sheet under an ISO title (the researcher had counted it for a and d2 of d 6-12).",
+   "fasten.it's c3 / c4 are the thread depth and hole depth by its own drawing; the researcher left them out as 'site symbols'. Read that way, the fasten.it ISO 8733 page dissents on thread depth for d 12 / 16 / 20 (10 / 12 / 16, the DIN 7979 numbers) against 12 / 16 / 18 on globalfastener, fasteners.eu and OPAC (and on all three ISO 8735 pages). Those three cells stand on exactly 3 clusters with one dissenting page.",
+   "d2: thread size is printed as M-designation on all four counted pages; label changed to say that 4 means M4.",
+   "Letters taken from drawings: globalfastener's d_2 (= counterbore) and a (= threaded-end chamfer) are fixed by its drawing, which shows them there; without globalfastener c1 still has 3 clusters, but d3 and t3 need it (fasteners.eu and OPAC print d3 / t3 by name).",
+   "Not counted, for the lead's information: the publisher-authorised preview service (standards.iteh.ai sample PDF, a T1-type source under app/SOURCE_RULE.md) shows the dimension table of this ISO standard; the kept values equal it. The table could be re-based on that official preview instead of T2. (ISO 8733:1997 preview Table 1: c1, c2, d2, P, d3, t1, t2 min, t3 for d1 6-50, equal to the record incl. t1 12 / 16 / 18. The ISO 8735:1997 preview shows the same d2, d3, t1, t2, t3, a ≈ 0.8 ... 6.3 and c 2.1 / 2.6 / 3 / 3.8 / 4.6 / 6 / 6 / 7 / 8 / 10 - so the full hardened + unhardened table is available on the T1 route.)"
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "a_hard"
+  ]
+ }
+}

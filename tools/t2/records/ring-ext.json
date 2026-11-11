@@ -1,0 +1,1166 @@
+{
+ "id": "ring-ext",
+ "status": "partial",
+ "standard": "DIN 471",
+ "standard_full": "DIN 471 (retaining rings / circlips for shafts, normal type, Table 1 values; the pages used do not state the edition)",
+ "u": "mm",
+ "cols": [
+  [
+   "d1",
+   "축 지름 d1 (호칭)"
+  ],
+  [
+   "s",
+   "두께 s"
+  ],
+  [
+   "d3",
+   "자유 상태 안지름 d3"
+  ],
+  [
+   "a",
+   "귀 폭 a 최대"
+  ],
+  [
+   "b",
+   "열린 쪽 반대편 폭 b ≈"
+  ],
+  [
+   "d5",
+   "귀 구멍 d5 최소"
+  ],
+  [
+   "d2",
+   "홈 지름 d2"
+  ],
+  [
+   "m",
+   "홈 폭 m (H13)"
+  ],
+  [
+   "n",
+   "홈 끝 여유 n 최소"
+  ]
+ ],
+ "rows": [
+  [
+   "3",
+   3.0,
+   0.4,
+   2.7,
+   1.9,
+   0.8,
+   1.0,
+   2.8,
+   0.5,
+   0.3
+  ],
+  [
+   "4",
+   4.0,
+   0.4,
+   3.7,
+   2.2,
+   0.9,
+   1.0,
+   3.8,
+   0.5,
+   0.3
+  ],
+  [
+   "5",
+   5.0,
+   0.6,
+   4.7,
+   2.5,
+   1.1,
+   1.0,
+   4.8,
+   0.7,
+   0.3
+  ],
+  [
+   "6",
+   6.0,
+   0.7,
+   5.6,
+   2.7,
+   1.3,
+   1.2,
+   5.7,
+   0.8,
+   0.5
+  ],
+  [
+   "7",
+   7.0,
+   0.8,
+   6.5,
+   3.1,
+   1.4,
+   1.2,
+   6.7,
+   0.9,
+   0.5
+  ],
+  [
+   "8",
+   8.0,
+   0.8,
+   7.4,
+   3.2,
+   1.5,
+   1.2,
+   7.6,
+   0.9,
+   0.6
+  ],
+  [
+   "9",
+   9.0,
+   1.0,
+   8.4,
+   3.3,
+   1.7,
+   1.2,
+   8.6,
+   1.1,
+   0.6
+  ],
+  [
+   "10",
+   10.0,
+   1.0,
+   9.3,
+   3.3,
+   1.8,
+   1.5,
+   9.6,
+   1.1,
+   0.6
+  ],
+  [
+   "11",
+   11.0,
+   1.0,
+   10.2,
+   3.3,
+   1.8,
+   1.5,
+   10.5,
+   1.1,
+   0.8
+  ],
+  [
+   "12",
+   12.0,
+   1.0,
+   11.0,
+   3.3,
+   1.8,
+   1.7,
+   11.5,
+   1.1,
+   0.8
+  ],
+  [
+   "13",
+   13.0,
+   1.0,
+   11.9,
+   3.4,
+   2.0,
+   1.7,
+   12.4,
+   1.1,
+   0.9
+  ],
+  [
+   "14",
+   14.0,
+   1.0,
+   12.9,
+   3.5,
+   2.1,
+   1.7,
+   13.4,
+   1.1,
+   0.9
+  ],
+  [
+   "15",
+   15.0,
+   1.0,
+   13.8,
+   3.6,
+   2.2,
+   1.7,
+   14.3,
+   1.1,
+   1.1
+  ],
+  [
+   "16",
+   16.0,
+   1.0,
+   14.7,
+   3.7,
+   2.2,
+   1.7,
+   15.2,
+   1.1,
+   1.2
+  ],
+  [
+   "17",
+   17.0,
+   1.0,
+   15.7,
+   3.8,
+   2.3,
+   1.7,
+   16.2,
+   1.1,
+   1.2
+  ],
+  [
+   "18",
+   18.0,
+   1.2,
+   16.5,
+   3.9,
+   2.4,
+   2.0,
+   17.0,
+   1.3,
+   1.5
+  ],
+  [
+   "19",
+   19.0,
+   1.2,
+   17.5,
+   3.9,
+   2.5,
+   2.0,
+   18.0,
+   1.3,
+   1.5
+  ],
+  [
+   "20",
+   20.0,
+   1.2,
+   18.5,
+   4.0,
+   2.6,
+   2.0,
+   19.0,
+   1.3,
+   1.5
+  ],
+  [
+   "21",
+   21.0,
+   1.2,
+   19.5,
+   4.1,
+   2.7,
+   2.0,
+   20.0,
+   1.3,
+   1.5
+  ],
+  [
+   "22",
+   22.0,
+   1.2,
+   20.5,
+   4.2,
+   2.8,
+   2.0,
+   21.0,
+   1.3,
+   1.5
+  ],
+  [
+   "24",
+   24.0,
+   1.2,
+   22.2,
+   4.4,
+   3.0,
+   2.0,
+   22.9,
+   1.3,
+   1.7
+  ],
+  [
+   "25",
+   25.0,
+   1.2,
+   23.2,
+   4.4,
+   3.0,
+   2.0,
+   23.9,
+   1.3,
+   1.7
+  ],
+  [
+   "26",
+   26.0,
+   1.2,
+   24.2,
+   4.5,
+   3.1,
+   2.0,
+   24.9,
+   1.3,
+   1.7
+  ],
+  [
+   "28",
+   28.0,
+   1.5,
+   25.9,
+   4.7,
+   3.2,
+   2.0,
+   26.6,
+   1.6,
+   2.1
+  ],
+  [
+   "29",
+   29.0,
+   1.5,
+   26.9,
+   4.8,
+   3.4,
+   2.0,
+   27.6,
+   1.6,
+   2.1
+  ],
+  [
+   "30",
+   30.0,
+   1.5,
+   27.9,
+   5.0,
+   3.5,
+   2.0,
+   28.6,
+   1.6,
+   2.1
+  ],
+  [
+   "32",
+   32.0,
+   1.5,
+   29.6,
+   5.2,
+   3.6,
+   2.5,
+   30.3,
+   1.6,
+   2.6
+  ],
+  [
+   "34",
+   34.0,
+   1.5,
+   31.5,
+   5.4,
+   3.8,
+   2.5,
+   32.3,
+   1.6,
+   2.6
+  ],
+  [
+   "35",
+   35.0,
+   1.5,
+   32.2,
+   5.6,
+   3.9,
+   2.5,
+   33.0,
+   1.6,
+   3.0
+  ],
+  [
+   "36",
+   36.0,
+   1.75,
+   33.2,
+   5.6,
+   4.0,
+   2.5,
+   34.0,
+   1.85,
+   3.0
+  ],
+  [
+   "38",
+   38.0,
+   1.75,
+   35.2,
+   5.8,
+   4.2,
+   2.5,
+   36.0,
+   1.85,
+   3.0
+  ],
+  [
+   "40",
+   40.0,
+   1.75,
+   36.5,
+   6.0,
+   4.4,
+   2.5,
+   37.5,
+   1.85,
+   3.8
+  ],
+  [
+   "42",
+   42.0,
+   1.75,
+   38.5,
+   6.5,
+   4.5,
+   2.5,
+   39.5,
+   1.85,
+   3.8
+  ],
+  [
+   "45",
+   45.0,
+   1.75,
+   41.5,
+   6.7,
+   4.7,
+   2.5,
+   42.5,
+   1.85,
+   3.8
+  ],
+  [
+   "48",
+   48.0,
+   1.75,
+   44.5,
+   6.9,
+   5.0,
+   2.5,
+   45.5,
+   1.85,
+   3.8
+  ],
+  [
+   "50",
+   50.0,
+   2.0,
+   45.8,
+   6.9,
+   5.1,
+   2.5,
+   47.0,
+   2.15,
+   4.5
+  ],
+  [
+   "52",
+   52.0,
+   2.0,
+   47.8,
+   7.0,
+   5.2,
+   2.5,
+   49.0,
+   2.15,
+   4.5
+  ],
+  [
+   "55",
+   55.0,
+   2.0,
+   50.8,
+   7.2,
+   5.4,
+   2.5,
+   52.0,
+   2.15,
+   4.5
+  ],
+  [
+   "56",
+   56.0,
+   2.0,
+   51.8,
+   7.3,
+   5.5,
+   2.5,
+   53.0,
+   2.15,
+   4.5
+  ],
+  [
+   "58",
+   58.0,
+   2.0,
+   53.8,
+   7.3,
+   5.6,
+   2.5,
+   55.0,
+   2.15,
+   4.5
+  ],
+  [
+   "60",
+   60.0,
+   2.0,
+   55.8,
+   7.4,
+   5.8,
+   2.5,
+   57.0,
+   2.15,
+   4.5
+  ],
+  [
+   "62",
+   62.0,
+   2.0,
+   57.8,
+   7.5,
+   6.0,
+   2.5,
+   59.0,
+   2.15,
+   4.5
+  ],
+  [
+   "63",
+   63.0,
+   2.0,
+   58.8,
+   7.6,
+   6.2,
+   2.5,
+   60.0,
+   2.15,
+   4.5
+  ],
+  [
+   "65",
+   65.0,
+   2.5,
+   60.8,
+   7.8,
+   6.3,
+   3.0,
+   62.0,
+   2.65,
+   4.5
+  ],
+  [
+   "68",
+   68.0,
+   2.5,
+   63.5,
+   8.0,
+   6.5,
+   3.0,
+   65.0,
+   2.65,
+   4.5
+  ],
+  [
+   "70",
+   70.0,
+   2.5,
+   65.5,
+   8.1,
+   6.6,
+   3.0,
+   67.0,
+   2.65,
+   4.5
+  ],
+  [
+   "72",
+   72.0,
+   2.5,
+   67.5,
+   8.2,
+   6.8,
+   3.0,
+   69.0,
+   2.65,
+   4.5
+  ],
+  [
+   "75",
+   75.0,
+   2.5,
+   70.5,
+   8.4,
+   7.0,
+   3.0,
+   72.0,
+   2.65,
+   4.5
+  ],
+  [
+   "78",
+   78.0,
+   2.5,
+   73.5,
+   8.6,
+   7.3,
+   3.0,
+   75.0,
+   2.65,
+   4.5
+  ],
+  [
+   "80",
+   80.0,
+   2.5,
+   74.5,
+   8.6,
+   7.4,
+   3.0,
+   76.5,
+   2.65,
+   5.3
+  ],
+  [
+   "82",
+   82.0,
+   2.5,
+   76.5,
+   8.7,
+   7.6,
+   3.0,
+   78.5,
+   2.65,
+   5.3
+  ],
+  [
+   "85",
+   85.0,
+   3.0,
+   79.5,
+   8.7,
+   7.8,
+   3.5,
+   81.5,
+   3.15,
+   5.3
+  ],
+  [
+   "88",
+   88.0,
+   3.0,
+   82.5,
+   8.8,
+   8.0,
+   3.5,
+   84.5,
+   3.15,
+   5.3
+  ],
+  [
+   "90",
+   90.0,
+   3.0,
+   84.5,
+   8.8,
+   8.2,
+   3.5,
+   86.5,
+   3.15,
+   5.3
+  ],
+  [
+   "95",
+   95.0,
+   3.0,
+   89.5,
+   9.4,
+   8.6,
+   3.5,
+   91.5,
+   3.15,
+   5.3
+  ],
+  [
+   "100",
+   100.0,
+   3.0,
+   94.5,
+   9.6,
+   9.0,
+   3.5,
+   96.5,
+   3.15,
+   5.3
+  ],
+  [
+   "105",
+   105.0,
+   4.0,
+   98.0,
+   9.9,
+   9.3,
+   3.5,
+   101.0,
+   4.15,
+   6.0
+  ],
+  [
+   "110",
+   110.0,
+   4.0,
+   103.0,
+   10.1,
+   9.6,
+   3.5,
+   106.0,
+   4.15,
+   6.0
+  ],
+  [
+   "115",
+   115.0,
+   4.0,
+   108.0,
+   10.6,
+   9.8,
+   3.5,
+   111.0,
+   4.15,
+   6.0
+  ],
+  [
+   "120",
+   120.0,
+   4.0,
+   113.0,
+   11.0,
+   10.2,
+   3.5,
+   116.0,
+   4.15,
+   6.0
+  ],
+  [
+   "125",
+   125.0,
+   4.0,
+   118.0,
+   11.4,
+   10.4,
+   4.0,
+   121.0,
+   4.15,
+   6.0
+  ],
+  [
+   "130",
+   130.0,
+   4.0,
+   123.0,
+   11.6,
+   10.7,
+   4.0,
+   126.0,
+   4.15,
+   6.0
+  ],
+  [
+   "135",
+   135.0,
+   4.0,
+   128.0,
+   11.8,
+   11.0,
+   4.0,
+   131.0,
+   4.15,
+   6.0
+  ],
+  [
+   "140",
+   140.0,
+   4.0,
+   133.0,
+   12.0,
+   11.2,
+   4.0,
+   136.0,
+   4.15,
+   6.0
+  ],
+  [
+   "145",
+   145.0,
+   4.0,
+   138.0,
+   12.2,
+   11.5,
+   4.0,
+   141.0,
+   4.15,
+   6.0
+  ],
+  [
+   "155",
+   155.0,
+   4.0,
+   146.0,
+   13.0,
+   12.0,
+   4.0,
+   150.0,
+   4.15,
+   7.5
+  ],
+  [
+   "160",
+   160.0,
+   4.0,
+   151.0,
+   13.3,
+   12.2,
+   4.0,
+   155.0,
+   4.15,
+   7.5
+  ],
+  [
+   "165",
+   165.0,
+   4.0,
+   155.5,
+   13.5,
+   12.5,
+   4.0,
+   160.0,
+   4.15,
+   7.5
+  ],
+  [
+   "170",
+   170.0,
+   4.0,
+   160.5,
+   13.5,
+   12.9,
+   4.0,
+   165.0,
+   4.15,
+   7.5
+  ],
+  [
+   "175",
+   175.0,
+   4.0,
+   165.5,
+   13.5,
+   12.9,
+   4.0,
+   170.0,
+   4.15,
+   7.5
+  ],
+  [
+   "190",
+   190.0,
+   4.0,
+   180.5,
+   14.2,
+   14.0,
+   4.0,
+   185.0,
+   4.15,
+   7.5
+  ],
+  [
+   "195",
+   195.0,
+   4.0,
+   185.5,
+   14.2,
+   14.0,
+   4.0,
+   190.0,
+   4.15,
+   7.5
+  ],
+  [
+   "200",
+   200.0,
+   4.0,
+   190.5,
+   14.2,
+   14.0,
+   4.0,
+   195.0,
+   4.15,
+   7.5
+  ]
+ ],
+ "row_support": {
+  "3": 5,
+  "4": 5,
+  "5": 4,
+  "6": 5,
+  "7": 5,
+  "8": 5,
+  "9": 5,
+  "10": 5,
+  "11": 5,
+  "12": 5,
+  "13": 5,
+  "14": 5,
+  "15": 5,
+  "16": 5,
+  "17": 5,
+  "18": 5,
+  "19": 5,
+  "20": 5,
+  "21": 5,
+  "22": 5,
+  "24": 5,
+  "25": 5,
+  "26": 5,
+  "28": 5,
+  "29": 5,
+  "30": 5,
+  "32": 5,
+  "34": 5,
+  "35": 5,
+  "36": 5,
+  "38": 5,
+  "40": 5,
+  "42": 5,
+  "45": 5,
+  "48": 4,
+  "50": 5,
+  "52": 5,
+  "55": 5,
+  "56": 4,
+  "58": 4,
+  "60": 5,
+  "62": 5,
+  "63": 5,
+  "65": 5,
+  "68": 5,
+  "70": 5,
+  "72": 5,
+  "75": 5,
+  "78": 5,
+  "80": 5,
+  "82": 5,
+  "85": 5,
+  "88": 5,
+  "90": 5,
+  "95": 5,
+  "100": 5,
+  "105": 4,
+  "110": 3,
+  "115": 3,
+  "120": 3,
+  "125": 3,
+  "130": 3,
+  "135": 3,
+  "140": 3,
+  "145": 3,
+  "155": 3,
+  "160": 3,
+  "165": 3,
+  "170": 3,
+  "175": 3,
+  "190": 3,
+  "195": 3,
+  "200": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/471/",
+   "site": "fasteners.eu",
+   "what": "DIN 471 table d1 3-300: s, d3, a max, b approx, d5 min, weight, d2, m H13, t, n min, d4 ... (itafasteners.com/products-clips-external-circlip.php carries the same table with the same typos -> ONE cluster)"
+  },
+  {
+   "url": "https://itafasteners.com/products-clips-external-circlip.php",
+   "site": "itafasteners.com",
+   "what": "same table as fasteners.eu (same headers, same typos) - counted with fasteners.eu"
+  },
+  {
+   "url": "https://www.beneri.com/en/prodotto/din-471",
+   "site": "beneri.com",
+   "what": "manufacturer table 'RING DIMENSIONS / GROOVE DIMENSIONS': d1 3-300 incl. intermediate sizes; S, d3, a max, b ~, d5 min, d2, m H13, n min"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_471.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "DIN 471 'Technische Masse' transposed blocks, sizes 3-107: s, d3, a, b, d5, d2, m, n (symbols only, drawing on the page)"
+  },
+  {
+   "url": "https://hc-maschinentechnik.de/Circlip",
+   "site": "hc-maschinentechnik.de",
+   "what": "table 'DIN 471 Circlips for shafts' 3-100; repeats the schrauben-lexikon typos -> counted with schrauben-lexikon"
+  },
+  {
+   "url": "https://westfieldfasteners.co.uk/Standards/Clip-CircExt.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "distributor 'Product Specification: DIN 471 - External Circlip' (HTML), Tables 1-2, d1 3-100: S, d3, a max, b, d5 min, mass, d2, m H13, t, n min"
+  },
+  {
+   "url": "https://www.springmasters.com/product-category/circlips-retaining-rings/external-circlip-din-471-metric/",
+   "site": "springmasters.com",
+   "what": "product table (DataTables, rendered with playwright, 2 pages): Shaft (S), Thick (t), Free Diameter (D), Clearance on Shaft, Beam (b), Lug (L), Hole Diameter (h), Groove Diameter (G), Groove Width (W), Edge Margin (n); carbon-steel rows 3-400 used, stainless rows only as a consistency check"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-471",
+   "site": "woodstockindustrial.com",
+   "what": "DIN 471 spec table 3-200: Groove Diameter, Groove Width, Edge Margin (n), Groove Depth, Circlip Thickness, Circlip Free Diameter, Clearance Diameter (no lug/beam/hole columns) - counted with springmasters"
+  },
+  {
+   "url": "https://www.rotorclip.com/product/dsh-3/",
+   "site": "rotorclip.com",
+   "what": "manufacturer product pages DSH-<d1> (one per size, 76 pages dsh-3 ... dsh-200, raw/rc/): Groove Width W, Lug Height H, Hole Diameter R, Large Sect. S, Edge Margin Y Min. are single values and are used; Groove Diameter Dg, Free Diameter Df and Thickness T are printed as min-max ranges and are NOT used"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/retaining-rings-standards/din-471.html",
+   "site": "boltsfastener.com",
+   "what": "DIN 471 table 3-200: Groove Diameter Dg, width W, Depth d, Thickness T, Inner Diameter Df, Lug Height H max, Max. Sec. S, Small Hole R min, weight (no edge margin column). Rows 3-168 counted with Rotor Clip (same symbols, same odd value); rows 170-200 counted with springmasters"
+  },
+  {
+   "url": "https://fasten.it/en/Norms/Norm/DIN%20471",
+   "site": "fasten.it",
+   "what": "NOT COUNTED - table 'source DIN 471, publication date 04/2011 ... Reproduced by permission of DIN' (a reproduction of the standard's table, not manufacturer/distributor data); read only as a reference for disputed cells"
+  },
+  {
+   "url": "https://amesweb.info/Fasteners/Retaining-Ring/Circlips-External-Shafts-Metric.aspx",
+   "site": "amesweb.info",
+   "what": "NOT COUNTED - calculator page quoting notes of the standard; one form POST per size (raw/ames/471_<d1>.html); reference only"
+  }
+ ],
+ "clusters": {
+  "FE: fasteners.eu (+ itafasteners.com, same table and typos)": [
+   "fasteners.eu/standards/DIN/471/",
+   "itafasteners.com/products-clips-external-circlip.php"
+  ],
+  "BEN: Beneri (manufacturer; own size list 3-300, own weights, own typo 180/d3 170.4)": [
+   "beneri.com/en/prodotto/din-471"
+  ],
+  "LEX: German dataset (schrauben-lexikon / Wegertseder; hc-maschinentechnik repeats its typos 4,78 and 6,74)": [
+   "schrauben-lexikon.de/norm/DIN_471.asp",
+   "hc-maschinentechnik.de/Circlip"
+  ],
+  "WF: Westfield Fasteners HTML product specification (3-100; own typos 56/d3 51.5, 58/d3 53.5)": [
+   "westfieldfasteners.co.uk/Standards/Clip-CircExt.html"
+  ],
+  "SM: springmasters (+ woodstock: same 'Edge Margin (n)' wording and same odd clearance 84.4 at 68; + boltsfastener rows 170-200: other number format, equal to springmasters cell by cell incl. b = 14 at 180/185)": [
+   "springmasters.com external-circlip-din-471-metric (carbon steel rows; stainless rows identical)",
+   "woodstockindustrial.com/specs/din-471",
+   "boltsfastener.com din-471.html (rows 170-200)"
+  ],
+  "RC: Rotor Clip product pages DSH-3 ... DSH-200 (manufacturer; a, b, d5, m, n only) (+ boltsfastener rows 3-168: Rotor Clip's symbols and its odd value b = 9.9 at 105; supplies s, d3, d2 of this cluster)": [
+   "rotorclip.com/product/dsh-<d1>/ (76 pages)",
+   "boltsfastener.com din-471.html (rows 3-168)"
+  ],
+  "NOT COUNTED (reproduction of the standard's table 'by permission of DIN', dated 04/2011)": [
+   "fasten.it/en/Norms/Norm/DIN 471"
+  ],
+  "NOT COUNTED (calculator quoting the standard, one POST per size)": [
+   "amesweb.info Circlips-External-Shafts-Metric.aspx"
+  ],
+  "NOT USED (selection of sizes only, letter headers D1/A/B/H/M, needs a browser)": [
+   "norelem product page agid.4129"
+  ],
+  "NOT USED (Anderton part numbers 1400-xx = springmasters lineage; no lug/beam columns in the table)": [
+   "aimsindustrial.com.au/circlip-external-170mm"
+  ],
+  "NOT REACHABLE (bot check / 403)": [
+   "globalfastener.com standards search",
+   "accu-components.com product pages"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "row 150",
+   "why": "n: 7.5 <- BEN+FE+RC (3); 6 <- SM+fasten.it[reference, not counted] [DISPUTED: a rival value has 2 or more witnesses]"
+  },
+  {
+   "what": "row 180",
+   "why": "d3: 170.5 <- FE+SM (2); 170.4 <- BEN [fewer than 3 clusters]; b: 13.5 <- BEN+FE+RC (3); 14 <- SM+fasten.it[reference, not counted] [DISPUTED: a rival value has 2 or more witnesses]"
+  },
+  {
+   "what": "row 185",
+   "why": "b: 13.5 <- BEN+FE+RC (3); 14 <- SM+fasten.it[reference, not counted] [DISPUTED: a rival value has 2 or more witnesses]"
+  },
+  {
+   "what": "heavy type (DIN 471 Table 2), sizes above 200, intermediate sizes not in the candidate list (23, 27, 31, 33, 37 ...)",
+   "why": "not in the candidate table; not examined for publication (several pages do list them)"
+  },
+  {
+   "what": "columns t (groove depth), d4 (clearance diameter), weight, load data, tolerances",
+   "why": "not candidate columns; d4 and weight differ between pages (e.g. d4 at 5: 10.2 / 10.3, at 68: 84.8 / 84.4)"
+  }
+ ],
+ "checks": [
+  "d3 < d2 < d1 in every kept row (free ring bore smaller than groove, groove smaller than shaft)",
+  "groove width m exceeds ring thickness s in every kept row (m - s takes only the values [0.1, 0.15])",
+  "b <= a in every kept row (beam not wider than the lug)",
+  "every kept column is non-decreasing with size: s, d3, a, b, d5, d2, m, n",
+  "n_min / groove depth t (t = |d1 - d2| / 2) lies between 3.00 and 3.33",
+  "extraction is mechanical (tbl.py / ringlib.py); 13 pages or page sets compared cell by cell; springmasters stainless rows equal its carbon-steel rows in all 368 shared cells",
+  "with the looser clustering (--lenient: woodstock, boltsfastener, Rotor Clip each on their own) the same rows survive except 105, which then counts as disputed because boltsfastener and Rotor Clip both show b = 9.9",
+  "outvoted single-cluster values in kept cells: 3/m: 0.5 <- BEN+FE+LEX+RC+SM+WF (6); 5 <- fasten.it[reference, not counted]; 5/d3: 4.7 <- BEN+FE+RC+SM+WF (5); 4.78 <- LEX; 8/m: 0.9 <- BEN+FE+LEX+RC+WF (5); 1.1 <- SM; 29/a: 4.8 <- BEN+LEX+RC+SM+WF (5); 7.8 <- FE; 42/a: 6.5 <- BEN+FE+LEX+RC+SM+WF (6); 6.2 <- fasten.it[reference, not counted]; 48/s: 1.75 <- BEN+LEX+RC+SM+WF (5); 2 <- FE; 56/d3: 51.8 <- BEN+FE+LEX+RC+SM (5); 51.5 <- WF; 58/d3: 53.8 <- BEN+FE+LEX+RC+SM (5); 53.5 <- WF; 68/d3: 63.5 <- BEN+FE+LEX+RC+SM+WF (6); 53.5 <- fasten.it[reference, not counted]; 68/b: 6.5 <- BEN+LEX+RC+SM+WF (5); 6.2 <- FE; 82/d3: 76.5 <- BEN+FE+LEX+RC+SM+WF (6); 78.5 <- fasten.it[reference, not counted]; 90/d2: 86.5 <- BEN+FE+LEX+RC+SM+WF (6); 85.5 <- fasten.it[reference, not counted]; 105/b: 9.3 <- BEN+FE+LEX+SM (4); 9.9 <- RC"
+ ],
+ "shape_hint": "Flat C-shaped spring-steel ring of constant thickness s that is sprung OVER a shaft and seats in a groove (diameter d2, width m) cut around the shaft. The ring is open on one side; each free end carries an outward-pointing lug (radial height a max) with a small plier hole (d5). The radial width tapers from b (widest, opposite the opening) towards the lugs. Free inside diameter d3 is smaller than the groove diameter so the ring grips the groove.",
+ "role_map": {
+  "size": "nominal size = shaft diameter d1 in mm",
+  "d1": "shaft diameter (nominal size), mm",
+  "s": "ring thickness",
+  "d3": "inside diameter of the ring in the free (unstressed) state",
+  "a": "radial height of the lug, maximum",
+  "b": "radial width of the ring opposite the opening (beam), approximate",
+  "d5": "diameter of the plier holes in the lugs, minimum",
+  "d2": "groove diameter in the shaft (nominal)",
+  "m": "groove width (tolerance H13 on the pages that state it)",
+  "n": "edge margin: minimum distance from the groove to the shaft end"
+ },
+ "notes": "Normal type only. Rows 150, 180, 185 are dropped as DISPUTED, not as unsupported: n at 150 is 7.5 on fasteners.eu, beneri, Rotor Clip (also woodstock and the amesweb calculator) but 6 on springmasters and on the fasten.it table that says it reproduces DIN 471 of 04/2011; b at 180 and 185 is 13.5 on fasteners.eu, beneri, Rotor Clip (and amesweb) but 14 on springmasters, boltsfastener rows 170-200 and fasten.it. Three clusters do agree on 7.5 / 13.5, so a reader applying only the 'three agree' rule could keep these rows with those values; they were dropped here because a second, mutually consistent pair of pages (one of them the licensed 2011 reproduction) carries another number - this looks like an edition difference and could not be settled from public pages. Row 180 additionally has only two clusters for d3 = 170.5 (beneri prints 170.4). None of the counted pages states an edition. din.de lists a newer edition DIN 471:2026-05 (seen in search results only); nothing here was checked against it. Strict clustering: woodstock and boltsfastener rows 170-200 are counted with springmasters, boltsfastener rows 3-168 with Rotor Clip. s, d3 and d2 of sizes 170, 175, 190, 195, 200 rest on exactly three clusters (fasteners.eu, beneri, springmasters); every other kept cell has four or more. 105/b: Rotor Clip (and boltsfastener, which repeats it) prints 9.9, four clusters print 9.3; 9.9 equals a of the same row and would make b fall at 110, so it is treated as one outvoted typo. Column meanings come from each page's own headers (see evidence 'column_labels_on_each_page'); schrauben-lexikon and hc-maschinentechnik give DIN symbols only (no kept cell depends on them). Rotor Clip's 'Lug Height H' and boltsfastener's 'Lug Height H Max.' are read as a, 'Large Sect. S' / 'MAX. SEC. S Ref.' as b, 'Hole Diameter R' as d5, 'Edge Margin Y Min.' as n. Tolerances (s, d3, d2) are not included; m is the nominal groove width (tolerance class H13 where stated).",
+ "scope": "DIN 471 보통형, 축 지름 3~200 mm 가운데 73개 호칭 (150·180·185 제외)",
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Verifier re-fetched every page on 2026-11-11 (curl, browser UA; springmasters rendered with playwright, both paginator pages, values read from the captured ajax JSON and cross-checked against the rendered DOM: 0 differences; Rotor Clip: all per-size product pages fetched one by one with a 1.5 s pause, all HTTP 200) into scratchpad/t2/g5v/raw and read them with the verifier's own code (g5v/scripts/vtab.py, vx.py, vcmp.py); the researcher's raw files, extracts and scripts were not used for the count, only the list of cells to check was taken from the record. Every record cell was compared with every page. Lineages used for the count (strict): FE = fasteners.eu (+ itafasteners, identical legend text, same drawing file size 919x1350/988x1350, 0 differences in 471, in 472 only two extra typos of its own); BEN = beneri; LEX = schrauben-lexikon (+ hc-maschinentechnik, same typos); WF = westfield; SM = springmasters (+ woodstock, + boltsfastener where it follows the springmasters letters/format); RC = Rotor Clip product pages. A lineage counts for a cell only when its primary page itself prints the value; boltsfastener and woodstock never add a count; fasten.it (states 'Reproduced by permission of DIN') is read only as a witness of rival values. Column meaning checked on each counted page: fasteners.eu has a written legend plus a labelled drawing; beneri has RING/GROOVE DIMENSIONS group headers, 'a max', 'b ≈', 'd5 min', 'm H13', 'n min' and a labelled drawing; westfield has Ring/Groove headers, max/min/H13 row and two labelled drawings; schrauben-lexikon and hc-maschinentechnik print letters only but each page carries a drawing that labels s, d3, a, b, d5, d2, m, n (viewed); springmasters has word headers (Thick, Free Diameter, Beam, Lug, Hole Diameter, Groove Diameter, Groove Width, Edge Margin) plus a labelled drawing; Rotor Clip has word labels. Units: all pages mm. Rotor Clip prints Groove Diameter Dg, Free Diameter Df and Thickness T as min-max ranges: not counted for s, d3, d2 (the record values lie inside every range - consistency only). Independence of the three lineages that alone carry the large sizes (FE, BEN, SM) examined over all sizes and also over weight and load-capacity columns: FE has its own typos that BEN and SM lack (471: 29/a 7.8, 48/s 2, 68/b 6.2, FR 2395.5 at 130; 472: 72/d3 76.6, 82/s 3, 90/d3 95.55, FN 16 at 12, FR 137 at 30) and columns BEN does not print (t, d4, standard weights); BEN has its own weights, its own size list with intermediate sizes and its own typos (471: 180/d3 170.4, FN 4.48 at 19); SM uses other names, sizes to 400, a clearance column, its own typo (471: 8/m 1.1) and other values at 471 150/n, 180/b, 185/b. No shared odd value or typo between any two of the three was found -> counted as three lineages. Result ring-ext: 73 rows x 8 value columns = 584 cells, all equal to the record in at least 3 lineages (3 lineages: 48 cells, 4: 88, 5: 171, 6: 277). Minimum stays 3 if westfield alone or the letter-only German pages alone are left out. No rival value in a kept cell has two independent witnesses.",
+  "problems": [
+   "Rows 150, 180, 185 stay out (lead's rule): 150/n 7.5 on FE, BEN, RC against 6 on springmasters and fasten.it; 180/b and 185/b 13.5 on FE, BEN, RC against 14 on springmasters, boltsfastener and fasten.it; 180/d3 additionally 170.4 on beneri. Confirmed on the re-fetched pages.",
+   "105/b kept at 9.3 (FE, BEN, LEX, SM = 4 lineages). 9.9 is printed by the Rotor Clip product page and by boltsfastener row 105; boltsfastener's table uses Rotor Clip's symbols and wording (Ds, Dg, W, d, T, Df, 'Lug Height H Max.', 'MAX. SEC. S Ref.', 'Small Hole R Min.') and comma decimals in that row, so it is a copy of Rotor Clip data = one lineage, one witness. 9.9 equals a of the same row and would make b fall at 110 (9.6).",
+   "Zero slack: s, d3, d2 of 110-165 and all columns' s, d3, d2 of 170, 175, 190, 195, 200 rest on exactly FE + BEN + SM. If any one of these were not accepted, rows 110-200 fall (16 rows).",
+   "fasteners.eu: the drawing on the page is a scan of the standard's own figure (English edition, 'Figure 1/2', 'Detail of X') and the table follows the standard's full column layout. It does not declare a reproduction and the project already counts this site (flangenut record), so it is counted; if the lead decides it is a copy of the standard's table, rows 110-200 fall and the rest drops to 3-5 lineages.",
+   "Qualifiers: 'a max', 'b approx.', 'd5 min', 'n min' are stated by FE, BEN and WF only. springmasters prints the same numbers under 'Lug (L)', 'Beam (b)', 'Hole Diameter (h)', 'Edge Margin (n)' without max/min; Rotor Clip states 'Min.' only for the edge margin. For sizes above 100 the max/min wording therefore has two lineages (FE, BEN) and the number has three or four. No page gives a second (nominal vs max) value for these dimensions, so the cells were kept; the lead may prefer to drop 'max/min' from the column names for a, d5, n.",
+   "westfield's page is a 'Product Specification' that paraphrases the scope of DIN 471; it is counted, but no cell depends on it (minimum without it is still 3).",
+   "Other single-lineage deviations in kept cells (outvoted): 5/d3 4.78 LEX+HC; 8/m 1.1 springmasters; 18/d2 14 hc only; 29/a 7.8, 48/s 2, 68/b 6.2 fasteners.eu+ita; 56/d3 51.5, 58/d3 53.5 westfield; 82/b 8.7 boltsfastener only; fasten.it alone: 3/m '05', 42/a 6.2, 68/d3 53.5, 82/d3 78.5, 90/d2 85.5.",
+   "Record text differs from what was found: boltsfastener's 471 table does not split cleanly at 170 (rows 18-48 also carry point decimals in tolerance cells); the verifier therefore gave boltsfastener no count at all for 471. The record's row_support counted the Rotor Clip lineage for s, d3, d2 through boltsfastener; the verifier did not, so row_support is lower for 105-165 (3 instead of 4) and was rewritten.",
+   "Not checked: the standard itself (no edition is stated by the counted pages; fasten.it cites 04/2011), amesweb calculator (not re-fetched, uncounted anyway), norelem / aims / globalfastener / accu (unused by the record)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ }
+}

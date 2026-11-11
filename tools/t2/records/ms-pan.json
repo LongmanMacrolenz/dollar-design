@@ -1,0 +1,198 @@
+{
+ "id": "ms-pan",
+ "status": "ok",
+ "standard": "ISO 7045",
+ "standard_full": "ISO 7045 (pan head screws with type H or type Z cross recess, product grade A); head diameter and head height as nominal = maximum values",
+ "u": "mm",
+ "cols": [
+  [
+   "pitch",
+   "피치 P"
+  ],
+  [
+   "dk",
+   "머리 지름 dk (호칭 = 최대)"
+  ],
+  [
+   "k",
+   "머리 높이 k (호칭 = 최대)"
+  ]
+ ],
+ "rows": [
+  [
+   "M2",
+   0.4,
+   4.0,
+   1.6
+  ],
+  [
+   "M2.5",
+   0.45,
+   5.0,
+   2.1
+  ],
+  [
+   "M3",
+   0.5,
+   5.6,
+   2.4
+  ],
+  [
+   "M4",
+   0.7,
+   8.0,
+   3.1
+  ],
+  [
+   "M5",
+   0.8,
+   9.5,
+   3.7
+  ],
+  [
+   "M6",
+   1.0,
+   12.0,
+   4.6
+  ],
+  [
+   "M8",
+   1.25,
+   16.0,
+   6.0
+  ],
+  [
+   "M10",
+   1.5,
+   20.0,
+   7.5
+  ]
+ ],
+ "row_support": {
+  "M2": 3,
+  "M2.5": 3,
+  "M3": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_3277.html",
+   "site": "globalfastener.com",
+   "what": "ISO 7045-2011 table (P, a, b, da, dk, k, r, x, recess) M1.6-M10"
+  },
+  {
+   "url": "https://www.engineersedge.com/iso_phillips_Pan_head_screw.htm",
+   "site": "engineersedge.com",
+   "what": "ISO 7045 size table (thread designation with pitch, head dia, head height) M1.6-M10 without M3.5"
+  },
+  {
+   "url": "https://www.keller-kalmbach.de/produkte/verbindungselemente/schrauben/flachkopfschrauben/iso-7045-flachkopfschraube/p/2270459410",
+   "site": "keller-kalmbach.de",
+   "what": "product pages 'ISO 7045 Flachkopfschraube' and 'ISO 7045 / DIN 7985' (Norm: ISO 7045): head diameter dk and head height k for M1.6, M2, M2.5, M4, M5, M6, M8, M10 (no M3, no M3.5 article)"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1319-cross-pan-head-machine-screws-pz-iso-7045-din-7985",
+   "site": "nfgab.com",
+   "what": "product group ISO 7045 / DIN 7985 (d2 ISO/DIN = head diameter, k max ISO/DIN) M1.6-M8"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_7045",
+   "site": "fasten.it",
+   "what": "page 'DIN EN ISO 7045' (P, dk nom=max, k nom=max) M1.6-M10; shows DIN 7985 numbers where the two standards differ"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_7045.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "ISO 7045 technical data: k for M2.5-M8 (prints 3.8 for M5); row 'd2' unexplained and not used"
+  }
+ ],
+ "clusters": {
+  "GF: globalfastener (detail_3277 ISO 7045-2011, sid MTU0 1994, detail_5235 DIN EN ISO 7045) + fullerfasteners derivative": [
+   "dk/k labelled max=nominal size"
+  ],
+  "FI: fasten.it din_en_iso_7045": [
+   "P, dk nom=max, k nom=max; DIN 7985 numbers at M2.5 k, M3 dk, M5 dk/k (disregarded)"
+  ],
+  "EE: engineersedge iso_phillips_Pan_head_screw.htm": [
+   "own HTML table: designation M d X P, Head Dia, Head Height"
+  ],
+  "KK: keller-kalmbach ISO 7045 article pages (M1.6, M2, M2.5, M4, M5, M6, M8, M10; no ISO 7045 M3 article)": [
+   "Kopfdurchmesser dk / Kopfhoehe k"
+  ],
+  "NFG: nfgab 1319 ISO 7045/DIN 7985": [
+   "d2 = head diameter per own drawing 1319r.png; ISO half of a/b cells; single k max values are DIN 7985 maxima (disregarded)"
+  ],
+  "SL: schrauben-lexikon ISO_7045 + boltport iso-7045 copy": [
+   "k only (drawing labels k); d2 not in drawing, unused"
+  ]
+ },
+ "not_counted": {
+  "not counted - fasteners.eu": [
+   "fasteners.eu/standards/ISO/7045/ (note on the page: 'Table according to DIN 7985')"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "a_max column (머리 밑 불완전나사 a 최대)",
+   "why": "only the globalfastener table (and its fullerfasteners derivative) gives ISO 7045 a max // cells without 3 agreeing clusters -> M2: 0.8 x1 (GF) | M2.5: 0.9 x1 (GF) | M3: 1 x1 (GF) | M3.5: 1.2 x1 (GF) | M4: 1.4 x1 (GF) | M5: 1.6 x1 (GF) | ..."
+  },
+  {
+   "what": "b_min column (나사부 길이 b 최소)",
+   "why": "only the globalfastener table gives b min (25 / 38) // cells without 3 agreeing clusters -> M2: 25 x1 (GF) | M2.5: 25 x1 (GF) | M3: 25 x1 (GF) | M3.5: 38 x1 (GF) | M4: 38 x1 (GF) | M5: 38 x1 (GF) | ..."
+  },
+  {
+   "what": "da_max column (머리 밑 이행부 지름 최대)",
+   "why": "only the globalfastener table gives da max // cells without 3 agreeing clusters -> M2: 2.6 x1 (GF) | M2.5: 3.1 x1 (GF) | M3: 3.6 x1 (GF) | M3.5: 4.1 x1 (GF) | M4: 4.7 x1 (GF) | M5: 5.7 x1 (GF) | ..."
+  },
+  {
+   "what": "dk_min column (머리 지름 최소)",
+   "why": "only the globalfastener table (and its fullerfasteners derivative) gives dk min // cells without 3 agreeing clusters -> M2: 3.7 x1 (GF) | M2.5: 4.7 x1 (GF) | M3: 5.3 x1 (GF) | M3.5: 6.64 x1 (GF) | M4: 7.64 x1 (GF) | M5: 9.14 x1 (GF) | ..."
+  },
+  {
+   "what": "k_min column (머리 높이 최소)",
+   "why": "only the globalfastener table (and its fullerfasteners derivative) gives k min // cells without 3 agreeing clusters -> M2: 1.46 x1 (GF) | M2.5: 1.96 x1 (GF) | M3: 2.26 x1 (GF) | M3.5: 2.46 x1 (GF) | M4: 2.92 x1 (GF) | M5: 3.52 x1 (GF) | ..."
+  },
+  {
+   "what": "r_min column (머리 밑 반지름 최소)",
+   "why": "only the globalfastener table gives r min // cells without 3 agreeing clusters -> M2: 0.1 x1 (GF) | M2.5: 0.1 x1 (GF) | M3: 0.1 x1 (GF) | M3.5: 0.1 x1 (GF) | M4: 0.2 x1 (GF) | M5: 0.2 x1 (GF) | ..."
+  },
+  {
+   "what": "M3.5 row",
+   "why": "k 2.6 is given by globalfastener only (fasten.it prints the DIN 7985 value 2.7; engineersedge, keller-kalmbach and schrauben-lexikon do not list M3.5) // kept columns without 3 agreeing clusters -> pitch: 0.6 x2 (FI,GF) | dk: 7 x2 (FI,GF) | k: 2.6 x1 (GF); 2.7 x1 (FI)"
+  }
+ ],
+ "checks": [
+  "dk strictly increases with size - PASS",
+  "k strictly increases with size - PASS",
+  "dk between 1.8 d and 2.1 d for every row - PASS",
+  "k between 0.7 d and 0.85 d for every row - PASS",
+  "pitch is the ISO coarse pitch 0.4-0.45-0.5-0.6-0.7-0.8-1-1.25-1.5 for the kept sizes - PASS",
+  "every kept cell: >= 3 independent clusters with the identical number (see ms-pan.evidence.json); minimum cluster count in the kept table = 3"
+ ],
+ "shape_hint": "Machine screw with a pan head (flat bearing face, slightly domed top with rounded edge) and a cross recess (type H Phillips or type Z Pozidriv); head diameter dk about twice the thread diameter, head height k about 0.75 d.",
+ "role_map": {
+  "d": "nominal thread diameter (row label)",
+  "pitch": "coarse thread pitch P",
+  "dk": "head diameter, nominal = max",
+  "k": "head height, nominal = max"
+ },
+ "notes": "Only pitch, dk and k reach three clusters, for M2, M2.5, M3, M4, M5, M6, M8, M10. The ISO 7045 specific head sizes rest on: M2.5 k 2.1 - globalfastener, engineersedge, keller-kalmbach, nfgab, schrauben-lexikon; M3 dk 5.6 - globalfastener, engineersedge, nfgab (exactly three); M5 dk 9.5 and k 3.7 - globalfastener, engineersedge, keller-kalmbach, nfgab. fasten.it prints the older DIN 7985 numbers in these places (k 2 / dk 6 / dk 10, k 3.8) and schrauben-lexikon prints k 3.8 for M5. nfgab's 'k max ISO/DIN' row gives the DIN 7985 maxima (1.72, 2.52, 3.25, 4.75, 6.15) for the sizes where it prints one number, so it dissents on k for M2, M3, M4, M6, M8 - the kept k values still have 4-5 clusters. M3.5 is dropped: k 2.6 on globalfastener only (fasten.it 2.7), dk 7 and pitch 0.6 on two clusters. All tolerance columns (a max, b min, da max, dk min, k min, r min) exist only in the globalfastener table (fullerfasteners repeats it with the same wording), so none can be kept. fasteners.eu's ISO 7045 page states 'Table according to DIN 7985' and is not counted; westfieldfasteners' page is a DIN 7985 page and was not used; schrauben-lexikon's 'd2' row is unexplained on the page and was not used. Pitch on engineersedge is read from the thread designation (e.g. 'M3X0.5'). dk and k on engineersedge, keller-kalmbach and nfgab (dk) are nominal values without the word 'max'; the column is 'nominal = max' as stated by globalfastener and fasten.it. Würth e-shop pages (JavaScript, access denied to automated fetch) could not be read.",
+ "scope": "M2–M10 (M3.5 제외)의 피치·머리 지름·머리 높이",
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Verifier re-fetched every page itself on 2026-11-11 with curl (browser UA, 2.5 s pause per host; HTTP 200 for all; globalfastener detail_400 needed one retry after a 403), wrote its own stdlib HTML table reader (vt.py, gf.py, obs.py) and counting script (count.py) without using the researcher's raw/, extracted tables or scripts. Drawings that define bare symbols (schrauben-lexikon gifs, nfgab pngs) were fetched and viewed. Lead decisions applied: amesweb (calculator) not a source; a rival value printed by 2+ independent lineages removes the row; cells of another standard printed under the target title (verified equal to that standard's table) are neither support nor rival; pages reproducing the standard's text (boltport ISO 4035) excluded. A cluster whose own pages give two different values for a cell is not counted for it. Largest rectangle (cells, then rows) chosen among column subsets that contain the drawing keys. Re-counted 8 x 3 candidate cells; kept 8 x 3; per-cell clusters in ms-pan.verify.md.",
+  "problems": [
+   "Pitch rests on exactly three clusters (GF, FI, EE); EE pitch is read from its 'M3X0.5' designations.",
+   "M3 dk 5.6 has exactly three clusters (GF, EE, NFG 'd2 ISO/DIN 5,6/6'); NFG d2 counted only because its drawing (1319r.png, verified) labels d2 as head diameter.",
+   "Rule-3 interpretation: fasten.it (M2.5 k 2, M3 dk 6, M5 dk 10 / k 3.8), schrauben-lexikon+boltport (M5 k 3.8) and nfgab single 'k max' values (1.72, 2.52, 3.25, 4.75, 6.15) equal DIN 7985 numbers and were treated as another standard's cells, not rivals. Under a literal reading of the 2-page rival rule M2.5, M3 and M5 would go.",
+   "EE, KK and NFG give head diameter/height without max/min; counted as the nominal (= max) value. GF and FI state nom=max explicitly."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ }
+}

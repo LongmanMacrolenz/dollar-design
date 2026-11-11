@@ -431,7 +431,7 @@ def check_tables(page, BASE, OUT):
   tab.set_viewport_size({'width':1280,'height':900});tab.goto(BASE+'/products/hex-bolt-partial-thread')
   tab.locator('article a[href="/tables/hex-bolt-full-thread"]').click();tab.wait_for_url('**/tables/hex-bolt-full-thread');assert tab.locator('h1').inner_text()=='육각볼트 규격표'
   assert tab.goto(BASE+'/lib/iso-4032').status==200 and tab.locator('aside a.chip[href="/tables/hex-nut"]').count()==1
-  assert tab.goto(BASE+'/tables/taper-pin').status==404 and tab.goto(BASE+'/tables/no-such-table').status==404
+  assert tab.goto(BASE+'/tables/tension-control-structural-bolt-set').status==404 and tab.goto(BASE+'/tables/no-such-table').status==404
   assert not problems,problems
   context.close()
   print('규격표 · 모음 찾기/근거 문구/17칸 표 휴대폰 폭/길 연결/없는 표 404: PASS')

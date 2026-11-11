@@ -1,0 +1,1126 @@
+{
+ "id": "key-par",
+ "status": "partial",
+ "standard": "DIN 6885-1",
+ "standard_full": "DIN 6885-1 (parallel keys, high form, and their keyways: b x h by shaft diameter, shaft keyway depth t1, hub keyway depth t2 with back clearance)",
+ "u": "mm",
+ "cols": [
+  [
+   "b",
+   "폭 b"
+  ],
+  [
+   "h",
+   "높이 h"
+  ],
+  [
+   "shaftOver",
+   "축 지름 초과"
+  ],
+  [
+   "shaftTo",
+   "축 지름 이하"
+  ],
+  [
+   "t1",
+   "축 키홈 깊이 t1"
+  ]
+ ],
+ "rows": [
+  [
+   "2X2",
+   2.0,
+   2.0,
+   6.0,
+   8.0,
+   1.2
+  ],
+  [
+   "3X3",
+   3.0,
+   3.0,
+   8.0,
+   10.0,
+   1.8
+  ],
+  [
+   "4X4",
+   4.0,
+   4.0,
+   10.0,
+   12.0,
+   2.5
+  ],
+  [
+   "5X5",
+   5.0,
+   5.0,
+   12.0,
+   17.0,
+   3.0
+  ],
+  [
+   "6X6",
+   6.0,
+   6.0,
+   17.0,
+   22.0,
+   3.5
+  ],
+  [
+   "8X7",
+   8.0,
+   7.0,
+   22.0,
+   30.0,
+   4.0
+  ],
+  [
+   "10X8",
+   10.0,
+   8.0,
+   30.0,
+   38.0,
+   5.0
+  ],
+  [
+   "12X8",
+   12.0,
+   8.0,
+   38.0,
+   44.0,
+   5.0
+  ],
+  [
+   "14X9",
+   14.0,
+   9.0,
+   44.0,
+   50.0,
+   5.5
+  ],
+  [
+   "16X10",
+   16.0,
+   10.0,
+   50.0,
+   58.0,
+   6.0
+  ],
+  [
+   "18X11",
+   18.0,
+   11.0,
+   58.0,
+   65.0,
+   7.0
+  ],
+  [
+   "20X12",
+   20.0,
+   12.0,
+   65.0,
+   75.0,
+   7.5
+  ],
+  [
+   "22X14",
+   22.0,
+   14.0,
+   75.0,
+   85.0,
+   9.0
+  ],
+  [
+   "25X14",
+   25.0,
+   14.0,
+   85.0,
+   95.0,
+   9.0
+  ],
+  [
+   "28X16",
+   28.0,
+   16.0,
+   95.0,
+   110.0,
+   10.0
+  ],
+  [
+   "32X18",
+   32.0,
+   18.0,
+   110.0,
+   130.0,
+   11.0
+  ],
+  [
+   "36X20",
+   36.0,
+   20.0,
+   130.0,
+   150.0,
+   12.0
+  ],
+  [
+   "40X22",
+   40.0,
+   22.0,
+   150.0,
+   170.0,
+   13.0
+  ],
+  [
+   "45X25",
+   45.0,
+   25.0,
+   170.0,
+   200.0,
+   15.0
+  ],
+  [
+   "50X28",
+   50.0,
+   28.0,
+   200.0,
+   230.0,
+   17.0
+  ]
+ ],
+ "row_support": {
+  "2X2": 3,
+  "3X3": 3,
+  "4X4": 3,
+  "5X5": 3,
+  "6X6": 3,
+  "8X7": 3,
+  "10X8": 3,
+  "12X8": 3,
+  "14X9": 3,
+  "16X10": 3,
+  "18X11": 3,
+  "20X12": 3,
+  "22X14": 3,
+  "25X14": 3,
+  "28X16": 3,
+  "32X18": 3,
+  "36X20": 3,
+  "40X22": 3,
+  "45X25": 3,
+  "50X28": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjI4OTU=",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN 6885-1 (B) - 2021 table",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_22895.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjAyMDk=",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN 6885 (B) - 1968 table",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_20209.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjI4ODI=",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN 6885-1 (A) - 2021 table",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_22882.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjAyNQ==",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN 6885 (A) - 1968 table",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_2025.html"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-6885-specifications-parallel-keys-deep-pattern/",
+   "site": "fullerfasteners.com",
+   "what": "fullerfasteners DIN 6885 (globalfastener template) [tier 2]",
+   "cluster": "GF",
+   "raw": "raw/ff_din6885.html"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_6885-1",
+   "site": "fasten.it",
+   "what": "fasten.it DIN 6885-1 (08/1968) tech table",
+   "cluster": "FI",
+   "raw": "raw/fi_din_6885_1.html"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/6885-A/",
+   "site": "fasteners.eu",
+   "what": "fasteners.eu DIN 6885 A: b, h, shaft over/to (no keyway depths)",
+   "cluster": "FE",
+   "raw": "raw/fe_din6885-A.html"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/pins-keys-standard/din-6885.html",
+   "site": "boltsfastener.com",
+   "what": "boltsfastener DIN 6885 (b 3-36 incl. a low-form 8x5 column; depths only to b=20) [tier 2]",
+   "cluster": "FE",
+   "raw": "raw/bf_din6885.html"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6885.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "schrauben-lexikon DIN 6885 A: h and shaft range (A 2 - A 45)",
+   "cluster": "SL",
+   "raw": "raw/sl_DIN_6885.html"
+  },
+  {
+   "url": "https://avsld.com.sg/din-keys-keyways-to-iso/",
+   "site": "avsld.com.sg",
+   "what": "AVSLD International (power-transmission distributor): keys and keyways to DIN 6885/1 and /3",
+   "cluster": "AV",
+   "raw": "raw/av_din6885.html"
+  },
+  {
+   "url": "https://impexindustrialcorporation.com/blog/din-6885-parallel-key-size-chart",
+   "site": "impexindustrialcorporation.com",
+   "what": "Impex Industrial Corporation (supplier) blog chart incl. key length range",
+   "cluster": "IX",
+   "raw": "raw/ix_din6885.html"
+  },
+  {
+   "url": "https://www.keyseaters.com/local/keyway-dimensions-size-chart-ansi-b17-1-metric-reference-national-machine-tool/",
+   "site": "keyseaters.com",
+   "what": "National Machine Tool (keyseater maker) metric keyway chart, 6-130 mm shafts",
+   "cluster": "KS",
+   "raw": "raw/ks_keyway.html"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-6885",
+   "site": "woodstockindustrial.com",
+   "what": "woodstockindustrial DIN 6885: key width / height only",
+   "cluster": "WS",
+   "raw": "raw/ws_din-6885.html"
+  },
+  {
+   "url": "https://vibromera.eu/calculators/keyway-calculator/",
+   "site": "vibromera.eu",
+   "what": "vibromera keyway calculator page: shaft range and key w×h only",
+   "cluster": "VB",
+   "raw": "raw/vb_keyway.html"
+  },
+  {
+   "url": "https://www.baouch.fr/en/blog/clavettes-paralleles-din-6885-dimensions/",
+   "site": "baouch.fr",
+   "what": "personal portfolio blog (not a maker/distributor) - recorded, NOT counted [tier 0] - NOT counted",
+   "cluster": "BO",
+   "raw": "raw/bo_din6885.html"
+  }
+ ],
+ "clusters": {
+  "GF globalfastener DIN 6885-1 (A)/(B) 2021 and DIN 6885 (A)/(B) 1968 pages (all identical; fullerfasteners same template)": [
+   "globalfastener.com/standards/detail.php?sid=MjI4ODI=",
+   "...sid=MjI4OTU=",
+   "...sid=MjAyNQ==",
+   "...sid=MjAyMDk=",
+   "fullerfasteners din-6885 (same cluster)"
+  ],
+  "FI fasten.it DIN 6885-1 (08/1968) sheet": [
+   "fasten.it/en/norms/norm/din_6885-1"
+  ],
+  "AV AVSLD International (power-transmission distributor) DIN 6885/1 + 6885/3 keyway table": [
+   "avsld.com.sg/din-keys-keyways-to-iso/"
+  ],
+  "FE fasteners.eu DIN 6885 A (b, h, shaft range from 4x4)": [
+   "fasteners.eu/standards/DIN/6885-A/"
+  ],
+  "SL schrauben-lexikon DIN 6885 A (h, shaft range, A2-A45)": [
+   "schrauben-lexikon.de/norm/DIN_6885.asp"
+  ],
+  "WS woodstockindustrial DIN 6885 (b, h 6x6-20x12)": [
+   "woodstockindustrial.com/specs/din-6885"
+  ],
+  "NOT COUNTED: blog articles (Impex Industrial blog 20 Sep 2026; National Machine Tool blog post 1 Jul 2026 - identical numbers to each other), vibromera calculator page, baouch.fr personal blog, boltsfastener (8x5 low-form column mixed in)": []
+ },
+ "dropped": [
+  {
+   "what": "lMin and lMax columns (key length range)",
+   "why": "only one counted page prints a length range per key size (Impex Industrial blog chart, 6-20 ... 125-500). A personal blog (baouch.fr, not a maker or distributor, not counted) prints the same ranges for 2x2-28x16. fasten.it and the other sheets only list commercial lengths in weight tables, not a range. 1 cluster -> dropped. Catalog rows that differ from the single page: {\"28X16\": {\"impex\": [80.0, 320.0], \"catalog\": [null, null]}, \"32X18\": {\"impex\": [90.0, 360.0], \"catalog\": [null, null]}}"
+  },
+  {
+   "what": "sizes above 50x28 (56X32, 63X32, 70X36, 80X40, 90X45, 100X50)",
+   "why": "not in the candidate table (they do have >= 3 clusters for all six kept columns; values are in key-par.evidence.json)"
+  },
+  {
+   "what": "8x5 column on boltsfastener",
+   "why": "a low-form (DIN 6885-3) key printed inside the DIN 6885 table of one page; single source, not a DIN 6885-1 size"
+  },
+  {
+   "what": "t2 for interference fit (\"Hub Groove, Tight\")",
+   "why": "printed by globalfastener / fullerfasteners only (1 cluster); not a candidate column"
+  },
+  {
+   "what": "t2 column (hub keyway depth)",
+   "why": "globalfastener prints TWO hub depths: \"t2 Hub Groove, loose, min=nominal\" (1.0, 1.4, 1.8 ...) and \"t2 Hub Groove, Tight\" (0.5, 0.9, 1.2 ...). fasten.it (\"groove depth t2\", drawing d1+t2) and AVSLD (\"Hub Keyway Depth d = t2\", printed d + x) print one unqualified t2 and never say it is the loose/back-clearance depth; matching them to the \"loose\" row is done by the numbers. Lead rule: every counted page must mean the same t2, otherwise the column goes. Numerically the loose values agree on GF, FI, AV for all 20 rows (no rival).",
+   "by": "verifier"
+  }
+ ],
+ "checks": [
+  "every kept cell: >= 3 independent clusters print exactly the same number (minimum over kept cells = 4)",
+  "shaft ranges are contiguous (each \"to\" equals the next \"over\"): True",
+  "t1 + t2 - h (clearance above the key) takes only the values [0.2, 0.3, 0.4] mm",
+  "b strictly increases, h / t1 / t2 never decrease with size: True",
+  "h <= b in every row: True; t1 > t2 in every row: True"
+ ],
+ "shape_hint": "A straight bar of rectangular cross-section b x h (square up to 6 x 6) that sits half in a keyway milled into the shaft (depth t1) and half in a keyway in the hub bore (depth t2); form A has both ends rounded with radius b/2, form B has square ends.",
+ "role_map": {
+  "row label": "key cross-section \"b X h\" as printed by each page (width x height)",
+  "b": "key width b (= keyway width)",
+  "h": "key height h",
+  "shaftOver": "shaft diameter range the size is assigned to: over",
+  "shaftTo": "shaft diameter range: up to and including",
+  "t1": "shaft keyway depth t1 (nominal = lower limit)"
+ },
+ "notes": "Candidate 20 sizes x 8 columns -> kept 20 x 6 (b, h, shaft over / to, t1, t2). Three unrelated clusters carry all six columns for all 20 sizes: globalfastener (DIN 6885 A/B 1968 and DIN 6885-1 A/B 2021 pages; fullerfasteners is the same template), fasten.it (DIN 6885-1, 08/1968 sheet) and AVSLD International (distributor table of keys and keyways to DIN 6885/1 next to DIN 6885/3). Further agreeing pages: Impex Industrial blog chart (all sizes), National Machine Tool chart (to 32x18), fasteners.eu (b, h, shaft range from 4x4; no depths), boltsfastener (depths only to 20x12), schrauben-lexikon (h and shaft range to 45x25), woodstockindustrial and vibromera (size pairs only). The Impex and National Machine Tool pages are recent blog-style pages; no kept cell depends on them (every kept cell has globalfastener + fasten.it + AVSLD). t2 is the hub keyway depth WITH back clearance (globalfastener: \"Hub Groove, loose, min = nominal size\"); AVSLD prints it as \"d + t2\". t1 and t2 are the lower limits / nominal depths; tolerances (+0.1 / +0.2 / +0.3) are not in the table. fasten.it marks DIN 6885-1 (1968) as withdrawn; globalfastener shows identical numbers on its 1968 and 2021 pages. KS B 1311 / JIS B 1301 were not compared. The key drawing in the site uses lMin as a fallback length; with lMin dropped the drawing needs a chosen length.",
+ "scope": "DIN 6885-1 높은 형의 단면과 축 키홈 깊이 (보스 키홈 깊이·키 길이 범위 제외)",
+ "researcher_clusters": {
+  "A globalfastener standards DB (+ fullerfasteners, same template)": [
+   "globalfastener.com/standards/detail.php?sid=MjI4OTU= (raw/gf_sid_22895.html)",
+   "globalfastener.com/standards/detail.php?sid=MjAyMDk= (raw/gf_sid_20209.html)",
+   "globalfastener.com/standards/detail.php?sid=MjI4ODI= (raw/gf_sid_22882.html)",
+   "globalfastener.com/standards/detail.php?sid=MjAyNQ== (raw/gf_sid_2025.html)",
+   "fullerfasteners.com/tech/din-6885-specifications-parallel-keys-deep-pattern/ (raw/ff_din6885.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]"
+  ],
+  "B fasten.it norm sheets": [
+   "fasten.it/en/norms/norm/din_6885-1 (raw/fi_din_6885_1.html)"
+  ],
+  "F fasteners.eu group (fasteners.eu, boltsfastener)": [
+   "fasteners.eu/standards/DIN/6885-A/ (raw/fe_din6885-A.html)",
+   "boltsfastener.com/standards/pins-keys-standard/din-6885.html (raw/bf_din6885.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]"
+  ],
+  "G schrauben-lexikon": [
+   "schrauben-lexikon.de/norm/DIN_6885.asp (raw/sl_DIN_6885.html)"
+  ],
+  "C AVSLD International (distributor)": [
+   "avsld.com.sg/din-keys-keyways-to-iso/ (raw/av_din6885.html)"
+  ],
+  "D Impex Industrial Corporation (supplier blog chart)": [
+   "impexindustrialcorporation.com/blog/din-6885-parallel-key-size-chart (raw/ix_din6885.html)"
+  ],
+  "E National Machine Tool / keyseaters.com chart": [
+   "keyseaters.com/local/keyway-dimensions-size-chart-ansi-b17-1-metric-reference-national-machine-tool/ (raw/ks_keyway.html)"
+  ],
+  "H woodstockindustrial (b, h only)": [
+   "woodstockindustrial.com/specs/din-6885 (raw/ws_din-6885.html)"
+  ],
+  "I vibromera calculator page (shaft, b x h only)": [
+   "vibromera.eu/calculators/keyway-calculator/ (raw/vb_keyway.html)"
+  ],
+  "not counted: personal blog": [
+   "baouch.fr/en/blog/clavettes-paralleles-din-6885-dimensions/ (raw/bo_din6885.html) [tier 0, not counted]"
+  ]
+ },
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Independent re-fetch on 2026-11-11 with curl (browser UA, 2.5 s pause per site) of every counted and rival page; SKF pages rendered with playwright; drawings downloaded and read to confirm letter mappings. Own parser (html.parser with rowspan/colspan expansion) and own per-site extraction in scratchpad t2/g4v/code (v_key_par.py, v_sens.py); researcher raw/ and scripts not used. Counted only maker/distributor HTML tables whose header or drawing states the column meaning; 20 rows x 5 cols kept, every kept cell has >= 3 independent clusters with exactly the same number. Sanity checks recomputed on kept rows.",
+  "problems": [
+   "AVSLD independence checked: own layout (DIN 6885/1 next to 6885/3, \"d + t2\" form, comma decimals, footnotes on JS9/J9 hub width tolerance), own odd value 440-550 for 100x50 (globalfastener and fasten.it print 440-500), no tolerance columns - not a copy of globalfastener or fasten.it.",
+   "Every kept t1 cell rests on exactly GF + FI + AV; b for 2x2 / 3x3 also exactly 3.",
+   "DIN 6885-1:2021 is the current edition; globalfastener 2021 pages are identical to its 1968 pages and no page prints a rival value for the kept cells.",
+   "globalfastener b is the \"Shaft Groove nominal size\" (keyway width = key width) - equals the row label b.",
+   "fasten.it norm sheets end with 'Reproduced by permission of DIN'. Counted (as in the earlier verified records kmnut/clevis/spring-co) because it is a licensed dimension sheet, not the standard's text, but EVERY family here falls to 2 clusters on many cells without it - if the lead rules such licensed reproductions out, all four records fail."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "t2 column (hub keyway depth)"
+  ],
+  "per_cell_clusters": {
+   "2X2": {
+    "b": [
+     "GF",
+     "FI",
+     "AV"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "3X3": {
+    "b": [
+     "GF",
+     "FI",
+     "AV"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "4X4": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "5X5": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "6X6": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "8X7": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "10X8": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "12X8": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "14X9": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "16X10": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "18X11": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "20X12": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "WS"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL",
+     "WS"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "22X14": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "25X14": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "28X16": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "32X18": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "36X20": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "40X22": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "45X25": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE",
+     "SL"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   },
+   "50X28": {
+    "b": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "h": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "shaftOver": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "shaftTo": [
+     "GF",
+     "FI",
+     "AV",
+     "FE"
+    ],
+    "t1": [
+     "GF",
+     "FI",
+     "AV"
+    ]
+   }
+  }
+ }
+}

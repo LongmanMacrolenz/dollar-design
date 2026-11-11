@@ -1,0 +1,644 @@
+{
+ "id": "cotter",
+ "status": "partial",
+ "standard": "ISO 1234",
+ "standard_full": "ISO 1234:1997 = DIN EN ISO 1234 (split pins); same numbers as DIN 94 for the kept cells except c max at nominal 20 (DIN 94 pages: 38.6)",
+ "u": "mm",
+ "cols": [
+  [
+   "dn",
+   "호칭 (= 핀 구멍 지름)"
+  ],
+  [
+   "d_max",
+   "핀 지름 d (두 다리 합)"
+  ],
+  [
+   "a_max",
+   "긴 다리 연장 a"
+  ],
+  [
+   "b",
+   "눈 길이 b (≈)"
+  ]
+ ],
+ "rows": [
+  [
+   "1",
+   1.0,
+   0.9,
+   1.6,
+   3.0
+  ],
+  [
+   "1.2",
+   1.2,
+   1.0,
+   2.5,
+   3.0
+  ],
+  [
+   "1.6",
+   1.6,
+   1.4,
+   2.5,
+   3.2
+  ],
+  [
+   "2",
+   2.0,
+   1.8,
+   2.5,
+   4.0
+  ],
+  [
+   "2.5",
+   2.5,
+   2.3,
+   2.5,
+   5.0
+  ],
+  [
+   "3.2",
+   3.2,
+   2.9,
+   3.2,
+   6.4
+  ],
+  [
+   "4",
+   4.0,
+   3.7,
+   4.0,
+   8.0
+  ],
+  [
+   "5",
+   5.0,
+   4.6,
+   4.0,
+   10.0
+  ],
+  [
+   "6.3",
+   6.3,
+   5.9,
+   4.0,
+   12.6
+  ],
+  [
+   "8",
+   8.0,
+   7.5,
+   4.0,
+   16.0
+  ],
+  [
+   "10",
+   10.0,
+   9.5,
+   6.3,
+   20.0
+  ],
+  [
+   "13",
+   13.0,
+   12.4,
+   6.3,
+   26.0
+  ]
+ ],
+ "row_support": {
+  "1": 3,
+  "1.2": 3,
+  "1.6": 3,
+  "2": 3,
+  "2.5": 3,
+  "3.2": 3,
+  "4": 3,
+  "5": 3,
+  "6.3": 3,
+  "8": 3,
+  "10": 3,
+  "13": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjQ1",
+   "site": "globalfastener.com",
+   "what": "globalfastener ISO 1234-1997 table",
+   "cluster": "GF",
+   "raw": "raw/gf_245.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=NTA4NA==",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN EN ISO 1234-1998 table",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_5084.html"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MTQyMg==",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN 94-1983 (edition note only: c max 38.6 at 20) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_1422.html"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/iso-1234-specifications-split-cotter-pins/",
+   "site": "fullerfasteners.com",
+   "what": "fullerfasteners ISO 1234 (globalfastener template; prints 38.6 at 20 = DIN 94 number) [tier 2]",
+   "cluster": "GF",
+   "raw": "raw/ff_iso1234.html"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/din-94-specifications-split-cotter-pins/",
+   "site": "fullerfasteners.com",
+   "what": "fullerfasteners DIN 94 (edition note only) [tier 0] - NOT counted",
+   "cluster": "GF",
+   "raw": "raw/ff_din94.html"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_en_iso_1234",
+   "site": "fasten.it",
+   "what": "fasten.it DIN EN ISO 1234 (02/1998) tech table",
+   "cluster": "FI",
+   "raw": "raw/fi_dineniso1234.html"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_94",
+   "site": "fasten.it",
+   "what": "fasten.it DIN 94 (edition note only: c max 38.6 at 20) [tier 0] - NOT counted",
+   "cluster": "FI",
+   "raw": "raw/fi_din_94.html"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/1234/",
+   "site": "fasteners.eu",
+   "what": "fasteners.eu ISO 1234: a max., b, c \"mam.\"",
+   "cluster": "FE",
+   "raw": "raw/fe_iso1234.html"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/94/",
+   "site": "fasteners.eu",
+   "what": "fasteners.eu DIN 94 (same table) [tier 2]",
+   "cluster": "FE",
+   "raw": "raw/fe_din94.html"
+  },
+  {
+   "url": "https://digipich.com/en/standards/iso-1234/",
+   "site": "digipich.com",
+   "what": "digipich ISO 1234 (fasteners.eu-derived; prints c and a as \"≤ x\")",
+   "cluster": "FE",
+   "raw": "raw/dp_iso-1234.html"
+  },
+  {
+   "url": "https://boltport.com/standards/din-94/",
+   "site": "boltport.com",
+   "what": "boltport DIN 94 table (Boltport counted with the fasteners.eu group) [tier 2]",
+   "cluster": "FE",
+   "raw": "raw/bp_din-94.html"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_1234.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "schrauben-lexikon ISO 1234: a min, b, c max, bolt / clevis ranges",
+   "cluster": "SL",
+   "raw": "raw/sl_ISO_1234.html"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_94.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "schrauben-lexikon DIN 94 [tier 2]",
+   "cluster": "SL",
+   "raw": "raw/sl_DIN_94.html"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-1234/",
+   "site": "boltport.com",
+   "what": "boltport ISO 1234 = copy of schrauben-lexikon (German headers, same rows incl. 5.5)",
+   "cluster": "SL",
+   "raw": "raw/bp_iso-1234.html"
+  },
+  {
+   "url": "https://www.roymech.co.uk/Useful_Tables/Circlips/Split_Cotter_Pins.html",
+   "site": "roymech.co.uk",
+   "what": "RoyMech ISO 1234 split cotter pin table (0.8-13)",
+   "cluster": "RM",
+   "raw": "raw/rm_split.html"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/din-94",
+   "site": "woodstockindustrial.com",
+   "what": "woodstockindustrial DIN 94: shank diameter max/min (1-13)",
+   "cluster": "WS",
+   "raw": "raw/ws_din-94.html"
+  },
+  {
+   "url": "https://amesweb.info/Fasteners/Pins/Split_Pins_Dimensions.aspx",
+   "site": "amesweb.info",
+   "what": "amesweb split pin calculator (ISO 1234:1997), result page per size (raw/aw_split_<size>.html)",
+   "cluster": "AW",
+   "raw": "raw/aw_split.html"
+  }
+ ],
+ "clusters": {
+  "GF globalfastener ISO 1234-1997 + DIN EN ISO 1234-1998 pages": [
+   "globalfastener.com/standards/detail.php?sid=MjQ1",
+   "globalfastener.com/standards/detail.php?sid=NTA4NA=="
+  ],
+  "FI fasten.it DIN EN ISO 1234 (02/1998) sheet": [
+   "fasten.it/en/norms/norm/din_en_iso_1234"
+  ],
+  "FE fasteners.eu ISO 1234 (\"Table according to ISO 1234\"; legend a/b/c) (+ digipich derived copy)": [
+   "fasteners.eu/standards/ISO/1234/",
+   "digipich.com/en/standards/iso-1234/ (same cluster)"
+  ],
+  "WS woodstockindustrial \"DIN 94 (ISO 1234)\" product page, shank diameter max (1-13)": [
+   "woodstockindustrial.com/specs/din-94"
+  ],
+  "NOT COUNTED: amesweb calculator (lead decision: calculator output is not a source)": [
+   "amesweb.info/Fasteners/Pins/Split_Pins_Dimensions.aspx"
+  ],
+  "NOT COUNTED: RoyMech (reference site, not maker/distributor; also unreachable on re-fetch)": [
+   "roymech.co.uk/Useful_Tables/Circlips/Split_Cotter_Pins.html"
+  ],
+  "NOT COUNTED: schrauben-lexikon ISO 1234 (+ boltport iso-1234 copy): whole table identical to its DIN 94 page, a min 3.2 = DIN 94 value (ISO 3.15)": [
+   "schrauben-lexikon ISO_1234 + DIN_94",
+   "boltport iso-1234"
+  ],
+  "NOT COUNTED: DIN 94 pages (globalfastener DIN 94-1983, fasten.it DIN 94, fullerfasteners DIN 94 and its \"ISO 1234\" page carrying the DIN 94 c 38.6, boltport din-94)": []
+ },
+ "dropped": [
+  {
+   "what": "boltOver and clevisOver columns (matching bolt / clevis pin diameter ranges)",
+   "why": "only two clusters print them: the amesweb calculator (over / to, all sizes) and schrauben-lexikon (+ its boltport copy; sizes 1-16 as \"x - y\"). They agree for sizes 1-6.3; schrauben-lexikon differs from amesweb at 8, 10, 13, 16 (bolt 39-44 / 44-69 / 69-110 / 100-160 against over 39 / 56 / 80 / 120) and has nothing for 0.6, 0.8, 20. No third page found."
+  },
+  {
+   "what": "inch split pins (ASME B18.8.1)",
+   "why": "not part of the candidate table, not researched"
+  },
+  {
+   "what": "rows 0.6, 0.8, 16, 20",
+   "why": "d_max: only globalfastener + fasten.it once the amesweb calculator is not counted (woodstock lists 1-13 only) -> 2 clusters (lead decision confirmed by my count). Row 20 also has the rival c max 38.6 on globalfastener DIN 94, fasten.it DIN 94, fullerfasteners ISO 1234 and DIN 94 pages",
+   "by": "verifier"
+  },
+  {
+   "what": "c_max column",
+   "why": "the third cluster for c is fasteners.eu, whose row header is \"c mam.\" - neither max nor min; reading it as max is inference from the numbers (digipich, which prints \"<= x\", is derived from fasteners.eu and is the same cluster). schrauben-lexikon \"c max\" is a DIN 94 table (not counted) and the DIN 94 pages are excluded. So c max has GF + FI only -> 2 clusters on every row. If the lead accepts \"mam.\" as max, c_max for 1-13 has exactly 3 clusters (GF, FI, FE) and no rival",
+   "by": "verifier"
+  },
+  {
+   "what": "boltOver / clevisOver (already dropped by researcher)",
+   "why": "agree",
+   "by": "verifier"
+  }
+ ],
+ "checks": [
+  "every kept cell: >= 3 independent clusters print exactly the same number (minimum over kept cells = 3)",
+  "d max < nominal size in every row: True (the pin is thinner than its hole)",
+  "c max = 2 x d max in 15 of 16 rows; exception(s): 20 (c max 38.5, 2 x d max 38.6)",
+  "b = 2 x nominal size for 1.6, 2, 2.5, 3.2, 4, 5, 6.3, 8, 10, 13, 16, 20",
+  "d max, b and c max strictly/non-strictly increase with size: True",
+  "a max takes only the steps [1.6, 2.5, 3.2, 4.0, 6.3]"
+ ],
+ "shape_hint": "A pin bent from half-round wire: the two flat faces lie together to form a round shank of diameter d, a loop (eye) of outside diameter c and length b at one end, and two legs of unequal length (the longer one projects by a) that are spread apart after insertion through the cross hole.",
+ "role_map": {
+  "row label": "nominal size = diameter of the split pin hole",
+  "dn": "nominal size (the row label itself)",
+  "d_max": "maximum diameter d of the closed shank (both half-round legs together): \"d max\" (globalfastener), second of \"d min/max\" (fasten.it), \"Shank diameter max\" (woodstock), \"Maximum Pin Diameter\" (amesweb)",
+  "a_max": "maximum extension a of the longer leg beyond the shorter one",
+  "b": "eye length b (approximate)"
+ },
+ "notes": "All 16 nominal sizes 0.6-20 and the five dimension columns are kept; the two application columns are dropped. Candidate 16 x 7 -> kept 16 x 5. Clusters: globalfastener (ISO 1234-1997 and DIN EN ISO 1234-1998 pages; fullerfasteners is the same template), fasten.it (DIN EN ISO 1234 sheet), fasteners.eu group (a max, b, c; digipich prints c and a as \"<= x\"), schrauben-lexikon (b, c max, sizes 1-16), RoyMech (b and the c range, sizes 0.8-13), woodstockindustrial (shank diameter max, sizes 1-13) and the amesweb calculator (all columns, all sizes). amesweb and RoyMech are engineering reference sites, not sellers. Thinnest cells: d max at 0.6, 0.8, 16 and 20 has exactly globalfastener + fasten.it + amesweb. Edition trap: c max at nominal 20 is 38.5 on every ISO 1234-labelled page counted here, but 38.6 on the DIN 94 pages of globalfastener and fasten.it and on the fullerfasteners \"ISO 1234\" page (not counted: copy of the globalfastener template carrying the DIN number). a min (0.8 ... 3.15) and c min are also printed by globalfastener and amesweb; schrauben-lexikon prints a min 3.2 where they print 3.15. Nominal size is the split pin hole diameter, not the pin diameter. Lengths are a separate series and are not in this table.",
+ "scope": "미터 ISO 1234 호칭 1~13 (인치 ASME B18.8.1 제외)",
+ "researcher_clusters": {
+  "A globalfastener standards DB (+ fullerfasteners, same template)": [
+   "globalfastener.com/standards/detail.php?sid=MjQ1 (raw/gf_245.html)",
+   "globalfastener.com/standards/detail.php?sid=NTA4NA== (raw/gf_sid_5084.html)",
+   "globalfastener.com/standards/detail.php?sid=MTQyMg== (raw/gf_sid_1422.html) [tier 0, not counted]",
+   "fullerfasteners.com/tech/iso-1234-specifications-split-cotter-pins/ (raw/ff_iso1234.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]",
+   "fullerfasteners.com/tech/din-94-specifications-split-cotter-pins/ (raw/ff_din94.html) [tier 0, not counted]"
+  ],
+  "B fasten.it norm sheets": [
+   "fasten.it/en/norms/norm/din_en_iso_1234 (raw/fi_dineniso1234.html)",
+   "fasten.it/en/norms/norm/din_94 (raw/fi_din_94.html) [tier 0, not counted]"
+  ],
+  "C fasteners.eu group (fasteners.eu, digipich, boltport DIN 94 page)": [
+   "fasteners.eu/standards/ISO/1234/ (raw/fe_iso1234.html)",
+   "fasteners.eu/standards/DIN/94/ (raw/fe_din94.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]",
+   "digipich.com/en/standards/iso-1234/ (raw/dp_iso-1234.html)",
+   "boltport.com/standards/din-94/ (raw/bp_din-94.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]"
+  ],
+  "D schrauben-lexikon (+ boltport ISO 1234 copy)": [
+   "schrauben-lexikon.de/norm/ISO_1234.asp (raw/sl_ISO_1234.html)",
+   "schrauben-lexikon.de/norm/DIN_94.asp (raw/sl_DIN_94.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]",
+   "boltport.com/standards/iso-1234/ (raw/bp_iso-1234.html)"
+  ],
+  "E RoyMech reference table": [
+   "roymech.co.uk/Useful_Tables/Circlips/Split_Cotter_Pins.html (raw/rm_split.html)"
+  ],
+  "F woodstockindustrial": [
+   "woodstockindustrial.com/specs/din-94 (raw/ws_din-94.html)"
+  ],
+  "G amesweb calculator (ISO 1234:1997)": [
+   "amesweb.info/Fasteners/Pins/Split_Pins_Dimensions.aspx (raw/aw_split.html)"
+  ]
+ },
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Independent re-fetch on 2026-11-11 with curl (browser UA, 2.5 s pause per site) of every counted and rival page; SKF pages rendered with playwright; drawings downloaded and read to confirm letter mappings. Own parser (html.parser with rowspan/colspan expansion) and own per-site extraction in scratchpad t2/g4v/code (v_cotter.py, v_sens.py); researcher raw/ and scripts not used. Counted only maker/distributor HTML tables whose header or drawing states the column meaning; 12 rows x 4 cols kept, every kept cell has >= 3 independent clusters with exactly the same number. Sanity checks recomputed on kept rows.",
+  "problems": [
+   "amesweb removed per lead decision; researcher's 4-cluster rows were 3 by my count (GF, FI, FE for a/b/c; GF, FI, WS for d max).",
+   "woodstock page is headed \"DIN 94 (ISO 1234)\"; d max is identical in both standards for 1-13, so counted; without it d_max has 2 clusters.",
+   "RoyMech fetch failed twice (empty reply) - not re-read, not counted.",
+   "fasten.it norm sheets end with 'Reproduced by permission of DIN'. Counted (as in the earlier verified records kmnut/clevis/spring-co) because it is a licensed dimension sheet, not the standard's text, but EVERY family here falls to 2 clusters on many cells without it - if the lead rules such licensed reproductions out, all four records fail."
+  ],
+  "dropped_rows": [
+   "rows 0.6, 0.8, 16, 20"
+  ],
+  "dropped_cols": [
+   "c_max column"
+  ],
+  "per_cell_clusters": {
+   "1": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "1.2": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "1.6": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "2": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "2.5": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "3.2": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "4": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "5": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "6.3": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "8": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "10": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   },
+   "13": {
+    "dn": [
+     "GF",
+     "FI",
+     "FE",
+     "WS"
+    ],
+    "d_max": [
+     "GF",
+     "FI",
+     "WS"
+    ],
+    "a_max": [
+     "GF",
+     "FI",
+     "FE"
+    ],
+    "b": [
+     "GF",
+     "FI",
+     "FE"
+    ]
+   }
+  }
+ }
+}

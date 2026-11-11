@@ -1,0 +1,184 @@
+{
+ "id": "coupling",
+ "status": "partial",
+ "standard": "DIN 6334",
+ "standard_full": "DIN 6334 (hexagon coupling nuts, height 3 d, coarse thread)",
+ "u": "mm",
+ "cols": [
+  [
+   "s",
+   "2면폭 s"
+  ],
+  [
+   "l",
+   "길이 l (= 3d)"
+  ]
+ ],
+ "rows": [
+  [
+   "M6",
+   10.0,
+   18.0
+  ],
+  [
+   "M8",
+   13.0,
+   24.0
+  ],
+  [
+   "M10",
+   17.0,
+   30.0
+  ],
+  [
+   "M12",
+   19.0,
+   36.0
+  ],
+  [
+   "M16",
+   24.0,
+   48.0
+  ],
+  [
+   "M20",
+   30.0,
+   60.0
+  ],
+  [
+   "M24",
+   36.0,
+   72.0
+  ],
+  [
+   "M30",
+   46.0,
+   90.0
+  ]
+ ],
+ "row_support": {
+  "M6": 5,
+  "M8": 5,
+  "M10": 4,
+  "M12": 4,
+  "M16": 4,
+  "M20": 4,
+  "M24": 4,
+  "M30": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/6334/",
+   "site": "fasteners.eu",
+   "what": "DIN 6334 table d | l | s | e, M6-M36 (note on the page: 'Table according to DIN 6334')"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_909.html",
+   "site": "globalfastener.com",
+   "what": "DIN 6334 table (P, s, L, e) M6-M36"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_6334",
+   "site": "fasten.it",
+   "what": "DIN 6334 table (s nom, e min, m nom = nut height 3d) M6-M36 without M27, M33"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_6334.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "DIN 6334 technical data (s, m) M4-M24; s cells for M10/M12/M14 read '17, ISO 16' etc. and are skipped"
+  },
+  {
+   "url": "https://fastenerwholesale.com/m6-1-0-din-6334-metric-hex-coupling-nuts-high-type-class-6-steel-zinc-plated",
+   "site": "fastenerwholesale.com",
+   "what": "DIN 6334 coupling nut product pages M6, M8, M10, M12, M16, M20, M24, M30: thread pitch, across flats (basic), height (basic)"
+  },
+  {
+   "url": "https://www.lawsonproducts.com/en-ca/products/coupling-nut-grade-8-steel-m6-1-x-18mm-60916",
+   "site": "lawsonproducts.com",
+   "what": "DIN 6334 coupling nut product pages M6, M8, M10, M12: thread pitch, across flats, length"
+  }
+ ],
+ "clusters": {
+  "FE+GF: fasteners.eu DIN 6334 + globalfastener detail_909 (one lineage)": [
+   "same 14 sizes and same irregular e series 29.56 (M18) / 35.03 (M22); FE legend: l length, s hexagon size"
+  ],
+  "FI: fasten.it din_6334": [
+   "s nom, m nom (= length 3d)"
+  ],
+  "SL: schrauben-lexikon DIN_6334 (M4-M24)": [
+   "s, m (drawing: m = overall length); M10/M12/M14 s cells \"17, ISO 16\" not counted"
+  ],
+  "FW: fastenerwholesale DIN 6334 product pages (Aspen class 6)": [
+   "Across Flats (Basic), Height (Basic)"
+  ],
+  "LW: lawsonproducts DIN 6334 product pages (class 8, M6-M12)": [
+   "Across Flats, Length"
+  ]
+ },
+ "not_counted": {
+  "not counted - boltport.com + torqbolt.com": [
+   "boltport.com/standards/din-6334/ and torqbolt.com din-6334 page: identical 6-row table that is not the 3d series"
+  ],
+  "not counted - nfgab.com": [
+   "sortiment/p/.../1455-high-hexagon-nut-din-6334: table mixes DIN 6334 and non-standard items (page says so)"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "pitch column (피치 P)",
+   "why": "a pitch is printed on DIN 6334 pages by globalfastener (all sizes), fastenerwholesale (8 sizes) and lawsonproducts (M6, M8, M10, M12) only - three clusters for M6-M12, two or one for M14-M36; fasteners.eu, fasten.it and schrauben-lexikon give no pitch. Column left out to keep all 12 sizes // cells without 3 agreeing clusters -> M14: 2 x1 (GF) | M16: 2 x2 (FW,GF) | M18: 2.5 x1 (GF) | M20: 2.5 x2 (FW,GF) | M22: 2.5 x1 (GF) | M24: 3 x2 (FW,GF) | ..."
+  },
+  {
+   "what": "e_min column (대각 거리 e 최소)",
+   "why": "only fasten.it labels the width across corners as a minimum; fasteners.eu and globalfastener print the same numbers under a bare 'e' (and differ from fasten.it at M18 and M22), so the meaning 'minimum' has one cluster only // cells without 3 agreeing clusters -> M6: 11.05 x1 (FI) | M8: 14.38 x1 (FI) | M10: 18.9 x1 (FI) | M12: 21.1 x1 (FI) | M14: 24.49 x1 (FI) | M16: 26.75 x1 (FI) | ..."
+  },
+  {
+   "what": "M14 row (verifier)",
+   "why": "s=22: 2 clusters ['FE+GF', 'FI']"
+  },
+  {
+   "what": "M18 row (verifier)",
+   "why": "s=27: 2 clusters ['FE+GF', 'FI']; l=54: 2 clusters ['FE+GF', 'FI']"
+  },
+  {
+   "what": "M22 row (verifier)",
+   "why": "s=32: 2 clusters ['FE+GF', 'FI']; l=66: 2 clusters ['FE+GF', 'FI']"
+  },
+  {
+   "what": "M36 row (verifier)",
+   "why": "s=55: 2 clusters ['FE+GF', 'FI']; l=108: 2 clusters ['FE+GF', 'FI']"
+  }
+ ],
+ "checks": [
+  "l = 3 x d for every row - PASS",
+  "s strictly increases with size - PASS",
+  "s equals the DIN (old) width across flats series 10-13-17-19-22-24-27-30-32-36-46-55 - PASS",
+  "s > d for every row - PASS",
+  "every kept cell: >= 3 independent clusters with the identical number (see coupling.evidence.json); minimum cluster count in the kept table = 3"
+ ],
+ "shape_hint": "Long hexagon nut: a hexagon prism three thread diameters long with a through thread, chamfered at both ends; side view is a rectangle of length l, end view a hexagon with width across flats s.",
+ "role_map": {
+  "d": "nominal thread diameter (row label)",
+  "s": "width across flats (nominal)",
+  "l": "nut length (height) = 3 d"
+ },
+ "notes": "Kept: width across flats s and length l (= 3 d) for M6-M36 - identical on fasteners.eu, globalfastener and fasten.it (schrauben-lexikon agrees for the sizes it lists). s for M10/M12/M14/M22 is 17/19/22/32 mm on all three (DIN 6334 keeps the old widths across flats; schrauben-lexikon prints '17, ISO 16' etc.). Pitch reaches three clusters only for M6, M8, M10, M12 (globalfastener, fastenerwholesale, lawsonproducts) and is left out so that all 12 sizes stay (2 columns x 12 sizes = 24 cells against 3 columns x 4 sizes = 12 cells). Independence caveat: fasteners.eu and globalfastener list the same 14 sizes and the same irregular 'e' series (29.56 for M18 and 35.03 for M22 next to 33.53 for M20 and 39.98 for M24), so they may share an origin. If a verifier merges them into one cluster, s and l still have 3 or more clusters (FE/GF, fasten.it, fastenerwholesale, lawsonproducts, schrauben-lexikon) for M6, M8, M10, M12, M16, M20, M24, M30, but only 2 for M14, M18, M22 and M36. Width across corners: fasteners.eu and globalfastener print a bare 'e' (11.05, 14.38, 18.9, 21.1, 24.49, 26.75, 29.56, 33.53, 35.03, 39.98, 50.85, 60.79), fasten.it prints 'e min' with 30.14 for M18 and 35.72 for M22; the numbers agree in 3 clusters for M6-M16, M20, M24, M30, M36 (see e_as_printed in coupling.evidence.json) but only one page says they are minimum values, so the candidate column e_min is not kept. boltport and torqbolt show a different 6-row table (not 3d) and nfgab's table mixes standard and non-standard items; neither is counted. keller-kalmbach product pages for DIN 6334 give no dimensions (probe saved as raw/kk_probe_din6334.html).",
+ "scope": "보통나사 M6–M30 중 M14·M18·M22 제외 (높이 3d)",
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Verifier re-fetched every page itself on 2026-11-11 with curl (browser UA, 2.5 s pause per host; HTTP 200 for all; globalfastener detail_400 needed one retry after a 403), wrote its own stdlib HTML table reader (vt.py, gf.py, obs.py) and counting script (count.py) without using the researcher's raw/, extracted tables or scripts. Drawings that define bare symbols (schrauben-lexikon gifs, nfgab pngs) were fetched and viewed. Lead decisions applied: amesweb (calculator) not a source; a rival value printed by 2+ independent lineages removes the row; cells of another standard printed under the target title (verified equal to that standard's table) are neither support nor rival; pages reproducing the standard's text (boltport ISO 4035) excluded. A cluster whose own pages give two different values for a cell is not counted for it. Largest rectangle (cells, then rows) chosen among column subsets that contain the drawing keys. Re-counted 12 x 2 candidate cells; kept 8 x 2; per-cell clusters in coupling.verify.md.",
+  "problems": [
+   "fasteners.eu and globalfastener merged into one cluster (identical size list and identical irregular e series). After merging, M14, M18, M22 and M36 have 2 clusters (FE/GF + fasten.it) -> rows dropped.",
+   "M30 rests on exactly three clusters (FE/GF, fasten.it, fastenerwholesale).",
+   "fastenerwholesale and lawson are product-spec pages of different product lines (class 6 Aspen vs class 8 Lawson) - treated as independent."
+  ],
+  "dropped_rows": [
+   "M14",
+   "M18",
+   "M22",
+   "M36"
+  ],
+  "dropped_cols": []
+ }
+}

@@ -1,0 +1,196 @@
+{
+ "id": "ms-csk",
+ "status": "ok",
+ "standard": "ISO 7046-1 · ISO 7046-2",
+ "standard_full": "ISO 7046-1 / ISO 7046-2 (countersunk flat head screws, common head style, type H or type Z cross recess, product grade A); actual head diameter (max = nominal) and head height (max)",
+ "u": "mm",
+ "cols": [
+  [
+   "pitch",
+   "피치 P"
+  ],
+  [
+   "dk",
+   "실제 머리 지름 최대"
+  ],
+  [
+   "k",
+   "머리 높이 k 최대"
+  ]
+ ],
+ "rows": [
+  [
+   "M2",
+   0.4,
+   3.8,
+   1.2
+  ],
+  [
+   "M2.5",
+   0.45,
+   4.7,
+   1.5
+  ],
+  [
+   "M3",
+   0.5,
+   5.5,
+   1.65
+  ],
+  [
+   "M3.5",
+   0.6,
+   7.3,
+   2.35
+  ],
+  [
+   "M4",
+   0.7,
+   8.4,
+   2.7
+  ],
+  [
+   "M5",
+   0.8,
+   9.3,
+   2.7
+  ],
+  [
+   "M6",
+   1.0,
+   11.3,
+   3.3
+  ],
+  [
+   "M8",
+   1.25,
+   15.8,
+   4.65
+  ],
+  [
+   "M10",
+   1.5,
+   18.3,
+   5.0
+  ]
+ ],
+ "row_support": {
+  "M2": 3,
+  "M2.5": 3,
+  "M3": 3,
+  "M3.5": 3,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_3336.html",
+   "site": "globalfastener.com",
+   "what": "ISO 7046-1:2011 table (P, a, dk theoretical/actual, k, r, x, recess) M1.6-M10; no b row"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_en_iso_7046_1",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 7046-1 table (P, k nom/max, dk nom=max) M1.6-M10; own error: M3.5 k 1.35"
+  },
+  {
+   "url": "https://www.mechlabgeek.com/en/fasteners/din-965",
+   "site": "mechlabgeek.com",
+   "what": "DIN 965 / ISO 7046-1 page, table shown for 'Standard: ISO 7046-1' ('Values per ISO 7046-1:2011'): P, dk max, k max, M1.6-M10"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1327-cross-flat-countersunk-head-machine-screws-pz-iso-7046-din-965",
+   "site": "nfgab.com",
+   "what": "product group ISO 7046 / DIN 965 (k max ISO/DIN; d2 ISO/DIN = head diameter without qualifier) M2-M10"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_7046.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "ISO 7046 technical data: k max. for M2.5-M10; row 'd2' (4.7, 5.6, 8.4 ...) unexplained and not used"
+  }
+ ],
+ "clusters": {
+  "GF: globalfastener ISO 7046-1 (3336, 156, 5147) and ISO 7046-2 (3337, 5326, 159) + fullerfasteners": [
+   "dk actual max=nominal (theoretical dk separate), k max"
+  ],
+  "FI: fasten.it din_en_iso_7046_1 / _2": [
+   "P, dk nom=max (actual values), k nom/max; part 1 prints M3.5 k 1.35, part 2 2.35 -> FI not counted for M3.5 k"
+  ],
+  "MLG: mechlabgeek din-965, Standard ISO 7046-1, Values per ISO 7046-1:2011": [
+   "own HTML table: P coarse, dk (mm, max), k (mm, max)"
+  ],
+  "NFG: nfgab 1327 ISO 7046/DIN 965": [
+   "k max ISO/DIN (ISO half); d2 unqualified -> not counted for dk"
+  ],
+  "SL: schrauben-lexikon ISO_7046 + boltport iso-7046 copy": [
+   "k max. only"
+  ]
+ },
+ "not_counted": {
+  "not counted - keller-kalmbach.de": [
+   "article pages ISO 7046 (dk and k without qualifier; dk equals the theoretical diameter)"
+  ],
+  "not counted - fasteners.eu": [
+   "fasteners.eu/standards/ISO/7046/ (note on the page: 'Table according to DIN 965')"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "a_max column (불완전나사 a 최대)",
+   "why": "only the globalfastener table (and its fullerfasteners derivative) gives ISO 7046 a max // cells without 3 agreeing clusters -> M2: 0.8 x1 (GF) | M2.5: 0.9 x1 (GF) | M3: 1 x1 (GF) | M3.5: 1.2 x1 (GF) | M4: 1.4 x1 (GF) | M5: 1.6 x1 (GF) | ..."
+  },
+  {
+   "what": "b_min column (나사부 길이 b 최소)",
+   "why": "no ISO 7046 page read gives b min (globalfastener's ISO 7046 tables have no b row; fasteners.eu's b is from DIN 965) // cells without 3 agreeing clusters -> M2: no source | M2.5: no source | M3: no source | M3.5: no source | M4: no source | M5: no source | ..."
+  },
+  {
+   "what": "dk_theo column (머리 지름 이론값 최대)",
+   "why": "only the globalfastener table (and its fullerfasteners derivative) labels a theoretical head diameter; keller-kalmbach prints the same numbers for M3.5/M4/M6/M8 but calls them just 'Kopfdurchmesser dk' // cells without 3 agreeing clusters -> M2: 4.4 x1 (GF) | M2.5: 5.5 x1 (GF) | M3: 6.3 x1 (GF) | M3.5: 8.2 x1 (GF) | M4: 9.4 x1 (GF) | M5: 10.4 x1 (GF) | ..."
+  },
+  {
+   "what": "dk_min column (실제 머리 지름 최소)",
+   "why": "only the globalfastener ISO 7046-1 table (and its fullerfasteners derivative) gives the actual dk min // cells without 3 agreeing clusters -> M2: 3.5 x1 (GF) | M2.5: 4.4 x1 (GF) | M3: 5.2 x1 (GF) | M3.5: 6.94 x1 (GF) | M4: 8.04 x1 (GF) | M5: 8.94 x1 (GF) | ..."
+  },
+  {
+   "what": "r_max column (머리 밑 반지름 최대)",
+   "why": "only the globalfastener table (and its fullerfasteners derivative) gives ISO 7046 r max // cells without 3 agreeing clusters -> M2: 0.5 x1 (GF) | M2.5: 0.6 x1 (GF) | M3: 0.8 x1 (GF) | M3.5: 0.9 x1 (GF) | M4: 1 x1 (GF) | M5: 1.3 x1 (GF) | ..."
+  },
+  {
+   "what": "x_max column (불완전나사 x 최대)",
+   "why": "only the globalfastener table (and its fullerfasteners derivative) gives ISO 7046 x max // cells without 3 agreeing clusters -> M2: 1 x1 (GF) | M2.5: 1.1 x1 (GF) | M3: 1.25 x1 (GF) | M3.5: 1.5 x1 (GF) | M4: 1.75 x1 (GF) | M5: 2 x1 (GF) | ..."
+  }
+ ],
+ "checks": [
+  "dk strictly increases with size - PASS",
+  "k never decreases with size (M4 and M5 share 2.7) - PASS",
+  "dk between 1.8 d and 2.15 d for every row - PASS",
+  "(dk - d)/2 < k < (dk - d)/2 + 0.1 d + 0.2 for every row (90 degree head; the actual dk is a little smaller than the theoretical cone diameter d + 2k) - PASS",
+  "pitch is the ISO coarse pitch for the kept sizes - PASS",
+  "every kept cell: >= 3 independent clusters with the identical number (see ms-csk.evidence.json); minimum cluster count in the kept table = 3"
+ ],
+ "shape_hint": "Machine screw with a 90 degree countersunk (flat) head and a cross recess (type H Phillips or type Z Pozidriv); the flat top is the actual head diameter dk, the cone runs down to the shank over the head height k; length is measured over the head.",
+ "role_map": {
+  "d": "nominal thread diameter (row label)",
+  "pitch": "coarse thread pitch P",
+  "dk": "actual head diameter, max = nominal",
+  "k": "head height max (= nominal)"
+ },
+ "notes": "pitch, dk (actual, max = nominal) and k (max) agree on globalfastener, fasten.it and mechlabgeek for every size M2-M10 (k also on nfgab for M2-M10 and on schrauben-lexikon for M2.5-M10). pitch and dk have exactly these three clusters; nfgab prints the same head diameters (3.8, 4.7, 5.5, 7.3, 8.4, 9.3, 11.3, 15.8, 18.3) as 'd2 ISO' without a max/min word, so it is listed in the evidence file (dk_unqualified) but not counted for the 'max' column. fasten.it's part-1 page prints k 1.35 for M3.5 (2.35 on its part-2 page, on globalfastener and on mechlabgeek) - the cell is kept with GF + MLG + fasten.it part 2. a max, dk theoretical, dk min, r max and x max exist only in the globalfastener table (fullerfasteners repeats it), b min in none - all dropped. keller-kalmbach article pages print 'Kopfdurchmesser dk' = 8.2 / 9.4 / 12.6 / 17.3 for M3.5 / M4 / M6 / M8, i.e. the THEORETICAL diameter of the globalfastener table, without saying so: the word 'dk' is used for two different quantities by the sources (actual 7.3 / 8.4 / 11.3 / 15.8 on GF, fasten.it, mechlabgeek). schrauben-lexikon's unexplained 'd2' row (4.7, 5.6, 8.4, 9.3, 11.3, 15.8, 18.3) was not used; note it shows 5.6 for M3 where the three counted clusters say 5.5. fasteners.eu's ISO 7046 page states 'Table according to DIN 965' and is not counted.",
+ "scope": "M2–M10의 피치·실제 머리 지름·머리 높이",
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Verifier re-fetched every page itself on 2026-11-11 with curl (browser UA, 2.5 s pause per host; HTTP 200 for all; globalfastener detail_400 needed one retry after a 403), wrote its own stdlib HTML table reader (vt.py, gf.py, obs.py) and counting script (count.py) without using the researcher's raw/, extracted tables or scripts. Drawings that define bare symbols (schrauben-lexikon gifs, nfgab pngs) were fetched and viewed. Lead decisions applied: amesweb (calculator) not a source; a rival value printed by 2+ independent lineages removes the row; cells of another standard printed under the target title (verified equal to that standard's table) are neither support nor rival; pages reproducing the standard's text (boltport ISO 4035) excluded. A cluster whose own pages give two different values for a cell is not counted for it. Largest rectangle (cells, then rows) chosen among column subsets that contain the drawing keys. Re-counted 9 x 3 candidate cells; kept 9 x 3; per-cell clusters in ms-csk.verify.md.",
+  "problems": [
+   "pitch and dk (actual max) rest on exactly three clusters: globalfastener, fasten.it, mechlabgeek. All three state the ACTUAL head diameter max (7.3/8.4/11.3/15.8 ...): same quantity on every counted page.",
+   "keller-kalmbach prints 'Kopfdurchmesser dk' = 8.2/9.4/12.6/17.3 (M3.5/M4/M6/M8), i.e. the THEORETICAL diameter (equal to GF's 'theoretical max' row): different quantity, not counted, not treated as a rival.",
+   "M3.5 k 2.35: fasten.it contradicts itself (1.35 part 1, 2.35 part 2) and is not counted; GF, MLG, NFG remain = 3.",
+   "schrauben-lexikon/boltport 'd2' 5.6 for M3 (the DIN 965 value) is an undefined symbol on their pages (drawing shows dk) - not counted, not a rival."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ }
+}
