@@ -87,11 +87,12 @@ const IA_PH = t => `<span class="ph">${esc(t)}</span>`;
 const iaOwner = () => SHOP.ownerName ? esc(SHOP.ownerName) : IA_PH('대표 이름');
 const iaYears = () => SHOP.ownerYears ? esc(SHOP.ownerYears) : IA_PH('n');
 const iaBizNo = () => SHOP.bizNo ? `<span class="mono">${esc(SHOP.bizNo)}</span>` : `<span class="ph mono">000-00-00000</span>`;
-const iaMailOrder = () => ORDER_LIVE ? `통신판매업 ${esc(SHOP.mailOrderNo)}` : '통신판매업 신고 전 (검증 운영 중)';
+// 사업자 간 거래(B2B)만 받는 동안은 통신판매업 칸을 두지 않는다 (ORDER_LIVE일 때만 번호를 적는다)
+const iaMailOrder = () => ORDER_LIVE && SHOP.mailOrderNo ? `통신판매업 ${esc(SHOP.mailOrderNo)}` : '';
 function iaBizLink() {
   const d = String(SHOP.bizNo || '').replace(/\D/g, '');
   // 공정위 사업자정보 공개 페이지는 통신판매업 신고 뒤에 조회되므로 ORDER_LIVE일 때만 연결한다
-  return d.length === 10 && ORDER_LIVE ? `<a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=${d}" target="_blank" rel="noopener">사업자 정보 확인</a>` : `사업자정보 확인 <span class="ph">통신판매업 신고 후 연결</span>`;
+  return d.length === 10 && ORDER_LIVE ? `<a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=${d}" target="_blank" rel="noopener">사업자 정보 확인</a>` : '';
 }
 // 서류 칸 (cadTrustGroupsBy: 공급처가 확인한 품목군만 이름을 적는다. 기본은 모두 확인 중)
 function iaDocsLine(short) {
@@ -170,9 +171,9 @@ function hmTrust() {
     <div class="ia-tc m2"><span class="lab">회신</span>${esc(sla[0]).replace('→', '→<br>')}<br>${esc(sla[1] || '')}</div>
     <div class="ia-tc"><span class="lab">공급</span>재고 없이 주문마다<br>국내 도매처에서 조달<br><span class="ia-d">플랜트 볼트는 받아 대조 후 출고</span></div>
     <div class="ia-tc docs"><span class="lab">서류</span>${iaDocsLine(true)}</div>
-    <div class="ia-tc biz"><span class="lab">사업자</span>사업자등록번호 ${iaBizNo()}<br>${iaMailOrder()}</div>
+    <div class="ia-tc biz"><span class="lab">사업자</span>사업자등록번호 ${iaBizNo()}<br>${iaMailOrder() || '사업자 간 거래(B2B)'}</div>
     <div class="ia-tc no"><span class="lab">하지 않습니다</span>당일 출고 약속 · 승인 없는 대체품<br><span class="ia-d">3.1 직접 발행 · 받은 도면 공개</span></div>
-  </div><p class="ia-bizline">사업자 ${iaBizNo()} · ${ORDER_LIVE ? '통신판매업 신고' : '신고 전'} · <a href="#about" data-go="about">회사 소개 →</a></p><p class="ia-trust-f"><a href="#about" data-go="about">회사 소개 →</a></p></section>`;
+  </div><p class="ia-bizline">사업자 ${iaBizNo()} · ${iaMailOrder() || 'B2B 견적·공급'} · <a href="#about" data-go="about">회사 소개 →</a></p><p class="ia-trust-f"><a href="#about" data-go="about">회사 소개 →</a></p></section>`;
 }
 // 홈과 제품 목록에서 같은 제품군 이미지·실제 카탈로그 수를 사용한다.
 const hmTiles = () => `<ul class="bn-products" role="list">${CAT_TILES.map((t, i) => `<li style="--i:${i}"><a class="bn-product" href="#t-${t.id}" data-go="t-${t.id}"><span class="bn-product-visual bn-product-${t.id}" aria-hidden="true"></span><span class="bn-product-info"><span class="bn-product-top"><span class="bn-index">0${i + 1}</span><span class="bn-product-count">${iaTileN(t)}종</span></span><h3>${esc(t.ko)}</h3><span class="bn-product-en" lang="en">${esc(t.en)}</span><span class="bn-product-desc">${t.subs.slice(0, 3).map(s => esc(s.ko.replace(/ \(.*?\)/g, ''))).join(' · ')}</span><span class="bn-product-link">제품 살펴보기 <span aria-hidden="true">↗</span></span></span></a></li>`).join('')}</ul>`;
@@ -339,7 +340,7 @@ function sbItemRow(it) {
   const th = iaTh(it.g === '인치·플랜트' ? 'stud' : p ? (p.f.kind === 'nut' ? 'nut' : /washer|spring/.test(p.f.kind) ? 'washer' : p.f.kind === 'rod' ? 'rod' : p.f.id === 'scs' || p.f.id === 'csk' ? 'shcs' : 'bolt') : it.g === '도구·안내' ? 'set' : 'bolt', 56, 38);
   const q = p ? (sbQtyOf($('sb')?.value || '') || packOf(p.f, p.size)) : 1, i = sbItems.indexOf(it);
   const v = p ? variantInfo(p.f, p.size, p.L, p.g, p.fin, q) : null;
-  const pr = p ? (px ? `<span class="p mono">${won(v.price)}/EA</span><span class="xs faint">${PRICE_LAB()} · VAT 별도</span>` : '<span class="tag q">견적 · 단가 확인 중</span>') : '';
+  const pr = p ? (px ? `<span class="p mono">${won(v.price)}/EA</span><span class="xs faint">${PRICE_LAB()} · VAT 별도</span>` : '<span class="tag q">견적 · 단가 견적 회신</span>') : '';
   const act = p
     ? `<label class="sr" for="sb-q${i}">수량</label><input class="qty" id="sb-q${i}" type="number" min="1" step="1" inputmode="numeric" value="${q}"><button class="btn sm" type="button" data-add="${esc(v.pn)}" data-qty-from="sb-q${i}">담기</button>${px && SHOP.quickOrder ? `<button class="btn sm pri" type="button" data-sb-quick="${esc(v.pn)}" data-qty-from="sb-q${i}">바로 ${ORDER_DOC()}</button>` : `<button class="btn sm" type="button" data-sb-rq1="${esc(v.pn)}" data-qty-from="sb-q${i}">견적 요청서로</button>`}<button class="btn sm txt" type="button" data-sb-pick="${i}">보기 →</button>`
     : `<button class="btn sm" type="button" data-sb-pick="${i}">보기 →</button>`;
@@ -390,7 +391,7 @@ function sbDocs(x) {
   const mat = !!(x.q.mat && x.q.mat.code);
   return dp.plan.filter(p => SB_DOC_SHOW.includes(p.code) && (p.incl || p.tbd || (p.option && p.code === 'MTC31_FWD' && mat)))
     .sort((a, b) => SB_DOC_SHOW.indexOf(a.code) - SB_DOC_SHOW.indexOf(b.code))
-    .map(p => ({ t: (CD_DOC[p.code] || {}).short || p.code, s: p.incl ? '' : p.tbd ? '확인 중' : '요청 시' }));
+    .map(p => ({ t: (CD_DOC[p.code] || {}).short || p.code, s: p.incl ? '' : p.tbd ? '견적 시 회신' : '요청 시' }));
 }
 // 엔진 사유 중 고객에게 의미 있는 것만 (카탈로그 범위 안내는 뺀다)
 const sbNote = m => ((m.reasons || []).find(r => r.tone === 'warn' && !/^카탈로그/.test(r.text)) || {}).text || '';
@@ -403,7 +404,7 @@ function sbListData(text) {
     const m = x.m || {}, st = m.status, px = st === 'catalog' && PRICE_ON(m.fam) && m.price != null;
     const k = st === 'not-available' ? 'x' : px ? 'p' : 'q';
     const r0 = (m.reasons || [])[0];
-    const why = k === 'x' ? `공급 불가${r0 ? ' · ' + String(r0.text).split(/[.。]/)[0].slice(0, 40) : ''}` : k === 'p' ? `${PRICE_LAB()} ${won(m.price)}` : st === 'catalog' ? '규격품 · 단가 확인 중' : '견적';
+    const why = k === 'x' ? `공급 불가${r0 ? ' · ' + String(r0.text).split(/[.。]/)[0].slice(0, 40) : ''}` : k === 'p' ? `${PRICE_LAB()} ${won(m.price)}` : st === 'catalog' ? '규격품 · 단가 견적 회신' : '견적';
     return { i: i + 1, t: (x.row && x.row.text) || '', qty: m.qty != null ? `${m.qty.toLocaleString()} ${m.unit === 'SET' ? 'SET' : 'EA'}` : '—', k, why, pn: px ? m.pn : null, unread: !!m.unreadable,
       spec: k === 'x' || m.unreadable ? '' : String(m.spec || ''), docs: k === 'x' ? [] : sbDocs(x), note: k === 'x' ? '' : sbNote(m) };
   });
@@ -599,7 +600,7 @@ V.buy = () => {
   const pf = Object.values(CAT_F).filter(iaFamPriced), steps = ['담기', `${ORDER_DOC()} 만들기`, '메일·카카오톡으로 보내기', '확인 메일', '입금'];
   return iaPage(iaHead([['제품', 'products'], ['바로 주문']], '규격품 바로 주문', 'Order Standard Parts',
     `가격이 표시된 품목을 담고 ${ORDER_DOC()}를 만들어 메일·카카오톡으로 보내 주세요. 공급처를 확인해 출고 예정일과 입금 안내를 확인 메일로 드립니다.`)
-    + `<div class="ia-box">${ORDER_LIVE ? '' : '<p class="ia-pencil">검증 운영 중: 주문 요청서는 확인 메일을 주고받은 뒤 주문이 됩니다.</p>'}
+    + `<div class="ia-box">${ORDER_LIVE ? '' : '<p class="ia-pencil">주문 요청서는 확인 메일을 주고받은 뒤 주문이 됩니다.</p>'}
       <div class="ia-steps"><span class="lab">주문은 이렇게 됩니다</span>${steps.map((s, i) => `<span class="s"><span class="ia-bal sm">${i + 1}</span>${s}</span>`).join('<span class="arw" aria-hidden="true">→</span>')}</div>
       <p class="small muted">대금 계좌이체·전자세금계산서 · 카드는 요청 시 결제 링크 │ 배송비 견적함에서 계산 │ 바뀌면 확인 메일에 적고, 그때 취소해도 비용 없음</p></div>`
     + (pf.length ? `<section class="ia-sg"><h3>가격이 표시된 품목<span class="cnt">${pf.length}종 · 기준일 ${esc(SHOP.priceBasis)}</span></h3><div class="ia-fams">${pf.map(iaFamCard).join('')}</div></section>`
@@ -734,7 +735,7 @@ V.c = id => {
   // naText는 조건부 안내(제조사 품번·상표가 지정된 줄): 품목 자체는 사양을 적어 견적 요청할 수 있다
   const na = f.naText ? note('warn', esc(f.naText), '안내') : '';
   const notes = (f.notes.length ? `<div class="fnote"><h3>이 품목에서 자주 확인하는 것</h3><dl>${f.notes.map(n => `<dt${n.red ? ' class="redp"' : ''}>${esc(n.t || '확인')}</dt><dd>${esc(n.d)}</dd>`).join('')}</dl></div>` : '') + libProductLinks(f.id);
-  const docs = (() => { try { return cadTrustLine({ fam: f.id, cat: f.g, system: f.sys === 'inch' ? 'inch' : 'metric' }); } catch { return '제조사 MTR(EN 10204 3.1) 제공 여부: 공급처 확인 중 — 견적 시 회신'; } })();
+  const docs = (() => { try { return cadTrustLine({ fam: f.id, cat: f.g, system: f.sys === 'inch' ? 'inch' : 'metric' }); } catch { return '제조사 MTR(EN 10204 3.1) 제공 여부: 견적 시 회신'; } })();
   const kv = [['규격', f.std.map(x => x[1]).join(' · ')], ['체계', f.sys === 'inch' ? '인치' : f.sys === 'both' ? '미터·인치' : '미터'], ['공급 구분', f.tier || '견적 문의'], ['서류', `CoC 기본 · ${docs}`], ...(f.use ? [['용도', f.use]] : []), ...(f.quoteNote ? [['견적', f.quoteNote]] : [])];
   const mode = f.p === 'A' ? (f.dims ? '치수표 · 도면' : '사양 견적') : f.p === 'B' ? '사양 견적' : '인식 후 견적';
   const cad = f.p === 'A' ? `<div class="cad-blk ia-cad" id="ia-cad">${iaCadFam(f) ? '' : `<section class="cad-blk-in"><div class="cad-hd"><h3>CAD · 데이터시트</h3><span class="tag doc">도면 기반 검토</span></div><p class="note warn small"><span class="nk">제공 범위</span><span>이 품목은 자동 STEP·DXF 다운로드 대상이 아닙니다. 고객 도면과 규격 번호로 요구 형상을 검토합니다.</span></p></section>`}</div>` : '';
@@ -847,7 +848,7 @@ V.after.about = () => V.after.help();
 function iaAboutTop() {
   return `<div class="ia-about tblock">
     <div class="s2"><span class="lab">누가</span><span>${iaOwner()} · 기계엔지니어 · 회전기기 분야 ${iaYears()}년. 혼자 운영합니다. 그래서 모든 견적 줄을 대표가 직접 봅니다.</span></div>
-    <div class="s2 e"><span class="lab">운영 방식</span><span>검증 운영 중입니다: 참고 견적을 드리고, 주문은 확인 메일을 주고받은 뒤에 됩니다. 재고를 두지 않고 주문마다 국내 도매처에서 조달합니다. 플랜트 품목은 대표가 받아 각인·히트번호·서류를 대조한 뒤 출고합니다.</span></div>
+    <div class="s2 e"><span class="lab">운영 방식</span><span>사업자 간 거래(B2B)로 견적과 공급을 합니다. 주문은 견적서를 보고 확인 메일을 주고받은 뒤에 됩니다. 재고를 두지 않고 주문마다 국내 도매처에서 조달합니다. 플랜트 품목은 대표가 받아 각인·히트번호·서류를 대조한 뒤 출고합니다.</span></div>
     <div class="s2"><span class="lab">회신 약속</span><span>${esc(SLA().recv)}. 20줄 이하는 ${SLA().days}영업일 안에 견적합니다. 답이 없으면 카카오톡으로 요청번호를 보내 주세요.</span></div>
     <div class="s2 e"><span class="lab">서류</span><span>${iaDocsLine(false)} ${esc(CAD_TRUST_COPY.always.ko)}.</span></div>
     <div class="s2"><span class="lab">합니다</span><span>사양·짝 부품·서류를 줄마다 확인 · 공급 불가 줄은 이유와 함께 적음 · 바뀐 점은 확인 메일에 적고 그때 취소 가능</span></div>
@@ -908,7 +909,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('ia-men
 if (SHOP.ownerName) document.querySelectorAll('[data-ia="owner"]').forEach(el => { el.outerHTML = esc(SHOP.ownerName); });
 if (SHOP.bizNo) document.querySelectorAll('[data-ia="bizno"]').forEach(el => { el.outerHTML = `<span class="mono">${esc(SHOP.bizNo)}</span>`; });
 if (SHOP.addr) document.querySelectorAll('[data-ia="addr"]').forEach(el => { el.lastElementChild.textContent = SHOP.addr; el.hidden = false; });
-document.querySelectorAll('[data-ia="mailorder"]').forEach(el => { el.innerHTML = iaMailOrder() + (ORDER_LIVE ? ` · ${iaBizLink()}` : ''); });
+document.querySelectorAll('[data-ia="mailorder"]').forEach(el => { const t = iaMailOrder(); if (t) el.innerHTML = t + (iaBizLink() ? ` · ${iaBizLink()}` : ''); });
 if (ORDER_LIVE) { const st = $('ia-stc'); if (st) st.hidden = true; }
 // 검색 색인: 옛 홈 구역 항목을 새 경로로, 165종 품목·칸·모음·새 페이지를 더한다
 INDEX.forEach(e => {

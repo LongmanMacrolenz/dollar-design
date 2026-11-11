@@ -296,7 +296,7 @@ def tmisc(pg, corpus):
     G = gcs(d)
     ck('4.7', 'gc-t', 'GC-T01·T02·T04·T07·T08·T09·T13 항상, T03 (해당 n줄)', all(k in G for k in ['GC-T01', 'GC-T02', 'GC-T04', 'GC-T07', 'GC-T08', 'GC-T09', 'GC-T13']) and '(해당 ' in G['GC-T03']['ko'], list(G))
     cph = [G[f'GC-C{n}'] for n in range(12, 18)]
-    ck('4.7', 'gc-c', 'GC-C12~C17은 자리표시 (정책 수치 없음)', all(g['ph'] and '[자리표시' in g['ko'] and not re.search(r'\d', re.sub(r'GC-C\d+', '', g['ko'])) for g in cph), [g['ko'] for g in cph])
+    ck('4.7', 'gc-c', 'GC-C12~C17은 정한 수치 없음 → 확정 견적 때 협의 (정책 수치 없음)', all(g['ph'] and '확정 견적 때 협의' in g['ko'] and '자리표시' not in g['ko'] and not re.search(r'\d', re.sub(r'GC-C\d+', '', g['ko'])) for g in cph), [g['ko'] for g in cph])
     ck('4.7', 'gc-c01', 'GC-C01은 엔진 부가세 결정(BOM_VAT.gc)과 같은 문구', G['GC-C01']['ko'].startswith('통화는 원(KRW)'))
     ck('4.1', 'split', '기술/상업 분리: COM·DLV 행과 GC-C는 상업, 나머지 기술', set(d['technical']['rows']) | set(d['commercial']['rows']) == {x['no'] for x in d['rows']} and all(x['cat'] in ('COM', 'DLV') for x in d['rows'] if x['no'] in d['commercial']['rows'])
        and all(g.startswith('GC-T') for g in d['technical']['gc']) and all(g.startswith('GC-C') for g in d['commercial']['gc']))

@@ -8,7 +8,7 @@
        practice 업계 일반 관행 → '(업계 일반 관행, 원문 미대조)'
        engine   볼트노트 카탈로그·견적 계산 사실 · policy 볼트노트 거래 조건
    - 서류: 제조사 성적서는 고치지 않고 전달, 볼트노트 문서는 CoC(ISO 16228 F2.1 형식)뿐, KOLAS·3.2는 요청 시 제3자 기관.
-   - 상업 GC-C12~C17은 운영자가 채우는 자리표시다. 정책 수치를 만들지 않는다. */
+   - 상업 GC-C12~C17은 정해 둔 수치가 없는 조건이다. 수치를 만들지 않고 '요구하시면 확정 견적 때 협의'로 적는다 (ph 표시 유지). */
 
 const CD_VERSION = 'cd-rules 1.0';
 const CD_COLS = [['번호', 'No.'], ['BOM 줄 · 고객 문서·조항', 'Line Ref. · Client Doc. & Clause'], ['고객 요구사항 (원문)', 'Customer Requirement (as written)'], ['당사 제안', 'Offered'],
@@ -338,7 +338,7 @@ cdRule('S-B8-CL2', 'C', 'MAT', 'CONFIRM', 'auto', 'engine', { ev: true, p: (p, x
   g: p => p.mat, ko: 'A193 {mat} Class 2(가공경화)는 지름에 따라 강도가 다릅니다. {size}의 강도 값은 규격서로 확인해 회신하니, 설계 기준값을 알려 주십시오.',
   en: 'A193 {mat} Class 2 (strain hardened) strength varies with diameter. Values for {size} will be confirmed against the standard; please advise your design values.', refs: ['ASTM A193'] });
 cdRule('S-B8-CL2-OVER', 'C', 'MAT', 'CONFIRM', 'auto', 'engine', { ev: true, p: (p, x) => ({ size: cdSizeLab(x) }), g: p => p.mat,
-  ko: '{mat} Class 2 {size}: 이 지름의 Class 2 강도 값은 규격서로 확인 중입니다. 엔지니어가 확인해 회신하니, 필요한 강도(설계 조건)를 알려 주십시오.',
+  ko: '{mat} Class 2 {size}: 이 지름의 Class 2 강도 값은 엔지니어가 규격서로 확인해 회신합니다. 필요한 강도(설계 조건)를 알려 주십시오.',
   en: '{mat} Class 2 {size}: Class 2 strength values for this diameter are under review against the standard. An engineer will confirm and reply; please advise the required strength (design conditions).', refs: ['ASTM A193'], imp: 'tbd' });
 cdRule('S-B8-CL1', 'C', 'MAT', 'CONFIRM', 'auto', 'second', { ev: true, unless: x => (x.ctx.flange?.cls || 0) >= 400, g: p => p.mat,
   ko: 'Class 미기재 → A193 {mat} Class 1(고용화처리, 항복 30 ksi)로 견적했습니다. 플랜지 등급과 볼트 강도 조합은 설계 조건으로 확인해 주십시오.',
@@ -529,8 +529,8 @@ cdRule('Q-COAT', 'C', 'DOC', 'INFO', 'auto', 'local', { ev: true, when: x => x.m
 cdRule('Q-ORIGIN', 'C', 'DOC', 'INFO', 'auto', 'policy', { when: x => ((x.ctx.docs || []).includes('origin') || x.D.rfq.avl?.originProof) && x.m.status !== 'not-available', g: () => 'origin',
   ko: '원산지는 수입품이면 수입신고필증의 원산지와 밀시트로, 국산이면 제조사 서류로 증빙합니다.', en: 'Origin evidenced by the import declaration and mill certificate (imports) or by manufacturer\'s documents (domestic).', refs: [] });
 cdRule('Q-MAKE', 'C', 'DOC', 'CONFIRM', 'auto', 'policy', { when: x => x.m.status !== 'not-available' && !x.m.make && (x.D.firm || cdAvl(x.D.rfq)) ? { make: cdAvl(x.D.rfq) ? '발주 후 통보 (귀사 AVL 안에서 선정)' : '발주 후 통보' } : false, g: () => 'make',
-  ko: '제조사·원산지: {make}. 확정 전 줄은 발주 후 [자리표시: 통보 기한] 안에 제조사명·주소·원산지를 알리며, 귀사 승인 제조사 목록(AVL)·원산지 제한 안에서만 고릅니다. 목록 밖 제조사밖에 없으면 D행으로 따로 승인을 받습니다.',
-  en: 'Make & origin: to be advised after PO. Manufacturer name, address and origin will be advised within [placeholder: notice period], chosen only within your AVL/origin restrictions; otherwise a separate D item will request approval.', refs: [] });
+  ko: '제조사·원산지: {make}. 확정 전 줄은 발주 확인 메일에 제조사명·주소·원산지를 적어 알리며, 귀사 승인 제조사 목록(AVL)·원산지 제한 안에서만 고릅니다. 목록 밖 제조사밖에 없으면 D행으로 따로 승인을 받습니다.',
+  en: 'Make & origin: to be advised after PO. Manufacturer name, address and origin will be advised in the order confirmation e-mail, chosen only within your AVL/origin restrictions; otherwise a separate D item will request approval.', refs: [] });
 cdRule('Q-VDRL', 'C', 'DOC', 'CONFIRM', 'auto', 'policy', { when: x => x.ctx.vdrl && x.m.status !== 'not-available', g: () => 'vdrl',
   ko: '귀사 서류 요구 목록(VDRL/SDDR)에 대해: 제공 = CoC(F2.1), 제조사 3.1 사본, 코팅 성적서 사본, 포장 명세서, 유통 단계 검사 계획서, 서류 묶음(편철). 제공 불가 = 볼트노트 명의 제조 공정 ITP·열처리 절차서(제조사 문서로만 가능). 제출 일정은 발주 후 협의합니다.',
   en: 'Against your VDRL/SDDR: provided = CoC (F2.1), manufacturer\'s 3.1 copies, coating certificate copies, packing list, distribution-stage inspection plan, compiled dossier. Not provided = manufacturing ITP or heat-treatment procedures in BoltNote\'s name (manufacturer documents only). Schedule to be agreed after PO.', refs: [] });
@@ -541,7 +541,7 @@ cdRule('M-PKG', 'C', 'PKG', 'INFO', 'gc', 'practice', { gc: 'GC-T11', when: x =>
 cdRule('M-TAG', 'C', 'PKG', 'CONFIRM', 'auto', 'practice', { when: x => { const t = cdUniq([x.row?.tag, ...(x.sec?.tags || [])]); return t.length ? { tags: t.join('·') } : false; }, g: () => 'tag',
   ko: '포장 라벨에 귀사 PO·라인·태그({tags})를 표기합니다.', en: 'Package labels will show your PO, line and tag ({tags}).', refs: [] });
 cdRule('M-KIT', 'C', 'PKG', 'INFO', 'auto', 'policy', { when: x => (x.sec?.tags || x.row?.tag) && cdT(x, 'stud', 'nut', 'heavynut', 'washer', 'hexbolt'), g: () => 'kit',
-  ko: '옵션: 조인트별 키트 포장(조인트마다 스터드·너트·와셔를 한 봉투에 담고 조인트 번호 라벨). 포장비는 [자리표시: 운영자 입력]입니다.', en: 'Option: joint-kit packing (studs, nuts and washers per joint in one bag labelled with the joint no.). Packing charge: [placeholder].', refs: [], imp: 'option' });
+  ko: '옵션: 조인트별 키트 포장(조인트마다 스터드·너트·와셔를 한 봉투에 담고 조인트 번호 라벨). 포장비는 확정 견적에 줄로 적습니다.', en: 'Option: joint-kit packing (studs, nuts and washers per joint in one bag labelled with the joint no.). Packing charge is stated as a line in the firm offer.', refs: [], imp: 'option' });
 cdRule('M-COLOR', 'C', 'MRK', 'CONFIRM', 'auto', 'practice', { when: x => x.ctx.colorCode && x.m.status !== 'not-available', g: () => 'color',
   ko: '귀사 색상 코드를 스터드 끝과 너트에 칠합니다. 기준표를 보내 주십시오.', en: 'Your color code will be applied to stud ends and nuts; please provide the code table.', refs: [], imp: 'tbd' });
 cdRule('M-HEAT', 'C', 'MRK', 'CONFIRM', 'auto', 'local', { when: x => x.ctx.heatStamp && cdT(x, 'stud', 'hexbolt', 'heavyhexbolt'), g: () => 'heat',
@@ -579,8 +579,8 @@ cdRule('K-DUP', 'C', 'COM', 'INFO', 'auto', 'engine', { bom: L => {
     return t && t[1] < t1 ? { lines: a, p: { pn: a[0].m.pn, n, tier: `${t[0].toLocaleString()}개 이상`, tierEn: `${t[0].toLocaleString()}+ pcs` } } : null; }).filter(Boolean); }, g: p => p.pn,
   ko: '같은 사양({pn})이 여러 줄에 있습니다. 합산 {n}개면 단가 구간이 {tier}로 내려갑니다(옵션). 견적서 줄은 고객 번호대로 나눠 둡니다.', en: 'Identical item ({pn}) on several lines; combined qty {n} reaches the {tierEn} price tier (option). Quote lines are kept per customer line.', refs: [], imp: 'option' });
 cdRule('K-VALIDITY', 'D', 'COM', 'APPROVE', 'dev', 'policy', { rfq: D => { const r = +D.rfq.commercial?.requiredValidityDays; return r > SHOP_TERMS.validityDays ? [{ p: { req: r, days: SHOP_TERMS.validityDays }, ref: 'RFQ', req: { ko: `요구 유효기간 ${r}일`, en: `Required validity ${r} days` } }] : []; }, g: () => 'validity',
-  offer: p => cdOff(`유효기간 ${p.days}일 (연장 조건: [자리표시: 운영자 입력]; 수입품은 GC-C15 조건)`, `Validity ${p.days} days (extension: [placeholder]; imports per GC-C15)`),
-  ko: '요구 유효기간 {req}일 → 당사 {days}일. 연장 가능 범위는 [자리표시: 운영자 입력]입니다.', en: 'Required validity {req} days → offered {days} days. Extension: [placeholder: operator to set].', refs: ['GC-C02', 'GC-C15'] });
+  offer: p => cdOff(`유효기간 ${p.days}일 (연장은 요청 시 협의; 수입품은 GC-C15 조건)`, `Validity ${p.days} days (extension on request; imports per GC-C15)`),
+  ko: '요구 유효기간 {req}일 → 당사 {days}일. 연장은 요청하시면 협의합니다.', en: 'Required validity {req} days → offered {days} days. Extension on request.', refs: ['GC-C02', 'GC-C15'] });
 cdRule('K-PAY', 'D', 'COM', 'APPROVE', 'dev', 'policy', { rfq: D => { const t = D.rfq.commercial?.paymentTerms; return t ? [{ p: { req: t }, ref: 'RFQ', req: { ko: `대금 지급 조건: ${t}`, en: `Payment terms: ${t}` } }] : []; }, g: () => 'pay',
   offer: () => cdOff('당사 대금 지급 조건 (GC-C06)', 'Our payment terms (GC-C06)'),
   ko: '귀사 대금 지급 조건({req})에 대한 당사 제안은 GC-C06입니다. 조건이 맞지 않는 부분은 협의합니다.', en: 'Against your payment terms ({req}), our offer is the GC-C06 payment terms; differences to be agreed.', refs: ['GC-C06'] });
@@ -588,7 +588,7 @@ cdRule('K-LD', 'D', 'COM', 'APPROVE', 'dev', 'policy', { rfq: D => { const c = D
   if (c.ld) out.push({ p: { item: '지체상금', itemEn: 'liquidated damages', req: c.ld, reqEn: c.ld, gc: 'GC-C13' }, ref: 'RFQ', req: { ko: `지체상금: ${c.ld}`, en: `Liquidated damages: ${c.ld}` } });
   if (c.warrantyMonths) out.push({ p: { item: '하자보증', itemEn: 'warranty', req: `${c.warrantyMonths}개월`, reqEn: `${c.warrantyMonths} months`, gc: 'GC-C12' }, ref: 'RFQ', req: { ko: `하자보증 ${c.warrantyMonths}개월`, en: `Warranty ${c.warrantyMonths} months` } });
   if (c.bondRequired) out.push({ p: { item: '이행보증', itemEn: 'performance bond', req: '요구', reqEn: 'required', gc: 'GC-C13' }, ref: 'RFQ', req: { ko: '이행보증 요구', en: 'Performance bond required' } });
-  return out; }, g: p => p.item, offer: p => cdOff(`${p.gc} [자리표시: 운영자 입력]`, `${p.gc} [placeholder]`),
+  return out; }, g: p => p.item, offer: p => cdOff(`${p.gc} 확정 견적 때 협의`, `${p.gc} to be agreed in the firm offer`),
   ko: '귀사 {item} 조건({req})에 대해 당사 조건은 {gc}입니다.', en: 'Your {itemEn} terms ({reqEn}): our terms per {gc}.', refs: ['GC-C12', 'GC-C13', 'GC-C14'] });
 
 /* N — 공급 불가·읽지 못함·제외·미견적 */
@@ -674,9 +674,9 @@ const CD_GC_T = [
   ['GC-T11', ['M-PKG'], '포장: 재질·호칭별로 나눠 담고, 서류가 붙는 품목은 한 상자에 한 히트만 담습니다. 라벨: 규격·등급·호칭·수량·히트/로트 번호(+ 귀사 PO·라인 번호).', 'Packing: separated by material and size; one heat per box for certified items. Label: spec, grade, size, qty, heat/lot (+ PO and line no.).'],
   ['GC-T12', D => D.items.some(x => x.m.status !== 'not-available' && (SOCKET.has(x.q.type) || ['hexbolt', 'heavyhexbolt', 'nut', 'heavynut', 'stud'].includes(x.q.type))), '렌치 크기(육각 구멍 키)·2면폭은 적용 치수 규격의 표값입니다. DIN 규격과 2면폭이 다른 호칭은 D행으로 따로 적습니다.', 'Hex key and across-flats sizes are per the applicable dimensional standard tables. Sizes where DIN across flats differ are listed as D items.'],
   ['GC-T13', 'always', '이 견적은 "검토 문서" 목록에 있는 문서만 근거로 합니다. 목록에 없는 문서(참조만 되고 받지 못한 사양서·도면·VDRL·일반 구매 조건 등)는 검토하지 않았으며, 받으면 검토해 다음 Rev에 C&D로 반영합니다.', 'This offer is based only on the documents listed under "Basis of Offer". Documents not listed (including specifications, drawings, VDRL or general conditions referenced but not received) have not been reviewed; on receipt they will be reviewed and reflected in the next Rev.'],
-  ['GC-T14', D => D.firm, '볼트노트는 유통업자입니다. 제조 공정 검사(Hold·Witness 지점이 있는 ITP)는 제조사 문서로만 제공합니다. 볼트노트의 검사는 GC-T07 입고 검사이며, 고객 입회는 [자리표시: 사전 통보 기간] 전 통보 시 출고 전 검사로 받습니다.', 'BoltNote is a distributor. Manufacturing inspection (ITP with hold/witness points) is available only as the manufacturer\'s document. BoltNote\'s inspection is the incoming inspection in GC-T07; client witness of pre-dispatch inspection on [placeholder: notice period] notice.'],
+  ['GC-T14', D => D.firm, '볼트노트는 유통업자입니다. 제조 공정 검사(Hold·Witness 지점이 있는 ITP)는 제조사 문서로만 제공합니다. 볼트노트의 검사는 GC-T07 입고 검사이며, 고객 입회는 일정을 미리 협의하면 출고 전 검사로 받습니다.', 'BoltNote is a distributor. Manufacturing inspection (ITP with hold/witness points) is available only as the manufacturer\'s document. BoltNote\'s inspection is the incoming inspection in GC-T07; client witness of pre-dispatch inspection is accepted when the date is agreed in advance.'],
 ].map(([id, cond, ko, en]) => ({ id, cond, ko, en, part: 'T' }));
-const CD_PH = (ko, en) => ({ ko: `[자리표시 — ${ko}: 운영자 입력]`, en: `[placeholder — ${en}: to be set by the operator]` });
+const CD_PH = (ko, en) => ({ ko: `따로 정한 ${ko} 조건은 없습니다. 요구하시면 확정 견적 때 협의해 C&D 행으로 적습니다.`, en: `No standard ${en} terms. If required, they are agreed in the firm offer and recorded as a C&D item.` });
 const CD_GC_C = [
   ['GC-C01', () => BOM_VAT.gc.ko, () => BOM_VAT.gc.en],
   ['GC-C02', () => `견적 유효기간은 견적일로부터 ${SHOP_TERMS.validityDays}일입니다(RFQ가 더 긴 기간을 요구하면 K-VALIDITY 행을 따릅니다). 유효기간이 더 짧은 줄(수입품 등)은 줄에 표시합니다.`, () => `Validity ${SHOP_TERMS.validityDays} days from quotation date (where the RFQ requires longer, see the K-VALIDITY item). Lines with shorter validity (e.g., imports) are marked.`],
@@ -684,7 +684,7 @@ const CD_GC_C = [
   // 셈법은 페이지 shipDate()와 같다: 마감 전 확정분은 그날부터, 마감 뒤·쉬는 날 확정분은 다음 영업일부터 한국 영업일로 센다
   ['GC-C04', () => `납기는 발주 확정(입금·카드 결제 확인, 승인 거래처는 ${ORDER_LIVE ? '발주서' : '주문서'} 접수, 공공기관은 발주 통보) 시점부터 한국 영업일로 셉니다. 평일 ${CUT_T}(한국 시간)까지 확정된 발주는 그날부터, 그 뒤나 쉬는 날에 확정된 발주는 다음 영업일부터 셉니다. 줄별 납기 등급을 따르며, 따로 요청하지 않으면 분할 출하합니다.`, () => `Lead time counts in Korean business days from order confirmation (receipt of payment, or receipt of PO for approved accounts and public buyers): orders confirmed by ${CUT_T} KST on a business day count from that day, later or on a non-business day from the next business day; per line tier. Partial shipments unless instructed otherwise.`],
   ['GC-C05', () => '수량은 BOM 수량 그대로입니다. 예비품·여유분은 넣지 않았습니다. 포장 단위로 늘리면 더 싼 경우는 줄마다 옵션으로 적었습니다.', () => 'Quantities as per BOM; no spares or contingency included. Where a pack round-up is cheaper it is shown per line as an option.'],
-  ['GC-C06', () => `대금 지급 조건: ${SHOP_TERMS.payment}. RFQ 대금 지급 조건과 다르면 K-PAY 행으로 적습니다.`, () => 'Payment terms: bank transfer. New accounts: prepayment after order confirmation (dispatch on receipt of payment; tax invoice at payment). Approved accounts: month-end closing, consolidated month-end tax invoice, payment by transfer within [30] days. Public buyers: invoice after delivery and inspection (statutory payment periods). Cards (corporate cards, government purchase cards, personal credit cards): payment link on request (the card slip replaces the tax invoice). Where different from the RFQ terms, see the K-PAY item.'],
+  ['GC-C06', () => `대금 지급 조건: ${SHOP_TERMS.payment}. RFQ 대금 지급 조건과 다르면 K-PAY 행으로 적습니다.`, () => 'Payment terms: bank transfer. New accounts: prepayment after order confirmation (dispatch on receipt of payment; tax invoice at payment). Approved accounts: month-end closing, consolidated month-end tax invoice, payment by transfer within the term agreed when the account is opened. Public buyers: invoice after delivery and inspection (statutory payment periods). Cards (corporate cards, government purchase cards, personal credit cards): payment link on request (the card slip replaces the tax invoice). Where different from the RFQ terms, see the K-PAY item.'],
   ['GC-C07', () => '세금계산서는 사업자·기관에 전자 발급합니다(공급일 기준, 승인 거래처는 말일자 월합계). 카드(법인카드·구매카드 포함)로 결제하면 카드 매출전표가 증빙이 되어 세금계산서를 따로 발급하지 않습니다. 같은 거래에 두 증빙을 함께 발급하지 않습니다.', () => 'Electronic tax invoices are issued to businesses and public bodies (on the supply date; consolidated at month-end for approved accounts). For card payments (incl. corporate and purchase cards) the card slip is the evidence and no tax invoice is issued. Both are never issued for the same transaction.'],
   ['GC-C08', () => '반품·검수: 이 조건은 따로 협의한 사업자·기관 거래(확정 견적, 귀사 발주 조건)에 적용합니다. 사이트 표시 가격 그대로의 자동 견적·발주는 개인 고객과 같은 교환·반품 조건(사이트 회사 소개의 교환·반품, 전자상거래법 청약철회)을 따릅니다. 받으신 뒤 지체 없이 검수하고, 수량 부족·외관 하자는 [3]영업일 안에 알려 주십시오. 규격품은 미개봉에 한해 반품을 협의하며, 수입품과 주문 제작품은 반품할 수 없습니다(불량·오배송은 교환 또는 환불). 개인 고객은 전자상거래법의 청약철회 규정이 우선하며, 주문제작품은 발주 때 따로 동의를 받은 경우에만 철회가 제한됩니다.', () => 'Returns and inspection: these terms apply to separately negotiated business and public-body transactions (firm quotations, your purchase terms). Automatic quotations and orders at the prices shown on the site follow the same exchange and return terms as individual customers (exchanges and returns on the site About page; withdrawal under the E-Commerce Act). Please inspect without delay on receipt and report shortages or visible defects within [3] business days. Unopened standard items may be returned by agreement; imported and made-to-order items are non-returnable (defective or wrongly shipped items are replaced or refunded). For individual consumers the withdrawal rules of the E-Commerce Act prevail; for made-to-order items withdrawal is limited only where separately agreed at order.'],
   ['GC-C09', () => '엔지니어 견적 줄은 줄마다 적은 회신 예정일까지 단가·납기를 회신하고 다음 Rev에 반영합니다.', () => 'Engineer-quote lines: price and lead time by the reply date shown per line, reflected in the next Rev.'],

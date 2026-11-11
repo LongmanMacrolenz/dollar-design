@@ -87,7 +87,7 @@ function cadDsRec(spec, built) {
   spr.push(['질량', mass], ['포장 · 공급', supply]);
   const docs = typeof cadTrustDsDocsHtml === 'function'
     ? cadTrustDsDocsHtml({ fam: f.id, grade: inch ? spec.grade : spec.g, fin: spec.fin }, ymd)
-    : `<p>제조사 MTR(EN 10204 3.1) 제공 여부: 공급처 확인 중 — 견적 시 회신</p><p class="cad-ds-foot">볼트노트 CoC(ISO 16228 F2.1 형식) 기본 · EN 10204 3.2·KOLAS 시험은 요청 시 협의 · 볼트노트는 3.1을 직접 발행하지 않습니다</p>`;
+    : `<p>제조사 MTR(EN 10204 3.1) 제공 여부: 견적 시 회신</p><p class="cad-ds-foot">볼트노트 CoC(ISO 16228 F2.1 형식) 기본 · EN 10204 3.2·KOLAS 시험은 요청 시 협의 · 볼트노트는 3.1을 직접 발행하지 않습니다</p>`;
   // 세트(부품 여럿)는 오른쪽 칸을 부품 이름만 두어 파일 이름이 한 줄에 들어가게 하고, 형식은 zip 줄에 한 번 적는다
   const many = spec.parts.length > 1;
   const files = [...spec.parts.map(x => [`${x.stem}.step · .dxf`, many ? (x.label || '').replace(/ \(.*\)$/, '') : 'STEP AP214 · DXF R12 · mm']), [`${spec.stem}_README.txt`, '한국어·English'], [`${spec.stem}.zip`, many ? '위 파일 전부 · STEP AP214 · DXF R12 · mm' : '위 파일 전부']];
@@ -177,7 +177,7 @@ function cadDsTableRec(f) {
   }
   return { table: true, f, title: { ko: f.name, en: meta.en, stem: `BN_${cadSafe(f.code)}_TABLE`, std: meta.std, rev: CAD_REV.rev, date: ymd, units: metric ? 'mm' : 'in' },
     cols, rows, caption, notes: ((CAD_CAT.notes || {})[f.id] || []).slice(0, 3), sources: metric ? meta.src : CAD_SRC_IN[meta.kind],
-    mtr: typeof cadTrustLine === 'function' ? cadTrustLine({ fam: f.id }) : '제조사 MTR(EN 10204 3.1) 제공 여부: 공급처 확인 중 — 견적 시 회신',
+    mtr: typeof cadTrustLine === 'function' ? cadTrustLine({ fam: f.id }) : '제조사 MTR(EN 10204 3.1) 제공 여부: 견적 시 회신',
     always: typeof CAD_TRUST_COPY !== 'undefined' ? CAD_TRUST_COPY.always.ko : '볼트노트 CoC(ISO 16228 F2.1 형식) 기본 · EN 10204 3.2·KOLAS 시험은 요청 시 협의 · 볼트노트는 3.1을 직접 발행하지 않습니다', gen: CAD_VER };
 }
 function cadDsTableHtml(rec) {

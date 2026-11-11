@@ -24,7 +24,7 @@ function bomDwgCtx(q) {
   const dec = v => inch ? `${v.toFixed(3)}"` : `${+v.toFixed(2)}`;
   const mm = v => inch ? ` [${(v * 25.4).toFixed(v * 25.4 < 10 ? 2 : 1)}]` : '';
   const legend = [];
-  // unsrc: 인치 치수표 값이 없어(2026-10 감사로 뺀 값) 그림을 비례 스케치로 그렸을 때 true → 도면 머리에 '규격서 확인 중' 표시
+  // unsrc: 인치 치수표 값이 없어(2026-10 감사로 뺀 값) 그림을 비례 스케치로 그렸을 때 true → 도면 머리에 '견적 때 규격서로 확인' 표시
   return { id, inch, legend, unsrc: false, nom: v => nom(v) + mm(v), dec: v => dec(v) + mm(v),
     // 오른쪽 치수는 끝면도와 겹치지 않게 인치는 기호만 쓰고 값은 아래 범례로
     rl: (sym, v, fmt = 'nom') => { if (!inch) return sym === '⌀d' ? `⌀${+v.toFixed(2)}` : `${sym} ${+v.toFixed(2)}`; legend.push(`${sym} = ${fmt === 'nom' ? nom(v) : dec(v)}${mm(v)}`); return sym; },
@@ -84,7 +84,7 @@ function dwSet(g, q) {
   if (pt === 'oval' && !inch) s += `<text class="bd-n" x="${xe + 8}" y="${cy + 4}">R ${g.dec(R)}</text>`;
   const es = Math.min(SV.er / (d / 2), sc * 1.6), er = d / 2 * es;
   s += endView(g, SV.ex, cy, er, `<polygon class="bd-ol2" points="${hexPts(SV.ex, cy, J / Math.sqrt(3) * es)}"/>`);
-  s += `<text class="bd-n" x="${SV.ex}" y="${cy + er + 30}" text-anchor="middle">육각 구멍 키${inch ? (rIn ? ` ${rIn[2]}" (${((inVal(rIn[2]) || J) * 25.4).toFixed(2)} mm)` : ': 규격서 확인 중') : ' ' + J + ' mm'}</text>`;
+  s += `<text class="bd-n" x="${SV.ex}" y="${cy + er + 30}" text-anchor="middle">육각 구멍 키${inch ? (rIn ? ` ${rIn[2]}" (${((inVal(rIn[2]) || J) * 25.4).toFixed(2)} mm)` : ': 견적 때 확인') : ' ' + J + ' mm'}</text>`;
   s += `<text class="bd-n" x="${x0}" y="${cy + hh + 50}">${esc(threadTxt(q))} · ${PT_KO[pt]}${pt === 'cone' && !inch ? ` ${ang}°` : pt === 'cup' ? ' 118°' : ''}</text>`;
   return s;
 }
@@ -117,7 +117,7 @@ function dwHead(g, q) {
   if (thr < shankL - 1e-6 && !broken) s += g.dim(xe - thr * sc, cy + hh, xe, cy + hh, `${inch ? 'LT' : 'b'} ${g.dec(thr)}${inch ? ' min' : ' (참고)'}`, 'bottom', 40);
   const es = Math.min(SV.er / (A / 2), sc * 1.4);
   s += endView(g, SV.ex, cy, A / 2 * es, `<polygon class="bd-ol2" points="${hexPts(SV.ex, cy, J / Math.sqrt(3) * es)}"/>`);
-  s += `<text class="bd-n" x="${SV.ex}" y="${cy + A / 2 * es + 30}" text-anchor="middle">육각 구멍 키${q.drive ? ' ' + esc(q.drive.label.replace('육각 구멍 · 키 ', '')) : inch ? ': 규격서 확인 중' : ' '}</text>`;
+  s += `<text class="bd-n" x="${SV.ex}" y="${cy + A / 2 * es + 30}" text-anchor="middle">육각 구멍 키${q.drive ? ' ' + esc(q.drive.label.replace('육각 구멍 · 키 ', '')) : inch ? ': 견적 때 확인' : ' '}</text>`;
   s += `<text class="bd-n" x="${x0}" y="${cy + hA + 62}">${esc(threadTxt(q))}</text>`;
   return s;
 }
@@ -149,7 +149,7 @@ function dwHex(g, q) {
   if (LT < L - 1e-6 && !broken && !inch) s += g.dim(xe - LT * sc, cy + hh, xe, cy + hh, `b ${g.dec(LT)} (참고)`, 'bottom', 44);
   const es = Math.min(SV.er / (hd.G / 2), sc * 1.3), R = hd.G / 2 * es;
   s += `<polygon class="bd-ol" points="${hexPts(SV.ex, cy, R)}"/><circle class="bd-hid" cx="${SV.ex}" cy="${cy}" r="${(d / 2 * es).toFixed(1)}"/>` + `<line class="cl" x1="${SV.ex - R - 10}" y1="${cy}" x2="${SV.ex + R + 10}" y2="${cy}"/>`;
-  s += `<text class="bd-n" x="${SV.ex}" y="${cy + R + 26}" text-anchor="middle">2면폭${inch ? (hd.src ? ` ${hd.Fl}" (${(hd.F * 25.4).toFixed(1)} mm)` : ': 규격서 확인 중') : ' ' + hd.F + ' mm'}</text>`;
+  s += `<text class="bd-n" x="${SV.ex}" y="${cy + R + 26}" text-anchor="middle">2면폭${inch ? (hd.src ? ` ${hd.Fl}" (${(hd.F * 25.4).toFixed(1)} mm)` : ': 견적 때 확인') : ' ' + hd.F + ' mm'}</text>`;
   s += `<text class="bd-n" x="${x0}" y="${cy + hG + 66}">${esc(threadTxt(q))}${q.sub.thread === 'partial' ? ' · 반나사' : q.system === 'metric' ? ' · 온나사' : ''}</text>`;
   return s;
 }
@@ -182,7 +182,7 @@ function dwStud(g, q) {
   if (nuts) {
     const es = Math.min(SV.er / (hd.G / 2), sc * 1.2), R = hd.G / 2 * es, ex2 = SV.ex + 20;
     s += `<polygon class="bd-ol" points="${hexPts(ex2, cy, R)}"/><circle class="bd-hid" cx="${ex2}" cy="${cy}" r="${(d / 2 * es).toFixed(1)}"/>`;
-    s += `<text class="bd-n" x="${ex2}" y="${cy + R + 26}" text-anchor="middle">헤비너트 2면폭${inch ? (hd.src ? ' ' + hd.Fl + '"' : ': 규격서 확인 중') : ' ' + hd.F}</text>`;
+    s += `<text class="bd-n" x="${ex2}" y="${cy + R + 26}" text-anchor="middle">헤비너트 2면폭${inch ? (hd.src ? ' ' + hd.Fl + '"' : ': 견적 때 확인') : ' ' + hd.F}</text>`;
   }
   s += `<text class="bd-n" x="${x0}" y="${cy + (nuts ? hd.G * sc / 2 : hh) + 64}">${esc(threadTxt(q))}${q.sub.cont ? ' · 전산 스터드' : q.sub.tapEnd ? ' · 탭엔드 스터드' : ''}${nuts ? ` · 헤비너트 ${nuts}개` : ''}</text>`;
   return s;
