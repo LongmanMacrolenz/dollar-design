@@ -104,7 +104,7 @@ function bomKeepOrig(m) {
     tierCode: 'NO_SOURCE', ev: [...(m.ev || []), { rule: 'K-EQ', why: 'item' }], keptOrig: true };
 }
 /* 가격 스위치 (IA 명세 7.1 '가격 표시 규칙'): 공급처 단가를 확인한 품목(PRICE_ON)만 가격을 보인다.
-   그 밖의 카탈로그 줄은 상태(규격품)는 그대로 두고 단가·금액·수량 단가 안내·포장 금액을 지우고 '단가 확인 중'으로 둔다.
+   그 밖의 카탈로그 줄은 상태(규격품)는 그대로 두고 단가·금액·수량 단가 안내·포장 금액을 지우고 '단가 견적 회신'으로 둔다.
    견적 줄의 대안 품목 참고가도 같은 규칙. 엔진 결과(window.__bomTest)는 바꾸지 않는다 (화면 계산에서만). */
 const bomPxPn = pn => { const p = pn && parsePn(pn); return !!p && PRICE_ON(p.f.id); };
 const bomNoWon = s => String(s || '').replace(/\s*[·,]?\s*(?:합계\s*)?₩[\d,]+(?:\/[A-Z가-힣]+)?(?:으로)?/g, '').replace(/\s{2,}/g, ' ').trim();
@@ -285,7 +285,7 @@ function bomSearchMore(raw, res) {
     const { q, m } = bomLine({ i: 0, no: null, pn: null, text: raw, qty: null, unit: null, src: raw, filled: null });
     const p = m.status === 'catalog' && m.pn ? parsePn(m.pn) : null;
     if (!p || res.some(r => r.go === 'm-' + p.f.id)) return;
-    const s = `${p.f.short} ${q.system === 'inch' ? inLab(q.size.label) : q.size.label}${m.L ? ' × ' + (p.f.inch ? `${inFrac(m.L / 1000)}"` : m.L) : ''} · ${PRICE_ON(p.f.id) ? `${PRICE_LAB()} ${won(m.price)}/EA` : '견적 · 단가 확인 중'}`;
+    const s = `${p.f.short} ${q.system === 'inch' ? inLab(q.size.label) : q.size.label}${m.L ? ' × ' + (p.f.inch ? `${inFrac(m.L / 1000)}"` : m.L) : ''} · ${PRICE_ON(p.f.id) ? `${PRICE_LAB()} ${won(m.price)}/EA` : '견적 · 단가 견적 회신'}`;
     res.unshift(METRIC.includes(p.f) ? { t: m.pn, s, go: 'm-' + p.f.id, preset: m.pn, g: '형번' } : { t: m.pn, s: s + ' → 견적함에 1포장 담기 (7장)', go: 'cart', bomPn: m.pn, g: '형번' });
   } catch (e) { /* 검색은 엔진 오류로 멈추지 않는다 */ }
 }

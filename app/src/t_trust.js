@@ -153,19 +153,19 @@ const CAD_TRUST_COPY = {
   },
   // 서류 한 줄 (품목 장 서류 칸·데이터시트·견적서 서류 계획). {doc} = MTR(EN 10204 3.1) 또는 MTR(제조사 시험성적서)
   mtr: {
-    unconfirmed: { ko: '제조사 MTR(EN 10204 3.1) 제공 여부: 공급처 확인 중 — 견적 시 회신', en: 'Manufacturer\'s MTR (EN 10204 3.1): availability being confirmed with the supplier — advised with the quotation' },
+    unconfirmed: { ko: '제조사 MTR(EN 10204 3.1) 제공 여부: 견적 시 회신', en: 'Manufacturer\'s MTR (EN 10204 3.1): availability being confirmed with the supplier — advised with the quotation' },
     'on-request': { ko: '제조사 {doc}: 주문 시 요청하면 제공 — 비용·납기는 견적서에 표기', en: 'Manufacturer\'s {docEn}: supplied when requested with the order — cost and lead time shown in the quotation' },
     confirmed: { ko: '제조사 MTR 원본(수정 없이) 전달 · 히트번호 추적', en: 'Manufacturer\'s original MTR forwarded unaltered · heat-number traceability' },
     confirmedCopy: { ko: '제조사 MTR 사본(수정 없이) 전달 · 히트번호 추적 · 원본은 요청 시 확인', en: 'Copy of the manufacturer\'s MTR forwarded unaltered · heat-number traceability · original available on request' },
   },
   doc: { '3.1': { ko: 'MTR(EN 10204 3.1)', en: 'MTR (EN 10204 3.1)' }, cmtr: { ko: 'MTR(제조사 시험성적서)', en: 'MTR (manufacturer\'s certified test report)' } },
   // 문자 태그 (배지 아님). .tag.wait = 점선, .tag.doc = 파란 펜
-  tag: { unconfirmed: ['wait', 'MTR 확인 중'], 'on-request': ['doc', 'MTR 요청 시'], confirmed: ['doc', 'MTR 3.1'], confirmedCmtr: ['doc', 'MTR'], coc: ['doc', 'CoC'] },
+  tag: { unconfirmed: ['wait', 'MTR 견적 시'], 'on-request': ['doc', 'MTR 요청 시'], confirmed: ['doc', 'MTR 3.1'], confirmedCmtr: ['doc', 'MTR'], coc: ['doc', 'CoC'] },
   // 추가 근거 줄: 상태가 확인 중이 아닐 때만 보인다 (확인 중이면 MTR 줄이 이미 '확인 중')
   extra: {
-    hard100: { ok: { ko: '전수 경도시험 기록(제조사) 함께 전달', en: '100% hardness test records (manufacturer) included' }, wait: { ko: '전수 경도시험 기록 제공 여부: 공급처 확인 중', en: '100% hardness test records: being confirmed with the supplier' } },
-    impact: { ok: { ko: '샤르피 충격시험 결과는 제조사 MTR에 기재', en: 'Charpy impact results stated in the manufacturer\'s MTR' }, wait: { ko: '충격시험 결과의 MTR 기재 여부: 공급처 확인 중', en: 'Impact results on the MTR: being confirmed with the supplier' } },
-    rotcap: { ok: { ko: '아연도금 세트 회전능력 시험 결과 함께 전달', en: 'Rotational capacity test results (galvanized sets) included' }, wait: { ko: '아연도금 세트 회전능력 시험 결과 제공 여부: 공급처 확인 중', en: 'Rotational capacity test results (galvanized sets): being confirmed with the supplier' } },
+    hard100: { ok: { ko: '전수 경도시험 기록(제조사) 함께 전달', en: '100% hardness test records (manufacturer) included' }, wait: { ko: '전수 경도시험 기록 제공 여부: 견적 시 회신', en: '100% hardness test records: being confirmed with the supplier' } },
+    impact: { ok: { ko: '샤르피 충격시험 결과는 제조사 MTR에 기재', en: 'Charpy impact results stated in the manufacturer\'s MTR' }, wait: { ko: '충격시험 결과의 MTR 기재 여부: 견적 시 회신', en: 'Impact results on the MTR: being confirmed with the supplier' } },
+    rotcap: { ok: { ko: '아연도금 세트 회전능력 시험 결과 함께 전달', en: 'Rotational capacity test results (galvanized sets) included' }, wait: { ko: '아연도금 세트 회전능력 시험 결과 제공 여부: 견적 시 회신', en: 'Rotational capacity test results (galvanized sets): being confirmed with the supplier' } },
   },
   // 히트번호를 대조하는 곳 (confirmed 근거 ev.trace)
   trace: { product: { ko: '제품 마킹·포장 라벨', en: 'product marking and package labels' }, label: { ko: '포장 라벨', en: 'package labels' } },
@@ -182,18 +182,18 @@ const CAD_TRUST_COPY = {
     confirmed: '플랜트 볼트 {names}: 제조사 MTR 원본(수정 없이) 전달 · 히트번호 추적',
     confirmedCopy: '플랜트 볼트 {names}: 제조사 MTR 사본(수정 없이) 전달 · 히트번호 추적 · 원본은 요청 시 확인',
     onRequest: '{names}: 제조사 MTR(EN 10204 3.1) 주문 시 요청하면 제공 — 비용·납기는 견적서에 표기',
-    rest: '그 밖의 플랜트 볼트: 제조사 MTR 제공 여부 공급처 확인 중 — 견적 시 회신',
+    rest: '그 밖의 플랜트 볼트: 제조사 MTR 제공 여부 견적 시 회신',
   },
   // 홈 G 구역 '합니다' 4번 (상태와 무관한 방침)
   rule: '제조사 MTR(EN 10204 3.1)은 받은 경우 수정 없이 그대로 전달하고, 히트번호를 제품·라벨과 대조합니다. 품목별 제공 여부는 견적 때 알려 드립니다. 저희가 발행하는 문서는 시험값 없는 CoC(ISO 16228 F2.1 형식)입니다.',
   // 3장 머리 (.shd 아래 p.small)
   inchHead: {
-    none: '서류 · 볼트노트 CoC(ISO 16228 F2.1 형식) 기본 · 제조사 MTR(EN 10204 3.1) 제공 여부는 품목별로 공급처 확인 중 — 견적 시 회신',
+    none: '서류 · 볼트노트 CoC(ISO 16228 F2.1 형식) 기본 · 제조사 MTR(EN 10204 3.1) 제공 여부는 품목별로 견적 시 회신',
     lead: '서류 · 볼트노트 CoC(ISO 16228 F2.1 형식) 기본',
     confirmed: '제조사 MTR 원본 전달: {names}',
     confirmedCopy: '제조사 MTR 사본 전달 (원본은 요청 시 확인): {names}',
     onRequest: '요청 시 제공: {names}',
-    rest: '그 밖의 품목: 공급처 확인 중 — 견적 시 회신',
+    rest: '그 밖의 품목: 견적 시 회신',
   },
   // 3-n장 서류 선택 (DOC_OPT 값 '제조사 3.1 사본'의 표시 문구와 도움말). 값은 그대로 둔다 (사양 문자열·C&D 파서 호환)
   docOpt: { unconfirmed: '제조사 MTR (3.1) 요청 — 제공 여부 회신', 'on-request': '제조사 MTR (3.1) 요청 — 비용·납기 견적서 표기', confirmed: '제조사 MTR (3.1) 원본 전달', confirmedCopy: '제조사 MTR (3.1) 사본 전달' },
@@ -210,12 +210,12 @@ const CAD_TRUST_COPY = {
     note: {
       confirmed: '원본', confirmedCopy: '사본 · 원본은 요청 시 확인',
       'on-request': '요청분 · 비용·납기 견적서 표기',
-      unconfirmed: '공급처 확인 중 — 회신 때 확정',
-      optUnconfirmed: '제공 여부 공급처 확인 중',
+      unconfirmed: '견적 회신 때 확정',
+      optUnconfirmed: '제공 여부 견적 시 회신',
       opt: '요청 시',
     },
-    tbdHead: { ko: '확인 중', en: 'TBC' },
-    counter: { incl: '제조사 MTR 포함', tbd: '제조사 MTR 확인 중' },
+    tbdHead: { ko: '견적 시 회신', en: 'TBC' },
+    counter: { incl: '제조사 MTR 포함', tbd: '제조사 MTR 견적 시 회신' },
   },
   // 엔진 상태 문구 (e7_status 106행: 고객이 CERT·PMI를 적었을 때)
   status: {
@@ -245,9 +245,9 @@ const CAD_TRUST_COPY = {
     mtr: ['제조사 MTR', 'EN 10204 3.1'],
     third: ['EN 10204 3.2 · KOLAS 시험', '검사기관 입회(3.2) · 외부 공인시험소(KOLAS) · 비용·납기 별도 · 출고 뒤 소급 불가', '요청 시 협의'],
     pmi: ['PMI (XRF)', '외부 시험기관 의뢰 · 휴대용 XRF는 탄소를 측정하지 못함', '요청 시'],
-    decl: ['RoHS·REACH·원산지', '공급처 확인 후 견적서에 기재', '확인 후 기재'],
+    decl: ['RoHS·REACH·원산지', '요청 시 견적서에 기재', '요청 시 기재'],
     foot: '볼트노트는 EN 10204 3.1을 직접 발행하지 않습니다. 서류 상태 기준일 {date} — 최신 상태는 견적서로 확인하세요.',
-    state: { unconfirmed: '확인 중', 'on-request': '요청 시', confirmed: '원본 전달', confirmedCopy: '사본 전달' },
+    state: { unconfirmed: '견적 시 회신', 'on-request': '요청 시', confirmed: '원본 전달', confirmedCopy: '사본 전달' },
   },
 };
 // 규격이 요구하는 시험 (서류가 아님). base INCH[].docs에 섞여 있던 규격 요구만 뽑았다. 서류 제공 여부는 MTR 상태가 따로 말한다
@@ -269,7 +269,7 @@ const CAD_TRUST_TRACE = {
     ['제강사 밀시트와 제조사 MTR', '제강사 밀시트는 소재(봉강)의 성분·성질입니다. 볼트를 고를 때 확인할 문서는 볼트 제조사가 히트 성분에 완성품 시험 결과를 더해 발행한 MTR(EN 10204 3.1)입니다.'],
     ['마킹 Marking', 'ASTM 볼팅의 규격 마킹은 등급 기호(B7·2H 등)와 제조사 식별 기호입니다. 제품마다 히트번호를 각인하는 것은 규격 요구가 아니어서, 보통은 포장 라벨과 포장 명세서로 히트를 이어 갑니다. 개별 각인이 필요하면 주문 때 알려 주세요. 제조사 추가 공정이라 가능 여부를 회신합니다.'],
     ['이어지는 번호', 'MTR의 히트번호 = 포장 라벨의 히트·로트번호 = 볼트노트 CoC에 적은 번호. 서류가 붙는 품목은 한 상자에 한 히트만 담습니다.'],
-    ['받으시는 것', '① 볼트노트 CoC(ISO 16228 F2.1 형식): 주문 규격·수량·히트/로트 번호·첨부 서류 목록, 시험값 없음 — 항상. ② 제조사 MTR(EN 10204 3.1): 품목별 상태(확인 중 · 요청 시 · 원본 전달)에 따라. ③ 포장 라벨: 규격·등급·호칭·수량·히트/로트 번호. ④ 요청 시: KOLAS 공인시험성적서(외부 시험소, 시료 기준), EN 10204 3.2(검사기관 입회), 도금·코팅 성적서.'],
+    ['받으시는 것', '① 볼트노트 CoC(ISO 16228 F2.1 형식): 주문 규격·수량·히트/로트 번호·첨부 서류 목록, 시험값 없음 — 항상. ② 제조사 MTR(EN 10204 3.1): 품목별 상태(견적 시 회신 · 요청 시 · 원본 전달)에 따라. ③ 포장 라벨: 규격·등급·호칭·수량·히트/로트 번호. ④ 요청 시: KOLAS 공인시험성적서(외부 시험소, 시료 기준), EN 10204 3.2(검사기관 입회), 도금·코팅 성적서.'],
     ['받으신 뒤', 'ISO 16228은 원래 포장을 연 뒤의 추적성을 구매자가 이어 가도록 합니다. 상자를 나눠 쓰실 때는 라벨의 히트·로트번호를 함께 옮겨 적어 주세요.'],
     ['하지 않는 일', '3.1을 직접 발행하지 않습니다. 받은 MTR의 숫자·회사명을 고치거나 가리지 않고, 다른 로트의 MTR을 돌려쓰지 않으며, 출고 뒤에 서류를 새로 만들지 않습니다.'],
   ],
@@ -482,7 +482,7 @@ function cadTrustCdText(id, x) {
         'A320 low-temperature bolting requires Charpy impact testing (default L7/L43 −101 °C, L7M −73 °C; L7 average ≥ 27 J (20 ft-lbf); published technical data). Whether the manufacturer\'s 3.1 with impact results is available will be advised after supplier confirmation.'],
     },
     'Q-VDRL': {
-      all: ['귀사 서류 요구 목록(VDRL/SDDR)에 대해: 제공 = CoC(F2.1), 포장 명세서, 유통 단계 검사 계획서, 서류 묶음(편철). 제조사 3.1·코팅 성적서 사본 = 줄별 서류 계획대로(공급처 확인 중인 줄은 회신 때 확정). 제공 불가 = 볼트노트 명의 제조 공정 ITP·열처리 절차서(제조사 문서로만 가능). 제출 일정은 발주 후 협의합니다.',
+      all: ['귀사 서류 요구 목록(VDRL/SDDR)에 대해: 제공 = CoC(F2.1), 포장 명세서, 유통 단계 검사 계획서, 서류 묶음(편철). 제조사 3.1·코팅 성적서 사본 = 줄별 서류 계획대로(견적 회신 때 줄별 확정). 제공 불가 = 볼트노트 명의 제조 공정 ITP·열처리 절차서(제조사 문서로만 가능). 제출 일정은 발주 후 협의합니다.',
         'Against your VDRL/SDDR: provided = CoC (F2.1), packing list, distribution-stage inspection plan, compiled dossier. Manufacturer\'s 3.1 and coating certificate copies = per the line document plan (lines still being confirmed with suppliers are settled in our reply). Not provided = manufacturing ITP or heat-treatment procedures in BoltNote\'s name (manufacturer documents only). Schedule to be agreed after PO.'],
     },
   }[id];
@@ -511,7 +511,7 @@ function cadTrustPatchCd(rules, docs, gcT) {
       return t.state === 'unconfirmed' ? { ko: '제조사 MTR(EN 10204 3.1) — 공급처 확인 후 회신', en: 'Manufacturer\'s MTR (EN 10204 3.1) — to be confirmed with the supplier' }
         : { ko: CAD_TRUST_COPY.plan.label.ko, en: CAD_TRUST_COPY.plan.label.en };
     },
-    imp: (p, x) => (cadTrustCdText('Q-31-FWD', x).state === 'unconfirmed' ? { kind: 'tbd', docs: { ko: '제조사 MTR 확인 중', en: 'Mfr. MTR TBC' } } : { kind: 'none', docs: { ko: '제조사 MTR 포함', en: 'Mfr. MTR incl.' } }),
+    imp: (p, x) => (cadTrustCdText('Q-31-FWD', x).state === 'unconfirmed' ? { kind: 'tbd', docs: { ko: '제조사 MTR 견적 시 회신', en: 'Mfr. MTR TBC' } } : { kind: 'none', docs: { ko: '제조사 MTR 포함', en: 'Mfr. MTR incl.' } }),
   });
   set('Q-31-LOT', { g: (p, x) => 'lot-' + cadTrustCdText('Q-31-LOT', x).key });
   set('Q-31-SELF', {
@@ -526,7 +526,7 @@ function cadTrustPatchCd(rules, docs, gcT) {
   });
   set('Q-IMPACT', {
     g: (p, x) => 'impact-' + cadTrustCdText('Q-IMPACT', x).key,
-    imp: (p, x) => ({ kind: 'tbd', docs: cadTrustCdText('Q-IMPACT', x).key === 'known' ? { ko: '충격시험 결과 (제조사 3.1)', en: 'Impact results (mfr. 3.1)' } : { ko: '충격시험 결과 (공급처 확인 중)', en: 'Impact results (TBC with supplier)' } }),
+    imp: (p, x) => ({ kind: 'tbd', docs: cadTrustCdText('Q-IMPACT', x).key === 'known' ? { ko: '충격시험 결과 (제조사 3.1)', en: 'Impact results (mfr. 3.1)' } : { ko: '충격시험 결과 (견적 시 회신)', en: 'Impact results (TBC with supplier)' } }),
   });
   set('Q-VDRL');
   if (docs && docs.MTC31_FWD) Object.assign(docs.MTC31_FWD, CAD_TRUST_COPY.plan.label);
@@ -547,7 +547,7 @@ function cadTrustDsDocs(ctx) {
   const s = cadMtrState(ctx), D = CAD_TRUST_COPY.ds, rows = [];
   rows.push({ k: 'coc', name: D.coc[0], std: D.coc[1], state: D.coc[2], text: '' });
   rows.push({ k: 'mtr', name: D.mtr[0], std: s.cert === 'cmtr' ? '제조사 시험성적서' : D.mtr[1], state: D.state[cadTrustKey(s)], text: cadTrustLine(s), tag: cadTrustTag(s) });
-  cadTrustExtraLines(s).forEach(x => rows.push({ k: x.key, name: '', std: '', state: x.ok ? '포함' : '확인 중', text: x.text }));
+  cadTrustExtraLines(s).forEach(x => rows.push({ k: x.key, name: '', std: '', state: x.ok ? '포함' : '견적 시 회신', text: x.text }));
   rows.push({ k: 'third', name: D.third[0], std: D.third[1], state: D.third[2], text: '' });
   if (cadPmiOn(s.group)) rows.push({ k: 'pmi', name: D.pmi[0], std: D.pmi[1], state: D.pmi[2], text: '' });
   rows.push({ k: 'decl', name: D.decl[0], std: D.decl[1], state: D.decl[2], text: '' });

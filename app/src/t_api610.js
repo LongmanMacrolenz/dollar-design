@@ -329,8 +329,8 @@
     const own = M.known ? (M.row.C.notes || []).map(n => `${M.cls} · ${edKo(st.ed)}: ${n}`) : [];
     const gen = [...NOTES];
     const E = st.ed ? API610.editions[st.ed] : null, rules = E && (E.rules || []).filter(r => r.ref && r.ref !== '—');
-    const right = !st.ed ? '<p class="small muted">판별 조항 요약은 공개 출처로 확인 중이라 싣지 않습니다.</p>'
-      : !rules || !rules.length ? `<p class="small muted">${edKo(st.ed)} 조항 요약은 공개 출처로 확인 중이라 싣지 않습니다.</p>`
+    const right = !st.ed ? '<p class="small muted">판별 조항 요약은 이 화면에 싣지 않습니다.</p>'
+      : !rules || !rules.length ? `<p class="small muted">${edKo(st.ed)} 조항 요약은 이 화면에 싣지 않습니다.</p>`
       : `<details class="acc first a6-rl"${st.rules ? ' open' : ''}><summary><span>조항 ${rules.length}건 펼쳐 보기 <small>나사 · 최소 지름 · 각인 · 사워 · 저온 · 성적서</small></span></summary>
         <dl class="kv a6-rules">${rules.map(r => `<dt>${esc(r.ref)}</dt><dd>${esc(r.rule)}</dd>`).join('')}</dl><p class="small muted a6-rc">'번호 추정'은 문단 순서로 짐작한 조항 번호입니다. 문장은 원문을 옮긴 것이 아니라 요지를 정리한 것입니다.</p></details>`;
     return `<div class="cols c-7-5 a6-bot"><div class="stack"><h3 class="nl-h">주기 <small>이 표를 쓸 때 지킬 것</small></h3><ol class="nl">${[...own, ...gen].map(n => `<li>${esc(n)}</li>`).join('')}</ol></div>

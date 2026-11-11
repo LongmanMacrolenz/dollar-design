@@ -17,12 +17,11 @@ const qdSpecOf = q => `${threadTxt(q)}${q.lengthLabel ? ' × ' + q.lengthLabel.r
 // 문서 앞 공통: 워터마크(자동 견적)와 인쇄 바닥 줄(문서 번호 · Rev)
 const qdWm = d => d.offerType !== 'firm' ? `<div class="qd-wm" aria-hidden="true"><span>${esc(d.watermark?.ko || '자동 견적 · 운영자 검토 전')}</span></div><p class="qd-stamp"><b>${esc(d.watermark?.ko || '자동 견적 · 운영자 검토 전')}</b> ${esc(d.watermark?.en || 'Indicative – not reviewed')}</p>` : '';
 const qdSupplier = (firm, cls = '') => `<table class="qd-sup ${cls}"><colgroup><col class="k0"><col class="k1"><col><col class="k1"><col></colgroup><tbody>
-  <tr><th rowspan="${SHOP.addr ? 6 : 5}" class="qd-vl" scope="rowgroup"><span aria-hidden="true">공<br>급<br>자</span><span class="sr">공급자</span></th><th scope="row">등록번호</th><td colspan="3" class="mono">${qdBiz()}</td></tr>
+  <tr><th rowspan="${SHOP.addr ? 5 : 4}" class="qd-vl" scope="rowgroup"><span aria-hidden="true">공<br>급<br>자</span><span class="sr">공급자</span></th><th scope="row">등록번호</th><td colspan="3" class="mono">${qdBiz()}</td></tr>
   <tr><th scope="row">상호</th><td>볼트노트</td><th scope="row">성명</th><td class="qd-sign">${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} ${firm ? '<span class="qd-seal" role="img" aria-label="직인 자리">(인)</span>' : '<span class="faint">(서명 없음 · 자동 견적)</span>'}</td></tr>
   ${SHOP.addr ? `<tr><th scope="row">사업장 주소</th><td colspan="3">${esc(SHOP.addr)}</td></tr>` : ''}
-  <tr><th scope="row">업태</th><td>${qdPh('도매 및 소매업')}</td><th scope="row">종목</th><td>${qdPh('볼트·너트 등 체결부품')}</td></tr>
   <tr><th scope="row">${rfqOk('fax') ? '전화·팩스' : '전화'}</th><td colspan="3" class="mono">${rfqC('tel')}${rfqOk('fax') ? ' · ' + rfqC('fax') : ''}</td></tr>
-  <tr><th scope="row">전자우편</th><td class="mono">${rfqC('rfq')}</td><th scope="row">통신판매업</th><td>${qdPh('제0000-지역-0000호')}</td></tr></tbody></table>`;
+  <tr><th scope="row">전자우편</th><td colspan="3" class="mono">${rfqC('rfq')}</td></tr></tbody></table>`;
 
 /* ── 1. 견적서 (A4 세로) ── */
 // 견적서·도면 묶음 품명 칸: "<한국어> / <영문 공식명>" (오너 결정 2 · 언어 전환과 무관하게 늘 둘 다)
@@ -66,7 +65,7 @@ function qdQuoteHtml(c, unp) {
     '도면은 표준 치수표 값으로 그린 참고 도면(척도 없음)이며, 납품 검사 기준은 각 규격 원문입니다.',
     firm ? '' : '이 견적서는 자동 견적입니다. 운영자 검토 전이며, 준수 선언과 직인은 정식 견적에만 넣습니다.',
   ].filter(Boolean);
-  const att = [`C&amp;D 시트 ${esc(d.header.sheetNo)} Rev ${esc(d.rev)}`, `준수 요약 ${esc(qno)}-CS`, `공급 불가 목록 ${esc(qno)}-NA (${d.notAvailable.lines.length}건)`, `도면 묶음 ${esc(qno)}-D (${nDw}장)`, `사업자등록증 사본 ${qdPh('등록 후 첨부')}`, `사업자 명의 통장 사본 ${qdPh('등록 후 첨부')}`];
+  const att = [`C&amp;D 시트 ${esc(d.header.sheetNo)} Rev ${esc(d.rev)}`, `준수 요약 ${esc(qno)}-CS`, `공급 불가 목록 ${esc(qno)}-NA (${d.notAvailable.lines.length}건)`, `도면 묶음 ${esc(qno)}-D (${nDw}장)`, '사업자등록증 사본 · 사업자 명의 통장 사본 (요청 시 메일로 드립니다)'];
   return `<article class="qd-doc qd-pg-quote qd-p" id="qd-quote" aria-labelledby="qd-h">${qdWm(d)}
   <header class="qd-hd"><dl class="qd-meta"><dt>견적번호</dt><dd class="mono">${esc(qno)} Rev ${esc(d.rev)}</dd><dt>견적일자</dt><dd>${today ? qYmd(today) : ''}</dd><dt>구분</dt><dd>${firm ? `정식 견적 · 검토 ${esc(d.header.approvedBy || '')}` : '자동 견적 · 운영자 검토 전'}</dd></dl>
     <h2 id="qd-h" class="qd-title">견 적 서<span>QUOTATION${unp ? ' · UNPRICED' : ''}</span></h2></header>
@@ -84,12 +83,12 @@ function qdQuoteHtml(c, unp) {
   ${PRICE_ANY() && t.reference && t.reference.supplyMax > t.reference.supplyMin ? `<p class="qd-ref">참고 총액 (확정 + 회신 예정 줄 참고가): ${won(t.reference.supplyMin)} ~ ${won(t.reference.supplyMax)} · VAT 별도${t.reference.noRef ? ` · 참고가 없음 ${t.reference.noRef}줄` : ''} · 합계금액과 한글 금액에는 넣지 않았습니다</p>` : ''}`}
   <section class="qd-sec qd-notes"><h3>특기사항</h3><ol>${notes.map(n => `<li><span>${n}</span></li>`).join('')}</ol></section>
   <section class="qd-sec qd-att"><h3>첨부서류</h3><ol>${att.map(a => `<li><span>${a}</span></li>`).join('')}</ol></section>
-  <dl class="qd-foot"><dt>입금계좌</dt><dd>${qdPh('은행명 · 계좌번호 · 예금주')}</dd><dt>담당자</dt><dd>${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} · ${rfqOk('tel') ? esc(CONTACT.tel) : qdPh('000-0000-0000')}</dd></dl>
+  <dl class="qd-foot"><dt>입금계좌</dt><dd>발주 확인 메일로 안내 (사업자 명의 계좌)</dd><dt>담당자</dt><dd>${SHOP.ownerName ? esc(SHOP.ownerName) : qdPh('대표 이름')} · ${rfqOk('tel') ? esc(CONTACT.tel) : qdPh('000-0000-0000')}</dd></dl>
   ${qdRevTable(d)}
   <p class="qd-line">볼트노트 · 사업자등록번호 ${qdBiz()}${SHOP.addr ? ' · ' + esc(SHOP.addr) : ''}</p>
 </article>`;
 }
-const qdRevTable = d => `<table class="qd-rev"><caption>개정 이력 Revision History</caption><thead><tr><th>Rev</th><th>날짜 Date</th><th>내용 Description</th><th>작성 By</th><th>검토 Chk'd</th></tr></thead><tbody>${d.revision.history.map(h => `<tr><td class="mono">${esc(h.rev)}</td><td class="mono">${esc(h.date || '')}</td><td>${esc(h.desc || '')}</td><td>${h.by ? esc(h.by) : qdPh('작성자')}</td><td>${h.chk ? esc(h.chk) : '—'}</td></tr>`).join('')}</tbody></table>`;
+const qdRevTable = d => `<table class="qd-rev"><caption>개정 이력 Revision History</caption><thead><tr><th>Rev</th><th>날짜 Date</th><th>내용 Description</th><th>작성 By</th><th>검토 Chk'd</th></tr></thead><tbody>${d.revision.history.map(h => `<tr><td class="mono">${esc(h.rev)}</td><td class="mono">${esc(h.date || '')}</td><td>${esc(h.desc || '')}</td><td>${esc(h.by || SHOP.ownerName || '볼트노트')}</td><td>${h.chk ? esc(h.chk) : '—'}</td></tr>`).join('')}</tbody></table>`;
 
 /* ── 2. C&D 시트 (A4 가로, 4장 형식) ── */
 function qdCdHtml(c, unp) {
@@ -98,7 +97,7 @@ function qdCdHtml(c, unp) {
   const cell = (r, i) => { const o = (unp ? r.cellsTech : r.cells)[i]; return [3, 6, 7].includes(i) ? qdBi(o, lang) : esc(lang === 'en' ? o.en : o.ko); };
   const hb = (ko, en, v, cls = '') => `<div class="${cls}"><span class="lab">${ko} ${en}</span><span class="val">${v}</span></div>`;
   const gcT = part !== 'comm' ? d.gc.technical : [], gcC = part !== 'tech' ? d.gc.commercial : [];
-  const gcl = list => list.map(g => `<li><b class="mono">${esc(g.id)}</b> ${g.ph ? qdPh(lang === 'en' ? g.en : g.ko) : qdBi({ ko: g.ko, en: g.en }, lang)}</li>`).join('');
+  const gcl = list => list.map(g => `<li><b class="mono">${esc(g.id)}</b> ${qdBi({ ko: g.ko, en: g.en }, lang)}</li>`).join('');
   const stmt = d.statement;
   return `<article class="qd-doc qd-pg-cd qd-l" id="qd-cd" aria-labelledby="qd-cd-h">${qdWm(d)}
   <header class="qd-hd"><h2 id="qd-cd-h" class="qd-title sm">기술 확인·편차 목록<span>Clarification &amp; Deviation Sheet${part === 'tech' ? ' · Technical' : part === 'comm' ? ' · Commercial' : ''}${unp ? ' · Unpriced' : ''}</span></h2></header>
@@ -106,7 +105,7 @@ function qdCdHtml(c, unp) {
     ${hb('문서 번호', 'Sheet No.', `<span class="mono">${esc(H.sheetNo)}</span>`)}${hb('개정', 'Rev.', esc(H.rev))}${hb('발행일', 'Date', esc(H.date))}${hb('견적번호', 'Quotation No.', `<span class="mono">${esc(H.quoteNo)} Rev ${esc(H.rev)}</span>`, 'e')}
     ${hb('프로젝트', 'Project', esc(H.project))}${hb('발주처', 'Client', esc(H.client))}${hb('고객 RFQ', 'Client RFQ No. / Rev.', `${esc(H.rfqNo)} / ${esc(H.rfqRev)}`)}${hb('대상 BOM', 'BOM Ref.', `${esc(H.bomRef.file)} · ${H.bomRef.rows}줄 · <span class="mono">${esc(H.bomRef.hash)}</span>`, 'e')}
     ${hb('제출 구분', 'Submission', `${esc(unp ? '가격 없는 기술본 / Unpriced' : H.submission.priced)} · ${part === 'tech' ? '기술 C&amp;D / Technical' : part === 'comm' ? '상업 C&amp;D / Commercial' : esc(H.submission.split)}`)}${hb('견적 구분', 'Offer Type', `${esc(H.offerType.ko)} ${esc(H.offerType.en)}`)}${hb('적용 사양', 'Applicable Specs', H.applicableSpecs.length ? esc(H.applicableSpecs.join(' · ')) : '—', 's2 e')}
-    ${hb('공급자', 'Supplier', `볼트노트 · ${qdBiz()}`)}${hb('작성', 'Prepared by', H.preparedBy ? esc(H.preparedBy) : qdPh('작성자'))}${hb('검토', 'Checked by', H.checkedBy ? esc(H.checkedBy) : '—')}${hb('승인', 'Approved by', H.approvedBy ? esc(H.approvedBy) : '—', 'e')}
+    ${hb('공급자', 'Supplier', `볼트노트 · ${qdBiz()}`)}${hb('작성', 'Prepared by', esc(H.preparedBy || SHOP.ownerName || '볼트노트'))}${hb('검토', 'Checked by', H.checkedBy ? esc(H.checkedBy) : '—')}${hb('승인', 'Approved by', H.approvedBy ? esc(H.approvedBy) : '—', 'e')}
     <div class="s4 e lr"><span class="lab">검토 문서 Basis of Offer (Documents Reviewed)</span><span class="val small">${H.basis.map(b => `<span class="nw">${esc(b.doc)}${b.rev && b.rev !== '-' ? ' Rev ' + esc(b.rev) : ''} · ${b.received ? '받음 · 검토함' : '<b class="redp">받지 못함 · 검토 안 함</b>'}</span>`).join(' / ')}</span></div>
   </div>
   <div class="qd-stmt ${stmt.kind}">${qdBi({ ko: stmt.ko, en: stmt.en }, lang)}<p class="qd-stmt-s">${qdBi(stmt.summary, lang)}</p></div>
@@ -115,7 +114,7 @@ function qdCdHtml(c, unp) {
   <section class="qd-sec"><h3>확인·편차 행 <small>${rows.length}행 · 승인이 필요한 순서 D → E → C</small></h3>
   ${rows.length ? `<div class="tblw qd-tw"><table class="tbl mstack qd-cdt"><thead><tr>${d.cols.map((h, i) => `<th class="c${i}">${lang === 'en' ? esc(h.en) : esc(h.ko)}${lang === 'both' ? `<span class="en">${esc(h.en)}</span>` : ''}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr class="t-${r.type}${r.withdrawn ? ' wd' : ''}">${d.cols.map((h, i) => `<td class="c${i}${i === 0 ? ' mono' : ''}${[2, 3, 6, 7].includes(i) ? ' wide' : ''}" data-l="${esc(h.ko)}">${cell(r, i)}${i === 8 ? '<span class="qd-reply" aria-hidden="true">의견</span>' : ''}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : `<p class="small muted">이 범위에 해당하는 행이 없습니다.</p>`}</section>
   <table class="qd-signs"><caption>서명 Signatures</caption><thead><tr><th></th><th>이름 Name</th><th>직위 Title</th><th>서명 Signature</th><th>날짜 Date</th></tr></thead><tbody>
-    <tr><th scope="row">작성 Prepared</th><td>${H.preparedBy ? esc(H.preparedBy) : qdPh('작성자')}</td><td></td><td></td><td></td></tr>
+    <tr><th scope="row">작성 Prepared</th><td>${esc(H.preparedBy || SHOP.ownerName || '볼트노트')}</td><td></td><td></td><td></td></tr>
     <tr><th scope="row">검토 Checked</th><td>${H.checkedBy ? esc(H.checkedBy) : ''}</td><td></td><td></td><td></td></tr>
     <tr><th scope="row">승인 Approved</th><td>${H.approvedBy ? esc(H.approvedBy) : ''}</td><td></td><td>${d.offerType === 'firm' ? '<span class="qd-seal sm" role="img" aria-label="직인 자리">(인)</span>' : ''}</td><td></td></tr>
     <tr><th scope="row">고객 검토 Client Review</th><td></td><td></td><td></td><td></td></tr></tbody></table>
@@ -139,7 +138,7 @@ function qdCompHtml(c) {
   <div class="cols c-6-6 qd-cols"><section class="qd-sec"><h3>서류</h3><dl class="kv small"><dt>제조사 3.1 사본 포함</dt><dd>${C.docs.mtc31}줄</dd><dt>CoC(F2.1)만</dt><dd>${C.docs.cocOnly}줄</dd><dt>KOLAS 옵션 (요청 시, 외부 시험소)</dt><dd>${C.docs.kolasOpt}줄</dd><dt>3.2 옵션 (요청 시, 검사기관)</dt><dd>${C.docs.mtc32Opt}줄</dd></dl></section>
   <section class="qd-sec"><h3>납기</h3><dl class="kv small"><dt>카탈로그 품목 출고</dt><dd>${esc(bomLatestTxt(d))}</dd>${Object.entries(C.lead.tiers).map(([k, n]) => `<dt>${esc(tierLab(k))}</dt><dd>${n}줄</dd>`).join('')}${C.lead.eqReply ? `<dt>엔지니어 견적 회신</dt><dd>${esc(qdDate(C.lead.eqReply) || String(C.lead.eqReply))}</dd>` : ''}</dl></section></div>
   <div class="qd-stmt ${C.statement.kind}">${qdBi({ ko: C.statement.ko, en: C.statement.en })}<p class="qd-stmt-s">${qdBi(C.statement.summary)}</p></div>
-  <table class="qd-signs"><tbody><tr><th scope="row">작성·서명</th><td>${qdPh('작성자')}</td><th scope="row">날짜</th><td>${esc(h.date)}</td></tr></tbody></table>
+  <table class="qd-signs"><tbody><tr><th scope="row">작성·서명</th><td>${esc(SHOP.ownerName || '볼트노트')}</td><th scope="row">날짜</th><td>${esc(h.date)}</td></tr></tbody></table>
   <p class="qd-codes"><span class="lab">줄별 준수 코드</span> ${esc(C.listText)}</p>
 </article>`;
 }

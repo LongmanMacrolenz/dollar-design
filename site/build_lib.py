@@ -182,7 +182,7 @@ def footer(info: dict) -> str:
     r1 = ["<b>볼트노트 · 체결부품 견적·공급</b>", "상호 볼트노트"]
     if info["owner"]: r1.append(f"대표 {e(info['owner'])}")
     if info["bizNo"]: r1.append(f"사업자등록번호 {e(info['bizNo'])}")
-    r1.append(f"통신판매업 {e(info['mailOrderNo'])}" if info["mailOrderNo"] else "통신판매업 신고 전 (검증 운영 중)")
+    if info["mailOrderNo"]: r1.append(f"통신판매업 {e(info['mailOrderNo'])}")
     r2 = []
     if info["tel"]: r2.append(f'전화 <a href="tel:{re.sub(r"[^0-9]", "", info["tel"])}">{e(info["tel"])}</a>' + (f' ({e(info["telHours"])})' if info.get("telHours") else ""))
     if info["rfq"]: r2.append(f'견적 메일 <a href="/#list">{e(info["rfq"])}</a>')

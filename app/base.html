@@ -1423,7 +1423,7 @@ footer.foot { padding-block: 0 48px; }
         <div class="sbox"><input id="q" type="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="sg-list" autocomplete="off" spellcheck="false" placeholder="규격 · 표기 · 각인 (예: 3/4-10 B7)"><button class="sgo" type="button" id="q-go">찾기</button></div>
         <div class="suggest" id="suggest" hidden></div>
       </div>
-      <a class="tb-c stc" id="ia-stc" href="#about" data-go="about"><span class="lab">상태</span><b>검증 운영 중</b><span class="v">참고 견적 →</span></a>
+      <a class="tb-c stc" id="ia-stc" href="#about" data-go="about"><span class="lab">거래</span><b>B2B 견적·공급</b><span class="v">운영 방식 →</span></a>
       <button type="button" class="tb-c bn-open-find" data-bn-find aria-label="제품·규격 통합 검색"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 5 5"/></svg></button>
       <a class="tb-c bn-header-rfq" href="#list" data-go="list">견적 요청 <span aria-hidden="true">↗</span></a>
       <button type="button" class="tb-c ia-menu-b" id="ia-menu-b" aria-expanded="false" aria-controls="ia-menu"><span>메뉴</span><i aria-hidden="true"><b></b><b></b></i></button>
@@ -1454,7 +1454,7 @@ footer.foot { padding-block: 0 48px; }
       </nav>
     </div>
     <div class="foot-g">
-      <div><b>볼트노트 · 체결부품 견적·공급</b><span>상호 볼트노트</span><span>대표 <span class="ph" data-ia="owner">대표 이름</span></span><span>사업자등록번호 <span class="ph mono" data-ia="bizno">000-00-00000</span></span><span data-ia="mailorder">통신판매업 신고 전 (검증 운영 중)</span></div>
+      <div><b>볼트노트 · 체결부품 견적·공급</b><span>상호 볼트노트</span><span>대표 <span class="ph" data-ia="owner">대표 이름</span></span><span>사업자등록번호 <span class="ph mono" data-ia="bizno">000-00-00000</span></span><span data-ia="mailorder">사업자 간 거래(B2B)</span></div>
       <div><span data-ia="addr" hidden>사업장 주소 <span></span></span><span>전화 <span class="ph mono" data-contact="tel">000-0000-0000</span></span><span>견적 메일 <span class="ph mono" data-contact="rfq">견적 메일 주소</span></span><span>카카오톡 <span class="ph" data-contact="kakaoChat">카카오톡 채널</span></span><span>호스팅 Cloudflare, Inc. (미국)</span><span>개인정보 보호책임자 <span class="ph" data-ia="owner">대표 이름</span></span></div>
       <div><span><b>대금</b> <span data-pc="footPay">계좌이체(확인 메일을 받은 뒤) · 카드는 요청하시면 결제 링크를 보내 드립니다</span></span><span><b>증빙</b> <span data-pc="footEvid">전자세금계산서 · 카드 매출전표</span></span><span data-pc-row="footEsc" hidden><b>구매안전서비스</b> <span data-pc="footEsc"></span></span></div>
       <div class="ia-fl"><a href="#privacy" data-go="privacy"><b>개인정보 처리방침</b></a><a href="#terms" data-go="terms">이용약관</a><a href="#about" data-go="about">회사 소개</a><a href="#about" data-go="about" data-ia-fix="1">틀린 곳 알리기</a><span class="sp"></span><span class="ia-th-l" id="ia-th-l">화면</span><span class="themes" role="group" aria-labelledby="ia-th-l"><button type="button" data-theme-set="auto" aria-pressed="false">자동</button><button type="button" data-theme-set="light" aria-pressed="true">밝게</button><button type="button" data-theme-set="dark" aria-pressed="false">어둡게</button></span></div>
@@ -1564,7 +1564,7 @@ const METRIC = [
     std: { KS: 'KS B 1012', ISO: 'ISO 4032', DIN: 'DIN 934', JIS: 'JIS B 1181' },
     sizes: ['M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M14', 'M16', 'M20', 'M22', 'M24'],
     combos: [['N8', 'ZW', 1], ['N8', 'ZB', 1], ['N8', 'HD', 0], ['N10', 'HD', 0], ['N10', 'BO', 0], ['NA2', 'PA', 1], ['NA4', 'PA', 0]],
-    use: '볼트 강도에 맞춰 고릅니다. 8.8 볼트에는 강도 8 이상, 10.9 볼트에는 강도 10 너트를 씁니다. 용융아연도금 너트는 도금 뒤 오버탭(6AZ)해 나사 물림이 줄어듭니다 (ISO 10684). 용융아연도금 8.8 볼트에 짝지을 너트 강도(8 또는 10)는 규격서 확인 중이라 견적 때 확인합니다.', pair: ['hbf', 'pw'] },
+    use: '볼트 강도에 맞춰 고릅니다. 8.8 볼트에는 강도 8 이상, 10.9 볼트에는 강도 10 너트를 씁니다. 용융아연도금 너트는 도금 뒤 오버탭(6AZ)해 나사 물림이 줄어듭니다 (ISO 10684). 용융아연도금 8.8 볼트에 짝지을 너트 강도(8 또는 10)는 견적 때 규격서로 확인합니다.', pair: ['hbf', 'pw'] },
   { id: 'pw', code: 'PW', name: '평와셔', en: 'Plain Washer, Normal Series', kind: 'washer', draw: 'washer',
     std: { KS: 'KS B 1326', ISO: 'ISO 7089', DIN: 'DIN 125', JIS: 'JIS B 1256' },
     sizes: ['M3', 'M4', 'M5', 'M6', 'M8', 'M10', 'M12', 'M14', 'M16', 'M20', 'M22', 'M24'],
@@ -1616,17 +1616,17 @@ const INCH = [
     std: ['ASTM A193 B8 · B8M (Class 1, 2, 2B)', 'ASTM A194 8 · 8M', 'ASME B16.5'],
     sizes: STUD, grades: ['B8 Class 1 (304) / 8', 'B8M Class 1 (316) / 8M', 'B8 Class 2 (304, 가공경화) / 8', 'B8M Class 2 (316, 가공경화) / 8M', 'B8M2 Class 2B (316, 가공경화) / 8M'], finishes: ['무처리 (산세·패시베이션)', 'PTFE 코팅', '갈링 방지 윤활'],
     docs: '제조사 EN 10204 3.1 사본 · PMI는 요청 시 (외부 검사)', lead: '국내 제작',
-    use: '부식성 공정, 화학·식품 플랜트. Class 1은 항복 30 ksi(공개 기술자료 기준)로 낮아, 고압 등급 플랜지에 쓸 수 있는지는 설계 조건으로 확인합니다. Class 2(가공경화)는 지름에 따라 강도가 달라지며, 지름별 값과 적용 지름은 규격서로 확인 중이라 견적 때 확인합니다. 해수에 젖거나 잠기는 곳은 재질을 따로 검토합니다(6Mo·수퍼듀플렉스·니켈합금 등).' },
+    use: '부식성 공정, 화학·식품 플랜트. Class 1은 항복 30 ksi(공개 기술자료 기준)로 낮아, 고압 등급 플랜지에 쓸 수 있는지는 설계 조건으로 확인합니다. Class 2(가공경화)는 지름에 따라 강도가 달라지며, 지름별 값과 적용 지름은 견적 때 규격서로 확인합니다. 해수에 젖거나 잠기는 곳은 재질을 따로 검토합니다(6Mo·수퍼듀플렉스·니켈합금 등).' },
   { id: 'l7', code: 'L7', name: '저온용 스터드 A320 L7 + A194 7L', en: 'Low-Temperature Stud Bolt, A320 L7 / A194 7L', draw: 'stud', stud: true,
     std: ['ASTM A320 L7 · L7M · L43', 'ASTM A194 7 · 7M + 저온 충격시험 보충 요건 (Grade 7은 7L)', 'ASME B16.5'],
     sizes: STUD, grades: ['A320 L7 / A194 7L', 'A320 L7M / A194 7M(저온 충격시험) 또는 2HM — 주문 때 확인 (사워 겸용)', 'A320 L43 / A194 7L'], finishes: ['무도금', 'PTFE 코팅', '아연-니켈 도금'],
     docs: '제조사 EN 10204 3.1 사본 + 샤르피 충격시험 결과 (기본 시험온도 L7·L43 −101 °C, L7M −73 °C, 공개 기술자료 기준)', lead: '국내 제작',
-    use: 'LPG·프로판, 암모니아 냉동, 혹한지 옥외 설비 등 저온 플랜지. 기본 충격시험 온도는 L7 −101 °C입니다(공개 기술자료 기준). LNG(−162 °C)·에틸렌(−104 °C)처럼 더 낮은 온도에는 보통 오스테나이트계 A320 B8·B8M + A194 8·8M을 씁니다. 굵은 지름에서 L7·L7M 성질이 어디까지 적용되는지는 규격서로 확인 중이라 견적 때 확인합니다.' },
+    use: 'LPG·프로판, 암모니아 냉동, 혹한지 옥외 설비 등 저온 플랜지. 기본 충격시험 온도는 L7 −101 °C입니다(공개 기술자료 기준). LNG(−162 °C)·에틸렌(−104 °C)처럼 더 낮은 온도에는 보통 오스테나이트계 A320 B8·B8M + A194 8·8M을 씁니다. 굵은 지름에서 L7·L7M 성질이 어디까지 적용되는지는 견적 때 규격서로 확인합니다.' },
   { id: 'hh', code: 'HH', name: '플랜트용 헤비 육각너트 (단품)', en: 'Heavy Hex Nut (Nut Only)', draw: 'nut', stud: false, nut: true,
     std: ['ASTM A194', 'ASME B18.2.2 Heavy Hex', 'ASME B1.1 (1" 이하 UNC-2B, 1"를 넘으면 보통 8UN-2B)'],
     sizes: STUD, grades: ['2H (B7용)', '2HM (B7M·사워)', '7', '7L (L7·L43용, 충격시험)', '7M (B7M·사워)', '7M + 저온 충격시험 (L7M용)', '16', '8 (304)', '8M (316)'], finishes: ['무도금', 'PTFE 코팅', '용융아연도금 (오버탭)', '아연-니켈 도금'],
     docs: '제조사 EN 10204 3.1 사본 (경도 결과 포함)', lead: '국내 제작',
-    use: '정비 셧다운 때 너트 교체, 해외 사양서의 너트 등급 맞춤. 고온 B16 볼팅의 짝 너트 등급은 사양서로 확인합니다. 옛 사양서에 A194 Grade 4가 적혀 있으면, 현행 A194에 있는지 규격서로 확인 중이라 공급 가능 여부를 먼저 여쭙고, 어려우면 Grade 7 대체를 승인받은 뒤 공급합니다.' },
+    use: '정비 셧다운 때 너트 교체, 해외 사양서의 너트 등급 맞춤. 고온 B16 볼팅의 짝 너트 등급은 사양서로 확인합니다. 옛 사양서에 A194 Grade 4가 적혀 있으면, 현행 A194에 있는지 견적 때 규격서로 확인하고, 공급 가능 여부를 먼저 여쭙고, 어려우면 Grade 7 대체를 승인받은 뒤 공급합니다.' },
   { id: 'a325', code: 'SB', name: '고장력 구조용 볼트 세트 (A325·A490)', en: 'High Strength Structural Bolt Set, A325·A490', draw: 'hex', stud: false,
     std: ['ASTM F3125 (Grade A325 · A490)', 'ASME B18.2.6', 'ASTM A563 DH 너트', 'ASTM F436 와셔'],
     sizes: uncUpTo('1-1/2-6').slice(4), grades: ['F3125 A325 Type 1 + A563 DH + F436', 'F3125 A490 Type 1 + A563 DH + F436', 'F3125 A325 Type 3 (내후성) + A563 DH3 + F436 Type 3'], finishes: ['무도금', '용융아연도금 ASTM F2329 (A325만, DH 너트 오버탭·윤활)', '기계적 아연도금 ASTM B695 Class 55 (A325만)', '아연/알루미늄 플레이크 ASTM F1136 Grade 3 · F3393 (A325·A490)'],
@@ -1663,7 +1663,7 @@ INCH.push({ id: 'a453', code: 'A286', name: '고온 스터드 A453 660 (A-286)',
   std: ['ASTM A453 Grade 660', 'ASTM A962', 'ASME B16.5', 'ASME B18.31.2'],
   sizes: STUD, grades: ['660 Class A / A453 660 너트', '660 Class B / A453 660 너트', '660 Class D / A453 660 너트'], finishes: ['무처리', '갈링 방지 윤활', '은도금 (협의)'],
   docs: '제조사 EN 10204 3.1 사본 · 설계온도별 추가 시험 조건은 견적 때 확인', lead: '견적 문의',
-  use: '오스테나이트 스테인리스 플랜지의 고온 볼팅, 가스터빈·고온 밸브. 석출경화 A-286(UNS S66286) 볼팅입니다. 강도와 설계온도별 시험 조건은 규격서로 확인 중이라 견적 때 확인합니다.' });
+  use: '오스테나이트 스테인리스 플랜지의 고온 볼팅, 가스터빈·고온 밸브. 석출경화 A-286(UNS S66286) 볼팅입니다. 강도와 설계온도별 시험 조건은 견적 때 규격서로 확인합니다.' });
 INCH.push({ id: 'b8lt', code: 'B8LT', name: '극저온 스터드 A320 B8·B8M + 8·8M', en: 'Cryogenic Stud Bolt, A320 B8·B8M / A194 8·8M', draw: 'stud', stud: true,
   std: ['ASTM A320 B8 · B8M (Class 1, 1A, 2)', 'ASTM A194 8 · 8M', 'ASME B16.5'],
   sizes: STUD, grades: ['A320 B8 Class 1 (304) / A194 8', 'A320 B8M Class 1 (316) / A194 8M', 'A320 B8M Class 2 (316, 가공경화) / A194 8M'], finishes: ['무처리', 'PTFE 코팅', '갈링 방지 윤활'],
@@ -1678,12 +1678,12 @@ INCH.push({ id: 'smo', code: '6MO', name: '해수·염화물용 6Mo·수퍼듀�
   std: ['ASTM A193 B8MLCuN (Class 1B, 2)', 'ASTM A194 8MLCuN', '수퍼듀플렉스 S32760 · S32750 (볼팅 규격 협의)'],
   sizes: STUD, grades: ['B8MLCuN Class 1B (6Mo) / 8MLCuN', 'B8MLCuN Class 2 (6Mo, 가공경화) / 8MLCuN', '수퍼듀플렉스 S32760 / 동재질 너트 (협의)'], finishes: ['무처리 (패시베이션)', '갈링 방지 윤활'],
   docs: '제조사 EN 10204 3.1 사본 · PMI (요청 시, 외부 검사) · 수퍼듀플렉스는 페라이트량·부식시험 (협의)', lead: '견적 문의',
-  use: '해수 냉각수, 해양 플랫폼, 담수화 설비처럼 염화물 부식을 따로 검토해야 하는 곳. 6Mo(S31254) 볼팅의 등급별 강도는 규격서로 확인 중이라 견적 때 확인합니다. 음극방식 구역의 고강도 볼트는 사양서의 경도 상한을 확인합니다.' });
+  use: '해수 냉각수, 해양 플랫폼, 담수화 설비처럼 염화물 부식을 따로 검토해야 하는 곳. 6Mo(S31254) 볼팅의 등급별 강도는 견적 때 규격서로 확인합니다. 음극방식 구역의 고강도 볼트는 사양서의 경도 상한을 확인합니다.' });
 INCH.push({ id: 'f468', code: 'NI', name: '니켈합금 볼트·너트 (F468·F467)', en: 'Nickel Alloy Bolt and Nut', draw: 'hex', stud: false,
   std: ['ASTM F468 (볼트·스터드)', 'ASTM F467 (너트)', 'ASME B18.2.1 · B18.2.2', 'ASME B1.1 (2A / 2B)'],
   sizes: uncUpTo('1-1/2-6'), grades: ['Ni 400 (N04400) / F467', 'Ni 500 (N05500) / F467', 'Ni 625 (N06625) / F467', 'Ni C-276 (N10276) / F467'], finishes: ['무처리'],
   docs: '제조사 EN 10204 3.1 사본 · PMI (요청 시, 외부 검사)', lead: '견적 문의',
-  use: 'HF산(불산) 접액부, 해수 펌프·밸브 내부, 염화물 환경. 합금·조건별 강도와 사용 온도 한계는 규격서로 확인 중이라 견적 때 확인합니다.' });
+  use: 'HF산(불산) 접액부, 해수 펌프·밸브 내부, 염화물 환경. 합금·조건별 강도와 사용 온도 한계는 견적 때 규격서로 확인합니다.' });
 INCH.push({ id: 'f837', code: 'SSHC', name: '인치 스테인리스 렌치볼트 (F837)', en: 'Stainless Steel Socket Head Cap Screw', draw: 'scs', stud: false,
   std: ['ASTM F837', 'ASME B18.3', 'ASTM F594 (짝 너트)'],
   sizes: ['#10-24', '#10-32'].concat(uncUpTo('1-1/2-6')), grades: ['Group 1 (304 계열) CW1 (102 ksi)', 'Group 2 (316 계열) CW (80 ksi)', 'Group 2 (316 계열) CW1 (102 ksi)', 'Group 2 (316 계열) AF (풀림, 1-1/2" 이하)', 'Group 5 (410) HT (160 ksi)'], finishes: ['패시베이션 (A380 · A967)', '갈링 방지 윤활'],
@@ -1863,7 +1863,7 @@ const HOLIDAYS = ['2026-10-05' /* 개천절 대체 */, '2026-10-09' /* 한글날
 const ymd = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const isOff = d => d.getDay() === 0 || d.getDay() === 6 || HOLIDAYS.includes(ymd(d));
 
-// 규격 노트. no = 기록 순서 (삼각형). date = 볼트노트가 이 줄을 적은 날 (실제 날짜만). ed = 근거 (공개 범위·무료 공식 문서·공개 기술자료) 또는 '규격서 확인 중'.
+// 규격 노트. no = 기록 순서 (삼각형). date = 볼트노트가 이 줄을 적은 날 (실제 날짜만). ed = 근거 (공개 범위·무료 공식 문서·공개 기술자료) 또는 '견적 때 규격서로 확인'.
 // 문장은 규격 원문을 옮기지 않고 볼트노트 말로 적는다. 2026-10 감사: 무단 사본에서 온 판·조항 표기와 값을 모두 뺐다
 const NOTES = [
   { no: 1, date: '2026-10-01', std: 'SAE J429', ed: '공개 기술자료 기준', zone: 'z-f',
@@ -1878,8 +1878,8 @@ const NOTES = [
   { no: 4, date: '2026-10-01', std: 'ASTM F3125', ed: '2015년 제정', zone: 'z-c',
     txt: 'A325·A490이 F3125 한 규격의 등급으로 통합되었습니다. 옛 사양서에는 A325·A490이 따로 적혀 있습니다.',
     act: '“A325”만 적힌 사양도 F3125 Grade A325로 공급합니다. A490 도금은 노트 18을 따릅니다.' },
-  { no: 5, date: '2026-10-01', std: 'ASTM A320', ed: '규격서 확인 중', zone: 'z-c',
-    txt: '저온용 L7·L7M의 기계적 성질이 굵은 지름에 어디까지 적용되는지는 규격서로 확인 중입니다.',
+  { no: 5, date: '2026-10-01', std: 'ASTM A320', ed: '견적 때 규격서로 확인', zone: 'z-c',
+    txt: '저온용 L7·L7M의 기계적 성질이 굵은 지름에 어디까지 적용되는지는 견적 때 규격서로 확인합니다.',
     act: '굵은 지름의 L7·L7M은 견적 때 확인하고, 해독기에서도 확인 질문을 붙입니다.' },
   { no: 6, date: '2026-10-01', std: 'ASME B16.5', ed: '공개 기술자료 기준 (제조사 차트 3곳)', zone: 'z-c',
     txt: 'ASME B16.5 볼트 표의 스터드 길이는 참고값입니다. 포인트(나사 없는 끝 모따기부)를 길이에 넣는지는 차트마다 달라 주문 때 함께 정합니다. 표에 없는 조합은 B16.5 부록의 볼트 길이 계산법으로 계산합니다.',
@@ -1887,14 +1887,14 @@ const NOTES = [
   { no: 7, date: '2026-10-01', std: 'ASTM A193', ed: '공개 기술자료 기준', zone: 'z-c',
     txt: 'B7 최소 인장강도는 지름에 따라 다릅니다: 2-1/2" 이하 125 ksi, 4" 이하 115 ksi, 7" 이하 100 ksi.',
     act: '큰 지름 B7 견적에는 해당 지름의 강도를 따로 적습니다.' },
-  { no: 8, date: '2026-10-01', std: 'ASTM A194', ed: '규격서 확인 중', zone: 'z-d',
-    txt: '옛 사양서에는 너트 Grade 4가 나옵니다. 현행 A194에 있는지는 규격서로 확인 중입니다.',
+  { no: 8, date: '2026-10-01', std: 'ASTM A194', ed: '견적 때 규격서로 확인', zone: 'z-d',
+    txt: '옛 사양서에는 너트 Grade 4가 나옵니다. 현행 A194에 있는지는 견적 때 규격서로 확인합니다.',
     act: 'Grade 4 지정은 공급 가능 여부를 먼저 확인하고, 어려우면 Grade 7 대체를 승인받은 뒤 공급합니다.' },
   { no: 9, date: '2026-10-01', std: 'ASTM A193 · A320 · A194', ed: '공개 기술자료 기준', zone: 'z-d',
     txt: 'A193·A320 스터드와 A194 너트는 1"를 넘으면 8UN(인치당 8산)을 쓰는 경우가 많습니다. 같은 1-1/4"라도 구조용 UNC(7산)와는 맞지 않으니 산 수까지 확인합니다.',
     act: '1"를 넘는 플랜트 스터드에 UNC가 적혀 있으면 해독기와 견적에서 확인 질문을 드립니다.' },
-  { no: 10, date: '2026-10-01', std: 'ASME B16.5', ed: '규격서 확인 중', zone: 'z-c',
-    txt: 'ASME B16.5는 볼팅을 강도에 따라 구분합니다(고강도·중간 강도 등). 어느 등급이 어느 구분에 드는지와 압력 등급별 사용 제한은 규격서로 확인 중입니다.',
+  { no: 10, date: '2026-10-01', std: 'ASME B16.5', ed: '견적 때 규격서로 확인', zone: 'z-c',
+    txt: 'ASME B16.5는 볼팅을 강도에 따라 구분합니다(고강도·중간 강도 등). 어느 등급이 어느 구분에 드는지와 압력 등급별 사용 제한은 견적 때 규격서로 확인합니다.',
     act: '플랜지 계산은 조합을 막지 않고, 볼트 강도와 플랜지 등급 조합을 설계 조건으로 확인하라는 안내를 붙입니다.' },
   { no: 11, date: '2026-10-01', std: 'ASTM A193 B7M', ed: '공개 기술자료 기준', zone: 'z-f',
     txt: 'B7M은 볼트·스터드를 한 개도 빠짐없이 경도시험하고, 최대 경도는 235 HB입니다(공개 기술자료 기준).',
@@ -1908,10 +1908,10 @@ const NOTES = [
   { no: 14, date: '2026-10-01', std: 'ASTM A320 · A194 저온 충격시험 보충 요건', ed: 'ASTM A320 범위 조항 · 공개 기술자료 기준', zone: 'z-d',
     txt: 'A320 볼팅에 쓰는 너트도 충격 요건을 만족해야 합니다. 저온 충격시험 보충 요건을 거친 Grade 7 너트는 7L로 표시합니다. L7M의 짝 너트는 7M(저온 충격시험) 또는 2HM으로, 주문 때 확인합니다.',
     act: 'L7 스터드에 2H·7 너트가 적힌 사양은 해독기와 견적에서 L 마킹 너트로 확인합니다.' },
-  { no: 15, date: '2026-10-01', std: 'ASTM A320', ed: '규격서 확인 중', zone: 'z-c',
-    txt: '−101 °C보다 낮은 극저온에는 보통 오스테나이트계 A320 B8·B8M을 씁니다. 충격시험 면제 조건과 온도는 규격서로 확인 중입니다.',
+  { no: 15, date: '2026-10-01', std: 'ASTM A320', ed: '견적 때 규격서로 확인', zone: 'z-c',
+    txt: '−101 °C보다 낮은 극저온에는 보통 오스테나이트계 A320 B8·B8M을 씁니다. 충격시험 면제 조건과 온도는 견적 때 규격서로 확인합니다.',
     act: 'LNG(−162 °C)처럼 −101 °C보다 낮은 극저온 플랜지는 L7 대신 A320 B8·B8M(21번)으로 견적합니다.' },
-  { no: 16, date: '2026-10-01', std: 'ASTM A193 · A194', ed: '규격서 확인 중', zone: 'z-c',
+  { no: 16, date: '2026-10-01', std: 'ASTM A193 · A194', ed: '견적 때 규격서로 확인', zone: 'z-c',
     txt: 'A193·A194 볼팅에 코팅을 지정하면 주문서에 코팅 사양을 적습니다. 코팅의 사용 온도 한계는 코팅 사양으로 확인합니다.',
     act: '고온 플랜지에 아연·카드뮴 코팅이 지정되면 견적 전에 사용 온도를 확인합니다.' },
   { no: 17, date: '2026-10-01', std: 'ASTM A563 · F3125', ed: 'RCSC 2025 §2.8', zone: 'z-c',
@@ -1926,11 +1926,11 @@ const NOTES = [
   { no: 20, date: '2026-10-01', std: 'ASTM F1941 · RCSC', ed: 'BSEE 자료(F1941-15 6.4.1) · RCSC 2025 해설', zone: 'z-g',
     txt: 'ASTM F1941(2015판 이후)은 규정 최대 경도 39 HRC 이하이면 베이킹을 의무로 하지 않습니다. RCSC는 39 HRC를 넘는 볼트가 수소취성에 민감하다고 봅니다.',
     act: '고강도 볼트 도금은 베이킹 조건을 견적서에 적습니다.' },
-  { no: 21, date: '2026-10-01', std: 'ASTM A193 Class 2', ed: '규격서 확인 중', zone: 'z-c',
-    txt: 'A193 Class 2(가공경화)는 지름이 커질수록 강도가 낮아집니다. 지름별 값과 적용 지름은 규격서로 확인 중입니다.',
+  { no: 21, date: '2026-10-01', std: 'ASTM A193 Class 2', ed: '견적 때 규격서로 확인', zone: 'z-c',
+    txt: 'A193 Class 2(가공경화)는 지름이 커질수록 강도가 낮아집니다. 지름별 값과 적용 지름은 견적 때 규격서로 확인합니다.',
     act: '굵은 지름 Class 2는 견적 때 확인하고, Class 2B 등 다른 조건이 필요한지 함께 여쭙습니다.' },
-  { no: 22, date: '2026-10-01', std: 'ASTM F738M · F836M', ed: '규격서 확인 중', zone: 'z-d',
-    txt: 'ASTM 미터 스테인리스 규격(F738M·F836M)의 등급 기호는 ISO 3506의 A2·A4와 글자가 같아도 같은 재질이라고 볼 수 없습니다. 기호별 재질 대응은 규격서로 확인 중입니다.',
+  { no: 22, date: '2026-10-01', std: 'ASTM F738M · F836M', ed: '견적 때 규격서로 확인', zone: 'z-d',
+    txt: 'ASTM 미터 스테인리스 규격(F738M·F836M)의 등급 기호는 ISO 3506의 A2·A4와 글자가 같아도 같은 재질이라고 볼 수 없습니다. 기호별 재질 대응은 견적 때 규격서로 확인합니다.',
     act: '“A2”가 ASTM 규격과 함께 적힌 사양은 어느 체계인지 먼저 확인합니다.' },
   { no: 23, date: '2026-10-01', std: 'API 610', ed: '펌프 사양서로 확인', zone: 'z-c',
     txt: '압력 케이싱 볼트의 최소 지름은 펌프 사양서로 확인합니다.',
@@ -1941,13 +1941,13 @@ const NOTES = [
   { no: 25, date: '2026-10-01', std: '펌프 노즐 볼팅', ed: '장비 배치도로 확인', zone: 'z-c',
     txt: '펌프 노즐 플랜지는 배관 플랜지보다 두꺼울 수 있어, 교체용 스터드는 장비 배치도(GA)의 길이를 먼저 확인합니다.',
     act: '펌프 노즐 교체용 스터드는 B16.5 표보다 장비 배치도(GA)의 길이를 먼저 받습니다.' },
-  { no: 26, date: '2026-10-01', std: 'ASTM F1554 앵커볼트', ed: '설치 지침 원문 확인 중', zone: 'z-c',
-    txt: '앵커볼트는 최종 조임 뒤 너트 위로 나사가 남도록 길이를 잡습니다. 기계 설치 지침(API RP 686 등)의 등급·도금·토크 조건은 원문 확인 중이라 사양서로 확인합니다.',
+  { no: 26, date: '2026-10-01', std: 'ASTM F1554 앵커볼트', ed: '설치 지침은 사양서로 확인', zone: 'z-c',
+    txt: '앵커볼트는 최종 조임 뒤 너트 위로 나사가 남도록 길이를 잡습니다. 기계 설치 지침(API RP 686 등)의 등급·도금·토크 조건은 사양서로 확인합니다.',
     act: '앵커볼트 견적에는 도면의 나사 길이와 돌출 길이를 받고, 설치 지침 토크표의 윤활 조건을 확인하라고 안내합니다.' },
   { no: 27, date: '2026-10-01', std: 'ASME B16.5 · B16.20', ed: 'asme.org 공개 범위', zone: 'z-f',
     txt: 'ASME B16.5 플랜지는 볼트 지름과 볼트 구멍이 인치로 정해져 있습니다. 링 조인트·스파이럴운드 같은 금속 개스킷은 ASME B16.20이 다룹니다.',
     act: 'B16.5 인치 플랜지에는 UNC·8UN 인치 스터드를 권하고, 미터 스터드 대체는 권하지 않습니다.' },
-  { no: 28, date: '2026-10-01', std: 'ASTM E140', ed: '규격서 확인 중', zone: 'z-g',
+  { no: 28, date: '2026-10-01', std: 'ASTM E140', ed: '견적 때 규격서로 확인', zone: 'z-g',
     txt: '경도 환산값은 근사값이라 환산값으로 합격·불합격을 가르지 말고, 실제로 잰 스케일과 값을 함께 적습니다. 환산표는 재질 계열마다 달라, 같은 HRB 값도 탄소강과 오스테나이트 스테인리스에서 환산 HB가 다릅니다.',
     act: '성적서 경도는 측정한 스케일 그대로 보고(예: 353 HBW, 38 HRC 측정), B8·B8M은 A193·A194에 적힌 한계값으로 확인합니다.' },
 ];
@@ -1960,7 +1960,7 @@ const FNOTE = {
   hbp: [['나사부 길이 b', 'L ≤ 125는 2d+6, L ≤ 200은 2d+12, 그 이상은 2d+25입니다 (참고값).'], ['전단', '몸통(원통부)이 전단면에 오도록 길이를 고릅니다.'], ['짝 부품', '8.8 볼트에는 강도 8 이상 너트(ISO 4032), 10.9에는 강도 10 너트와 300 HV 와셔를 씁니다.'], ['치수 기준', 'M10·M12·M14·M22는 ISO 2면폭으로 보냅니다 (DIN과 다름).']],
   scs: [['길이', '머리 밑부터 잽니다.'], ['12.9 전기도금', '수소취성 때문에 흑착색이 기본이고, 도금은 베이킹 조건을 협의합니다.', 1], ['카운터보어', '머리 지름 dk를 기준으로 가공합니다.']],
   csk: [['강도', '접시머리는 하중 능력이 낮아 010.9로 표기하며, 10.9 육각볼트와 같은 하중을 기대하지 않습니다.', 1], ['길이', '머리 윗면부터(전장) 잽니다.'], ['접시 각도', '90°']],
-  hn: [['짝', '8.8 볼트에는 강도 8, 10.9 볼트에는 강도 10 너트를 씁니다.'], ['도금', '용융아연도금 너트는 도금 뒤 오버탭(6AZ)합니다 (ISO 10684). 8.8 볼트에 짝지을 너트 강도(8 또는 10)는 규격서 확인 중이라 견적 때 확인합니다.', 1], ['치수', 'ISO 4032 너트는 DIN 934보다 높을 수 있고(ISO 4032 M10: 8.4 mm), M10·M12·M14·M22는 2면폭도 다릅니다.']],
+  hn: [['짝', '8.8 볼트에는 강도 8, 10.9 볼트에는 강도 10 너트를 씁니다.'], ['도금', '용융아연도금 너트는 도금 뒤 오버탭(6AZ)합니다 (ISO 10684). 8.8 볼트에 짝지을 너트 강도(8 또는 10)는 견적 때 규격서로 확인합니다.', 1], ['치수', 'ISO 4032 너트는 DIN 934보다 높을 수 있고(ISO 4032 M10: 8.4 mm), M10·M12·M14·M22는 2면폭도 다릅니다.']],
   pw: [['경도', '10.9 볼트에는 300 HV 와셔를 씁니다.'], ['역할', '좌면 압력을 나누고 표면 손상을 막습니다.']],
   sw: [['풀림 방지', '효과는 제한적입니다. 진동이 큰 곳은 다른 방법을 함께 검토합니다.'], ['도금', '스프링와셔는 경화품이라 전기아연도금 뒤 베이킹으로 수소취성을 관리합니다 (ISO 4042).', 1], ['치수', 'DIN 127 B 기준(공개 기술자료)이며, KS B 1324와 같다고 가정하지 않습니다.']],
   tr: [['판매 단위', '1,000 mm 단위로 판매합니다.'], ['절단', '현장에서 자른 뒤 너트로 나사산을 정리합니다.'], ['강도', '4.8이 기본이고, 8.8은 수배품입니다.']],
@@ -2315,8 +2315,8 @@ function flangeChecks(st, cls, d, fin, th = '') {
   const w = [], g = st[0];
   w.push(['info', '볼트 강도와 플랜지 등급 조합은 설계 조건으로 확인합니다.']);
   if (d > 1) w.push(['info', `1"를 넘는 스터드는 8UN을 많이 씁니다. 주문 때 산 수(${th})를 확인합니다.`]);
-  if (/Class 2\b/.test(g) && d > .75) w.push(['info', 'A193 Class 2(가공경화)는 지름에 따라 강도가 달라집니다. 이 지름의 강도와 적용 범위는 규격서로 확인 중이라 견적 때 확인해 드립니다.']);
-  if (/L7/.test(g) && d > 2.5) w.push(['info', 'A320 L7·L7M의 기계적 성질이 이 지름까지 적용되는지는 규격서로 확인 중입니다. 견적 때 확인해 드립니다.']);
+  if (/Class 2\b/.test(g) && d > .75) w.push(['info', 'A193 Class 2(가공경화)는 지름에 따라 강도가 달라집니다. 이 지름의 강도와 적용 범위는 견적 때 규격서로 확인해 드립니다.']);
+  if (/L7/.test(g) && d > 2.5) w.push(['info', 'A320 L7·L7M의 기계적 성질이 이 지름까지 적용되는지는 견적 때 규격서로 확인합니다. 견적 때 확인해 드립니다.']);
   if (/B16/.test(g)) w.push(['info', 'B16 볼팅의 짝 너트 등급(A194 7 또는 16 등)은 사양서로 확인합니다.']);
   if (/660/.test(g)) w.push(['info', 'A453 660은 설계온도에 따라 추가 시험 조건이 붙을 수 있어 견적 때 확인합니다.']);
   if (/용융/.test(fin)) w.push(['warn', 'A193·A194 볼팅에 코팅을 지정하면 주문서에 코팅 사양을 적습니다. 고온 플랜지라면 사용 온도와 코팅 사양의 온도 한계를 견적 전에 확인합니다. 너트는 오버탭해서 짝지어 보냅니다.']);
@@ -2393,7 +2393,7 @@ function drawing(f, size, L) {
     b += `<path class="cl" d="M${x0 - 16} ${cy}H${r2(end + 16)}"/>`;
     b += dimLine(f.draw === 'csk' ? x0 : sx, cy - hh / 2, end, cy - hh / 2, `L ${L}`, 'top', 24, P);
     b += dimLine(end, cy - dd / 2, end, cy + dd / 2, `${size}×${pitch}`, 'right', 20, P);
-    if (bLen && !['M14', 'M22'].includes(size)) b += dimLine(tStart, cy + dd / 2, end, cy + dd / 2, `b ${bLen}`, 'bottom', 30, P);   // M14·M22 b는 규격서 확인 중 (치수 표기 안 함)
+    if (bLen && !['M14', 'M22'].includes(size)) b += dimLine(tStart, cy + dd / 2, end, cy + dd / 2, `b ${bLen}`, 'bottom', 30, P);   // M14·M22 b는 견적 때 규격서로 확인 (치수 표기 안 함)
     if (isHex) {
       b += dimLine(x0, cy - hh / 2, x0, cy + hh / 2, `s ${DIM.hexS[size]}`, 'left', 22, P);
       b += dimLine(x0, cy + hh / 2, sx, cy + hh / 2, `k ${DIM.hexK[size]}`, 'bottom', 26, P);
@@ -2744,7 +2744,7 @@ const homeA = () => `<div class="za">
       </div>
       <div class="s2"><span class="lab">${STOCK_COPY.shipLab}</span><span class="big" id="tb-ship">&nbsp;</span><span class="sub">${STOCK_COPY.shipSub}</span></div>
       <div class="s2 e m-e"><span class="lab">견적 접수 확인</span><span class="big">4영업시간</span><span class="sub">단가·납기 회신 예정일은 접수 확인 메일로 알려 드립니다</span></div>
-      <div class="s4 e lr chk"><span class="lab">검도 Checked</span><span class="val">${iaOwner()} 대표 <span class="sub">· <span class="ph">기계엔지니어</span> · 모든 주문의 사양을 직접 확인합니다</span></span></div>
+      <div class="s4 e lr chk"><span class="lab">검도 Checked</span><span class="val">${iaOwner()} 대표 <span class="sub">· 기계엔지니어 · 모든 주문의 사양을 직접 확인합니다</span></span></div>
     </div>
     <p class="tb-cap"><span>단위 mm · in</span><span class="proj"><svg viewBox="0 0 46 22" aria-hidden="true"><path d="M2 3 20 7.5v7L2 19z" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="35" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="1.3"/><circle cx="35" cy="11" r="4" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>3각법</span><span>단가 · 공급처 확인 후 회신</span></p>
   </div>
@@ -2805,7 +2805,7 @@ const APPR = [
   ['검토', 'PH', '빠지거나 맞지 않는 항목을 질문 목록으로 회신', '질문 목록 (이메일)'],
   ['견적', 'PH', '원 사양품, 또는 대체 규격과 차이 비교표', '견적서 · 차이 비교표'],
   ['승인', '고객', '서면 승인한 사양으로만 제작·수배', '승인 메일 · 발주서'],
-  ['입고 검사', 'PH', '마킹·치수·나사 게이지·외관 확인, 밀시트 히트번호 대조', '머리 마킹 대조, 가능한 경우 치수 실측·나사 게이지(통과·정지) 표본 확인 <span class="ph">보유 측정구 확인 후 기재</span>, 도금 품목은 도금 성적서·너트 오버탭 확인, 성적서 히트번호 대조 → 입고 검사 기록 · <a href="#tools" data-go="tools" data-tab="cert">성적서 읽는 법 → 5장</a>'],
+  ['입고 검사', 'PH', '마킹·치수·나사 게이지·외관 확인, 밀시트 히트번호 대조', '머리 마킹 대조, 가능한 경우 치수 실측·나사 게이지(통과·정지) 표본 확인, 도금 품목은 도금 성적서·너트 오버탭 확인, 성적서 히트번호 대조 → 입고 검사 기록 · <a href="#tools" data-go="tools" data-tab="cert">성적서 읽는 법 → 5장</a>'],
   ['출고', '—', '라벨에 규격·등급·히트번호, 받은 서류 사본과 CoC 동봉', '출고 라벨 · 서류 사본 · CoC'],
 ];
 const apprHTML = () => `<div class="stack"><h3>검토 절차 · 견적 품목</h3><div class="tblw bare"><table class="appr"><thead><tr><th>단계</th><th>담당</th><th>하는 일</th><th>확인 방법 · 남는 기록</th></tr></thead><tbody>${APPR.map(r => `<tr><td>${r[0]}</td><td>${r[1] === 'PH' ? iaOwner() : r[1]}</td><td>${r[2]}</td><td class="how">${r[3]}</td></tr>`).join('')}</tbody></table></div></div>`;
@@ -2927,8 +2927,8 @@ function decode(src) {
   const g4 = s.match(/A194\s*(GR(?:ADE)?\.?\s*4)\b/id);
   if (g4) { bg.push('A194 Grade 4'); tok(g4.indices[1][0], g4.indices[1][1], '강도·등급', '강도·등급'); }
   if (bg.length) { set('강도·등급', bg.map(G7ML).join(', ')); pre.grade = G7ML(bg[0]); }
-  if (inch && /\bL7M?\b/i.test(s) && dia > 2.5) { rmk('강도·등급', 'info', '굵은 지름에서 A320 L7·L7M 성질이 어디까지 적용되는지는 규격서로 확인 중입니다.'); G.push({ tone: 'info', text: 'L43 등 다른 등급이 필요한지 견적 때 확인합니다.' }); }
-  if (g4) { rmk('강도·등급', 'info', 'A194 Grade 4는 옛 사양서에 나오는 너트 등급입니다. 현행판 수록 여부는 확인 중입니다.'); G.push({ tone: 'info', text: 'Grade 4로 공급할 수 있는지 먼저 확인하고, 어려우면 Grade 7 대체를 승인받아 공급합니다.' }); }
+  if (inch && /\bL7M?\b/i.test(s) && dia > 2.5) { rmk('강도·등급', 'info', '굵은 지름에서 A320 L7·L7M 성질이 어디까지 적용되는지는 견적 때 규격서로 확인합니다.'); G.push({ tone: 'info', text: 'L43 등 다른 등급이 필요한지 견적 때 확인합니다.' }); }
+  if (g4) { rmk('강도·등급', 'info', 'A194 Grade 4는 옛 사양서에 나오는 너트 등급입니다. 현행판 수록 여부는 견적 때 규격서로 확인합니다.'); G.push({ tone: 'info', text: 'Grade 4로 공급할 수 있는지 먼저 확인하고, 어려우면 Grade 7 대체를 승인받아 공급합니다.' }); }
   // 6 짝 너트·와셔
   if (!isNut && !isWasher) {
     const mates = [];
@@ -3121,11 +3121,11 @@ V.metric = () => sheet(
 V.after.metric = () => { renderBuilder($('bld'), state.bsel); bindBuilder($('bld'), state.bsel); renderRecent(); };
 
 /* 2-n장 품목 */
-// 용융아연도금 짝 안내: 오버탭(6AZ)은 ISO 10684 본문(6.2.2). 8.8 볼트와 강도 10 너트의 짝(부속서 F)은 규격서 확인 중이라 질문으로 둔다 (2026-10 감사)
+// 용융아연도금 짝 안내: 오버탭(6AZ)은 ISO 10684 본문(6.2.2). 8.8 볼트와 강도 10 너트의 짝(부속서 F)은 견적 때 규격서로 확인이라 질문으로 둔다 (2026-10 감사)
 function hdNote(f, s) {
   if (f.kind === 'nut') return `도금 뒤 오버탭(6AZ)한 강도 ${s.g === 'N10' ? 10 : 8} 너트입니다 (ISO 10684). 용융아연도금 8.8 볼트에 짝지을 너트 강도(8 또는 10)는 견적 때 확인합니다.`;
   if (f.kind === 'washer') return '용융아연도금 볼트·너트와 함께 쓰는 와셔입니다. 출고가 영업일 5일 늦습니다.';
-  return s.g === '88' ? `용융아연도금 볼트에는 도금 뒤 오버탭(6AZ)한 너트를 짝짓습니다 (ISO 10684). 8.8 볼트에 짝지을 너트 강도(8 또는 10)는 규격서 확인 중이라 견적 때 확인합니다. 아래 짝 부품 링크는 강도 10 너트(HN-${s.size}-N10-HD)를 엽니다.`
+  return s.g === '88' ? `용융아연도금 볼트에는 도금 뒤 오버탭(6AZ)한 너트를 짝짓습니다 (ISO 10684). 8.8 볼트에 짝지을 너트 강도(8 또는 10)는 견적 때 규격서로 확인합니다. 아래 짝 부품 링크는 강도 10 너트(HN-${s.size}-N10-HD)를 엽니다.`
     : `용융아연도금 볼트에는 오버탭(6AZ) 너트를 짝짓습니다 (ISO 10684). 너트는 HN-${s.size}-N8-HD로 담아 주세요.`;
 }
 // 함께 쓰는 부품: 같은 호칭이 있는 품목만, 강도·재질과 표면처리를 맞춘 형번으로 연다
@@ -3171,7 +3171,7 @@ V.after.m = id => {
   const f = METRIC.find(m => m.id === id); if (!f) return;
   const L0 = state.listing[f.id];
   const px = PRICE_ON(f.id);
-  const cfgSum = v => px ? `${PRICE_LAB()} <b>${won(v.price)}</b> × ${L0.sel.qty.toLocaleString()}EA · VAT 포함 <b>${won(v.price * L0.sel.qty * 1.1)}</b>` : `<span class="tag q">견적</span> 단가 확인 중 · ${L0.sel.qty.toLocaleString()}EA`;
+  const cfgSum = v => px ? `${PRICE_LAB()} <b>${won(v.price)}</b> × ${L0.sel.qty.toLocaleString()}EA · VAT 포함 <b>${won(v.price * L0.sel.qty * 1.1)}</b>` : `<span class="tag q">견적</span> 단가 견적 회신 · ${L0.sel.qty.toLocaleString()}EA`;
   // 수량만 바뀌면 단가 단계·합계 글자만 고친다 (버튼·입력칸은 그대로)
   const cfgDyn = () => {
     const s = L0.sel, v = variantInfo(f, s.size, s.L, s.g, s.fin, s.qty);
@@ -3204,7 +3204,7 @@ V.after.m = id => {
     const kv = [
       f.kind === 'washer' ? ['적용 볼트', `${s.size} (나사 없음)`] : ['나사', `${s.size} × ${DIM.pitch[s.size]} (보통나사) · ${f.kind === 'nut' ? '6H' : f.id === 'scs' && s.g === '129' ? '5g6g' : '6g'}`],
       ...(f.len ? [['길이', `${s.L} mm${f.id === 'csk' ? ' (머리 윗면부터)' : ' (머리 밑부터)'}`]] : f.kind === 'rod' ? [['길이', '1,000 mm']] : []),
-      ...(f.id === 'hbp' ? [['나사부 길이 b', ['M14', 'M22'].includes(s.size) ? '규격서 확인 중 (견적 때 확인)' : `${s.L <= 125 ? 2 * d + 6 : s.L <= 200 ? 2 * d + 12 : 2 * d + 25} mm (참고값)`]] : []),
+      ...(f.id === 'hbp' ? [['나사부 길이 b', ['M14', 'M22'].includes(s.size) ? '견적 때 규격서로 확인' : `${s.L <= 125 ? 2 * d + 6 : s.L <= 200 ? 2 * d + 12 : 2 * d + 25} mm (참고값)`]] : []),
       ...(f.kind === 'bolt' && f.draw.startsWith('hex') ? [['머리', `2면폭 s ${DIM.hexS[s.size]} · 높이 k ${DIM.hexK[s.size]} mm`, DIM.dinS[s.size] ? `${f.std.DIN}: s ${DIM.dinS[s.size]}, 공개 기술자료 기준` : '']] : []),
       ...(f.id === 'scs' ? [['머리', `지름 dk ${DIM.scsDk[s.size]} · 높이 k ${DIM.scsK[s.size]} · 육각 구멍 s ${DIM.scsS[s.size]} mm`]] : []),
       ...(f.id === 'csk' ? [['머리', `지름 dk ${DIM.cskDk[s.size]} (이론값) · 육각 구멍 s ${DIM.cskS[s.size]} mm · 90°`]] : []),
@@ -3216,9 +3216,9 @@ V.after.m = id => {
       ['서류', 'CoC 기본 · EN 10204 3.1은 견적 시 가능 여부 안내'],
       ['단중', `약 ${weightG(f, s.size, s.L).toFixed(1)} g/EA (계산값)`],
       // 상품정보 제공 (기타 재화): 제조국·제조자는 입고 로트로 정해진다. 형광펜 = 사업 개시 전 채울 자리
-      ['제조국 (원산지)', '<span class="ph">입고 로트별 표시 (출고 라벨·거래명세서)</span>', '', '', 1],
-      ['제조자 · 수입자', '<span class="ph">입고 로트별 표시</span>', '', '', 1],
-      ['A/S · 상담', '볼트노트 <span class="ph mono">000-0000-0000</span> · 평일 09–18시', '', '', 1],
+      ['제조국 (원산지)', '입고 로트별로 출고 라벨·거래명세서에 표시', '', '', 1],
+      ['제조자 · 수입자', '입고 로트별로 출고 라벨·거래명세서에 표시', '', '', 1],
+      ['A/S · 상담', `볼트노트 ${rfqC('tel')} · 평일 09–18시`, '', '', 1],
     ];
     $('fam-kv').innerHTML = kv.map(([k, v2, red, sw, raw]) => `<dt>${k}</dt><dd>${raw ? v2 : sw ? `<span class="pl"><i class="sw" data-f="${sw}"></i>${esc(v2)}</span>` : esc(v2)}${red ? ` <span class="redp">(${esc(red)})</span>` : ''}</dd>`).join('');
     const pair = $('fam-pair');
@@ -3299,15 +3299,15 @@ const NOTE_1_14 = '같은 1-1/4"라도 구조용 볼트(UNC 7산)와 플랜지 �
 // [조건, 볼트, 너트, 확인할 것, 근거, 품목 id]
 const SVC = [
   ["일반 (비사워)", "ASTM A193 B7 스터드 (1\" 이하 UNC, 1\"를 넘으면 보통 8UN, 2A)", "ASTM A194 2H 헤비너트 (또는 Grade 7)", "2-1/2\" 이하 125/105 ksi이고, 그보다 굵으면 115/95, 4\" 초과는 100/75 ksi로 낮아집니다(공개 기술자료 기준). 설계 최저온도가 낮으면 적용 코드의 충격시험 규정을 확인합니다.", "제조사 공개 기술자료 3곳 대조 (A193 B7 강도) · ASTM A193·A194 현행판 범위", ["b7", "hh"]],
-  ["고온", "ASTM A193 B16. 오스테나이트계 플랜지이거나 더 높은 온도면 ASTM A453 Grade 660", "B16에는 A194 Grade 7 (또는 16), A453 660에는 같은 등급의 A453 660 너트", "B16은 고온용 A193 등급입니다. A453 660은 특수 공정을 거친 고온 볼팅으로 일반 용도가 아닙니다. 설계온도별 시험 조건과 최대 사용온도는 적용 코드의 허용응력표와 규격서로 확인합니다. 고온 볼팅에 코팅을 지정하면 사용 온도와 코팅 사양의 온도 한계를 견적 전에 확인합니다.", "ASTM A193·A453 범위 조항 · 제조사 공개 기술자료 (수치는 규격서 확인 중)", ["b16", "a453"]],
+  ["고온", "ASTM A193 B16. 오스테나이트계 플랜지이거나 더 높은 온도면 ASTM A453 Grade 660", "B16에는 A194 Grade 7 (또는 16), A453 660에는 같은 등급의 A453 660 너트", "B16은 고온용 A193 등급입니다. A453 660은 특수 공정을 거친 고온 볼팅으로 일반 용도가 아닙니다. 설계온도별 시험 조건과 최대 사용온도는 적용 코드의 허용응력표와 규격서로 확인합니다. 고온 볼팅에 코팅을 지정하면 사용 온도와 코팅 사양의 온도 한계를 견적 전에 확인합니다.", "ASTM A193·A453 범위 조항 · 제조사 공개 기술자료 (수치는 견적 때 규격서로 확인)", ["b16", "a453"]],
   ["저온 (−101 °C까지)", "ASTM A320 L7. 굵은 지름은 적용 범위를 견적 때 확인 (L43 등)", "ASTM A194 Grade 7 + 충격시험 (7L 마킹). 와셔는 F436", "L7의 기본 샤르피 시험 온도는 −101 °C이고 평균 20 ft-lbf(27 J) 이상이어야 합니다(공개 기술자료 기준). 너트도 충격 요건을 만족해야 합니다.", "ASTM A320 범위 조항 (너트 충격 요건) · 제조사 공개 기술자료", ["l7"]],
-  ["극저온 (−101 °C 미만, LNG·에틸렌·액체질소)", "ASTM A320 B8·B8M (오스테나이트계, Class 1 또는 Class 2 가공경화)", "ASTM A194 Grade 8·8M (볼트와 같은 계열)", "오스테나이트계 A320 B8·B8M과 A194 8·8M을 쓰고, 갈링 방지 윤활을 씁니다. 충격시험 요건과 고압 등급 플랜지에 쓸 강도 등급은 설계 조건으로 확인합니다.", "제조사 공개 기술자료 · 강도 구분과 충격시험 면제 조건은 규격서 확인 중", ["b8lt"]],
+  ["극저온 (−101 °C 미만, LNG·에틸렌·액체질소)", "ASTM A320 B8·B8M (오스테나이트계, Class 1 또는 Class 2 가공경화)", "ASTM A194 Grade 8·8M (볼트와 같은 계열)", "오스테나이트계 A320 B8·B8M과 A194 8·8M을 쓰고, 갈링 방지 윤활을 씁니다. 충격시험 요건과 고압 등급 플랜지에 쓸 강도 등급은 설계 조건으로 확인합니다.", "제조사 공개 기술자료 · 강도 구분과 충격시험 면제 조건은 견적 때 규격서로 확인", ["b8lt"]],
   ["사워 서비스 – 비노출 볼팅 (대기에 그대로 노출된 플랜지·케이싱 볼팅)", "ASTM A193 B7", "ASTM A194 2H", "NACE MR0175/ISO 15156-2는 사워 환경에 노출되지 않는 볼팅에 일반 볼팅을 허용하므로, 펌프 케이싱·플랜지의 대기 노출 볼팅은 B7/2H가 일반 관행입니다. 보온재를 감거나 플랜지 커버를 씌우면 '노출'로 바뀌므로 설치 상태를 확인합니다. 프로젝트 사양이 우선합니다.", "NACE MR0175/ISO 15156 해석집 (부속서 A.2.2.4) · BSEE 자료", ["b7"]],
   ["사워 서비스 – 노출 볼팅 (보온·매설·플랜지 커버로 대기 차단, 유체 접촉)", "ASTM A193 B7M (235 HB 이하, 전수 경도시험)", "ASTM A194 2HM (또는 7M), 경도 제한 등급", "약 22 HRC 이하의 경도 제한을 만족하는 조합입니다(NACE MR0175/ISO 15156). B7M은 인장 100 ksi로 B7보다 낮아 고압 등급 플랜지는 개스킷 안착 하중을 따로 확인합니다.", "NACE MR0175/ISO 15156 해석집 (부속서 A.2.2.4) · BSEE 자료 · 제조사 공개 기술자료", ["b7m"]],
   ["사워 + 저온", "ASTM A320 L7M (경도 제한, 전수 시험)", "ASTM A194 7M(저온 충격시험) 또는 2HM — 주문 때 확인", "L7M의 기본 충격시험 온도는 −73 °C(−100 °F)입니다(공개 기술자료 기준). 설계 최저온도가 더 낮으면 시험 온도를 지정합니다. L43은 AISI 4340 계열로 니켈이 1 %를 넘어(보통 1.65–2.00 %) ISO 15156-2의 저합금강 일반 조건(Ni 1 % 미만)에 들지 않으므로 사워 노출 볼팅에 쓰지 않습니다. 굵은 지름은 엔지니어 검토가 필요합니다.", "NACE MR0175/ISO 15156 해석집 · ASTM A320 범위 조항 (L43 = AISI 4340) · 제조사 공개 기술자료", ["l7"]],
-  ["HF산 (불산 알킬레이션)", "외부 압력경계: ASTM A193 B7M. 접액 볼팅: ASTM F468 Ni-Cu 400 (UNS N04400)", "외부: A194 2HM. 접액: ASTM F467 Ni-Cu 400", "외부 탄소강·저합금강 볼팅은 경도를 관리한 B7M/2HM을, 유체에 닿는 볼팅은 Ni-Cu 400을 쓰는 경우가 많습니다. 이종금속 접촉에 주의하고, 프로젝트 사양을 따릅니다.", "ASTM F468·F467 범위 조항 · 제조사 공개 기술자료 · API RP 751은 원문 확인 중", ["b7m", "f468"]],
+  ["HF산 (불산 알킬레이션)", "외부 압력경계: ASTM A193 B7M. 접액 볼팅: ASTM F468 Ni-Cu 400 (UNS N04400)", "외부: A194 2HM. 접액: ASTM F467 Ni-Cu 400", "외부 탄소강·저합금강 볼팅은 경도를 관리한 B7M/2HM을, 유체에 닿는 볼팅은 Ni-Cu 400을 쓰는 경우가 많습니다. 이종금속 접촉에 주의하고, 프로젝트 사양을 따릅니다.", "ASTM F468·F467 범위 조항 · 제조사 공개 기술자료 · API RP 751은 사양서로 확인", ["b7m", "f468"]],
   ["접액부 소형 볼트 (펌프·밸브 내부)", "ASTM F837 Group 2 (316 계열) 렌치볼트, 또는 A193 B8M Class 1·2. 듀플렉스 케이싱은 같은 듀플렉스 봉재, Alloy 20 구조는 UNS N08020", "ASTM F594 Group 2 또는 A194 8M (볼트와 같은 합금 계열)", "케이싱·임펠러와 같은 합금 계열을 골라 이종금속 부식을 피합니다. 합금을 꼭 정해야 하면 주문할 때 적고, 나사 공차 등급은 도면 지정을 따릅니다. 갈링 방지 윤활을 씁니다.", "ASTM F837·F593·F594 범위 조항 · 제조사 공개 기술자료", ["f837", "b8"]],
-  ["해수 (냉각수·해양 설비)", "비접액·대기: A193 B7 + 코팅 (용융아연 F2329, 아연-니켈, 불소수지). 접액·침수: 6Mo A193 B8MLCuN (S31254), 수퍼듀플렉스 (S32760·S32750), Ni-Cu 400·500 (F468), Ni 625", "코팅 B7에는 같은 코팅의 A194 2H (용융아연은 오버탭). 접액부는 같은 합금 너트 (A194 8MLCuN, F467 등)", "해수에 젖거나 잠기는 볼팅은 재질을 따로 검토합니다. 등급별 강도는 규격서로 확인 중이라 견적 때 확인합니다. 음극방식 구역의 고경도 볼트는 사양서의 경도 상한을 확인합니다. 코팅은 사용 온도와 코팅 사양의 온도 한계를 확인합니다.", "제조사 공개 기술자료 (수치는 규격서 확인 중)", ["smo", "f468", "b7"]],
+  ["해수 (냉각수·해양 설비)", "비접액·대기: A193 B7 + 코팅 (용융아연 F2329, 아연-니켈, 불소수지). 접액·침수: 6Mo A193 B8MLCuN (S31254), 수퍼듀플렉스 (S32760·S32750), Ni-Cu 400·500 (F468), Ni 625", "코팅 B7에는 같은 코팅의 A194 2H (용융아연은 오버탭). 접액부는 같은 합금 너트 (A194 8MLCuN, F467 등)", "해수에 젖거나 잠기는 볼팅은 재질을 따로 검토합니다. 등급별 강도는 견적 때 규격서로 확인합니다. 음극방식 구역의 고경도 볼트는 사양서의 경도 상한을 확인합니다. 코팅은 사용 온도와 코팅 사양의 온도 한계를 확인합니다.", "제조사 공개 기술자료 (수치는 견적 때 규격서로 확인)", ["smo", "f468", "b7"]],
   ["구조용 일반", "ASTM A307 Grade A (일반) / Grade B (주철 플랜지 배관). 대안 SAE J429 Grade 2·5", "ASTM A563 Grade A", "A307 Grade B는 주철 플랜지 배관용입니다. 플랜지 등급·사용 온도와의 조합은 설계 조건으로 확인합니다. 아연도금은 볼트와 너트를 같은 공정으로 합니다.", "ASTM A307·A563 범위 조항", ["j429"]],
   ["구조용 고장력 (철골 접합)", "ASTM F3125 Grade A325 Type 1 (또는 A490). 내후성은 Type 3", "ASTM A563 DH (A325 무도금은 C·D·DH3도 가능, A490은 DH·DH3) + ASTM F436 와셔", "A325는 용융(F2329)·기계적(B695 Cl 55) 아연도금이 됩니다. 이때 DH 너트는 오버탭·윤활하고 세트 회전능력시험을 합니다. A490은 용융·기계적 아연도금을 쓸 수 없고, 허용 코팅은 아연 플레이크 계열뿐입니다(옛 F1136 Grade 3·F2833 Grade 1·F3019 Grade 4, 2025년부터 F3393으로 통합). 치수는 ASME B18.2.6 헤비헥스 구조용입니다. 2016년에 폐지된 구 A325는 굵은 지름을 105 ksi로 정했습니다.", "RCSC 2025 Table 2.1·2.2, §2.8, Fig. C-2.1 · ASTM F3125 범위 조항 · ASME B18.2.6", ["a325"]],
   ["기초 앵커", "ASTM F1554 Grade 36 (청색) / 55 (황색, 용접 시 S1) / 105 (적색, 3\" 이하)", "ASTM A563 A (Gr 36·55), Gr 105는 A563 DH 헤비 육각으로 공급(A563은 더 강한 등급 너트로 대신할 수 있음). 와셔 F436", "돌출 끝 색으로 등급을 구분하고, S3를 지정하면 끝에 등급을 각인합니다. 아연도금은 F2329 또는 B695 Cl 55로 하되 볼트와 너트를 같은 공정으로 하며, 너트는 A563 기준으로 오버탭합니다.", "ASTM F1554-20 범위 조항, A563-26 1.2; 끝 색은 Iowa DOT IM 453.08·제조사 자료", ["f1554"]],
@@ -3369,7 +3369,7 @@ function inchThread(f, size) {
 const sizeCap = (f, g) => f.nut ? 99 : f.id === 'f1554' && /105/.test(g) ? 3 : 99;
 function inchWarn(f, d, grade, fin, len) {
   const w = [], isB8 = f.stud && /B8/.test(grade), isL = f.stud && /\bL(7M?|43)\b/.test(grade), coated = !/^무(도금|처리)|갈링|안티시즈|패시베이션/.test(fin);
-  if (isL && d > 2.5 && !/L43/.test(grade)) w.push(['info', 'A320 L7·L7M의 기계적 성질이 이 지름까지 적용되는지는 규격서로 확인 중입니다. L43 등 다른 등급이 필요한지 견적 때 확인합니다.']);
+  if (isL && d > 2.5 && !/L43/.test(grade)) w.push(['info', 'A320 L7·L7M의 기계적 성질이 이 지름까지 적용되는지는 견적 때 규격서로 확인합니다. L43 등 다른 등급이 필요한지 견적 때 확인합니다.']);
   if (f.stud && /L7M/.test(grade)) w.push(['info', 'L7M의 기본 충격시험 온도는 −73 °C입니다(공개 기술자료 기준). 설계 온도가 더 낮으면 시험 온도를 지정해 주세요.']);
   if (f.id === 'f1554' && /105/.test(grade) && d > 3) w.push(['crit', 'F1554 Grade 105는 3" 이하만 규정됩니다.']);
   if (f.id === 'f1554' && d > 1) w.push(['info', '1"를 넘는 앵커볼트는 UNC와 8UN 중 도면 지정을 확인하고, 너트도 같은 계열로 맞춥니다.']);
@@ -3382,8 +3382,8 @@ function inchWarn(f, d, grade, fin, len) {
   if (f.id === 'j429' && /Grade 8/.test(grade) && /전기아연|용융/.test(fin)) w.push(['warn', 'Grade 8 도금품은 수소취성 관리(베이킹) 조건을 확인합니다. 용융아연도금은 공정 조건을 견적 전에 확인합니다.']);
   if (f.id === 'j429' && /Grade 2/.test(grade) && len && inchToMm(len) / 25.4 > 6) w.push(['info', 'Grade 2는 길이 6" 초과 볼트에서 Grade 1 강도(60 ksi)로 내려갑니다(공개 기술자료 기준).']);
   if (f.id === 'j429' && /Grade 2/.test(grade) && d > .75) w.push(['info', 'Grade 2는 3/4"를 넘는 지름에서 길이와 관계없이 Grade 1 값(인장 60 ksi)입니다.']);
-  if (isB8 && /Class 2\b/.test(grade) && d > .75) w.push(['info', 'A193·A320 Class 2(가공경화)는 지름에 따라 강도가 달라집니다. 이 지름의 강도와 적용 범위는 규격서로 확인 중이라 견적 때 확인합니다.']);
-  if (isB8 && /Class 2B/.test(grade)) w.push(['info', 'Class 2B의 적용 지름과 강도는 규격서로 확인 중입니다. 견적 때 확인해 드립니다.']);
+  if (isB8 && /Class 2\b/.test(grade) && d > .75) w.push(['info', 'A193·A320 Class 2(가공경화)는 지름에 따라 강도가 달라집니다. 이 지름의 강도와 적용 범위는 견적 때 규격서로 확인합니다.']);
+  if (isB8 && /Class 2B/.test(grade)) w.push(['info', 'Class 2B의 적용 지름과 강도는 견적 때 규격서로 확인합니다. 견적 때 확인해 드립니다.']);
   if (isB8 && /Class 1\b/.test(grade)) w.push(['info', 'B8·B8M Class 1(고용화처리)은 항복 30 ksi로 낮습니다(공개 기술자료 기준). 고압 등급 플랜지에 쓸 수 있는지와 개스킷 안착 하중은 설계 조건으로 확인하고, 개스킷 제조사와도 확인합니다.']);
   if (/B7M/.test(grade)) w.push(['info', 'B7M은 사워 환경에 “노출되는” 볼팅용입니다. 대기에 노출된 플랜지 볼팅이면 B7/2H로도 되는지 사양서를 확인합니다.']);
   if (/B16/.test(grade)) w.push(['info', 'B16 볼팅의 짝 너트 등급(A194 7 또는 16 등)은 사양서로 확인하고, 최대 사용 온도는 적용 코드의 허용응력표를 따릅니다.']);
@@ -3394,9 +3394,9 @@ function inchWarn(f, d, grade, fin, len) {
   if (f.id === 'f837' && /Group 2/.test(grade)) w.push(['info', '그룹 안의 합금을 꼭 정해야 하면(예: 316) 주문할 때 적어 주세요.']);
   if (f.draw === 'scs') w.push(['info', '렌치볼트 나사 공차 등급(3A·2A 등)은 도면 지정을 따릅니다. 적혀 있지 않으면 견적 때 확인합니다.']);
   if (f.draw === 'scs' && /A574/.test(grade) && /전기아연/.test(fin)) w.push(['warn', 'A574 전기도금은 도금 후 베이킹 조건을 넣습니다. RCSC는 39 HRC를 넘는 볼트가 수소취성에 민감하다고 봅니다.']);
-  if (f.id === 'f468') w.push(['info', '니켈합금 볼팅의 지름별 강도와 경질 조건의 온도 한계는 규격서로 확인 중이라 견적 때 확인합니다. 이종금속 접촉 부식도 확인합니다.']);
+  if (f.id === 'f468') w.push(['info', '니켈합금 볼팅의 지름별 강도와 경질 조건의 온도 한계는 견적 때 규격서로 확인합니다. 이종금속 접촉 부식도 확인합니다.']);
   if (f.id === 'a354' && /BD/.test(grade) && /용융/.test(fin)) w.push(['warn', 'A354 BD는 용융아연도금하면 수소·응력부식 균열 우려가 있어 권하지 않습니다. 아연/알루미늄 플레이크를 고르세요.']);
-  if (f.id === 'a354' && /A354/.test(grade) && d > 2.5) w.push(['info', 'A354는 2-1/2"를 넘으면 최소 인장이 낮아집니다. 이 지름의 값은 규격서로 확인 중이라 견적 때 확인합니다.']);
+  if (f.id === 'a354' && /A354/.test(grade) && d > 2.5) w.push(['info', 'A354는 2-1/2"를 넘으면 최소 인장이 낮아집니다. 이 지름의 값은 견적 때 규격서로 확인합니다.']);
   if (f.id === 'a354' && /A449/.test(grade) && d > 1) w.push(['info', `A449 최소 인장은 1" 이하 120 ksi, 1-1/2" 이하 105 ksi, 그보다 크면 90 ksi입니다. 이 지름은 ${d <= 1.5 ? 105 : 90} ksi입니다.`]);
   if (f.id === 'ats') w.push(['info', '전산·양끝 나사 스터드는 길이 기준(포인트 포함 여부)과 양끝 나사부 길이를 도면으로 확인합니다.']);
   else if (f.stud) w.push(['info', 'ASME B16.5 스터드 길이는 표 기준 참고값이며, 포인트 포함 여부는 주문 때 확인합니다. 개스킷·와셔를 바꾸거나, 펌프 노즐처럼 플랜지가 표준보다 두꺼우면 장비 배치도(GA)의 길이를 따릅니다.']);
@@ -3576,7 +3576,7 @@ V.after.custom = () => {
     if (/고온/.test(env) && /아연|용융/.test(fin)) w.push(['warn', 'E', '고온 볼팅에 아연·아연-니켈 코팅이 지정되면 사용 온도와 코팅 사양의 온도 한계를 먼저 확인합니다. 고온 볼팅은 보통 무도금에 고온용 고착 방지제를 씁니다.']);
     if (/해수/.test(env) && /A2-|\bB8\b(?!M)|304/i.test(g + ' ' + mat)) w.push(['warn', 'D', '해수에 젖거나 잠기는 곳은 304(A2·B8) 대신 내식성이 더 높은 재질(316·6Mo·수퍼듀플렉스·니켈-구리 합금 등)을 검토합니다. 사용 조건을 알려 주세요.']);
     if (/HF/.test(env)) w.push(['info', 'D', 'HF산 설비는 외부 볼팅에 경도를 관리한 B7M + 2HM, 유체에 닿는 볼팅에 Ni-Cu 400(F468·F467)을 쓰는 것이 일반 관행입니다 (원문 미대조). 프로젝트 사양을 함께 보내 주세요.']);
-    if (/L7/i.test(g) && (sys === 'inch' ? dia > 2.5 : dia > 64)) w.push(['info', 'D', '굵은 지름에서 A320 L7·L7M 성질이 어디까지 적용되는지는 규격서로 확인 중입니다. L43 등 다른 등급이 필요한지 견적 때 확인합니다.']);
+    if (/L7/i.test(g) && (sys === 'inch' ? dia > 2.5 : dia > 64)) w.push(['info', 'D', '굵은 지름에서 A320 L7·L7M 성질이 어디까지 적용되는지는 견적 때 규격서로 확인합니다. L43 등 다른 등급이 필요한지 견적 때 확인합니다.']);
     if (/포인트/.test($('c-lref').value) && sys === 'metric') w.push(['info', 'C', '미터 스터드에 포인트 제외 길이를 고르셨습니다. 길이 기준을 확인합니다.']);
     if (/육각볼트/.test($('c-shape').value) && sys === 'metric' && [10, 12, 14, 22].includes(dia) && !$('c-s').value) w.push(['info', 'C', `M${dia}에서는 ISO와 DIN의 2면폭이 다릅니다 (ISO ${DIM.hexS['M' + dia]} / DIN ${DIM.dinS['M' + dia]} mm). 어느 쪽인지 적어 주세요.`]);
     const dj = docs.join();
@@ -3648,21 +3648,21 @@ const MAT_ROWS = [
   ['SUS304', '304', 'ASTM A193 B8 · F593 Group 1 · ISO A2', 'X5CrNi18-10 (1.4301)', 'B8 Class 1은 고용화처리(75 ksi, 공개 기술자료 기준), Class 2는 가공경화.'],
   ['SUS316', '316', 'ASTM A193 B8M · F593 Group 2 · ISO A4', 'X5CrNiMo17-12-2 (1.4401)', '316 계열 스테인리스 볼팅.'],
   ['SNB16 (JIS G 4107 · KS D 3755는 폐지)', 'Cr-Mo-V', 'ASTM A193 B16 · A194 16 너트', '—', '고온 볼팅.'],
-  ['— (JIS 대응 확인 중)', 'A-286 (UNS S66286)', 'ASTM A453 Grade 660', 'X6NiCrTiMoVB25-15-2 (1.4980)', '석출경화 고온 볼팅.'],
+  ['— (JIS 대응은 견적 때 확인)', 'A-286 (UNS S66286)', 'ASTM A453 Grade 660', 'X6NiCrTiMoVB25-15-2 (1.4980)', '석출경화 고온 볼팅.'],
   ['SUS630', '630 (17-4PH)', 'ASTM F593 Group 7 (AH)', 'X5CrNiCuNb16-4 (1.4542)', '석출경화 스테인리스.'],
   ['SUS329J3L', '2205 (UNS S31803)', '— (볼팅 규격 협의)', 'X2CrNiMoN22-5-3 (1.4462)', '듀플렉스.'],
-  ['SUS327L1 (JSSA 표기 SUS327L)', '수퍼 듀플렉스 (UNS S32750)', '— (볼팅 규격 협의)', '1.4410 (S32750)', '수퍼 듀플렉스. S32760(1.4501)은 JIS 대응 확인 중. SUS329J4L은 S31260·S32506(X2CrNiMoN25-7-3)에 대응.'],
+  ['SUS327L1 (JSSA 표기 SUS327L)', '수퍼 듀플렉스 (UNS S32750)', '— (볼팅 규격 협의)', '1.4410 (S32750)', '수퍼 듀플렉스. S32760(1.4501)의 JIS 대응은 견적 때 확인합니다. SUS329J4L은 S31260·S32506(X2CrNiMoN25-7-3)에 대응.'],
 ];
 const STR_ROWS = [
   ['4.6', 'Grade 1 (근사)', 'A307 Grade A', '400 · J429 Gr1 414 (환산) · A307 414 (환산)', '저탄소강, 열처리 안 함.'],
   ['4.8', 'Grade 1 (근사)', '직접 대응 없음', '420', '냉간압조 가공경화.'],
   ['5.8', 'Grade 2 (근사)', '직접 대응 없음', '520 · J429 Gr2 510 (환산, 1/4~3/4", 길이 6" 이하)', 'Grade 2는 길이 6" 초과 볼트에서 Grade 1 값으로 내려감 (공개 기술자료 기준).'],
   ['8.8', 'Grade 5 (방사선 3줄)', 'F3125 A325 (1/2~1-1/2")', '800 (d ≤ 16) · 830 (d > 16) · Gr5 827 (≤1") · 724 (1~1-1/2") · A325 827 (F3125) (인치 값은 환산)', 'A449는 1-1/2" 초과에서 621 MPa(환산)로 8.8보다 약 25% 낮아 대응시키지 않음. 2016년에 폐지된 구 A325는 굵은 지름을 105 ksi(724)로 정했음.'],
-  ['10.9', 'Grade 8 (방사선 6줄)', 'F3125 A490 · A354 BD', '1040 · Gr8 1034 · A490 1034~1193 · A354 BD 1034 (≤2-1/2") (인치 값은 환산)', 'A490은 인장 상한이 있고 용융·기계적 아연도금을 쓸 수 없음 (RCSC). A354 BD의 2-1/2" 초과 값은 규격서 확인 중.'],
-  ['12.9', '해당 없음', 'A574 (인치 렌치볼트)', '1220', '렌치볼트 대표 등급. A574의 지름별 값은 규격서 확인 중.'],
+  ['10.9', 'Grade 8 (방사선 6줄)', 'F3125 A490 · A354 BD', '1040 · Gr8 1034 · A490 1034~1193 · A354 BD 1034 (≤2-1/2") (인치 값은 환산)', 'A490은 인장 상한이 있고 용융·기계적 아연도금을 쓸 수 없음 (RCSC). A354 BD의 2-1/2" 초과 값은 견적 때 규격서로 확인.'],
+  ['12.9', '해당 없음', 'A574 (인치 렌치볼트)', '1220', '렌치볼트 대표 등급. A574의 지름별 값은 견적 때 규격서로 확인.'],
   ['참고: 플랜트', '해당 없음', 'A193 B7 · B7M · B16', 'B7·B16 862 (125 ksi, ≤2-1/2") · B7M 689 (100 ksi) (환산)', 'ISO 898-1 대상 아님. B7은 2-1/2" 초과 793, 4" 초과 689 (환산). B7M은 경도 235 HB 이하. 값은 공개 기술자료 기준.'],
   ['A193 B7 지름별', '—', 'A193 B7', '862 (≤2-1/2") · 793 (≤4") · 689 (≤7") (환산)', '125/115/100 ksi (공개 기술자료 기준)'],
-  ['참고: 스테인리스', '해당 없음', 'A193 B8·B8M', 'A2·A4-70: 700 · -80: 800 · B8/B8M Cl.1 517 (75 ksi, 환산)', 'B8·B8M Class 1 값은 ksi 환산 (공개 기술자료 기준). Class 2의 지름별 값은 규격서 확인 중.'],
+  ['참고: 스테인리스', '해당 없음', 'A193 B8·B8M', 'A2·A4-70: 700 · -80: 800 · B8/B8M Cl.1 517 (75 ksi, 환산)', 'B8·B8M Class 1 값은 ksi 환산 (공개 기술자료 기준). Class 2의 지름별 값은 견적 때 규격서로 확인.'],
 ];
 function table(head, rows, cls = '') { return `<div class="tblw"><table class="tbl ${cls}"><thead><tr>${head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`; }
 const TABS = [['flange', '플랜지 스터드 길이', '플랜지 길이'], ['std', '규격 대조', '규격 대조'], ['mat', '재질 대조', '재질 대조'], ['str', '강도 등급 대조', '강도 대조'], ['din', 'DIN·ISO 2면폭', '2면폭'], ['conv', '인치↔mm', '인치↔mm'], ['mark', '머리 마킹', '머리 마킹'], ['plate', '표면처리 기호', '표면처리'], ['cert', '받으실 3.1 성적서 읽는 법', '3.1 읽는 법'], ['plant', '플랜트 볼팅 성질표', '성질표']];
@@ -3682,7 +3682,7 @@ const certHTML = () => `<div class="cert">
 </div>
 <p class="small muted tool-cap">군 구분은 EN 10168을 따릅니다. 실제 성적서의 칸 배치는 제조사마다 다릅니다.</p>`;
 // 플랜트 볼팅 성질 (5장 상세 10). 2026-10 감사: 제조사 공개 기술자료 3곳이 같은 값만 남겼다 (인치 기준, 출처 목록은 감사 기록에 있음).
-// A320·A453·Class 2·2B·B8MLCuN 값, 연신·단면감소, 최소 템퍼링은 3곳이 맞지 않아 뺐다 (규격서 확인 중)
+// A320·A453·Class 2·2B·B8MLCuN 값, 연신·단면감소, 최소 템퍼링은 3곳이 맞지 않아 뺐다 (견적 때 규격서로 확인)
 // [규격, 등급, 지름 범위, 인장 min ksi, 항복 min ksi, 경도]
 const PLANT_PROPS = [
   ['A193', 'B7', '≤ 2-1/2"', 125, 105, '≤ 321 HB / 35 HRC'],
@@ -3692,22 +3692,22 @@ const PLANT_PROPS = [
   ['A193', 'B16', '≤ 2-1/2"', 125, 105, '≤ 321 HB / 35 HRC'],
   ['A193', 'B8 · B8M Class 1', '전 지름', 75, 30, null],
 ];
-// A194 너트 (공개 기술자료 3곳 일치 값만). 경도·템퍼링·시험처리·마킹, 2HM·7·7M·16의 보증응력은 규격서 확인 중. Grade 4는 싣지 않음 (현행 수록 여부 확인 중)
+// A194 너트 (공개 기술자료 3곳 일치 값만). 경도·템퍼링·시험처리·마킹, 2HM·7·7M·16의 보증응력은 견적 때 규격서로 확인. Grade 4는 싣지 않음 (현행 수록 여부는 견적 때 확인)
 // [등급, 소재, 보증응력 헤비헥스 ksi]
 const A194_NUTS = [
   ['2H', '—', 175],
-  ['8 · 8M', '304 · 316 오스테나이트계 (열처리 조건은 규격서 확인 중)', 80],
+  ['8 · 8M', '304 · 316 오스테나이트계 (열처리 조건은 견적 때 규격서로 확인)', 80],
 ];
-// A320 충격시험 (공개 기술자료 기준; L43 시험온도는 ASTM A320 범위 조항). 단일 최소값, L70–L73·L1, 오스테나이트 면제 온도는 규격서 확인 중
+// A320 충격시험 (공개 기술자료 기준; L43 시험온도는 ASTM A320 범위 조항). 단일 최소값, L70–L73·L1, 오스테나이트 면제 온도는 견적 때 규격서로 확인
 // [등급, 기본 충격시험 °F, °C, 평균 최소 ft-lbf (J), 짝 너트]
 const A320_IMPACT = [
   ['L7 · L7A · L7B · L7C', -150, -101, '20 (27)', 'A194 7L'],
   ['L43', -150, -101, null, 'A194 7L'],
   ['L7M', -100, -73, null, 'A194 7M(저온 충격시험) 또는 2HM — 주문 때 확인'],
 ];
-const A320_IMPACT_NOTE = '너트도 충격 요건을 만족해야 합니다 (ASTM A320 범위 조항). 지름에 따른 면제와 다른 시험온도 지정 규정은 규격서 확인 중입니다.';
+const A320_IMPACT_NOTE = '너트도 충격 요건을 만족해야 합니다 (ASTM A320 범위 조항). 지름에 따른 면제와 다른 시험온도 지정 규정은 견적 때 규격서로 확인합니다.';
 
-// ASTM F1554-20 (Active). 등급·끝 색·최대 지름은 공개 기술자료 기준 (인장·항복·지름 상한 WSDOT, 끝 색 Iowa DOT IM 453.08), 최소 지름은 규격서 확인 중.
+// ASTM F1554-20 (Active). 등급·끝 색·최대 지름은 공개 기술자료 기준 (인장·항복·지름 상한 WSDOT, 끝 색 Iowa DOT IM 453.08), 최소 지름은 견적 때 규격서로 확인.
 // 짝 너트: Gr 105는 A563 DH 헤비로 공급 (A563 범위 조항 1.2: 더 강한 등급으로 대신할 수 있음)
 // [등급, 인장 ksi, 항복 min ksi, 지름, 끝 색, 짝 너트]
 const F1554_GRADES = [
@@ -3727,15 +3727,15 @@ const TOOL = {
   str: () => table(['ISO 898-1', 'SAE J429', 'ASTM', '최소 인장강도 (MPa)', '비고'], STR_ROWS, 'wide') + `<div class="tool-cap">${note('warn', '미터 나사와 인치 나사는 서로 맞지 않습니다. 강도 대응은 같은 나사 체계 안에서 재질·등급을 바꿀 때만 의미가 있습니다.')}</div>`,
   din: () => `<div class="tool-narrow">${dinBody('arT5')}</div>`,
   conv: () => `<div class="tool-narrow">${convBody()}</div>`,
-  mark: () => `${marksHTML(MARKS)}<p class="small muted tool-cap">실제 마킹에는 제조사 식별 기호가 함께 들어갑니다. F1554 앵커볼트는 돌출 끝 색(36 청 · 55 황 · 105 적)으로 구분합니다. A193·A320 스터드와 다른 A194 너트 등급의 마킹 그림은 규격서 확인 중이라 싣지 않습니다. 마킹 사진을 보내 주시면 규격과 등급을 확인해 드립니다.</p>`,
+  mark: () => `${marksHTML(MARKS)}<p class="small muted tool-cap">실제 마킹에는 제조사 식별 기호가 함께 들어갑니다. F1554 앵커볼트는 돌출 끝 색(36 청 · 55 황 · 105 적)으로 구분합니다. A193·A320 스터드와 다른 A194 너트 등급의 마킹 그림은 이 화면에 싣지 않고 견적 때 규격서로 확인합니다. 마킹 사진을 보내 주시면 규격과 등급을 확인해 드립니다.</p>`,
   plate: () => plgHTML(true),
   cert: () => certHTML(),
   plant: () => `<div class="stack lg">
-    <div><h3 class="tool-h">A193 볼트·스터드</h3>${table(['규격', '등급', '지름', '인장 min (ksi)', '항복 min (ksi)', '경도'], PLANT_PROPS.map(r => r.map(c => c ?? '—')), 'wide')}<p class="small muted tool-cap">A320·A453과 A193 Class 2·2B·B8MLCuN 값, 연신·단면감소·템퍼링 값은 규격서 확인 중이라 싣지 않습니다.</p></div>
-    <div><h3 class="tool-h">A194 너트</h3>${table(['등급', '소재', '보증응력 헤비헥스 (ksi)'], A194_NUTS.map(r => r.map(c => c ?? '—')), 'wide')}<p class="small muted tool-cap">2HM·7·7M·16 등 다른 등급의 값과 경도·템퍼링·마킹은 규격서 확인 중이라 싣지 않습니다. 옛 사양서의 Grade 4는 공급 가능 여부를 먼저 확인하고, 어려우면 Grade 7 대체를 승인받습니다.</p></div>
+    <div><h3 class="tool-h">A193 볼트·스터드</h3>${table(['규격', '등급', '지름', '인장 min (ksi)', '항복 min (ksi)', '경도'], PLANT_PROPS.map(r => r.map(c => c ?? '—')), 'wide')}<p class="small muted tool-cap">A320·A453과 A193 Class 2·2B·B8MLCuN 값, 연신·단면감소·템퍼링 값은 이 화면에 싣지 않고 견적 때 규격서로 확인합니다.</p></div>
+    <div><h3 class="tool-h">A194 너트</h3>${table(['등급', '소재', '보증응력 헤비헥스 (ksi)'], A194_NUTS.map(r => r.map(c => c ?? '—')), 'wide')}<p class="small muted tool-cap">2HM·7·7M·16 등 다른 등급의 값과 경도·템퍼링·마킹은 이 화면에 싣지 않고 견적 때 규격서로 확인합니다. 옛 사양서의 Grade 4는 공급 가능 여부를 먼저 확인하고, 어려우면 Grade 7 대체를 승인받습니다.</p></div>
     <div><h3 class="tool-h">A320 충격시험</h3>${table(['등급', '기본 시험온도', '평균 최소 ft-lbf (J)', '짝 너트'], A320_IMPACT.map(r => [r[0], r[1] == null ? '—' : `${String(r[2]).replace('-', '−')} °C (${String(r[1]).replace('-', '−')} °F)`, r[3] ?? '—', r[4]]), 'wide')}<p class="small muted tool-cap">${esc(A320_IMPACT_NOTE)}</p></div>
     <div><h3 class="tool-h">F1554 앵커볼트</h3>${table(['등급', '인장 (ksi)', '항복 min (ksi)', '지름', '끝 색', '짝 너트'], F1554_GRADES, 'wide')}<p class="small muted tool-cap">${esc(F1554_NOTE)}</p></div>
-  </div><div class="tool-cap">${note('warn', '값은 제조사 공개 기술자료 기준이며 규격서로 확인 중입니다. 주문 때 현행판과 프로젝트 사양으로 다시 확인합니다. 1 ksi = 6.895 MPa. 사용 조건별 조합은 <a href="#inch" data-go="inch">3장 C 구역</a>에 있습니다.')}</div>`,
+  </div><div class="tool-cap">${note('warn', '값은 제조사 공개 기술자료 기준이며 견적 때 규격서로 확인합니다. 주문 때 현행판과 프로젝트 사양으로 다시 확인합니다. 1 ksi = 6.895 MPa. 사용 조건별 조합은 <a href="#inch" data-go="inch">3장 C 구역</a>에 있습니다.')}</div>`,
 };
 V.tools = () => sheet(zone('A', 'z-a', shd({ trail: [['규격 도구']], no: '5', title: '규격 도구', p: '견적 전에 스스로 확인할 수 있는 표와 계산기입니다. 원 안의 위 칸은 상세 번호입니다.' })
   + `<div class="dtabs" role="tablist" aria-label="규격 도구">${TABS.map(([k, l, sh], i) => `<button type="button" role="tab" id="tab-${k}" data-tab="${k}" aria-label="${l}" aria-selected="false" aria-controls="tpanel" tabindex="-1"><span class="bub sm" aria-hidden="true"><b>${i + 1}</b><i>5</i></span><span class="tl-l">${l}</span><span class="tl-s" aria-hidden="true">${sh}</span></button>`).join('')}</div>
@@ -3796,7 +3796,7 @@ function cartRows() {
 }
 V.after.cart = () => {
   renderRecent();
-  const rowSub = r => `${esc(r.p.f.short)} · ${GRADE[r.p.g].label} · ${FINISH[r.p.fin].short}${r.px ? ` · ${won(r.v.price)} × ${r.l.qty.toLocaleString()}` : ' · 단가 확인 중'}`;
+  const rowSub = r => `${esc(r.p.f.short)} · ${GRADE[r.p.g].label} · ${FINISH[r.p.fin].short}${r.px ? ` · ${won(r.v.price)} × ${r.l.qty.toLocaleString()}` : ' · 단가 견적 회신'}`;
   // 규격품이 모두 모이는 날 = 줄별 출고일 중 가장 늦은 날 (레이블 '10/5(월)'을 월·일로 비교, 연말을 넘기면 다음 해)
   const shipLast = rows => { const m0 = kstNow().getMonth() + 1; let best = null, key = -1;
     rows.forEach(r => { if (!r.no || r.l.type !== 'item') return; const m = r.v.ship.label.match(/^(\d+)\/(\d+)/); if (!m) return; const k = (+m[1] < m0 ? +m[1] + 12 : +m[1]) * 100 + +m[2]; if (k > key) { key = k; best = r.v.ship; } });
@@ -3909,7 +3909,7 @@ const HELP = [
   ['A', 'z-a', '견적·발주·출고', [STOCK_COPY.help0, '발주 확정이란: 처음 거래하는 곳과 개인 고객은 입금(또는 카드 결제)이 확인된 때, 승인된 거래처는 발주서를 받은 때, 공공기관은 발주 통보(계약)를 받은 때입니다.', '공휴일은 관공서 공휴일(대체공휴일 포함)을 따르며, 출고일 계산에도 같은 목록을 씁니다. 주말·공휴일은 출고하지 않습니다.', `도매처 재고 품목은 표시된 출고 예정일을 따릅니다. 표면처리가 붙는 규격품은 출고가 더 늦습니다: 용융아연도금 영업일 ${FINISH.HD.lead}일, 아연 플레이크 ${FINISH.GM.lead}일 (품목 장 출고 예정일에 이미 넣었습니다). 인치·주문제작품의 도금·열처리는 견적 회신 때 줄마다 적습니다. 도매처 재고가 떨어졌으면 발주 확정 당일 연락드립니다. 먼저 받은 대금이 있으면 3영업일 안에 돌려 드립니다.`, '국내 제작·해외 수입 품목(인치·플랜트·주문제작품)은 정식 견적서에 발주(발주서 또는 메일 발주 확인)를 주시면 제작·수입을 시작합니다. 해외 수입품은 환율과 국제운임 때문에 견적 유효기간이 7일입니다.', '발주를 받으면 발주 확인서(발주번호, 출고 예정일, 대금 조건과 입금 계좌 또는 카드 결제 링크)를 이메일로 보내 드리고, 일정이 바뀌면 바로 연락합니다. 공급이 어려워지면 지체 없이 알려 드리고, 먼저 받은 대금은 받은 날부터 3영업일 안에 환급합니다 (전자상거래법 제15조 제2항).']],
   ['B', 'z-b', '대금·세금계산서', [PAY_COPY.help1, `이 사이트에는 결제창이 없습니다. ${PAY_CARDS}로 내시려면 말씀해 주세요. 결제 링크를 문자나 메일로 보내 드립니다. 카드로 내셔도 금액은 같습니다. 카드번호는 메일이나 채팅으로 받지 않습니다.`, PAY_COPY.help3, '사업자·기관은 발주 때 사업자등록번호(기관은 고유번호), 대표자 성명, 세금계산서 받을 이메일을 알려 주세요. 계좌이체분은 전자세금계산서를 발급합니다(출고일 기준, 거래처는 말일자 월합계로 다음 달 10일까지). 카드 결제분은 카드 매출전표가 증빙이라 세금계산서를 따로 발급하지 않습니다.', PAY_COPY.help5, '상품 단가는 VAT 별도로 표시하고, 합계와 청구 금액은 VAT 포함으로 함께 보여 드립니다.', '공공기관·학교 견적은 기관 서식이 있으면 그 서식으로, 없으면 공급가액·부가세(10%)·합계와 한글 금액(예: 일금 일십이만구천팔백원정, ₩129,800)을 함께 적어 드립니다. 세금계산서는 기관 고유번호로 발급합니다. 소액 수의계약 한도나 지역제한 같은 조건은 발주기관이 정하는 것이라, 해당 여부는 공고문으로 확인해 주세요. 대금은 납품·검수 뒤 기관이 정한 채널(나라장터, 나라빌, e호조+빌 등)로 청구합니다. 학교장터(S2B) 거래는 S2B 안에서 계좌입금이나 구매카드로 결제됩니다. 구매카드 결제 링크가 필요하시면 검수 뒤 보내 드립니다.']],
   ['C', 'z-c', '배송비', [`규격품 공급가 ${won(FREE_SHIP)} 이상 무료, 미만은 ${won(SHIP_FEE)}(VAT 별도)입니다.`, '제주·도서산간은 추가 운임을 발주 전에 안내합니다.', `전산볼트(1 m)가 있거나 무게가 ${FREIGHT_KG} kg을 넘는 주문은 화물로 보내며, 운임은 발주 전에 따로 안내합니다. 이때 견적함의 합계에는 운임이 빠져 있습니다.`]],
-  ['D', 'z-d', '교환·반품', ['아래 청약철회 안내는 개인 고객, 그리고 사업자라도 일반 고객과 같은 조건(사이트 표시 가격·조건)으로 사신 경우에 적용합니다. 따로 정한 발주 조건으로 거래하는 사업자는 그 발주서·견적 조건을 따르고, 공공기관은 계약 조건과 검사 절차를 따릅니다. 불량·오배송은 어느 경우나 교환하거나 환불합니다.', '규격품(미터·인치 표준품, 견적 뒤 구매한 것 포함)은 받은 날부터 7일 안에 청약철회(반품·환불)나 교환을 신청할 수 있습니다. 내용 확인을 위해 포장을 뜯은 것만으로는 반품을 거절하지 않습니다.', `단순 변심 반품의 반송비(편도 <span class="ph">${won(SHIP_FEE * 1.1)}</span>, VAT 포함)는 고객 부담입니다.`, '표시·광고나 계약 내용과 다른 상품, 불량품은 받은 날부터 3개월, 그 사실을 안 날(또는 알 수 있었던 날)부터 30일 안에 청약철회할 수 있습니다. 반송비는 저희가 부담하며, 환불과 교환 중에서 고르실 수 있습니다 (전자상거래법 제17조 제3항).', '환불은 반품 상품을 받은 날부터 3영업일 안에 처리합니다. 늦어지면 전자상거래법 시행령에서 정한 지연배상금(연 15%)을 함께 드립니다.', '고객 도면·사양에 따라 따로 제작하는 주문제작품은, 주문 확정 전에 그 품목의 청약철회가 제한된다는 사실을 따로 알리고 서면(전자문서 포함) 동의를 받은 경우에만 단순 변심에 의한 청약철회가 제한됩니다 (전자상거래법 제17조 제2항 제6호, 같은 법 시행령 제21조). 표준품을 수배만 한 품목은 이 제한을 받지 않습니다.', '사업자 발주: 받으신 뒤 지체 없이 검수해 주시고, 수량 부족이나 외관 하자는 <span class="ph">3</span>영업일 안에 알려 주세요.', '청약철회는 이메일이나 전화로 발주번호(또는 견적번호)와 사유를 알려 주시면 됩니다. 접수하면 반송 방법을 회신합니다.']],
+  ['D', 'z-d', '교환·반품', ['아래 청약철회 안내는 개인 고객, 그리고 사업자라도 일반 고객과 같은 조건(사이트 표시 가격·조건)으로 사신 경우에 적용합니다. 따로 정한 발주 조건으로 거래하는 사업자는 그 발주서·견적 조건을 따르고, 공공기관은 계약 조건과 검사 절차를 따릅니다. 불량·오배송은 어느 경우나 교환하거나 환불합니다.', '규격품(미터·인치 표준품, 견적 뒤 구매한 것 포함)은 받은 날부터 7일 안에 청약철회(반품·환불)나 교환을 신청할 수 있습니다. 내용 확인을 위해 포장을 뜯은 것만으로는 반품을 거절하지 않습니다.', `단순 변심 반품의 반송비(편도 ${won(SHIP_FEE * 1.1)}, VAT 포함)는 고객 부담입니다.`, '표시·광고나 계약 내용과 다른 상품, 불량품은 받은 날부터 3개월, 그 사실을 안 날(또는 알 수 있었던 날)부터 30일 안에 청약철회할 수 있습니다. 반송비는 저희가 부담하며, 환불과 교환 중에서 고르실 수 있습니다 (전자상거래법 제17조 제3항).', '환불은 반품 상품을 받은 날부터 3영업일 안에 처리합니다. 늦어지면 전자상거래법 시행령에서 정한 지연배상금(연 15%)을 함께 드립니다.', '고객 도면·사양에 따라 따로 제작하는 주문제작품은, 주문 확정 전에 그 품목의 청약철회가 제한된다는 사실을 따로 알리고 서면(전자문서 포함) 동의를 받은 경우에만 단순 변심에 의한 청약철회가 제한됩니다 (전자상거래법 제17조 제2항 제6호, 같은 법 시행령 제21조). 표준품을 수배만 한 품목은 이 제한을 받지 않습니다.', '사업자 발주: 받으신 뒤 지체 없이 검수해 주시고, 수량 부족이나 외관 하자는 3영업일 안에 알려 주세요.', '청약철회는 이메일이나 전화로 발주번호(또는 견적번호)와 사유를 알려 주시면 됩니다. 접수하면 반송 방법을 회신합니다.']],
 ];
 const helpList = items => `<ol class="nl">${items.map(x => `<li><span>${x}</span></li>`).join('')}</ol>`;
 // 품질 서류: 발행 주체별 (볼트노트가 발행하는 것은 CoC뿐. 제조사·시험소·검사기관 서류는 받은 그대로 전달)
@@ -3938,7 +3938,7 @@ V.help = () => sheet(
     <div class="s2 e"><span class="lab">전화</span><span class="val">${rfqC('tel', { link: true })}</span><span class="sub">${esc(SLA().telSub)}</span></div>
     <div class="s2"><span class="lab">카카오톡</span><span class="val">${rfqC('kakaoChat')}</span><span class="sub">사진·간단 문의. 정식 견적서는 메일로 드립니다</span></div>
     ${rfqOk('fax') ? `<div class="s2 e"><span class="lab">팩스</span><span class="val">${rfqC('fax')}</span><span class="sub">기관 서식 견적 요청·발주서</span></div>` : ''}
-    <div class="s4 e lr"><span class="lab">정책 문서</span><span><a href="#terms" data-go="terms">이용약관</a> · <a href="#privacy" data-go="privacy"><b>개인정보 처리방침</b></a> · ${iaBizLink()}</span></div>
+    <div class="s4 e lr"><span class="lab">정책 문서</span><span><a href="#terms" data-go="terms">이용약관</a> · <a href="#privacy" data-go="privacy"><b>개인정보 처리방침</b></a>${iaBizLink() ? ' · ' + iaBizLink() : ''}</span></div>
   </div>`));
 V.after.help = () => {
   $('copy-mail').addEventListener('click', () => {

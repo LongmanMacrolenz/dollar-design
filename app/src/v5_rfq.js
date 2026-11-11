@@ -205,7 +205,7 @@ function rfqLastShip(lines) {
 function rfqCartPkg(cr) {
   const F = rfqCartF, v = F.v, bo = F.mode === 'BO', no = F.no[F.mode] + (F.rev[F.mode] ? `-R${F.rev[F.mode]}` : ''), date = rfqToday();
   const lines = cr.rows.filter(r => r.no && (!bo || (r.l.type === 'item' && r.px))).map(r => r.l.type === 'item' && !r.px
-    ? { no: r.no, raw: r.l.pn, spec: `${r.p.f.short} · ${GRADE[r.p.g].label} · ${FINISH[r.p.fin].short}`, en: bomEnCart(r.l), bom: rfqPnText(r.p), qty: r.l.qty, unit: 'EA', status: '견적 요청 (단가 확인 중)', price: null, amount: null, note: '단가 확인 중' }
+    ? { no: r.no, raw: r.l.pn, spec: `${r.p.f.short} · ${GRADE[r.p.g].label} · ${FINISH[r.p.fin].short}`, en: bomEnCart(r.l), bom: rfqPnText(r.p), qty: r.l.qty, unit: 'EA', status: '견적 요청 (단가 견적 회신)', price: null, amount: null, note: '단가 견적 회신' }
     : r.l.type === 'item'
     ? { no: r.no, raw: r.l.pn, spec: `${r.p.f.short} · ${GRADE[r.p.g].label} · ${FINISH[r.p.fin].short}`, en: bomEnCart(r.l), bom: rfqPnText(r.p), qty: r.l.qty, unit: 'EA', status: PRICE_LAB(), price: r.v.price, amount: r.v.price * r.l.qty, ship: r.v.ship, note: `${r.v.ship.today ? '오늘 ' : ''}${r.v.ship.label} 출고 예정` }
     : { no: r.no, raw: r.l.title, spec: r.l.spec, en: bomEnCart(r.l), bom: r.l.spec, qty: r.l.qty, unit: r.l.unit || 'EA', status: '견적 요청', price: null, amount: null, note: r.l.reqNo ? `요청서 ${r.l.reqNo}` : '' });
@@ -273,7 +273,7 @@ function rfqCartDoc(pkg) {
   const notes = bo
     ? `<p class="small muted">발주 확인서(발주번호, 출고 예정일${last ? ` — 지금 표시 기준 ${last.today ? '오늘 ' : ''}${esc(last.label)}` : ''}, 입금 계좌 또는 카드 결제 링크)를 받은 뒤 확정됩니다. 이 발주서는 이 페이지에서 전송되지 않습니다. 메일로 보내실 때는 내려받은 발주서 파일을 첨부해 주세요.${v.ctype === 'ind' ? (ESCROW_ON ? ` 개인 고객이 상품을 받기 전에 계좌이체·체크카드로 먼저 내실 때는 에스크로(<span class="ph">은행명</span>)를 고르실 수 있고, 받은 날부터 7일 안에 청약철회할 수 있습니다(6장 D).` : ' 개인 고객은 신용카드 결제 링크로 결제하며, 받은 날부터 7일 안에 청약철회할 수 있습니다(6장 D).') : ''}</p>`
     : '<p class="small muted">이 요청서는 이 페이지에서 전송되지 않습니다. 아래에서 보낼 방법을 고르세요. 메일로 보내실 때는 내려받은 요청서 파일(엑셀)과 도면을 첨부해 주세요. 견적함을 고치면 이 요청서도 함께 바뀝니다.</p>';
-  return (bo ? rfqBoW : (s => s))(`${bo && !ORDER_LIVE ? `<p class="rq-band"><b>검증 운영 중:</b> 이 요청서는 아직 주문이 아닙니다. 확인 메일로 가격과 출고 예정일을 드린 뒤, 진행하시겠다고 답하시면 그때 주문이 됩니다.</p>` : ''}${bo ? noteSm('info', `발주서 ${esc(pkg.no)}를 만들었습니다. 보낼 방법을 고르세요. 메일로 보내실 때는 내려받은 발주서 파일을 첨부해 주세요. 받는 대로 발주 확인서(출고 예정일, 입금 계좌 또는 카드 결제 링크)를 보내 드립니다. 이 화면에서는 결제하지 않습니다.`, '발주') : ''}
+  return (bo ? rfqBoW : (s => s))(`${bo && !ORDER_LIVE ? `<p class="rq-band"><b>확인 후 진행:</b> 이 요청서는 아직 주문이 아닙니다. 확인 메일로 가격과 출고 예정일을 드린 뒤, 진행하시겠다고 답하시면 그때 주문이 됩니다.</p>` : ''}${bo ? noteSm('info', `발주서 ${esc(pkg.no)}를 만들었습니다. 보낼 방법을 고르세요. 메일로 보내실 때는 내려받은 발주서 파일을 첨부해 주세요. 받는 대로 발주 확인서(출고 예정일, 입금 계좌 또는 카드 결제 링크)를 보내 드립니다. 이 화면에서는 결제하지 않습니다.`, '발주') : ''}
 <div class="doc rfq-doc" id="doc"><div class="doc-in"><h2>${bo ? '발주서' : '견적 요청서'}</h2>${tbl}${sum}<div class="doc-tb">${rfqCells(cells)}</div>${notes}</div></div>`);
 }
 function rfqCartPaint(el, cr) {

@@ -130,10 +130,10 @@ const BOM_FAMS = [
     combos: [['B72H', 'PO', 1], ['B7S', 'PO', 1]],
     stockIf: (c, L) => dIn(c) <= 1 && L <= 8000, pack: () => 1,
     wt: (c, L, g) => { const d = dIn(c), r = hhnIn(d); return (Math.PI / 4 * d * d * L / 1000 * .9 + 2 * (r ? (.866 * r[2] ** 2 - Math.PI / 4 * d * d) * r[4] : IN_EST.nut(d))) * IN3; } }),
-  mkFam({ id: 'ifw', code: 'IFW', kind: 'washer', type: 'washer', draw: 'washer', name: '경화 평와셔 F436', std: 'ASTM F436', sizes: [.25, .3125, .375, .4375, .5, .5625, .625, .75, .875, 1, 1.125, 1.25, 1.375, 1.5].map(d => szIn(d, 'W')), base: 6,   // 호칭만 (F436 범위 1/4–4", F436-24 범위 조항). 치수는 규격서 확인 중
+  mkFam({ id: 'ifw', code: 'IFW', kind: 'washer', type: 'washer', draw: 'washer', name: '경화 평와셔 F436', std: 'ASTM F436', sizes: [.25, .3125, .375, .4375, .5, .5625, .625, .75, .875, 1, 1.125, 1.25, 1.375, 1.5].map(d => szIn(d, 'W')), base: 6,   // 호칭만 (F436 범위 1/4–4", F436-24 범위 조항). 치수는 견적 때 규격서로 확인
     combos: [['F436', 'PO', 1], ['F436', 'HI', 1]], stockIf: c => dIn(c) <= 1, pack: c => dIn(c) <= .75 ? 100 : 50,
     wt: c => IN_EST.washer(dIn(c)) * IN3 }),
-  mkFam({ id: 'ilw', code: 'ILW', kind: 'washer', type: 'lockwasher', draw: 'spring', name: '인치 스프링 와셔 (Regular)', std: 'ASME B18.21.1', sizes: [.19, .25, .3125, .375, .4375, .5, .625, .75, .875, 1].map(d => szIn(d, 'R')), base: 4,   // 호칭만. 치수는 규격서 확인 중
+  mkFam({ id: 'ilw', code: 'ILW', kind: 'washer', type: 'lockwasher', draw: 'spring', name: '인치 스프링 와셔 (Regular)', std: 'ASME B18.21.1', sizes: [.19, .25, .3125, .375, .4375, .5, .625, .75, .875, 1].map(d => szIn(d, 'R')), base: 4,   // 호칭만. 치수는 견적 때 규격서로 확인
     combos: [['LW188', 'PA', 1], ['LWCS', 'ZW', 1]], pack: () => 100,
     wt: c => IN_EST.lock(dIn(c)) * IN3 }),
 ];
