@@ -1,0 +1,2177 @@
+{
+ "id": "mbw",
+ "status": "partial",
+ "standard": "DIN 5406 (MB)",
+ "standard_full": "DIN 5406 (lock washers MB for KM lock nuts DIN 981); column keys follow the ISO 2982-2 letters d3, d4, d5, f, f1, M, B7 - the ISO table itself was not compared",
+ "u": "mm",
+ "cols": [
+  [
+   "d3",
+   "안지름 d3"
+  ],
+  [
+   "M",
+   "안쪽 혀 거리 M"
+  ],
+  [
+   "f1",
+   "안쪽 혀 폭 f1"
+  ],
+  [
+   "B7",
+   "두께 B7"
+  ],
+  [
+   "f",
+   "바깥 날개 폭 f"
+  ],
+  [
+   "d4",
+   "날개 뿌리 지름 d4"
+  ],
+  [
+   "d5",
+   "바깥지름 d5"
+  ]
+ ],
+ "rows": [
+  [
+   "MB0",
+   10.0,
+   8.5,
+   3.0,
+   1.0,
+   3.0,
+   13.5,
+   21.0
+  ],
+  [
+   "MB1",
+   12.0,
+   10.5,
+   3.0,
+   1.0,
+   3.0,
+   17.0,
+   25.0
+  ],
+  [
+   "MB2",
+   15.0,
+   13.5,
+   4.0,
+   1.0,
+   4.0,
+   21.0,
+   28.0
+  ],
+  [
+   "MB3",
+   17.0,
+   15.5,
+   4.0,
+   1.0,
+   4.0,
+   24.0,
+   32.0
+  ],
+  [
+   "MB4",
+   20.0,
+   18.5,
+   4.0,
+   1.0,
+   4.0,
+   26.0,
+   36.0
+  ],
+  [
+   "MB5",
+   25.0,
+   23.0,
+   5.0,
+   1.25,
+   5.0,
+   32.0,
+   42.0
+  ],
+  [
+   "MB6",
+   30.0,
+   27.5,
+   5.0,
+   1.25,
+   5.0,
+   38.0,
+   49.0
+  ],
+  [
+   "MB7",
+   35.0,
+   32.5,
+   6.0,
+   1.25,
+   5.0,
+   44.0,
+   57.0
+  ],
+  [
+   "MB9",
+   45.0,
+   42.5,
+   6.0,
+   1.25,
+   6.0,
+   56.0,
+   69.0
+  ],
+  [
+   "MB10",
+   50.0,
+   47.5,
+   6.0,
+   1.25,
+   6.0,
+   61.0,
+   74.0
+  ],
+  [
+   "MB11",
+   55.0,
+   52.5,
+   8.0,
+   1.5,
+   7.0,
+   67.0,
+   81.0
+  ],
+  [
+   "MB12",
+   60.0,
+   57.5,
+   8.0,
+   1.5,
+   7.0,
+   73.0,
+   86.0
+  ],
+  [
+   "MB13",
+   65.0,
+   62.5,
+   8.0,
+   1.5,
+   7.0,
+   79.0,
+   92.0
+  ],
+  [
+   "MB14",
+   70.0,
+   66.5,
+   8.0,
+   1.5,
+   8.0,
+   85.0,
+   98.0
+  ],
+  [
+   "MB15",
+   75.0,
+   71.5,
+   8.0,
+   1.5,
+   8.0,
+   90.0,
+   104.0
+  ],
+  [
+   "MB16",
+   80.0,
+   76.5,
+   10.0,
+   1.75,
+   8.0,
+   95.0,
+   112.0
+  ],
+  [
+   "MB17",
+   85.0,
+   81.5,
+   10.0,
+   1.75,
+   8.0,
+   102.0,
+   119.0
+  ],
+  [
+   "MB18",
+   90.0,
+   86.5,
+   10.0,
+   1.75,
+   10.0,
+   108.0,
+   126.0
+  ],
+  [
+   "MB20",
+   100.0,
+   96.5,
+   12.0,
+   1.75,
+   10.0,
+   120.0,
+   142.0
+  ],
+  [
+   "MB21",
+   105.0,
+   100.5,
+   12.0,
+   1.75,
+   12.0,
+   126.0,
+   145.0
+  ],
+  [
+   "MB22",
+   110.0,
+   105.5,
+   12.0,
+   1.75,
+   12.0,
+   133.0,
+   154.0
+  ],
+  [
+   "MB24",
+   120.0,
+   115.0,
+   14.0,
+   2.0,
+   12.0,
+   138.0,
+   164.0
+  ],
+  [
+   "MB25",
+   125.0,
+   120.0,
+   14.0,
+   2.0,
+   12.0,
+   148.0,
+   170.0
+  ],
+  [
+   "MB26",
+   130.0,
+   125.0,
+   14.0,
+   2.0,
+   12.0,
+   149.0,
+   175.0
+  ],
+  [
+   "MB28",
+   140.0,
+   135.0,
+   16.0,
+   2.0,
+   14.0,
+   160.0,
+   192.0
+  ],
+  [
+   "MB30",
+   150.0,
+   145.0,
+   16.0,
+   2.0,
+   14.0,
+   171.0,
+   205.0
+  ],
+  [
+   "MB31",
+   155.0,
+   147.5,
+   16.0,
+   2.5,
+   16.0,
+   182.0,
+   212.0
+  ],
+  [
+   "MB32",
+   160.0,
+   154.0,
+   18.0,
+   2.5,
+   16.0,
+   182.0,
+   217.0
+  ],
+  [
+   "MB33",
+   165.0,
+   157.5,
+   18.0,
+   2.5,
+   16.0,
+   193.0,
+   222.0
+  ],
+  [
+   "MB34",
+   170.0,
+   164.0,
+   18.0,
+   2.5,
+   16.0,
+   193.0,
+   232.0
+  ],
+  [
+   "MB36",
+   180.0,
+   174.0,
+   20.0,
+   2.5,
+   18.0,
+   203.0,
+   242.0
+  ],
+  [
+   "MB38",
+   190.0,
+   184.0,
+   20.0,
+   2.5,
+   18.0,
+   214.0,
+   252.0
+  ],
+  [
+   "MB40",
+   200.0,
+   194.0,
+   20.0,
+   2.5,
+   18.0,
+   226.0,
+   262.0
+  ]
+ ],
+ "row_support": {
+  "MB0": 3,
+  "MB1": 4,
+  "MB2": 3,
+  "MB3": 4,
+  "MB4": 4,
+  "MB5": 4,
+  "MB6": 4,
+  "MB7": 4,
+  "MB9": 4,
+  "MB10": 4,
+  "MB11": 4,
+  "MB12": 4,
+  "MB13": 4,
+  "MB14": 4,
+  "MB15": 4,
+  "MB16": 4,
+  "MB17": 4,
+  "MB18": 4,
+  "MB20": 4,
+  "MB21": 4,
+  "MB22": 4,
+  "MB24": 4,
+  "MB25": 4,
+  "MB26": 4,
+  "MB28": 4,
+  "MB30": 4,
+  "MB31": 3,
+  "MB32": 3,
+  "MB33": 3,
+  "MB34": 3,
+  "MB36": 3,
+  "MB38": 3,
+  "MB40": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=NTE5MQ==",
+   "site": "globalfastener.com",
+   "what": "globalfastener DIN 5406-2011 table (Code row MB n / MBL n)",
+   "cluster": "GF",
+   "raw": "raw/gf_sid_5191.html"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/5406/",
+   "site": "fasteners.eu",
+   "what": "fasteners.eu DIN 5406: d1, d2, e, f, b1, s, nut",
+   "cluster": "FE",
+   "raw": "raw/fe_din5406.html"
+  },
+  {
+   "url": "https://boltport.com/standards/din-5406/",
+   "site": "boltport.com",
+   "what": "boltport DIN 5406 (Boltport counted with the fasteners.eu group) [tier 2]",
+   "cluster": "FE",
+   "raw": "raw/bp_din-5406.html"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_5406.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "schrauben-lexikon DIN 5406: d1, d2, e, f, b1, s, nut",
+   "cluster": "SL",
+   "raw": "raw/sl_DIN_5406.html"
+  },
+  {
+   "url": "https://www.skf.com/group/products/rolling-bearings/accessories/lock-nuts/lock-washers/productid-MB%205",
+   "site": "skf.com",
+   "what": "SKF product pages MB 0 ... MB 40, rendered DOM (raw/skf_MB<n>.html)",
+   "cluster": "SKF",
+   "raw": "raw/skf.html"
+  },
+  {
+   "url": "https://usarollerchain.com/products/mb-31-lock-washer",
+   "site": "usarollerchain.com",
+   "what": "USA Roller Chain product pages MB-00 ... MB-40 (raw/urc_mb<nn>.html); several values are rounded (T 1.2 for 1.25, D4 13 for 13.5)",
+   "cluster": "URC",
+   "raw": "raw/urc.html"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/din_5406",
+   "site": "fasten.it",
+   "what": "fasten.it DIN 5406 (04/2011) tech table; rows keyed by (d1, d2), no MB code printed",
+   "cluster": "FI",
+   "raw": "raw/fi_din_5406.html"
+  }
+ ],
+ "clusters": {
+  "GF globalfastener DIN 5406-2011 (Code row MB n; drawing 522_en.png: d bore, d1 side face, dc outside, n1 inner tab, n outer tab, s1 tab tip to bore, h thickness)": [
+   "globalfastener.com/standards/detail.php?sid=NTE5MQ=="
+  ],
+  "FE fasteners.eu DIN 5406 (legend d1 inner, d2 outer, s, b1 tooth width, e tongue width; f NOT in legend -> not counted for M)": [
+   "fasteners.eu/standards/DIN/5406/",
+   "boltport din-5406 (copy: same 34.5 at MB8; not counted separately)"
+  ],
+  "SL schrauben-lexikon DIN 5406 (drawing DIN_5406.gif shows d1, d2, e, f, b1, s)": [
+   "schrauben-lexikon.de/norm/DIN_5406.asp"
+  ],
+  "FI fasten.it DIN 5406 04/2011 table (drawing d1, d2, d3, e, f, b1, s; no MB code -> matched by bore+outside diameter, never counted for d3/d5)": [
+   "fasten.it/en/norms/norm/din_5406"
+  ],
+  "SKF product pages MB 0-40 (rendered with playwright; words next to each letter)": [
+   "skf.com/.../productid-MB%20<n>"
+  ],
+  "URC USA Roller Chain product pages (drawing in each description: D1 bore, K tab tip, E inner tab, S outer tab, T thickness, D4, D5; MB-02 page excluded: it carries both the MB-00 and MB-02 dimension blocks)": [
+   "usarollerchain.com/products/mb-<nn>-lock-washer"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "nut column (mating KM lock nut)",
+   "why": "text, not a number: a T2 record holds numbers only. Every page that prints it gives KM<n> for MB<n> (fasteners.eu, schrauben-lexikon, boltport, usarollerchain; no exception in MB0-MB40)."
+  },
+  {
+   "what": "row MB29 (bore 145)",
+   "why": "d4: globalfastener 171 and SKF 171 against usarollerchain 172; fasten.it has no 145 mm row -> 2 clusters. The other six cells of MB29 have 4-5 clusters (d3 145, M 140, f1 16, B7 2, f 14, d5 202)."
+  },
+  {
+   "what": "MBL (light series) washers and MB44-MB56",
+   "why": "not in the candidate table; printed with a code by globalfastener only (fasten.it prints the rows without codes)"
+  },
+  {
+   "what": "rows MB19, MB23, MB27",
+   "why": "lead decision (edition doubt): f1 12 / 14 / 16 on the fasten.it table headed DIN 5406 \"Publication date: 04/2011\" vs 10 / 12 / 14 elsewhere",
+   "by": "verifier"
+  },
+  {
+   "what": "row MB8",
+   "why": "lead rule (rival printed by >=2 pages): M 34.5 on fasteners.eu and boltport (copy pair) vs 37.5 on globalfastener, schrauben-lexikon, fasten.it, SKF, usarollerchain. Probably one typo copied, removed mechanically",
+   "by": "verifier"
+  },
+  {
+   "what": "row MB29 (researcher)",
+   "why": "agree: d4 172 on usarollerchain vs 171 GF/SKF, fasten.it has no 145 row",
+   "by": "verifier"
+  }
+ ],
+ "checks": [
+  "every kept cell: >= 3 independent clusters print exactly the same number (minimum over kept cells = 3)",
+  "M < d3 < d4 < d5 in every row: True",
+  "d3, M and d5 strictly increase with the MB number: True; d4 never decreases: True",
+  "B7, f1 and f never decrease with size: True",
+  "d3 - M takes only the values [1.5, 2.0, 2.5, 3.5, 4.5, 5.0, 6.0, 7.5] mm",
+  "B7 takes only the steps [1.0, 1.25, 1.5, 1.75, 2.0, 2.5]",
+  "every page that prints the mating nut gives KM<n> for MB<n> (fasteners.eu, schrauben-lexikon, boltport, usarollerchain): True"
+ ],
+ "shape_hint": "A thin sheet-metal ring with one tab on the inside of the bore (width f1; it sits in the shaft keyway, M is measured from the tab tip across the bore) and a ring of narrow tabs (width f) all round the outside, set at about 25 degrees to the flat face; one outer tab is bent into a slot of the lock nut.",
+ "role_map": {
+  "row label": "MB<n> designation (pairs with lock nut KM<n>)",
+  "d3": "bore diameter",
+  "d5": "outside diameter over the outer tabs",
+  "d4": "root circle diameter of the outer tabs = diameter of the flat side face",
+  "f1": "width of the inner tab",
+  "M": "distance from the tip of the inner tab to the opposite side of the bore",
+  "f": "width of an outer tab",
+  "B7": "sheet thickness (printed as minimum by some pages)"
+ },
+ "notes": "Candidate 38 sizes x 8 columns (7 numeric + nut text) -> kept 37 x 7. Column keys are the ISO 2982-2 letters used by the catalog; the pages use other letters, mapped through each page's own drawing or wording: DIN pages d1/d2/d3/e/f/b1/s, globalfastener d/dc/d1/n1/s1/n/h, SKF d/d2/d1/f/M/B, usarollerchain D1/D5/D4/E/K/S/T. Clusters: globalfastener (DIN 5406-2011 page; its 1993 page has identical numbers), fasteners.eu (+ boltport; MB0-MB30; their letter f is not explained by a drawing and is not counted for M), schrauben-lexikon (MB0-MB30), fasten.it (04/2011 table; prints no MB code, so its rows are matched through bore + outside diameter and it is never counted for d3 / d5), SKF product pages (rendered with a browser; no outer tab width) and USA Roller Chain product pages (some values rounded: T 1.2 for 1.25, 1.8 for 1.75, D4 13 for 13.5). MB31-MB40 rest on globalfastener + SKF + usarollerchain for d3 / d5 and globalfastener + fasten.it + usarollerchain for f (exactly 3). DISSENT TO DECIDE: inner tab width f1 at MB19 / MB23 / MB27 is 10 / 12 / 14 on five clusters, but the fasten.it \"04/2011\" table prints 12 / 14 / 16. fasten.it's own \"1993\" table on the same page prints 12 / 12 / 14 there and 8 / 10 at MB10 / MB15 (where its 2011 table and everyone else print 6 / 8), so that page disagrees with itself; globalfastener shows no difference between its 1993 and 2011 pages. If the fasten.it 2011 table were a true edition change, the three kept f1 cells would be older-edition values - not decidable without the standard. Single-page typos seen: fasteners.eu MB7 s 12,5; schrauben-lexikon MB12 d2 864, MB4 s 1,25, MB7 e 5 / b1 6. B7 is printed as a minimum by fasten.it (\"s min.\") and as \"Thickness material\" by SKF. d4 is the root circle of the outer tabs = SKF \"Side face diameter\". ISO 2982-2 and KS B 2004 texts were not compared.",
+ "scope": "MB0~MB40 (MB8·MB19·MB23·MB27·MB29와 MBL 계열 제외)",
+ "researcher_clusters": {
+  "A globalfastener standards DB": [
+   "globalfastener.com/standards/detail.php?sid=NTE5MQ== (raw/gf_sid_5191.html)"
+  ],
+  "B fasteners.eu group (fasteners.eu, boltport)": [
+   "fasteners.eu/standards/DIN/5406/ (raw/fe_din5406.html)",
+   "boltport.com/standards/din-5406/ (raw/bp_din-5406.html) [tier 2, used only where no tier-1 page of the cluster gives the cell]"
+  ],
+  "C schrauben-lexikon": [
+   "schrauben-lexikon.de/norm/DIN_5406.asp (raw/sl_DIN_5406.html)"
+  ],
+  "E SKF product pages (manufacturer)": [
+   "skf.com/group/products/rolling-bearings/accessories/lock-nuts/lock-washers/productid-MB%205 (raw/skf.html)"
+  ],
+  "F USA Roller Chain product pages (distributor)": [
+   "usarollerchain.com/products/mb-31-lock-washer (raw/urc.html)"
+  ],
+  "D fasten.it norm sheet": [
+   "fasten.it/en/norms/norm/din_5406 (raw/fi_din_5406.html)"
+  ]
+ },
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Independent re-fetch on 2026-11-11 with curl (browser UA, 2.5 s pause per site) of every counted and rival page; SKF pages rendered with playwright; drawings downloaded and read to confirm letter mappings. Own parser (html.parser with rowspan/colspan expansion) and own per-site extraction in scratchpad t2/g4v/code (v_mbw.py, v_sens.py); researcher raw/ and scripts not used. Counted only maker/distributor HTML tables whose header or drawing states the column meaning; 33 rows x 7 cols kept, every kept cell has >= 3 independent clusters with exactly the same number. Sanity checks recomputed on kept rows.",
+  "problems": [
+   "MB31-MB40: d3 and d5 rest on exactly GF + SKF + URC, f on exactly GF + FI + URC (zero slack; without usarollerchain these 7 rows fail).",
+   "fasten.it matching: (bore, outside diameter) pairs are unique on both fasten.it tables and on globalfastener (51 MB/MBL codes); every fasten.it 2011 row maps to one globalfastener code and agrees on d4, M, f, B7 for all of them; only f1 differs (MB19/23/27). fasten.it is never counted for d3 or d5. Safe.",
+   "Single-page rivals left in kept rows (not counted for those cells): usarollerchain rounds thickness (1.2 for 1.25, 1.8 for 1.75) and MB0 d4 13 (13.5); schrauben-lexikon MB4 s 1.25, MB7 e 5 / b1 6, MB12 d2 864; fasteners.eu MB7 s 12,5; fasten.it 1993 table f1 8 / 10 at MB10 / MB15 (older edition, one page).",
+   "B7 is \"s min.\" on fasten.it and plain thickness elsewhere; B7 still has >=3 clusters without fasten.it.",
+   "fasten.it norm sheets end with 'Reproduced by permission of DIN'. Counted (as in the earlier verified records kmnut/clevis/spring-co) because it is a licensed dimension sheet, not the standard's text, but EVERY family here falls to 2 clusters on many cells without it - if the lead rules such licensed reproductions out, all four records fail."
+  ],
+  "dropped_rows": [
+   "rows MB19, MB23, MB27",
+   "row MB8",
+   "row MB29 (researcher)"
+  ],
+  "dropped_cols": [],
+  "per_cell_clusters": {
+   "MB0": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB1": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB2": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF"
+    ]
+   },
+   "MB3": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB4": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB5": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB6": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB7": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB9": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB10": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB11": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB12": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB13": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB14": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB15": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB16": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB17": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB18": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB20": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB21": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB22": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB24": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB25": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB26": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB28": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB30": {
+    "d3": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "SL",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FE",
+     "SL",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "FE",
+     "SL",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB31": {
+    "d3": [
+     "GF",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB32": {
+    "d3": [
+     "GF",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB33": {
+    "d3": [
+     "GF",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB34": {
+    "d3": [
+     "GF",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB36": {
+    "d3": [
+     "GF",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB38": {
+    "d3": [
+     "GF",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "SKF",
+     "URC"
+    ]
+   },
+   "MB40": {
+    "d3": [
+     "GF",
+     "SKF",
+     "URC"
+    ],
+    "M": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f1": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "B7": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "f": [
+     "GF",
+     "FI",
+     "URC"
+    ],
+    "d4": [
+     "GF",
+     "FI",
+     "SKF",
+     "URC"
+    ],
+    "d5": [
+     "GF",
+     "SKF",
+     "URC"
+    ]
+   }
+  }
+ }
+}

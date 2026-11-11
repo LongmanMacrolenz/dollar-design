@@ -1,0 +1,269 @@
+{
+ "id": "bhcs",
+ "status": "partial",
+ "standard": "ISO 7380-1",
+ "standard_full": "ISO 7380-1 hexagon socket button head screws M3-M16. The kept columns (P, dk max, k max, s nominal, t min) read the same on pages labelled with the 2011 edition (fasten.it 11/2011, globalfastener 2011) and on pages labelled with the 2022 edition (Boltport 2022, globalfastener 2022), and the foreword of ISO 7380-1:2022 (official preview) lists no change to them; values compared between public manufacturer / distributor pages only, not checked against the standard itself",
+ "u": "mm",
+ "cols": [
+  [
+   "pitch",
+   "피치 P"
+  ],
+  [
+   "dk",
+   "머리 지름 dk (최대)"
+  ],
+  [
+   "k",
+   "머리 높이 k (최대)"
+  ],
+  [
+   "s",
+   "육각 구멍 맞변 s (렌치 크기)"
+  ],
+  [
+   "t_min",
+   "구멍 깊이 t (최소)"
+  ]
+ ],
+ "rows": [
+  [
+   "M3",
+   0.5,
+   5.7,
+   1.65,
+   2,
+   1.04
+  ],
+  [
+   "M4",
+   0.7,
+   7.6,
+   2.2,
+   2.5,
+   1.3
+  ],
+  [
+   "M5",
+   0.8,
+   9.5,
+   2.75,
+   3,
+   1.56
+  ],
+  [
+   "M6",
+   1,
+   10.5,
+   3.3,
+   4,
+   2.08
+  ],
+  [
+   "M8",
+   1.25,
+   14,
+   4.4,
+   5,
+   2.6
+  ],
+  [
+   "M10",
+   1.5,
+   17.5,
+   5.5,
+   6,
+   3.12
+  ],
+  [
+   "M12",
+   1.75,
+   21,
+   6.6,
+   8,
+   4.16
+  ],
+  [
+   "M16",
+   2,
+   28,
+   8.8,
+   10,
+   5.2
+  ]
+ ],
+ "row_support": {
+  "M3": 4,
+  "M4": 3,
+  "M5": 3,
+  "M6": 3,
+  "M8": 3,
+  "M10": 3,
+  "M12": 3,
+  "M16": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/ISO/7380/",
+   "site": "fasteners.eu",
+   "what": "ISO 7380-1 table M3-M16: P, b ref, dk max, dw min, k max, r1 max, s nom, t min -- row 'r1 max' (3.7 ... 15.3) is extracted but NOT counted for rf_max: the page drawing (raw/img/fe_iso7380_drawing.jpg) labels the dome radius 'rf', the table says 'r1'"
+  },
+  {
+   "url": "https://boltport.com/standards/iso-7380/",
+   "site": "boltport.com",
+   "what": "ISO 7380-1:2022 table M3-M16: pitch, dk min-max, k min-max, s nom, e min, t min-max -- counted in the fasteners.eu cluster (strict convention of earlier verifications), although layout and edition differ"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/ScrewBolt-SHBtn-M.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "ISO 7380-1 dimension table M3-M16 with plain-language row names: pitch, b ref, dk max, dw min, k max, rf max (dome radius), s nom, t min -- its 't min.' row repeats the 'w min.' numbers from M4 up (page glitch) - those cells simply do not match and add no vote"
+  },
+  {
+   "url": "https://fasten.it/en/norms/norm/din_en_iso_7380-1",
+   "site": "fasten.it",
+   "what": "DIN EN ISO 7380-1 (11/2011) table M3-M16: P, dk max/min, s nom, e min, k max/min, t min, w min"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/iso-7380-1-specifications-hex-socket-button-head-screws/",
+   "site": "fullerfasteners.com",
+   "what": "ISO 7380-1 specifications M3-M16: P, dk max/min, k max/min, t min, s, length of thread b (same template as globalfastener)"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_3005.html",
+   "site": "globalfastener.com",
+   "what": "ISO 7380-1:2011 hexagon socket button head screws: P, b ref, dk max, dw min, k max, r3 max, s, t min -- r3 = radius of the domed head top, per the drawing on the page (raw/img/gf_iso7380_1_2011_drawing.png)"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjQ2ODA%3D",
+   "site": "globalfastener.com",
+   "what": "ISO 7380-1:2022 hexagon socket button head screws: same rows plus t max; dw min differs from the 2011 page -- only page found for the 2022 edition; its dw min (4.97 ... 25.28) differs from the 2011 pages (5 ... 26.68)"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=NTY3NQ==",
+   "site": "globalfastener.com",
+   "what": "DIN EN ISO 7380(-1):2011: P, b ref, dk max, k max, t min, s"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail.php?sid=MjA5NA==",
+   "site": "globalfastener.com",
+   "what": "ISO 7380:2004 (older edition): P, dk max, k max, s, t min"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/ISO-7380",
+   "site": "theo-schrauben.de",
+   "what": "ISO 7380 Technische Daten M3-M16: dk max., dc max. (collar version), k max., s"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/ISO_7380.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "ISO 7380 table M3-M12: dk, k, s (no max/min wording)"
+  },
+  {
+   "url": "https://www.fastenright.com/general-fixings/socket-button-head-screw-to-iso-7380/sk07",
+   "site": "fastenright.com",
+   "what": "[not counted by the verifier: the table carries head diameters of another range (M4 7.5, M10 18), so it is not an ISO 7380-1 table; its t min / k max / s values agree with the record] Technical data M2-M30: dk, k max., t min., s, pitch (some sizes follow an older / non-ISO 7380-1 range)"
+  },
+  {
+   "url": "https://www.boltsfastener.com/standards/screws-standard/iso-7380.html",
+   "site": "boltsfastener.com",
+   "what": "[not counted by the verifier: the table carries head diameters of another range (M4 7.5, M10 18), so it is not an ISO 7380-1 table; its t min / k max / s values agree with the record] ISO 7380 table M3-M12: r1, t min., s, k max., d1"
+  },
+  {
+   "url": "https://www.woodstockindustrial.com/specs/iso-7380-1",
+   "site": "woodstockindustrial.com",
+   "what": "ISO 7380-1 dimensions M3-M16: pitch, head diameter, head depth, key size (no max/min wording)"
+  },
+  {
+   "url": "https://www.fastenerdata.co.uk/metric-fine-socket-button-head-screw-grade-109-iso7380.html",
+   "site": "fastenerdata.co.uk",
+   "what": "ISO 7380 product data M2-M16: dk, k, t, s (no max/min wording)"
+  },
+  {
+   "url": "https://amesweb.info/Fasteners/Screws/Metric-Hex-Socket-Button-Head-Screw-Dimensions.aspx",
+   "site": "amesweb.info",
+   "what": "[not counted / extra] calculator result table per size (form POST), states ISO 7380-1:2011 -- calculator output, one POST per size; reported only"
+  }
+ ],
+ "clusters": {
+  "FE fasteners.eu + boltport (one lineage by the strict convention of earlier verifications)": [
+   "https://www.fasteners.eu/standards/ISO/7380/ (ISO 7380-1, no edition stated; content of the 2011 edition)",
+   "https://boltport.com/standards/iso-7380/ (ISO 7380-1:2022)"
+  ],
+  "WF westfieldfasteners (pitch, dk, k, s; its t min row repeats the w min row from M4 up and does not count for t_min)": [
+   "https://www.westfieldfasteners.co.uk/Standards/ScrewBolt-SHBtn-M.html"
+  ],
+  "FIT fasten.it (DIN EN ISO 7380-1, 11/2011)": [
+   "https://fasten.it/en/norms/norm/din_en_iso_7380-1"
+  ],
+  "CN globalfastener + fullerfasteners (one template)": [
+   "https://www.globalfastener.com/standards/detail_3005.html (ISO 7380-1:2011)",
+   "https://www.globalfastener.com/standards/detail.php?sid=NTY3NQ== (DIN EN ISO 7380(-1):2011)",
+   "https://www.globalfastener.com/standards/detail.php?sid=MjQ2ODA%3D (ISO 7380-1:2022)",
+   "https://www.globalfastener.com/standards/detail.php?sid=MjA5NA== (ISO 7380:2004)",
+   "https://fullerfasteners.com/tech/iso-7380-1-specifications-hex-socket-button-head-screws/"
+  ],
+  "DE theo-schrauben + schrauben-lexikon (one dataset; dk max, k max, s only)": [
+   "https://www.theo-schrauben.de/ISO-7380",
+   "https://www.schrauben-lexikon.de/norm/ISO_7380.asp (no max wording: s only)"
+  ],
+  "WS woodstockindustrial (pitch and key size only: head columns have no max wording)": [
+   "https://www.woodstockindustrial.com/specs/iso-7380-1"
+  ],
+  "FD fastenerdata (key size only: no max / min wording)": [
+   "https://www.fastenerdata.co.uk/metric-fine-socket-button-head-screw-grade-109-iso7380.html"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "column rf_max",
+   "why": "only 2 counted clusters (westfield 'dome radius rf max.', globalfastener 'r3 max' via its drawing); fasteners.eu shows the same numbers as 'r1' (not defined by its drawing) and the amesweb calculator as rf,max (tier B). M3: 3.7 in 2 cluster(s) ['CN globalfastener+fullerfasteners (one template)', 'WF westfieldfasteners']; M4: 4.6 in 2 cluster(s) ['CN globalfastener+fullerfasteners (one template)', 'WF westfieldfasteners']; M5: 5.75 in 2 cluster(s) ['CN globalfastener+fullerfasteners (one template)', 'WF westfieldfasteners']; M6: 6.15 in 2 cluster(s) ['CN globalfastener+fullerfasteners (one template)', 'WF westfieldfasteners']; M8: 7.95 in 2 cluster(s) ['CN globalfastener+fullerfasteners (one template)', 'WF westfieldfasteners']; M10: 9.8 in 2 cluster(s) ['CN globalfastener+fullerfasteners (one template)', 'WF westfieldfasteners']"
+  },
+  {
+   "what": "column dw_min",
+   "why": "edition-dependent: three clusters (fasteners.eu, westfield, globalfastener 2011 page) agree on the 2011-edition values 5 / 6.84 / 8.74 / 9.57 / 13.07 / 16.57 / 19.68 / 26.68, but the 2022-edition page (globalfastener only) prints 4.97 / 6.66 / 8.41 / 9.26 / 12.48 / 15.7 / 18.84 / 25.28; the superseded value is not published and the current one has a single source"
+  },
+  {
+   "what": "column lMaxStd_2011",
+   "why": "no page states a per-size longest standard length under a header that says so. M3: no value in 0 cluster(s) []; M4: no value in 0 cluster(s) []; M5: no value in 0 cluster(s) []; M6: no value in 0 cluster(s) []; M8: no value in 0 cluster(s) []; M10: no value in 0 cluster(s) []"
+  },
+  {
+   "what": "column b_ref_2011 (removed by the verifier)",
+   "why": "edition-dependent, like dw_min: fasteners.eu, westfield and the globalfastener 2011 page + Fuller agree on b ref 18 / 20 / 22 / 24 / 28 / 32 / 36 / 44, but the foreword of ISO 7380-1:2022 (official preview) says the reference thread length b was increased to 3d for partially threaded M16 screws, i.e. 48 instead of 44; globalfastener's page labelled 2022 still prints 44 and is the only 2022-labelled page with a b row. Only globalfastener states the 2011 edition for its b row (fasteners.eu and westfield say just ISO 7380-1), so neither the current-edition value nor a 2011-labelled value has 3 clusters. b for M3-M12 (18 ... 36) is not reported as changed."
+  }
+ ],
+ "checks": [
+  "dk max / d is between 1.75 and 1.90 in every row (1.9 d for M3-M5, 1.75 d from M6 up)",
+  "k max = 0.55 x d exactly in every row",
+  "t min = 0.52 x s exactly in every row",
+  "every column strictly increases with size",
+  "pages labelled 2011 (fasten.it 11/2011, globalfastener ISO 7380-1:2011 and DIN EN ISO 7380-1:2011) and pages labelled 2022 (Boltport, globalfastener) give identical values for every kept column they carry (pitch, dk, k, s, t_min)",
+  "foreword of ISO 7380-1:2022 (official preview): the changes against 2011 concern b for M16, dw min, rounding of e min, added t max, symbol w -> wb, the rf definition, standard lengths, tensile loads and marking - none of the kept columns"
+ ],
+ "shape_hint": "Low domed (button) head with a hexagon socket, flat bearing face under the head, head diameter about 1.75 d and head height 0.55 d; no flange (the flanged version is ISO 7380-2). Socket key size s is one step smaller than for an ISO 4762 cap screw of the same thread.",
+ "role_map": {
+  "pitch": "coarse thread pitch P",
+  "dk": "head diameter max",
+  "k": "head height max",
+  "s": "hexagon socket width across flats, nominal",
+  "t_min": "socket (key engagement) depth min"
+ },
+ "notes": "Researcher notes (written before verification; where they differ, the clusters field and the verification field prevail). Clusters: FE = fasteners.eu + boltport (one lineage by the strict convention of earlier verifications), westfieldfasteners, fasten.it, CN = globalfastener (ISO 7380-1:2011, DIN EN ISO 7380(-1):2011, ISO 7380-1:2022, ISO 7380:2004 pages) + fullerfasteners, DE = theo-schrauben + schrauben-lexikon (one dataset), fastenright (k, t, s, pitch only), boltsfastener (M3-M12: k, t, s), woodstockindustrial and fastenerdata (pitch / key size only: their head columns carry no max wording). Tier B (amesweb calculator, ISO 7380-1:2011) carries the same values for every kept cell but is not counted. dw_min is deliberately not carried: fasteners.eu, westfield and globalfastener's 2011 page agree on 5 / 6.84 / 8.74 / 9.57 / 13.07 / 16.57 / 19.68 / 26.68 (2011 edition), but the only 2022-edition page found (globalfastener) prints 4.97 / 6.66 / 8.41 / 9.26 / 12.48 / 15.7 / 18.84 / 25.28, i.e. the value changed with the edition and the current-edition value has one source. rf_max (3.7 / 4.6 / 5.75 / 6.15 / 7.95 / 9.8 / 11.2 / 15.3) has only two counted clusters (westfield 'dome radius rf max', globalfastener 'r3 max' defined by its drawing); fasteners.eu prints the same numbers in a row called 'r1' that its own drawing does not define (drawing says rf), and the amesweb calculator prints them as rf,max - neither is counted. lMaxStd_2011: no page gives a per-size longest standard length with a header that says so. NOT used: itafasteners button-head page (its table is the flanged ISO 7380-2 one), engineersedge iso_socket_button_head (plain head columns, 'Flat Width' 2.045), wuerth and accu (bot challenge), westfield / tdm-neva PDFs. fastenright lists dk 7.5 (M4), 18 (M10) and k 6 (M12): older / different range, so its k vote is missing for M12. westfield's 't min.' row repeats its 'w min.' row from M4 up (page glitch). For the verifier: the globalfastener ISO 7380-1 pages carry two or three short table footnotes (e min = 1.14 s min, the 80 % load note) next to the table - judged to be a dimension table, not a reproduction of the standard's text; b_ref and every other kept column rest on exactly three clusters at minimum (b: fasteners.eu, westfield, globalfastener+Fuller). Verifier (2026-11-11, fresh downloads, own parser): column b_ref_2011 removed - the 2022 edition changed b for M16 to 3d (foreword of ISO 7380-1:2022, official preview), so the statement above that only dw_min differs between the editions is wrong, and globalfastener's 2022-labelled page (b = 44 for M16) is stale on that row. fastenright and boltsfastener are not counted. t_min stands on exactly 3 clusters (fasteners.eu+Boltport, fasten.it, globalfastener+Fuller).",
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 3,
+  "checks_done": "Verifier (different from the researcher) re-downloaded on 2026-11-11 with curl + browser User-Agent every listed page, all HTTP 200: fasteners.eu ISO/7380, boltport iso-7380, westfieldfasteners ScrewBolt-SHBtn-M, fasten.it din_en_iso_7380-1, fullerfasteners iso-7380-1, globalfastener detail_3005 + the 2022, DIN EN 2011 and 2004 pages, theo-schrauben, schrauben-lexikon, fastenright sk07, boltsfastener, woodstockindustrial, fastenerdata (amesweb fetched only to confirm it is HTML; not counted). Tables re-read with the verifier's own parser (researcher's raw files and scripts not used); drawings on the fasteners.eu, fasten.it and globalfastener pages opened. For the edition question the official preview page of ISO 7380-1:2022 (standards.iteh.ai, foreword) was read; iso.org answered with a bot challenge. Candidate 8 rows x 6 columns: b_ref_2011 removed (edition-dependent). Remaining 8 rows x 5 columns = 40 cells: pitch, dk and k are stated exactly by 5 clusters, s by 7, t_min by 3 (fasteners.eu + Boltport / fasten.it / globalfastener + Fuller; westfield agrees only at M3). Physical checks recomputed: dk / d between 1.75 and 1.90, k = 0.55 d, t_min = 0.52 s, s < dk, every column strictly increasing. No PDF, document-sharing page, login page or page of standard text among the counted sources (globalfastener carries three short table footnotes, fasten.it one scope sentence: judged dimension-table pages).",
+  "problems": [
+   "Column b_ref_2011 removed: not edition-independent as the record claimed. The foreword of ISO 7380-1:2022 (official preview) states that b was increased to 3d for partially threaded M16 screws (48, not 44). The three clusters behind 18 ... 44 are 2011-content pages; globalfastener's 2022-labelled page still prints 44 and is the only 2022-labelled page with a b row; fasteners.eu and westfield do not state an edition. If fasteners.eu and westfield were merged (identical row set and order, the standard's own), b would have 2 clusters in any case. Option for the caller instead of removing the column: keep b for M3 - M12 and remove the M16 row (7 rows x 6 columns).",
+   "The five kept columns are edition-independent on the evidence available: 2011-labelled pages (fasten.it, globalfastener x2) and 2022-labelled pages (Boltport, globalfastener) agree cell by cell, and the 2022 foreword lists no change to P, dk max, k max, s or t min (it lists b for M16, dw min = 0.92 dk min, e min rounded to 2 decimals, t max added, w -> wb, rf definition, lengths, tensile loads, marking). standard = ISO 7380-1 without an edition is therefore honest for what is left; standard_full rewritten.",
+   "t_min has zero margin: exactly fasteners.eu + Boltport / fasten.it / globalfastener + Fuller in rows M4 - M16. Westfield's t min row prints 0.30 / 0.38 / 0.74 / 1.05 / 1.45 / 1.63 / 2.25 from M4 up (its w min row repeated) and agrees only at M3. fastenright and boltsfastener print the same t min values under a t min. header but their tables follow another head-diameter range (M4 7.5, M10 18; fastenright M12 k 6) and are not counted; fastenerdata has a t column without min wording.",
+   "fasten.it is counted here although its ASME B18.3 pages were rejected for the inch families: this page states the unit correctly (mm), its max / min columns are consistent with every other source, and no cell deviates. It is the third cluster for t_min, so that column depends on it.",
+   "Independence of fasteners.eu, westfield and globalfastener: all three list the 21 rows of the standard's table in the same order with e min to 3 decimals, which follows from the standard itself; they differ in symbols (fasteners.eu r1 / dL, westfield rf / dL with plain-language names and an extra M2.5 column, globalfastener r3 / d1 / r1 / r2) and in errors (only westfield has the t min glitch) - counted as separate transcriptions. Boltport stays in the fasteners.eu cluster by the strict convention although its 2022 page has a different layout.",
+   "Catalogue mismatch for the caller: the catalogue row carries rf_max, dw_min (2022 values), b_ref_2011 and lMaxStd_2011, none of which is in the verified record.",
+   "Not checked: the standard's tables (only the public preview foreword was read; iso.org blocked by a bot challenge). rf_max, dw_min and lMaxStd_2011 stay dropped as in the researcher's record (recount of rf_max: westfield and globalfastener only; fasteners.eu prints the numbers under r1)."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "b_ref_2011"
+  ]
+ }
+}

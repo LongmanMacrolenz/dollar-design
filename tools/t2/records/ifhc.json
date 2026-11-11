@@ -1,0 +1,329 @@
+{
+ "id": "ifhc",
+ "status": "ok",
+ "standard": "ASME B18.3 접시머리 렌치볼트 (82°)",
+ "standard_full": "ASME B18.3 hexagon socket flat countersunk head cap screws, inch series. The pages used cite ASME B18.3-2003 / 2003 (R2008) (aftfasteners, globalfastener), B18.3-2012 (nickel-systems) or ASME B18.3 without an edition (deltafastener, packerfastener, fullerfasteners); badensteel does not name the standard. All agree on every kept cell; values compared between public manufacturer / distributor pages only, not checked against the standard itself",
+ "u": "in",
+ "cols": [
+  [
+   "tpi",
+   "산 수 UNC"
+  ],
+  [
+   "tpiUNF",
+   "산 수 UNF"
+  ],
+  [
+   "D_max",
+   "몸통 지름 최대"
+  ],
+  [
+   "D_min",
+   "몸통 지름 최소"
+  ],
+  [
+   "A_max_sharp",
+   "머리 지름 최대 (이론 날끝)"
+  ],
+  [
+   "A_min_abs",
+   "머리 지름 최소 (절대)"
+  ],
+  [
+   "H_ref",
+   "머리 높이 (참고)"
+  ]
+ ],
+ "rows": [
+  [
+   "#4-40",
+   40,
+   48,
+   0.112,
+   0.1075,
+   0.255,
+   0.218,
+   0.083
+  ],
+  [
+   "#5-40",
+   40,
+   44,
+   0.125,
+   0.1202,
+   0.281,
+   0.24,
+   0.09
+  ],
+  [
+   "#6-32",
+   32,
+   40,
+   0.138,
+   0.1329,
+   0.307,
+   0.263,
+   0.097
+  ],
+  [
+   "#8-32",
+   32,
+   36,
+   0.164,
+   0.1585,
+   0.359,
+   0.311,
+   0.112
+  ],
+  [
+   "#10-24",
+   24,
+   32,
+   0.19,
+   0.184,
+   0.411,
+   0.359,
+   0.127
+  ],
+  [
+   "1/4-20",
+   20,
+   28,
+   0.25,
+   0.2435,
+   0.531,
+   0.48,
+   0.161
+  ],
+  [
+   "5/16-18",
+   18,
+   24,
+   0.3125,
+   0.3053,
+   0.656,
+   0.6,
+   0.198
+  ],
+  [
+   "3/8-16",
+   16,
+   24,
+   0.375,
+   0.3678,
+   0.781,
+   0.72,
+   0.234
+  ],
+  [
+   "7/16-14",
+   14,
+   20,
+   0.4375,
+   0.4294,
+   0.844,
+   0.781,
+   0.234
+  ],
+  [
+   "1/2-13",
+   13,
+   20,
+   0.5,
+   0.4919,
+   0.938,
+   0.872,
+   0.251
+  ],
+  [
+   "5/8-11",
+   11,
+   18,
+   0.625,
+   0.6163,
+   1.188,
+   1.112,
+   0.324
+  ],
+  [
+   "3/4-10",
+   10,
+   16,
+   0.75,
+   0.7406,
+   1.438,
+   1.355,
+   0.396
+  ],
+  [
+   "7/8-9",
+   9,
+   14,
+   0.875,
+   0.8647,
+   1.688,
+   1.604,
+   0.468
+  ]
+ ],
+ "row_support": {
+  "#4-40": 3,
+  "#5-40": 3,
+  "#6-32": 3,
+  "#8-32": 3,
+  "#10-24": 3,
+  "1/4-20": 3,
+  "5/16-18": 3,
+  "3/8-16": 3,
+  "7/16-14": 3,
+  "1/2-13": 3,
+  "5/8-11": 3,
+  "3/4-10": 3,
+  "7/8-9": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.aftfasteners.com/socket-cap-screws-dimensions-and-mechanical-properties/",
+   "site": "aftfasteners.com",
+   "what": "Flat Head Socket Cap Screw Dimensions table (sizes 4 - 3/4): body dia D max/min, head dia A theoretical sharp max / abs. min, head height H ref"
+  },
+  {
+   "url": "https://www.nickel-systems.com/products/socket-products/flat-cap/",
+   "site": "nickel-systems.com",
+   "what": "Flat socket cap screw dimensions table (sizes 4 - 3/4), same column set and labels as the AFT table"
+  },
+  {
+   "url": "https://www.packerfastener.com/technical/sockets/flat.html",
+   "site": "packerfastener.com",
+   "what": "Flat head socket cap screw table (No. 4 - 3/4): head dia. min - max, head height, hex socket -- same row range as AFT; head-dia range given without the theoretical-sharp / absolute wording"
+  },
+  {
+   "url": "https://www.deltafastener.com/sockets-flat-socket-head-cap-screw.php",
+   "site": "deltafastener.com",
+   "what": "Flat socket head cap screw table (#0 - 1.50): D body dia max/min, A head dia theoretical sharp max / abs min, H head height reference"
+  },
+  {
+   "url": "https://www.badensteel.com/socket-head-dimensions",
+   "site": "badensteel.com",
+   "what": "Table S2 flat head socket cap screw (0 - 1-1/2): A max/min, B1 theoretical sharp max, B2 absolute min, D head height reference -- letters A/B1/B2/D are defined by the dimension drawing on the page (raw/img/baden_flat_head.png): A = body diameter, B1/B2 = head diameter, D = head height"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_1895.html",
+   "site": "globalfastener.com",
+   "what": "ASME B18.3-2003 (R2008) hexagon socket flat countersunk head cap screws: PP UNC/UNF, ds max/min, dk theo. sharp max / abs. min, k ref -- symbols ds/dk/k defined by the drawing on the page (raw/img/gf_1895_drawing.png)"
+  },
+  {
+   "url": "https://fullerfasteners.com/tech/ansi-asme-b18-3-specifications-flat-socket-head-cap-screws/",
+   "site": "fullerfasteners.com",
+   "what": "ANSI ASME B18.3 flat socket head cap screws: PP UNC/UNF, ds max/min, dk max/min, k Ref (same template as globalfastener)"
+  },
+  {
+   "url": "https://www.fasten.it/en/norms/norm/asme_b18.3_table_2a",
+   "site": "fasten.it",
+   "what": "[not counted by the verifier: sibling ASME B18.3 pages of this site carry a wrong unit caption (table 5A) and a mislabelled column (table 3); values agree with the record] ASME B18.3 table 2A (2008) socket flat countersunk head cap screws: UNC/UNF threads per inch, dk max theo. sharp (d1 min 3-decimal, k 'max') -- d1 min is given with 3 decimals (rounded) and the head height is labelled 'k max': both extracted for the record but NOT counted"
+  },
+  {
+   "url": "https://www.engineeringtoolbox.com/unified-screw-threads-unc-unf-d_1809.html",
+   "site": "engineeringtoolbox.com",
+   "what": "UNC table and UNF table: threads per inch"
+  },
+  {
+   "url": "https://www.runsom.com/design-tips/screw-thread-sizes-chart/",
+   "site": "runsom.com",
+   "what": "UNC and UNF tables: thread per inch"
+  },
+  {
+   "url": "https://www.echosupply.com/blog/unified-national-thread-chart/",
+   "site": "echosupply.com",
+   "what": "Unified national thread chart: designation, UNF/UNC, threads per inch"
+  },
+  {
+   "url": "https://threadspec.org/unc/ + https://threadspec.org/unf/",
+   "site": "threadspec.org",
+   "what": "UNC chart and UNF chart: TPI"
+  },
+  {
+   "url": "https://www.trfastenings.com/products/knowledgebase/thread-geometry/unified-coarse-unc + .../unified-fine-unf",
+   "site": "trfastenings.com",
+   "what": "Unified coarse / fine thread tables: thread per inch"
+  },
+  {
+   "url": "https://hexfastener.com/pages/flat-head-screw-dimensions",
+   "site": "hexfastener.com",
+   "what": "[not counted / extra] Flat head socket cap screw reference table (#4 - 3/4) -- web-shop reference page of unknown lineage; reported only"
+  },
+  {
+   "url": "https://amesweb.info/Fasteners/Screws/Flat-Head-Socket-Cap-Screw-Dimensions.aspx",
+   "site": "amesweb.info",
+   "what": "[not counted / extra] calculator result table per size (form POST), states ASME B18.3 -- calculator output, one POST per size; reported only"
+  }
+ ],
+ "clusters": {
+  "US aftfasteners + nickel-systems + packerfastener + deltafastener (one lineage; Delta merged by the verifier: same figure and lettering as the Nickel / AFT flat-head tables)": [
+   "https://www.aftfasteners.com/socket-cap-screws-dimensions-and-mechanical-properties/ (#4 - 3/4)",
+   "https://www.nickel-systems.com/products/socket-products/flat-cap/ (#4 - 3/4)",
+   "https://www.packerfastener.com/technical/sockets/flat.html (#4 - 3/4; ranges without theoretical-sharp / reference wording, not counted on its own)",
+   "https://www.deltafastener.com/sockets-flat-socket-head-cap-screw.php (#0 - 1.50; the only page of this cluster with the 7/8 row)"
+  ],
+  "BADEN badensteel (own letters A / B1 / B2 / C / D with a drawing, flushness-tolerance column)": [
+   "https://www.badensteel.com/socket-head-dimensions (Table S2, 0 - 1-1/2)"
+  ],
+  "CN globalfastener + fullerfasteners (one template)": [
+   "https://www.globalfastener.com/standards/detail_1895.html",
+   "https://fullerfasteners.com/tech/ansi-asme-b18-3-specifications-flat-socket-head-cap-screws/"
+  ],
+  "THREAD trfastenings (thread counts only)": [
+   "https://www.trfastenings.com/products/knowledgebase/thread-geometry/unified-coarse-unc",
+   "https://www.trfastenings.com/products/knowledgebase/thread-geometry/unified-fine-unf"
+  ],
+  "THREAD chart family engineeringtoolbox + runsom + echosupply (thread counts only; merged by the verifier: same \"4 1/2\" notation and 3-decimal diameters, runsom and echosupply both list 1-14 as UNF)": [
+   "https://www.engineeringtoolbox.com/unified-screw-threads-unc-unf-d_1809.html",
+   "https://www.runsom.com/design-tips/screw-thread-sizes-chart/",
+   "https://www.echosupply.com/blog/unified-national-thread-chart/"
+  ],
+  "THREAD threadspec (reference site, not a manufacturer / distributor: extra, not needed for the count of 3)": [
+   "https://threadspec.org/unc/",
+   "https://threadspec.org/unf/"
+  ]
+ },
+ "dropped": [],
+ "checks": [
+  "D_max > D_min in every row",
+  "A_max_sharp > A_min_abs in every row",
+  "head diameter (absolute min) > body diameter max in every row",
+  "H_ref = (A_max_sharp - D_max) / 2 / tan(41 deg) within 0.001 in (largest deviation 0.00093) for every row (82 deg cone geometry)",
+  "UNF thread count > UNC thread count in every row",
+  "every dimension column is non-decreasing with size (H_ref repeats 0.234 at 3/8 and 7/16 on all pages); thread counts non-increasing",
+  "D_max equals the nominal (basic) screw diameter in every row"
+ ],
+ "shape_hint": "Countersunk (flat) head with an 82 degree included cone angle and a hexagon socket in the flat top face; cylindrical unthreaded body of diameter D below the cone, then thread. Length is measured from the top of the head. Head diameter is given as a theoretical sharp-corner maximum and an absolute minimum; head height is a reference value derived from the cone geometry.",
+ "role_map": {
+  "tpi": "threads per inch, UNC (coarse)",
+  "tpiUNF": "threads per inch, UNF (fine)",
+  "D_max": "body diameter max (= basic screw diameter)",
+  "D_min": "body diameter min",
+  "A_max_sharp": "head diameter, theoretical sharp max",
+  "A_min_abs": "head diameter, absolute min",
+  "H_ref": "head height, reference"
+ },
+ "notes": "Researcher notes (written before verification; where they differ, the clusters field and the verification field prevail). Clusters: US-A = aftfasteners + nickel-systems + packerfastener counted ONCE (same column set / labels / row range #4 - 3/4); deltafastener (own layout, #0 - 1.50), badensteel (own letter scheme, legend from the drawing on the page), globalfastener 2003-edition page + fullerfasteners (one Chinese template), fasten.it (thread counts and theoretical-sharp head diameter only). Thread counts additionally from general UNC/UNF charts (engineeringtoolbox+runsom as one cluster, echosupply, threadspec, trfastenings). Tier B pages (hexfastener.com, amesweb calculator) carry the same values but are not counted. NOT used on purpose: boltport.com/standards/asme-b18.3/* and globalfastener 'ASME B18.3 (T8) 2012' pages reproduce the standard's notes verbatim (forbidden kind of source); torqbolt flat-head page is 404; fastenersuperstore / mscdirect / americanfastener / albanycounty head-style sheets are PDFs; boltdepot, carbidedepot, monsterbolts, misumi, fastenermart answer with a bot challenge (not fetched). fasten.it gives the body diameter minimum rounded to 3 decimals (0.108 ...) and labels the head height 'k max'; those two columns of that page are not counted. bayoucitybolt.com lists the same head diameter / height numbers without max / reference wording (not counted). Independence fingerprints: AFT and Nickel differ only in the protrusion P max column and one D min cell (AFT 5/8: 0.616, a 3-decimal slip; all other pages 0.6163) but share layout -> one cluster; Delta has its own size range (#0 - 1.50, decimals) and a typo of its own (#3 head height '.07.'); Baden has a 'flushness tolerance' column nobody else carries; the globalfastener / Fuller template uses ISO-style symbols (ds, dk, k). For the verifier: the fasten.it page quotes one sentence of the standard above its table (head shape, 82 deg) - judged to be a dimension table page. The 7/8 row rests on exactly three clusters (Delta, Baden, globalfastener+Fuller): the US-A tables stop at 3/4. Verifier (2026-11-11, fresh downloads, own parser): Delta is counted inside the US cluster and fasten.it is not counted, so every dimension cell stands on exactly 3 clusters (US, Baden, globalfastener+Fuller); the 7/8 row is carried by Delta (US cluster), Baden and globalfastener+Fuller.",
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "Verifier (different from the researcher) re-downloaded on 2026-11-11 with curl + browser User-Agent every counted page, all HTTP 200: aftfasteners socket-cap-screws page, nickel-systems flat-cap, packerfastener flat.html, deltafastener flat page, badensteel socket-head-dimensions, globalfastener detail_1895, fullerfasteners flat page, fasten.it asme_b18.3_table_2a, engineeringtoolbox, runsom, echosupply, threadspec unc + unf, trfastenings unc + unf (hexfastener and amesweb fetched only to confirm they are plain HTML; not counted). Tables re-read with the verifier's own parser (rowspan / colspan expansion, exact decimal comparison; the researcher's raw files, extracted tables and scripts were not used) and the drawings on the Baden, globalfastener, Delta, Nickel, AFT and fasten.it pages were opened to see what each letter means. 13 rows x 7 columns = 91 cells: every record cell is stated exactly by 3 independent clusters under the strict grouping US (aftfasteners + nickel-systems + packerfastener + deltafastener) / Baden / globalfastener + Fuller; thread counts by globalfastener + Fuller, trfastenings and the engineeringtoolbox / runsom / echosupply chart family (threadspec.org agrees as a 4th, reference-only site). Shared-typo test over all sizes each page lists (#0 - 1-1/2): in the compared columns the only deviations are AFT 5/8 D_min 0.616, fasten.it #5 head height 0.90 and Delta's unreadable .07. at #3 head height, none shared. Physical checks recomputed: D_max > D_min, A_max_sharp > A_min_abs > D_max, H_ref = (A_max_sharp - D_max) / 2 / tan 41 deg within 0.001 in, UNF count > UNC count, every dimension column non-decreasing. No PDF, document-sharing page, login page or page of standard text among the counted sources.",
+  "problems": [
+   "Zero margin: every dimension cell rests on exactly 3 clusters. The 7/8 row is stated only by deltafastener (inside the US cluster; the AFT / Nickel / Packer tables stop at 3/4), badensteel and globalfastener + Fuller.",
+   "Independence of Delta (researcher counted it as a 4th cluster): its flat-head page shows the same figure (Edge of head may be rounded or flat / Theoretical sharp / Absolute minimum) and the same D / A / H / J / T lettering and sub-headings as the Nickel and AFT tables, and its set-screw page reuses AFT's drawing and letters. Merged with the AFT / Nickel / Packer cluster to be safe. The merge costs nothing: the count is 3 either way.",
+   "Independence of Baden (decisive: without it the table has 2 clusters): own letter scheme A / B1 / B2 / C / D, own drawing, a Flushness Tolerance column that no other page carries, full range 0 - 1-1/2 (the AFT group has #4 - 3/4), no shared typo in this table, family-owned company in Pittsburgh with no stated link to AFT Industries (Mansfield TX), Delta Fastener Corp. (Houston) or Nickel Systems -> counted as an independent transcription. Caveat: on the same page Baden's set-screw table S5 shares one deviant value with AFT and bayoucitybolt (#1 hex socket 0.028 where globalfastener, Fuller, Packer and fasten.it print 0.035), so a common ancestor for that other table is likely; nothing of the kind is visible in the flat-head table.",
+   "Meaning of Baden's letters: the page states in text D / Head Height - Reference, B1 - Theoretical Sharp, max and B2 - Absolute min; that A is the body diameter and B1 / B2 the head diameter is given by the dimension drawing on the page (viewed: A spans the unthreaded body, B1 / B2 span the head). Accepted as a legend on the page, not inferred from magnitudes.",
+   "Baden's page (Socket Head Product Dimensions) does not name ASME B18.3 anywhere; its Table S2 is counted as a distributor's dimension data for the same product, and the attribution of the values to ASME B18.3 rests on the other two clusters (Delta: Per ANSI/ASME B18.3; globalfastener: ASME B18.3-2003 (R2008)).",
+   "fasten.it asme_b18.3_table_2a is not counted: the sibling pages of the same transcription carry a wrong unit caption (table 5A: Dimensions in mm) and a mislabelled column (table 3: H min holds H max from #2 up); this page prints 0.568 for the #0 body minimum, 0.90 for the #5 head height, rounds the body minimum to 3 decimals and labels the reference head height k max. Its thread counts and theoretical-sharp head diameters agree with the record; it is not needed for any cell to reach 3.",
+   "AFT prints D_min 0.616 for 5/8 (3-decimal slip); Nickel, Delta, Baden, globalfastener and Fuller print 0.6163.",
+   "Edition: the researcher's standard_full said the pages cite 2003 / R2008 or no edition; nickel-systems cites ASME B18.3-2012 for this table. All agree on the kept cells; standard_full corrected.",
+   "Thread counts come from general UNC / UNF charts plus the globalfastener template, not from the screw tables of the US pages. engineeringtoolbox + runsom + echosupply were merged into one chart family; threadspec.org is a reference site, so the manufacturer / distributor count is 3 (globalfastener + Fuller, trfastenings, chart family).",
+   "Not checked: the standard itself. packerfastener gives the head diameter as a range and the head height without the theoretical-sharp / absolute / reference wording (same cluster as AFT, not counted on its own). hexfastener and amesweb stay uncounted extras."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": []
+ }
+}

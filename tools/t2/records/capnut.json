@@ -1,0 +1,210 @@
+{
+ "id": "capnut",
+ "status": "partial",
+ "standard": "DIN 1587",
+ "standard_full": "DIN 1587 (hexagon domed cap nuts, high type, coarse thread); sizes whose published width across flats is not disputed between the sources (M22 = 34 mm as in the current edition)",
+ "u": "mm",
+ "cols": [
+  [
+   "pitch",
+   "피치 P"
+  ],
+  [
+   "s",
+   "2면폭 s"
+  ],
+  [
+   "h",
+   "전체 높이 h (높은형, 호칭=최대)"
+  ],
+  [
+   "dk_max",
+   "머리 지름 dk"
+  ]
+ ],
+ "rows": [
+  [
+   "M4",
+   0.7,
+   7.0,
+   8.0,
+   6.5
+  ],
+  [
+   "M5",
+   0.8,
+   8.0,
+   10.0,
+   7.5
+  ],
+  [
+   "M6",
+   1.0,
+   10.0,
+   12.0,
+   9.5
+  ],
+  [
+   "M8",
+   1.25,
+   13.0,
+   15.0,
+   12.5
+  ],
+  [
+   "M16",
+   2.0,
+   24.0,
+   28.0,
+   23.0
+  ],
+  [
+   "M18",
+   2.5,
+   27.0,
+   32.0,
+   26.0
+  ],
+  [
+   "M20",
+   2.5,
+   30.0,
+   34.0,
+   28.0
+  ],
+  [
+   "M24",
+   3.0,
+   36.0,
+   42.0,
+   34.0
+  ]
+ ],
+ "row_support": {
+  "M4": 4,
+  "M5": 4,
+  "M6": 4,
+  "M8": 4,
+  "M16": 4,
+  "M18": 4,
+  "M20": 4,
+  "M24": 4
+ },
+ "sources": [
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/1587/",
+   "site": "fasteners.eu",
+   "what": "DIN 1587 table M4-M24 (own errors: h min grade A M18 32,38; m max M10 8,8)"
+  },
+  {
+   "url": "https://www.globalfastener.com/standards/detail_5184.html",
+   "site": "globalfastener.com",
+   "what": "DIN 1587-2014 table M4-M24 (dk labelled 'min=nominal size')"
+  },
+  {
+   "url": "https://www.westfieldfasteners.co.uk/Standards/Nut-Dome-M.html",
+   "site": "westfieldfasteners.co.uk",
+   "what": "DIN 1587 dimensions & tolerances, coarse thread M4-M24 (own errors: e grade A M24 39.92, r M8 6.24, m min/max labels swapped)"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_1587",
+   "site": "fasten.it",
+   "what": "DIN 1587 table (P, dk max, h nom, s nom=max, t min/max); cells '16 (17)', '18(19)', '21(22)', '32(34)' are skipped; t rounded to one decimal from M8 on; M22 s printed as 32(34)"
+  },
+  {
+   "url": "https://www.schrauben-lexikon.de/norm/DIN_1587.asp",
+   "site": "schrauben-lexikon.de",
+   "what": "DIN 1587 technical data (dk max, m max, s DIN, t min, w min) M3-M30; s DIN = old widths 17/19/22/32"
+  },
+  {
+   "url": "https://www.nfgab.com/sortiment/p/1442-domed-hex-cap-nuts-acorn-nuts-din-1587",
+   "site": "nfgab.com",
+   "what": "DIN 1587 product group table (h, s) M3-M30 with the old widths 17/19/22/32 for M10/M12/M14/M22"
+  },
+  {
+   "url": "https://www.keller-kalmbach.de/produkte/verbindungselemente/muttern/din-1587-sechskant-hutmuttern-hohe-form-gedrehte-ausfuehrung/p/13158710",
+   "site": "keller-kalmbach.de",
+   "what": "DIN 1587 article pages: width across flats from the row 'Größe Kraftangriff: SW ..' where present (M10 SW 17, M12 SW 19, M16 SW 24); dk without max/min not used"
+  }
+ ],
+ "clusters": {
+  "FE: fasteners.eu DIN 1587 + itafasteners copy": [
+   "legend states dk head diameter; P, dk max., h max. nominal, s Max.=nominal"
+  ],
+  "GF: globalfastener DIN 1587-2014 (5184) and -2021 (22838)": [
+   "P, s max, h max=nominal; dk labelled min=nominal size -> not counted for dk_max"
+  ],
+  "WF: westfieldfasteners Nut-Dome-M (coarse)": [
+   "p, dk max, h nom=max, s nom=max (fine-thread page labels dk min)"
+  ],
+  "FI: fasten.it din_1587": [
+   "P, dk max, h nom, s nom=max (bracket cells 16 (17) etc. not counted)"
+  ],
+  "SL: schrauben-lexikon DIN_1587": [
+   "dk max, s DIN (old widths)"
+  ],
+  "NFG: nfgab 1442 DIN 1587": [
+   "h, s (drawing 1442r defines h, s)"
+  ],
+  "KK: keller-kalmbach DIN 1587 article pages": [
+   "SW from Groesse Kraftangriff (M10 17, M12 19, M16 24)"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "M10 row",
+   "why": "width across flats split: 16 (fasteners.eu, globalfastener, westfieldfasteners) vs 17 (schrauben-lexikon, boltport, nfgab, keller-kalmbach) // kept columns without 3 agreeing clusters -> s: 17 x4 (BP,KK,NFG,SL); 16 x3 (FE,GF,WF)"
+  },
+  {
+   "what": "M12 row",
+   "why": "width across flats split: 18 (fasteners.eu, globalfastener, westfieldfasteners) vs 19 (schrauben-lexikon, boltport, nfgab, keller-kalmbach) // kept columns without 3 agreeing clusters -> s: 19 x4 (BP,KK,NFG,SL); 18 x3 (FE,GF,WF)"
+  },
+  {
+   "what": "M14 row",
+   "why": "width across flats split 3 clusters to 3: 21 (fasteners.eu, globalfastener, westfieldfasteners) vs 22 (schrauben-lexikon, boltport, nfgab) // kept columns without 3 agreeing clusters -> s: 21 x3 (FE,GF,WF); 22 x3 (BP,NFG,SL)"
+  },
+  {
+   "what": "M22 row (verifier)",
+   "why": "s=34: 3 clusters ['FE', 'GF', 'WF'], rival {'32.0': ['SL', 'NFG', 'FI(bracket cells)']}"
+  }
+ ],
+ "checks": [
+  "s strictly increases with size - PASS",
+  "h strictly increases with size - PASS",
+  "dk_max strictly increases with size - PASS",
+  "dk_max < s for every row (the dome is narrower than the hexagon) - PASS",
+  "h between 1.6 d and 2.1 d for every row (high type) - PASS",
+  "s equals the ISO 272 width across flats (7, 8, 10, 13, 24, 27, 30, 34, 36) for the kept sizes - PASS",
+  "every kept cell: >= 3 independent clusters with the identical number (see capnut.evidence.json); minimum cluster count in the kept table = 4"
+ ],
+ "shape_hint": "Hexagon nut closed on top by a hemispherical dome: hexagon body (width across flats s) with a rounded cap of diameter dk above it, total height h; blind thread of usable depth t inside.",
+ "role_map": {
+  "d": "nominal thread diameter (row label)",
+  "pitch": "coarse thread pitch P",
+  "s": "width across flats, nominal = max",
+  "h": "total height, nominal = max",
+  "dk_max": "dome (cap) diameter max"
+ },
+ "notes": "pitch, h and dk_max have at least three agreeing clusters for every size M4-M24. Width across flats s is split for M10 / M12 / M14: 16 / 18 / 21 mm on fasteners.eu (+itafasteners copy), globalfastener (2014 and 2021 editions) and westfieldfasteners, but 17 / 19 / 22 mm on schrauben-lexikon, boltport and nfgab (and SW 17 / SW 19 on keller-kalmbach article pages for M10 / M12) - three or more clusters on each side, so neither value can be published and the three rows are dropped (catalog keys s and dk_max are both needed by the drawing, so the rows go rather than the column; the alternative rectangle of the same size is 12 sizes x pitch, h, dk_max without s). For M22 the split is 4 to 2 (34 mm: fasteners.eu, globalfastener, westfieldfasteners, boltport; 32 mm: schrauben-lexikon, nfgab) and 34 is kept; note that keller-kalmbach sells M22 both as 'SW 32' (A2 article) and 'SW 34' (A4 article) - these appear in the article titles only, not in a table, and are not counted. globalfastener's DIN 1587-1987 page shows both widths side by side for M10, M12, M14 and M22 (old 17/19/22/32 with dk 16/18/21/31, new 16/18/21/34 with dk 15/17/20/33), which explains the split as old edition versus current edition. dk: fasteners.eu, westfieldfasteners (coarse page), fasten.it, schrauben-lexikon and globalfastener-1987 label it 'max'; globalfastener's 2014 and 2021 pages and westfield's fine-thread page label the same numbers 'min = nominal size' - the numbers agree, the max/min wording does not (kept under the candidate key dk_max because >= 3 clusters say max). keller-kalmbach article pages show the same dk numbers without max/min (not counted for dk_max). Extra columns that also reach 3 clusters (t_min, t_max, e/s/h minimum for product grade A, w_min) are in capnut.evidence.json only; they are not candidates of the current table. | dk column label carries no max/min: four clusters label the same numbers max, the 2014/2021 globalfastener pages and one Westfield page label them min = nominal.",
+ "scope": "높은형 보통나사 M4–M24 중 M10·M12·M14·M22 제외 (공개 자료의 2면폭이 갈림)",
+ "not_counted": {
+  "not counted - boltport.com": [
+   "din-1587 short table with bare symbols; rival evidence only"
+  ]
+ },
+ "verification": {
+  "verdict": "partial",
+  "cell_support_min": 4,
+  "checks_done": "Verifier re-fetched every page itself on 2026-11-11 with curl (browser UA, 2.5 s pause per host; HTTP 200 for all; globalfastener detail_400 needed one retry after a 403), wrote its own stdlib HTML table reader (vt.py, gf.py, obs.py) and counting script (count.py) without using the researcher's raw/, extracted tables or scripts. Drawings that define bare symbols (schrauben-lexikon gifs, nfgab pngs) were fetched and viewed. Lead decisions applied: amesweb (calculator) not a source; a rival value printed by 2+ independent lineages removes the row; cells of another standard printed under the target title (verified equal to that standard's table) are neither support nor rival; pages reproducing the standard's text (boltport ISO 4035) excluded. A cluster whose own pages give two different values for a cell is not counted for it. Largest rectangle (cells, then rows) chosen among column subsets that contain the drawing keys. Re-counted 9 x 4 candidate cells; kept 8 x 4; per-cell clusters in capnut.verify.md.",
+  "problems": [
+   "M22 removed per lead decision: s 34 on fasteners.eu, globalfastener, westfield (boltport too, uncounted) vs 32 on schrauben-lexikon, nfgab and fasten.it's primary cell '32(34)'.",
+   "dk_max meaning: 'max' is stated by fasteners.eu, westfield (coarse page), fasten.it and schrauben-lexikon (4 clusters, values identical) -> column kept with label 'max'. globalfastener's 2014 and 2021 pages (a named newer edition) label the same numbers 'min = nominal size', and westfield's own fine-thread page says 'min': the max/min meaning is not undisputed - flagged for the lead.",
+   "boltport DIN 1587 not counted (bare symbols, no legend verified); used only as rival evidence.",
+   "M10, M12, M14 stay dropped (16/18/21 vs 17/19/22 split)."
+  ],
+  "dropped_rows": [
+   "M22"
+  ],
+  "dropped_cols": []
+ }
+}

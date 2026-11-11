@@ -449,11 +449,15 @@
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-fit-bolt</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hex-lag-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/countersunk-head-bolt-with-square-neck-or-nib</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/socket-flat-countersunk-head-cap-screw</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/socket-button-head-cap-screw</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/socket-set-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/carbon-steel-hex-bolt-a307</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/heavy-hex-bolt</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/machine-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/socket-head-cap-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-socket-countersunk-head-screw</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-socket-button-head-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/set-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-head-screw-plug</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-socket-head-cap-screw-low-head</loc></url>
@@ -464,6 +468,8 @@
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-socket-button-head-screw-with-collar</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexalobular-socket-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/slotted-set-screw</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/cross-recessed-pan-head-screw</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/cross-recessed-countersunk-head-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/cross-recessed-truss-head-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/slotted-machine-screw</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/open-end-blind-rivet-protruding-head</loc></url>
@@ -471,14 +477,19 @@
   <url><loc>https://boltnote.boltnote.workers.dev/tables/drilling-screw-with-tapping-screw-thread</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/blind-rivet-countersunk-or-closed-end</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/solid-rivet</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-coupling-nut</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/threaded-rod-rod-in</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/threaded-rod-for-hangers-inch-size</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/stud-bolt-metric-thread</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/u-bolt</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/tap-end-stud</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/double-end-stud-tap-end</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/martensitic-stainless-steel-stud-bolt-a193-b6-a194-6</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/reduced-shank-stud-bolt</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hex-nut</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-thin-nut</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/prevailing-torque-hexagon-nut-nylon-insert</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-domed-cap-nut</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/inch-hex-nut</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-nut-with-flange</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/wing-nut</loc></url>
@@ -487,6 +498,7 @@
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-weld-nut</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hexagon-nut-height-1-5d</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/plain-washer</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/plain-washer-large-series</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/spring-washer</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/hardened-steel-washer</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/helical-spring-lock-washer-regular</loc></url>
@@ -500,12 +512,22 @@
   <url><loc>https://boltnote.boltnote.workers.dev/tables/plain-washer-extra-large-series</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/square-plate-washer</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/spherical-washer-and-conical-seat</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/parallel-pin-hardened</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/parallel-pin-unhardened</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/parallel-pin-with-internal-thread</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/taper-pin</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/spring-type-straight-pin-slotted</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/split-pin</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/taper-pin-with-internal-or-external-thread</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/spring-type-straight-pin-coiled</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/clevis-pin</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/dowel-pin-taper-pin-and-spring-pin</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/spring-cotter-and-linch-pin</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/retaining-ring-for-shaft</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/retaining-ring-for-bore</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/parallel-key</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/locknut-for-rolling-bearings-km</loc></url>
+  <url><loc>https://boltnote.boltnote.workers.dev/tables/lock-washer-for-rolling-bearing-locknut-mb</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/retaining-washer-for-shaft-e-ring</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/woodruff-key</loc></url>
   <url><loc>https://boltnote.boltnote.workers.dev/tables/tab-washer</loc></url>

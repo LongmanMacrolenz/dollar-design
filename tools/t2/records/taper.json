@@ -1,0 +1,215 @@
+{
+ "id": "taper",
+ "status": "partial",
+ "standard": "DIN 1",
+ "standard_full": "DIN 1:1981 (taper pins with rounded ends, taper 1:50; withdrawn, replaced by DIN EN 22339 = ISO 2339:1986). Only the crown height c max of the DIN 1 table.",
+ "u": "mm",
+ "scope": "옛 DIN 1(DIN EN 22339·ISO 2339로 대체됨)의 끝단 볼록 높이 c 최대만 — ISO 2339의 끝 모따기 a는 3곳 이상 일치한 호칭 지름이 일부(1–20 mm의 13개)뿐이라 싣지 않았고, 길이 범위도 싣지 않았습니다",
+ "cols": [
+  [
+   "c_max",
+   "끝단 볼록(구면) 높이 c 최대 (DIN 1)"
+  ]
+ ],
+ "rows": [
+  [
+   "0.6",
+   0.1
+  ],
+  [
+   "0.8",
+   0.12
+  ],
+  [
+   "1",
+   0.15
+  ],
+  [
+   "1.5",
+   0.23
+  ],
+  [
+   "2",
+   0.3
+  ],
+  [
+   "2.5",
+   0.4
+  ],
+  [
+   "3",
+   0.45
+  ],
+  [
+   "4",
+   0.6
+  ],
+  [
+   "5",
+   0.75
+  ],
+  [
+   "6",
+   0.9
+  ],
+  [
+   "8",
+   1.2
+  ],
+  [
+   "10",
+   1.5
+  ],
+  [
+   "12",
+   1.8
+  ],
+  [
+   "14",
+   2
+  ],
+  [
+   "16",
+   2.5
+  ],
+  [
+   "20",
+   3
+  ],
+  [
+   "25",
+   4
+  ],
+  [
+   "30",
+   4.5
+  ],
+  [
+   "40",
+   6
+  ],
+  [
+   "50",
+   7.5
+  ]
+ ],
+ "row_support": {
+  "0.6": 3,
+  "0.8": 3,
+  "1": 4,
+  "1.5": 4,
+  "2": 5,
+  "2.5": 4,
+  "3": 5,
+  "4": 5,
+  "5": 5,
+  "6": 5,
+  "8": 5,
+  "10": 5,
+  "12": 5,
+  "14": 4,
+  "16": 5,
+  "20": 4,
+  "25": 3,
+  "30": 3,
+  "40": 3,
+  "50": 3
+ },
+ "sources": [
+  {
+   "url": "https://www.globalfastener.com/standards/detail_2015.html",
+   "site": "globalfastener.com",
+   "what": "DIN 1-1981: d max, d min, c max, r ≈ for d 0.6-50 (with 14, without 1.2)"
+  },
+  {
+   "url": "https://fasten.it/norms/norm/din_1",
+   "site": "fasten.it",
+   "what": "DIN 1 (09/1981, 'cancelled, replaced by DIN EN 22339'): d1, d1 max, d1 min, c, r ≈ for d 0.6-50 (c printed without the word max)"
+  },
+  {
+   "url": "https://www.opac.net/en/producto-172-din-1-b",
+   "site": "opac.net",
+   "what": "manufacturer product table DIN 1/B: d h10, c max., r ≈ for d 0.6-50"
+  },
+  {
+   "url": "https://www.fasteners.eu/standards/DIN/1/",
+   "site": "fasteners.eu",
+   "what": "DIN 1 table d1, c max, r for d 2, 3, 4, 5, 6, 8, 10, 12, 16 (its ISO/2339 page is the same table; boltsfastener.com din-1 carries the same nine columns -> one cluster)"
+  },
+  {
+   "url": "https://www.theo-schrauben.de/DIN-1",
+   "site": "theo-schrauben.de",
+   "what": "'DIN 1 Technische Daten': Maße | a ISO | C max. DIN for d 1-20 (with 6,5*, 7*, 13*)"
+  },
+  {
+   "url": "https://www.fastenerdata.co.uk/products/pin/taper/metric-taper-pin-steel-din1.html",
+   "site": "fastenerdata.co.uk",
+   "what": "DIN1 data table d | c | a with the same odd sizes 6.5, 7, 13 -> one cluster with theo-schrauben (German shop dataset)"
+  },
+  {
+   "url": "https://boltport.com/standards/din-1/",
+   "site": "boltport.com",
+   "what": "NOT counted: reproduces the standard's table with footnotes and mass table almost verbatim (c max. equal for all 20 diameters)"
+  }
+ ],
+ "clusters": {
+  "A globalfastener (DIN 1-1981)": [
+   "globalfastener.com/standards/detail_2015.html"
+  ],
+  "B fasten.it (DIN 1, 09/1981)": [
+   "fasten.it/norms/norm/din_1"
+  ],
+  "C fasteners.eu DIN 1 (+ boltsfastener copy), d 2-16 without 2.5 and 14": [
+   "fasteners.eu/standards/DIN/1/",
+   "boltsfastener.com/standards/pins-keys-standard/din-1.html"
+  ],
+  "E OPAC (manufacturer product table DIN 1/B)": [
+   "opac.net/en/producto-172-din-1-b"
+  ],
+  "G German shop dataset (theo-schrauben DIN-1, fastenerdata DIN1), d 1-20": [
+   "theo-schrauben.de/DIN-1",
+   "fastenerdata.co.uk ... metric-taper-pin-steel-din1.html"
+  ]
+ },
+ "dropped": [
+  {
+   "what": "a column (end dimension a of ISO 2339 / EN 22339)",
+   "why": "one table follows one standard (DIN 1). The ISO 2339 value a ≈ has 3 clusters only for d 1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 10, 12, 16, 20 (globalfastener, fasten.it, and the German shop dataset that prints it as 'a ISO' on DIN 1 pages) and 2 clusters for d 0.6, 0.8, 1.2, 25, 30, 40, 50 - too few diameters to publish an ISO 2339 table"
+  },
+  {
+   "what": "row d 1.2",
+   "why": "not a DIN 1 diameter (no DIN 1 page lists it)"
+  },
+  {
+   "what": "commercial length range, d h10 limits, r ≈",
+   "why": "length ranges readable from one page only; d limits and r were not candidate columns"
+  }
+ ],
+ "checks": [
+  "every kept cell identical in >= 3 clusters whose page is labelled DIN 1 (3 for d 0.6, 0.8, 25, 30, 40, 50; 4-5 for d 1-20)",
+  "c max increases strictly with d: True",
+  "c max / d between 0.14 and 0.17 in every row: True",
+  "drawings of globalfastener, fasten.it and OPAC show c as the height of the rounded end at the small-diameter end"
+ ],
+ "shape_hint": "Solid pin with a 1:50 taper over its whole length; the nominal diameter d is the small end. DIN 1 pins have convex (crowned) ends of radius about d and height c.",
+ "role_map": {
+  "d": "nominal diameter = small-end diameter, h10 (row label)",
+  "c_max": "height of the rounded (crowned) end of DIN 1, maximum (pages: c max, c max., 'C max. DIN'; fasten.it prints c)"
+ },
+ "notes": "Verified record on the layout chosen by the lead: DIN 1 only, 20 rows x 1 column (c max), stored by the researcher as alt_rectangle. Pages of the German shop dataset that print the same c (max) list under an ISO 2339 title (schrauben-lexikon, ferrofast, theo-schrauben ISO-2339) and fasteners.eu ISO/2339 are not needed for the count; their DIN 1-titled sister pages are in the same clusters.",
+ "verification": {
+  "verdict": "ok",
+  "cell_support_min": 3,
+  "checks_done": "All pages re-downloaded by the verifier with curl (browser User-Agent) on 2026-11-11 into a separate directory (HTTP 200, text/html); tables re-read with the verifier's own parser (html.parser grid with rowspan/colspan), not the researcher's scripts or raw files. Pages: globalfastener detail_2015 (DIN 1) + detail_248 / 2285 / 5079 (ISO 2339 family), fasten.it din_1 + iso_2339 + din_en_22339, opac producto-172, fasteners.eu DIN/1 + ISO/2339, boltsfastener din-1, theo-schrauben DIN-1 + ISO-2339, schrauben-lexikon ISO_2339, ferrofast iso-2339, fastenerdata din1, boltport din-1 + iso-2339. Verified the DIN 1-only table: 20 diameters x c max against 5 clusters; the ISO 2339 a column was re-counted only to document why it is not published.",
+  "problems": [
+   "d 0.6, 0.8, 25, 30, 40, 50 rest on exactly globalfastener, fasten.it and OPAC (Boltport's near-verbatim page agrees but is excluded).",
+   "fasten.it prints the row as 'c' without 'max'; globalfastener, OPAC, fasteners.eu and theo-schrauben print c max. For the six zero-slack diameters the word max is therefore on two of the three counted pages.",
+   "The table is a withdrawn standard's dimension (DIN 1:1981); current taper pins follow ISO 2339 / DIN EN 22339, whose end dimension a is a different, smaller number. The scope line says so.",
+   "No official preview was found for DIN 1; nothing beyond the T2 pages could be checked."
+  ],
+  "dropped_rows": [],
+  "dropped_cols": [
+   "a (ISO 2339; layout decision: one standard per table)"
+  ]
+ }
+}
