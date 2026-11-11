@@ -35,6 +35,7 @@ def build(root: pathlib.Path):
     print(run("site/build.py", cwd=root))
     print(run("site/build_lib.py", cwd=root))
     print(run("site/build_products.py", cwd=root))
+    print(run("site/build_tables.py", cwd=root))
     print(run("site/build_brand.py", cwd=root))
     r = subprocess.run(["node", str(ROOT / "tools/build_admin.mjs"), "--out", str(root / "docs/admin")], capture_output=True, text=True)
     if r.returncode:
@@ -46,6 +47,7 @@ def tree(root: pathlib.Path):
     keep = [root / "site" / "page.html", root / "docs" / "index.html", root / "docs" / "404.html", root / "docs" / "sitemap.xml", root / "docs" / "robots.txt"]
     keep += sorted((root / "docs" / "lib").glob("*.html"))
     keep += sorted((root / "docs" / "products").rglob("*.html"))
+    keep += sorted((root / "docs" / "tables").glob("*.html"))
     keep += sorted((root / "docs" / "brand").glob("*"))
     keep += sorted((root / "docs" / "admin").glob("*"))
     return keep
@@ -63,6 +65,7 @@ def main():
         t = pathlib.Path(tmp)
         for d in ("app", "site", "docs"):
             shutil.copytree(ROOT / d, t / d, ignore=shutil.ignore_patterns("__pycache__", "out"))
+        shutil.copytree(ROOT / "tools/t2/records", t / "tools/t2/records")   # 규격표(site/build_tables.py)는 T2 기록이 있는 표만 올린다
         build(t)
         bad = []
         for f in tree(t):
@@ -74,6 +77,8 @@ def main():
         bad += [f"{p} (원본에 없는 항목의 낡은 페이지)" for p in sorted(old)]
         old_products = {p.relative_to(ROOT) for p in (ROOT / "docs/products").rglob("*.html")} - {p.relative_to(t) for p in (t / "docs/products").rglob("*.html")}
         bad += [f"{p} (원본에 없는 품목의 낡은 페이지)" for p in sorted(old_products)]
+        old_tables = {p.relative_to(ROOT) for p in (ROOT / "docs/tables").glob("*.html")} - {p.relative_to(t) for p in (t / "docs/tables").glob("*.html")}
+        bad += [f"{p} (대상이 아닌 규격표의 낡은 페이지)" for p in sorted(old_tables)]
         if bad:
             print("다름 — `python3 tools/build_all.py`를 실행해 결과물을 다시 만들고 함께 올리세요:")
             for b in bad[:20]:

@@ -11,7 +11,7 @@ import json
 import pathlib
 import re
 
-from catalog import SITE_URL, SOCIAL_IMAGE, product_path, product_urls, compact_description, brand_copy, display_font_href
+from catalog import catalog, SITE_URL, SOCIAL_IMAGE, product_path, product_urls, compact_description, brand_copy, display_font_href, table_urls, table_data, table_name, TABLE_ALIAS
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
@@ -141,7 +141,7 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 
 def header(on: str = "lib") -> str:
-    nav = [("/products/", "제품", "products"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
+    nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
             + '</nav><a class="cta" href="/#list">Sales 문의 →</a></div></header>')
@@ -194,6 +194,19 @@ def footer(info: dict) -> str:
             + f'<div class="r"><span>규격 사전은 발행 기관 공개 자료·공식 미리보기·공공 문서와, 일부 값은 제조·유통사 공개 기술자료 3곳 이상을 대조해 요점을 정리한 것입니다 (확인 {CHECKED}). 계약·설계에는 규격 원문을 확인하세요.</span></div></div></footer>')
 
 
+def table_links(ids) -> dict:
+    """품목 id들 가운데 규격표(site/build_tables.py)가 있는 것 → {주소: 품목 이름}. 반나사 육각볼트는 온나사 표를 본다."""
+    if not hasattr(table_links, "known"):
+        families, tiles, paths = catalog()
+        table_links.known = {id: ("/tables/" + paths[id], table_name(families[id])) for id in table_data()}
+    found = {}
+    for id in ids:
+        link = table_links.known.get(TABLE_ALIAS.get(id, id))
+        if link:
+            found[link[0]] = link[1]
+    return found
+
+
 def badges(x: dict) -> str:
     st = x.get("status", "")
     return (f'<span class="org">{e("공통" if x["org"] == "-" else x["org"])}</span><span class="kind">{e(KIND.get(x["kind"], x["kind"]))}</span>'
@@ -227,6 +240,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
                + (f'<p class="src">{e(t["note"])}</p>' if t.get("note") else ""))
     rel = [by[r] for r in x.get("rel", []) if r in by]
     fams = x.get("famko", {})
+    tables = table_links(fams)
     body = (header() + '<main><div class="w">'
             + f'<p class="crumbs"><a href="/">홈</a> › <a href="/lib/">규격 사전</a> › <a href="/lib/#topic-{topic["id"]}">{e(topic["title"])}</a> › {e(x["t"])}</p><h1>{e(x["t"])}</h1>'
             + f'<p class="bd">{badges(x)}</p><p class="ko">{e(x.get("ko", ""))}</p>' + (f'<p class="en" lang="en">{e(x["en"])}</p>' if x.get("en") else "")
@@ -244,6 +258,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + f'<div class="box"><h2>지식 지도 · {e(topic["title"])}</h2><p>{e(topic["desc"])}</p><a href="/lib/#topic-{topic["id"]}">이 주제 전체 보기 →</a></div>' + reading
             + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
             + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="{product_path(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
+            + ('<div class="box"><h2>관련 규격표</h2><div class="chips">' + "".join(f'<a class="chip" href="{link}">{e(label)} 규격표</a>' for link, label in tables.items()) + "</div></div>" if tables else "")
             + '<div class="box dark"><h2>이 규격이 들어간 BOM이 있으신가요?</h2><p>표기 그대로 보내 주시면 줄마다 규격·등급과 필요한 서류를 맞춰 견적합니다.</p><a class="cta" href="/#list">Sales로 보내기 →</a></div>'
             + "</aside></div></div></main>" + brand_strip(info) + footer(info))
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": x["t"], "alternateName": [x.get("ko", "")] + x.get("aka", [])[:6],
@@ -293,7 +308,7 @@ def main() -> None:
         (out / f'{x["id"]}.html').write_text(entry_html(x, by, info), encoding="utf-8")
     (out / "index.html").write_text(index_html(L, info), encoding="utf-8")
     (DOCS / "404.html").write_text(not_found_html(info), encoding="utf-8")   # 사이트맵에 넣지 않는다
-    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls()
+    urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls() + table_urls()
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
