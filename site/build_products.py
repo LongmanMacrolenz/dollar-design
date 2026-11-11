@@ -8,7 +8,7 @@ import json
 import pathlib
 
 from build_lib import page, header, footer, site_info, brand_strip
-from catalog import catalog, declaration, public_label, compact_description, SITE_URL
+from catalog import catalog, declaration, public_label, compact_description, table_data, table_name, TABLE_ALIAS, SITE_URL
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
@@ -119,6 +119,20 @@ def card(id, f, paths):
             + img + f'<div><b>{e(f["ko"])}</b><span lang="en">{e(f["en"])}</span><small>{TIERS[f["p"]]} · {SYSTEM[f["sys"]]}</small></div></a>')
 
 
+def table_note(id, families, paths):
+    """규격표(site/build_tables.py)가 있는 품목의 제품 안내에 한 줄로 잇는다. 표 자체는 규격표 페이지 한 곳에만 둔다."""
+    if not hasattr(table_note, "tables"):
+        table_note.tables = table_data()
+    target = TABLE_ALIAS.get(id, id)
+    t = table_note.tables.get(target)
+    if not t:
+        return ""
+    name = table_name(families[target])
+    lead = (f'머리 치수는 {e(name)}와 같은 표를 봅니다.' if target != id else
+            f'{e(t["standard"])} 기준 {e(str(t["rows"][0][0]))}–{e(str(t["rows"][-1][0]))} {len(t["rows"])}개 호칭의 치수를 표로 정리했습니다.')
+    return f'<h2>치수표</h2><p>{lead} <a href="/tables/{paths[target]}">{e(name)} 규격표 보기 →</a></p>'
+
+
 def product_html(id, f, families, tiles, paths, library, shapes, info):
     category = next(t for t in tiles if t["id"] == f["t"])
     related = related_library(id, library)
@@ -157,6 +171,7 @@ def product_html(id, f, families, tiles, paths, library, shapes, info):
             + '<div class="product-grid"><article><h2>적용 규격·구매 시 구분할 표기</h2>'
             + '<p class="product-note">아래 규격은 같은 치수·요건을 보장하는 대체 규격 목록이 아닙니다. BOM의 규격과 판본, 도면 요구를 기준으로 대조합니다.</p>'
             + f'<table><caption class="sr">{e(name)} 카탈로그 규격 표기</caption><thead><tr><th>기관·기준</th><th>규격과 적용 범위</th></tr></thead><tbody>{standards}</tbody></table>'
+            + table_note(id, families, paths)
             + f'<h2>구매 전에 확인할 차이</h2><ul class="f">{notes}</ul>{options}'
             + '<h2>이 품목의 RFQ에 넣을 내용</h2><p>새 양식을 작성할 필요 없이 기존 BOM·메모·요청서를 보내세요. 빠진 사양은 확인 질문으로 이어갑니다.</p>'
             + f'<pre class="rfq-example">{e(example)}</pre><a class="cta" href="/#list">이메일 주소·RFQ 예시 보기 →</a>'

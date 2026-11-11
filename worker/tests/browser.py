@@ -463,6 +463,40 @@ def check_sales(page, BASE, OUT):
   print('Sales · 내부 이동/주소·RFQ 예시 복사/메모 보존/선택 분석/특수요건: PASS')
 
 
+def check_tables(page, BASE, OUT):
+  """Dimension table pages: the index filters, every table states its basis, and a 17-column table scrolls inside its frame without widening the page."""
+  browser=page.context.browser;context=browser.new_context(viewport={'width':1280,'height':900});tab=context.new_page();problems=[];tab.on('pageerror',lambda e:problems.append(str(e)))
+  wide=lambda:tab.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  assert tab.goto(BASE+'/tables/').status==200 and tab.locator('h1').inner_text()=='체결부품 규격표'
+  assert tab.locator('nav.top a.on').inner_text()=='규격표' and '규격서 원문의 표가 아닙니다' in tab.locator('main').inner_text()
+  total=tab.locator('[data-table]').count();assert total>=70 and tab.locator('#table-count').inner_text().startswith(f'{total}개 규격표')
+  tab.locator('#table-q').fill('DIN 6921');assert tab.locator('#table-count').inner_text().startswith('1개 규격표') and tab.locator('[data-table]:visible').count()==1
+  assert tab.locator('[data-table]:visible').get_attribute('href')=='/tables/hexagon-flange-bolt' and tab.locator('#bolt').is_visible() and not tab.locator('#washer').is_visible()
+  tab.locator('#table-q').fill('없는규격표');assert '찾는 규격표가 없으면' in tab.locator('#table-count').inner_text() and tab.locator('[data-table]:visible').count()==0
+  tab.locator('#table-q').fill('');assert tab.locator('[data-table]:visible').count()==total
+  for width in (320,390,768,1280):
+   tab.set_viewport_size({'width':width,'height':800});assert wide(),('tables index',width)
+  # The widest table (17 columns): only the frame scrolls, and the size column stays in view.
+  tab.goto(BASE+'/tables/cross-recessed-truss-head-screw');frame=tab.locator('.dimt')
+  assert '제조·유통사 공개 기술자료 3곳 이상 대조 (규격서 원문 대조 전)' in tab.locator('#basis').inner_text() and tab.locator('.dimt thead th').count()==18
+  for width in (320,390,1280):
+   tab.set_viewport_size({'width':width,'height':800});assert wide(),('wide table',width)
+   assert frame.evaluate('e=>e.scrollWidth>e.clientWidth'),width
+   frame.evaluate('e=>e.scrollLeft=400')
+   assert frame.evaluate('e=>{const a=e.getBoundingClientRect(),b=e.querySelector("tbody th").getBoundingClientRect();return Math.abs(a.left-b.left)<3&&b.width>20}'),('size column stays',width)
+  # A core metric table checked against the publisher's preview, at phone width.
+  tab.set_viewport_size({'width':320,'height':800});tab.goto(BASE+'/tables/hex-nut')
+  assert '발행 기관 공식 미리보기 대조' in tab.locator('#basis').inner_text() and tab.locator('.dimt tbody tr').count()==12 and wide()
+  assert tab.locator('.dimt tbody tr').first.inner_text().split()==['M3','0.5','5.5','2.4'] and tab.locator('a.cta[href="/#list"]').first.is_visible()
+  # Ways in: the product guide of the partial-thread bolt points at the shared table, and a table without a record has no page.
+  tab.set_viewport_size({'width':1280,'height':900});tab.goto(BASE+'/products/hex-bolt-partial-thread')
+  tab.locator('article a[href="/tables/hex-bolt-full-thread"]').click();tab.wait_for_url('**/tables/hex-bolt-full-thread');assert tab.locator('h1').inner_text()=='육각볼트 규격표'
+  assert tab.goto(BASE+'/lib/iso-4032').status==200 and tab.locator('aside a.chip[href="/tables/hex-nut"]').count()==1
+  assert tab.goto(BASE+'/tables/taper-pin').status==404 and tab.goto(BASE+'/tables/no-such-table').status==404
+  assert not problems,problems
+  context.close()
+  print('규격표 · 모음 찾기/근거 문구/17칸 표 휴대폰 폭/길 연결/없는 표 404: PASS')
+
 def check_count(page, BASE, OUT):
   """Funnel counter: silent under automation by default. Switched on, it sends one name per screen or button, once per page load,
   never anything else; the owner's browser and tracking-refusal signals opt out; totals show on the administrator tab."""
@@ -658,6 +692,7 @@ def check(BASE, OUT):
   check_phone_bar(page,BASE,OUT)
   check_boot(page,BASE,OUT)
   check_not_found(page,BASE,OUT)
+  check_tables(page,BASE,OUT)
   check_count(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))

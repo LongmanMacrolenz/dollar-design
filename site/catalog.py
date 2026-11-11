@@ -69,6 +69,90 @@ def product_urls():
             + [SITE_URL + "products/" + paths[id] for id in families])
 
 
+# ── 규격표 (정적 치수표 페이지: site/build_tables.py → docs/tables/) ──────────────────────────────
+# 검색에 내놓는 표는 근거 기록이 저장소에 있는 것만이다 (app/SOURCE_RULE.md):
+#   (a) dims.basis == 'T2' 이고 tools/t2/records/<id>.json 기록이 있는 품목
+#   (b) 미터 핵심 품목: 값은 app/base.html의 const DIM, 근거는 그 아래 출처 주석
+# 표시 없는 "원문 대조 행" 표와 기록 없는 T2 표는 대상이 아니다 (근거를 다시 확인해 기록을 남긴 뒤에 더한다).
+T2_NOTE = "제조·유통사 공개 기술자료 3곳 이상 대조 (규격서 원문 대조 전)"   # app/SOURCE_RULE.md가 정한 문구
+T1_NOTE = "발행 기관 공식 미리보기 대조"
+# 칸 구성은 품목 장(app/base.html V.family)이 보이는 값과 같다. (DIM 키, 칸 기호, 칸 이름)
+# proof: DIM 출처 주석에 그대로 있어야 하는 글자. 주석의 판(edition)이 바뀌면 여기서 빌드가 멈춘다.
+TABLE_CORE = {
+    "hbf": {"standard": "ISO 4017:2022", "note": T1_NOTE, "proof": ["pitch·hexS·hexK = ISO 4017:2022", "iteh 미리보기 대조"], "din": "DIN 933",
+            "cols": [("pitch", "P", "피치 P (보통 나사)"), ("hexS", "s", "2면폭 s"), ("hexK", "k", "머리 높이 k")]},
+    "scs": {"standard": "ISO 4762:2004 (M14 이상은 1997판)", "note": T1_NOTE, "proof": ["scs = ISO 4762:2004(M3–M12)·1997(M14–M24)", "iteh 미리보기 대조"],
+            "cols": [("pitch", "P", "피치 P (보통 나사)"), ("scsDk", "dk", "머리 지름 dk"), ("scsK", "k", "머리 높이 k"), ("scsS", "s", "육각 구멍 2면폭 s")]},
+    "csk": {"standard": "ISO 10642:2004", "note": T1_NOTE, "proof": ["csk = ISO 10642:2004", "iteh 미리보기 대조"],
+            "cols": [("pitch", "P", "피치 P (보통 나사)"), ("cskDk", "dk", "머리 지름 dk (이론값)"), ("cskS", "s", "육각 구멍 2면폭 s")]},
+    "hn": {"standard": "ISO 4032:2023 (M3·M4는 2012판)", "note": T1_NOTE, "proof": ["nutM = ISO 4032:2023(M3·M4는 2012)", "iteh 미리보기 대조"], "din": "DIN 934",
+           "cols": [("pitch", "P", "피치 P (보통 나사)"), ("hexS", "s", "2면폭 s"), ("nutM", "m", "높이 m")]},
+    "pw": {"standard": "ISO 7089:2000", "note": T1_NOTE, "proof": ["pw = ISO 7089:2000", "iteh 미리보기 대조"],
+           "cols": [("pwD1", "d1", "안지름 d1"), ("pwD2", "d2", "바깥지름 d2"), ("pwH", "h", "두께 h")]},
+    "sw": {"standard": "DIN 127 B", "note": T2_NOTE, "proof": ["sw(DIN 127 B, 폐지)는 제조사 표 3곳 일치"],
+           "cols": [("swD1", "d1", "안지름 d1"), ("swD2", "d2", "바깥지름 d2"), ("swS", "s", "두께 s")]},
+}
+TABLE_ALIAS = {"hbp": "hbf"}   # 반나사 육각볼트의 머리 치수는 온나사와 같은 표를 본다 (품목 장도 같은 값을 보인다)
+
+
+def core_dim():
+    """app/base.html의 const DIM과 바로 아래 출처 주석을 읽는다 (JS를 실행하지 않는다). → ({키: {호칭: 값}}, 주석)"""
+    source = (ROOT.parent / "app/base.html").read_text(encoding="utf-8")
+    block = re.search(r"\nconst DIM = \{\n(.*?)\n\};\n((?://[^\n]*\n)+)", source, re.S)
+    if not block:
+        raise ValueError("const DIM and its source comment not found in app/base.html")
+    dim = {key: {size: (int(v) if re.fullmatch(r"\d+", v) else float(v)) for size, v in re.findall(r"(M\d+):\s*(\d*\.?\d+)", body)}
+           for key, body in re.findall(r"^\s*(\w+):\s*\{([^}]*)\}", block.group(1), re.M)}
+    return dim, block.group(2)
+
+
+def table_data():
+    """규격표로 올릴 품목 → 표. {id: {u, standard, note, basis, cols[(기호, 이름)], rows[[호칭, 값…]], scope, extra}}"""
+    families, tiles, paths = catalog()
+    records = {p.stem for p in (ROOT.parent / "tools/t2/records").glob("*.json")}
+    out = {}
+    for id, f in families.items():
+        d = f.get("dims") or {}
+        if d.get("basis") == "T2" and id in records:
+            if f.get("route") or not d.get("standard") or any(v is None for row in d["rows"] for v in row):
+                raise ValueError(f"T2 table is not publishable as recorded: {id}")
+            out[id] = {"u": d["u"], "standard": d["standard"], "note": T2_NOTE, "basis": "T2", "cols": [tuple(c) for c in d["cols"]],
+                       "rows": d["rows"], "scope": d.get("scope", ""), "extra": ""}
+    dim, comment = core_dim()
+    for id, spec in TABLE_CORE.items():
+        missing = [x for x in spec["proof"] if x not in comment]
+        if missing or id not in families or id in out:
+            raise ValueError(f"Core table {id}: source comment in app/base.html no longer says {missing}")
+        keys = [k for k, _, _ in spec["cols"]]
+        sizes = [size for size in dim[keys[0]] if all(size in dim[k] for k in keys)]   # 모든 칸에 값이 있는 호칭만
+        extra = []
+        if spec.get("din"):   # DIN 933·934는 몇 호칭에서 2면폭이 다르다 (값은 제조사 표 3곳 일치 = T2)
+            extra.append(f'{spec["din"]} 2면폭이 다른 호칭: ' + " · ".join(f"{size} {dim['dinS'][size]:g} mm" for size in dim["dinS"]) + f" — {T2_NOTE}.")
+        out[id] = {"u": "mm", "standard": spec["standard"], "note": spec["note"], "basis": "T2" if spec["note"] == T2_NOTE else "T1",
+                   "cols": [(sym, label) for _, sym, label in spec["cols"]], "rows": [[size] + [dim[k][size] for k in keys] for size in sizes],
+                   "scope": "", "extra": " ".join(extra)}
+    order = [id for id in families if id in out]
+    return {id: out[id] for id in order}
+
+
+def table_name(f):
+    """규격표 제목에 쓰는 품목 이름. 짧은 이름이 있으면 그것을, 한 글자뿐이면(예: '별') 원래 이름을 쓴다."""
+    short = f.get("short") or ""
+    return short if len(short) >= 2 else f["ko"]
+
+
+def table_path(id):
+    """품목의 규격표 주소 (없으면 None). 주소는 제품 안내와 같은 고정 경로를 쓴다."""
+    paths = json.loads((ROOT / "product-paths.json").read_text(encoding="utf-8"))
+    target = TABLE_ALIAS.get(id, id)
+    return "/tables/" + paths[target] if target in table_data() else None
+
+
+def table_urls():
+    paths = json.loads((ROOT / "product-paths.json").read_text(encoding="utf-8"))
+    return [SITE_URL + "tables/"] + [SITE_URL + "tables/" + paths[id] for id in table_data()]
+
+
 def public_label(value):
     # Old catalog annotations refer to UI implementation, not purchasing terms.
     return (str(value).replace(" (치수 일부 다름, 아래 ksAnnex)", " (치수 일부 다름)")
