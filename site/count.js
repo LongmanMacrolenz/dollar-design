@@ -4,6 +4,6 @@
 (function(){var sent={};
 function ok(){try{if(navigator.webdriver&&!window.__bnCountTest)return false;if(navigator.globalPrivacyControl||navigator.doNotTrack==='1')return false;if(localStorage.getItem('bn.nocount')==='1')return false;}catch(e){}return /^https?:$/.test(location.protocol);}
 function count(name){if(sent[name]||!ok())return;sent[name]=1;try{if(!navigator.sendBeacon||!navigator.sendBeacon('/count',name))fetch('/count',{method:'POST',body:name,keepalive:true}).catch(function(){});}catch(e){}}
-count('s-view');
+count('s-view');if(document.documentElement.lang==='en')count('en');
 document.addEventListener('click',function(e){var a=e.target&&e.target.closest&&e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href');if(h==='/#list')count('s-list');else if(h.indexOf('https://pf.kakao.com/')===0)count('s-kakao');},true);
 })();

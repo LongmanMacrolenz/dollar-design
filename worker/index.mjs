@@ -14,7 +14,7 @@ const store=env=>env.PROCUREMENT.get(env.PROCUREMENT.idFromName('boltnote-privat
 // 문의 집계 (대표 요청 2026-11-10). 공개 주소 /count는 화면·버튼 이름 하나만 받아 날짜별 합계에 1을 더한다.
 // 누가 보냈는지(IP·쿠키·기기·참조 주소)는 읽지도 저장하지도 않는다. 이름 목록은 app/src/v9_count.js, site/count.js, worker/client/admin.mjs와 같다.
 // probe는 배포 확인용이다(관리자 화면에 보이지 않는다).
-export const COUNT_EVENTS=['visit','home','list','materials','copy','rfq','kakao','tel','mail','s-view','s-list','s-kakao','probe'];
+export const COUNT_EVENTS=['visit','home','list','materials','copy','rfq','kakao','tel','mail','s-view','s-list','s-kakao','en','probe'];
 const COUNT_DAILY_MAX=20000;   // 하루 합계 상한: Durable Object 무료 쓰기 한도(10만 줄/일) 아래에 둔다. 넘으면 버린다
 const COUNT_PER_MINUTE=60;     // 격리 단위마다 분당 상한: 과한 요청이 저장소까지 가지 않게 한다
 const COUNT_BOT=/bot|crawl|spider|headless|preview|monitor/i;

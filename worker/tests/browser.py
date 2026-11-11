@@ -389,6 +389,19 @@ def check_sales(page, BASE, OUT):
   print('Sales · 내부 이동/주소·RFQ 예시 복사/메모 보존/선택 분석/특수요건: PASS')
 
 
+def check_english(page, BASE, OUT):
+  """English page for buyers in Korea: lang en, the address and KakaoTalk visible, no mail-app link, fits a phone, linked from the Korean menu."""
+  context=page.context.browser.new_context(viewport={'width':320,'height':740});tab=context.new_page();problems=[];tab.on('pageerror',lambda e:problems.append(str(e)))
+  assert tab.goto(BASE+'/en/').status==200 and tab.locator('html').get_attribute('lang')=='en' and tab.locator('h1').count()==1
+  assert tab.locator('.en-mail').inner_text()=='a8wlhg942@naver.com' and tab.locator('a[href^="https://pf.kakao.com/"]').count()==1 and tab.locator('a[href^="mailto:"]').count()==0
+  text=tab.locator('main').inner_text();assert 'KRW' in text and 'We hold no stock' in text and '1 business day' in text
+  assert tab.evaluate('document.documentElement.scrollWidth<=innerWidth') and tab.locator('a[href="/tables/"]').count()>=1
+  tab.goto(BASE+'/lib/iso-4032');assert tab.locator('nav.top a[href="/en/"]').inner_text()=='English'
+  assert not problems,problems
+  context.close()
+  print('영문 페이지 · lang/연락처/mailto 없음/320 폭/메뉴 연결: PASS')
+
+
 def check_tables(page, BASE, OUT):
   """Dimension table pages: the index filters, every table states its basis, and a 17-column table scrolls inside its frame without widening the page."""
   browser=page.context.browser;context=browser.new_context(viewport={'width':1280,'height':900});tab=context.new_page();problems=[];tab.on('pageerror',lambda e:problems.append(str(e)))
@@ -619,6 +632,7 @@ def check(BASE, OUT):
   check_boot(page,BASE,OUT)
   check_not_found(page,BASE,OUT)
   check_tables(page,BASE,OUT)
+  check_english(page,BASE,OUT)
   check_count(page,BASE,OUT)
   assert not errors,errors
   print(json.dumps({'admin_ui':'PASS','website_price_gate':'PASS','markup_20':'PASS','pdf_download':'PASS','mobile_320_1440':'PASS','spec_change_reconfirmation':'PASS','mail_status_retry':'PASS','js_errors':errors},ensure_ascii=False))

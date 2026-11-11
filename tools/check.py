@@ -99,7 +99,7 @@ def main():
         texts[str(p.relative_to(ROOT))] = p.read_text(encoding="utf-8")
     for p in sorted((ROOT / "docs" / "products").rglob("*.html")):
         texts[str(p.relative_to(ROOT))] = p.read_text(encoding="utf-8")
-    for p in sorted((ROOT / "docs" / "tables").glob("*.html")):   # 규격표
+    for p in sorted([*(ROOT / "docs" / "tables").glob("*.html"), *(ROOT / "docs" / "en").glob("*.html")]):   # 규격표, 영문 페이지
         texts[str(p.relative_to(ROOT))] = p.read_text(encoding="utf-8")
     texts["docs/404.html"] = (ROOT / "docs" / "404.html").read_text(encoding="utf-8")
     hits = []

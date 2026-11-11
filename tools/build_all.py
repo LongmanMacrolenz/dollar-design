@@ -36,6 +36,7 @@ def build(root: pathlib.Path):
     print(run("site/build_lib.py", cwd=root))
     print(run("site/build_products.py", cwd=root))
     print(run("site/build_tables.py", cwd=root))
+    print(run("site/build_en.py", cwd=root))
     print(run("site/build_brand.py", cwd=root))
     r = subprocess.run(["node", str(ROOT / "tools/build_admin.mjs"), "--out", str(root / "docs/admin")], capture_output=True, text=True)
     if r.returncode:
@@ -48,6 +49,7 @@ def tree(root: pathlib.Path):
     keep += sorted((root / "docs" / "lib").glob("*.html"))
     keep += sorted((root / "docs" / "products").rglob("*.html"))
     keep += sorted((root / "docs" / "tables").glob("*.html"))
+    keep += sorted((root / "docs" / "en").glob("*.html"))
     keep += sorted((root / "docs" / "brand").glob("*"))
     keep += sorted((root / "docs" / "admin").glob("*"))
     return keep
