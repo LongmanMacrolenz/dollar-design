@@ -14,7 +14,7 @@ SOCIAL_NOTE = "참고용 렌더링 · 실제 제품 사진 아님"
 
 
 def brand_copy():
-    """홈 조임 장면의 문구와 글자 굵기를 app/src/v9_tighten.js(BN_TIGHTEN)에서 읽는다. 정적 첫 화면·정적 페이지·공유 그림이 같은 문구를 쓴다."""
+    """보관한 조립 장면의 브랜드 문구를 읽는다. 기존 공유 그림·소개서에 쓰며, 현재 홈은 home_copy()를 쓴다."""
     source = (ROOT.parent / "app/src/v9_tighten.js").read_text(encoding="utf-8")
     block = re.search(r"const BN_TIGHTEN\s*=\s*\{(.*?)\};", source, re.S)
     found = block and {
@@ -43,6 +43,11 @@ def declaration(path, name):
     if not match:
         raise ValueError(f"Missing JSON declaration: {name}")
     return json.JSONDecoder().raw_decode(source[match.end():])[0]
+
+
+def home_copy():
+    """The company home's copy, shared by the interactive and static entrances."""
+    return declaration(ROOT.parent / "app/src/v7_home.js", "BN_HOME_COPY")
 
 
 def catalog():

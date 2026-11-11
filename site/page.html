@@ -4135,6 +4135,132 @@ html.bn-boot-route .search-overview { visibility:hidden; }
   .bn-home-more { padding-bottom:52px; }
 }
 @media (prefers-reduced-motion:reduce) { .bn-door-nut, .bn-door-meta i { transition:none; } }
+/* ── zzzzzzzzzzz_company.css ── */
+/* Company home: natural scrolling, a compact product-led hero and legible notes.
+   Scope to this home; catalog, quoting, admin and saved theme preferences retain their own styles. */
+.bn-company { --paper:#f7f7f3; --sheet:#fff; --sheet-2:#eeefea; --ink:#19272c; --ink-2:#4b5b61; --ink-3:#617177; --hair:#b5bfbd; --hair-2:#d9dfdb; --bn-orange:#ee5835; --bn-orange-ink:#b83b20; background:var(--paper); color:var(--ink); }
+.bn-company .bn-wrap { max-width:1440px; padding-inline:clamp(24px,4vw,64px); }
+.bn-company h1, .bn-company h2, .bn-company h3 { font-family:var(--f-sans); color:inherit; word-break:keep-all; }
+.bn-company a:focus-visible, .bn-company button:focus-visible, .bn-company summary:focus-visible { outline:3px solid #d34a28; outline-offset:5px; }
+.bn-company .bn-kicker, .bn-company .bn-kicker[lang] { display:flex; align-items:center; gap:12px; margin:0 0 25px; font-family:var(--bn-en, sans-serif); font-size:11px; font-weight:700; line-height:1.6; letter-spacing:.14em; color:var(--ink-3); }
+.bn-company .bn-kicker>span { display:block; width:6px; height:6px; background:#ee5835; }
+.bn-company .bn-company-section { padding-block:96px; }
+.bn-company .bn-company-section-head { display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:44px; }
+.bn-company h2 { margin:0; font-size:clamp(30px,3.1vw,46px); line-height:1.3; font-weight:650; letter-spacing:-.055em; }
+.bn-company .bn-section-description { color:var(--ink-2); font-size:15px; line-height:1.9; margin:22px 0; word-break:keep-all; }
+.bn-company .bn-text-link { min-height:40px; font-size:13px; color:inherit; padding-bottom:9px; border-color:var(--hair); }
+.bn-company .bn-text-link:hover { color:#b83b20; border-color:currentColor; }
+.bn-company .bn-text-link>span { margin-left:24px; }
+.bn-company-hero { --ink:#f4f5ef; --ink-2:#c1cbd0; --ink-3:#a6b4ba; --hair:#59656a; color:var(--ink); background:#101b22; overflow:hidden; }
+.bn-company-hero-grid { display:grid; grid-template-columns:1.05fr 1fr; align-items:center; gap:clamp(32px,4vw,64px); padding-block:72px 60px; }
+.bn-company-copy { min-width:0; }
+.bn-company .bn-company-hero h1 { font-size:clamp(35px,3.65vw,56px); line-height:1.28; letter-spacing:-.065em; font-weight:600; margin:0; }
+.bn-company-hero h1>span { display:block; }
+.bn-company-hero h1>span:first-child { color:#b7c4c8; font-weight:350; }
+.bn-company .bn-company-lead { max-width:440px; font-size:15px; line-height:1.95; color:var(--ink-2); margin:28px 0 30px; word-break:keep-all; }
+.bn-company .bn-actions { display:flex; flex-wrap:wrap; gap:10px; margin:0; }
+.bn-company .bn-btn { min-height:50px; padding:0 23px; gap:30px; border-radius:3px; font-size:13px; font-weight:700; background:#ee5835; border-color:#ee5835; color:#fff; }
+.bn-company .bn-btn::before { background:#b83b20; }
+.bn-company .bn-btn:hover { border-color:#b83b20; }
+.bn-company .bn-btn-outline { color:#eef3f4; border-color:#657279; background:transparent; }
+.bn-company .bn-btn-outline:hover { background:#243640; border-color:#c1cbd0; }
+.bn-company .bn-btn-outline::before { display:none; }
+.bn-company-invitation { margin:17px 0 0; font-size:12px; line-height:1.8; color:#a6b4ba; }
+.bn-company-visual { position:relative; min-width:0; margin:0; }
+.bn-company-image { position:relative; background:#e3e6e7; border:1px solid #6d7b8055; }
+.bn-company-image::before, .bn-company-image::after { content:"+"; position:absolute; color:#a9b6ba; font:18px var(--f-mono); line-height:1; z-index:1; }
+.bn-company-image::before { left:-10px; top:-10px; }.bn-company-image::after { right:-10px; bottom:-9px; }
+.bn-company-image img { display:block; width:100%; height:auto; aspect-ratio:1.5; object-fit:cover; }
+.bn-visual-index { position:absolute; bottom:15px; left:18px; font:9px var(--f-mono); letter-spacing:.1em; color:#29383c; }
+.bn-company-visual figcaption { display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px 14px; margin-top:13px; font-size:10px; line-height:1.7; color:#a6b4ba; }
+.bn-company-visual figcaption>span:first-child { font-family:var(--f-mono); letter-spacing:.08em; }
+.bn-company-strip { display:grid; grid-template-columns:1.2fr 1fr 1fr 1.2fr; gap:28px; border-top:1px solid #34434a; padding:27px 0 30px; }
+.bn-company-strip>p { margin:0; color:#a6b4ba; font-size:13px; line-height:1.8; }
+.bn-company-strip>p strong { color:#eff3f2; font-weight:500; }
+.bn-company-strip>div, .bn-company-strip>a { border-left:1px solid #34434a; padding-left:28px; text-decoration:none; color:inherit; }
+.bn-company-strip b { display:block; font:500 26px var(--bn-en,sans-serif); line-height:1.3; }
+.bn-company-strip b small { margin-left:9px; font:500 12px var(--f-sans); }
+.bn-company-strip span { display:block; color:#a6b4ba; font-size:11px; margin-top:7px; line-height:1.6; }
+.bn-company-strip>a b { font:500 17px var(--f-sans); line-height:1.9; }
+.bn-company-strip i { font-style:normal; float:right; color:#f79475; }
+.bn-company-strip>a:hover b { color:#f79475; }
+
+.bn-company .bn-products { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:38px 28px; padding:0; margin:0; overflow:visible; scroll-snap-type:none; list-style:none; cursor:auto; }
+.bn-company .bn-products>li { min-width:0; width:auto; }
+.bn-company .bn-product { display:block; height:100%; border-radius:0; color:var(--ink); padding:0; background:transparent; }
+.bn-company .bn-product-visual { display:block; aspect-ratio:1; border-radius:2px; background-size:300% 200%; transition:filter .25s; }
+.bn-company .bn-product:hover .bn-product-visual { filter:brightness(.96); }
+.bn-company .bn-product-info { display:block; padding:18px 0 0; }
+.bn-company .bn-product-top { display:flex; justify-content:space-between; align-items:center; }
+.bn-company .bn-index, .bn-company .bn-product-count { font-size:10px; color:#65747a; }
+.bn-company .bn-product-count { background:none; padding:0; }
+.bn-company .bn-product h3 { font-size:21px; line-height:1.5; font-weight:650; margin:8px 0 2px; letter-spacing:-.035em; }
+.bn-company .bn-product-en { display:block; color:#617177; font-size:10px; }
+.bn-company .bn-product-desc { display:block; font-size:12px; line-height:1.8; color:#4b5b61; min-height:44px; margin:13px 0 16px; }
+.bn-company .bn-product-link { display:flex; align-items:center; justify-content:space-between; border-top:1px solid #d9dfdb; padding:13px 0 0; color:#26373d; font-size:11px; }
+.bn-company .bn-product-link>span { font-size:18px; color:#b83b20; }
+.bn-company-product-note { margin:28px 0; color:#617177; font-size:10px; line-height:1.8; }
+.bn-company-collections { border-top:1px solid #c8d1cc; border-bottom:1px solid #c8d1cc; display:flex; align-items:center; flex-wrap:wrap; gap:10px 30px; padding:16px 0; font-size:12px; }
+.bn-company-collections>span { color:#617177; margin-right:auto; }.bn-company-collections a { text-decoration:none; color:inherit; padding-block:6px; }.bn-company-collections a:hover { color:#b83b20; }.bn-company-collections i { font-style:normal; margin-left:12px; color:#b83b20; }
+
+.bn-company-review { background:#e9ede8; border-block:1px solid #d9dfd8; }
+.bn-company-review-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:clamp(40px,7vw,120px); align-items:center; }
+.bn-review-sheet { background:#fcfcf8; border:1px solid #cbd3cc; padding:28px 32px 20px; box-shadow:8px 8px 0 #dce2db; }
+.bn-review-sheet-head { display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px 16px; border-bottom:1px solid #d3dad4; padding-bottom:18px; font-size:10px; color:#607168; }
+.bn-review-sheet-head>span:first-child { font:9px var(--f-mono); letter-spacing:.08em; }
+.bn-review-label { font-size:11px; color:#617177; margin:23px 0 9px; }
+.bn-review-raw { margin:0 0 22px; font-size:clamp(15px,1.5vw,21px); line-height:1.8; color:#20322d; }
+.bn-review-raw code { font-family:var(--f-mono); font-weight:500; }
+.bn-review-checks { margin:0; }.bn-review-checks>div { border-top:1px solid #e0e4dc; padding:15px 0; display:grid; grid-template-columns:130px 1fr; gap:14px; font-size:12px; line-height:1.8; }
+.bn-review-checks dt { font-weight:600; }.bn-review-checks dt span { color:#a4432d; font:10px var(--f-mono); margin-right:12px; }.bn-review-checks dd { margin:0; color:#53625b; word-break:keep-all; }
+.bn-review-result { display:flex; gap:17px; border-top:1px solid #cbd3cc; padding-top:19px; }.bn-review-result>svg { color:#b83b20; flex:none; margin-top:3px; }.bn-review-result p { margin:0; }.bn-review-result b { display:block; font-size:16px; font-weight:600; line-height:1.6; }.bn-review-result small { display:block; font-size:10px; line-height:1.8; color:#53625b; margin-top:8px; }
+.bn-review-disclaimer { margin:19px 0 0; color:#617168; font-size:9px; line-height:1.8; }
+
+.bn-company .bn-company-expertise { background:#f7f7f3; }
+.bn-expertise-intro { max-width:410px; }.bn-expertise-intro p { margin:0 0 18px; font-size:15px; line-height:1.9; color:#4b5b61; }
+.bn-company-principles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-block:1px solid #c8d1cc; padding-block:30px; gap:36px; }
+.bn-company-principles article>span { color:#b83b20; font:11px var(--f-mono); }.bn-company-principles h3 { font-size:18px; margin:20px 0 12px; line-height:1.6; font-weight:650; letter-spacing:-.035em; }.bn-company-principles p { margin:0; font-size:13px; color:#4b5b61; line-height:1.9; word-break:keep-all; }
+.bn-company-resources { display:grid; grid-template-columns:1fr 1fr; gap:32px; padding-top:36px; margin-bottom:24px; }
+.bn-company-resources a { display:grid; gap:12px; text-decoration:none; color:inherit; padding:24px 0; border-bottom:1px solid #c8d1cc; }.bn-company-resources a>span:first-child { color:#617177; font:10px var(--f-mono); letter-spacing:.07em; }.bn-company-resources b { font-size:19px; font-weight:600; letter-spacing:-.035em; }.bn-company-resources a>span:last-child { font-size:12px; color:#4b5b61; }.bn-company-resources i { float:right; font-style:normal; color:#b83b20; }.bn-company-resources a:hover b { color:#b83b20; }
+.bn-company .bn-engineering-wrap { padding:0; }.bn-company .bn-engineering { border-color:#c8d1cc; }.bn-company .bn-engineering>summary { padding-block:20px; }.bn-company .bn-engineering>summary>small { color:#53675a; }
+.bn-company .bn-company-contact { --ink:#eef3f2; --ink-2:#b9c9ca; --ink-3:#a5b8ba; --hair:#62777a; background:#142b30; color:var(--ink); }
+.bn-company-contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,7vw,110px); align-items:center; }
+.bn-company-contact-copy>ol { list-style:none; padding:0; margin:30px 0; }.bn-company-contact-copy li { display:flex; gap:20px; border-top:1px solid #385055; padding:17px 0; }.bn-company-contact-copy li>span { color:#f1a187; font:10px var(--f-mono); padding-top:5px; }.bn-company-contact-copy li b { font-size:13px; font-weight:600; }.bn-company-contact-copy li p { font-size:12px; color:#b9c9ca; margin:5px 0 0; line-height:1.8; }
+.bn-company-contact .sales-contact { box-shadow:none; border:1px solid #d7dfd8; border-radius:4px; padding:28px; background:#fff; color:#21372b; }.bn-company-contact .sales-biz { box-shadow:none; border-radius:2px; }.bn-company-contact .sales-primary { border-radius:3px; }.bn-company-contact .sales-kakao { border-radius:3px; }
+.bn-company-contact .sales-recipient { overflow-wrap:anywhere; }.bn-company .bn-company-contact .bn-text-link:hover { color:#ffb49c; }
+body.ia-at-home .bn-footer-sign { padding-block:36px; }
+body.ia-at-home .bn-footer-sign img { width:min(100%,360px); }
+
+/* Static entrance matches the compact interactive hero; product links work without JS. */
+.bn-boot-stage { background:#101b22; min-height:0; padding:72px 0 60px; }
+.bn-boot .bn-wrap { max-width:1440px; padding-inline:clamp(24px,4vw,64px); }
+.bn-boot-grid { display:grid; grid-template-columns:1.05fr 1fr; align-items:center; gap:clamp(32px,4vw,64px); }
+.bn-boot-grid>div { min-width:0; }.bn-boot-grid>figure { margin:0; }.bn-boot-grid img { width:100%; aspect-ratio:1.5; object-fit:cover; display:block; }.bn-boot-grid figcaption { color:#a6b4ba; font-size:10px; margin-top:13px; line-height:1.7; }
+.bn-boot h1 { font:600 clamp(35px,3.65vw,56px)/1.28 var(--f-sans); color:#f4f5ef; margin:0; min-height:0; letter-spacing:-.065em; }.bn-boot h1>span { display:block; }.bn-boot h1>span:first-child { font-weight:350; color:#b7c4c8; }
+.bn-boot-eyebrow { margin-bottom:25px; line-height:1.6; }.bn-boot-lead { font-size:15px; line-height:1.95; max-width:440px; margin:28px 0 30px; }.bn-boot-btn { min-height:50px; border-radius:3px; background:#ee5835; border-color:#ee5835; color:#fff; font-size:13px; padding:0 23px; }.bn-boot .bn-company-invitation { margin-top:17px; }.bn-boot-more { background:#f7f7f3; color:#4b5b61; }.bn-boot-more h2,.bn-boot-more a { color:#19272c; }
+
+@media(min-width:1600px) { .bn-company-hero-grid { padding-block:90px 74px; } }
+@media(max-width:1050px) {
+ .bn-company .bn-company-hero h1,.bn-boot h1 { font-size:clamp(31px,3.7vw,40px); }
+ .bn-company-hero-grid,.bn-boot-grid { gap:30px; }.bn-company .bn-company-lead { font-size:13px; }.bn-company-strip { gap:20px; }.bn-company-strip>div,.bn-company-strip>a { padding-left:20px; }
+ .bn-company .bn-company-section { padding-block:72px; }.bn-company-review-grid { gap:40px; grid-template-columns:.85fr 1.15fr; }.bn-review-sheet { padding:24px; }.bn-review-checks>div { grid-template-columns:1fr; gap:4px; }.bn-company-contact-grid { gap:36px; }
+}
+@media(max-width:760px) {
+ .bn-company-hero-grid,.bn-boot-grid { grid-template-columns:1fr; gap:36px; padding-block:38px 32px; }.bn-boot-stage { padding-block:0; }.bn-company .bn-kicker { font-size:9px; margin-bottom:20px; }
+ .bn-company .bn-company-hero h1,.bn-boot h1 { font-size:clamp(29px,6.4vw,45px); letter-spacing:-.06em; }.bn-company .bn-company-lead,.bn-boot-lead { margin:20px 0 23px; font-size:14px; line-height:1.8; max-width:540px; }
+ .bn-company .bn-btn { min-height:48px; padding-inline:20px; gap:26px; }.bn-company-invitation { margin-top:14px; font-size:11px; }
+ .bn-company-image img,.bn-boot-grid img { aspect-ratio:1.5; object-position:50% 52%; }.bn-company-visual figcaption { font-size:9px; }.bn-visual-index { font-size:8px; left:12px; bottom:11px; }
+ .bn-company-strip { grid-template-columns:1fr 1fr; gap:22px 24px; padding-block:24px 28px; }.bn-company-strip>p { font-size:12px; }.bn-company-strip>div,.bn-company-strip>a { padding:0; border:0; }.bn-company-strip b { font-size:24px; }.bn-company-strip b small { font-size:11px; margin-left:8px; }.bn-company-strip>a b { font-size:15px; }.bn-company-strip span { font-size:10px; }
+ .bn-company .bn-company-section { padding-block:54px; }.bn-company .bn-company-section-head { display:block; margin-bottom:28px; }.bn-company .bn-company-section-head>div+div { margin-top:20px; }.bn-company h2 { font-size:30px; }.bn-company .bn-section-description { font-size:13px; line-height:1.85; margin:18px 0; }
+ .bn-company .bn-products { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 18px; }.bn-company .bn-product-visual { aspect-ratio:1; }.bn-company .bn-product-info { padding-top:12px; }.bn-company .bn-product h3 { font-size:17px; }.bn-company .bn-product-desc { font-size:10px; min-height:54px; margin:10px 0; }.bn-company .bn-product-en { font-size:9px; }.bn-company .bn-product-link { font-size:10px; }.bn-company .bn-product-link>span { font-size:16px; }.bn-company-product-note { font-size:9px; margin:23px 0; }
+ .bn-company-collections { gap:6px 22px; font-size:11px; }.bn-company-collections>span { flex-basis:100%; margin:0 0 5px; }
+ .bn-company-review-grid,.bn-company-contact-grid { grid-template-columns:1fr; gap:30px; }.bn-review-sheet { padding:21px 20px 18px; box-shadow:5px 5px 0 #dce2db; }.bn-review-sheet-head { font-size:9px; }.bn-review-sheet-head>span:first-child { font-size:8px; }.bn-review-raw { font-size:16px; }.bn-review-checks>div { grid-template-columns:1fr; gap:5px; font-size:12px; }.bn-review-result b { font-size:15px; }
+ .bn-expertise-intro p { font-size:13px; }.bn-company-principles { grid-template-columns:1fr; gap:24px; padding-block:24px; }.bn-company-principles article { display:grid; grid-template-columns:26px 1fr; gap:8px 12px; }.bn-company-principles article>span { padding-top:5px; }.bn-company-principles h3 { margin:0; font-size:17px; }.bn-company-principles p { grid-column:2; font-size:12px; }
+ .bn-company-resources { grid-template-columns:1fr; gap:0; padding-top:12px; }.bn-company-resources a { padding-block:23px; }.bn-company-resources b { font-size:18px; }.bn-company .bn-engineering>summary { flex-wrap:wrap; gap:5px 10px; }.bn-company .bn-engineering>summary>span { font-size:12px; }.bn-company .bn-engineering>summary>small { font-size:9px; }
+ .bn-company-contact .sales-contact { padding:22px 20px; }.bn-company-contact-copy>ol { margin:24px 0; }.bn-company-contact-copy li { gap:16px; }.bn-boot-eyebrow { font-size:9px; }.bn-boot-lead { margin:20px 0 23px; }.bn-boot-btn { min-height:48px; font-size:13px; }
+}
+@media(max-width:360px) { .bn-company .bn-wrap,.bn-boot .bn-wrap { padding-inline:20px; }.bn-company .bn-company-hero h1,.bn-boot h1 { font-size:27px; }.bn-company .bn-btn { font-size:12px; padding-inline:17px; gap:18px; }.bn-company .bn-product h3 { font-size:16px; }.bn-review-raw { font-size:14px; } }
+@media(prefers-reduced-motion:reduce) { .bn-company *, .bn-company *::before, .bn-company *::after { transition:none!important; animation:none!important; scroll-behavior:auto!important; } }
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -12855,6 +12981,55 @@ function bnBrandInit() {
   bnBrandCleanup=cleanup;
   update();updateToggle();
 }
+/* ── v7_home.js ── */
+/* Company home. Counts and contact details come from the public catalog.
+   The example is a reading guide, never a customer record or supply promise.
+   BN_HOME_COPY is also read by site/catalog.py for the no-JavaScript entrance. */
+const BN_HOME_COPY = {
+  "h1": ["도면 속 사양을,", "필요한 체결부품으로."],
+  "lead": "볼트·너트·스터드와 산업용 체결부품. 기계엔지니어가 규격과 요구 조건을 검토하고, 공급처 확인 결과를 견적으로 안내합니다."
+};
+
+function hmCompanyHero() {
+  return `<section class="bn-company-hero" aria-labelledby="h-z-a"><div class="bn-wrap">
+    <div class="bn-company-hero-grid">
+      <div class="bn-company-copy"><p class="bn-kicker" lang="en"><span></span> BOLTNOTE / INDUSTRIAL FASTENERS</p>
+        <h1 id="h-z-a" tabindex="-1">${BN_HOME_COPY.h1.map(t=>`<span>${esc(t)}</span>`).join('')}</h1>
+        <p class="bn-company-lead">${esc(BN_HOME_COPY.lead)}</p>
+        <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">견적 문의 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#products" data-go="products">취급 제품 보기 <span aria-hidden="true">↗</span></a></div>
+        <p class="bn-company-invitation">기존 BOM·RFQ·사진으로 시작하셔도 됩니다.</p>
+      </div>
+      <figure class="bn-company-visual"><div class="bn-company-image"><img src="media/boltnote-hero.webp" alt="육각볼트, 렌치볼트, 스터드, 너트, 와셔와 핀의 형상 예시" width="1536" height="1024" fetchpriority="high" decoding="async"><span class="bn-visual-index" lang="en">FIG. 01 / THE ESSENTIALS</span></div><figcaption><span lang="en">METRIC &amp; INCH</span><span>참고용 렌더링 · 실제 제품 사진 아님</span></figcaption></figure>
+    </div>
+    <div class="bn-company-strip"><p>사양을 읽고,<br><strong>공급 조건을 확인합니다.</strong></p><div><b>${CAT_TILES.length}<small>개 제품군</small></b><span>볼트부터 기계 체결부품까지</span></div><div><b>${pmCatN()}<small>종 카탈로그</small></b><span>품목별 규격·치수 안내</span></div><a href="#lib" data-go="lib"><b>규격 사전 <i aria-hidden="true">↗</i></b><span>나사·재질·서류의 확인 기준</span></a></div>
+  </div></section>`;
+}
+
+function hmCompanyReview() {
+  return `<section class="bn-company-review bn-company-section" aria-labelledby="bn-h-review"><div class="bn-wrap bn-company-review-grid">
+    <div><p class="bn-kicker" lang="en">02 / THE ENGINEERING APPROACH</p><h2 id="bn-h-review">같은 이름이어도,<br>사양은 다릅니다.</h2><p class="bn-section-description">호칭 하나로 판단하지 않습니다.<br>도면의 표기와 사용 조건을 함께 읽습니다.</p><a class="bn-text-link" href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인할 것 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-review-sheet"><div class="bn-review-sheet-head"><span lang="en">SPECIFICATION / REVIEW NOTE</span><span>가상 사양 검토 예시</span></div>
+      <p class="bn-review-label">BOM에 적힌 한 줄</p><p class="bn-review-raw"><code>STUD BOLT · 3/4"-10 UNC-2A<br>ASTM A193 B7</code></p>
+      <dl class="bn-review-checks"><div><dt><span>01</span> 나사</dt><dd>호칭 · 산 수 · 외나사 공차를 구분합니다.</dd></div><div><dt><span>02</span> 재질·짝 부품</dt><dd>스터드 등급과 짝이 되는 너트 조건을 확인합니다.</dd></div><div><dt><span>03</span> 추가 질문</dt><dd>길이 · 수량 · 표면처리 · 요구 서류를 확인합니다.</dd></div></dl>
+      <div class="bn-review-result"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 3v11h15m-6-6 6 6-6 6"/></svg><p><b>확인된 조건은 견적에.<br>질문과 편차는 따로.</b><small>단가·납기·제조사 서류 제공 여부는 공급처 확인 뒤 안내합니다.</small></p></div>
+      <p class="bn-review-disclaimer">검토 방식을 설명하는 예시입니다. 실제 고객 자료나 공급 가능 판정이 아닙니다.</p>
+    </div>
+  </div></section>`;
+}
+
+function hmCompanyExpertise() {
+  return `<section class="bn-company-expertise bn-company-section" aria-labelledby="bn-h-expertise"><div class="bn-wrap">
+    <div class="bn-company-section-head"><div><p class="bn-kicker" lang="en">03 / ENGINEER TO ENGINEER</p><h2 id="bn-h-expertise">작은 것이,<br>전부를 붙잡습니다.</h2></div><div class="bn-expertise-intro"><p>볼트노트는 기계엔지니어가 운영하는<br>체결부품 견적·공급 사업자입니다.</p><p>회전기기 분야 ${iaYears()}년의 경험으로,<br>대표 ${iaOwner()}이 견적 사양을 직접 검토합니다.</p><a class="bn-text-link" href="#about" data-go="about">볼트노트 소개 <span aria-hidden="true">↗</span></a></div></div>
+    <div class="bn-company-principles">${[
+      ['01','사양을 먼저 확인합니다.','나사 계열, 재질·등급, 길이 기준과 표면처리를 함께 검토합니다.'],
+      ['02','차이를 기록합니다.','요청과 공급 제안이 다르면 차이와 확인 질문을 구분합니다. 대체품은 고객 승인 후 진행합니다.'],
+      ['03','확인한 범위를 적습니다.','공급 조건과 제조사 서류 제공 범위를 확인하고, 미확인 사항은 견적에서 구분합니다.']
+    ].map(([n,t,d])=>`<article><span>${n}</span><h3>${t}</h3><p>${d}</p></article>`).join('')}</div>
+    <div class="bn-company-resources"><a href="#lib" data-go="lib"><span lang="en">ENGINEERING NOTES</span><b>규격을 이해하는 자료</b><span>나사 · 재질 · 표면처리 · 품질문서 <i aria-hidden="true">↗</i></span></a><a href="#ref" data-go="ref"><span lang="en">DRAWINGS &amp; CAD</span><b>형상과 치수를 보는 자료</b><span>제공 품목의 도면 · STEP · DXF <i aria-hidden="true">↗</i></span></a></div>
+    ${bnEngineeringMarkup()}
+    <nav class="bn-home-links" aria-label="추가 문의·도구"><a href="#tools" data-go="tools">계산·대조 도구 ↗</a><a href="#materials" data-go="materials">소재 문의 ↗</a></nav>
+  </div></section>`;
+}
 /* ── v7_ia.js ── */
 /* ── v7_ia.js: 홈·내비 단순화 (ia/spec.md, 대표 승인 2026-10-01 · DECISIONS 9) ──
    새 경로: home(교체) · products · buy · list · ref · notes · about · t-<칸> · k-<모음> · c-<품목>. 옛 경로는 별칭(iaNorm).
@@ -13099,41 +13274,27 @@ function pmMail() {
   const subj = '[목록견적] ', body = ['볼트노트 견적 담당자님께', '목록 파일을 첨부합니다.', '필요한 날짜·납품지:', '필요한 서류(3.1, CoC):'].join('\r\n');
   return `<a class="pm-btn ghost" href="${esc('mailto:' + String(CONTACT.rfq).trim() + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body))}">견적 메일 보내기</a>`;
 }
-/* 홈 (대표 결정 2026-11-10): 첫 화면은 그림 + 한 줄 + 버튼. 파스너가 하는 일(조이고 고정한다)을 조임 장면(v9_tighten.js)으로 보이고,
-   설명은 제품·규격 사전·견적·회사 소개 화면으로 보낸다. 그 아래는 입구 3개 → 제품군 줄 → 견적 메일 안내 → 더 보기.
-   입구 3개·제품군 줄·견적 안내는 화면을 내리면(올리면) 그 자리에서 조여지는 장면이다 (.bn-scene, v9_tighten_scenes.js). 내용과 링크는 그대로다.
-   품목 수와 사전 수는 공개 데이터에서 계산한다. 용도별 모음은 제품 화면, 구매 전 확인·지식 지도는 규격 사전, 확인 범위·사업자 정보는 회사 소개에 있다. */
-const hmDoor = (no, go, label, title, meta) => `<a class="bn-door" style="--i:${no - 1}" href="#${go}" data-go="${go}"><span class="bn-door-top"><span class="bn-door-no">${no}</span><svg class="bn-door-nut" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 2.2 20.5 7.1v9.8L12 21.8 3.5 16.9V7.1Z"/><circle cx="12" cy="12" r="3.6"/></svg></span><span class="bn-door-label">${label}</span><b>${title}</b><span class="bn-door-meta">${meta} <i aria-hidden="true">↗</i></span></a>`;
-V.home = () => `<div class="bn-home bn-studio" id="z-a">
-  ${bnTightenMarkup()}
-  <nav class="bn-doors-sec bn-scene" data-scene="doors" data-impact="slam" data-scene-need=".bn-door:last-child b" data-seated="true" aria-label="바로 가기"><div class="bn-scene-stage"><div class="bn-scene-body"><div class="bn-wrap bn-doors">
-    ${hmDoor('01', 'products', '제품', '모양과 규격으로 <br>찾습니다.', `${pmCatN()}종 · 미터·인치`)}
-    ${hmDoor('02', 'lib', '규격 사전', '판단의 근거를 <br>확인합니다.', `${LIB.length}개 항목`)}
-    ${hmDoor('03', 'list', '견적 문의', '목록 그대로 <br>보냅니다.', 'BOM · 메모 · RFQ')}
-  </div></div></div></nav>
-  <section class="bn-section bn-lineup bn-scene" data-scene="lineup" data-impact="thud" data-scene-pin="top" data-scene-need=".bn-product-visual" data-seated="true" aria-labelledby="bn-h-products"><div class="bn-scene-stage"><div class="bn-scene-body">
-    <div class="bn-wrap">
-      <div class="bn-section-head"><div><p class="bn-eyebrow" lang="en">THE PRODUCT COLLECTION</p><h2 id="bn-h-products"><span class="bn-thin">작지만,</span><br><span class="bn-grow">역할은 분명합니다.</span></h2></div><div class="bn-section-aside"><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
-      <div class="bn-carousel" aria-label="체결부품 제품 라인업">${hmTiles()}</div>
-      <div class="bn-carousel-bar"><p class="bn-catalog-note">제품군 이미지입니다. 실제 치수·재질·표면처리는 품목별로 확인하세요. · <a class="bn-text-link" href="/products/">제품별 규격·구매 안내 <span aria-hidden="true">↗</span></a></p><div class="bn-carousel-controls"><span id="bn-product-position" aria-live="polite" aria-atomic="true">01 / 06</span><button type="button" data-bn-products-step="-1" aria-label="이전 제품군" disabled>←</button><button type="button" data-bn-products-step="1" aria-label="다음 제품군">→</button></div></div>
-    </div>
-  </div></div></section>
-  <section class="bn-section bn-rfq bn-scene" data-scene="rfq" data-impact="punch" data-scene-need=".bn-rfq-copy" data-seated="true" aria-labelledby="bn-h-rfq"><div class="bn-scene-stage"><div class="bn-scene-body"><div class="bn-wrap bn-rfq-grid">
-    <div class="bn-rfq-copy"><p class="bn-eyebrow" lang="en">CONNECT WITH SALES</p><h2 id="bn-h-rfq"><span class="bn-thin">BOM·메모·RFQ,</span><br><span class="bn-grow">Sales로 바로.</span></h2><p>기존 자료를 그대로 보내 주세요.<br>사양 확인과 공급처 검토는 볼트노트가 이어갑니다.</p><ol class="bn-rfq-points"><li style="--i:0"><span>01</span> BOM·메모·RFQ를 보냅니다</li><li style="--i:1"><span>02</span> 사양과 공급 조건을 확인합니다</li><li style="--i:2"><span>03</span> 견적과 확인 사항을 회신합니다</li></ol><div class="bn-rfq-foot"><a href="#list" data-go="list">Sales · 견적 문의 <span aria-hidden="true">↗</span></a></div></div>
+/* 홈: 취급 제품 → 사양 검토 예시 → 검토 원칙 → 견적 문의.
+   2026-11 기업 홈페이지 개편. 수치·품목·연락처는 기존 공개 데이터만 사용한다.
+   조립·스크롤 고정 연출은 보관하고 홈에서는 초기화하지 않는다. */
+V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
+  ${hmCompanyHero()}
+  <section class="bn-company-products bn-company-section" aria-labelledby="bn-h-products"><div class="bn-wrap">
+    <div class="bn-company-section-head"><div><p class="bn-kicker" lang="en">01 / FASTENER COLLECTION</p><h2 id="bn-h-products">필요한 부품부터<br>살펴보세요.</h2></div><div><p class="bn-section-description">미터·인치 규격의 산업용 체결부품.<br>형상과 용도에 맞는 품목을 확인하세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+    ${hmTiles()}
+    <p class="bn-company-product-note">제품군의 참고용 렌더링 · 실제 제품 사진 아님. 치수·재질·표면처리는 품목별로 확인하세요.</p>
+    <nav class="bn-company-collections" aria-label="용도별 제품 모음"><span>용도별로 찾기</span>${Object.entries(CAT_COLL).filter(([k])=>['plant','pump','flange'].includes(k)).map(([k,c])=>`<a href="#k-${k}" data-go="k-${k}">${esc(c.ko)} <i aria-hidden="true">↗</i></a>`).join('')}</nav>
+  </div></section>
+  ${hmCompanyReview()}
+  ${hmCompanyExpertise()}
+  <section class="bn-company-contact bn-company-section" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-company-contact-grid">
+    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">04 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 보내 주세요.<br>사양 확인과 공급처 검토를 이어갑니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>필요한 품목과 수량, 요구 조건을 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급처 검토</b><p>빠진 사양을 질문하고 공급 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건과 질문·편차를 구분해 안내합니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
     ${salesContactMarkup(true)}
-  </div></div></div></section>
-  <section class="bn-home-more" aria-label="더 보기">
-    ${bnEngineeringMarkup()}
-    <div class="bn-wrap bn-home-links"><a href="#about" data-go="about">회사 소개·확인 범위 <i aria-hidden="true">↗</i></a><a href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인 <i aria-hidden="true">↗</i></a><a href="#ref" data-go="ref">도면·CAD <i aria-hidden="true">↗</i></a><a href="#tools" data-go="tools">계산·대조 도구 <i aria-hidden="true">↗</i></a><a href="#materials" data-go="materials">소재 문의 <i aria-hidden="true">↗</i></a></div>
-  </section>
+  </div></section>
 </div>`;
 
-V.after.home = () => {
-  hmBind();
-  bnTightenInit();bnScenesInit();bnHomeFontInit();bnBrandInit();bnFilmInit();
-  const f = $('pm-lib-form');
-  if (f) f.addEventListener('submit', e => { e.preventDefault(); go(libURL({ q: $('pm-lib-q').value.trim() })); });
-};
+V.after.home = () => { hmBind(); bnFilmInit(); };
+
 function hmBind() {
   const v = view();
   v.addEventListener('click', e => {
