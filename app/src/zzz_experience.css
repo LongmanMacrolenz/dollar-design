@@ -29,6 +29,12 @@ button,a { touch-action:manipulation; }
 .ia-menu-b i b { height:1.5px; background:currentColor; transition:transform .25s; }
 .tb.ia-tb .bn-header-rfq:hover { background:#ff7656; }
 .tb.ia-tb .bn-open-find:hover { background:var(--sheet-2); }
+/* 언어 전환: 메뉴 항목이 아니라 돋보기 옆 작은 KO · EN (현재 언어 진하게) */
+.tb.ia-tb .ia-grid > .bn-lang { display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 4px; font-size:12px; font-weight:700; letter-spacing:.04em; color:var(--pm-tx-2, var(--ink-3)); }
+.tb.ia-tb .bn-lang b { color:#fff; font-weight:800; }
+.tb.ia-tb .bn-lang span { opacity:.5; }
+.tb.ia-tb .bn-lang a { color:inherit; text-decoration:none; padding:6px 2px; }
+.tb.ia-tb .bn-lang a:hover, .tb.ia-tb .bn-lang a:focus-visible { color:#fff; }
 .tb.ia-tb .ia-menu-b:hover i b:first-child { transform:translateX(4px); }
 .bn-reading-progress { position:fixed; left:0; right:0; top:0; height:2px; z-index:60; pointer-events:none; }
 .bn-reading-progress i { display:block; background:var(--bn-orange); height:100%; width:var(--bn-read,0%); }
@@ -317,6 +323,7 @@ footer.foot.ia-foot { background:#142234; }
  .tb .bn-logo { width:150px; }
  .tb.ia-tb .ia-grid > .cartc { width:36px; height:36px; }
  .tb.ia-tb .ia-grid > .bn-open-find { width:36px; height:36px; }
+ .tb.ia-tb .ia-grid > .bn-lang { min-height:36px; gap:4px; font-size:11px; }
  .tb.ia-tb .ia-grid > .ia-menu-b { width:35px; padding:0; }
  .ia-menu-b > span { display:none; }
  .bn-studio .bn-wrap { padding-inline:20px; }

@@ -42,8 +42,8 @@ def facts():
 
 def header():
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote home (Korean)">' + MARK + '</a>'
-            '<nav class="top" aria-label="Main"><a href="/en/" class="on" aria-current="page">English</a><a href="/tables/" lang="ko">규격표 (tables)</a>'
-            '<a href="/" lang="ko">한국어</a></nav></div></header>')
+            '<nav class="top" aria-label="Main"><a href="/tables/" lang="ko">규격표 (tables)</a></nav>'
+            '<nav class="lang" aria-label="Language"><a href="/" lang="ko" hreflang="ko" title="한국어">KO</a> · <b aria-current="true">EN</b></nav></div></header>')
 
 
 def footer(info):

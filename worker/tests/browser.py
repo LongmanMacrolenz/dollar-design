@@ -396,18 +396,19 @@ def check_english(page, BASE, OUT):
   assert tab.locator('.en-mail').inner_text()=='a8wlhg942@naver.com' and tab.locator('a[href^="https://pf.kakao.com/"]').count()==1 and tab.locator('a[href^="mailto:"]').count()==0
   text=tab.locator('main').inner_text();assert 'KRW' in text and 'We hold no stock' in text and '1 business day' in text
   assert tab.evaluate('document.documentElement.scrollWidth<=innerWidth') and tab.locator('a[href="/tables/"]').count()>=1
-  tab.goto(BASE+'/lib/iso-4032');assert tab.locator('nav.top a[href="/en/"]').inner_text()=='English'
+  assert tab.locator('nav.lang a[href="/"]').inner_text()=='KO' and tab.locator('nav.top a[href="/en/"]').count()==0
+  tab.goto(BASE+'/lib/iso-4032');assert tab.locator('nav.top a[href="/en/"]').count()==0 and tab.locator('nav.lang a[href="/en/"]').inner_text()=='EN'
   tab.goto(BASE+'/en/');assert tab.locator('link[rel=alternate][hreflang=ko]').get_attribute('href').endswith('/') and tab.locator('link[rel=alternate][hreflang=en]').count()==1
-  # 홈(SPA)에서 가는 길: 휴대폰 메뉴·바닥글, 넓은 화면은 상단 메뉴
+  # 홈(SPA)에서 가는 길: 메뉴 항목이 아니라 상단 돋보기 옆 KO · EN 전환 (좁은 화면·넓은 화면 모두)
   tab.goto(BASE+'/');tab.wait_for_timeout(800);assert tab.locator('link[rel=alternate][hreflang=en]').get_attribute('href').endswith('/en/')
-  tab.click('#ia-menu-b');assert tab.locator('#ia-menu a[href="/en/"]').is_visible();tab.keyboard.press('Escape')
-  assert tab.locator('footer a[href="/en/"]').count()==1 and tab.locator('footer a[href="/tables/"]').count()>=1
+  assert tab.locator('.bn-lang a[href="/en/"]').is_visible() and tab.locator('#nav a[href="/en/"]').count()==0
+  assert tab.locator('footer a[href="/en/"]').count()==0 and tab.locator('footer a[href="/tables/"]').count()>=1
   wide=page.context.browser.new_context(viewport={'width':1366,'height':800});wt=wide.new_page();wt.goto(BASE+'/');wt.wait_for_timeout(800)
-  assert wt.locator('#nav a[href="/en/"]').is_visible();wt.click('#nav a[href="/en/"]');wt.wait_for_url('**/en/');assert wt.locator('html').get_attribute('lang')=='en'
+  assert wt.locator('.bn-lang a[href="/en/"]').is_visible();wt.click('.bn-lang a[href="/en/"]');wt.wait_for_url('**/en/');assert wt.locator('html').get_attribute('lang')=='en'
   wide.close()
   assert not problems,problems
   context.close()
-  print('영문 페이지 · lang/연락처/mailto 없음/320 폭/메뉴 연결·홈 상단·휴대폰 메뉴·바닥글·hreflang: PASS')
+  print('영문 페이지 · lang/연락처/mailto 없음/320 폭/KO·EN 전환(홈·정적 페이지·영문)·hreflang: PASS')
 
 
 def check_tables(page, BASE, OUT):

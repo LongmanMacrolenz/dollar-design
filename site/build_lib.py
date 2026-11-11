@@ -64,6 +64,7 @@ header{background:var(--night);color:var(--tx);border-bottom:1px solid rgba(255,
 header .w{display:flex;align-items:center;gap:20px;min-height:64px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.03em}.brand img{width:190px;height:auto;display:block}
 nav.top{display:flex;gap:4px;flex:1;flex-wrap:wrap}nav.top a{color:var(--tx-2);text-decoration:none;font-weight:600;padding:8px 12px;border-radius:8px}nav.top a:hover,nav.top a.on{color:#fff;background:rgba(255,255,255,.06)}
+nav.lang{font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--tx-2)}nav.lang b{color:#fff}nav.lang a{color:inherit;text-decoration:none;padding:6px 2px}nav.lang a:hover{color:#fff}
 .cta{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 16px;border-radius:9px;background:var(--acc);color:var(--ink);font-weight:800;text-decoration:none}
 main{padding:28px 0 64px}.crumbs{font-size:13px;color:var(--ink-3);margin-bottom:10px}.crumbs a{color:var(--ink-2)}
 h1{margin:0;font-size:clamp(26px,3.2vw,40px);line-height:1.2;letter-spacing:-.035em}h2{font-size:17px;margin:26px 0 10px;letter-spacing:-.02em}
@@ -142,10 +143,11 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 
 def header(on: str = "lib") -> str:
-    nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", ""), ("/en/", "English", "en")]
+    nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
-            + '</nav><a class="cta" href="/#list">Sales 문의 →</a></div></header>')
+            + '</nav><nav class="lang" aria-label="언어 Language"><b aria-current="true">KO</b> · <a href="/en/" lang="en" hreflang="en" title="English">EN</a></nav>'
+            '<a class="cta" href="/#list">Sales 문의 →</a></div></header>')
 
 
 # 카카오톡 표시: 노란 바탕에 검은 말풍선 (app/src/v9_sales.js BN_KAKAO_BUBBLE과 같은 모양)
