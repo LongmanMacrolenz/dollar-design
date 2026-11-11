@@ -113,6 +113,10 @@ def main():
             continue
         changed.append(fid)
         s = s[:a] + json.dumps(new, ensure_ascii=False, separators=(",", ":")) + s[end:]
+    # 기록 없이 T2로 표시된 표는 규칙 위반이다 (근거를 댈 수 없는 표가 T2 문구를 달고 보이게 된다)
+    for fid, f in dec.raw_decode(s, len("const CAT_F = "))[0].items():
+        if (f.get("dims") or {}).get("basis") == "T2" and fid not in recs:
+            bad.append((fid, ["T2로 표시된 표인데 조사 기록(tools/t2/records)이 없습니다"]))
     for fid, errs in bad:
         print(f"반영 안 함 {fid}: " + "; ".join(errs[:4]))
     if check:
