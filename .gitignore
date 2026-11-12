@@ -1,6 +1,7 @@
 # 도구가 만드는 폴더
 .wrangler/
 node_modules/
+.venv-marketing/
 # 점검 결과·임시 파일
 __pycache__/
 *.pyc
