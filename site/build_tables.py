@@ -34,6 +34,8 @@ TABLE_CSS = """
 .tbl-extra{font-size:14px;color:var(--ink-2);margin:12px 0 0}.tbl-list{margin:18px 0 0}.tbl-list .card b{font-size:15px}
 .tbl-list .card span{font-size:13px}.tbl-search{max-width:720px;margin:20px 0}.tbl-search label{font-weight:700}.tbl-search p{font-size:13px;color:var(--ink-3);margin:0}
 .tbl-group h3{font-size:15px;margin:20px 0 10px;color:var(--ink-2)}
+.tbl-quote{margin:18px 0 6px;padding:14px 16px;border:1px solid var(--hair-2);border-radius:10px;background:var(--sheet)}.tbl-quote p{margin:0 0 10px;font-size:14px;color:var(--ink-2)}
+@media print{.tbl-quote{display:none!important}}
 @media(max-width:860px){.tbl-hero{grid-template-columns:minmax(0,1fr)}.tbl-hero figure{max-width:320px}.dimt th,.dimt td{padding:7px 10px}}
 @media print{header,footer,.bn-strip,.product-actions,.tbl-hero figure,aside,.crumbs,.tbl-more{display:none!important}body{background:#fff}main{padding:0}
 .product-grid{display:block}.dimt{overflow:visible!important;border:0}.dimt tr>:first-child{position:static}.dimt th,.dimt td{padding:4px 8px;font-size:11px}}
@@ -110,6 +112,7 @@ def page_html(id, f, t, families, tiles, tables, paths, library, shapes, info):
             + f'<div class="product-actions"><a class="cta" href="/#list">이 품목 견적 문의 →</a><a href="/products/{slug}">구매 안내 보기</a><a href="/#c-{id}">2D 도면·사양 선택 ↗</a></div></div>{visual}</section>'
             + '<div class="product-grid"><article><h2 id="table">치수표</h2>' + table_html(id, f, t)
             + (f'<p class="tbl-extra">{e(extra)}</p>' if extra else "")
+            + f'<div class="tbl-quote"><p><b>{e(name)} 규격이 필요하신가요?</b> 호칭·길이·재질·수량이 적힌 BOM이나 도면을 그대로 보내 주세요. 적용 규격을 기준으로 확인한 뒤 견적합니다.</p><a class="cta" href="/#list">이 규격으로 견적 받기 →</a></div>'
             + (f'<h2>이 품목은</h2><p>{e(public_label(f["use"]))}</p>' if f.get("use") else "")
             + '<h2 id="basis-detail">이 표의 근거와 한계</h2><ul class="f">' + "".join(f"<li>{e(x)}</li>" for x in limits) + "</ul>"
             + '<h2>표에 없는 호칭·길이가 필요하면</h2><p>BOM이나 도면을 그대로 보내 주세요. 적용 규격과 요구 치수를 기준으로 확인한 뒤 견적합니다.</p>'
