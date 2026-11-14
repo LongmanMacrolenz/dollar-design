@@ -4,7 +4,7 @@ import pathlib
 import re
 
 ROOT = pathlib.Path(__file__).resolve().parent
-SITE_URL = "https://boltnote.boltnote.workers.dev/"
+SITE_URL = "https://boltnote.net/"
 HOME_TITLE = "볼트·너트 구매·BOM 견적 | 볼트노트"
 HOME_DESC = "산업설비 볼트·너트 구매와 BOM 견적. 미터·인치, ASTM 스터드·헤비너트의 사양과 서류를 확인합니다."
 # 링크를 공유할 때 뜨는 그림(og:image), 1280×720. 원본은 app/brand/social.html → python3 tools/render_brand.py.

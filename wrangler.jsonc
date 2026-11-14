@@ -9,7 +9,8 @@
     "directory": "./docs",
     "binding": "ASSETS",
     "not_found_handling": "404-page",   // 없는 주소에는 docs/404.html을 404 상태로 보낸다 (site/build_lib.py not_found_html)
-    "run_worker_first": ["/api/*", "/count", "/admin", "/admin/", "/googlee7950c29a2b5a35e.html", "/naver873356c1ec7239a24ea882fae7172928.html"]
+    // 임시(2026-11-14 주소 이전): 옛 주소(workers.dev)·www의 301 이동을 위해 모든 요청이 워커를 거친다. 이전 2~3개월 뒤 workers_dev를 끄고 이 값을 원래 목록으로 되돌린다(AGENTS.md).
+    "run_worker_first": true
   },
   "durable_objects": {
     "bindings": [{"name": "PROCUREMENT", "class_name": "ProcurementStore"}]

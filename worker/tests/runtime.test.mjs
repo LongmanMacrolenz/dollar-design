@@ -70,3 +70,20 @@ test('Korean customer PDF embeds its full Korean font, paginates and has no priv
   const bytes=await quotePDF({number:'BN-TEST',customerName:'테스트',customerEmail:'customer@example.com',createdAt:new Date().toISOString(),validUntil:new Date().toISOString(),lines,netKRW:48000,vatKRW:4800,totalKRW:52800,terms:'결제·배송 조건 테스트'},{name:'볼트노트',owner:'테스트',number:'TEST',email:'test@example.com'},await readFile('worker/assets/GothicA1-Regular.ttf'));
   assert.equal(new TextDecoder().decode(bytes.slice(0,5)),'%PDF-');assert(bytes.length<2*1024*1024);const pdf=await PDFDocument.load(bytes);assert(pdf.getPageCount()>1);assert.equal(pdf.getTitle(),'BN-TEST · 볼트노트 견적서');
 });
+
+test('boltnote.net is the canonical host: old workers.dev and www get a 301 on GET/HEAD only; API, ownership files and POST are left alone',async()=>{
+  const result=await build({entryPoints:['worker/index.mjs'],bundle:true,format:'esm',write:false,external:['cloudflare:workers','cloudflare:sockets'],target:'es2022'});
+  const mf=new Miniflare(convertV4MiniflareOptions({modules:true,script:result.outputFiles[0].text,compatibilityDate:'2025-09-01',bindings:{PROCUREMENT_ADMIN_KEY:LOCAL_KEY},durableObjects:{PROCUREMENT:{className:'ProcurementStore',useSQLite:true}},serviceBindings:{ASSETS:async()=>new Response('<html>public asset</html>',{headers:{'Content-Type':'text/html'}})}}));
+  try{
+    const get=(url,init={})=>mf.dispatchFetch(url,{redirect:'manual',...init});
+    for(const host of ['boltnote.boltnote.workers.dev','www.boltnote.net']){
+      const r=await get('https://'+host+'/tables/?q=1');
+      assert.equal(r.status,301);assert.equal(r.headers.get('location'),'https://boltnote.net/tables/?q=1');
+      assert.equal((await get('https://'+host+'/en/',{method:'HEAD'})).status,301);
+      assert.notEqual((await get('https://'+host+'/count',{method:'POST'})).status,301);   // POST is never redirected
+      assert.notEqual((await get('https://'+host+'/api/state')).status,301);              // administrator API stays put
+      for(const f of ['/googlee7950c29a2b5a35e.html','/naver873356c1ec7239a24ea882fae7172928.html']) assert.notEqual((await get('https://'+host+f)).status,301);
+    }
+    const home=await get('https://boltnote.net/');assert.equal(home.status,200);   // the canonical host is served, not redirected
+  }finally{await mf.dispose();}
+});

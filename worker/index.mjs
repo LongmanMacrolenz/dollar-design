@@ -41,6 +41,15 @@ async function countPing(request,env){
 export default {
   async fetch(request,env) {
     const path=new URL(request.url).pathname;
+    // 정식 주소는 https://boltnote.net 하나다. 예전 workers.dev 주소와 www는 영구 이동(301)한다.
+    // 소유 확인 파일과 /api/ 는 예전 주소에서도 그대로 둔다(검색엔진 재확인·관리 도구 호환).
+    {
+      const u=new URL(request.url);
+      if((u.hostname==='boltnote.boltnote.workers.dev'||u.hostname==='www.boltnote.net')&&(request.method==='GET'||request.method==='HEAD')
+        &&!path.startsWith('/api/')&&path!=='/googlee7950c29a2b5a35e.html'&&path!=='/naver873356c1ec7239a24ea882fae7172928.html') {
+        return Response.redirect('https://boltnote.net'+u.pathname+u.search,301);
+      }
+    }
     if(path==='/googlee7950c29a2b5a35e.html'||path==='/naver873356c1ec7239a24ea882fae7172928.html') {
       // Serve uploaded ownership files at their exact URLs, without asset URL normalization.
       const url=new URL(request.url);url.pathname=path.slice(0,-5);

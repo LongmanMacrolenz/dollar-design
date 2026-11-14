@@ -1,7 +1,7 @@
 # AGENTS.md — 볼트노트 사이트 작업 안내 (ChatGPT/Codex, Claude 공통)
 
 볼트노트는 기계엔지니어(대표 박세중) 혼자 운영하는 체결부품 B2B 견적 사이트입니다.
-사이트 주소: https://boltnote.boltnote.workers.dev · 배포: `main` 브랜치의 `docs/` 폴더를 Cloudflare Workers가 자동 배포합니다.
+사이트 주소: https://boltnote.net · 배포: `main` 브랜치의 `docs/` 폴더를 Cloudflare Workers가 자동 배포합니다.
 
 **이 저장소는 공개(public)입니다.** 올린 것은 누구나 읽고, 기록(history)에서 지우기 어렵습니다. 아래 "절대 올리지 말 것"을 먼저 읽으세요.
 
@@ -51,6 +51,8 @@ python3 tools/check.py          # 빌드 일치, 자바스크립트 문법, 금�
 - PR 설명에는 무엇을·왜 바꿨는지, 값을 바꿨다면 **출처**를 적습니다.
 - 한 PR에는 한 가지 일만 담습니다. 보기 흉한 대규모 재정렬은 하지 않습니다.
 - `docs/googlee7950c29a2b5a35e.html`과 `docs/naver873356c1ec7239a24ea882fae7172928.html`은 대표가 제공한 Google Search Console·네이버 서치어드바이저 소유 확인 원본 파일입니다(2026-10-06). 생성 HTML과 달리 그대로 보관하는 공개 정적 파일입니다. 빌드·배포 때 삭제하거나 내용을 감싸지 마세요. `worker/index.mjs`와 `wrangler.jsonc`는 정확한 `.html` 주소에서 리디렉션 없이 이 파일들을 제공합니다. 검색엔진의 재확인을 위해 파일과 경로를 유지합니다.
+
+> **임시 설정(주소 이전, 2026-11-14)**: 정식 주소는 https://boltnote.net 입니다. `wrangler.jsonc`의 `run_worker_first: true`와 `workers_dev: true`는 옛 주소·www의 301 이동을 위한 임시 값입니다. 검색 주소가 새 주소로 바뀌고 2~3개월 지나 대표와 정한 시점에 `workers_dev`를 끄고 `run_worker_first`를 원래 목록(`/api/*`, `/count`, `/admin`, `/admin/`, 소유 확인 파일 2개)으로 되돌립니다.
 
 ## 3. 사이트 글 규칙 (대표의 결정)
 

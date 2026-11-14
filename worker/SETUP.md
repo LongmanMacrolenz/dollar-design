@@ -1,6 +1,6 @@
 # 볼트노트 견적 관리 연결
 
-관리 화면: https://boltnote.boltnote.workers.dev/admin
+관리 화면: https://boltnote.net/admin
 
 공개 홈페이지는 그대로 사용할 수 있습니다. 메일은 비밀정보를 설정하기 전에는 수집하거나 보내지 않습니다. 메일 주소와 권한 승인만으로 네이버 계정 로그인이 완료되지는 않습니다.
 

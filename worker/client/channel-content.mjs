@@ -1,7 +1,7 @@
 // Public channel copy only. Do not add customers, supplier conditions, credentials or the home address.
 export const CHANNEL = Object.freeze({
   name:'볼트노트', id:'_ZlHxiX',
-  home:'https://boltnote.boltnote.workers.dev/',
+  home:'https://boltnote.net/',
   profile:'https://pf.kakao.com/_ZlHxiX',
   chat:'https://pf.kakao.com/_ZlHxiX/chat',
   manager:'https://business.kakao.com/space/10705866/dashboard',

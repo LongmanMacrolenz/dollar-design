@@ -39,7 +39,7 @@ async function imageDownload(cover){
   if(!cover){ctx.drawImage(logo,72,72,256,256);}else{
     ctx.drawImage(logo,72,68,350,350*104/632);ctx.fillStyle='#142234';ctx.font='bold 60px BN, sans-serif';ctx.fillText('체결부품 조달,',72,265);ctx.fillStyle='#e54b28';ctx.fillText('BOM부터 정확하게.',72,350);
     ctx.fillStyle='#526170';ctx.font='24px BN, sans-serif';ctx.fillText('사양·특수요건 검토 → 공급처 확인 → 견적·C&D',72,440);
-    ctx.fillStyle='#142234';ctx.font='20px BN, sans-serif';ctx.fillText('boltnote.boltnote.workers.dev',72,530);
+    ctx.fillStyle='#142234';ctx.font='20px BN, sans-serif';ctx.fillText('boltnote.net',72,530);
   }
   const blob=await new Promise(resolve=>c.toBlob(resolve,'image/png'));if(!blob)throw Error('이미지 파일을 만들지 못했습니다.');
   download(blob,cover?'boltnote-kakao-cover.png':'boltnote-kakao-profile.png');message('PNG를 내려받았습니다. 카카오에서 업로드해 주세요.');
