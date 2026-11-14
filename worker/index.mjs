@@ -46,11 +46,11 @@ export default {
     {
       const u=new URL(request.url);
       if((u.hostname==='boltnote.boltnote.workers.dev'||u.hostname==='www.boltnote.net')&&(request.method==='GET'||request.method==='HEAD')
-        &&!path.startsWith('/api/')&&path!=='/googlee7950c29a2b5a35e.html'&&path!=='/naver873356c1ec7239a24ea882fae7172928.html') {
+        &&!path.startsWith('/api/')&&path!=='/googlee7950c29a2b5a35e.html'&&path!=='/naver873356c1ec7239a24ea882fae7172928.html'&&path!=='/naver12f5e4657429cd6bc694712c3b3be88b.html') {
         return Response.redirect('https://boltnote.net'+u.pathname+u.search,301);
       }
     }
-    if(path==='/googlee7950c29a2b5a35e.html'||path==='/naver873356c1ec7239a24ea882fae7172928.html') {
+    if(path==='/googlee7950c29a2b5a35e.html'||path==='/naver873356c1ec7239a24ea882fae7172928.html'||path==='/naver12f5e4657429cd6bc694712c3b3be88b.html') {
       // Serve uploaded ownership files at their exact URLs, without asset URL normalization.
       const url=new URL(request.url);url.pathname=path.slice(0,-5);
       return env.ASSETS.fetch(new Request(url,request));
