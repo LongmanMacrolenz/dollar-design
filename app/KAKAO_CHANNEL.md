@@ -4,7 +4,7 @@
 
 - 공개 채널: https://pf.kakao.com/_ZlHxiX
 - 1:1 상담: https://pf.kakao.com/_ZlHxiX/chat
-- 입력 자료: https://boltnote.boltnote.workers.dev/admin/channel.html
+- 입력 자료: https://boltnote.net/admin/channel.html
 - 관리자: https://business.kakao.com/space/10705866/dashboard
 
 입력 페이지는 프로필·상담 답변·FAQ·메뉴 링크·소식 3편의 내용을 제공합니다. 항목별 수정·복사, 전체 텍스트 내려받기, 기존 브랜드의 프로필·표지 PNG 내보내기가 가능합니다. 수정 문구와 적용 체크 표시는 현재 브라우저에만 저장하며, 카카오에 자동으로 설정하거나 발송하지 않습니다. 공개 회사 문구를 다루는 페이지이고 고객·공급처 정보나 비밀번호를 입력하는 곳이 아닙니다.

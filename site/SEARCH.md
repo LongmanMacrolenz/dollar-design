@@ -29,7 +29,7 @@
 통과시킵니다. `tools/check_search.py`는 모든 검색 문서의 제목·설명·표준 주소,
 사이트맵 일치와 내부 링크·제품 목록 범위를 확인합니다.
 
-검색엔진 등록 주소는 `https://boltnote.boltnote.workers.dev/`입니다.
+검색엔진 등록 주소는 `https://boltnote.net/`입니다.
 `#home` 같은 화면 식별자는 개별 검색 문서 주소가 아닙니다.
 Google·네이버에 제출할 사이트맵은 `/sitemap.xml` 하나입니다.
 소유 확인 파일은 계속 보관합니다. 페이지를 추가했다고 수집·노출·순위가
