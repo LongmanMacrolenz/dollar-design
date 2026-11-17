@@ -41,6 +41,7 @@ def site_info() -> dict:
         # 전화 응대 시간: SHOP.sla가 가리키는 SLA_COPY 항목의 tel 값 (e1_data.js 한 곳에서만 바꾼다)
         "telHours": val(r"\b" + re.escape(val(r"sla: '(\w+)'") or "parttime") + r": \{[^}]*?tel: '([^']*)'"),
         "analyticsToken": val(r"analyticsToken: '([^']*)'"),
+        "adsenseClient": val(r"adsenseClient: '([^']*)'"),
         "funnelCount": val(r"funnelCount: (true|false)") == "true",   # 문의 집계 스위치 (e1_data.js SHOP.funnelCount)
     }
 
@@ -54,6 +55,19 @@ def beacon_tag(info: dict | None = None) -> str:
     if not re.fullmatch(r"[A-Za-z0-9_-]{8,}", token):
         raise ValueError("SHOP.analyticsToken 형식이 이상합니다")
     return f'<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{{"token": "{token}"}}\'></script>\n'
+
+
+def adsense_tag(info: dict | None = None) -> str:
+    """구글 애드센스 스크립트. SHOP.adsenseClient(e1_data.js)가 비어 있으면 아무것도 넣지 않는다. 게시자 ID는 공개 값이다."""
+    cid = (info or site_info()).get("adsenseClient", "")
+    if not cid:
+        return ""
+    if not re.fullmatch(r"ca-pub-\d{10,}", cid):
+        raise ValueError("SHOP.adsenseClient 형식이 이상합니다")
+    return f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={cid}" crossorigin="anonymous"></script>\n'
+
+
+ADSENSE = adsense_tag()
 
 
 CSS = """
@@ -134,7 +148,7 @@ def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, in
         + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
         f'<meta property="og:image" content="{SITE_URL}{SOCIAL_IMAGE}"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
-        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}</head>\n<body>\n{body}\n{COUNT if index else ''}</body>\n</html>\n"
+        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}{ADSENSE if index else ''}</head>\n<body>\n{body}\n{COUNT if index else ''}</body>\n</html>\n"
     )
 
 

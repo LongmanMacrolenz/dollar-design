@@ -10,7 +10,7 @@ import re
 import sys
 
 from catalog import catalog, brand_copy, home_copy, SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE
-from build_lib import site_info, beacon_tag
+from build_lib import site_info, beacon_tag, adsense_tag
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "page.html"
@@ -128,6 +128,7 @@ def build(out: pathlib.Path) -> None:
         f"{head_meta()}"
         f"<script>{BOOT_SCRIPT}</script>\n"
         f"{beacon_tag()}"
+        f"{adsense_tag()}"
         "</head>\n<body>\n"
         f"{body}\n"
         "</body>\n</html>\n"
