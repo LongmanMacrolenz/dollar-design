@@ -180,6 +180,7 @@ def main():
     assert "/products/hex-nut" in home.links and "/products/stud-bolt-b7" in home.links
     assert "Disallow: /\n" not in (ROOT / "docs/robots.txt").read_text()
     assert SITE_URL + "sitemap.xml" in (ROOT / "docs/robots.txt").read_text()
+    assert (ROOT / "docs/ads.txt").read_text() == "google.com, pub-6804110869369028, DIRECT, f08c47fec0942fa0\n"
     for name, expected in [("googlee7950c29a2b5a35e.html", 53), ("naver873356c1ec7239a24ea882fae7172928.html", 67)]:
         assert len((ROOT / "docs" / name).read_bytes()) == expected, name
     print(f"{len(families)} product guides, {len(tiles)} categories, {len(urls)} canonical URLs: metadata and public links PASS")

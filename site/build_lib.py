@@ -329,6 +329,10 @@ def main() -> None:
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
+    # ads.txt: 애드센스 게시자 ID가 있을 때만 만든다 (f08c47fec0942fa0은 Google의 공개 인증기관 ID)
+    cid = info.get("adsenseClient", "")
+    if cid:
+        (DOCS / "ads.txt").write_text(f"google.com, {cid.replace('ca-pub-', 'pub-')}, DIRECT, f08c47fec0942fa0\n", encoding="utf-8")
     print(f"wrote {len(L)} entry pages + index, sitemap ({len(urls)} urls)")
 
 
