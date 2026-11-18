@@ -184,7 +184,11 @@
 - [ISO 8752 스프링핀 (슬롯형, 중하중)](https://boltnote.net/lib/iso-8752)
 - [ISO 1234 분할핀](https://boltnote.net/lib/iso-1234)
 
+## English (same pages in English)
+
+- [English home, RFQ in English](https://boltnote.net/en/): quoted in KRW for delivery within Korea
+- [Dimension tables](https://boltnote.net/en/tables/) · [Product guides](https://boltnote.net/en/products/) · [Standards glossary](https://boltnote.net/en/lib/): each page has the same path under /en/ (e.g. https://boltnote.net/en/tables/<slug>)
+
 ## Optional
 
-- [English page for plants in Korea](https://boltnote.net/en/): RFQ in English, quoted in KRW
 - [사이트맵](https://boltnote.net/sitemap.xml)

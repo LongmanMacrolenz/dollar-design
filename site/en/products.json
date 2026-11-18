@@ -1,0 +1,4925 @@
+{
+ "hbf": {
+  "notes": [
+   {
+    "t": "",
+    "d": "ISO 4017 and DIN 933 differ in width across flats for M10, M12, M14 and M22 (ISO 16, 18, 21, 34; DIN 17, 19, 22, 32). Tools and bearing faces differ, so one is not substituted for the other."
+   },
+   {
+    "t": "",
+    "d": "The thread runs from under the head to the end. Length L is measured from the underside of the head to the end."
+   },
+   {
+    "t": "",
+    "d": "Lengths over 200 mm are outside the standard fully threaded range, so they are quoted as partially threaded (ISO 4014) or as a length to be agreed."
+   },
+   {
+    "t": "",
+    "d": "For M16–M24, product grade B tolerances apply when the length exceeds 150 mm or 10d."
+   },
+   {
+    "t": "",
+    "d": "For electro-galvanized or black zinc finishes on grade 10.9 and above, confirm by certificate whether hydrogen embrittlement baking was done."
+   },
+   {
+    "t": "",
+    "d": "Sizes in parentheses (M14, M18, M22, M27, M33) are non-preferred sizes with little distribution and are mostly shipped on quotation."
+   }
+  ],
+  "std": [
+   "ISO 4017",
+   "DIN 933 (some dimensions differ)",
+   "KS B 1002 (ISO body; the annex type has different across-flats sizes)",
+   "JIS B 1180"
+  ],
+  "mats": [
+   "4.8",
+   "8.8",
+   "10.9",
+   "A2-70",
+   "A4-80"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Black oxide",
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "Zinc flake",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "hbp": {
+  "notes": [
+   {
+    "t": "",
+    "d": "With an unthreaded shank, it is used for shear-loaded connections, hinges and shafts. Choose the length so that the threaded portion does not reach the joint face."
+   },
+   {
+    "t": "",
+    "d": "Thread length b depends on the length range: 2d+6 (125 or less), 2d+12 (over 125 up to 200), 2d+25 (over 200)."
+   },
+   {
+    "t": "",
+    "d": "If shorter than the standard shortest length, it is supplied fully threaded (ISO 4017). Example: M12 is partially threaded from 50 mm."
+   },
+   {
+    "t": "",
+    "d": "M10, M12, M14 and M22 differ from DIN 931 in width across flats (ISO 16, 18, 21, 34; DIN 17, 19, 22, 32)."
+   },
+   {
+    "t": "",
+    "d": "For hot-dip galvanized bolts, use overtapped nuts as the mating part."
+   }
+  ],
+  "std": [
+   "ISO 4014",
+   "DIN 931 (some dimensions differ)",
+   "KS B 1002 (ISO body; the annex type has different across-flats sizes)",
+   "JIS B 1180"
+  ],
+  "mats": [
+   "8.8",
+   "10.9",
+   "A2-70",
+   "A4-80"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black oxide",
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "Zinc flake",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "flangebolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The disc (flange) under the head acts as a washer, so sheet metal and covers are fastened without a washer."
+   },
+   {
+    "t": "",
+    "d": "Even for the same nominal size, the width across flats differs by series. Example: M8 is 13 mm for heavy (DIN 6921, EN 1665) and 10 mm for small (ISO 4162)."
+   },
+   {
+    "t": "",
+    "d": "A serrated (toothed) bearing face resists loosening but scratches painted surfaces and thin plates. If the mating material is soft, choose a plain bearing face."
+   },
+   {
+    "t": "",
+    "d": "FLANGE BOLT in an English BOM often means a stud (B7, 2H) for a piping flange. If a grade or NUTS is noted, treat it as a stud."
+   }
+  ],
+  "std": [
+   "ISO 4162 (small series)",
+   "DIN 6921 → EN 1665 (heavy series)",
+   "KS B 1042 hex flange bolt",
+   "JIS B 1189 (not checked against the original)",
+   "ASME B18.2.1 (Hex Flange Screws)"
+  ],
+  "mats": [
+   "8.8",
+   "10.9",
+   "A2-70"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Black oxide",
+   "Untreated (bare)",
+   "Zinc flake",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "hvset": {
+  "notes": [
+   {
+    "t": "",
+    "d": "A bolt, a nut and 2 washers form one set, and parts from the same lot are used together. Mixing parts from other lots or other standards changes the torque coefficient."
+   },
+   {
+    "t": "",
+    "d": "Compared with a general hex bolt, the width across flats is larger and the threaded portion is shorter. Example: M20 width across flats 32 mm, thread length 33 mm (EN 14399-4)."
+   },
+   {
+    "t": "",
+    "d": "It is designed on the premise of 1 each under the head and under the nut. Do not remove or add washers on site."
+   },
+   {
+    "t": "",
+    "d": "Example of choosing the length: clamped thickness + 2 washers + nut height + about 3 threads. In Korea it is supplied in 5 mm steps."
+   },
+   {
+    "t": "",
+    "d": "Do not reuse a set that has spun freely after tightening (bolt and nut turning together) or a set that has been used once."
+   },
+   {
+    "t": "",
+    "d": "Hot-dip galvanizing F10T is generally avoided because of the risk of delayed fracture. If plating is needed, decide the grade and coating together at quotation."
+   }
+  ],
+  "std": [
+   "ISO 7412 (ISO 4775 nut)",
+   "DIN 6914 (bolt) · DIN 6915 (nut) · DIN 6916 (washer) → EN 14399-4 · EN 14399-6",
+   "KS B 1010 set of high-strength hex bolt, hex nut and plain washer for friction grip joints",
+   "JIS B 1186"
+  ],
+  "mats": [
+   "F10T",
+   "F8T",
+   "HV 10.9/10"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "Torque coefficient A (surface lubrication treatment)",
+   "Torque coefficient B (rust-preventive oil only)"
+  ]
+ },
+ "tcbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "With a dedicated tightening tool, the bolt is tightened until the pintail at the end breaks off, which gives the specified axial force. Installation is verified by the pintail having come off."
+   },
+   {
+    "t": "",
+    "d": "The head is round with a wide bearing face, so no washer is used under the head. A set is a bolt, a nut and 1 washer."
+   },
+   {
+    "t": "",
+    "d": "Mechanical properties are handled as the same class as F10T high-strength bolts, but the shapes differ and they are not interchangeable."
+   },
+   {
+    "t": "",
+    "d": "Tightening tools are not handled."
+   }
+  ],
+  "std": [
+   "EN 14399-10 (HRC system, not checked against the original)",
+   "KS B 2819 (set of torque-shear type high-strength bolt, hex nut and plain washer for structures — dimensions not checked against the original)",
+   "JSS II 09 (Japanese Society of Steel Construction standard, not checked against the original)",
+   "ASTM F3125 Grade F1852 · F2280 (inch, not checked against the original)"
+  ],
+  "mats": [
+   "S10T"
+  ],
+  "fins": [
+   "Untreated (bare)"
+  ]
+ },
+ "carriage": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The square neck under the round head bites into the hole and prevents turning, so tighten only from the nut side. It cannot be loosened from the head side, so it is used for guards and fences."
+   },
+   {
+    "t": "",
+    "d": "For wood and thin plates, make a square hole or let the square neck bite in. In a round hole in steel plate it may spin."
+   },
+   {
+    "t": "",
+    "d": "A line that says only \"round head bolt\" is easily confused with a small screw (pan head) or a button head socket screw, so confirm whether it has a square neck."
+   }
+  ],
+  "std": [
+   "ISO 8677 (1986, grade C)",
+   "DIN 603",
+   "KS B 1031 round head square neck bolt",
+   "ASME B18.5 (Round Head Square Neck Bolts)",
+   "ASTM A307 Grade A (inch carbon steel, general purpose)"
+  ],
+  "mats": [
+   "4.6",
+   "4.8",
+   "8.8",
+   "A2-70"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "tslotbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The head is fitted into the T-slot of a machine tool table or test bench to secure jigs and workpieces. Both the slot width and the thread size must be stated to identify the right product."
+   },
+   {
+    "t": "",
+    "d": "Even for the same M12, the head width differs between slot 12 and slot 14."
+   },
+   {
+    "t": "",
+    "d": "To protect the slots of the surface plate, match strength and hardness to the plate material. Generally 8.8 or 10.9 is used."
+   },
+   {
+    "t": "",
+    "d": "KS B 1038 (square head bolt for T-slots) has been withdrawn and moved to a group standard. If KS B 1038 appears on a drawing, check whether it matches the DIN 787 dimensions."
+   }
+  ],
+  "std": [
+   "ISO 299 (T-slot dimensions, not checked against the original)",
+   "DIN 787 (T-slot is DIN 650)",
+   "KS B 1038 square head bolt for T-slots (withdrawn → group standard SPS-KTC-B1038-6357)"
+  ],
+  "mats": [
+   "8.8",
+   "10.9"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (bare)"
+  ]
+ },
+ "tnut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "State the T-slot width (a) and the thread (d) together. Example: an M12 nut is usually for a 14 mm slot."
+   },
+   {
+    "t": "",
+    "d": "It is a different item from T-nuts for aluminum profiles and barbed T-nuts for wood."
+   },
+   {
+    "t": "",
+    "d": "For older equipment whose machine table T-slot dimensions differ from the standard, please measure the slot."
+   }
+  ],
+  "std": [
+   "ISO 299 (T-slot, not checked against the original)",
+   "DIN 508 (T-slot is DIN 650)",
+   "KS B 1039 T-slot nut"
+  ],
+  "mats": [
+   "Property class 10"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (bare)"
+  ]
+ },
+ "jack": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This bolt is screwed into a threaded hole to push off a casing or cover when removing it. The end is machined flat or rounded so the mating surface is not damaged."
+   },
+   {
+    "t": "",
+    "d": "Leveling screws used to level before grouting are often removed after the grout hardens and the hole is plugged. Short plugging bolts can also be quoted together."
+   },
+   {
+    "t": "",
+    "d": "In a corrosive environment, stainless steel (A4) is recommended. Fix the position with a jam nut."
+   }
+  ],
+  "std": [
+   "ISO 4017 · ISO 4762 (body)",
+   "DIN 561 · DIN 564 (hex set screw with end shape, not checked against the original)",
+   "ASME B18.2.1 (inch body)"
+  ],
+  "mats": [
+   "8.8",
+   "10.9",
+   "A2-70",
+   "A4-80"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Black oxide",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "eyebolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Lifting eye bolts have different allowable loads depending on the standard. Do not apply DIN 580 loads to KS or JIS products."
+   },
+   {
+    "t": "",
+    "d": "Screw it in all the way so the underside of the collar fully contacts the mating surface. The length and material of the mating threaded portion must be of the same strength as the bolt."
+   },
+   {
+    "t": "",
+    "d": "The allowable load in the table is the value for lifting 1 bolt vertically. When lifting at an angle or with 2 or more, the allowable load drops significantly. For angled lifting, consider a swivel lifting ring."
+   },
+   {
+    "t": "",
+    "d": "DIN 444 eye bolts (swing bolts) are not a standard that specifies lifting loads, so they are not used for lifting."
+   }
+  ],
+  "std": [
+   "ISO 3266 (forged eye bolt grade 4, dimension and load tables not checked against the original)",
+   "DIN 580",
+   "KS B 1033 eye bolt (appears to follow the JIS B 1168 format, not checked against the original)",
+   "JIS B 1168 (not checked against the original)"
+  ],
+  "mats": [
+   "C15E",
+   "A2"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ieyebolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Do not use a lifting eye bolt beyond its proof load, and do not use it if it has surface defects."
+   },
+   {
+    "t": "",
+    "d": "For the shoulder type (Type 2), screwing it in until the collar seats is advantageous for angled lifting. The straight type (Type 1) is considered for vertical lifting by default."
+   }
+  ],
+  "std": [
+   "ASME B18.15 Forged Eyebolts (dimensions, not checked against the original)",
+   "ASTM A489 (carbon steel lifting eye) · ASTM F541 (alloy steel eyebolt, for low temperature)"
+  ],
+  "mats": [
+   "ASTM A489",
+   "ASTM F541"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Hot-dip galvanizing"
+  ]
+ },
+ "swingbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is not for lifting. It is for hinge fastening where the eye is hooked on a pin and swings (pump and valve packing glands, strainer covers, quick-opening covers)."
+   },
+   {
+    "t": "",
+    "d": "In an English BOM it is often written only as EYE BOLT. If GLAND, SWING, HINGE or DIN 444 is noted, treat it as this item."
+   },
+   {
+    "t": "",
+    "d": "Choose the eye hole diameter (d2) to match the pin diameter."
+   }
+  ],
+  "std": [
+   "DIN 444 (forms A, B, C)"
+  ],
+  "mats": [
+   "4.6",
+   "8.8",
+   "A2-70",
+   "A4-70"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "sqbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "It is mainly requested as a replacement for valve yokes and older machines. The head is square, so it cannot be tightened with a hex tool."
+   },
+   {
+    "t": "",
+    "d": "It is a different item from SQ HD SET SCREW (square head set screw)."
+   }
+  ],
+  "std": [
+   "DIN 478 (with collar) · DIN 479 (short rod end) · DIN 480 (collar, round end), product identity not checked against the original",
+   "KS B 1004 square bolt",
+   "ASME B18.2.1 (Square Head Bolts)",
+   "ASTM A307 Grade A (general material)"
+  ]
+ },
+ "tbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "It is a different item from the T-slot bolt (DIN 787, for machine tables). If a slot width is noted, treat it as a T-slot bolt."
+   }
+  ],
+  "std": [
+   "DIN 186 (T-head with square neck) · DIN 261 (T-head, not checked against the original)",
+   "Whether ASME B18.5 is included is not checked against the original"
+  ]
+ },
+ "fitbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This bolt has a precision-ground shank that fits into a reamed hole, used for coupling and flange alignment and for transmitting shear loads."
+   },
+   {
+    "t": "",
+    "d": "The shank diameter is generally 1 mm larger than the nominal thread size, and the tolerance follows the drawing."
+   }
+  ],
+  "std": [
+   "DIN 609 (long thread) · DIN 610 (short thread) · DIN 7968 (for steel construction), not checked against the original"
+  ]
+ },
+ "lag": {
+  "notes": [
+   {
+    "t": "",
+    "d": "It is a screw driven directly into wood, so no nut is used. The pilot hole diameter differs by wood type."
+   },
+   {
+    "t": "",
+    "d": "Inch lag screws have a different thread count from ordinary bolts (example: 1/2 has 6 threads per inch)."
+   }
+  ],
+  "std": [
+   "DIN 571 hex wood screw",
+   "ASME B18.2.1 (Hex Lag Screws)"
+  ]
+ },
+ "cskbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The head is sunk flush with the plate surface and tightened with a nut on the opposite side. The square neck or lug under the head prevents rotation."
+   },
+   {
+    "t": "",
+    "d": "It is a different item from the countersunk socket screw (ISO 10642) and the Phillips countersunk head small screw."
+   }
+  ],
+  "std": [
+   "DIN 604 (lug) · DIN 605 (square neck) · DIN 608 (short square neck), product identity not checked against the original",
+   "KS B 1017 countersunk head bolt",
+   "ASME B18.9 Plow Bolts"
+  ]
+ },
+ "hoistring": {
+  "notes": [
+   {
+    "t": "",
+    "d": "When lifting equipment at an angle, the allowable load of an ordinary eye bolt drops significantly, so specify a swivel lifting ring."
+   },
+   {
+    "t": "",
+    "d": "Rated load, tightening torque and test records differ by manufacturer, so it is quoted only as a product of the specified manufacturer."
+   }
+  ],
+  "std": [
+   "ASME B30.26 (not checked against the original)"
+  ]
+ },
+ "j429": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Even at the same diameter, UNC (coarse) and UNF (fine) do not fit each other. For a line with no threads per inch, treat it as UNC and confirm once."
+   },
+   {
+    "t": "",
+    "d": "Grade 5 has 3 radial lines on the head and Grade 8 has 6. With no marking, it is Grade 2 or the grade is unknown."
+   },
+   {
+    "t": "",
+    "d": "For Grade 8 electroplated products, confirm the hydrogen embrittlement baking conditions; hot-dip galvanizing is not recommended."
+   },
+   {
+    "t": "",
+    "d": "Cadmium plating is not supplied. Zinc or zinc-nickel plating is offered instead."
+   },
+   {
+    "t": "",
+    "d": "The main joint of a pump casing is basically stud bolts, and the minimum diameter of pressure casing bolts is confirmed from the pump specification."
+   }
+  ],
+  "std": [
+   "ASME B18.2.1 (Hex Cap Screws) · ASME B1.1 (UNC·UNF 2A)",
+   "ASTM F1941 (electro-galvanized) · ASTM F2329 (hot-dip galvanized)",
+   "SAE J429 Grade 2 · 5 · 8 (strength cross-checked against 3 public manufacturer sources)"
+  ],
+  "mats": [
+   "SAE J429 Grade 5",
+   "SAE J429 Grade 8",
+   "SAE J429 Grade 2"
+  ],
+  "fins": [
+   "Unplated (rust-preventive oil)",
+   "Electro-galvanized clear (trivalent)",
+   "Electro-galvanized yellow (trivalent)",
+   "Black oxide / phosphate",
+   "Hot-dip galvanizing (ASTM F2329)"
+  ]
+ },
+ "a574": {
+  "notes": [
+   {
+    "t": "",
+    "d": "A574 is 180 ksi for 1/2\" and under and 170 ksi above, close to metric class 12.9."
+   },
+   {
+    "t": "",
+    "d": "The current head dimensions are the 1960 Series. For the 1936 Series on older drawings, the head diameter and key size differ, so confirmation is needed."
+   },
+   {
+    "t": "",
+    "d": "It is very hard, so electroplating is not recommended. 3A threads have no allowance for plating, so zinc plating requests are handled as a quotation that includes baking."
+   },
+   {
+    "t": "",
+    "d": "A line with a sour service (NACE MR0175/ISO 15156) requirement does not match A574 hardness, so an engineer proposes an alternative material."
+   },
+   {
+    "t": "",
+    "d": "Length is measured from the bearing face of the head to the end."
+   }
+  ],
+  "std": [
+   "ASME B18.3 (Hexagon Socket Head Cap Screws, 1960 Series)",
+   "ASTM A574 (alloy steel) · for stainless steel, ASTM F837 (→ f837 item)"
+  ],
+  "mats": [
+   "ASTM A574"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (bright)",
+   "Electro-galvanized + hydrogen embrittlement baking"
+  ]
+ },
+ "ifhc": {
+  "notes": [
+   {
+    "t": "Dimension basis",
+    "d": "Based on public technical data: only values on which dimension tables from 3 different manufacturers and distributors agree are listed. Comparison with the original standard is in progress."
+   },
+   {
+    "t": "",
+    "d": "The inch countersunk head is 82° and the metric one (ISO 10642) is 90°, so the countersinks do not match each other."
+   },
+   {
+    "t": "",
+    "d": "Because of the head shape, a countersunk head has lower load capacity than a socket head cap screw."
+   },
+   {
+    "t": "",
+    "d": "Length is measured from the top of the head to the end."
+   },
+   {
+    "t": "",
+    "d": "Stainless steel (F879) is within the standard range only for 5/8\" and under."
+   },
+   {
+    "t": "",
+    "d": "100° countersunk screws (aerospace and military specifications) are not supplied."
+   }
+  ],
+  "std": [
+   "ASME B18.3 (Hexagon Socket Flat Countersunk Head Cap Screws)",
+   "ASTM F835 (alloy steel, 0.060–1.5\") · ASTM F879 (stainless steel, 0.060–0.625\")"
+  ],
+  "mats": [
+   "ASTM F835",
+   "ASTM F879 Group 1 CW (18-8)",
+   "ASTM F879 Group 1 (316)"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (stainless steel, pickled and passivated)"
+  ]
+ },
+ "ibhc": {
+  "notes": [
+   {
+    "t": "Dimension basis",
+    "d": "Based on public technical data: only values on which dimension tables from 3 different manufacturers and distributors agree are listed. Comparison with the original standard is in progress."
+   },
+   {
+    "t": "",
+    "d": "The button head is for light fastening such as guards, hinges and covers. Where a large load is applied, use a regular socket head cap screw."
+   },
+   {
+    "t": "",
+    "d": "Each size has a maximum standard length (example: 1\" for 1/4\"), and longer ones are quoted."
+   },
+   {
+    "t": "",
+    "d": "For both F835 and F879, only 5/8\" and under is within the standard range."
+   }
+  ],
+  "std": [
+   "ASME B18.3 (Hexagon Socket Button Head Cap Screws)",
+   "ASTM F835 (alloy steel, 0.060–0.625\") · ASTM F879 (stainless steel, 0.060–0.625\")"
+  ],
+  "mats": [
+   "ASTM F835",
+   "ASTM F879 Group 1 CW (18-8)",
+   "ASTM F879 Group 1 (316)"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (stainless steel, pickled and passivated)"
+  ]
+ },
+ "iss": {
+  "notes": [
+   {
+    "t": "Dimension basis",
+    "d": "Based on public technical data: only values on which dimension tables from 3 different manufacturers and distributors agree are listed. Comparison with the original standard is in progress."
+   },
+   {
+    "t": "",
+    "d": "The cup point is the most common and holds by digging into the shaft surface. If the shaft must be released often, choose a flat point; if the shaft has a seat hole, choose a cone or half-dog point."
+   },
+   {
+    "t": "",
+    "d": "If shorter than the optimum minimum length (B) in the table, the wrench engagement is shallow and the socket is easily crushed. Use a length of B or more where possible."
+   },
+   {
+    "t": "",
+    "d": "For stainless steel (F880), the current edition's standard range is 1\" and under, and 316 is not in the F880 alloy list, so check the certificate designation."
+   },
+   {
+    "t": "",
+    "d": "Nylon patch, soft tip, square head and slotted set screws are quoted on request."
+   },
+   {
+    "t": "",
+    "d": "Very small sizes #0–#3 are not supplied."
+   },
+   {
+    "t": "",
+    "d": "Even for the same 3/8\", UNC 16 threads per inch and BSW 16 threads per inch have different thread angles (60° versus 55°) and do not fit each other."
+   }
+  ],
+  "std": [
+   "ASME B18.3 (Hexagon Socket Set Screws)",
+   "ASTM F912 (alloy steel, 0.060–2.000\") · ASTM F880 (stainless steel, 0.060–1.000\")"
+  ],
+  "mats": [
+   "ASTM F912",
+   "ASTM F880 Group 1 (18-8)",
+   "316 (F880 dimensions and tests applied)"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (bright)",
+   "Untreated (stainless steel, pickled and passivated)"
+  ]
+ },
+ "f593": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Use F594 of the same Group as the mating nut, and the nut proof stress must be at least the bolt minimum tensile strength. For some conditions (example: 410 H), a regular hex nut is insufficient, so use a heavy nut or a higher condition."
+   },
+   {
+    "t": "",
+    "d": "Fastening stainless steel to stainless steel easily causes thread seizing (galling), so the general practice is to apply lubricant and tighten slowly."
+   },
+   {
+    "t": "",
+    "d": "An alloy number stamp alone does not make it an F593 conforming product. Check the standard marking and the certificate."
+   },
+   {
+    "t": "",
+    "d": "The tool sizes differ for a 7/16\" bolt (width across flats 5/8\") and its nut (11/16\")."
+   },
+   {
+    "t": "",
+    "d": "If PMI or an EN 10204 3.1 certificate is required, it is quoted on request."
+   }
+  ],
+  "std": [
+   "ASME B18.2.1 (bolt) · ASME B18.2.2 (nut)",
+   "ASTM F593 (bolts, cap screws, studs) · ASTM F594 (nuts)"
+  ],
+  "mats": [
+   "F593 Group 1 CW (304 series)",
+   "F593 Group 2 CW (316)",
+   "F593 Condition A·AF (solution treated)",
+   "F594 Group 1 CW nut",
+   "F594 Group 2 CW nut (316)"
+  ],
+  "fins": [
+   "Untreated (stainless steel, pickled and passivated)",
+   "Anti-galling lubrication (wax, dry film)"
+  ]
+ },
+ "a307": {
+  "notes": [
+   {
+    "t": "",
+    "d": "A307 Grade A is a general-purpose 60 ksi bolt, and Grade B is for cast iron flange piping."
+   },
+   {
+    "t": "",
+    "d": "If the grade is not stated, supply as Grade A is the standard default."
+   },
+   {
+    "t": "",
+    "d": "The anchor bolt use (formerly Grade C) has moved to F1554 Grade 36 (→ anchor bolt F1554 item)."
+   },
+   {
+    "t": "",
+    "d": "For hot-dip galvanized bolts, use overtapped nuts together."
+   },
+   {
+    "t": "",
+    "d": "The dimension table is for the regular hex bolt (ASME B18.2.1). The heavy hex type differs in width across flats and head height even at the same nominal size, so see the item \"Inch heavy hex bolt\"."
+   }
+  ],
+  "std": [
+   "ASME B18.2.1 (Hex Bolts · Heavy Hex Bolts)",
+   "ASTM A307 Grade A · B · mating nut ASTM A563 Grade A"
+  ],
+  "mats": [
+   "ASTM A307 Grade A",
+   "ASTM A307 Grade B"
+  ],
+  "fins": [
+   "Unplated (rust-preventive oil)",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Mechanical zinc plating (ASTM B695 Class 55)"
+  ]
+ },
+ "a354": {
+  "notes": [
+   {
+    "t": "",
+    "d": "A354 BD is an alloy steel bolt with strength similar to A490, covering uses A490 does not, such as sizes over 1-1/2\", regular hex bolts and anchors."
+   },
+   {
+    "t": "",
+    "d": "Hot-dip galvanizing BD is not recommended because of concerns about hydrogen embrittlement and stress corrosion cracking."
+   },
+   {
+    "t": "",
+    "d": "A449 is 120 ksi for 1\" and under, 105 ksi for 1-1/2\" and under, and 90 ksi for 3\" and under, so the strength criterion decreases as the diameter increases."
+   },
+   {
+    "t": "",
+    "d": "The loads in the table are calculated as stress area × reference stress (to avoid some printing errors in the standard's table)."
+   }
+  ],
+  "std": [
+   "ASME B18.2.1 (Hex Bolts · Hex Cap Screws)",
+   "ASTM A354 Grade BC · BD (4\" and under) · ASTM A449 Type 1 (1/4–3\") · mating nut ASTM A563 · washer ASTM F436"
+  ],
+  "mats": [
+   "ASTM A354 Grade BC",
+   "ASTM A354 Grade BD",
+   "ASTM A449 Type 1"
+  ],
+  "fins": [
+   "Unplated (rust-preventive oil)",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Mechanical zinc plating (ASTM B695 Class 55)",
+   "Zinc flake (ASTM F3393, formerly F1136 Grade 3)"
+  ]
+ },
+ "hhb": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The heavy hex has a larger width across flats than a hex of the same nominal size (example: 1-5/8\" for 1\"), so the tools differ."
+   },
+   {
+    "t": "",
+    "d": "Even among heavy hex, the bolt type and the cap screw type differ in head height."
+   },
+   {
+    "t": "",
+    "d": "Structural bolts (A325, A490) are under a separate standard (B18.2.6), so this item is not substituted for them."
+   },
+   {
+    "t": "",
+    "d": "For plant bolting thicker than 1\", 8UN is the practice. Be sure to state the threads per inch."
+   }
+  ],
+  "std": [
+   "ASME B18.2.1 (Heavy Hex Bolts · Heavy Hex Screws)",
+   "Materials: A307 Gr B · A193 · A320 grades (confirm against the standard document at quotation)"
+  ],
+  "mats": [
+   "ASTM A307 Grade B",
+   "ASTM A354 Grade BC",
+   "ASTM A354 Grade BD",
+   "ASTM A193 B7 (heavy hex cap screw type)"
+  ],
+  "fins": [
+   "Unplated (rust-preventive oil)",
+   "Hot-dip galvanizing (ASTM F2329)"
+  ]
+ },
+ "a325": {
+  "notes": [
+   {
+    "t": "",
+    "d": "For A490 and F2280, hot-dip and mechanical galvanizing and electroplating cannot be used, and the only permitted coatings are of the zinc flake family (formerly F1136 Grade 3, F2833 Grade 1, F3019 Grade 4; consolidated into F3393 from 2025)."
+   },
+   {
+    "t": "",
+    "d": "Structural bolts have a shorter threaded portion than ordinary heavy hex bolts. They are not substituted with SAE Grade 5 or 8 bolts."
+   },
+   {
+    "t": "",
+    "d": "Bolt, nut and washer are supplied bundled in the same lot, and zinc-plated sets are submitted with rotational capacity test records."
+   },
+   {
+    "t": "",
+    "d": "For steel frame construction in Korea, KS high-strength bolts (F10T, S10T) are common, so those are guided first."
+   },
+   {
+    "t": "",
+    "d": "Since 2015, A325 and A490 have been grouped as grades of ASTM F3125 (old standard number designations are still accepted)."
+   },
+   {
+    "t": "",
+    "d": "F3125 Grade A325 was raised to 120 ksi for 1-1/8\" and above as well. Calculations based on the old A325 (105 ksi) remain on the safe side if left as they are, but check the certificate designation."
+   }
+  ],
+  "std": [
+   "ASME B18.2.6 (Heavy Hex Structural Bolts) — dimension table to be confirmed against the standard document at quotation",
+   "ASTM F3125 Grade A325 · A490 (strength per RCSC 2025) · ASTM A563 DH · ASTM F436 · DTI F959"
+  ],
+  "mats": [
+   "A325 Type 1 + A563 DH + F436",
+   "A490 Type 1 + A563 DH + F436",
+   "A325 Type 3 (weathering) + A563 DH3 + F436 Type 3"
+  ],
+  "fins": [
+   "Unplated (rust-preventive oil)",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Mechanical zinc plating (ASTM B695 Class 55)",
+   "Zinc flake (ASTM F3393, formerly F1136 Grade 3)"
+  ]
+ },
+ "f837": {
+  "notes": [
+   {
+    "t": "",
+    "d": "18-8 (304 series) is Group 1, 316 is Group 2, and 410 is Group 5 (heat treated, magnetic)."
+   },
+   {
+    "t": "",
+    "d": "The diameter range in which the CW and CW1 conditions can be used is confirmed against the standard document at quotation, and the strength of large diameters is agreed at quotation."
+   },
+   {
+    "t": "",
+    "d": "It is widely used for small bolts in pump wetted parts, and the mating nut is F594 of the same Group."
+   },
+   {
+    "t": "",
+    "d": "If non-magnetic is required, specify the AF condition and the magnetic permeability supplementary requirement (S3)."
+   }
+  ],
+  "std": [
+   "ASME B18.3 (dimensions are the same as a574)",
+   "ASTM F837 Group 1·2 (AF·CW·CW1) · Group 5 (HT) · mating nut ASTM F594"
+  ],
+  "mats": [
+   "F837 Group 1 CW (18-8)",
+   "F837 Group 2 CW (316)",
+   "F837 Group 5 HT (410)"
+  ],
+  "fins": [
+   "Untreated (stainless steel, pickled and passivated)"
+  ]
+ },
+ "ms-inch": {
+  "notes": [
+   {
+    "t": "",
+    "d": "For inch machine screws, #2–#12 and 1/4–3/8\" are common, and for #10 both 24 threads (UNC) and 32 threads (UNF) are used."
+   },
+   {
+    "t": "",
+    "d": "A Phillips pan head is slightly taller than a slotted one."
+   },
+   {
+    "t": "",
+    "d": "100° countersunk screws (aerospace and military specifications) are not supplied."
+   },
+   {
+    "t": "",
+    "d": "Machine screws have no grade marking, so be sure to state the material (carbon steel, 18-8, 316) and plating on the line."
+   }
+  ],
+  "std": [
+   "ASME B18.6.3 (Machine Screws, Tapping Screws, and Metallic Drive Screws, Inch Series) — no original document; dimensions only where 2 public sources agree"
+  ],
+  "mats": [
+   "Low-carbon steel",
+   "18-8 stainless steel",
+   "316 stainless steel"
+  ],
+  "fins": [
+   "Electro-galvanized clear (trivalent)",
+   "Electro-galvanized yellow (trivalent)",
+   "Black oxide",
+   "Untreated (stainless steel, pickled and passivated)"
+  ]
+ },
+ "scs": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The length L of a socket head cap screw is measured from the underside of the head to the end."
+   },
+   {
+    "t": "",
+    "d": "For 12.9, electroplating greatly increases the risk of hydrogen embrittlement, so black finish is the default. If zinc plating is needed, confirm the baking conditions by certificate or switch to zinc flake."
+   },
+   {
+    "t": "",
+    "d": "DIN 912 has been superseded by ISO 4762. M18, M22, M27 and M33 are sizes found only in DIN 912, so they are quoted on request."
+   },
+   {
+    "t": "",
+    "d": "The counterbore is machined based on the head diameter dk and head height k. Knurled heads have a slightly larger dk (the knurled maximum in the table)."
+   },
+   {
+    "t": "",
+    "d": "Short lengths are threaded up to under the head. Beyond the fully threaded limit length in the table, a shank appears under the head."
+   },
+   {
+    "t": "",
+    "d": "(M14) is a non-preferred size with little distribution."
+   }
+  ],
+  "std": [
+   "ISO 4762:2004",
+   "DIN 912 (superseded by ISO 4762; M18, M22, M27 and M33 are DIN-only sizes)",
+   "KS B 1003 (hexagon socket head bolt, equivalent to ISO 4762:1997)",
+   "JIS B 1176"
+  ],
+  "mats": [
+   "12.9",
+   "10.9",
+   "8.8",
+   "A2-70",
+   "A4-80 (site key)"
+  ],
+  "fins": [
+   "Black oxide",
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Zinc flake",
+   "Untreated (stainless steel)",
+   "Untreated (bare)"
+  ]
+ },
+ "csk": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Length is measured from the top of the head to the end (overall length). This differs from how regular socket head cap screws are measured."
+   },
+   {
+    "t": "",
+    "d": "Because of the head shape, the load capacity of a countersunk head is low, so 0 is prefixed to the property class (example: 010.9). Do not expect the same load as a 10.9 hex bolt of the same diameter."
+   },
+   {
+    "t": "",
+    "d": "The countersunk angle is 90°. Mixing with inch countersunk heads (82°) results in mismatched bearing faces."
+   },
+   {
+    "t": "",
+    "d": "DIN 7991 and ISO 10642 differ slightly in head diameter and other dimensions. By default it is shipped to ISO dimensions, and if DIN dimensions are essential, they are accepted as a memo."
+   },
+   {
+    "t": "",
+    "d": "From the 2019 edition, the thread length of partially threaded M14–M20 was extended to 3d. It may differ from the thread length on existing drawings."
+   }
+  ],
+  "std": [
+   "ISO 10642:2026 (current; dimensions are the values from the 2004 edition original)",
+   "DIN 7991 (superseded by ISO 10642; some head dimensions differ)",
+   "KS B ISO 10642 (portal designation: ISO 10642:1997 IDT, scope M2–M20)",
+   "JIS B 1194"
+  ],
+  "mats": [
+   "010.9",
+   "012.9",
+   "08.8",
+   "A2-70",
+   "A4-80 (site key)"
+  ],
+  "fins": [
+   "Black oxide",
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Zinc flake",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "bhcs": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The standard describes the button head as a bolt with a low, round head in exchange for lower load capacity (2022 edition title). Where large clamping force is needed, use a regular socket head cap screw."
+   },
+   {
+    "t": "",
+    "d": "\"Round head socket screw\" refers to this item. A \"round head bolt\" without a wrench socket is treated separately as a small screw (pan head)."
+   },
+   {
+    "t": "",
+    "d": "The wrench size is smaller than that of a socket head cap screw of the same diameter (M8 socket head cap screw 6 mm, button head 5 mm)."
+   },
+   {
+    "t": "",
+    "d": "The thread length of M16 partially threaded was extended to 48 mm (3d) in the 2022 edition."
+   }
+  ],
+  "std": [
+   "ISO 7380-1:2022",
+   "KS B 1067 (hexagon socket button head bolt, ISO 7380:1983 IDT — checked on the KS portal)"
+  ],
+  "mats": [
+   "010.9",
+   "A2-70",
+   "A4-80 (site key)"
+  ],
+  "fins": [
+   "Black oxide",
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ss": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Headless bolt, set screw and grub screw are the same item. Please choose the end shape (cup, flat, cone, rod). If not stated, a cup point is assumed."
+   },
+   {
+    "t": "",
+    "d": "The cup point digs into the shaft and is the most commonly used. The flat point damages the shaft less, the cone point is used to locate against a seat (hole) made in the shaft, and the rod point is used to fit into a groove or hole in the shaft to prevent sliding."
+   },
+   {
+    "t": "",
+    "d": "Set screws are not intended for tensile loads (2026 edition Scope)."
+   },
+   {
+    "t": "",
+    "d": "Because 45H set screws do not take tension, baking after electroplating is not required under ISO 4042. The default surface treatment is black finish, and electro-galvanizing can also be ordered."
+   },
+   {
+    "t": "",
+    "d": "The rod point has a longer minimum length than cup and flat points (example: M6 from 8 mm)."
+   },
+   {
+    "t": "",
+    "d": "M30 was newly added in the 2026 edition for steel products only. It is quoted on request until the dimensions are confirmed."
+   }
+  ],
+  "std": [
+   "ISO 4026 · 4027 · 4028 · 4029:2026 (current; dimensions are the values from the 2003 edition original)",
+   "DIN 913 · 914 · 915 · 916 (superseded by ISO)",
+   "KS B 1028 (hexagon socket set screw)",
+   "JIS B 1177"
+  ],
+  "mats": [
+   "45H",
+   "A2-21H",
+   "A4-21H"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Black oxide",
+   "Zinc flake",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "plug910": {
+  "notes": [
+   {
+    "t": "Dimension table",
+    "d": "Confirmed against the standard document at quotation."
+   },
+   {
+    "t": "",
+    "d": "The thread type comes first for plugs. Please state which it is: metric fine thread (M16×1.5, etc.), G (parallel pipe thread, written PF in Korea) or R (tapered pipe thread, written PT in Korea)."
+   },
+   {
+    "t": "",
+    "d": "The collared type (DIN 910) has a parallel thread, so it is sealed with a sealing ring under the collar. The sealing ring is an item chosen separately."
+   },
+   {
+    "t": "",
+    "d": "For tapered threaded holes, use DIN 909 without a collar or a bar stock plug. Do not put a parallel thread plug into a tapered hole."
+   },
+   {
+    "t": "",
+    "d": "Even at the same diameter, M and G have different threads and do not fit each other."
+   },
+   {
+    "t": "",
+    "d": "The hex width across flats of DIN 910 plugs may differ by 1 mm between the old standard value and the ISO 272 value even for the same nominal size (M16–M24, G3/8, G1/2). If the tool size is fixed, please state it as well."
+   }
+  ],
+  "std": [
+   "DIN 910 (collar, parallel thread) · DIN 909 (tapered thread) · DIN 7604 (lightweight type, not covered in this chapter)",
+   "ISO 228-1 (G parallel pipe thread) · ISO 7-1 (R taper) · metric fine thread"
+  ],
+  "mats": [
+   "Steel",
+   "A2 (304)",
+   "A4 (316)",
+   "Brass",
+   "Casing material specified"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "lowhead": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The head is low but the wrench socket is small, so it cannot be tightened as much as a regular socket head cap screw. Do not use it where there are large loads or vibration."
+   },
+   {
+    "t": "",
+    "d": "Even for the same M10, the wrench size is 7 mm (DIN 7984), different from the regular socket head cap screw (8 mm)."
+   },
+   {
+    "t": "",
+    "d": "DIN 6912 is a low head type with a center hole in the middle of the head, and its head height and wrench size differ from DIN 7984."
+   },
+   {
+    "t": "",
+    "d": "Inch low head socket cap screws (ASME B18.3) are for light fastening, and the A574 tensile requirement does not apply."
+   }
+  ],
+  "std": [
+   "DIN 7984 (no ISO equivalent) · DIN 6912 (center hole in head)",
+   "ASME B18.3 (Low Head Socket Cap Screws, inch)"
+  ],
+  "mats": [
+   "8.8",
+   "10.9",
+   "A2-70",
+   "A4"
+  ],
+  "fins": [
+   "Black oxide",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "shoulder": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Shoulder bolts are designated by shoulder diameter and shoulder length. \"10×40\" means shoulder ⌀10, shoulder length 40 mm, and the thread is M8."
+   },
+   {
+    "t": "",
+    "d": "Shoulder length is from under the head to the end of the shoulder and does not include the thread length."
+   },
+   {
+    "t": "",
+    "d": "The shoulder tolerance is f9, used for shaft and bushing fits. Other tolerances (h8, etc.) are by quotation."
+   },
+   {
+    "t": "",
+    "d": "Because of its shape, no tensile test is performed. Do not use it where the pulling load is large."
+   },
+   {
+    "t": "",
+    "d": "The market has many shoulder diameters not in ISO (6, 12, 24 mm, etc.). Please state the shoulder diameter on the drawing as it is."
+   }
+  ],
+  "std": [
+   "ISO 7379:1983",
+   "KS B 1104 (hexagon socket shoulder bolt — checked on the KS portal, no equivalent international standard indicated)",
+   "ASME B18.3 (Shoulder Screws, inch)"
+  ],
+  "mats": [
+   "12.9",
+   "A2"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "plug906": {
+  "notes": [
+   {
+    "t": "",
+    "d": "It is a tapered thread, so tightening makes the threads press against each other and seal. A sealing ring is not used."
+   },
+   {
+    "t": "",
+    "d": "Metric taper and R (pipe) taper of the same diameter differ in thread form and pitch. Be sure to state the thread type."
+   }
+  ],
+  "std": [
+   "DIN 906",
+   "R tapered pipe thread (ISO 7-1, written PT in Korea) or metric taper (DIN 158, not checked against the original)"
+  ],
+  "mats": [
+   "Steel",
+   "A2",
+   "A4",
+   "Brass"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "plug908": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a parallel thread plug sealed by fitting a sealing ring (copper or aluminum) under the collar. A sealing ring is generally not reused because it is crushed once tightened."
+   },
+   {
+    "t": "",
+    "d": "Even with the same thread nominal size, G (pipe) and M (metric fine thread) do not fit each other."
+   }
+  ],
+  "std": [
+   "DIN 908",
+   "Metric fine thread or G (ISO 228-1)",
+   "DIN 7603 sealing ring (sealw)"
+  ],
+  "mats": [
+   "Steel",
+   "A2",
+   "A4",
+   "Brass"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "plugnpt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "NPT is a tapered thread tightened together with a sealant to seal, while NPTF (dryseal) is a thread made so that the threads press against each other without a sealant."
+   },
+   {
+    "t": "",
+    "d": "Even with the same threads per inch, as in 1/2-14, NPT and BSPT (R) have different thread angles and are not mixed."
+   }
+  ],
+  "std": [
+   "ASME B1.20.1 (NPT, taper 1:16) · ASME B1.20.3 (NPTF dryseal, not checked against the original)",
+   "Manufacturer standard (no ASME B18 standard)"
+  ],
+  "mats": [
+   "Heat-treated steel",
+   "316",
+   "304",
+   "Brass"
+  ],
+  "fins": [
+   "Black oxide",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "plugbar": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a bar stock plug for vent, drain and gauge tapered threaded connections. The material is confirmed from the specification."
+   },
+   {
+    "t": "",
+    "d": "Plastic plugs and thread tape are not used. Use a high-temperature lubricant or sealant suited to the operating temperature."
+   }
+  ],
+  "std": [
+   "ISO 7-1 (when the connection is an R tapered thread)",
+   "ASME B16.11 (Plugs and Bushings) · male thread ASME B1.20.1",
+   "Material: A105 · A182 · A350, etc. (confirm from the specification)"
+  ],
+  "mats": [
+   "A105",
+   "F316/316L",
+   "F304/304L",
+   "LF2",
+   "Casing material specified"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "sealw": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a ring fitted under the collar of DIN 908 and 910 collar plugs. The inside diameter matches the plug thread nominal size."
+   },
+   {
+    "t": "",
+    "d": "A copper ring is crushed and seals tightly when tightened, so it is generally replaced after being used once."
+   },
+   {
+    "t": "",
+    "d": "Bonded seals with rubber attached are a different item (bonded seal, rubber washer)."
+   }
+  ],
+  "std": [
+   "DIN 7603 (types A and C)"
+  ],
+  "mats": [
+   "Copper",
+   "Aluminum",
+   "Stainless steel"
+  ]
+ },
+ "bhflange": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a button head socket screw with a wide collar under the head. It is used to fasten sheet metal and covers without a washer."
+   }
+  ],
+  "std": [
+   "ISO 7380-2 (Button head screws — Part 2: Hexagon socket button head screws with collar, existence confirmed from Foreword of Part 1)"
+  ]
+ },
+ "torx": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a screw with a star-shaped socket instead of a hexagon socket. Even at the same diameter, the tool is determined by the socket number (T number)."
+   },
+   {
+    "t": "",
+    "d": "Please state the head shape (cap, pan, countersunk) together with the standard number."
+   }
+  ],
+  "std": [
+   "ISO 14579 (cap) · ISO 14580 (cheese head) · ISO 14583 (pan head) · ISO 14581 (countersunk) · ISO 14584 (raised countersunk)",
+   "DIN 34827 (set screw)"
+  ]
+ },
+ "ss-slot": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a slotted set screw turned with a screwdriver. Its tightening force is weaker than a hexagon socket set screw."
+   },
+   {
+    "t": "",
+    "d": "The standard number differs for each end shape (flat, cone, rod, cup)."
+   }
+  ],
+  "std": [
+   "ISO 4766 (flat) · ISO 7434 (cone) · ISO 7435 (long rod) · ISO 7436 (cup)",
+   "DIN 551 (= ISO 4766) · DIN 553 (= ISO 7434) · DIN 417 (= ISO 7435) · DIN 438 (cup, ISO 7436 equivalence not checked against the original)",
+   "KS B 1025 (slotted set screw, ISO 4766:1983 MOD — checked on the KS portal)",
+   "ASME B18.6.2 (slotted headless set screws)"
+  ]
+ },
+ "ss-sq": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a square set screw whose head protrudes, used on older couplings and pulleys. On rotating bodies the head can catch, so check the guard."
+   }
+  ],
+  "std": [
+   "DIN 478 · 479 · 480 (square head bolts, must be distinguished from set screws — not checked against the original)",
+   "KS B 1027 (square set screw — checked on the KS portal)",
+   "ASME B18.6.2 (square head set screws)"
+  ]
+ },
+ "ss-soft": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a set screw with nylon or brass attached to the end so as not to damage the shaft or threads. Its holding force is weaker than a regular cup point."
+   }
+  ],
+  "std": [
+   "Body ISO 4026 (no standard for the tip)",
+   "Body ASME B18.3"
+  ]
+ },
+ "ss-knurl": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a set screw with serrations (knurling) cut inside the cup point so that it loosens less under vibration. There is no standard dimension table, so it is quoted on request."
+   }
+  ],
+  "std": [
+   "Body ISO 4029",
+   "Body DIN 916",
+   "Body ASME B18.3"
+  ]
+ },
+ "orbplug": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a plug for hydraulic ports sealed with an O-ring. The thread and sealing method differ from collar plugs (DIN 908, 910) and NPT plugs."
+   },
+   {
+    "t": "",
+    "d": "Please also state the O-ring material (NBR, FKM, etc.)."
+   }
+  ],
+  "std": [
+   "ISO 11926 (UN thread port) · ISO 6149 (metric port)",
+   "SAE J1926"
+  ]
+ },
+ "bondseal": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Bonded seals, with rubber attached inside a metal ring, and rubber washers are manufacturer standard items. Please also tell us the fluid and temperature of use."
+   }
+  ],
+  "std": [
+   "Manufacturer standard"
+  ]
+ },
+ "ms-pan": {
+  "use": "Small screws for fastening control panels, instrument boxes and covers into female threaded holes or nuts. The top of the head is round and the bearing face is flat.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The Phillips (+) screws called \"round head bolt, pan head bolt, cross bolt\" in the market are mostly this pan head. The round head (hemispherical head) of the old KS and JIS has a different shape, so if a drawing requires that head, it is quoted on request."
+   },
+   {
+    "t": "",
+    "d": "Length l is measured from the underside of the head to the end."
+   },
+   {
+    "t": "",
+    "d": "The Phillips recess is type H by default. If a type Z recess is needed, please state it in the order memo."
+   },
+   {
+    "t": "",
+    "d": "Steel screws under this standard are property class 4.8. If higher clamping force is needed, consider a socket head cap screw or a button head socket screw."
+   },
+   {
+    "t": "",
+    "d": "M3.5 and the (14) and (55) mm lengths are non-preferred dimensions that the standard says to avoid where possible, so they are quoted on request. Ultra-small screws under M2 are not handled."
+   },
+   {
+    "t": "",
+    "d": "A line written as DIN 7985 is also treated as ISO 7045 dimensions. If the drawing strictly requires DIN dimensions, please state it in the memo (head dimension differences are being checked)."
+   }
+  ],
+  "std": [
+   "ISO 7045:2011",
+   "DIN 7985 (number superseded by ISO 7045; head dimension differences not checked against the original)",
+   "KS B 1023 (Phillips recess small screw)",
+   "JIS B 1111 (not checked against the original)"
+  ],
+  "mats": [
+   "Carbon steel 4.8",
+   "Stainless steel A2 (304 series)",
+   "Stainless steel A4 (316 series)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Nickel plating",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ms-csk": {
+  "use": "For fastening covers, panels and hinges where the plate surface and the top of the head must be flush. The head angle is 90°.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Length l is measured from the top of the head to the end (overall length). The measuring basis differs from the pan head."
+   },
+   {
+    "t": "",
+    "d": "The countersink is machined to the theoretical head diameter (dk_theo) and a 90° angle."
+   },
+   {
+    "t": "",
+    "d": "ISO 7046-1 covers steel 4.8, and ISO 7046-2 covers 8.8 and stainless steel A2-70. For 8.8, confirm the recess depth series (deep 1, shallow 2)."
+   },
+   {
+    "t": "",
+    "d": "DIN 965 has been superseded by ISO 7046 and the head shape differs slightly. By default it is shipped to ISO dimensions."
+   },
+   {
+    "t": "",
+    "d": "If a line written as \"countersunk head bolt\" has a wrench socket indicated, treat it as a countersunk socket head cap screw (ISO 10642)."
+   },
+   {
+    "t": "",
+    "d": "Because of the head shape, a countersunk head has lower load capacity at the head than a pan head of the same property class."
+   }
+  ],
+  "std": [
+   "ISO 7046-1:2011 (steel 4.8) · ISO 7046-2:2011 (8.8 · A2-70)",
+   "DIN 965 (superseded by ISO 7046; head shape differs)",
+   "KS B 1023 (Phillips recess small screw)",
+   "JIS B 1111 (not checked against the original)"
+  ],
+  "mats": [
+   "Carbon steel 4.8",
+   "Carbon steel 8.8",
+   "Stainless steel A2 (304 series)",
+   "Stainless steel A4 (316 series)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Nickel plating",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ms-truss": {
+  "use": "Small screws whose large, low head presses thin plates and wire terminals over a wide area. Widely used in control panels and electrical boxes.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The truss head is wider and lower than the pan head. The binding head is also quoted under the same item."
+   },
+   {
+    "t": "",
+    "d": "Where the head diameter is fixed (terminal covers, etc.), quote to match the drawing dimensions."
+   },
+   {
+    "t": "",
+    "d": "Inch screws (#6-32, etc.) with a truss head are quoted as inch machine screws."
+   }
+  ],
+  "std": [
+   "KS B 1023 (whether truss and binding heads are included not checked against the original)",
+   "JIS B 1111 (not checked against the original)",
+   "ASME B18.6.3 (inch truss head; inch lines are linked to the ms-inch item)"
+  ],
+  "mats": [
+   "Carbon steel 4.8",
+   "Stainless steel A2 (304 series)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Nickel plating",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ms-slot": {
+  "use": "Used where a flat-blade screwdriver tightens, such as instruments, electrical terminals and brass parts.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Slotted screws come in four heads: cheese (cylindrical), pan, countersunk and raised countersunk. Please state the head."
+   },
+   {
+    "t": "",
+    "d": "For countersunk and raised countersunk heads, the overall length is measured; for cheese and pan heads, length is measured from under the head."
+   },
+   {
+    "t": "",
+    "d": "For steel, 4.8 and 5.8 are within the standard range, and for stainless steel, A2-50 and A2-70."
+   }
+  ],
+  "std": [
+   "ISO 1207 (cheese) · ISO 1580 (pan) · ISO 2009 (countersunk) · ISO 2010 (raised countersunk)",
+   "DIN 84 · DIN 85 · DIN 963 · DIN 964 (each superseded by ISO)",
+   "KS B 1021 (slotted screw)"
+  ],
+  "mats": [
+   "Carbon steel 4.8",
+   "Stainless steel A2 (304 series)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Nickel plating",
+   "Untreated (stainless steel)",
+   "Untreated (bare)"
+  ]
+ },
+ "tap": {
+  "use": "Fastens thin sheet metal by forming its own thread without a female thread. Used for ducts, covers and control panel enclosures.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Tapping screw nominal sizes are written like ST3.5. The old numbers correspond as follows: #6 is ST3.5, #8 is ST4.2, #10 is ST4.8."
+   },
+   {
+    "t": "",
+    "d": "The point shape is pointed (type C) by default. If the hole is blind or the back side is visible, choose a flat (type F) or round (type R) end."
+   },
+   {
+    "t": "",
+    "d": "Large nominal sizes cannot be made in short lengths (example: ST5.5 and ST6.3 from 13 mm)."
+   },
+   {
+    "t": "",
+    "d": "If a \"countersunk screw\" has a metric designation (M4×10), it is a machine screw; if it has an ST designation or is called \"piseu\" (screw), it is this item."
+   },
+   {
+    "t": "",
+    "d": "The pilot hole diameter depends on plate thickness and material, so it is guided together at quotation."
+   }
+  ],
+  "std": [
+   "ISO 7049 (pan) · ISO 7050 (countersunk) · ISO 7051 (raised countersunk) · thread ISO 1478",
+   "DIN 7981 · DIN 7982 · DIN 7983 (each superseded by ISO)",
+   "KS B 1032 (Phillips recess tapping screw)",
+   "ASME B18.6.4 (inch tapping screw, recognition only)"
+  ],
+  "mats": [
+   "Steel for tapping screws (case hardened)",
+   "Stainless steel A2 tapping screw",
+   "Stainless steel A4 tapping screw"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Nickel plating",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "sems": {
+  "use": "Screws with a washer pre-fitted so it does not fall off. It reduces the time spent fitting washers separately in control panel and instrument assembly.",
+  "notes": [
+   {
+    "t": "",
+    "d": "ISO 10644 covers only assemblies fitted with a plain washer. Assemblies with a spring washer + plain washer, common in Korea, are quoted in the KS format."
+   },
+   {
+    "t": "",
+    "d": "In assembled screws, the shank is made thinner so that the washer can rotate. They differ from screws and washers bought separately and fitted."
+   },
+   {
+    "t": "",
+    "d": "The hardness of washers used with steel screws of 10.9 and below is matched to the screw strength (300 HV for 9.8 and 10.9)."
+   }
+  ],
+  "std": [
+   "ISO 10644:2009 (steel, plain washer assembly, M2–M12, washer ISO 10673)",
+   "KS B 1041 (Phillips recess screw with washer assembly, main text not checked against the original)",
+   "ASME B18.13 (Screw and Washer Assemblies – Sems, not checked against the original)"
+  ],
+  "mats": [
+   "Carbon steel 4.8",
+   "Carbon steel 8.8",
+   "Stainless steel A2 (304 series)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Nickel plating",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "standoff": {
+  "use": "Hex posts that hold boards and panels spaced off a plate. Female threads at both ends (female-female) or a male thread on one end (female-male).",
+  "notes": [
+   {
+    "t": "",
+    "d": "Length is the hex body length excluding the male thread. For male-female types, please state the male thread length separately."
+   },
+   {
+    "t": "",
+    "d": "The width across flats differs by manufacturer, so if tools or spacing are important, please state the width across flats as well."
+   },
+   {
+    "t": "",
+    "d": "If insulation is needed, choose nylon; if grounding is needed, choose brass or steel."
+   }
+  ],
+  "std": [
+   "Metric ISO 261 · ISO 965 / inch ASME B1.1",
+   "Manufacturer standard (no common dimension standard)"
+  ],
+  "fins": [
+   "Nickel plating",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "blindrivet": {
+  "use": "Fastens sheet metal, ducts and nameplates where work is possible from one side only. A dedicated tool pulls the mandrel until it breaks, and the rear of the body swells to hold.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Choose the length by the total plate thickness (grip). Even at the same length, a larger diameter accepts a thinner grip."
+   },
+   {
+    "t": "",
+    "d": "Drill the hole about 0.1 mm larger than the body (example: for a 4.8 rivet, 4.9–5.0 mm). A larger hole reduces load capacity."
+   },
+   {
+    "t": "",
+    "d": "Aluminum bodies come in grade L (normal) and H (high strength). If load is important, please state the grade."
+   },
+   {
+    "t": "",
+    "d": "For stainless steel plates, use stainless steel rivets (A2/A2) for less corrosion."
+   },
+   {
+    "t": "",
+    "d": "Rivet tools and mandrel recovery are not within the supply scope."
+   }
+  ],
+  "std": [
+   "ISO 15977 (AlA/St) · ISO 15979 (St/St) · ISO 15983 (A2/A2)",
+   "DIN 7337 (superseded by ISO, not checked against the original)",
+   "IFI 114 (inch, not checked against the original)"
+  ],
+  "mats": [
+   "Body aluminum alloy · mandrel steel",
+   "Body steel · mandrel steel",
+   "Body and mandrel stainless steel A2"
+  ],
+  "fins": [
+   "Untreated (aluminum and stainless steel bodies)",
+   "Zinc plating (steel body)"
+  ]
+ },
+ "rivnut": {
+  "use": "Forms a female thread by crimping from one side where a tap cannot be cut, such as thin plates and square tubes.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Even with the same nominal size, there are several products with different grips (plate thickness ranges). Be sure to tell us the plate thickness."
+   },
+   {
+    "t": "",
+    "d": "Where it must not rotate, choose a hex body or a knurled body. A hex body requires drilling a hex hole."
+   },
+   {
+    "t": "",
+    "d": "The setting tool is not within the supply scope."
+   }
+  ],
+  "std": [
+   "Metric ISO 261 · ISO 965 / inch ASME B1.1",
+   "Manufacturer standard (no ISO or ASME product standard; not in the list of the ASME B18 blind fastener subcommittee)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)",
+   "Untreated (bare)"
+  ]
+ },
+ "rivstud": {
+  "use": "Crimps from one side to set up a male threaded post when the back of the plate cannot be reached by hand.",
+  "notes": [
+   {
+    "t": "",
+    "d": "A rivet bolt is crimped like a rivet nut but produces a male thread instead of a female thread."
+   },
+   {
+    "t": "",
+    "d": "LOCKBOLT and swage collar bolts in an English BOM are a different item (pin + crimped collar)."
+   },
+   {
+    "t": "",
+    "d": "Please tell us the plate thickness (grip) and the thread length together."
+   }
+  ],
+  "std": [
+   "Metric ISO 261 / inch ASME B1.1",
+   "Manufacturer standard"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)",
+   "Untreated (bare)"
+  ]
+ },
+ "wti": {
+  "use": "Reinforces weak female threads in aluminum and cast iron, or restores damaged threads to the same nominal size.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Where bolts loosen from vibration, choose the locking type."
+   },
+   {
+    "t": "",
+    "d": "The hole for the insert is machined with a dedicated tap. Taps and insertion tools are not supplied."
+   },
+   {
+    "t": "",
+    "d": "It is widely used to repair damaged threads in aluminum and cast iron parts such as pump casings."
+   }
+  ],
+  "std": [
+   "DIN 8140 (wire thread insert for metric threads, not checked against the original)",
+   "ASME B18.29.2M (metric) · ASME B18.29.1 (inch) (not checked against the original)"
+  ],
+  "fins": [
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ms-rcsk": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The raised countersunk head is a screw with a slightly convex top above the countersunk head. Length is measured as overall length."
+   },
+   {
+    "t": "",
+    "d": "It fits the same countersink (90°) and is used for visible (cosmetic) panels."
+   }
+  ],
+  "std": [
+   "ISO 7047",
+   "DIN 966",
+   "KS B 1023"
+  ]
+ },
+ "tap-hex": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a hex head tapping screw used where large torque is needed, such as roof and wall panels."
+   },
+   {
+    "t": "",
+    "d": "The washer-attached and flange-attached types are under separate KS standards."
+   }
+  ],
+  "std": [
+   "ISO 1479",
+   "DIN 7976",
+   "KS B 1036 · KS B 1063 (with washer) · KS B 1064 (with flange)"
+  ]
+ },
+ "tap-drill": {
+  "notes": [
+   {
+    "t": "",
+    "d": "It has a drill at the end, so it is driven directly into steel plate without a pilot hole."
+   },
+   {
+    "t": "",
+    "d": "It cannot be used if the total plate thickness is greater than the drill point length."
+   }
+  ],
+  "std": [
+   "ISO 15480 (hex washer head) · ISO 15481–15483 (Phillips pan, countersunk, raised countersunk, not checked against the original)",
+   "DIN 7504 (withdrawn → DIN EN ISO 10666 · 15480–15483)"
+  ]
+ },
+ "tap-form": {
+  "notes": [
+   {
+    "t": "",
+    "d": "It forms a metric thread by itself, so it can later be replaced with a machine screw of the same nominal size."
+   },
+   {
+    "t": "",
+    "d": "The pilot hole diameter is important, so please send the drawing values together."
+   }
+  ],
+  "std": [
+   "DIN 7500-1:2021-07 (DIN 7500:1978 withdrawn)",
+   "ASME B18.6.4"
+  ]
+ },
+ "thumb": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Used where it is opened and closed often without tools, such as access ports and covers."
+   },
+   {
+    "t": "",
+    "d": "Please distinguish and state the wing type (DIN 316) and the knurled type (DIN 464, 653)."
+   }
+  ],
+  "std": [
+   "DIN 316 (wing) · DIN 464 · DIN 653 (knurled)",
+   "ASME B18.6.8"
+  ]
+ },
+ "blindrivet-csk": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The countersunk head makes the surface flat, and the sealed type has a closed body end so water and gas do not leak."
+   }
+  ],
+  "std": [
+   "ISO 15978 (countersunk head AlA/St, d 2.4–5) · ISO 15973 (sealed type AlA/St)"
+  ]
+ },
+ "solidrivet": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a rivet whose head is formed by working from both sides. A bare \"rivet\" is treated as a blind rivet."
+   }
+  ],
+  "std": [
+   "ISO 1051 (shaft diameter)",
+   "DIN 660 · DIN 661",
+   "KS B 1101 (cold) · KS B 1102 (hot) · KS B 1103 (semi-tubular)",
+   "ASME B18.1.1 · ASME B18.1.2",
+   "ASTM A502 (structural 1/2–1-1/2 in)"
+  ]
+ },
+ "clinch": {
+  "notes": [
+   {
+    "t": "",
+    "d": "These are nuts and studs pressed into sheet metal. You must choose a product matching the plate thickness and plate material (hardness)."
+   },
+   {
+    "t": "",
+    "d": "For a line with only a manufacturer part number, we advise purchasing from that manufacturer's distributor."
+   }
+  ],
+  "std": [
+   "Manufacturer standard"
+  ]
+ },
+ "lockbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a fastening system in which a collar is crimped onto a pin with a dedicated tool. The manufacturer's specification is followed together with the tool."
+   },
+   {
+    "t": "",
+    "d": "It is a different item from the rock bolt for tunnel rock."
+   }
+  ],
+  "std": [
+   "Manufacturer standard"
+  ]
+ },
+ "keyinsert": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a thick insert locked against rotation by driving in keys. It is used for repairing heavily loaded threads."
+   }
+  ],
+  "std": [
+   "Manufacturer standard"
+  ]
+ },
+ "woodinsert": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is an insert that forms a female thread in wood or plastic. It differs from rivet nuts for metal plates."
+   }
+  ],
+  "std": [
+   "DIN 1624 (barbed T-nut, not checked against the original)"
+  ]
+ },
+ "weldstud": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a bolt welded to sheet metal or ducts to stand up. Welding work and quality are outside the supply scope."
+   }
+  ],
+  "std": [
+   "ISO 13918 (not checked against the original)",
+   "KS B 1057 (weld bolt) · KS B 1062 (headed stud)"
+  ]
+ },
+ "tr": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Threaded rod is sold in standard lengths of 1,000 mm. 2 m, 3 m and cut lengths are quoted on request."
+   },
+   {
+    "t": "",
+    "d": "DIN 975 was withdrawn without a successor standard designation. A DIN 975 designation on a drawing is also accepted as it is."
+   },
+   {
+    "t": "",
+    "d": "4.8 white zinc is the default. For hangers and anchor connections with large loads, consider 8.8, and use the mating nut with property class 8 or above."
+   },
+   {
+    "t": "",
+    "d": "The ends cut on site have crushed threads, so fit the nut first, then cut, and dress the thread by unscrewing the nut."
+   },
+   {
+    "t": "",
+    "d": "For hot-dip galvanized threaded rod, use overtapped nuts or coupling nuts. Regular nuts may not go on."
+   },
+   {
+    "t": "",
+    "d": "If a length-specified stud with chamfered ends is needed, please order it as 'threaded stud (DIN 976-1 B)'."
+   }
+  ],
+  "std": [
+   "ISO 898-1 (steel property class) · ISO 3506-1 (stainless steel)",
+   "DIN 976-1 Form A · DIN 975 (withdrawn)"
+  ],
+  "mats": [
+   "4.8",
+   "8.8",
+   "A2-70",
+   "A4-70"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Hot-dip galvanizing",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "coupling": {
+  "notes": [
+   {
+    "t": "Dimension basis",
+    "d": "Based on public technical data: only values on which dimension tables from 3 different manufacturers and distributors agree are listed. Comparison with the original standard is in progress."
+   },
+   {
+    "t": "",
+    "d": "A coupling nut is used to join two threaded rods or extend the length. The length is 3 times the thread diameter (DIN 6334)."
+   },
+   {
+    "t": "",
+    "d": "For M10 coupling nuts, a 17 mm spanner is used, and for M12, 19 mm. The tools differ from those for regular hex nuts of the same nominal size (16 and 18 mm)."
+   },
+   {
+    "t": "",
+    "d": "Both threads must engage by half the nut length each to deliver full strength. For coupling nuts with an inspection hole, please state it separately when ordering."
+   },
+   {
+    "t": "",
+    "d": "For hot-dip galvanized threaded rod, match with overtapped coupling nuts."
+   }
+  ],
+  "std": [
+   "DIN 6334 (Sechskantmuttern, 3d · confirm whether current at quotation)",
+   "ASME B18.2.2 (Hex Coupling Nuts)",
+   "ASTM A563 Grade A (inch proof load basis)"
+  ],
+  "mats": [
+   "Property class 6",
+   "Property class 8",
+   "A2-70",
+   "A4-70",
+   "A563 Gr A"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Hot-dip galvanizing (overtapped)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "rod-in": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Inch threaded rod is generally in standard lengths of 3, 6, 10 and 12 ft, and cut lengths are quoted on request."
+   },
+   {
+    "t": "",
+    "d": "A307 Grade A threaded rod cannot replace F1554 Grade 36. The anchor bolt use (formerly Grade C) has moved to F1554."
+   },
+   {
+    "t": "",
+    "d": "For sizes over 1\", both UNC and 8UN exist, so please state the thread series."
+   }
+  ],
+  "std": [
+   "ASME B18.31.3 Threaded Rods (Inch Series) · ASME B1.1 (UN thread)",
+   "A193 B7 · B7M · B8 · B8M · A307 Gr A · B ('studs' includes threaded rod) · F1554 Gr 36 · 55 · 105 · F593 (stainless steel)"
+  ],
+  "mats": [
+   "A193 B7",
+   "A193 B7M",
+   "A307 Gr A",
+   "F1554 Gr 36",
+   "F1554 Gr 55",
+   "F1554 Gr 105",
+   "A193 B8 / B8M Cl.1"
+  ],
+  "fins": [
+   "Unplated (rust-preventive oil)",
+   "Electro-galvanized",
+   "Hot-dip galvanizing",
+   "PTFE coating",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "rod-hanger": {
+  "notes": [
+   {
+    "t": "",
+    "d": "'n-bu' means n/8 inch: 3 bu = 3/8\", 4 bu = 1/2\", 5 bu = 5/8\", 6 bu = 3/4\"."
+   },
+   {
+    "t": "",
+    "d": "In Korea, hanger threaded rods are distributed with a mix of Whitworth thread (W, 55°) and UNC (60°). Match the thread type with the nuts, anchors and coupling nuts."
+   },
+   {
+    "t": "",
+    "d": "1/2\" (4 bu) UNC is 13 threads per inch. For a line written as Whitworth (W) thread, confirm the threads per inch separately."
+   },
+   {
+    "t": "",
+    "d": "If the site uses metric hangers (M10, M12), choose threaded rod (1 m, DIN 976-1 A)."
+   },
+   {
+    "t": "",
+    "d": "If the thread type is not stated, we also tell you the types that can be supplied when replying to the quotation."
+   }
+  ],
+  "std": [
+   "ASME B1.1 (when UNC)",
+   "Whitworth thread W (BSW 55°) — confirm by supplier"
+  ],
+  "mats": [
+   "Carbon steel",
+   "STS304"
+  ],
+  "fins": [
+   "White zinc",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "stud-ft": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a threaded stud cut to a specified length with both ends chamfered (DIN 976-1 Form B). The end finish differs from the 1 m threaded rod (Form A)."
+   },
+   {
+    "t": "",
+    "d": "Bolting of KS and JIS flanges (10K, 20K) uses metric threads. Please state the number of nuts and whether washers are used."
+   },
+   {
+    "t": "",
+    "d": "ASTM materials such as B7 and B7M can also be ordered with metric threads. The type of certificate is decided at quotation."
+   },
+   {
+    "t": "",
+    "d": "For a line with only 'stud bolt', we ask again to distinguish it from inch B7 studs and tap-end studs."
+   }
+  ],
+  "std": [
+   "ISO 898-1 (strength) · ISO 3506-1",
+   "DIN 976-1 Form B (chamfered ends)",
+   "ASME B18.31.1M Metric Continuous and Double-End Studs",
+   "A193/A193M B7 · B7M · B8M (when ordered with metric threads)"
+  ],
+  "mats": [
+   "8.8",
+   "10.9",
+   "A193 B7",
+   "A193 B7M",
+   "A2-70",
+   "A4-70"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc",
+   "Hot-dip galvanizing",
+   "PTFE coating",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "channelnut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a nut that is inserted into a C-channel (41 mm width) and turned to lock. A spring supports the nut upward and holds its position."
+   },
+   {
+    "t": "",
+    "d": "For shallow channels (41×21), a short spring is used, and for deep channels (41×41 and above), a long spring. Please state the channel depth."
+   },
+   {
+    "t": "",
+    "d": "A regular hex nut cannot be substituted. It is a square plate nut with a groove that catches on the channel lips."
+   },
+   {
+    "t": "",
+    "d": "The nut width and thickness differ slightly by channel manufacturer, so confirm that the same series of channel is used."
+   }
+  ],
+  "std": [
+   "Manufacturer standard · metal framing industry standard MFMA-4 (not checked against the original)"
+  ],
+  "mats": [
+   "Carbon steel",
+   "STS304",
+   "STS316"
+  ],
+  "fins": [
+   "Electro-galvanized",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ubolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "U-bolts are designated by pipe size (25A, 50A, DN50, 2\") rather than thread diameter. It is fastest if you state the pipe size and thread together."
+   },
+   {
+    "t": "",
+    "d": "DIN 3570 specifies the thread, inside width and leg spacing for each pipe size, which makes it easy to match the support hole spacing (e)."
+   },
+   {
+    "t": "",
+    "d": "KS and JIS steel pipes (A designation) and ISO steel pipes differ slightly in outside diameter. For coated or insulated pipes, please state the outside diameter separately."
+   },
+   {
+    "t": "",
+    "d": "Please state whether 2 nuts are included and whether washers are needed."
+   },
+   {
+    "t": "",
+    "d": "U-bolts for inch piping are quoted for manufacture based on the support drawing."
+   }
+  ],
+  "std": [
+   "DIN 3570 (Rundstahlbügel, 1968) Form A",
+   "ASME B18.31.5 Bent Bolts (Inch Series)",
+   "A307 Gr A (general material for inch U-bolts)",
+   "For inch piping U-bolts, the support drawing · MSS SP-58 Type 24 (not checked against the original)"
+  ],
+  "mats": [
+   "Carbon steel",
+   "A2",
+   "A4",
+   "A307 Gr A"
+  ],
+  "fins": [
+   "Electro-galvanized",
+   "Hot-dip galvanizing",
+   "Untreated",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "f1554": {
+  "notes": [
+   {
+    "t": "",
+    "d": "F1554 is the standard for anchor bolts embedded in concrete foundations. The grades are 36, 55 and 105, distinguished by the color of the protruding end (blue, yellow, red)."
+   },
+   {
+    "t": "",
+    "d": "Length, thread length, hook length and projection length are manufactured from the foundation drawing. If there is no drawing, please state the diameter, embedment depth and projection length."
+   },
+   {
+    "t": "",
+    "d": "Grade 105 exists only for 3\" and under. The mating nut is supplied as an A563 DH heavy hex nut."
+   },
+   {
+    "t": "",
+    "d": "Hot-dip galvanized anchor bolts are shipped in the same container as the overtapped nuts. The zinc processes of bolt and nut are not mixed."
+   },
+   {
+    "t": "",
+    "d": "For Grade 105 hot-dip galvanizing, the pretreatment (pickling) method is agreed at quotation."
+   },
+   {
+    "t": "",
+    "d": "Pump foundation anchor bolts are often not included in the equipment supply scope unless specified, so separate purchase is needed."
+   },
+   {
+    "t": "",
+    "d": "The A307 Grade C anchor bolt designation has changed to F1554 Grade 36."
+   }
+  ],
+  "std": [
+   "ASME B1.1 (UNC 2A)",
+   "F1554 Grade 36 · 55 · 105 · A563 (nut) · F436 Type 1 (washer) · F2329 (hot-dip galvanizing) · B695 Class 55 (mechanical zinc)"
+  ],
+  "mats": [
+   "Grade 36",
+   "Grade 55",
+   "Grade 105"
+  ],
+  "fins": [
+   "Unplated",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Mechanical zinc (ASTM B695 Class 55)",
+   "Zinc plating on the protruding threaded portion only (to be agreed)"
+  ]
+ },
+ "fbolt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a bolt embedded in a concrete foundation to fix pumps, motors and steel columns. There are L type and J type, and LA type and JA type with an anchor plate attached."
+   },
+   {
+    "t": "",
+    "d": "Inch anchor bolts with an ASTM grade noted (F1554, etc.) are quoted as 'F1554 foundation anchor bolts'."
+   },
+   {
+    "t": "",
+    "d": "For a line with only 'anchor bolt', we ask again whether it is for foundation embedment or a post-installed anchor."
+   }
+  ],
+  "std": [
+   "KS B 1016 foundation bolt",
+   "JIS B 1178 (基礎ボルト)",
+   "ASME B18.31.5 Bent Bolts (Inch Series)",
+   "A307 · F1554 (inch materials)"
+  ],
+  "mats": [
+   "4.6",
+   "6.8",
+   "8.8",
+   "SS400"
+  ],
+  "fins": [
+   "Untreated (standard default)",
+   "Hot-dip galvanizing",
+   "Electro-galvanized"
+  ]
+ },
+ "wedge": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a post-installed anchor: after the hole is drilled and the anchor is driven in, tightening the nut spreads the wedge ring below it to fix the anchor. No anchor punch is needed."
+   },
+   {
+    "t": "",
+    "d": "It can be driven through the fixture, so it is widely used to fasten machine bases and brackets."
+   },
+   {
+    "t": "",
+    "d": "Anchors with a specified approval (ETA, ICC-ES) number can only be that manufacturer's product, so they are not supplied."
+   },
+   {
+    "t": "",
+    "d": "Embedment depth, edge distance and allowable load follow the manufacturer's data."
+   }
+  ],
+  "std": [
+   "Manufacturer specification · approved products are the specified manufacturer's product per the ETA / ICC-ES assessment"
+  ],
+  "mats": [
+   "Carbon steel",
+   "STS304",
+   "STS316"
+  ],
+  "fins": [
+   "Electro-galvanized",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "stronganchor": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is the bolt-type anchor called 'set anchor' (set-anka) in Korea. The bolt, sleeve (pipe), washer and nut come as one set."
+   },
+   {
+    "t": "",
+    "d": "Insert it into the hole and strike the sleeve with an anchor punch to expand and fix it, then fit the fixture and tighten the nut."
+   },
+   {
+    "t": "",
+    "d": "The female-threaded type that carries threaded rod from the ceiling is the 'strong anchor' (seuteurong-anka; drop-in anchor). Choose a set anchor if the bolt must protrude, and a strong anchor if threaded rod is to be screwed in."
+   },
+   {
+    "t": "",
+    "d": "Some sellers mix the names. When ordering, also state whether it is the 'bolt type (male thread)' or the 'female-thread type'."
+   },
+   {
+    "t": "",
+    "d": "For 3/8 (3-bu), lengths of 75–200 mm are in circulation. Drill diameter follows the manufacturer's data."
+   }
+  ],
+  "std": [
+   "Manufacturer specification (approved products: the specified manufacturer)"
+  ],
+  "mats": [
+   "Carbon steel",
+   "STS304"
+  ],
+  "fins": [
+   "Electro-galvanized",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "dropin": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is the female-threaded anchor called 'strong anchor' (seuteurong-anka) in Korea. It is set in ceiling concrete and takes threaded rod, hex bolts or eye bolts."
+   },
+   {
+    "t": "",
+    "d": "Insert it into the hole and strike the inner plug with a setting tool (anchor punch) to expand and fix it. Use a drill the same size as the anchor outside diameter."
+   },
+   {
+    "t": "",
+    "d": "The 3-bu (3/8\") product is commonly 12 mm outside diameter and 30 mm long, but 14 mm products also exist, so check the drill."
+   },
+   {
+    "t": "",
+    "d": "The thread form (W, UNC or metric) must match the threaded rod to be inserted."
+   },
+   {
+    "t": "",
+    "d": "The bolt-type anchor whose bolt protrudes is the 'set anchor' (set-anka). Sellers mix the names, so also state 'female-thread type'."
+   }
+  ],
+  "std": [
+   "Manufacturer specification — in domestic distribution, nominal sizes of 3/8, 1/2 and 5/8 inch ('3-bu, 4-bu, 5-bu') are common"
+  ],
+  "mats": [
+   "Carbon steel",
+   "STS304"
+  ],
+  "fins": [
+   "Electro-galvanized",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "sleeve": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Chemical anchor capsules and injection adhesives are not handled. Only the rod (bolt), nut and washer are quoted."
+   },
+   {
+    "t": "",
+    "d": "If the adhesive manufacturer specifies the rod material, length or end shape, please send that data as well."
+   },
+   {
+    "t": "",
+    "d": "A sleeve anchor is a post-installed anchor in which tightening the nut expands the whole sleeve; it is a manufacturer-specification product."
+   }
+  ],
+  "std": [
+   "DIN 976-1 (chemical rod stock; the 45° end cut varies by manufacturer)",
+   "Manufacturer specification"
+  ]
+ },
+ "b7": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The B16.5 stud length table values are reference values checked against 3 publicly available charts from flange and stud manufacturers. Whether length is measured to the point is confirmed from the drawing or specification."
+   },
+   {
+    "t": "",
+    "d": "At 1\" and below the basis is UNC; at 1-1/8\" and above it is 8 threads per inch (8UN). Even at 1-1/8\", it will not fit a 7-thread (UNC) nut, so check the threads per inch in the BOM."
+   },
+   {
+    "t": "",
+    "d": "The B7 tensile strength criteria are 125 ksi up to 2-1/2\", 115 ksi up to 4\", and 100 ksi up to 7\", decreasing as the diameter increases."
+   },
+   {
+    "t": "",
+    "d": "B7 is normally paired with an A194 2H heavy nut. If a different nut is needed, follow the specification."
+   },
+   {
+    "t": "",
+    "d": "B7 and the manufacturer's mark are stamped on one end of the stud, and 2H on one face of the nut. At receipt, check against the heat number on the certificate."
+   },
+   {
+    "t": "",
+    "d": "Plating or coating changes thread engagement and friction, so the clamp force differs even at the same torque."
+   },
+   {
+    "t": "",
+    "d": "When made from domestic Cr-Mo bar, check by certificate that the composition of each heat is within the B7 range (Mn 0.75–1.00 %, Mo 0.15–0.25 %)."
+   },
+   {
+    "t": "",
+    "d": "A product that satisfies both B7 and A320 L7 may be stamped with both, such as \"B7/L7\"."
+   }
+  ],
+  "std": [
+   "ASME B16.5 (stud length table, bolting recommendations) · ASME B18.31.2 (studs — name only cited) · ASME B18.2.2 (heavy hex nuts) · ASME B1.1 (UNC, 8UN)",
+   "ASTM A193/A193M Grade B7 · ASTM A194/A194M Grade 2H · ASTM A962/A962M (common requirements)"
+  ],
+  "mats": [
+   "A193 B7 + A194 2H × 2 (set)",
+   "A193 B7 stud only"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Fluoropolymer (PTFE) coating",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Zinc-nickel electroplating",
+   "Zinc flake (ASTM F3393, formerly F1136)"
+  ]
+ },
+ "b7m": {
+  "notes": [
+   {
+    "t": "",
+    "d": "B7M is a grade whose hardness is limited to 235 HB or less to reduce the risk of cracking in hydrogen sulfide (H2S) environments. In exchange, its strength is lower than B7."
+   },
+   {
+    "t": "",
+    "d": "Every B7M stud is hardness tested, without exception."
+   }
+  ],
+  "std": [
+   "ISO 15156 (the same document as NACE MR0175 — original not checked)",
+   "ASME B16.5 · ASME B18.31.2 (name only) · ASME B18.2.2",
+   "ASTM A193 Grade B7M · ASTM A194 Grade 2HM · ASTM A962"
+  ],
+  "mats": [
+   "A193 B7M + A194 2HM × 2 (set)",
+   "A193 B7M stud only"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Fluoropolymer (PTFE) coating",
+   "Zinc-nickel electroplating"
+  ]
+ },
+ "b8": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Class 1 is in the solution-annealed condition only, so its yield strength is low at 30 ksi. Whether it can be used on high pressure class flanges is confirmed from the design conditions."
+   },
+   {
+    "t": "",
+    "d": "Thick strain-hardened bar may not have uniform strength through to the core, so above 3/4\", recheck the design load."
+   },
+   {
+    "t": "",
+    "d": "Austenitic studs and nuts gall easily (thread seizure), so tighten with anti-seize applied. Depending on the lubricant, the clamp force varies greatly even at the same torque."
+   },
+   {
+    "t": "",
+    "d": "Use nuts of the same material (B8 → 8, B8M → 8M)."
+   }
+  ],
+  "std": [
+   "ASME B16.5 · ASME B18.31.2 (name only) · ASME B18.2.2",
+   "ASTM A193 Grade B8 (S30400) · B8M (S31600), Class 1 · 1A · 2 · 2B · ASTM A194 Grade 8 · 8M (8A, 8MA)"
+  ],
+  "mats": [
+   "A193 B8 Class 1 + A194 8",
+   "A193 B8M Class 1 + A194 8M",
+   "A193 B8 Class 2 (strain-hardened) + A194 8",
+   "A193 B8M Class 2 (strain-hardened) + A194 8M"
+  ],
+  "fins": [
+   "Untreated (stainless steel, pickled and passivated)",
+   "Anti-galling lubrication (anti-seize applied)",
+   "Fluoropolymer (PTFE) coating"
+  ]
+ },
+ "l7": {
+  "notes": [
+   {
+    "t": "",
+    "d": "L7 is a low-temperature grade equivalent to B7 that has been verified for impact absorbed energy of 27 J or more (average of 3) at −101 °C. For nuts, use 7L, which has undergone the same test."
+   },
+   {
+    "t": "",
+    "d": "L7M is a grade whose hardness is limited to 235 HB or less to satisfy both low-temperature and sour (H2S) conditions."
+   },
+   {
+    "t": "",
+    "d": "For \"Gr 4 or 7\" nuts in old specifications, first check whether Grade 4 can be supplied; if difficult, supply with approval of a 7L (Grade 7 + impact test) substitution."
+   },
+   {
+    "t": "",
+    "d": "For cryogenic service below −101 °C (LNG, etc.), use austenitic stainless steel A320 B8 · B8M (b8lt)."
+   }
+  ],
+  "std": [
+   "ASME B16.5 · ASME B18.31.2 (name only) · ASME B18.2.2",
+   "ASTM A320/A320M Grade L7 · L7M · L43 · ASTM A194 Grade 7 · 7M + low-temperature impact test supplementary requirement (7L for Grade 7)"
+  ],
+  "mats": [
+   "A320 L7 + A194 7L × 2",
+   "A320 L7M + nut × 2: 7M (low-temperature impact test) or 2HM — confirm when ordering (low temperature + sour)",
+   "A320 L43 + A194 7L × 2"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Fluoropolymer (PTFE) coating",
+   "Zinc-nickel electroplating"
+  ]
+ },
+ "mstud": {
+  "notes": [
+   {
+    "t": "",
+    "d": "KS and JIS flanges on domestic equipment use metric bolts (M16, M20, M22 …), so this is a stud made of the same B7 material with metric nominal sizes."
+   },
+   {
+    "t": "",
+    "d": "The ASTM metric editions (A193M, A194M) normally have coarse threads (M20×2.5, etc.) as the basis. If a 3 mm fine pitch (M30×3) is needed, such as for JIS 20K 350A and above, it is quoted separately."
+   },
+   {
+    "t": "",
+    "d": "The nut is an A194M 2H heavy hex by default. If you want a regular hex nut (ISO 4032), please tell us in advance."
+   },
+   {
+    "t": "",
+    "d": "SCM440, SNB7 and 42CrMo4 are Cr-Mo steels similar to B7 but are not the same standard. To receive a certificate as B7, the product must satisfy both the B7 composition and test criteria."
+   },
+   {
+    "t": "",
+    "d": "Stud length is set as 2 flange thicknesses + gasket + 2 nuts + 2–3 threads protruding at each end, rounded up in 5 mm steps."
+   }
+  ],
+  "std": [
+   "ISO 261 coarse thread (6g/6H)",
+   "DIN 976-1 (threaded stud form for reference)",
+   "Used on JIS B 2220 flanges (bolt nominal sizes in the ksflset table)",
+   "ASME B18.31.1M (name only) · nuts ASME B18.2.6M / B18.2.4.6M",
+   "ASTM A193M Grade B7 · ASTM A194M Grade 2H · ASTM A962M"
+  ],
+  "mats": [
+   "A193M B7 + A194M 2H × 2 (set)",
+   "A193M B7 stud only",
+   "A193M B7 + ISO 4032 hex nut (style 1) × 2"
+  ],
+  "fins": [
+   "Untreated (bare, rust-preventive oil)",
+   "Fluoropolymer (PTFE) coating",
+   "Hot-dip galvanizing (ISO 10684)",
+   "Zinc-nickel electroplating",
+   "Zinc flake (ISO 10683 · ASTM F3393 (formerly F1136) family)"
+  ]
+ },
+ "stud-te": {
+  "notes": [
+   {
+    "t": "Basis of dimensions",
+    "d": "Based on public technical data — only values on which 3 public dimension tables from different manufacturers and distributors agree are listed. Checking against the original standard documents is in progress."
+   },
+   {
+    "t": "",
+    "d": "This is a stud with one end screwed into the tapped hole of the body and a nut fitted on the other. The length of the screw-in end b1 is chosen to suit the base material: steel 1d (DIN 938), cast iron 1.25d (DIN 939), aluminum, etc. 2d (DIN 835) · 2.5d (DIN 940)."
+   },
+   {
+    "t": "",
+    "d": "The order length l excludes the screw-in end. For M10×65 DIN 939, the overall length is 65 + 12 = 77 mm."
+   },
+   {
+    "t": "",
+    "d": "The thread length on the nut end is 2d + 6 when l is 125 mm or less, 2d + 12 when 200 mm or less, and 2d + 25 when longer."
+   },
+   {
+    "t": "",
+    "d": "It is a fastener commonly used on pump casings, bearing housings and seal glands. The minimum diameter is confirmed from the pump specification."
+   },
+   {
+    "t": "",
+    "d": "When the screw-in depth cannot determine the hole thread depth, the first 1.5 threads at both ends are chamfered (option)."
+   }
+  ],
+  "std": [
+   "DIN 938 (≈1d) · DIN 939 (≈1.25d) · DIN 835 (≈2d) · DIN 940 (≈2.5d)",
+   "KS B 1037 (title only checked, table original not checked)",
+   "Material option: ASTM A193 B7 (when ordered)"
+  ],
+  "mats": [
+   "5.6",
+   "8.8",
+   "10.9",
+   "A2-70",
+   "A4-70",
+   "ASTM A193M B7"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc (trivalent)",
+   "Hot-dip galvanizing (ISO 10684)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "b16": {
+  "notes": [
+   {
+    "t": "",
+    "d": "B16 is a Cr-Mo-V steel with added vanadium, and its clamp force relaxes less than B7 at high temperature."
+   },
+   {
+    "t": "",
+    "d": "The mating nut for B16 is normally A194 Grade 7 or 16 (confirm in the specification)."
+   }
+  ],
+  "std": [
+   "ASME B16.5 · ASME B18.31.2 (name only) · ASME B18.2.2",
+   "ASTM A193 Grade B16 · ASTM A194 Grade 7 or 16"
+  ],
+  "mats": [
+   "A193 B16 + A194 7 × 2",
+   "A193 B16 + A194 16 × 2",
+   "A193 B16 stress-rupture tested item + A194 7 (confirm in the specification)"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Uncoated + high-temperature anti-seize"
+  ]
+ },
+ "b8lt": {
+  "notes": [
+   {
+    "t": "",
+    "d": "The L7 family goes down to −101 °C. For cryogenic flanges such as LNG (about −162 °C) and liquid nitrogen, use austenitic A320 B8 · B8M."
+   },
+   {
+    "t": "",
+    "d": "For nuts, use A194 8 · 8M; if impact tested, an L is added. Washers are agreed upon as austenitic steel."
+   }
+  ],
+  "std": [
+   "ASME B16.5 · ASME B18.31.2 (name only) · ASME B18.2.2",
+   "ASTM A320 Grade B8 · B8M (Class 1 · 1A · 2) · ASTM A194 Grade 8 · 8M"
+  ],
+  "mats": [
+   "A320 B8 · B8M Class 1 + A194 8 · 8M",
+   "A320 B8A · B8MA Class 1A (finished-product solution annealing)",
+   "A320 B8M Class 2 (strain-hardened, 1-1/2\" and below) + A194 8M"
+  ],
+  "fins": [
+   "Untreated (stainless steel, pickled and passivated)",
+   "Anti-galling lubrication (anti-seize applied)",
+   "Fluoropolymer (PTFE) coating"
+  ]
+ },
+ "smo": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Used where pitting occurs on 304 and 316 bolts in seawater and chloride environments."
+   },
+   {
+    "t": "",
+    "d": "Duplex bolting is ordered to ASTM A1082."
+   },
+   {
+    "t": "",
+    "d": "S32750 and S32760 are different steel grades (S32750 = EN 1.4410, per the JSSA comparison table). They are not ordered combined on one line."
+   },
+   {
+    "t": "",
+    "d": "In marine areas with cathodic protection, be sure to check the hardness upper limit in the specification."
+   }
+  ],
+  "std": [
+   "ASME B18.31.2 (name only) · ASME B18.2.2",
+   "ASTM A1082/A1082M (duplex S31803 · S32205 · S32750 · S32760, etc.) · ASTM A193 B8MLCuN / A194 8MLCuN (6Mo, S31254) · bar A276/A479"
+  ],
+  "mats": [
+   "A1082 S32205",
+   "A1082 S31803",
+   "A1082 S32750",
+   "A1082 S32760",
+   "A193 B8MLCuN Class 1B + A194 8MLCuN",
+   "A193 B8MLCuN Class 2 (strain-hardened, 1-1/2\" and below)"
+  ],
+  "fins": [
+   "Untreated (stainless steel, pickled and passivated)",
+   "Anti-galling lubrication (anti-seize applied)"
+  ]
+ },
+ "istud-te": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is an inch stud screwed into the tapped hole of the body, as on pump casings, bearing housings, seal glands and valve bonnets."
+   },
+   {
+    "t": "",
+    "d": "Whether the screw-in end is made with an interference fit (Class 5) or a general fit (2A · 3A) is decided from the base material and the drawing."
+   },
+   {
+    "t": "",
+    "d": "The screw-in end and nut end thread lengths and the overall length are received on a drawing, and a custom-made quotation is given."
+   }
+  ],
+  "std": [
+   "ASME B18.31.2 (name only) · tap-end thread ASME B1.1 2A/3A or ASME B1.12 Class 5 interference fit (original not checked)",
+   "ASTM A193 B7 · B8M · B16 · ASTM A320 L7 (material per specification)"
+  ],
+  "mats": [
+   "A193 B7",
+   "A193 B8M Class 2",
+   "A193 B16",
+   "A320 L7"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Untreated (stainless steel, pickled and passivated)",
+   "Anti-galling lubrication (anti-seize applied)"
+  ]
+ },
+ "ats": {
+  "notes": [
+   {
+    "t": "",
+    "d": "A threaded rod is threaded over its whole length, whereas a double-end stud has an unthreaded shank in the middle. If both end thread lengths are the same, this item applies; if they differ, it is a tap-end stud (istud-te)."
+   },
+   {
+    "t": "",
+    "d": "Whether the length is measured to the point is confirmed from the drawing or specification."
+   }
+  ],
+  "std": [
+   "ASME B18.31.2 (name only — the original is a scanned copy; no clause or year cited) · ASME B1.1",
+   "ASTM A193 · A320 · A453 (material)"
+  ],
+  "mats": [
+   "A193 B7 / A194 2H",
+   "A193 B7M / A194 2HM",
+   "A193 B8M Class 2 / A194 8M",
+   "A320 L7 / A194 7L",
+   "A193 B16 / A194 7"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Fluoropolymer (PTFE) coating",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Untreated (stainless steel, pickled and passivated)"
+  ]
+ },
+ "ksflset": {
+  "notes": [
+   {
+    "t": "Basis of dimensions",
+    "d": "Based on public technical data — only values on which 3 public dimension tables from different manufacturers and distributors agree are listed. Checking against the original standard documents is in progress."
+   },
+   {
+    "t": "",
+    "d": "Instead of the bolt diameter, you may also order by flange nominal size, such as \"10K 50A × n sets\". The number and nominal size of bolts are determined by the table below."
+   },
+   {
+    "t": "",
+    "d": "Even for the same pipe nominal size, 10K and 20K differ in bolt count, nominal size and flange thickness. Example: 50A is 4 bolts for 10K and 8 for 20K."
+   },
+   {
+    "t": "",
+    "d": "20K 350A and above use a 3 mm fine pitch (M30×3, M36×3). They do not fit coarse-thread nuts."
+   },
+   {
+    "t": "",
+    "d": "Bolt length varies with the flange type (slip-on, weld neck) and gasket thickness, so the lengths in the table are calculated values. They are finalized at quotation."
+   }
+  ],
+  "std": [
+   "Bolt ISO 4014/4017 + nut ISO 4032 (general), or stud",
+   "KS B 1511 (Basic dimensions and dimensional tolerances of steel pipe flanges) · KS B 1503 (Steel welded pipe flanges)",
+   "JIS B 2220 (bolt count, nominal size and thickness checked against 3 public manufacturer tables)",
+   "For high-temperature, high-pressure service: ASTM A193M B7 + A194M 2H (mstud)"
+  ],
+  "mats": [
+   "Carbon steel bolt + nut",
+   "SUS304 (A2-70) bolt + nut",
+   "A193M B7 stud + A194M 2H × 2"
+  ],
+  "fins": [
+   "Untreated (bare, rust-preventive oil)",
+   "White zinc (trivalent)",
+   "Hot-dip galvanizing (ISO 10684)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "a453": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Its thermal expansion is similar to that of austenitic stainless steel, so on high-temperature stainless steel flanges the clamp force is lost less when the temperature changes."
+   }
+  ],
+  "std": [
+   "ASME B16.5",
+   "ASTM A453/A453M Grade 660 (UNS S66286) Class A · B · C · D · ASTM A962"
+  ],
+  "mats": [
+   "660 Class A · B · C",
+   "660 Class D"
+  ],
+  "fins": [
+   "Untreated (stainless steel, pickled and passivated)",
+   "Anti-galling lubrication (anti-seize applied)"
+  ]
+ },
+ "b6": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a 13 % Cr martensitic stainless steel stud seen in steam turbine and valve bonnet replacement parts. Its properties differ from B8 (austenitic), so they are not interchanged."
+   }
+  ],
+  "std": [
+   "ASME B18.31.2 (name only)",
+   "ASTM A193 Grade B6 · B6X · ASTM A194 Grade 6 · 6F"
+  ],
+  "mats": [
+   "A193 B6 + A194 6",
+   "A193 B6X + A194 6"
+  ],
+  "fins": [
+   "Untreated (stainless steel, pickled and passivated)"
+  ]
+ },
+ "f468": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Used in hydrofluoric acid (HF) wetted parts, inside seawater pumps and valves, and in chloride environments. Strength differs greatly by alloy, so be sure to state the alloy number (400 · 500 · 625 · C-276)."
+   }
+  ],
+  "std": [
+   "ASME B18.2.1 · B18.2.2 · B1.1 (2A/2B)",
+   "ASTM F468 (bolts and studs, 1/4–1-1/2\") · ASTM F467 (nuts)"
+  ],
+  "mats": [
+   "Ni 400 (F468U)",
+   "Ni 500 (F468W)",
+   "Ni 625 (F468AC)",
+   "Ni C-276 (F468T)"
+  ],
+  "fins": [
+   "Untreated"
+  ]
+ },
+ "tstud": {
+  "notes": [
+   {
+    "t": "",
+    "d": "As this is a stud tightened by pulling with a hydraulic tensioner, the spare thread above the nut for the tool to grip is longer. The spare length and nut shape depend on the tensioner tool."
+   }
+  ],
+  "std": [
+   "ASME B18.31.2 (name only) + tensioner tool specification",
+   "ASTM A193 B7 · B16 · ASTM A320 L7 (material)"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Fluoropolymer (PTFE) coating",
+   "Untreated (bare, rust-preventive oil)"
+  ]
+ },
+ "stud-rs": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a stud whose shank is machined thinner than the thread root diameter to increase elongation (elasticity), reducing the loss of clamp force due to thermal expansion and relaxation in high-temperature, high-pressure flanges."
+   },
+   {
+    "t": "",
+    "d": "The type (L · K · KU · Z · ZU) and material are received on a drawing and the stud is made to order."
+   }
+  ],
+  "std": [
+   "DIN 2510 (Part 3 stud types L · K · KU · Z · ZU, Part 5 nuts — original not checked)"
+  ],
+  "fins": [
+   "Untreated (bare, rust-preventive oil)"
+  ]
+ },
+ "hn": {
+  "use": "The most common nut to pair with a bolt. Choose a nut strength that matches the bolt strength.",
+  "notes": [
+   {
+    "t": "",
+    "d": "ISO 4032 and DIN 934 differ in width across flats (2-face width) for M10, M12, M14 and M22 (ISO 16 · 18 · 21 · 34, DIN 17 · 19 · 22 · 32). Lines that state a width across flats are quoted separately with that width."
+   },
+   {
+    "t": "",
+    "d": "Use property class 8 nuts with 8.8 bolts and property class 10 nuts with 10.9 bolts. Property class 12 nuts are in the standard only up to M16."
+   },
+   {
+    "t": "",
+    "d": "The current edition of ISO 4032 (2023) assigns property classes only for M5–M39. M3, M4, M42 and M48 are reference dimensions, and the property class is agreed at the time of order."
+   },
+   {
+    "t": "",
+    "d": "Hot-dip galvanized nuts are re-tapped after plating (oversize tapping), so they are used only as a set with plated bolts."
+   },
+   {
+    "t": "",
+    "d": "If the washer face is not stated in the order, the nut is delivered without one."
+   },
+   {
+    "t": "",
+    "d": "Nominal sizes in parentheses (M14 · M18 · M22 · M27 · M33) are non-preferred sizes and have little distribution."
+   }
+  ],
+  "std": [
+   "ISO 4032 (2023 edition M5–M39; below M5 and above M39 are reference dimensions in the annex)",
+   "DIN 934 (superseded; width across flats differs for M10 · M12 · M14 · M22 — check the difference in width across flats by standard)",
+   "KS B 1012 Hexagon nuts and hexagon thin nuts (cites KS B ISO 4033 · 4035, etc. — body text not checked)",
+   "JIS B 1181 (main body: same as the ISO dimensions per the foreword; table values not checked)"
+  ],
+  "mats": [
+   "Property class 8",
+   "Property class 10",
+   "Property class 12",
+   "A2-70",
+   "A4-80"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Black oxide (black oxide coating)",
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "Zinc flake",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "hnthin": {
+  "use": "Used where the load is not large, such as double-nut locking against loosening and position locking of adjusting screws.",
+  "notes": [
+   {
+    "t": "",
+    "d": "A thin nut (style 0) is a nut with low load capacity. The property classes are marked 04 and 05; where bolt load is carried, use a regular nut (ISO 4032)."
+   },
+   {
+    "t": "",
+    "d": "Used for double-nut locking against loosening and for position locking of adjusting screws."
+   },
+   {
+    "t": "",
+    "d": "DIN 439 B has the same height and differs only in width across flats for M10, M12, M14 and M22 (17 · 19 · 22 · 32 mm)."
+   },
+   {
+    "t": "",
+    "d": "For lines marked KS/JIS 'Type 3' (3種), substitute supply with this item is advised before quotation. They are not marked as the same standard."
+   },
+   {
+    "t": "",
+    "d": "Lines stating only 'jam nut' are sorted by thread: metric is this item, UNC is the inch jam nut, and an A194 grade means a heavy jam nut."
+   }
+  ],
+  "std": [
+   "ISO 4035 (chamfered, style 0) · ISO 4036 (unchamfered, product grade B)",
+   "DIN 439 B (chamfered) · DIN 439 A (unchamfered) — 4 sizes differ in width across flats",
+   "KS B 1012 Hexagon nuts and hexagon thin nuts (cites KS B ISO 4035)",
+   "JIS B 1181 3種 (annex type, not marked as the same)"
+  ],
+  "mats": [
+   "Property class 04",
+   "Property class 05",
+   "A2-035",
+   "A4-035"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Black oxide (black oxide coating)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "nyloc": {
+  "use": "The basic locknut for locations with vibration. The nylon ring at the top of the nut presses against the thread flanks to create the prevailing torque.",
+  "notes": [
+   {
+    "t": "",
+    "d": "DIN 985 · DIN 982 and ISO 10511 · ISO 7040 differ in height (example: M10 low type DIN 985 10 mm, ISO 10511 maximum 8.56 mm). Quotation is made with the dimensions of the standard stated."
+   },
+   {
+    "t": "",
+    "d": "For 'nylon nut' lines without a type (regular type or low type), we ask back."
+   },
+   {
+    "t": "",
+    "d": "Fit it with the nylon ring side facing up. Prevailing torque arises only when the bolt end passes completely through the ring."
+   },
+   {
+    "t": "",
+    "d": "A disassembled nylon nut generally has reduced prevailing torque, so replacing it with a new nut is recommended."
+   },
+   {
+    "t": "",
+    "d": "The nylon ring is weak at high temperature. For high-temperature areas, consider an all-metal locknut (service temperature is confirmed at quotation)."
+   },
+   {
+    "t": "",
+    "d": "For lines stating only 'lock nut', we ask back which it is: nylon, all-metal, thin nut or bearing lock nut."
+   }
+  ],
+  "std": [
+   "ISO 7040 (regular type, 2025 edition M3–M39, including stainless steel) · ISO 10511 (low type) · ISO 2320 (prevailing torque performance)",
+   "DIN 982 (regular type) · DIN 985 (low type) — height differs from ISO",
+   "KS B 1044 Prevailing torque type (non-metallic insert) steel hexagon nuts",
+   "ASME B18.16.6 Nylon Insert Locknuts (Inch) — quotation option"
+  ],
+  "mats": [
+   "Property class 8",
+   "Property class 10",
+   "Property class 04",
+   "Property class 05",
+   "A2-70",
+   "A4-80"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "capnut": {
+  "use": "Covers the thread end to protect hands and cables and to tidy the appearance. Less water enters from the closed side.",
+  "notes": [
+   {
+    "t": "Basis of dimensions",
+    "d": "Based on public technical data — only values on which 3 public dimension tables from different manufacturers and distributors agree are listed. Checking against the original standard documents is in progress."
+   },
+   {
+    "t": "",
+    "d": "The length by which the bolt protrudes from the nut must be shorter than the minimum thread depth t. If longer, it touches the cap and cannot be tightened all the way."
+   },
+   {
+    "t": "",
+    "d": "M10, M12, M14 and M22 are in circulation with two widths across flats (ISO 16 · 18 · 21 · 34, old standard 17 · 19 · 22 · 32). Lines that state a width across flats are quoted with that value."
+   },
+   {
+    "t": "",
+    "d": "The high type (DIN 1587) is the default. The low type (DIN 917) has a shallow thread depth, so the bolt protrusion is set shorter."
+   },
+   {
+    "t": "",
+    "d": "'Hex Head Cap Nut', 'Acorn Nut', domed cap nut (moja-neoteu) and blind nut (bongji-neoteu) are all treated as this item."
+   },
+   {
+    "t": "",
+    "d": "Nickel plating is for appearance and is not a surface treatment specified by the standard."
+   }
+  ],
+  "std": [
+   "DIN 1587 (high type, round cap) · DIN 917 (low type)",
+   "KS B 1026 Hexagon cap nuts (dimensions original not checked)",
+   "SAE J483 High and Low Crown (Blind, Acorn) Hex Nuts — inch quotation option"
+  ],
+  "mats": [
+   "Property class 6",
+   "A2-70",
+   "A4-80"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Nickel plating (decorative)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ihn": {
+  "use": "A general hex nut that pairs with inch-thread (UNC) bolts. Used for maintenance of US and inch-drawing equipment.",
+  "notes": [
+   {
+    "t": "Dimension table",
+    "d": "We will confirm from the standard document at quotation."
+   },
+   {
+    "t": "",
+    "d": "Even at the same diameter, UNC, UNF and 8UN do not fit each other. Please be sure to state the threads per inch."
+   },
+   {
+    "t": "",
+    "d": "The default material of B18.2.2 is ASTM A563 Grade A. SAE J995 Grade 5 and 8 are nuts with strength markings and are specified separately."
+   },
+   {
+    "t": "",
+    "d": "A jam nut (H1) is a thin nut that does not carry the full load. F594 jam and slotted nuts are only hardness tested."
+   },
+   {
+    "t": "",
+    "d": "Nuts for #2–3/8 machine screws are lower than general hex nuts, and some sizes have a different width across flats, so they are specified separately."
+   },
+   {
+    "t": "",
+    "d": "Misunderstanding is avoided if the designation is written in this order: product name, dimension standard, diameter, threads per inch, material standard and grade, surface treatment."
+   }
+  ],
+  "std": [
+   "ASME B18.2.2 (hex, jam and machine screw nuts)",
+   "ASTM A563 (carbon and alloy steel nuts, B18.2.2 default material Grade A) · ASTM F594 (stainless steel)",
+   "SAE J995 Grade 2 · 5 · 8"
+  ],
+  "mats": [
+   "SAE J995 Grade 5",
+   "SAE J995 Grade 8",
+   "ASTM A563 Grade A",
+   "ASTM F594 Group 1",
+   "ASTM F594 Group 2"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Yellow zinc (trivalent, ASTM F1941)",
+   "Uncoated (rust-preventive oil)",
+   "Untreated (stainless steel)",
+   "Hot-dip galvanizing (ASTM F2329, nut oversize tapped)"
+  ]
+ },
+ "hh": {
+  "use": "Used when replacing nuts of flange studs and high-temperature, high-pressure bolting separately, and when matching the nut grade of an overseas specification.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Plant nuts over 1 in use 8UN as the default. If UNC is needed, please state it in the order."
+   },
+   {
+    "t": "",
+    "d": "The width across flats of a heavy nut is larger than that of a general nut of the same diameter (example: 1/2 in heavy 7/8, 3/4 in heavy 1-1/4). Check the tool and bearing face."
+   },
+   {
+    "t": "",
+    "d": "If A194 Grade 4 is stated in an old specification, first check whether it can be supplied; if difficult, supply after approval of a Grade 7 substitution."
+   },
+   {
+    "t": "",
+    "d": "2HM and 7M are grades with a hardness upper limit (235–237 HB depending on the source) and are used for sour environment specifications."
+   },
+   {
+    "t": "",
+    "d": "For the mating nut of a low-temperature stud (A320 L7 family), order an impact-tested nut (marked L)."
+   },
+   {
+    "t": "",
+    "d": "Plating and coating are applied only when specified. Hot-dip galvanized nuts are tapped oversize after plating, so they are treated as a set with the stud."
+   }
+  ],
+  "std": [
+   "ASME B18.2.2 (heavy hex · heavy hex jam)",
+   "ASTM A194/A194M · ASTM A563 Grade DH (structural, anchor)"
+  ],
+  "mats": [
+   "ASTM A194 2H",
+   "ASTM A194 2HM",
+   "ASTM A194 7",
+   "ASTM A194 7M",
+   "ASTM A194 16",
+   "ASTM A194 8",
+   "ASTM A194 8M",
+   "ASTM A563 DH"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "PTFE coating",
+   "Hot-dip galvanizing (ASTM F2329, nut oversize tapped)",
+   "Zinc-nickel plating"
+  ]
+ },
+ "mhh": {
+  "use": "Used when buying high-temperature, high-pressure heavy nuts separately to pair with metric stud bolts (A193 B7, etc.).",
+  "notes": [
+   {
+    "t": "Dimension table",
+    "d": "We will confirm from the standard document at quotation."
+   },
+   {
+    "t": "",
+    "d": "Even for the same M20, a metric heavy nut has a larger width across flats than a regular hex nut (ISO 4032, 30 mm width across flats). The tool and bearing face differ, so check the width across flats and quote accordingly."
+   },
+   {
+    "t": "",
+    "d": "It differs from the structural large width across flats nut (ISO 4775) mainly in da, the wrench engagement height and whether the chamfer angle is specified (some table values are confirmed from the standard document at quotation)."
+   },
+   {
+    "t": "",
+    "d": "A194M nuts have metric coarse thread 6H. Fine threads (example: M48×3) are quoted separately."
+   }
+  ],
+  "std": [
+   "ISO 4775 (structural large width across flats nuts — the dimensional differences are only da, m′ and whether the chamfer angle is specified, B18.2.4.6M Appendix A)",
+   "ASME B18.2.4.6M (Metric Heavy Hex Nuts)",
+   "ASTM A194/A194M"
+  ],
+  "mats": [
+   "ASTM A194 2H",
+   "ASTM A194 2HM",
+   "ASTM A194 7",
+   "ASTM A194 7M",
+   "ASTM A194 16",
+   "ASTM A194 8",
+   "ASTM A194 8M"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "PTFE coating",
+   "Hot-dip galvanizing (ASTM F2329, nut oversize tapped)",
+   "Zinc-nickel plating"
+  ]
+ },
+ "allmetal": {
+  "use": "A locknut for high-temperature areas and chemical environments where a nylon ring cannot be used. The upper part of the nut is deformed to create the prevailing torque.",
+  "notes": [
+   {
+    "t": "",
+    "d": "ISO 7042 and DIN 980 differ in height (example: M12 ISO maximum 13.3 mm, DIN 12 mm). Quotation is made with the standard stated."
+   },
+   {
+    "t": "",
+    "d": "Fit it with the locking part (deformed top face) facing up."
+   },
+   {
+    "t": "",
+    "d": "Used in high-temperature areas where a nylon nut cannot be used. The service temperature is determined by the material and plating, so it is confirmed at quotation."
+   }
+  ],
+  "std": [
+   "ISO 7042 (high type, 2025 edition M5–M39) · ISO 7719 (regular type) · ISO 10513 (fine thread)",
+   "DIN 980 (height differs from ISO 7042)",
+   "KS B 1068 Mechanical properties and performance of prevailing torque type steel locknuts"
+  ],
+  "mats": [
+   "Property class 8",
+   "Property class 10",
+   "Property class 12",
+   "A2-70"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "flangenut": {
+  "use": "Used for fastening sheet metal and frames, with a wide bearing face that doubles as a washer. The serrated type has teeth on the bearing face that prevent loosening.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The width across flats of the M10 flange nut in ISO 4161 · DIN 6923 is 15 mm, which differs from a regular hex nut (16 mm)."
+   },
+   {
+    "t": "",
+    "d": "On the serrated type, the teeth on the bearing face bite into the mating surface to prevent loosening. It is generally not used on painted surfaces, thin plate or hardened washers."
+   },
+   {
+    "t": "",
+    "d": "For lines without a serration designation, we ask back."
+   }
+  ],
+  "std": [
+   "ISO 4161:2012 (style 2, coarse thread M5–M20)",
+   "DIN 6923 (→ ISO 4161 / EN 1661)",
+   "KS B 1043 Hexagon nuts with flange",
+   "ASME B18.2.2 (hex flange · large hex flange) · ASME B18.16.4 (serrated flange locknuts)",
+   "EN 1661"
+  ],
+  "mats": [
+   "Property class 8",
+   "Property class 10",
+   "A2-70"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "castle": {
+  "use": "Paired with a split pin (cotter pin) to keep the nut from coming off at rotating parts and link pins.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The split pin size is set for each nut nominal size (example: M20 → 4×36). The pin hole diameter and position on the bolt side are confirmed from the drawing or the relevant bolt standard."
+   },
+   {
+    "t": "",
+    "d": "If the slot and pin hole do not line up, tighten further to align them. Aligning by loosening reduces the clamp force."
+   },
+   {
+    "t": "",
+    "d": "For M10, M12 and M14, products with DIN width across flats (17 · 19 · 22) and ISO width across flats (16 · 18 · 21) are both in circulation."
+   }
+  ],
+  "std": [
+   "ISO 7035 · 7036 family (equivalent to DIN 935 — original not checked)",
+   "DIN 935 (regular) · DIN 979 (low type)",
+   "KS B 1015 Hexagon slotted nuts",
+   "ASME B18.2.2 (hex slotted · thick slotted · heavy slotted)"
+  ],
+  "mats": [
+   "Property class 8",
+   "Property class 10",
+   "A2-70",
+   "ASTM A563 Grade A",
+   "SAE J995 Grade 5"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)",
+   "Uncoated (rust-preventive oil)"
+  ]
+ },
+ "wing": {
+  "use": "Used on covers, jigs and inspection openings that are loosened and tightened often by hand without tools.",
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a nut tightened by hand. It is not used for fastening that must be tightened to a specified torque."
+   },
+   {
+    "t": "",
+    "d": "Inch wing nuts (ASME B18.6.9) come in several wing shapes, so the type is confirmed before quotation."
+   }
+  ],
+  "std": [
+   "DIN 315 (round wings, German type)",
+   "KS B 1014 Wing nuts",
+   "ASME B18.6.9 Wing Nuts (inch, quotation)"
+  ],
+  "mats": [
+   "Steel (no property class in the standard)",
+   "A2-70",
+   "A4-80"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "eyenut": {
+  "use": "A ring nut fitted on the end of a stud or threaded rod to lift equipment.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Lifting eye nuts differ in allowable load by standard and cannot be interchanged. Quotation is made after confirming the standard and allowable load."
+   },
+   {
+    "t": "",
+    "d": "The vertical load in the table is the value for a straight lift with 1 nut. If lifted at an angle, the allowable load drops greatly."
+   },
+   {
+    "t": "",
+    "d": "The mating bolt or stud must engage fully, by the nut thread length."
+   }
+  ],
+  "std": [
+   "DIN 582 (current 2024-05 edition; table values are based on the 2018 edition)",
+   "KS B 1034 Eye nuts (dimensions and loads original not checked)"
+  ],
+  "mats": [
+   "C15E",
+   "A2-70"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "hn2": {
+  "notes": [
+   {
+    "t": "",
+    "d": "A style 2 nut is taller than a regular nut (style 1). If the specification designates ISO 4033, it is not substituted with style 1."
+   }
+  ],
+  "std": [
+   "ISO 4033 (2023 edition range M5–M39, ISO web catalogue)",
+   "KS B ISO 4033 (cited by KS B 1012)"
+  ]
+ },
+ "sqnut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "For inch square nuts, B18.2.2 sets A563 Grade A or SAE J995 Grade 2 (square only) as the default material."
+   }
+  ],
+  "std": [
+   "DIN 557 (product grade C) · DIN 562 (thin type)",
+   "KS B 1013 Square (4-sided) nuts",
+   "ASME B18.2.2 (square · heavy square)"
+  ]
+ },
+ "weldnut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "Weld nuts are hard to weld if plated, so they are normally supplied bare. Painting or plating after welding is done on the fabrication side."
+   }
+  ],
+  "std": [
+   "ISO 21670 (flange type, formerly DIN 977 — equivalent original not checked)",
+   "DIN 929 (hex) · DIN 928 (square)",
+   "KS B 1058 Weld nuts"
+  ]
+ },
+ "fixturenut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "A nut for jigs and machine tables that pairs with T-slot bolts. It is taller than a general hex nut, so the thread is damaged less by frequent loosening and tightening."
+   }
+  ],
+  "std": [
+   "DIN 6330 (height 1.5d) · DIN 6331 (with collar)",
+   "KS B 1035 Hexagon nuts for jigs and fixtures"
+  ]
+ },
+ "cagenut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "It must match the plate thickness and the hole (square or round) size to fit. At quotation, please also tell us the plate thickness and hole size."
+   },
+   {
+    "t": "",
+    "d": "It is separated as a variant so that the engine does not read it as a general hex nut."
+   }
+  ],
+  "std": [
+   "Manufacturer specification (rack square hole · plate thickness family)"
+  ]
+ },
+ "profilenut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a different item from the T-slot nut for machine tool tables (DIN 508). Both dimensions and prices differ, so they are not mixed."
+   },
+   {
+    "t": "",
+    "d": "If you state the profile size and slot width, we quote the matching nut. For lines stating only 'T nut', we ask back."
+   }
+  ],
+  "std": [
+   "Manufacturer specification (profile size · slot width family)"
+  ]
+ },
+ "oemnut": {
+  "notes": [
+   {
+    "t": "",
+    "d": "As this is an equipment-drawing item, it is not replaced with a standard nut. If you send the drawing, we quote it as made to order; if there is none, it is advised as an item not supplied."
+   },
+   {
+    "t": "",
+    "d": "Impeller and sleeve nuts have conditions that differ by drawing, such as left-hand thread, cap type, locking slot, and the same material as the casing."
+   }
+  ],
+  "std": [
+   "Equipment manufacturer drawing"
+  ]
+ },
+ "pw": {
+  "use": "The most common washer, placed under a bolt head or nut to spread the pressing force widely and prevent damage to the bearing surface.",
+  "notes": [
+   {
+    "t": "",
+    "d": "A plain washer spreads the pressing force under a bolt head or nut widely and prevents the bearing surface from being dented or scratched."
+   },
+   {
+    "t": "",
+    "d": "A 200 HV washer is used up to 8.8 bolts and property class 8 nuts; for 10.9 bolts (property class 10 nuts), a 300 HV washer is used."
+   },
+   {
+    "t": "",
+    "d": "DIN 125 A has the same dimensions as ISO 7089, and the chamfered DIN 125 B has the same dimensions as ISO 7090 (M5 and above). Only the hardness designation differs."
+   },
+   {
+    "t": "",
+    "d": "300 HV washers can also be electro-galvanized (ISO 4042: baking not required). For places where the washer bends, such as slotted or large holes, baking is specified at the time of order."
+   },
+   {
+    "t": "",
+    "d": "When clamping soft material (aluminum, wood) or when the hole is large, consider a large washer (ISO 7093-1)."
+   },
+   {
+    "t": "",
+    "d": "The dimensions of products marked KS B 1326 have not yet been checked against the original. If the outside diameter is important, please also state a dimensional standard such as ISO 7089."
+   }
+  ],
+  "std": [
+   "ISO 7089:2000 (chamfered type ISO 7090:2000) — 3rd edition revision draft in progress (original not checked)",
+   "DIN 125-1 A (chamfered type DIN 125-1 B) — replaced by ISO, same dimensions",
+   "KS B 1326 (plain washers) — dimensions original not checked",
+   "JIS B 1256 — same as the ISO dimensions per the foreword (table values not checked)"
+  ],
+  "mats": [
+   "Steel 200 HV",
+   "Steel 300 HV (quenched and tempered)",
+   "Stainless steel A2 (304 family)",
+   "Stainless steel A4 (316 family)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Hot-dip galvanizing",
+   "Black oxide (black oxide coating)",
+   "Zinc flake",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "pwl": {
+  "use": "A washer whose outside diameter is about 3 times the bolt diameter. Used to cover slotted or large holes and when clamping soft material such as aluminum, resin or wood.",
+  "notes": [
+   {
+    "t": "",
+    "d": "A large washer has an outside diameter of about 3 times the bolt diameter. It covers slotted or large holes and prevents soft material from being dented."
+   },
+   {
+    "t": "",
+    "d": "If the hole is large, the washer may bend. ISO 7093-1 also says to check that the thickness is sufficient when used on large holes."
+   },
+   {
+    "t": "",
+    "d": "Most domestic products are marked DIN 9021. The M5 thickness (1.2 vs 1.0) and the hole diameters of M18, M20 and M24 differ from ISO 7093-1, so confirm which standard this designation refers to."
+   },
+   {
+    "t": "",
+    "d": "If written like \"M16×50×3\", 50 is the outside diameter and 3 is the thickness."
+   },
+   {
+    "t": "",
+    "d": "Inch fender washers (example: 3/8 × 1-1/2) are handled as inch plain washers (ASME B18.21.1)."
+   }
+  ],
+  "std": [
+   "ISO 7093-1:2000 (product grade A) · ISO 7093-2:2000 (grade C, 100 HV)",
+   "DIN 9021 (advised as replaced by ISO 7093, but some nominal dimensions differ)"
+  ],
+  "mats": [
+   "Steel 200 HV",
+   "Steel 300 HV (quenched and tempered)",
+   "Stainless steel A2 (304 family)",
+   "Stainless steel A4 (316 family)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black zinc (trivalent)",
+   "Hot-dip galvanizing",
+   "Black oxide (black oxide coating)",
+   "Zinc flake",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "sw": {
+  "use": "A spiral-split spring ring that serves as an auxiliary loosening preventer in general fastening with little vibration.",
+  "notes": [
+   {
+    "t": "",
+    "d": "A spring washer is an auxiliary loosening preventer for general fastening with little vibration. When a bolt of 8.8 or higher is tightened sufficiently, the washer is fully flattened and an effect can hardly be expected."
+   },
+   {
+    "t": "",
+    "d": "DIN 127 was withdrawn without a successor standard (no reason indicated), but it is still widely distributed with these dimensions."
+   },
+   {
+    "t": "",
+    "d": "For places with large vibration, also consider conical spring washers (DIN 6796), wedge-type washers, thread-locking compound and locknuts."
+   },
+   {
+    "t": "",
+    "d": "Electro-galvanizing a spring steel washer carries a risk of hydrogen embrittlement. For critical fastening, black oxide, mechanical zinc or stainless steel is recommended."
+   },
+   {
+    "t": "",
+    "d": "Dimensions are based on DIN 127 B and may differ slightly from products marked KS B 1324."
+   }
+  ],
+  "std": [
+   "DIN 127 B (known to be withdrawn without a replacement standard — the withdrawal year differs by source so the original was not checked; continues to be distributed on a dimensional basis)",
+   "KS B 1324 (spring washers) — some dimensions differ from DIN 127 B (original not checked)",
+   "JIS B 1251 (ばね座金) — original not checked"
+  ],
+  "mats": [
+   "Spring steel (heat-treated)",
+   "Stainless steel A2",
+   "Stainless steel A4 (316 family)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black oxide (black oxide coating)",
+   "Untreated (stainless steel)",
+   "Zinc flake"
+  ]
+ },
+ "ifw": {
+  "use": "A hardened (38–45 HRC) washer used together with A325 and A490 structural bolts, A193 B7 studs and anchor bolts.",
+  "notes": [
+   {
+    "t": "Dimension table",
+    "d": "We will confirm from the standard document at quotation."
+   },
+   {
+    "t": "",
+    "d": "The F436 washer is a through-hardened washer (38–45 HRC). Hot-dip galvanized products have a wider range of 26–45 HRC."
+   },
+   {
+    "t": "",
+    "d": "When tightening high-strength bolts, place it on the nut side (the side that rotates) so that the bearing surface is not dented."
+   },
+   {
+    "t": "",
+    "d": "A galvanized structural bolt set is plated in the same way for the bolt, nut and washer and supplied as one lot."
+   },
+   {
+    "t": "",
+    "d": "\"1 1/2\" is 1-1/2 inch. Check so that it is not read as 1/2 inch."
+   },
+   {
+    "t": "",
+    "d": "Square beveled washers (1:6) for beam and channel slopes are handled under the beveled washer item, and metric F436M (M12–M100) is received by quotation."
+   }
+  ],
+  "std": [
+   "Dimensions are per ASTM F436 (hardened plain washers)",
+   "ASTM F436/F436M (the dimension table is confirmed from the standard document at quotation)"
+  ],
+  "mats": [
+   "Hardened carbon steel Type 1",
+   "Weathering steel Type 3",
+   "Metric hardened washer Type 1"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Mechanical zinc (ASTM B695 Class 55)",
+   "Zinc flake"
+  ]
+ },
+ "ilw": {
+  "use": "The most common inch spring lock washer for maintenance of US-made equipment. The former name \"Medium\" is now \"Regular\".",
+  "notes": [
+   {
+    "t": "Dimension table",
+    "d": "We will confirm from the standard document at quotation."
+   },
+   {
+    "t": "",
+    "d": "\"Medium\" and \"Regular\" are the same thing. The standard changed the name to Regular (Extra Heavy → Extra Duty)."
+   },
+   {
+    "t": "",
+    "d": "Inside the counterbore of a socket head bolt, use the High Collar type, which has a small outside diameter. It is received by quotation."
+   },
+   {
+    "t": "",
+    "d": "The standard does not recommend electro-galvanizing carbon steel lock washers because of hydrogen embrittlement. Stainless steel or mechanical zinc is recommended."
+   },
+   {
+    "t": "",
+    "d": "Stainless steel lock washers have a lower hardness range than carbon steel (35–43 HRC, 32–43 HRC above 5/8)."
+   }
+  ],
+  "std": [
+   "ASME B18.21.1 (Lock Washers)"
+  ],
+  "mats": [
+   "Carbon spring steel (heat-treated)",
+   "18-8 stainless steel (302–305)",
+   "316 stainless steel"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)",
+   "Uncoated (rust-preventive oil)",
+   "Mechanical zinc (ASTM B695 Class 55)"
+  ]
+ },
+ "pws": {
+  "use": "A washer with a small outside diameter. Used inside the counterbore of socket head bolts and cheese head screws and in narrow spaces.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Used when the counterbore diameter is small and a regular plain washer does not fit."
+   },
+   {
+    "t": "",
+    "d": "For 10.9 and 12.9 socket head bolts, choose a 300 HV washer."
+   },
+   {
+    "t": "",
+    "d": "DIN 433 is mostly the same as ISO 7092, but the M18 thickness (2.5 vs 3) and the M36 outside diameter appear differently in public tables."
+   }
+  ],
+  "std": [
+   "ISO 7092:2000",
+   "DIN 433 (M18 thickness and M36 outside diameter differ from ISO — public table, original not checked)"
+  ],
+  "mats": [
+   "Steel 200 HV",
+   "Steel 300 HV (quenched and tempered)",
+   "Stainless steel A2 (304 family)",
+   "Stainless steel A4 (316 family)"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black oxide (black oxide coating)",
+   "Zinc flake",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "thickw": {
+  "use": "A washer thicker and wider than a regular plain washer. Used for high-load bearing faces, slotted holes, and clamp fastening of jigs and fixtures.",
+  "notes": [
+   {
+    "t": "",
+    "d": "DIN 7349 is a steel washer thicker than a regular plain washer, and DIN 6340 is a hardened washer (350–430 HV) for jig and fixture clamps."
+   },
+   {
+    "t": "",
+    "d": "When tightening a high-strength socket head bolt over soft material or a slotted hole, consider this item if a regular plain washer bends."
+   },
+   {
+    "t": "",
+    "d": "It has not yet been checked whether KS B 1327 (washers for jigs and tools) has the same dimensions as DIN 6340."
+   }
+  ],
+  "std": [
+   "DIN 7349 · DIN 6340 (whether still valid — original not checked)",
+   "KS B 1327 (washers for jigs and tools) — dimensional correspondence to DIN 6340 not confirmed"
+  ],
+  "mats": [
+   "Steel (DIN 7349)",
+   "Stainless steel A2",
+   "Hardened steel 350–430 HV30"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Black oxide (black oxide coating)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ipw": {
+  "use": "An inch plain washer for general fastening of US-made equipment. Commonly called SAE (narrow type), USS (wide type) and fender washer.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The commonly called SAE washer is the Type A narrow series (N), and the USS washer is the Type A wide series (W). There are no separate SAE or USS standards."
+   },
+   {
+    "t": "",
+    "d": "An unhardened plain washer without a stated standard defaults to Type A narrow (ASTM F844)."
+   },
+   {
+    "t": "",
+    "d": "Fender washers come in several outside diameters for the same inside diameter, so please also state the outside diameter (example: 3/8 × 1-1/2)."
+   },
+   {
+    "t": "",
+    "d": "For structural high-strength bolts, use a hardened washer (ASTM F436), not this item."
+   }
+  ],
+  "std": [
+   "ASME B18.21.1 (Plain Washers Type A · B, fender) — merged B18.22.1",
+   "ASTM F844 (unhardened steel plain washers)"
+  ],
+  "mats": [
+   "Low-carbon steel, unhardened",
+   "Stainless steel (300 series)"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "White zinc (trivalent)",
+   "Mechanical zinc (ASTM B695 Class 55)",
+   "Hot-dip galvanizing (ASTM F2329)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "tooth": {
+  "use": "The teeth bite into the bearing surface and the screw head to reduce loosening, and pierce the coating to make a grounding contact. Used for electrical equipment and control panel fastening.",
+  "notes": [
+   {
+    "t": "",
+    "d": "External teeth (A) are outside teeth and internal teeth (J) are inside teeth, used for screws with small heads; the countersunk type (V) is used under countersunk screws."
+   },
+   {
+    "t": "",
+    "d": "For grounding on painted surfaces, a toothed washer whose teeth pierce the coating is commonly specified. Reuse reduces the effect."
+   },
+   {
+    "t": "",
+    "d": "The loosening prevention effect on high-strength bolts is not large. For vibrating parts, also consider other methods."
+   }
+  ],
+  "std": [
+   "DIN 6797 (A · J · V) · DIN 6798 (A · J · V) — whether withdrawn, original not checked",
+   "KS B 1325 (toothed washers) — dimensions original not checked",
+   "ASME B18.21.1 (Tooth Lock Washers, Type A · B)"
+  ],
+  "mats": [
+   "Carbon steel for springs",
+   "Stainless steel A2"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)",
+   "Black oxide (black oxide coating)"
+  ]
+ },
+ "conical": {
+  "use": "A conical spring washer for maintaining bolt axial force. It compensates for the drop in axial force when the joint settles (subsides).",
+  "notes": [
+   {
+    "t": "",
+    "d": "In high-strength bolt fastening, spring force compensates for the loss of axial force when the bearing surface settles."
+   },
+   {
+    "t": "",
+    "d": "Place it so that the outer edge touches the bearing surface and the inner edge touches the bolt head or nut (general fastening practice)."
+   },
+   {
+    "t": "",
+    "d": "Unlike spring washers (DIN 127), it is described as a standard still used for high-strength bolts (original not checked)."
+   },
+   {
+    "t": "",
+    "d": "It is a different item from the disc spring for heavily loaded machine elements (EN 16983)."
+   }
+  ],
+  "std": [
+   "DIN 6796 (spring steel, for fastening 8.8–10.9 bolts — as described in public sources)",
+   "KS B 1329 (conical spring washers) — dimensional correspondence to DIN 6796 not confirmed"
+  ],
+  "mats": [
+   "Spring steel (heat-treated)",
+   "Stainless steel (for springs)"
+  ],
+  "fins": [
+   "Phosphate coating + rust-preventive oil",
+   "Black oxide (black oxide coating)",
+   "Zinc flake",
+   "Mechanical zinc (ASTM B695 Class 55)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "disc": {
+  "use": "A conical spring plate. Stacked for live loading of mechanical seals and valve packing, for maintaining bolt preload, and for shock absorption.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Series A is thick with a large load, and toward C it is thinner with a larger deflection (De/t about 18 · 28 · 40)."
+   },
+   {
+    "t": "",
+    "d": "Stacking several plates in the same direction (parallel) increases the load, and stacking them facing each other (series) increases the deflection."
+   },
+   {
+    "t": "",
+    "d": "Above 6 mm thickness (group 3), the same load is obtained by providing a contact flat and reducing the thickness (t′)."
+   },
+   {
+    "t": "",
+    "d": "It is a different item from the conical spring washer (DIN 6796) used against bolt loosening."
+   },
+   {
+    "t": "",
+    "d": "The nominal load is the value at 0.75 h0 deflection. Load calculation follows EN 16984 (formerly DIN 2092)."
+   }
+  ],
+  "std": [
+   "DIN 2093 (replaced by EN 16983)",
+   "EN 16983:2017 (dimensions and requirements) · calculation EN 16984 (formerly DIN 2092)"
+  ],
+  "mats": [
+   "Chromium-vanadium spring steel 51CrV4",
+   "Carbon spring steel (C75S, etc.)",
+   "Stainless spring steel X10CrNi18-8"
+  ],
+  "fins": [
+   "Phosphate coating + rust-preventive oil",
+   "Mechanical zinc (ASTM B695 Class 55)",
+   "Untreated (bare)"
+  ]
+ },
+ "taperw": {
+  "use": "A wedge-shaped square washer that levels the inner face of a sloped section flange so that the bolt and nut sit perpendicular.",
+  "notes": [
+   {
+    "t": "",
+    "d": "For channels (U), use DIN 434, whose flange inner slope is 8 %; for I-beams, use DIN 435, whose slope is 14 %. Be sure to state the section type."
+   },
+   {
+    "t": "",
+    "d": "Place it with the thick side facing the flange tip (outside) to make the bolt bearing surface horizontal."
+   },
+   {
+    "t": "",
+    "d": "For US standard beams and channels, use the ASTM F436 square beveled washer (1:6)."
+   }
+  ],
+  "std": [
+   "DIN 434 (U sections) · DIN 435 (I sections)",
+   "ASTM F436 (square and rectangular beveled washers, for US standard beams and channels)"
+  ],
+  "mats": [
+   "Steel (beveled washer)",
+   "Stainless steel A2",
+   "Hardened steel square bevel (1:6)"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc (trivalent)",
+   "Hot-dip galvanizing",
+   "Untreated (stainless steel)",
+   "Uncoated (rust-preventive oil)",
+   "Hot-dip galvanizing (ASTM F2329)"
+  ]
+ },
+ "pwxl": {
+  "use": "A grade C washer (100 HV) with a very large outside diameter, used for timber-structure bolt bearings.",
+  "notes": [
+   {
+    "t": "",
+    "d": "This is a grade C (100 HV) washer, for bolts of 6.8 and below and nuts of property class 6 and below."
+   },
+   {
+    "t": "",
+    "d": "The hole is large (example: 13.5 for M12), so it does not replace a plain washer for mechanical fastening."
+   }
+  ],
+  "std": [
+   "ISO 7094:2000 (grade C, 100 HV, M5–M36)",
+   "DIN 440 R (same dimensions as ISO 7094) · DIN 440 V (square hole)"
+  ],
+  "mats": [
+   "Steel 100 HV (product grade C)"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc (trivalent)",
+   "Hot-dip galvanizing"
+  ]
+ },
+ "wedgelock": {
+  "use": "A product that prevents loosening due to vibration by using a pair of washers, each with an inclined cam on the inner face and teeth on the outer face.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Fit the two with the cam faces facing each other. Using only one has no effect."
+   },
+   {
+    "t": "",
+    "d": "If an equipment drawing specifies a particular manufacturer's product, replace it only with the same product."
+   }
+  ],
+  "std": [
+   "Manufacturer specification"
+  ],
+  "mats": [
+   "Case-hardened steel",
+   "Stainless steel"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Zinc flake",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "sqw": {
+  "use": "A washer made by drilling a hole in a thick square steel plate. Used to cover the large holes of foundation anchor bolts and for timber-structure bearings.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Foundation anchor bolt holes are often drilled large as a construction allowance, so they are covered with a thick square washer. The size follows the drawing."
+   },
+   {
+    "t": "",
+    "d": "If there is a bevel expression (slope, taper, BEVEL), it is handled as a beveled washer."
+   }
+  ],
+  "std": [
+   "DIN 436 (square washers for timber structures)",
+   "ASTM F844 (includes round and other shaped unhardened washers)"
+  ],
+  "mats": [
+   "General structural steel plate"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Hot-dip galvanizing",
+   "White zinc (trivalent)"
+  ]
+ },
+ "sphw": {
+  "use": "A convex spherical washer (C) is paired with a concave conical seat (D · G) so that the bolt does not bend even on an inclined bearing face.",
+  "notes": [
+   {
+    "t": "",
+    "d": "C (spherical) and D or G (conical seat) are used as a set. Inserting only one cannot correct the inclination."
+   },
+   {
+    "t": "",
+    "d": "The G type has a large seat outside diameter and is used for members with large holes."
+   }
+  ],
+  "std": [
+   "DIN 6319 (C · D · G)"
+  ],
+  "mats": [
+   "Hardened steel"
+  ],
+  "fins": [
+   "Black oxide (black oxide coating)",
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "dti": {
+  "use": "A washer with protrusions, placed under the bolt head or a hardened washer. The gap to which the protrusions are compressed is used to confirm that a high-strength bolt has reached its minimum axial force.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The type must match the bolt grade: A325 Type 1 → 325, A490 Type 1 → 490, weathering (Type 3) bolts → 325-3 · 490-3."
+   },
+   {
+    "t": "",
+    "d": "Field inspection is judged by the number of protrusions into which the gap gauge does not fit (the acceptance criteria follow the structural connection specification)."
+   },
+   {
+    "t": "",
+    "d": "For the 490 type, the standard has no gap criterion for mechanical zinc, so confirm the plating specification."
+   }
+  ],
+  "std": [
+   "Dimensions are per ASME B18.2.6 (original not held)",
+   "ASTM F959 (Type 325 · 490, etc., confirmed from the standard document at quotation)"
+  ],
+  "mats": [
+   "DTI Type 325",
+   "DTI Type 490"
+  ],
+  "fins": [
+   "Uncoated (rust-preventive oil)",
+   "Mechanical zinc (ASTM B695 Class 55)"
+  ]
+ },
+ "dowel-h": {
+  "use": "A hardened ground pin pressed in to align two parts accurately, as on casings, bearing housings and jigs.",
+  "notes": [
+   {
+    "t": "",
+    "d": "A dowel pin is a pin that aligns two parts. The bolts carry the clamping force, and the pin only fixes the position."
+   },
+   {
+    "t": "",
+    "d": "The diameter tolerance is m6 (slightly on the large side), so it is pressed into the hole. The hole tolerance follows the design drawing."
+   },
+   {
+    "t": "",
+    "d": "Type A is a through-hardened pin and Type B is a surface-hardened pin. If not stated separately, it is quoted as Type A."
+   },
+   {
+    "t": "",
+    "d": "A pin placed in a blind hole cannot be pulled out, so where disassembly is needed, choose a parallel pin with internal thread."
+   },
+   {
+    "t": "",
+    "d": "Electroplating a hardened pin carries a risk of hydrogen embrittlement, so the default is untreated (rust-preventive oil)."
+   },
+   {
+    "t": "",
+    "d": "If stainless steel is needed, the martensitic type (C1) is the hardened dowel. 304 and 316 belong to the unhardened parallel pin (ISO 2338)."
+   }
+  ],
+  "std": [
+   "ISO 8734:1997",
+   "DIN 6325 (replaced by DIN EN ISO 8734)",
+   "KS B ISO 8734 (fitting pins)"
+  ],
+  "mats": [
+   "Type A through-hardened",
+   "Type B surface-hardened",
+   "C1"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "dowel-u": {
+  "use": "An unhardened parallel pin used for general positioning, hinge shafts and fixing. Stainless steel products are widely used.",
+  "notes": [
+   {
+    "t": "",
+    "d": "An unhardened parallel pin is softer than a hardened dowel pin but is easy to machine and replace. For positioning under large loads, use a hardened dowel pin."
+   },
+   {
+    "t": "",
+    "d": "Choose the diameter tolerance from m6 (press fit) and h8 (looser side). If not stated, it is quoted as m6 and we will inform you."
+   },
+   {
+    "t": "",
+    "d": "The stainless steel material in the standard is A1 (303 family). If 304 is specified, it is handled as an agreed material."
+   },
+   {
+    "t": "",
+    "d": "Steel pins can be chosen with black oxide, zinc or phosphate coating. The tolerance is the dimension before coating."
+   }
+  ],
+  "std": [
+   "ISO 2338:1997",
+   "DIN 7 (replaced by DIN EN ISO 2338)",
+   "KS B ISO 2338 (parallel pins)"
+  ],
+  "mats": [
+   "St",
+   "A1",
+   "A2 (agreed material)"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Black oxide (black oxide coating)",
+   "White zinc (trivalent)",
+   "Phosphate coating + rust-preventive oil",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "dowel-it": {
+  "use": "A dowel pin for blind holes. A pulling bolt can be screwed into the internal thread at the end to disassemble it.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Used where the back of the pin is closed, such as split casings and bearing housings. When disassembling, a bolt is screwed into the internal thread to pull it out."
+   },
+   {
+    "t": "",
+    "d": "The hardened type (ISO 8735) has a round crown at one end, and the unhardened type (ISO 8733) is chamfered at both ends."
+   },
+   {
+    "t": "",
+    "d": "For d1 12 mm the internal thread is M6, and for 16 mm it is M8. The internal thread nominal size may differ from the taper pin (ISO 8736), so match the pulling tool."
+   },
+   {
+    "t": "",
+    "d": "If hardening is not stated, it is quoted as the hardened type and confirmation is requested."
+   }
+  ],
+  "std": [
+   "ISO 8735:1997 (hardened) · ISO 8733:1997 (unhardened)",
+   "DIN 7979 (replaced by DIN EN ISO 8733 · 8735)",
+   "KS B 1309 (parallel pins with internal thread)"
+  ],
+  "mats": [
+   "Type A through-hardened",
+   "Type B surface-hardened",
+   "C1",
+   "St",
+   "A1"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Black oxide (black oxide coating)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "taper": {
+  "use": "A pin that aligns position with a 1:50 taper. It is driven into a reamed hole and knocked out from the large end, so it is used for fits that are disassembled many times.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The nominal diameter of a taper pin is the small end diameter. The large end becomes 1 mm thicker for every 50 mm of length (1:50)."
+   },
+   {
+    "t": "",
+    "d": "The hole is machined through both parts together with a taper reamer. The pin is driven in from the large end and knocked out from the small end."
+   },
+   {
+    "t": "",
+    "d": "Type A is ground (Ra 0.8 µm) and Type B is turned (Ra 3.2 µm). If not stated, it is quoted as Type A."
+   },
+   {
+    "t": "",
+    "d": "For blind holes or places with frequent repeated disassembly, consider threaded taper pins (internal thread, external thread)."
+   }
+  ],
+  "std": [
+   "ISO 2339:1986",
+   "DIN 1 (replaced by DIN EN 22339)",
+   "KS B 1322 (taper pins)"
+  ],
+  "mats": [
+   "St",
+   "A2 (agreed material)"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Black oxide (black oxide coating)",
+   "White zinc (trivalent)",
+   "Phosphate coating + rust-preventive oil",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "spring-sl": {
+  "use": "A tubular pin with a longitudinal slot. It is slightly thicker than the hole, so once driven in it clamps itself and does not come out. The most common choice for fixing levers and shafts.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The nominal size of a spring pin is the diameter of the hole it fits. The hole is drilled to the nominal diameter with tolerance H12."
+   },
+   {
+    "t": "",
+    "d": "The heavy duty type (ISO 8752) is thicker and has a larger shear load, and the light duty type (ISO 13337) is thinner. For ISO 13337, the nominal diameters are set so that pins of different diameters can be nested inside one another or combined with ISO 8752 pins."
+   },
+   {
+    "t": "",
+    "d": "Because of the risk of hydrogen embrittlement, spring pins are by default not plated. If corrosion is a concern, choose stainless steel."
+   },
+   {
+    "t": "",
+    "d": "Austenitic stainless steel pins have no shear load values in the standard. If the load is important, use steel or martensitic stainless steel."
+   },
+   {
+    "t": "",
+    "d": "If only \"spring pin\" is stated, it is quoted as heavy duty."
+   }
+  ],
+  "std": [
+   "ISO 8752:2009 (heavy duty) · ISO 13337:2009 (light duty)",
+   "DIN 1481 (→ ISO 8752) · DIN 7346 (→ ISO 13337)",
+   "KS B ISO 8752 (spring-type straight pins — slotted, heavy duty) · KS B ISO 13337 (slotted, light duty)"
+  ],
+  "mats": [
+   "St",
+   "A",
+   "C"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "cotter": {
+  "use": "A pin inserted into the hole of a castle nut or clevis pin, with its legs spread to prevent it from coming off.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The nominal size of a split pin (cotter pin) is the diameter of the hole it fits, not the pin diameter. The actual pin is slightly thinner than the nominal size."
+   },
+   {
+    "t": "",
+    "d": "The length l is from under the eye to the end of the short leg. Choose it by adding the allowance for passing through the bolt or pin and spreading the legs."
+   },
+   {
+    "t": "",
+    "d": "The nominal size can be chosen from \"matching bolt / clevis pin diameter\" in the table. If vibration or alternating load applies, one size larger is recommended."
+   },
+   {
+    "t": "",
+    "d": "As a rule, a split pin that has been spread and straightened once is not reused."
+   },
+   {
+    "t": "",
+    "d": "Inch split pins (ASME B18.8.1) have a different nominal size system from metric. They are received by quotation with reference to the inch dimension table."
+   }
+  ],
+  "std": [
+   "ISO 1234:1997",
+   "DIN 94 (replaced by DIN EN ISO 1234)",
+   "KS B ISO 1234 (split pins, ISO 1234:1997 IDT)",
+   "ASME B18.8.1 (Clevis Pins and Cotter Pins, inch)"
+  ],
+  "mats": [
+   "St",
+   "A",
+   "CuZn"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "taper-th": {
+  "use": "A taper fitting pin for blind holes (internal thread type) or places where it must be pulled out with a nut (external thread type). Used for maintenance of horizontally split casings.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The internal thread type is pulled out by screwing a pulling bolt into the internal thread at the large end. It is for blind holes."
+   },
+   {
+    "t": "",
+    "d": "The external thread type is pulled out by turning a nut on the thread at the small end, so it is well suited to through holes."
+   },
+   {
+    "t": "",
+    "d": "Even for the same nominal size, the internal thread of ISO 8736 may differ from that of the parallel pin (ISO 8735) (example: d1 12 → M8)."
+   }
+  ],
+  "std": [
+   "ISO 8736:1986 (internal thread) · ISO 8737:1986 (external thread)",
+   "DIN 7978 (→ ISO 8736) · DIN 7977 (→ ISO 8737) · DIN 258 (original not checked)",
+   "KS B 1308 (threaded taper pins)"
+  ],
+  "mats": [
+   "St"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Black oxide (black oxide coating)",
+   "White zinc (trivalent)",
+   "Phosphate coating + rust-preventive oil"
+  ]
+ },
+ "spring-co": {
+  "use": "A spring pin made by winding thin plate more than 2 turns. It is stronger against shock and fatigue than the slotted type and causes less damage to the hole.",
+  "notes": [
+   {
+    "t": "",
+    "d": "When a coiled spring pin is driven in, the whole wound plate contracts evenly, so it damages the hole less."
+   },
+   {
+    "t": "",
+    "d": "The plate thickness differs by load class (standard, medium, light). Choose the light duty for soft mating material and the medium duty for hardened mating material."
+   }
+  ],
+  "std": [
+   "ISO 8750:2007 (standard duty) · ISO 8748:2007 (medium duty) · ISO 8751 (light duty)",
+   "DIN 7343 (→ ISO 8750) · DIN 7344 (→ ISO 8748)",
+   "KS B ISO 8750 (spring-type straight pins — coiled, standard duty) · KS B ISO 8751 (light duty) · KS B 1345 (spiral pins)"
+  ],
+  "mats": [
+   "St",
+   "A",
+   "C"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "clevis": {
+  "use": "A shaft pin connecting links, actuators and clevises. A split pin or R pin is inserted in the end hole to prevent it from coming off.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The split pin hole diameter of a clevis pin is the same as the matching split pin nominal size (example: d 20 → split pin 5)."
+   },
+   {
+    "t": "",
+    "d": "The washer (ISO 8738) is placed only on the split pin side."
+   },
+   {
+    "t": "",
+    "d": "If vibration or alternating load applies, it is recommended to make the split pin one size larger and enlarge the hole as well."
+   }
+  ],
+  "std": [
+   "ISO 2341:1986 (with head) · ISO 2340:1986 (without head) · ISO 8738:1986 (washer)",
+   "DIN 1444 (→ ISO 2341) · DIN 1443 (→ ISO 2340) · DIN 1440 (→ ISO 8738)",
+   "ASME B18.8.1 (inch clevis pins)"
+  ],
+  "mats": [
+   "St",
+   "160 HV"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Black oxide (black oxide coating)",
+   "White zinc (trivalent)",
+   "Phosphate coating + rust-preventive oil"
+  ]
+ },
+ "ipin": {
+  "use": "An inch pin for maintenance of machines built to US standards. Dowel pins come in a standard series and an oversize series for replacement.",
+  "notes": [],
+  "std": [
+   "ASME B18.8.2 (Taper Pins, Dowel Pins, Straight Pins, Grooved Pins, and Spring Pins — Inch Series)"
+  ],
+  "mats": [
+   "Alloy",
+   "CS",
+   "SS"
+  ],
+  "fins": [
+   "Untreated (rust-preventive oil)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "rclip": {
+  "use": "A spring locking pin inserted into the end hole of a clevis pin or shaft without tools to prevent it from coming off. Used where it is attached and removed often.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The nominal size of an R pin is the diameter of the shaft hole it is inserted into. Choose it by \"matching shaft diameter\" in the table."
+   },
+   {
+    "t": "",
+    "d": "It can be inserted and removed without tools, which suits places that are disassembled often, but where there is strong vibration a split pin is more secure."
+   }
+  ],
+  "std": [
+   "DIN 11024 (R pin, type D double wound · type E single) · DIN 11023 (linch pin, original not checked)"
+  ],
+  "mats": [
+   "Spring steel",
+   "Stainless steel"
+  ],
+  "fins": [
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "grooved": {
+  "use": "A pin made by rolling longitudinal grooves into its body. When driven in, the groove edges press against the hole and hold it, so it is used for fixing nameplates and small parts.",
+  "notes": [
+   {
+    "t": "",
+    "d": "Grooved pins have different standard numbers depending on the groove shape (full length, half length, middle, etc.). Please also send the standard number on the drawing."
+   }
+  ],
+  "std": [
+   "ISO 8739–8745 (grooved pins) · ISO 8746 (round head) · ISO 8747 (countersunk head). ISO 8740 was revised in 2025",
+   "DIN 1470–1475 (→ ISO 8739–8745) · DIN 1476 · DIN 1477",
+   "ASME B18.8.2 (inch grooved pins)"
+  ]
+ },
+ "splittaper": {
+  "use": "A taper pin whose small end is split and spread after driving in so that it does not come out. It appears as a replacement part for machines of Japanese design.",
+  "notes": [
+   {
+    "t": "",
+    "d": "The split taper pin is a KS standard item. Quotation is made after confirming the split length and the taper basis from the drawing."
+   }
+  ],
+  "std": [
+   "KS B 1323 (split taper pins)"
+  ]
+ },
+ "ring-ext": {
+  "use": "A C-shaped spring ring fitted in a shaft groove to hold bearings, gears and couplings against axial movement. Pliers are inserted into the lug holes to spread it for fitting.",
+  "notes": [
+   {
+    "t": "Basis of dimensions",
+    "d": "Based on public technical data — only values on which 3 public dimension tables from different manufacturers and distributors agree are listed. Checking against the original standard documents is in progress."
+   },
+   {
+    "t": "Nominal size is the shaft diameter",
+    "d": "The nominal size of a retaining ring for shafts is the diameter (d1) of the shaft it fits. It is not the groove diameter d2."
+   },
+   {
+    "t": "Check the groove dimensions",
+    "d": "The rated load is obtained only if the groove diameter d2, groove width m and clearance n to the shaft end match the table."
+   },
+   {
+    "t": "Reuse",
+    "d": "A ring that has been spread and removed may change shape, so replacing it with a new one at maintenance is the general practice."
+   }
+  ],
+  "std": [
+   "DIN 471 (regular and heavy duty types, table based on the 2011-04 edition · current 2026-05 edition)",
+   "KS B 1336 C-type retaining rings (for shafts) — whether the dimensions are the same as DIN 471, original not checked",
+   "JIS B 2804 C形止め輪 (軸用) — original not checked"
+  ],
+  "mats": [
+   "Spring steel (C67S · C75S, heat-treated)",
+   "Stainless steel spring (1.4122 or 1.4310)"
+  ],
+  "fins": [
+   "Phosphate coating + rust-preventive oil",
+   "Black oxide (black oxide coating)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ring-int": {
+  "use": "Fitted in a groove in the housing bore to hold the outer ring of a bearing or a part against coming out. Squeezed with pliers for fitting.",
+  "notes": [
+   {
+    "t": "Basis of dimensions",
+    "d": "Based on public technical data — only values on which 3 public dimension tables from different manufacturers and distributors agree are listed. Checking against the original standard documents is in progress."
+   },
+   {
+    "t": "Nominal size is the bore diameter",
+    "d": "The nominal size of a retaining ring for bores is the housing bore diameter (d1). Choose the same value as the bearing outside diameter."
+   },
+   {
+    "t": "Confusion with the shaft type",
+    "d": "If only 'snap ring' is stated, we confirm whether it is for shafts or bores. If the lugs are on the outside it is for shafts, and if on the inside it is for bores."
+   }
+  ],
+  "std": [
+   "DIN 472 (public table based on the 2011 edition · current 2026-05 edition)",
+   "KS B 1336 C-type retaining rings (for bores) — original not checked",
+   "JIS B 2804 C形止め輪 (穴用) — original not checked"
+  ],
+  "mats": [
+   "Spring steel (C67S · C75S, heat-treated)",
+   "Stainless steel spring (1.4122 or 1.4310)"
+  ],
+  "fins": [
+   "Phosphate coating + rust-preventive oil",
+   "Black oxide (black oxide coating)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "key-par": {
+  "use": "A key of rectangular cross section fitted in the keyways of a shaft and a hub (impeller, coupling, pulley) to transmit torque. It is a finished product with a specified length; if you buy bar stock and cut it yourself, choose key stock.",
+  "notes": [
+   {
+    "t": "Basis of dimensions",
+    "d": "Based on public technical data — only values on which 3 public dimension tables from different manufacturers and distributors agree are listed. Checking against the original standard documents is in progress."
+   },
+   {
+    "t": "Cross section by shaft diameter",
+    "d": "b×h is set for each shaft diameter range. Combinations outside the table are changed to a quotation for cutting key stock to fit."
+   },
+   {
+    "t": "End shape",
+    "d": "Type A has rounded ends (end mill keyway) and Type B has square ends (side cutter keyway). If not stated, it is quoted as Type A and confirmed."
+   },
+   {
+    "t": "Fit is set by the keyway tolerance",
+    "d": "Tight, normal and sliding fits are determined not by the key but by the shaft and hub keyway tolerances (P9 · N9 · JS9 · H9 · D10)."
+   },
+   {
+    "t": "Pump impeller key",
+    "d": "If the equipment drawing has separate height and length tolerances, it is quoted as a drawing item made to order."
+   }
+  ],
+  "std": [
+   "DIN 6885-1 (high type, current 2021-11 edition · public table based on the 1968 edition). DIN 6885-2 (high type for machine tools) · -3 (low type) are quoted",
+   "KS B 1311 Sunk keys and keyways · KS B 1313 Sliding keys — whether the dimensions are the same as DIN 6885-1, original not checked",
+   "JIS B 1301 — original not checked",
+   "ISO/R 773 was withdrawn (1998)"
+  ],
+  "mats": [
+   "Carbon steel C45 (cold drawn, equivalent to S45C)",
+   "Stainless steel 1.4571 / 316 family"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "kmnut": {
+  "use": "A round nut with 4 slots around its circumference that presses and fixes a bearing inner ring or adapter sleeve onto the shaft. A tongue of the MB lock washer is bent into a slot to prevent loosening.",
+  "notes": [
+   {
+    "t": "The number is the dimension",
+    "d": "A single KM number determines the thread, outside diameter and width. KM8 = M40×1.5."
+   },
+   {
+    "t": "Washer is separate",
+    "d": "An MB lock washer comes with a KM nut. The washer is single-use (1-time), so it is replaced together at maintenance."
+   }
+  ],
+  "std": [
+   "ISO 2982-2:2013 (only the symbol definitions checked against the original, dimension table not checked)",
+   "DIN 981:2009-06 (current)",
+   "KS B 2004 Locknuts, washers and stoppers for rolling bearings (ISO 2982-2:2013 MOD)",
+   "JIS B 1554 (AN designation) — original not checked"
+  ],
+  "mats": [
+   "Carbon steel (equivalent to C20, untreated)",
+   "Stainless steel (304 · 316 family)"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "mbw": {
+  "use": "A washer used together with a KM locknut. The inner tongue is bent into the shaft keyway and one outer tab into a nut slot to prevent the nut from loosening.",
+  "notes": [
+   {
+    "t": "Basis of dimensions",
+    "d": "Based on public technical data — only values on which 3 public dimension tables from different manufacturers and distributors agree are listed. Checking against the original standard documents is in progress."
+   },
+   {
+    "t": "Single use (1-time)",
+    "d": "A tab that has been bent is not straightened and reused. If the nut has been loosened, replace the washer with a new one."
+   },
+   {
+    "t": "Shaft keyway required",
+    "d": "There must be a shaft groove for the inner tongue to enter. If there is no groove, consider another locking method (stopper, precision nut)."
+   }
+  ],
+  "std": [
+   "ISO 2982-2:2013 (only the symbol definitions checked against the original)",
+   "DIN 5406:2011-04 (current)",
+   "KS B 2004 (ISO 2982-2:2013 MOD)",
+   "JIS B 1554 (AW designation) — original not checked"
+  ],
+  "mats": [
+   "Mild steel (cold-rolled steel sheet)",
+   "Stainless steel sheet"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ering": {
+  "use": "An E-shaped retaining washer pushed sideways into a shaft groove. It need not be slid to the shaft end, so it is used on small shafts.",
+  "notes": [
+   {
+    "t": "Nominal size is the groove diameter",
+    "d": "E-ring 6 is for a groove diameter of 6 mm, and the shaft diameter is 7–9 mm."
+   },
+   {
+    "t": "Axial force",
+    "d": "An E-ring cannot take a large axial force. For bearing retention, use a C-type retaining ring for shafts."
+   }
+  ],
+  "std": [
+   "DIN 6799 (current 2026-05 edition · table from public material of the 2011 · 2017 editions)",
+   "KS B 1337 E-type retaining rings",
+   "JIS B 2804 E形止め輪 — original not checked"
+  ],
+  "mats": [
+   "Spring steel (C67S · C75S, heat-treated)",
+   "Stainless steel spring (1.4122 or 1.4310)"
+  ],
+  "fins": [
+   "Phosphate coating + rust-preventive oil",
+   "Black oxide (black oxide coating)",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "key-wood": {
+  "use": "A half-moon shaped key that fits in a circular-arc keyway of the shaft. Used on small shafts or tapered shaft ends.",
+  "notes": [],
+  "std": [
+   "DIN 6888 (current 2022-03 edition · table from a public summary of the 1956 edition)",
+   "KS B 1311 (includes half-moon keys)",
+   "ASME B17.2 (inch, number designation example: No. 606)",
+   "ISO 3912 withdrawn"
+  ],
+  "mats": [
+   "Carbon steel C45 (cold drawn, equivalent to S45C)",
+   "Stainless steel 1.4571 / 316 family"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "key-inch": {
+  "use": "A key for inch shafts (US-made pumps and motors). The square key size is set for each shaft diameter range.",
+  "notes": [
+   {
+    "t": "Beware of mixing inch and metric",
+    "d": "A 1/4 in key (6.35 mm) does not fit a metric 6 mm keyway. Check the shaft unit first."
+   }
+  ],
+  "std": [
+   "ASME B17.1 Keys and Keyseats (original not checked)"
+  ],
+  "mats": [
+   "Carbon steel C45 (cold drawn, equivalent to S45C)",
+   "Stainless steel 1.4571 / 316 family"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "keystock": {
+  "use": "Bar stock drawn to a parallel key cross section (b×h). It is cut to length on site to make keys.",
+  "notes": [
+   {
+    "t": "Bar stock and finished keys",
+    "d": "Unlike a finished key (parallel key) with a specified length, bar stock has no end machining. If end rounding is needed, order a finished key."
+   }
+  ],
+  "std": [
+   "DIN 6880:2011 (key steel — dimensions, tolerances, mass)",
+   "The cross section b×h is the KS B 1311 key cross section (original not checked)",
+   "ASME B17.1 (inch cross sections)"
+  ],
+  "mats": [
+   "Carbon steel C45 (cold drawn, equivalent to S45C)",
+   "Stainless steel 1.4571 / 316 family"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "tabw": {
+  "use": "A tab of the washer is bent over a part edge or into a hole, and another is bent against the face of the nut or bolt head to keep it from turning.",
+  "notes": [
+   {
+    "t": "Single use (1-time)",
+    "d": "A tab that has been bent is not reused. If disassembled, replace it with a new one."
+   }
+  ],
+  "std": [
+   "DIN 93 · DIN 463 · DIN 432 (all withdrawn without a successor standard)"
+  ],
+  "mats": [
+   "Mild steel",
+   "Stainless steel A2 · A4"
+  ],
+  "fins": [
+   "Untreated (bare)",
+   "White zinc (trivalent)",
+   "Untreated (stainless steel)"
+  ]
+ },
+ "ring-misc": {
+  "use": "Includes snap rings made of round wire, lugged rings with lugs projecting outward, inch standard rings, and spiral rings made of overlapped winding.",
+  "notes": [
+   {
+    "t": "Inch rings",
+    "d": "Rings for inch shafts and bores have different groove dimensions from metric rings and are not interchanged."
+   }
+  ],
+  "std": [
+   "DIN 7993 (withdrawn → DIN 9925 · DIN 9926:2016-11) · DIN 983 (lugged, for shafts) · DIN 984 (lugged, for bores)",
+   "KS B 1069 Grip rings",
+   "ASME B18.27 (inch tapered and reduced cross section rings) · ASME B27.6 (spiral)"
+  ]
+ },
+ "key-gib": {
+  "use": "A key with a sloped top surface and a head at one end. It is driven in to fix and pulled out by the head. Used in old equipment.",
+  "notes": [
+   {
+    "t": "Safety",
+    "d": "The head protrudes from the rotating shaft, so check the guard."
+   }
+  ],
+  "std": [
+   "DIN 6887 (current 1968-04 edition)",
+   "ASME B17.1 (inch gib head)"
+  ]
+ },
+ "ilocknut": {
+  "use": "Bearing nuts (N · AN series) for inch shafts and adapter sleeves, and mating washers (W series). They appear in maintenance of old US-made pumps and blowers.",
+  "notes": [
+   {
+    "t": "Distinguish by thread",
+    "d": "Even for the same 'AN 08', a metric thread (M40×1.5) means KM8, and an inch thread means the inch series."
+   }
+  ],
+  "std": [
+   "ANSI/ABMA 8.2 (dimensions original not checked)"
+  ]
+ }
+}

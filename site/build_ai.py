@@ -53,7 +53,9 @@ def build():
     sec += [f"- [{t['ko']}]({SITE_URL}products/category/{t['id']})" for t in tiles]
     sec += ["", "## 규격 사전 (규격·등급·재질·용어)", "", f"- [규격 사전 전체]({SITE_URL}lib/): {len(library)}개 항목"]
     sec += [f"- [{x['t']} {x['ko']}]({SITE_URL}lib/{x['id']})" for x in library if x.get("kind") == "std"][:60]
-    sec += ["", "## Optional", "", f"- [English page for plants in Korea]({SITE_URL}en/): RFQ in English, quoted in KRW",
+    sec += ["", "## English (same pages in English)", "", f"- [English home, RFQ in English]({SITE_URL}en/): quoted in KRW for delivery within Korea",
+            f"- [Dimension tables]({SITE_URL}en/tables/) · [Product guides]({SITE_URL}en/products/) · [Standards glossary]({SITE_URL}en/lib/): each page has the same path under /en/ (e.g. {SITE_URL}en/tables/<slug>)"]
+    sec += ["", "## Optional", "",
             f"- [사이트맵]({SITE_URL}sitemap.xml)", ""]
     (DOCS / "llms.txt").write_text("\n".join(head + sec), encoding="utf-8")
 

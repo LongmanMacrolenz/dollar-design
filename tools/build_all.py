@@ -37,6 +37,7 @@ def build(root: pathlib.Path):
     print(run("site/build_lib.py", cwd=root))
     print(run("site/build_products.py", cwd=root))
     print(run("site/build_tables.py", cwd=root))
+    print(run("site/build_en_site.py", cwd=root))
     print(run("site/build_ai.py", cwd=root))
     print(run("site/build_en.py", cwd=root))
     print(run("site/build_brand.py", cwd=root))
@@ -51,7 +52,7 @@ def tree(root: pathlib.Path):
     keep += sorted((root / "docs" / "lib").glob("*.html"))
     keep += sorted((root / "docs" / "products").rglob("*.html"))
     keep += sorted((root / "docs" / "tables").glob("*.html"))
-    keep += sorted((root / "docs" / "en").glob("*.html"))
+    keep += sorted((root / "docs" / "en").rglob("*.html"))
     keep += sorted((root / "docs" / "brand").glob("*"))
     keep += sorted((root / "docs" / "admin").glob("*"))
     return keep
@@ -83,6 +84,8 @@ def main():
         bad += [f"{p} (원본에 없는 품목의 낡은 페이지)" for p in sorted(old_products)]
         old_tables = {p.relative_to(ROOT) for p in (ROOT / "docs/tables").glob("*.html")} - {p.relative_to(t) for p in (t / "docs/tables").glob("*.html")}
         bad += [f"{p} (대상이 아닌 규격표의 낡은 페이지)" for p in sorted(old_tables)]
+        old_en = {p.relative_to(ROOT) for p in (ROOT / "docs/en").rglob("*.html")} - {p.relative_to(t) for p in (t / "docs/en").rglob("*.html")}
+        bad += [f"{p} (원본에 없는 영문 페이지)" for p in sorted(old_en)]
         if bad:
             print("다름 — `python3 tools/build_all.py`를 실행해 결과물을 다시 만들고 함께 올리세요:")
             for b in bad[:20]:

@@ -1,0 +1,150 @@
+{
+ "topics": [
+  {
+   "id": "bolt-nut-washer",
+   "title": "Bolts, nuts and washers",
+   "desc": "From shapes and roles to how dimensional standards correspond."
+  },
+  {
+   "id": "thread-fit",
+   "title": "Threads and fits",
+   "desc": "Metric and inch designations, tolerances, engagement length and holes."
+  },
+  {
+   "id": "material-grade",
+   "title": "Material and strength grades",
+   "desc": "Bolt and nut grades, service environments and materials."
+  },
+  {
+   "id": "joint-design",
+   "title": "Fastening and joint design",
+   "desc": "Preload and torque, flange assembly, loosening and fatigue."
+  },
+  {
+   "id": "pins-keys-rings",
+   "title": "Pins, keys and retaining rings",
+   "desc": "Positioning, shaft-to-hub connection and axial retention."
+  },
+  {
+   "id": "rivets-inserts",
+   "title": "Rivets, inserts and machine screws",
+   "desc": "Parts used for fastening sheet and reinforcing internal threads."
+  },
+  {
+   "id": "coating-corrosion",
+   "title": "Surface treatment and corrosion",
+   "desc": "Plating and coating, hydrogen embrittlement, galling and corrosion."
+  },
+  {
+   "id": "inspection-documents",
+   "title": "Inspection, traceability and documents",
+   "desc": "From markings and lots to test methods and inspection documents."
+  }
+ ],
+ "paths": [
+  {
+   "id": "read-bom",
+   "title": "Start by reading the BOM",
+   "audience": "Purchasing · Design",
+   "desc": "Check the item name, thread designation, grade and equivalent standard in order.",
+   "steps": [
+    {
+     "title": "Item and shape",
+     "desc": "Distinguish the roles of bolts, studs and nuts."
+    },
+    {
+     "title": "Thread designation",
+     "desc": "Read metric and inch designations and check the tolerance."
+    },
+    {
+     "title": "Material and grade",
+     "desc": "Distinguish the dimensional standard from the strength grade."
+    },
+    {
+     "title": "Equivalent standards and documents",
+     "desc": "Check standard changes and the inspection documents required."
+    }
+   ]
+  },
+  {
+   "id": "flange",
+   "title": "Flange bolting review",
+   "audience": "Piping · Plant",
+   "desc": "Read through from stud specification to preload and assembly sequence.",
+   "steps": [
+    {
+     "title": "Shape and length",
+     "desc": "Check the flange conditions and the length measurement basis."
+    },
+    {
+     "title": "Bolt and nut grades",
+     "desc": "Check the bolting material and the requirements for the mating nut."
+    },
+    {
+     "title": "Preload and friction",
+     "desc": "Read the relationship between torque and clamp force, and the effect of friction."
+    },
+    {
+     "title": "Assembly and control",
+     "desc": "Look at assembly instructions, tightening sequence and tensioning."
+    }
+   ]
+  },
+  {
+   "id": "machine",
+   "title": "Machine and shaft assembly review",
+   "audience": "Machine design · Maintenance",
+   "desc": "Find the different roles of threaded fastening and of pins, keys and retaining rings.",
+   "steps": [
+    {
+     "title": "Fastening shape",
+     "desc": "Distinguish the uses of socket head cap screws and set screws."
+    },
+    {
+     "title": "Threads and holes",
+     "desc": "Check engagement length, clearance holes and tap drill holes."
+    },
+    {
+     "title": "Positioning and shaft connection",
+     "desc": "Look at pins, keys and retaining rings by role."
+    },
+    {
+     "title": "Keeping the joint tight",
+     "desc": "Read about the causes of loosening, fatigue and galling."
+    }
+   ]
+  },
+  {
+   "id": "purchase",
+   "title": "Purchase decision → BOM check",
+   "audience": "Purchasing · Quality",
+   "desc": "Without estimating, link confirmed conditions and unconfirmed questions to the quotation line.",
+   "steps": [
+    {
+     "title": "Inch or metric",
+     "desc": "Check the unit system of the drawing first."
+    },
+    {
+     "title": "Check the thread designation",
+     "desc": "Check the nominal size, pitch or TPI, tolerance and internal/external thread together."
+    },
+    {
+     "title": "Check grade and material",
+     "desc": "Check the grade of each of the bolt and nut, the standard edition and whether substitution is allowed."
+    },
+    {
+     "title": "Check surface treatment and service conditions",
+     "desc": "Record the coating system, temperature, salinity and sour service requirements."
+    },
+    {
+     "title": "Ask about required documents",
+     "desc": "Check the document type, heat/lot, tests and whether they can be supplied."
+    },
+    {
+     "title": "Reflect in the BOM",
+     "desc": "Link the confirmation questions to the original line number. Leave unknown values as unconfirmed."
+    }
+   ]
+  }
+ ]
+}

@@ -108,7 +108,7 @@ def check_tables(families, paths):
 
 def main():
     files = [ROOT / "docs/index.html", *sorted((ROOT / "docs/lib").glob("*.html")), *sorted((ROOT / "docs/products").rglob("*.html")),
-             *sorted((ROOT / "docs/tables").glob("*.html")), *sorted((ROOT / "docs/en").glob("*.html"))]
+             *sorted((ROOT / "docs/tables").glob("*.html")), *sorted((ROOT / "docs/en").rglob("*.html"))]
     urls = [x.text for x in ET.parse(ROOT / "docs/sitemap.xml").findall("{*}url/{*}loc")]
     assert len(urls) == len(set(urls)), "Duplicate sitemap URLs"
     families, tiles, paths = catalog()
@@ -126,21 +126,24 @@ def main():
         canonical.add(url)
         assert resolve(urlsplit(url).path) == file, (url, file)
         assert doc.h1 == 1 and doc.title.strip(), file
-        assert 0 < len(doc.meta["description"]) <= 80, file
+        en_page = file.relative_to(ROOT / "docs").parts[0] == "en"   # 영문 쪽 (site/build_en_site.py): 영어 설명은 80자보다 길다
+        assert 0 < len(doc.meta["description"]) <= (160 if en_page else 80), file
         assert doc.meta["og:description"] == doc.meta["description"], file
         assert doc.meta["og:title"] == doc.title, file
         assert doc.meta["og:url"] == url, file
         assert doc.meta["og:image"] == SITE_URL + SOCIAL_IMAGE, file   # 공유 그림 주소는 한 곳(catalog.py)에서만 정한다
         assert "noindex" not in doc.meta.get("robots", ""), file
         assert doc.ld, f"Missing structured data: {file}"
-        if file != files[0]:   # 정적 페이지(사전·제품)는 끝의 볼트노트 띠에 문의 길 두 개를 둔다: 사이트 안의 Sales 화면과 카카오톡 채널
+        if en_page:
+            assert "/en/#rfq" in doc.links or file.name == "index.html" and file.parent.name == "en", f"Missing English inquiry link: {file}"
+        elif file != files[0]:   # 정적 페이지(사전·제품)는 끝의 볼트노트 띠에 문의 길 두 개를 둔다: 사이트 안의 Sales 화면과 카카오톡 채널
             assert "/#list" in doc.links and (not kakao or kakao in doc.links), f"Missing inquiry links: {file}"
         for href in [*doc.links, *doc.images]:
             parsed = urlsplit(href)
             if parsed.scheme or parsed.netloc or not parsed.path: continue
             assert parsed.path.startswith("/"), (file, href)
             assert resolve(parsed.path).exists(), (file, href)
-        if "products" in file.parts:
+        if "products" in file.parts and not en_page:
             text = " ".join(doc.visible)
             assert "/#list" in doc.links and "BOM" in text, file
             assert "mailto:" not in " ".join(doc.links), file
@@ -197,6 +200,34 @@ def main():
     assert {"Dataset", "Organization", "Person", "WebPage"} <= kinds, kinds
     assert all(n.get("dateModified", SITE_REV) <= SITE_REV for n in ld["@graph"])
     assert "볼트노트는 이런 곳입니다" in (ROOT / "docs/index.html").read_text(encoding="utf-8")
+    # 영문 사이트 (대표 요청 2026-11-18): 한국어 쪽과 같은 경로의 짝, hreflang, 한글 잔존 없음, 사이트맵 수록
+    hangul = _re.compile(r"[\u3131-\u318e\uac00-\ud7a3]")
+    pairs = 0
+    for kind in ("tables", "products", "lib"):
+        ko = {q.relative_to(ROOT / "docs") for q in (ROOT / "docs" / kind).rglob("*.html")}
+        en = {q.relative_to(ROOT / "docs" / "en") for q in (ROOT / "docs" / "en" / kind).rglob("*.html")}
+        assert ko == en, (kind, sorted(ko ^ en)[:5])
+        pairs += len(ko)
+    assert pairs >= 500, pairs
+    en_sitemap = sitemap.count(SITE_URL + "en/")
+    assert en_sitemap >= pairs, (en_sitemap, pairs)
+    for q in sorted((ROOT / "docs" / "en").rglob("*.html")):
+        rel = q.relative_to(ROOT / "docs")
+        text = q.read_text(encoding="utf-8")
+        assert '<html lang="en"' in text, rel
+        if q.parent != ROOT / "docs" / "en":
+            ko_path = str(rel)[3:-5].removesuffix("index") if q.name == "index.html" else str(rel)[3:-5]
+            assert f'hreflang="ko" href="{SITE_URL}{ko_path}"' in text and f'hreflang="en" href="{SITE_URL}en/{ko_path}"' in text, rel
+            assert f'<a href="/{ko_path}" lang="ko" hreflang="ko"' in text, rel
+        visible = _re.sub(r"<script.*?</script>|<style.*?</style>", "", text, flags=_re.S).replace("(볼트노트)", "")
+        visible = _re.sub(r'<(a|span|b|p|li|nav)\b[^>]*lang="ko"[^>]*>.*?</\1>', "", visible, flags=_re.S)
+        assert not hangul.search(visible), (rel, visible[max(0, hangul.search(visible).start() - 40):hangul.search(visible).start() + 40])
+        assert "workers.dev" not in text, rel
+    for q in sorted((ROOT / "docs").rglob("*.html")):
+        rel = q.relative_to(ROOT / "docs")
+        if rel.parts[0] in ("tables", "products", "lib") and q.name != "index.html" or (rel.parts[0] in ("tables", "products", "lib") and q.name == "index.html"):
+            pass
+    print("English site: pairs, hreflang, no Hangul: PASS")
     for name, expected in [("googlee7950c29a2b5a35e.html", 53), ("naver873356c1ec7239a24ea882fae7172928.html", 67)]:
         assert len((ROOT / "docs" / name).read_bytes()) == expected, name
     print(f"{len(families)} product guides, {len(tiles)} categories, {len(urls)} canonical URLs: metadata and public links PASS")
