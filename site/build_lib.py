@@ -11,7 +11,7 @@ import json
 import pathlib
 import re
 
-from catalog import catalog, SITE_URL, SOCIAL_IMAGE, product_path, product_urls, compact_description, brand_copy, display_font_href, table_urls, table_data, table_name, TABLE_ALIAS
+from catalog import catalog, SITE_URL, SITE_REV, SOCIAL_IMAGE, product_path, product_urls, compact_description, brand_copy, display_font_href, table_urls, table_data, table_name, TABLE_ALIAS
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
@@ -20,6 +20,28 @@ KIND = {"std": "규격", "grade": "등급", "mat": "재질", "thread": "나사",
 KIND_ORDER = ["std", "grade", "mat", "thread", "concept", "doc", "test", "coat", "part"]
 GUIDE = json.loads((ROOT / "lib-guide.json").read_text(encoding="utf-8"))
 e = html.escape
+
+
+def org_node(info: dict | None = None) -> dict:
+    """구조화 데이터의 사업자(Organization)와 운영자(Person). 사이트에 이미 공개된 값만 쓴다: 상호, 대표 이름, 직무, 분야 경력.
+    집 주소·개인 연락처·직장 이름은 넣지 않는다."""
+    info = info or site_info()
+    t = (ROOT / "page.html").read_text(encoding="utf-8")
+    m = re.search(r"ownerYears: '(\d+)'", t)
+    node = {"@type": "Organization", "@id": SITE_URL + "#organization", "name": "볼트노트", "alternateName": "Boltnote", "url": SITE_URL,
+            "logo": SITE_URL + "brand/boltnote-mark.svg", "description": "산업용 볼트·너트·스터드 등 체결부품의 사양 검토와 견적·공급 (사업자 간 거래).",
+            "areaServed": "KR", "knowsAbout": ["체결부품", "볼트", "너트", "스터드", "ASTM A193 / A194", "ISO 4017 / ISO 4032"]}
+    if info.get("owner"):
+        person = {"@type": "Person", "@id": SITE_URL + "#owner", "name": info["owner"], "jobTitle": "대표 · 기계엔지니어", "worksFor": {"@id": SITE_URL + "#organization"}}
+        if m:
+            person["description"] = f"회전기기 분야 {m.group(1)}년 경력의 기계엔지니어."
+        node["founder"] = {"@id": SITE_URL + "#owner"}
+        return {"org": node, "person": person}
+    return {"org": node}
+
+
+def org_graph(info: dict | None = None) -> list:
+    return list(org_node(info).values())
 
 
 def official_links(x):
@@ -327,8 +349,12 @@ def main() -> None:
     (DOCS / "404.html").write_text(not_found_html(info), encoding="utf-8")   # 사이트맵에 넣지 않는다
     urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls() + table_urls() + [SITE_URL + "en/"]
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-                                      + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
-    (DOCS / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
+                                      + "".join(f"  <url><loc>{u}</loc><lastmod>{SITE_REV}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
+    (DOCS / "robots.txt").write_text(f"# 검색엔진과 AI 로봇 모두 허용한다 (규격표·제품 안내는 인용되도록 열어 둔다). AI 요약 안내: {SITE_URL}llms.txt\nUser-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
+    # ads.txt: 애드센스 게시자 ID가 있을 때만 만든다 (f08c47fec0942fa0은 Google의 공개 인증기관 ID)
+    cid = info.get("adsenseClient", "")
+    if cid:
+        (DOCS / "ads.txt").write_text(f"google.com, {cid.replace('ca-pub-', 'pub-')}, DIRECT, f08c47fec0942fa0\n", encoding="utf-8")
     print(f"wrote {len(L)} entry pages + index, sitemap ({len(urls)} urls)")
 
 

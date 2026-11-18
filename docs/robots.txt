@@ -1,3 +1,4 @@
+# 검색엔진과 AI 로봇 모두 허용한다 (규격표·제품 안내는 인용되도록 열어 둔다). AI 요약 안내: https://boltnote.net/llms.txt
 User-agent: *
 Allow: /
 Sitemap: https://boltnote.net/sitemap.xml

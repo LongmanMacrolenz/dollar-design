@@ -7,8 +7,8 @@ import html
 import json
 import pathlib
 
-from build_lib import page, header, footer, site_info, brand_strip
-from catalog import catalog, declaration, public_label, compact_description, table_data, table_name, TABLE_ALIAS, SITE_URL
+from build_lib import page, header, footer, site_info, brand_strip, org_graph
+from catalog import catalog, declaration, public_label, compact_description, table_data, table_name, TABLE_ALIAS, SITE_URL, SITE_REV
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
@@ -85,18 +85,19 @@ EXTRA_CSS = """
 """
 
 
-def document(title, description, path, body, crumbs, collection=False):
+def document(title, description, path, body, crumbs, collection=False, extra=None, main_entity=None):
     url = SITE_URL + path
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage" if collection else "WebPage", "@id": url,
-         "name": title, "description": description, "url": url, "inLanguage": "ko",
-         "isPartOf": {"@id": SITE_URL + "#website"}, "publisher": {"@id": SITE_URL + "#organization"}},
-        {"@type": "Organization", "@id": SITE_URL + "#organization", "name": "볼트노트",
-         "alternateName": "Boltnote", "url": SITE_URL, "logo": SITE_URL + "brand/boltnote-mark.svg"},
+         "name": title, "description": description, "url": url, "inLanguage": "ko", "dateModified": SITE_REV,
+         "isPartOf": {"@id": SITE_URL + "#website"}, "publisher": {"@id": SITE_URL + "#organization"},
+         **({"mainEntity": {"@id": main_entity}} if main_entity else {})},
+        *org_graph(),
         {"@type": "WebSite", "@id": SITE_URL + "#website", "name": "볼트노트", "url": SITE_URL},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": i, "name": label, "item": SITE_URL.rstrip("/") + link}
             for i, (label, link) in enumerate(crumbs, 1)]},
+        *(extra or []),
     ]}
     return page(title, description, path, body, ld).replace("</style>", EXTRA_CSS + "</style>", 1)
 

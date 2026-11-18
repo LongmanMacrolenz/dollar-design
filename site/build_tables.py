@@ -14,7 +14,7 @@ import re
 
 from build_lib import header, footer, site_info, brand_strip, CHECKED
 from build_products import document, image_for, related_library
-from catalog import catalog, declaration, public_label, compact_description, table_data, table_name, TABLE_ALIAS, T2_NOTE
+from catalog import catalog, declaration, public_label, compact_description, table_data, table_name, TABLE_ALIAS, T2_NOTE, SITE_URL, SITE_REV
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
@@ -23,7 +23,7 @@ UNIT = {"mm": "mm", "in": "in (인치)"}
 TABLE_CSS = """
 .tbl-hero{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:28px;align-items:center;margin:20px 0 8px}
 .tbl-hero figure{margin:0;background:#edf0f4;border-radius:12px;padding:16px;text-align:center}.tbl-hero img{width:100%;max-width:340px;height:auto;display:block;margin:auto}
-.tbl-hero figcaption{font-size:12px;color:var(--ink-3);margin-top:8px}.tbl-basis{font-size:13.5px;color:var(--ink-2);margin:6px 0 10px}
+.tbl-hero figcaption{font-size:12px;color:var(--ink-3);margin-top:8px}.tbl-facts{font-size:14px;color:var(--ink-2);margin:8px 0 0}.tbl-basis{font-size:13.5px;color:var(--ink-2);margin:6px 0 10px}
 .dimt{border:1px solid var(--hair-2);border-radius:10px;background:var(--sheet);max-width:100%}
 .dimt table{width:auto;min-width:100%;border:0;font-variant-numeric:tabular-nums}
 .dimt caption{caption-side:top;text-align:left;font-weight:700;font-size:13px;padding:10px 12px;color:var(--ink-2)}
@@ -99,16 +99,25 @@ def page_html(id, f, t, families, tiles, tables, paths, library, shapes, info):
         "규격서 원문의 표가 아닙니다. 값과 규격 번호만 볼트노트 양식으로 정리했습니다.",
         "표에 없는 호칭과 칸은 추정하지 않고 싣지 않았습니다.",
         "설계·검사·계약에는 적용 규격의 최신판과 도면을 기준으로 하세요. 규격이 개정되면 값이 달라질 수 있습니다.",
-        f"대조 시기 {CHECKED}."]
+        f"대조 시기 {CHECKED}.",
+        f"이 표를 인용할 때: 볼트노트 {name} 규격표, {SITE_URL}tables/{slug}, 갱신 {SITE_REV}. 근거 수준은 위 근거 줄을 함께 적으세요."]
     related = related_library(id, library)
     sub = next((s for s in tile["subs"] if id in s["f"]), None)
     near = [k for k in (sub["f"] if sub else []) if k in tables and k != id]
     near += [k for k in tables if families[k]["t"] == f["t"] and k != id and k not in near]
+    facts = (f'{name}({f["en"]}) 규격표는 {t["standard"]} 기준 {count}개 호칭({span}, 단위 {t["u"]})의 치수를 담고 있습니다. '
+             f'{"공개 기술자료 3곳 이상에서 일치한 값만 실었고 규격서 원문과는 아직 대조하지 않았습니다" if t["note"] == T2_NOTE else "규격 발행 기관의 공식 미리보기에서 확인한 값입니다"}. 갱신 {SITE_REV}.')
+    dataset = {"@type": "Dataset", "@id": SITE_URL + "tables/" + slug + "#dataset", "name": f"{name} 규격표 ({f['en']})",
+               "description": facts, "url": SITE_URL + "tables/" + slug, "inLanguage": "ko", "dateModified": SITE_REV,
+               "isAccessibleForFree": True, "creator": {"@id": SITE_URL + "#organization"}, "publisher": {"@id": SITE_URL + "#organization"},
+               "keywords": [name, f["en"], t["standard"], "치수표", "fastener dimensions"],
+               "measurementTechnique": how, "temporalCoverage": CHECKED,
+               "variableMeasured": [{"@type": "PropertyValue", "name": f"{sym} {label}", "unitText": t["u"]} for sym, label in t["cols"]]}
     body = (header("tables") + f'<main><div class="w"><p class="crumbs">{crumbs}</p>'
             + '<section class="tbl-hero"><div><p class="eyebrow">FASTENER DIMENSION TABLE</p>'
             + f'<h1>{e(name)} 규격표</h1><p class="product-en" lang="en">{e(f["en"])}</p>'
             + f'<div class="product-meta"><span>{e(t["standard"])}</span><span>{len(t["rows"])}개 호칭 · {e(str(t["rows"][0][0]))}–{e(str(t["rows"][-1][0]))}</span><span>단위 {e(UNIT[t["u"]])}</span></div>'
-            + f'<p class="lead">{e(name)}의 호칭별 치수를 한 표로 정리했습니다. 규격서 원문이 아니라, 공개 자료로 대조한 값을 볼트노트 양식으로 옮긴 참고 표입니다.</p>'
+            + f'<p class="lead">{e(name)}의 호칭별 치수를 한 표로 정리했습니다. 규격서 원문이 아니라, 공개 자료로 대조한 값을 볼트노트 양식으로 옮긴 참고 표입니다.</p><p class="tbl-facts">{e(facts)}</p>'
             + f'<div class="product-actions"><a class="cta" href="/#list">이 품목 견적 문의 →</a><a href="/products/{slug}">구매 안내 보기</a><a href="/#c-{id}">2D 도면·사양 선택 ↗</a></div></div>{visual}</section>'
             + '<div class="product-grid"><article><h2 id="table">치수표</h2>' + table_html(id, f, t)
             + (f'<p class="tbl-extra">{e(extra)}</p>' if extra else "")
@@ -123,7 +132,7 @@ def page_html(id, f, t, families, tiles, tables, paths, library, shapes, info):
             + '<div class="box"><h2>규격표 모음</h2><p>볼트·너트·와셔·핀 종류별 규격표를 한곳에서 찾습니다.</p><a href="/tables/">규격표 전체 보기 →</a></div></aside></div>'
             + ('<section class="product-category tbl-more"><h2>같은 종류의 다른 규격표</h2><div class="cards tbl-list">' + "".join(card(k, families[k], tables[k], paths) for k in near[:6]) + "</div></section>" if near else "")
             + "</div></main>" + brand_strip(info) + footer(info))
-    return document(title, desc, "tables/" + slug, body, breadcrumb).replace("</style>", TABLE_CSS + "</style>", 1)
+    return document(title, desc, "tables/" + slug, body, breadcrumb, extra=[dataset], main_entity=dataset["@id"]).replace("</style>", TABLE_CSS + "</style>", 1)
 
 
 def index_html(families, tiles, tables, paths, info):

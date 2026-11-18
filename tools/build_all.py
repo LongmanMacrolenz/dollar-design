@@ -8,6 +8,7 @@
   2. site/build.py         site/page.html             → docs/index.html (배포용 문서)
   3. site/build_lib.py     site/lib.json + site/page.html → docs/lib/*.html, docs/sitemap.xml, docs/robots.txt
   4. site/build_products.py 공개 카탈로그 → docs/products/**/*.html
+  5. site/build_tables.py · site/build_ai.py → docs/tables/, docs/llms.txt, docs/llms-full.txt
 규격 사전 데이터(site/lib.json)를 고쳤다면 먼저 `python3 tools/sync_lib.py`를 돌려 app/src/ea_lib.js를 맞춘다.
 """
 import filecmp
@@ -36,6 +37,7 @@ def build(root: pathlib.Path):
     print(run("site/build_lib.py", cwd=root))
     print(run("site/build_products.py", cwd=root))
     print(run("site/build_tables.py", cwd=root))
+    print(run("site/build_ai.py", cwd=root))
     print(run("site/build_en.py", cwd=root))
     print(run("site/build_brand.py", cwd=root))
     r = subprocess.run(["node", str(ROOT / "tools/build_admin.mjs"), "--out", str(root / "docs/admin")], capture_output=True, text=True)
@@ -45,7 +47,7 @@ def build(root: pathlib.Path):
 
 
 def tree(root: pathlib.Path):
-    keep = [root / "site" / "page.html", root / "docs" / "index.html", root / "docs" / "404.html", root / "docs" / "sitemap.xml", root / "docs" / "robots.txt"]
+    keep = [root / "site" / "page.html", root / "docs" / "index.html", root / "docs" / "404.html", root / "docs" / "sitemap.xml", root / "docs" / "robots.txt", root / "docs" / "ads.txt", root / "docs" / "llms.txt", root / "docs" / "llms-full.txt"]
     keep += sorted((root / "docs" / "lib").glob("*.html"))
     keep += sorted((root / "docs" / "products").rglob("*.html"))
     keep += sorted((root / "docs" / "tables").glob("*.html"))

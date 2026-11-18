@@ -10,8 +10,8 @@ import json
 import pathlib
 import re
 
-from build_lib import page, site_info, MARK, KAKAO_MARK
-from catalog import SITE_URL, table_data, catalog
+from build_lib import page, site_info, MARK, KAKAO_MARK, org_graph
+from catalog import SITE_URL, SITE_REV, table_data, catalog
 
 ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
@@ -109,10 +109,9 @@ def build():
     title = "Fasteners for plants in Korea – RFQ in English | Boltnote"
     desc = "Bolts, nuts and studs for plants in Korea. Send your BOM or RFQ in English; quoted in KRW."
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "WebPage", "@id": SITE_URL + "en/", "name": title, "description": desc, "url": SITE_URL + "en/", "inLanguage": "en",
+        {"@type": "WebPage", "@id": SITE_URL + "en/", "name": title, "description": desc, "url": SITE_URL + "en/", "inLanguage": "en", "dateModified": SITE_REV,
          "publisher": {"@id": SITE_URL + "#organization"}},
-        {"@type": "Organization", "@id": SITE_URL + "#organization", "name": "볼트노트", "alternateName": "Boltnote", "url": SITE_URL,
-         "logo": SITE_URL + "brand/boltnote-mark.svg"}]}
+        *org_graph(info)]}
     out = DOCS / "en"
     out.mkdir(parents=True, exist_ok=True)
     (out / "index.html").write_text(page(title, desc, "en/", body, ld, lang="en", alternates={"ko": "", "en": "en/", "x-default": ""}).replace("</style>", EN_CSS + "</style>", 1), encoding="utf-8")

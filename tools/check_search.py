@@ -180,6 +180,23 @@ def main():
     assert "/products/hex-nut" in home.links and "/products/stud-bolt-b7" in home.links
     assert "Disallow: /\n" not in (ROOT / "docs/robots.txt").read_text()
     assert SITE_URL + "sitemap.xml" in (ROOT / "docs/robots.txt").read_text()
+    assert (ROOT / "docs/ads.txt").read_text() == "google.com, pub-6804110869369028, DIRECT, f08c47fec0942fa0\n"
+    # AI 참조 입구 (대표 요청 2026-11-18): llms.txt·llms-full.txt, 사이트맵 lastmod, 규격표 Dataset, 홈 정적 본문
+    import datetime, re as _re
+    from catalog import SITE_REV
+    assert datetime.date.fromisoformat(SITE_REV) <= datetime.date.today(), "SITE_REV must not be in the future"
+    for name in ("llms.txt", "llms-full.txt"):
+        text = (ROOT / "docs" / name).read_text(encoding="utf-8")
+        assert text.startswith("# 볼트노트") and SITE_URL in text and "workers.dev" not in text and SITE_REV in text, name
+    assert (ROOT / "docs/llms.txt").read_text(encoding="utf-8").count("/tables/") >= len(table_data())
+    sitemap = (ROOT / "docs/sitemap.xml").read_text(encoding="utf-8")
+    assert sitemap.count("<lastmod>" + SITE_REV + "</lastmod>") == sitemap.count("<url>")
+    sample = next(iter(table_data()))
+    ld = json.loads(_re.search(r'<script type="application/ld\+json">(.*?)</script>', (ROOT / "docs" / table_path(sample).lstrip("/")).with_suffix(".html").read_text(encoding="utf-8"), _re.S).group(1))
+    kinds = {n["@type"] for n in ld["@graph"]}
+    assert {"Dataset", "Organization", "Person", "WebPage"} <= kinds, kinds
+    assert all(n.get("dateModified", SITE_REV) <= SITE_REV for n in ld["@graph"])
+    assert "볼트노트는 이런 곳입니다" in (ROOT / "docs/index.html").read_text(encoding="utf-8")
     for name, expected in [("googlee7950c29a2b5a35e.html", 53), ("naver873356c1ec7239a24ea882fae7172928.html", 67)]:
         assert len((ROOT / "docs" / name).read_bytes()) == expected, name
     print(f"{len(families)} product guides, {len(tiles)} categories, {len(urls)} canonical URLs: metadata and public links PASS")
