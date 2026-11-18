@@ -1,0 +1,190 @@
+# 볼트노트 (Boltnote)
+
+> 산업용 볼트·너트·스터드 등 체결부품의 사양을 검토하고 견적·공급하는 사업자 간(B2B) 거래 사이트. 한국 국내 납품, 견적은 원화(KRW). 규격표·규격 사전·제품 구매 안내를 정적 페이지로 공개한다.
+
+- 운영: 볼트노트, 대표 박세중 (기계엔지니어, 회전기기 분야 7년)
+- 사업자등록번호: 456-19-02858
+- 견적 문의 메일: a8wlhg942@naver.com
+- 전화: 010-2093-0196 (평일 09–18시)
+- 재고를 두지 않고 주문마다 국내 공급처에서 조달한다. 단가·납기는 공급처 확인 뒤 견적서에 적는다.
+- 규격표는 규격서 원문이 아니다. 공개 자료를 대조한 값을 볼트노트 양식으로 정리한 참고 표이며, 표마다 근거 수준을 적는다.
+- 내용 갱신일: 2026-11-18. 규격표 대조 시기: 2026-10.
+- 인용할 때: '볼트노트 규격표', 해당 페이지 주소, 갱신일을 함께 적는다. 사이트: https://boltnote.net/
+
+## 규격표 (치수표)
+
+- [육각볼트 규격표](https://boltnote.net/tables/hex-bolt-full-thread): ISO 4017:2022, 12개 호칭 M3–M24, 단위 mm
+- [육각 플랜지 볼트 규격표](https://boltnote.net/tables/hexagon-flange-bolt): DIN 6921, 6개 호칭 M6–M16, 단위 mm
+- [마찰접합용 고장력 볼트 세트 규격표](https://boltnote.net/tables/high-strength-structural-bolting-assembly-metric): DIN 6914·6915·6916 (HV 세트), 7개 호칭 M12–M36, 단위 mm
+- [마차볼트 규격표](https://boltnote.net/tables/cup-head-square-neck-bolt): DIN 603, 7개 호칭 M5–M20, 단위 mm
+- [T홈 너트 규격표](https://boltnote.net/tables/t-slot-nut): DIN 508, 10개 호칭 M4–M30, 단위 mm
+- [아이볼트 규격표](https://boltnote.net/tables/lifting-eye-bolt): DIN 580, 13개 호칭 M8–M72x6, 단위 mm
+- [인치 단조 아이볼트 규격표](https://boltnote.net/tables/forged-eyebolt): ASME B18.15, 14개 호칭 1/4–2-1/2, 단위 in
+- [스윙볼트 규격표](https://boltnote.net/tables/swing-bolt-non-lifting-eye-bolt): DIN 444, 8개 호칭 M5–M24, 단위 mm
+- [사각머리 볼트 규격표](https://boltnote.net/tables/square-head-bolt): ASME B18.2.1, 13개 호칭 1/4–1-1/2, 단위 in
+- [T머리 볼트 규격표](https://boltnote.net/tables/t-head-bolt): DIN 186, 7개 호칭 M6–M24, 단위 mm
+- [리머볼트 규격표](https://boltnote.net/tables/hexagon-fit-bolt): DIN 609, 9개 호칭 M8–M30, 단위 mm
+- [래그 스크루 규격표](https://boltnote.net/tables/hex-lag-screw): DIN 571, 9개 호칭 4–20, 단위 mm
+- [접시머리 볼트 규격표](https://boltnote.net/tables/countersunk-head-bolt-with-square-neck-or-nib): DIN 604, 7개 호칭 M6–M24, 단위 mm
+- [인치 접시머리 렌치볼트 규격표](https://boltnote.net/tables/socket-flat-countersunk-head-cap-screw): ASME B18.3 접시머리 렌치볼트 (82°), 13개 호칭 #4-40–7/8-9, 단위 in
+- [인치 버튼머리 렌치볼트 규격표](https://boltnote.net/tables/socket-button-head-cap-screw): ASME B18.3 버튼머리 렌치볼트, 9개 호칭 #4-40–5/8-11, 단위 in
+- [인치 멈춤나사 규격표](https://boltnote.net/tables/socket-set-screw): ASME B18.3 멈춤나사 (육각 구멍붙이), 11개 호칭 #5-40–3/4-10, 단위 in
+- [인치 일반 탄소강 볼트 A307 규격표](https://boltnote.net/tables/carbon-steel-hex-bolt-a307): ASME B18.2.1 (Hex Bolts), 25개 호칭 1/4–4, 단위 in
+- [인치 헤비 육각볼트 규격표](https://boltnote.net/tables/heavy-hex-bolt): ASME B18.2.1 (Heavy Hex Bolts), 18개 호칭 3/8–3, 단위 in
+- [인치 작은나사 규격표](https://boltnote.net/tables/machine-screw): ASME B18.6.3, 13개 호칭 #2–1/2, 단위 in
+- [렌치볼트 규격표](https://boltnote.net/tables/socket-head-cap-screw): ISO 4762:2004 (M14 이상은 1997판), 11개 호칭 M3–M24, 단위 mm
+- [접시머리 렌치볼트 규격표](https://boltnote.net/tables/hexagon-socket-countersunk-head-screw): ISO 10642:2004, 8개 호칭 M3–M16, 단위 mm
+- [버튼머리 렌치볼트 규격표](https://boltnote.net/tables/hexagon-socket-button-head-screw): ISO 7380-1, 8개 호칭 M3–M16, 단위 mm
+- [무두볼트 규격표](https://boltnote.net/tables/set-screw): ISO 4026–4029 (DIN 913–916) 공통 치수, 13개 호칭 M1.6–M24, 단위 mm
+- [육각머리 칼라 플러그·육각머리 테이퍼 플러그 규격표](https://boltnote.net/tables/hexagon-head-screw-plug): DIN 910, 19개 호칭 M10–M56, 단위 mm
+- [저두 렌치볼트 규격표](https://boltnote.net/tables/hexagon-socket-head-cap-screw-low-head): DIN 7984, 10개 호칭 M3–M24, 단위 mm
+- [숄더볼트 규격표](https://boltnote.net/tables/hexagon-socket-head-shoulder-screw): ISO 7379, 4개 호칭 M6–M16, 단위 mm
+- [육각구멍 테이퍼 플러그 규격표](https://boltnote.net/tables/hexagon-socket-pipe-plug-conical-thread): DIN 906, 24개 호칭 R1/8–M42x1.5, 단위 mm
+- [칼라붙이 육각구멍 플러그 규격표](https://boltnote.net/tables/hexagon-socket-screw-plug-with-collar): DIN 908, 20개 호칭 M10–M64, 단위 mm
+- [실링 링 규격표](https://boltnote.net/tables/sealing-ring): DIN 7603 Form A, 16개 호칭 4x8–42x49, 단위 mm
+- [플랜지 버튼머리 렌치볼트 규격표](https://boltnote.net/tables/hexagon-socket-button-head-screw-with-collar): ISO 7380-2, 6개 호칭 M3–M10, 단위 mm
+- [별(헥사로뷸러) 구멍 나사 규격표](https://boltnote.net/tables/hexalobular-socket-screw): ISO 14583, 5개 호칭 M3–M8, 단위 mm
+- [홈붙이 멈춤나사 규격표](https://boltnote.net/tables/slotted-set-screw): ISO 4766·7434–7436 (DIN 551·553·417·438), 8개 호칭 M2.5–M12, 단위 mm
+- [+자 냄비머리 작은나사 규격표](https://boltnote.net/tables/cross-recessed-pan-head-screw): ISO 7045, 8개 호칭 M2–M10, 단위 mm
+- [+자 접시머리 작은나사 규격표](https://boltnote.net/tables/cross-recessed-countersunk-head-screw): ISO 7046-1 · ISO 7046-2, 9개 호칭 M2–M10, 단위 mm
+- [+자 트러스머리 작은나사 규격표](https://boltnote.net/tables/cross-recessed-truss-head-screw): ASME B18.6.3, 13개 호칭 #0–3/8, 단위 in
+- [일자 홈 작은나사 규격표](https://boltnote.net/tables/slotted-machine-screw): ISO 1207, 10개 호칭 M1.6–M10, 단위 mm
+- [블라인드 리벳 규격표](https://boltnote.net/tables/open-end-blind-rivet-protruding-head): DIN 7337 A형, 8개 호칭 2.4–6.4, 단위 mm
+- [육각 태핑나사 규격표](https://boltnote.net/tables/hexagon-head-tapping-screw): DIN 7976, 9개 호칭 ST2.2–ST8, 단위 mm
+- [직결피스 규격표](https://boltnote.net/tables/drilling-screw-with-tapping-screw-thread): ISO 15480, 5개 호칭 ST3.5–ST6.3, 단위 mm
+- [접시머리·밀폐형 블라인드 리벳 규격표](https://boltnote.net/tables/blind-rivet-countersunk-or-closed-end): DIN 7337 B형, 6개 호칭 3–6.4, 단위 mm
+- [솔리드 리벳 규격표](https://boltnote.net/tables/solid-rivet): DIN 660, 7개 호칭 2–8, 단위 mm
+- [커플링너트 규격표](https://boltnote.net/tables/hexagon-coupling-nut): DIN 6334, 8개 호칭 M6–M30, 단위 mm
+- [인치 전산볼트 규격표](https://boltnote.net/tables/threaded-rod-rod-in): ASME B18.31.3 · ASME B1.1, 24개 호칭 1/4–4, 단위 in
+- [행거용 인치 전산볼트 규격표](https://boltnote.net/tables/threaded-rod-for-hangers-inch-size): ASME B1.1 (UNC), 9개 호칭 3/8–1-1/2, 단위 in
+- [미터 전산 스터드 규격표](https://boltnote.net/tables/stud-bolt-metric-thread): DIN 976-1 Form B, 16개 호칭 M5–M39, 단위 mm
+- [U볼트 규격표](https://boltnote.net/tables/u-bolt): DIN 3570, 6개 호칭 DN20–DN80, 단위 mm
+- [탭엔드 스터드 규격표](https://boltnote.net/tables/tap-end-stud): DIN 939, 16개 호칭 M6–M42, 단위 mm
+- [인치 탭엔드 스터드 규격표](https://boltnote.net/tables/double-end-stud-tap-end): ASME B18.31.2 Table 3, 17개 호칭 1/4–2-3/4, 단위 in
+- [12Cr 스테인리스 스터드 B6 + A194 6 규격표](https://boltnote.net/tables/martensitic-stainless-steel-stud-bolt-a193-b6-a194-6): ASME B18.31.2 Table 2, 19개 호칭 1/4–2-3/4, 단위 in
+- [감경 몸통 스터드 규격표](https://boltnote.net/tables/reduced-shank-stud-bolt): DIN 2510-3, 9개 호칭 M12–M39, 단위 mm
+- [육각너트 규격표](https://boltnote.net/tables/hex-nut): ISO 4032:2023 (M3·M4는 2012판), 12개 호칭 M3–M24, 단위 mm
+- [낮은 너트 규격표](https://boltnote.net/tables/hexagon-thin-nut): ISO 4035, 17개 호칭 M3–M42, 단위 mm
+- [나일론 너트 규격표](https://boltnote.net/tables/prevailing-torque-hexagon-nut-nylon-insert): ISO 7040 · ISO 10511, 9개 호칭 M4–M24, 단위 mm
+- [캡너트 규격표](https://boltnote.net/tables/hexagon-domed-cap-nut): DIN 1587, 8개 호칭 M4–M24, 단위 mm
+- [인치 육각너트 규격표](https://boltnote.net/tables/inch-hex-nut): ASME B18.2.2, 14개 호칭 1/4–1-1/2, 단위 in
+- [플랜지 너트 규격표](https://boltnote.net/tables/hexagon-nut-with-flange): DIN 6923 = EN 1661 = ISO 4161, 7개 호칭 M5–M20, 단위 mm
+- [나비너트 규격표](https://boltnote.net/tables/wing-nut): DIN 315, 9개 호칭 M4–M24, 단위 mm
+- [아이너트 규격표](https://boltnote.net/tables/lifting-eye-nut): DIN 582, 8개 호칭 M8–M36, 단위 mm
+- [사각너트 규격표](https://boltnote.net/tables/square-nut): DIN 557, 6개 호칭 M5–M16, 단위 mm
+- [용접너트 규격표](https://boltnote.net/tables/hexagon-weld-nut): DIN 929, 9개 호칭 M3–M16, 단위 mm
+- [지그·고정구용 육각너트 규격표](https://boltnote.net/tables/hexagon-nut-height-1-5d): DIN 6331, 11개 호칭 M6–M42, 단위 mm
+- [평와셔 규격표](https://boltnote.net/tables/plain-washer): ISO 7089:2000, 12개 호칭 M3–M24, 단위 mm
+- [대와셔 규격표](https://boltnote.net/tables/plain-washer-large-series): ISO 7093-1, 12개 호칭 M3–M24, 단위 mm
+- [스프링와셔 규격표](https://boltnote.net/tables/spring-washer): DIN 127 B, 11개 호칭 M3–M24, 단위 mm
+- [F436 경화 와셔 규격표](https://boltnote.net/tables/hardened-steel-washer): ASTM F436 Type 1, 19개 호칭 1/2–4, 단위 in
+- [인치 스프링와셔 규격표](https://boltnote.net/tables/helical-spring-lock-washer-regular): ASME B18.21.1 Table 1 - Regular helical spring-lock washers, 24개 호칭 #2–2", 단위 in
+- [소와셔 규격표](https://boltnote.net/tables/plain-washer-small-series): ISO 7092 (DIN 433), 16개 호칭 M1.6–M30, 단위 mm
+- [두꺼운 와셔 규격표](https://boltnote.net/tables/plain-washer-for-heavy-clamping): DIN 7349, 12개 호칭 M3–M27, 단위 mm
+- [인치 평와셔 규격표](https://boltnote.net/tables/plain-washer-ipw): ASME B18.21.1 Type A, 32개 호칭 #2–1-3/4, 단위 in
+- [이붙이 와셔 규격표](https://boltnote.net/tables/tooth-lock-washer): DIN 6798 A형 (톱니 수는 DIN 6797 A형 포함), 17개 호칭 M1.6–M30, 단위 mm
+- [접시형 스프링 와셔 규격표](https://boltnote.net/tables/conical-spring-washer): DIN 6796, 19개 호칭 M2–M30, 단위 mm
+- [접시 스프링 규격표](https://boltnote.net/tables/disc-spring): DIN 2093 (EN 16983), 8개 호칭 8x4.2x0.4–40x20.4x1, 단위 mm
+- [경사 와셔 규격표](https://boltnote.net/tables/square-taper-washer): DIN 434, 6개 호칭 M8–M27, 단위 mm
+- [특대와셔 규격표](https://boltnote.net/tables/plain-washer-extra-large-series): ISO 7094, 10개 호칭 M5–M27, 단위 mm
+- [사각 와셔 규격표](https://boltnote.net/tables/square-plate-washer): DIN 436, 15개 호칭 M10–M52, 단위 mm
+- [구면 와셔 규격표](https://boltnote.net/tables/spherical-washer-and-conical-seat): DIN 6319 C형, 8개 호칭 M6–M30, 단위 mm
+- [다웰핀 규격표](https://boltnote.net/tables/parallel-pin-hardened): ISO 8734, 13개 호칭 1–20, 단위 mm
+- [평행핀 규격표](https://boltnote.net/tables/parallel-pin-unhardened): ISO 2338, 20개 호칭 0.6–50, 단위 mm
+- [암나사 평행핀 규격표](https://boltnote.net/tables/parallel-pin-with-internal-thread): ISO 8733, 10개 호칭 6–50, 단위 mm
+- [테이퍼 핀 규격표](https://boltnote.net/tables/taper-pin): DIN 1, 20개 호칭 0.6–50, 단위 mm
+- [스프링핀 규격표](https://boltnote.net/tables/spring-type-straight-pin-slotted): ISO 8752, 25개 호칭 1–50, 단위 mm
+- [분할핀 규격표](https://boltnote.net/tables/split-pin): ISO 1234, 12개 호칭 1–13, 단위 mm
+- [나사붙이 테이퍼 핀 규격표](https://boltnote.net/tables/taper-pin-with-internal-or-external-thread): ISO 8736, 6개 호칭 6–20, 단위 mm
+- [코일 스프링핀 규격표](https://boltnote.net/tables/spring-type-straight-pin-coiled): ISO 8750 (DIN 7343), 16개 호칭 0.8–20, 단위 mm
+- [클레비스 핀 규격표](https://boltnote.net/tables/clevis-pin): ISO 2341:1986, 10개 호칭 4–20, 단위 mm
+- [인치 핀 규격표](https://boltnote.net/tables/dowel-pin-taper-pin-and-spring-pin): ASME B18.8.2 hardened ground machine dowel pins, 15개 호칭 1/16–1, 단위 in
+- [R핀 규격표](https://boltnote.net/tables/spring-cotter-and-linch-pin): DIN 11024 Form D, 7개 호칭 2.5–8, 단위 mm
+- [축용 스냅링 규격표](https://boltnote.net/tables/retaining-ring-for-shaft): DIN 471, 73개 호칭 3–200, 단위 mm
+- [구멍용 스냅링 규격표](https://boltnote.net/tables/retaining-ring-for-bore): DIN 472, 78개 호칭 8–200, 단위 mm
+- [평행 키 규격표](https://boltnote.net/tables/parallel-key): DIN 6885-1, 20개 호칭 2X2–50X28, 단위 mm
+- [KM 로크너트 규격표](https://boltnote.net/tables/locknut-for-rolling-bearings-km): DIN 981 KM, 26개 호칭 M10x0.75–M135x2, 단위 mm
+- [MB 로크와셔 규격표](https://boltnote.net/tables/lock-washer-for-rolling-bearing-locknut-mb): DIN 5406 (MB), 33개 호칭 MB0–MB40, 단위 mm
+- [E링 규격표](https://boltnote.net/tables/retaining-washer-for-shaft-e-ring): DIN 6799, 16개 호칭 E1.2–E24, 단위 mm
+- [반달 키 규격표](https://boltnote.net/tables/woodruff-key): DIN 6888, 11개 호칭 2x2.6–10x13, 단위 mm
+- [혀붙이 와셔 규격표](https://boltnote.net/tables/tab-washer): DIN 432, 12개 호칭 M3–M30, 단위 mm
+- [기타 멈춤링 규격표](https://boltnote.net/tables/retaining-ring-other-types): DIN 7993 B형, 35개 호칭 7–120, 단위 mm
+
+## 제품 구매 안내
+
+- [제품 안내 전체](https://boltnote.net/products/): 품목별 확인 조건과 견적에 필요한 정보
+- [볼트·나사](https://boltnote.net/products/category/bolt)
+- [너트](https://boltnote.net/products/category/nut)
+- [와셔](https://boltnote.net/products/category/washer)
+- [스터드·전산볼트](https://boltnote.net/products/category/stud)
+- [핀·멈춤링·키](https://boltnote.net/products/category/pin)
+- [리벳·인서트](https://boltnote.net/products/category/rivet)
+
+## 규격 사전 (규격·등급·재질·용어)
+
+- [규격 사전 전체](https://boltnote.net/lib/): 261개 항목
+- [ASTM A193/A193M 고온·고압용 합금강·스테인리스강 볼팅](https://boltnote.net/lib/astm-a193)
+- [ASTM A194/A194M 고온·고압 볼트용 탄소강·합금강·스테인리스강 너트](https://boltnote.net/lib/astm-a194)
+- [ASTM A320/A320M 저온용 합금강·스테인리스강 볼팅](https://boltnote.net/lib/astm-a320)
+- [ASTM A453/A453M 오스테나이트강과 열팽창이 비슷한 고온 볼팅](https://boltnote.net/lib/astm-a453)
+- [ASTM A962/A962M 볼팅 공통 요구 사항 (극저온~크리프 영역)](https://boltnote.net/lib/astm-a962)
+- [ASTM A307 탄소강 볼트·스터드·나사봉 (60 ksi급)](https://boltnote.net/lib/astm-a307)
+- [ASTM F3125/F3125M 구조용 고장력 볼트·조립체 (A325·A490 통합)](https://boltnote.net/lib/astm-f3125)
+- [ASTM A325 (폐지) 구조용 볼트 120/105 ksi (폐지 → F3125)](https://boltnote.net/lib/astm-a325)
+- [ASTM A490 (폐지) 구조용 합금강 볼트 150 ksi (폐지 → F3125)](https://boltnote.net/lib/astm-a490)
+- [ASTM A354 소입·소려 합금강 볼트·스터드 (BC·BD)](https://boltnote.net/lib/astm-a354)
+- [ASTM A449 열처리 강 육각 캡스크루·볼트·스터드 (120/105/90 ksi)](https://boltnote.net/lib/astm-a449)
+- [ASTM A563/A563M 탄소강·합금강 너트 (일반 구조·기계용)](https://boltnote.net/lib/astm-a563)
+- [ASTM F436/F436M 경화 강 와셔 (인치·미터)](https://boltnote.net/lib/astm-f436)
+- [ASTM F1554 앵커볼트 (항복 36·55·105 ksi)](https://boltnote.net/lib/astm-f1554)
+- [ASTM F593 스테인리스강 볼트·육각 캡스크루·스터드](https://boltnote.net/lib/astm-f593)
+- [ASTM F594 스테인리스강 너트](https://boltnote.net/lib/astm-f594)
+- [ASTM A574 합금강 육각 구멍붙이 볼트 (인치 렌치볼트)](https://boltnote.net/lib/astm-a574)
+- [ASTM F912 합금강 육각 구멍붙이 멈춤나사](https://boltnote.net/lib/astm-f912)
+- [ASTM F606/F606M 체결부품 기계적 성질 시험 방법](https://boltnote.net/lib/astm-f606)
+- [ASTM A370 강 제품 기계시험 방법과 정의](https://boltnote.net/lib/astm-a370)
+- [ASTM A153/A153M 철강 하드웨어 용융아연도금](https://boltnote.net/lib/astm-a153)
+- [ASTM F2329/F2329M 볼트·너트·와셔 용융아연도금 요구 사항](https://boltnote.net/lib/astm-f2329)
+- [ASTM F1941/F1941M 체결부품 전기도금 (인치·미터)](https://boltnote.net/lib/astm-f1941)
+- [ASTM F1136/F1136M (폐지) 체결부품 아연/알루미늄 방청 코팅 (폐지 → F3393)](https://boltnote.net/lib/astm-f1136)
+- [ASME B1.1 유니파이 인치 나사 (UN·UNR·UNJ)](https://boltnote.net/lib/asme-b1-1)
+- [ASME B18.2.1 인치 육각·헤비 육각 볼트·캡스크루 치수](https://boltnote.net/lib/asme-b18-2-1)
+- [ASME B18.2.2 인치 너트 치수 (육각·헤비 육각·플랜지·커플링 등)](https://boltnote.net/lib/asme-b18-2-2)
+- [ASME B18.31.2 인치 스터드 (전산·양끝 나사·플랜지 스터드볼트)](https://boltnote.net/lib/asme-b18-31-2)
+- [ASME B18.3 인치 육각 구멍붙이 볼트·숄더·멈춤나사·육각 렌치](https://boltnote.net/lib/asme-b18-3)
+- [ASME B18.21.1 인치 와셔 (스프링·이붙이·평와셔)](https://boltnote.net/lib/asme-b18-21-1)
+- [ASME B18.22.1 (통합) 인치 평와셔 (B18.21.1로 통합)](https://boltnote.net/lib/asme-b18-22-1)
+- [ASME B16.5 관 플랜지·플랜지 피팅 (NPS 1/2~24)](https://boltnote.net/lib/asme-b16-5)
+- [ASME B16.47 대구경 강 플랜지 (NPS 26~60, Series A·B)](https://boltnote.net/lib/asme-b16-47)
+- [ASME B16.20 관 플랜지용 금속 개스킷 (링조인트·스파이럴운드 등)](https://boltnote.net/lib/asme-b16-20)
+- [ASME PCC-1 압력 경계 볼트 플랜지 조인트 조립 지침](https://boltnote.net/lib/asme-pcc-1)
+- [SAE J429 인치 수나사 체결부품 기계적·재료 요구 (Grade 1~8)](https://boltnote.net/lib/sae-j429)
+- [SAE J995 강 너트 기계적·재료 요구 (Grade 2·5·8)](https://boltnote.net/lib/sae-j995)
+- [API Spec 20E 석유·가스 산업용 합금강·탄소강 볼팅](https://boltnote.net/lib/api-20e)
+- [ASME B18.2.6 구조용 체결부품 치수 (볼트·너트·와셔·DTI)](https://boltnote.net/lib/asme-b18-2-6)
+- [ASTM F468 · F467 비철 볼트·스터드(F468)와 너트(F467)](https://boltnote.net/lib/astm-f468)
+- [ISO 898-1 탄소강·합금강 볼트·스터드의 기계적 성질](https://boltnote.net/lib/iso-898-1)
+- [ISO 898-2 탄소강·합금강 너트의 기계적 성질](https://boltnote.net/lib/iso-898-2)
+- [ISO 3506-1 내식 스테인리스강 볼트·스터드의 기계적 성질](https://boltnote.net/lib/iso-3506-1)
+- [ISO 3506-2 내식 스테인리스강 너트의 기계적 성질](https://boltnote.net/lib/iso-3506-2)
+- [ISO 4014 육각볼트 (반나사) — 제품 등급 A·B](https://boltnote.net/lib/iso-4014)
+- [ISO 4017 육각볼트 (온나사) — 제품 등급 A·B](https://boltnote.net/lib/iso-4017)
+- [ISO 4016 · ISO 4018 (등급 C) 육각볼트 반나사·온나사 — 제품 등급 C](https://boltnote.net/lib/iso-4016-4018)
+- [ISO 4032 육각너트 (스타일 1, 보통 너트)](https://boltnote.net/lib/iso-4032)
+- [ISO 4033 육각 높은 너트 (스타일 2)](https://boltnote.net/lib/iso-4033)
+- [ISO 4035 육각 낮은 너트 (스타일 0)](https://boltnote.net/lib/iso-4035)
+- [ISO 4762 육각 구멍붙이 볼트 (렌치볼트)](https://boltnote.net/lib/iso-4762)
+- [ISO 10642 접시머리 렌치볼트 (하중 능력 감소형)](https://boltnote.net/lib/iso-10642)
+- [ISO 7380 버튼머리 렌치볼트 (하중 능력 감소형)](https://boltnote.net/lib/iso-7380)
+- [ISO 4026 ~ 4029 (멈춤나사) 육각 구멍붙이 멈춤나사 (평·원뿔·봉·컵 끝)](https://boltnote.net/lib/iso-4026-4029)
+- [ISO 7089 · 7090 (평와셔) 평와셔 — 보통 계열, 제품 등급 A](https://boltnote.net/lib/iso-7089-7090)
+- [ISO 7091 · 7093 평와셔 등급 C (7091) · 대와셔 (7093)](https://boltnote.net/lib/iso-7091-7093)
+- [ISO 8734 경화 평행핀 (다웰핀)](https://boltnote.net/lib/iso-8734)
+- [ISO 2338 평행핀 — 비경화강·오스테나이트계 스테인리스](https://boltnote.net/lib/iso-2338)
+- [ISO 8752 스프링핀 (슬롯형, 중하중)](https://boltnote.net/lib/iso-8752)
+- [ISO 1234 분할핀](https://boltnote.net/lib/iso-1234)
+
+## Optional
+
+- [English page for plants in Korea](https://boltnote.net/en/): RFQ in English, quoted in KRW
+- [사이트맵](https://boltnote.net/sitemap.xml)

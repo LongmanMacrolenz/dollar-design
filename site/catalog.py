@@ -5,6 +5,8 @@ import re
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SITE_URL = "https://boltnote.net/"
+# 사이트 내용을 마지막으로 바꾼 날. 사이트맵 lastmod와 구조화 데이터 dateModified가 모두 이 값을 쓴다 (빌드할 때마다 오늘로 바뀌지 않게 손으로 올린다, 오늘보다 뒤 날짜 금지)
+SITE_REV = "2026-11-18"
 HOME_TITLE = "볼트·너트 구매·BOM 견적 | 볼트노트"
 HOME_DESC = "산업설비 볼트·너트 구매와 BOM 견적. 미터·인치, ASTM 스터드·헤비너트의 사양과 서류를 확인합니다."
 # 링크를 공유할 때 뜨는 그림(og:image), 1280×720. 원본은 app/brand/social.html → python3 tools/render_brand.py.

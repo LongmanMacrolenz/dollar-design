@@ -9,8 +9,9 @@ import pathlib
 import re
 import sys
 
-from catalog import catalog, brand_copy, home_copy, SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE
+from catalog import catalog, brand_copy, home_copy, table_data, SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE
 from build_lib import site_info, beacon_tag, adsense_tag
+from build_en import facts
 
 ROOT = pathlib.Path(__file__).resolve().parent
 SRC = ROOT / "page.html"
@@ -88,6 +89,17 @@ def initial_home() -> str:
     links = ''.join(f'<li><a href="/products/{paths[id]}">{html.escape(families[id]["ko"])} · {html.escape(families[id]["en"])}</a></li>' for id in products)
     categories = ' · '.join(f'<a href="/products/category/{t["id"]}">{html.escape(t["ko"])}</a>' for t in tiles)
     email = html.escape(site_info()["rfq"])
+    days, years = facts()
+    info = site_info()
+    n_tables = len(table_data())
+    about = "".join(f"<li>{html.escape(x)}</li>" for x in [
+        "하는 일: 산업용 볼트·너트·스터드 등 체결부품의 사양을 검토하고 견적·공급합니다. 거래 상대는 사업자입니다.",
+        "받는 자료: BOM·RFQ(엑셀·PDF), 도면, 사진, 메모를 그대로 받습니다. 정해진 양식은 없습니다.",
+        f"회신: 받은 요청은 접수 확인 메일을 드리고, 20줄 이하는 {days}영업일 안에 견적합니다.",
+        "공급: 재고를 두지 않고 주문마다 국내 공급처에서 조달합니다. 단가와 납기는 공급처 확인 뒤 견적서에 적습니다.",
+        (f"운영: 대표 {info['owner']}, 기계엔지니어" + (f", 회전기기 분야 {years}년." if years else ".")) if info["owner"] else "운영: 기계엔지니어가 견적 줄을 직접 읽습니다.",
+        f"규격표: 볼트·너트·와셔·핀 등 {n_tables}종의 치수표를 공개합니다. 규격서 원문이 아니라 공개 자료를 대조한 참고 표이며 표마다 근거를 적습니다.",
+    ])
     return ('<main id="view" class="wrap" tabindex="-1"><section class="search-overview bn-boot" aria-labelledby="initial-home-title">'
             '<div class="bn-boot-stage"><div class="bn-wrap bn-boot-grid"><div class="bn-boot-copy">'
             '<p class="bn-boot-eyebrow" lang="en">BOLTNOTE <span>/</span> INDUSTRIAL FASTENERS</p>'
@@ -101,6 +113,7 @@ def initial_home() -> str:
             '</div></div><div class="bn-wrap bn-boot-more">'
             '<p>볼트노트는 기존 BOM·메모·RFQ를 읽고 체결부품의 사양, 공급 조건과 필요한 서류를 확인합니다. 미터·인치 볼트, 육각너트·헤비너트, ASTM 스터드와 기계 체결부품을 품목별로 살펴보세요.</p>'
             f'<p><a href="/#list">BOM·RFQ로 Sales 문의 →</a> · 견적 이메일 {email}</p>'
+            f'<h2>볼트노트는 이런 곳입니다</h2><ul class="bn-boot-facts">{about}</ul>'
             f'<h2>제품별 규격·구매 안내</h2><p>{categories}</p><ul>{links}</ul>'
             '<p><a href="/products/">전체 제품 안내</a> · <a href="/tables/">볼트·너트 규격표 모음</a> · <a href="/lib/">체결부품 규격·구매 지식 라이브러리</a></p>'
             '<p>주력 품목군, 조건부 조달 품목, 원문·도면 검토 품목을 구분합니다. 재고·단가·납기와 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.</p>'
