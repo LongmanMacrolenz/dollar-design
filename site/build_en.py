@@ -40,10 +40,11 @@ def facts():
     return days, (years.group(1) if years else "")
 
 
-def header():
-    return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote home (Korean)">' + MARK + '</a>'
-            '<nav class="top" aria-label="Main"><a href="/tables/" lang="ko">규격표 (tables)</a></nav>'
-            '<nav class="lang" aria-label="Language"><a href="/" lang="ko" hreflang="ko" title="한국어">KO</a> · <b aria-current="true">EN</b></nav></div></header>')
+def header(on: str = ""):
+    nav = [("/en/products/", "Products", "products"), ("/en/tables/", "Dimension tables", "tables"), ("/en/lib/", "Standards glossary", "lib"), ("/en/#rfq", "Send an RFQ", "")]
+    return ('<header><div class="w"><a class="brand" href="/en/" aria-label="Boltnote home (English)">' + MARK + '</a>'
+            '<nav class="top" aria-label="Main">' + "".join('<a href="%s"%s>%s</a>' % (h, ' class="on" aria-current="page"' if k == on else "", t) for h, t, k in nav) + '</nav>'
+            '<nav class="lang" aria-label="Language"><a href="@@KO@@" lang="ko" hreflang="ko" title="한국어">KO</a> · <b aria-current="true">EN</b></nav></div></header>')
 
 
 def footer(info):
@@ -74,7 +75,7 @@ def build():
             '<h1>Bolts, nuts and studs for your plant in Korea — quoted in English.</h1>'
             '<p class="lead">Send your BOM or RFQ in English as it is: Excel, PDF, a drawing or a photo. We read every line — standard, size, '
             'grade, coating and documents — and source it from suppliers in Korea. Quotations and tax invoices are issued in Korean won (KRW).</p>'
-            f'<div class="en-actions"><span class="en-mail" title="Select to copy">{e(info["rfq"])}</span>{kakao}</div>'
+            f'<div class="en-actions" id="rfq"><span class="en-mail" title="Select to copy">{e(info["rfq"])}</span>{kakao}</div>'
             f'<p class="en-note" style="color:#93a0ac;margin-top:14px">Weekdays 09:00–18:00 KST. Up to 20 lines are quoted within {days} business day{"s" if days > 1 else ""}; for longer lists we tell you the reply date first.</p>'
             '</div></section><div class="w">'
             '<h2 style="font-size:24px;margin-top:40px">Who this is for</h2>'
@@ -101,10 +102,10 @@ def build():
             + (f'<li>One-person business: the owner, a mechanical engineer with {e(years)} years in rotating equipment, reviews every line personally.</li>' if years else '')
             + '</ul>'
             f'<h2 style="font-size:24px;margin-top:36px">Dimension tables</h2><p>{n_tables} fastener dimension tables (hex bolts and nuts, socket screws, washers, pins, rings …) '
-            'with the basis of each table stated. Labels are in Korean; sizes and values are in mm or inch as in the standard.</p>'
-            '<p><a class="cta" href="/tables/">Open the dimension tables →</a></p>'
-            '<p class="en-note" style="margin-top:28px">The rest of this website is in Korean. Korean-speaking colleagues can use the '
-            '<a href="/#list" lang="ko">Sales inquiry page (Korean)</a> or the <a href="/products/" lang="ko">product guides (Korean)</a>.</p>'
+            'with the basis of each table stated; sizes and values are in mm or inch as in the standard.</p>'
+            '<p><a class="cta" href="/en/tables/">Open the dimension tables →</a> <a href="/en/products/">Product guides</a> · <a href="/en/lib/">Standards glossary</a></p>'
+            '<p class="en-note" style="margin-top:28px">The quotation tool, privacy policy and terms are available in Korean only. Korean-speaking colleagues can use the '
+            '<a href="/#list" lang="ko">Sales inquiry page (Korean)</a>.</p>'
             '</div></main>' + footer(info))
     title = "Fasteners for plants in Korea – RFQ in English | Boltnote"
     desc = "Bolts, nuts and studs for plants in Korea. Send your BOM or RFQ in English; quoted in KRW."

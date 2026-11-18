@@ -38,3 +38,11 @@ Google·네이버에 제출할 사이트맵은 `/sitemap.xml` 하나입니다.
 공개 본문은 한국어 제품명, 영문 BOM 표기, 적용 규격을 자연스럽게 연결합니다.
 키워드 나열, 지역만 바꾼 중복 페이지, 확인되지 않은 공급·서류 약속,
 가격·리뷰·재고를 지어낸 구조화 데이터를 추가하지 않습니다.
+
+
+## 영문 사이트 (/en/, 대표 요청 2026-11-18)
+- `/tables/`·`/products/`·`/lib/`의 모든 쪽은 같은 경로의 영문 짝이 `/en/` 아래에 있다 (예: `/tables/clevis-pin` ↔ `/en/tables/clevis-pin`). 홈의 영문 짝은 `/en/`이다.
+- 만드는 곳: `site/build_en_site.py` (영문 틀) + `site/en/*.json` (번역 자료: lib.json·products.json·tables.json·guide.json). 번역 자료는 한국어 원문을 옮긴 것이다. 한국어 원문(`site/lib.json`, `app/src/ea_catdata.js`, `tools/t2/records`)을 바꾸면 해당 번역 자료도 같이 고쳐야 한다. 빠진 문장이 있으면 빌드가 멈춘다.
+- 머리의 KO·EN 전환(`@@EN@@`·`@@KO@@` 자리표시는 `build_lib.page()`가 바꾼다)과 `hreflang`은 각 쪽의 짝을 가리킨다. 사이트맵에 영문 쪽이 모두 들어 있다.
+- 점검(`tools/check_search.py`): 한국어·영문 쪽이 일대일이고, 영문 쪽에 한글(브랜드 이름 괄호·`lang="ko"` 링크 제외)이 남지 않는다.
+- 영문 쪽도 규칙은 같다: 재고·가격·납기 약속, 후기·인증, 회사·출처 사이트 이름 없음. 납품은 국내, 견적은 원화(KRW).

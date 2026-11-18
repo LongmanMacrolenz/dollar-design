@@ -14,6 +14,9 @@ ROOT = pathlib.Path(__file__).resolve().parent
 DOCS = ROOT.parent / "docs"
 e = html.escape
 SYSTEM = {"metric": "미터", "inch": "인치", "both": "미터·인치"}
+SYSTEM_EN = {"metric": "metric", "inch": "inch", "both": "metric and inch"}   # 영문 쪽 (site/build_en_site.py)
+TIERS_EN = {"A": "Core family", "B": "Conditionally sourced item", "C": "Item reviewed from the standard text or drawing"}
+
 TIERS = {"A": "주력 품목군", "B": "조건부 조달 품목", "C": "원문·도면 검토 품목"}
 TITLE_NAMES = {"hn": "Hex Nut", "hh": "Heavy Hex Nut", "ihn": "Inch Hex Nut",
                "b7": "Stud Bolt B7", "b7m": "Stud Bolt B7M", "b8": "Stud Bolt B8/B8M",
@@ -26,6 +29,14 @@ QUESTIONS = {
     "stud": ["미터·인치 호칭, 피치 또는 산 수와 나사 공차", "길이 측정 기준, 나사부 길이와 양끝 형상", "스터드·너트의 재질 등급과 세트당 너트 수"],
     "pin": ["핀·키·링의 종류와 적용 도면", "축·구멍 또는 홈 치수와 끼워맞춤 요구", "재질·경도와 조립 조건"],
     "rivet": ["리벳·인서트 종류와 적용 도면", "판 두께·그립 범위, 구멍 또는 나사 치수", "본체·심재 재질과 설치 공구 조건"],
+}
+QUESTIONS_EN = {
+    "bolt": ["Nominal size, pitch (or threads per inch) and thread tolerance", "Head type, overall-length basis and threaded length", "Material standard and property class, matching nut and washer"],
+    "nut": ["Nominal size, pitch (or threads per inch) and thread tolerance of the mating bolt", "Style (regular, heavy, thin) with width across flats and height", "Nut material and grade, and the combination with the bolt grade"],
+    "washer": ["Bolt size and the required inside diameter, outside diameter and thickness", "Style (flat, spring, bevel, sealing) and bearing-face condition", "Material and hardness, and the mating bolt and nut"],
+    "stud": ["Metric or inch size, pitch or threads per inch, and thread tolerance", "Length measuring basis, threaded length and end shapes", "Material grade of stud and nut, and number of nuts per set"],
+    "pin": ["Type of pin, key or ring and the application drawing", "Shaft, hole or groove dimensions and the fit requirement", "Material, hardness and assembly conditions"],
+    "rivet": ["Type of rivet or insert and the application drawing", "Plate thickness and grip range, hole or thread size", "Body and mandrel material and the installation tool condition"],
 }
 # 네이버 서치어드바이저 검색어(2026-11)에 맞춰 제목·설명·다른 이름을 손본 품목.
 # 값은 모두 공개 카탈로그(ea_catdata.js)의 품목명·kw 별칭·안내 문구에서 가져왔습니다. 80자를 넘기지 않습니다.
@@ -85,21 +96,21 @@ EXTRA_CSS = """
 """
 
 
-def document(title, description, path, body, crumbs, collection=False, extra=None, main_entity=None):
+def document(title, description, path, body, crumbs, collection=False, extra=None, main_entity=None, lang="ko"):
     url = SITE_URL + path
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage" if collection else "WebPage", "@id": url,
-         "name": title, "description": description, "url": url, "inLanguage": "ko", "dateModified": SITE_REV,
+         "name": title, "description": description, "url": url, "inLanguage": lang, "dateModified": SITE_REV,
          "isPartOf": {"@id": SITE_URL + "#website"}, "publisher": {"@id": SITE_URL + "#organization"},
          **({"mainEntity": {"@id": main_entity}} if main_entity else {})},
-        *org_graph(),
+        *org_graph(lang=lang),
         {"@type": "WebSite", "@id": SITE_URL + "#website", "name": "볼트노트", "url": SITE_URL},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": i, "name": label, "item": SITE_URL.rstrip("/") + link}
             for i, (label, link) in enumerate(crumbs, 1)]},
         *(extra or []),
     ]}
-    return page(title, description, path, body, ld).replace("</style>", EXTRA_CSS + "</style>", 1)
+    return page(title, description, path, body, ld, lang=lang).replace("</style>", EXTRA_CSS + "</style>", 1)
 
 
 def image_for(id, shapes):

@@ -395,9 +395,15 @@ def check_english(page, BASE, OUT):
   assert tab.goto(BASE+'/en/').status==200 and tab.locator('html').get_attribute('lang')=='en' and tab.locator('h1').count()==1
   assert tab.locator('.en-mail').inner_text()=='a8wlhg942@naver.com' and tab.locator('a[href^="https://pf.kakao.com/"]').count()==1 and tab.locator('a[href^="mailto:"]').count()==0
   text=tab.locator('main').inner_text();assert 'KRW' in text and 'We hold no stock' in text and '1 business day' in text
-  assert tab.evaluate('document.documentElement.scrollWidth<=innerWidth') and tab.locator('a[href="/tables/"]').count()>=1
+  assert tab.evaluate('document.documentElement.scrollWidth<=innerWidth') and tab.locator('a[href="/en/tables/"]').count()>=1
   assert tab.locator('nav.lang a[href="/"]').inner_text()=='KO' and tab.locator('nav.top a[href="/en/"]').count()==0
-  tab.goto(BASE+'/lib/iso-4032');assert tab.locator('nav.top a[href="/en/"]').count()==0 and tab.locator('nav.lang a[href="/en/"]').inner_text()=='EN'
+  tab.goto(BASE+'/lib/iso-4032');assert tab.locator('nav.top a[href="/en/"]').count()==0 and tab.locator('nav.lang a[href="/en/lib/iso-4032"]').inner_text()=='EN'
+  # 영문 사이트: 같은 경로의 짝으로 이동하고, 돌아오는 KO 링크가 한국어 짝을 가리킨다
+  for en_path,ko_path in [('/en/tables/clevis-pin','/tables/clevis-pin'),('/en/products/hex-nut','/products/hex-nut'),('/en/lib/iso-4032','/lib/iso-4032'),('/en/tables/','/tables/'),('/en/products/','/products/'),('/en/lib/','/lib/')]:
+    assert tab.goto(BASE+en_path).status==200 and tab.locator('html').get_attribute('lang')=='en' and tab.locator('h1').count()==1,en_path
+    assert tab.locator('nav.lang a[lang="ko"]').get_attribute('href')==ko_path and tab.evaluate('document.documentElement.scrollWidth<=innerWidth'),en_path
+    assert tab.goto(BASE+ko_path).status==200 and tab.locator('nav.lang a[lang="en"]').get_attribute('href')==en_path,ko_path
+  tab.goto(BASE+'/en/tables/clevis-pin');assert tab.locator('table th[scope=col]').first.inner_text().strip()=='Nominal size' and 'Dataset' in tab.locator('script[type="application/ld+json"]').first.inner_text()
   tab.goto(BASE+'/en/');assert tab.locator('link[rel=alternate][hreflang=ko]').get_attribute('href').endswith('/') and tab.locator('link[rel=alternate][hreflang=en]').count()==1
   # 홈(SPA)에서 가는 길: 메뉴 항목이 아니라 상단 돋보기 옆 KO · EN 전환 (좁은 화면·넓은 화면 모두)
   tab.goto(BASE+'/');tab.wait_for_timeout(800);assert tab.locator('link[rel=alternate][hreflang=en]').get_attribute('href').endswith('/en/')

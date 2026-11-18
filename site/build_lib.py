@@ -22,26 +22,26 @@ GUIDE = json.loads((ROOT / "lib-guide.json").read_text(encoding="utf-8"))
 e = html.escape
 
 
-def org_node(info: dict | None = None) -> dict:
+def org_node(info: dict | None = None, lang: str = "ko") -> dict:
     """구조화 데이터의 사업자(Organization)와 운영자(Person). 사이트에 이미 공개된 값만 쓴다: 상호, 대표 이름, 직무, 분야 경력.
     집 주소·개인 연락처·직장 이름은 넣지 않는다."""
     info = info or site_info()
     t = (ROOT / "page.html").read_text(encoding="utf-8")
     m = re.search(r"ownerYears: '(\d+)'", t)
     node = {"@type": "Organization", "@id": SITE_URL + "#organization", "name": "볼트노트", "alternateName": "Boltnote", "url": SITE_URL,
-            "logo": SITE_URL + "brand/boltnote-mark.svg", "description": "산업용 볼트·너트·스터드 등 체결부품의 사양 검토와 견적·공급 (사업자 간 거래).",
-            "areaServed": "KR", "knowsAbout": ["체결부품", "볼트", "너트", "스터드", "ASTM A193 / A194", "ISO 4017 / ISO 4032"]}
+            "logo": SITE_URL + "brand/boltnote-mark.svg", "description": ("Specification review, quotation and supply of industrial fasteners (bolts, nuts, studs) for business customers in Korea." if lang == "en" else "산업용 볼트·너트·스터드 등 체결부품의 사양 검토와 견적·공급 (사업자 간 거래)."),
+            "areaServed": "KR", "knowsAbout": (["fasteners", "bolts", "nuts", "studs", "ASTM A193 / A194", "ISO 4017 / ISO 4032"] if lang == "en" else ["체결부품", "볼트", "너트", "스터드", "ASTM A193 / A194", "ISO 4017 / ISO 4032"])}
     if info.get("owner"):
-        person = {"@type": "Person", "@id": SITE_URL + "#owner", "name": info["owner"], "jobTitle": "대표 · 기계엔지니어", "worksFor": {"@id": SITE_URL + "#organization"}}
+        person = {"@type": "Person", "@id": SITE_URL + "#owner", "name": info["owner"], "jobTitle": ("Owner · Mechanical engineer" if lang == "en" else "대표 · 기계엔지니어"), "worksFor": {"@id": SITE_URL + "#organization"}}
         if m:
-            person["description"] = f"회전기기 분야 {m.group(1)}년 경력의 기계엔지니어."
+            person["description"] = (f"Mechanical engineer with {m.group(1)} years in rotating equipment." if lang == "en" else f"회전기기 분야 {m.group(1)}년 경력의 기계엔지니어.")
         node["founder"] = {"@id": SITE_URL + "#owner"}
         return {"org": node, "person": person}
     return {"org": node}
 
 
-def org_graph(info: dict | None = None) -> list:
-    return list(org_node(info).values())
+def org_graph(info: dict | None = None, lang: str = "ko") -> list:
+    return list(org_node(info, lang).values())
 
 
 def official_links(x):
@@ -156,6 +156,17 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link href=
 
 
 def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True, lang: str = "ko", alternates: dict | None = None) -> str:
+    """정적 페이지. 한국어 쪽(tables·products·lib)과 /en/ 아래 영문 쪽은 같은 경로로 짝을 이루고, 머리의 KO·EN 전환과 hreflang이 서로를 가리킨다."""
+    if alternates is None and index:
+        if lang == "ko" and re.match(r"(tables|products|lib)(/|$)", path):
+            alternates = {"ko": path, "en": "en/" + path, "x-default": path}
+        elif lang == "en" and path.startswith("en/") and path != "en/":
+            alternates = {"ko": path[3:], "en": path, "x-default": path[3:]}
+    out = _page(title, desc, path, body, ld, index, lang, alternates)
+    return out.replace("@@EN@@", "/" + alternates["en"] if alternates else "/en/").replace("@@KO@@", "/" + alternates["ko"] if alternates else "/")
+
+
+def _page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True, lang: str = "ko", alternates: dict | None = None) -> str:
     """정적 페이지의 공통 틀. index=False는 검색에 넣지 않는 페이지(404 안내)로, 표준 주소와 og:url을 내지 않는다."""
     url = SITE_URL + path
     desc = compact_description(desc)
@@ -182,7 +193,7 @@ def header(on: str = "lib") -> str:
     nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
-            + '</nav><nav class="lang" aria-label="언어 Language"><b aria-current="true">KO</b> · <a href="/en/" lang="en" hreflang="en" title="English">EN</a></nav>'
+            + '</nav><nav class="lang" aria-label="언어 Language"><b aria-current="true">KO</b> · <a href="@@EN@@" lang="en" hreflang="en" title="English">EN</a></nav>'
             '<a class="cta" href="/#list">Sales 문의 →</a></div></header>')
 
 
@@ -348,6 +359,7 @@ def main() -> None:
     (out / "index.html").write_text(index_html(L, info), encoding="utf-8")
     (DOCS / "404.html").write_text(not_found_html(info), encoding="utf-8")   # 사이트맵에 넣지 않는다
     urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls() + table_urls() + [SITE_URL + "en/"]
+    urls += [SITE_URL + "en/" + u[len(SITE_URL):] for u in urls[:-1] if u != SITE_URL]   # 영문 쪽 (site/build_en_site.py)
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{SITE_REV}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (DOCS / "robots.txt").write_text(f"# 검색엔진과 AI 로봇 모두 허용한다 (규격표·제품 안내는 인용되도록 열어 둔다). AI 요약 안내: {SITE_URL}llms.txt\nUser-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")
