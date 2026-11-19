@@ -1,3 +1,4 @@
+import re
 """End-to-end quotation flow with synthetic data, local storage and no mail password."""
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -144,7 +145,7 @@ def check_boot(page, BASE, OUT):
    for route,ready,colour in (('','.bn-company-hero','rgb(10, 14, 19)'),('#list','#sales-email','rgb(244, 243, 239)')):
     context=browser.new_context(viewport=size);live=context.new_page();live.add_init_script(observer);live.goto(BASE+'/'+route);live.locator(ready).wait_for();live.wait_for_timeout(1500)
     state=live.evaluate(read)
-    assert state['html']=='' and state['overview']==0 and state['meta']==state['bg']==colour,(size,route,state)
+    assert re.sub(r'bn-rail-\w+','',state['html']).strip()=='' and state['overview']==0 and state['meta']==state['bg']==colour,(size,route,state)
     assert state['cls']<0.1,(size,route,state)
     context.close()
   # A saved dark theme is set by the head script (no light flash) and the browser colour follows it.
@@ -402,21 +403,31 @@ def check_trad(page, BASE, OUT):
   assert '광고' in inline.inner_text() and '광고' in foot.inner_text()
   img=w.locator('.tr-ad[data-slot=inline] img').first;img.scroll_into_view_if_needed();w.wait_for_function("()=>{const i=document.querySelector('.tr-ad[data-slot=inline] img');return i.complete&&i.naturalWidth>0}",timeout=8000)
   wide.close()
-  # 오른쪽에 떠 있는 세로 배너(rail): 큰 화면의 여백에만 뜨고, 글을 덮지 않고, 스크롤해도 남고, 닫을 수 있다
-  big=page.context.browser.new_context(viewport={'width':1700,'height':900});g=big.new_page();g.goto(BASE+'/products/hex-nut');g.wait_for_selector('.tr-ad[data-slot=rail] a');g.wait_for_selector('.bn-ad-x')
+  # 떠 있는 광고(rail): 화면 크기에 따라 full(160) · compact(120) · tab(가장자리 탭) · bar(핸드폰 바닥). 글을 덮지 않고, 스크롤해도 남고, 닫을 수 있다
+  def rail_at(width,url,height=900):
+    ctx=page.context.browser.new_context(viewport={'width':width,'height':height});r=ctx.new_page();r.goto(BASE+url);r.wait_for_selector('.tr-ad[data-slot=rail] a');r.wait_for_selector('.bn-ad-x',state='attached');r.wait_for_timeout(300);return ctx,r
+  big,g=rail_at(1700,'/products/hex-nut')
   rail=g.locator('.tr-ad[data-slot=rail]');box=rail.bounding_box();main=g.locator('main .w').first.bounding_box()
-  assert rail.evaluate('e=>getComputedStyle(e).position')=='fixed' and box['x']>=main['x']+main['width']-32 and box['width']<=161 and not g.locator('.tr-ad[data-slot=side]').is_visible()
+  assert rail.get_attribute('data-mode')=='full' and rail.evaluate('e=>getComputedStyle(e).position')=='fixed' and box['x']>=main['x']+main['width']-32 and box['width']<=161 and not g.locator('.tr-ad[data-slot=side]').is_visible()
   g.evaluate('window.scrollTo(0,1500)');g.wait_for_timeout(300);box2=rail.bounding_box();assert abs(box2['y']-box['y'])<2 and rail.is_visible(),'rail must stay in view'
   g.locator('.bn-ad-x').click();assert not rail.is_visible()
   big.close()
-  mid=page.context.browser.new_context(viewport={'width':1600,'height':900});n=mid.new_page();n.goto(BASE+'/products/hex-nut');n.wait_for_selector('.tr-ad[data-slot=inline] a');assert not n.locator('.tr-ad[data-slot=rail]').is_visible() and n.locator('.tr-ad[data-slot=side] a').is_visible();mid.close()
-  huge=page.context.browser.new_context(viewport={'width':1920,'height':1000});h2=huge.new_page();h2.goto(BASE+'/');h2.wait_for_selector('.tr-ad[data-slot=rail] a');assert h2.locator('.tr-ad[data-slot=rail]').is_visible()
-  h2.set_viewport_size({'width':1800,'height':1000});h2.wait_for_timeout(300);assert h2.locator('.tr-ad[data-slot=rail]').is_visible(),'app rail at 1800'
-  h2.set_viewport_size({'width':1700,'height':1000});h2.wait_for_timeout(300);assert not h2.locator('.tr-ad[data-slot=rail]').is_visible();huge.close()
+  mid,n=rail_at(1536,'/products/hex-nut');cr=n.locator('.tr-ad[data-slot=rail]');cb=cr.bounding_box();cm=n.locator('main .w').first.bounding_box()
+  assert cr.get_attribute('data-mode')=='compact' and cb['width']<=121 and cb['x']>=cm['x']+cm['width']-32 and cb['x']+cb['width']<=1536,'1536px laptop: compact rail'
+  mid.close()
+  tab,t=rail_at(1366,'/products/hex-nut');tr=t.locator('.tr-ad[data-slot=rail]');assert tr.get_attribute('data-mode')=='tab' and t.locator('.bn-ad-tab').is_visible() and tr.bounding_box()['x']>=1366
+  t.locator('.bn-ad-tab').click();t.wait_for_timeout(400);assert tr.bounding_box()['x']<1366 and t.locator('.tr-ad[data-slot=rail] .tr-ad-card').is_visible(),'tab opens the banner'
+  t.locator('.bn-ad-x').click();t.wait_for_timeout(400);assert tr.bounding_box()['x']>=1366;tab.close()
+  huge,h2=rail_at(1920,'/',1000);assert h2.locator('.tr-ad[data-slot=rail]').get_attribute('data-mode')=='full'
+  h2.set_viewport_size({'width':1536,'height':1000});h2.wait_for_timeout(400);assert h2.locator('.tr-ad[data-slot=rail]').get_attribute('data-mode')=='tab','app home at 1536: tab'
+  h2.evaluate("location.hash='lib'");h2.wait_for_timeout(1200);assert h2.locator('.tr-ad[data-slot=rail]').get_attribute('data-mode')=='compact' and h2.locator('.tr-ad[data-slot=rail]').is_visible(),'app tab at 1536: compact'
+  huge.close()
   phone=page.context.browser.new_context(viewport={'width':375,'height':740});m=phone.new_page()
   m.goto(BASE+'/tables/clevis-pin');m.wait_for_selector('.tr-ad[data-slot=inline] a')
   assert m.locator('.tr-ad[data-slot=inline] a').is_visible() and not m.locator('.tr-ad[data-slot=side]').is_visible() and m.evaluate('document.documentElement.scrollWidth<=innerWidth')
-  assert not m.locator('.tr-ad[data-slot=rail]').is_visible()
+  m.wait_for_selector('.tr-ad[data-slot=rail][data-mode=bar] a');bar=m.locator('.tr-ad[data-slot=rail]').bounding_box()
+  assert bar['width']>=374 and abs(bar['y']+bar['height']-740)<2 and m.evaluate("document.documentElement.classList.contains('bn-rail-bar')"),'phone: bottom bar'
+  m.locator('.bn-ad-x').click();assert not m.locator('.tr-ad[data-slot=rail]').is_visible() and not m.evaluate("document.documentElement.classList.contains('bn-rail-bar')")
   m.goto(BASE+'/en/tables/clevis-pin');m.wait_for_timeout(500);assert m.locator('.tr-ad').count()==0
   m.goto(BASE+'/');m.wait_for_selector('.tr-ad[data-slot=foot] a');assert m.locator('.tr-ad[data-slot=foot] a').is_visible()
   m.wait_for_selector('.bn-trad .tr-ad[data-slot=inline] a');home_ad=m.locator('.bn-trad .tr-ad a').bounding_box();tiles=m.locator('.bn-company-products').bounding_box();assert home_ad['y']>=tiles['y']+tiles['height']-2,'home card must follow the product list'
@@ -425,7 +436,7 @@ def check_trad(page, BASE, OUT):
   m.evaluate("location.hash='products'");m.wait_for_timeout(500);assert m.locator('.tr-ad[data-slot=foot] a').is_visible()
   assert not problems,problems
   phone.close()
-  print('Transition 광고 · 규격표 A·B·C, 견적 안내 뒤, 핸드폰 B 숨김, 영문 없음, 앱 견적 화면에서 띠 숨김: PASS')
+  print('Transition 광고 · 규격표 A·B·C, 견적 안내 뒤, 떠 있는 광고 full·compact·tab·bar, 영문 없음, 앱 견적 화면에서 띠 숨김: PASS')
 
 
 def check_english(page, BASE, OUT):
