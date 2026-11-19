@@ -401,9 +401,19 @@ def check_trad(page, BASE, OUT):
   assert '광고' in inline.inner_text() and '광고' in foot.inner_text()
   img=w.locator('.tr-ad[data-slot=inline] img').first;img.scroll_into_view_if_needed();w.wait_for_function("()=>{const i=document.querySelector('.tr-ad[data-slot=inline] img');return i.complete&&i.naturalWidth>0}",timeout=8000)
   wide.close()
+  # 오른쪽에 떠 있는 세로 배너(rail): 큰 화면의 여백에만 뜨고, 글을 덮지 않고, 스크롤해도 남고, 닫을 수 있다
+  big=page.context.browser.new_context(viewport={'width':1700,'height':900});g=big.new_page();g.goto(BASE+'/products/hex-nut');g.wait_for_selector('.tr-ad[data-slot=rail] a');g.wait_for_selector('.bn-ad-x')
+  rail=g.locator('.tr-ad[data-slot=rail]');box=rail.bounding_box();main=g.locator('main .w').first.bounding_box()
+  assert rail.evaluate('e=>getComputedStyle(e).position')=='fixed' and box['x']>=main['x']+main['width']-32 and box['width']<=161 and not g.locator('.tr-ad[data-slot=side]').is_visible()
+  g.evaluate('window.scrollTo(0,1500)');g.wait_for_timeout(300);box2=rail.bounding_box();assert abs(box2['y']-box['y'])<2 and rail.is_visible(),'rail must stay in view'
+  g.locator('.bn-ad-x').click();assert not rail.is_visible()
+  big.close()
+  mid=page.context.browser.new_context(viewport={'width':1600,'height':900});n=mid.new_page();n.goto(BASE+'/products/hex-nut');n.wait_for_selector('.tr-ad[data-slot=inline] a');assert not n.locator('.tr-ad[data-slot=rail]').is_visible() and n.locator('.tr-ad[data-slot=side] a').is_visible();mid.close()
+  huge=page.context.browser.new_context(viewport={'width':1920,'height':1000});h2=huge.new_page();h2.goto(BASE+'/');h2.wait_for_selector('.tr-ad[data-slot=rail] a');assert h2.locator('.tr-ad[data-slot=rail]').is_visible();huge.close()
   phone=page.context.browser.new_context(viewport={'width':375,'height':740});m=phone.new_page()
   m.goto(BASE+'/tables/clevis-pin');m.wait_for_selector('.tr-ad[data-slot=inline] a')
   assert m.locator('.tr-ad[data-slot=inline] a').is_visible() and not m.locator('.tr-ad[data-slot=side]').is_visible() and m.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  assert not m.locator('.tr-ad[data-slot=rail]').is_visible()
   m.goto(BASE+'/en/tables/clevis-pin');m.wait_for_timeout(500);assert m.locator('.tr-ad').count()==0
   m.goto(BASE+'/');m.wait_for_selector('.tr-ad[data-slot=foot] a');assert m.locator('.tr-ad[data-slot=foot] a').is_visible()
   m.wait_for_selector('.bn-trad .tr-ad[data-slot=inline] a');home_ad=m.locator('.bn-trad .tr-ad a').bounding_box();tiles=m.locator('.bn-company-products').bounding_box();assert home_ad['y']>=tiles['y']+tiles['height']-2,'home card must follow the product list'
