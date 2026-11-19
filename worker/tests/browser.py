@@ -410,7 +410,9 @@ def check_trad(page, BASE, OUT):
   g.locator('.bn-ad-x').click();assert not rail.is_visible()
   big.close()
   mid=page.context.browser.new_context(viewport={'width':1600,'height':900});n=mid.new_page();n.goto(BASE+'/products/hex-nut');n.wait_for_selector('.tr-ad[data-slot=inline] a');assert not n.locator('.tr-ad[data-slot=rail]').is_visible() and n.locator('.tr-ad[data-slot=side] a').is_visible();mid.close()
-  huge=page.context.browser.new_context(viewport={'width':1920,'height':1000});h2=huge.new_page();h2.goto(BASE+'/');h2.wait_for_selector('.tr-ad[data-slot=rail] a');assert h2.locator('.tr-ad[data-slot=rail]').is_visible();huge.close()
+  huge=page.context.browser.new_context(viewport={'width':1920,'height':1000});h2=huge.new_page();h2.goto(BASE+'/');h2.wait_for_selector('.tr-ad[data-slot=rail] a');assert h2.locator('.tr-ad[data-slot=rail]').is_visible()
+  h2.set_viewport_size({'width':1800,'height':1000});h2.wait_for_timeout(300);assert h2.locator('.tr-ad[data-slot=rail]').is_visible(),'app rail at 1800'
+  h2.set_viewport_size({'width':1700,'height':1000});h2.wait_for_timeout(300);assert not h2.locator('.tr-ad[data-slot=rail]').is_visible();huge.close()
   phone=page.context.browser.new_context(viewport={'width':375,'height':740});m=phone.new_page()
   m.goto(BASE+'/tables/clevis-pin');m.wait_for_selector('.tr-ad[data-slot=inline] a')
   assert m.locator('.tr-ad[data-slot=inline] a').is_visible() and not m.locator('.tr-ad[data-slot=side]').is_visible() and m.evaluate('document.documentElement.scrollWidth<=innerWidth')

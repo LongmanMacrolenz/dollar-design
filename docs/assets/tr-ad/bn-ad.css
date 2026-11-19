@@ -3,14 +3,14 @@
 .bn-trad .tr-ad { margin: 0 auto; max-width: 1200px; }
 
 /* ── 오른쪽에 떠 있는 세로 배너 (rail, 대표 요청 2026-11-19) ──
-   글 오른쪽의 빈 여백에만 뜬다: 글을 덮지 않고 화면도 밀지 않는다. 정적 페이지(글 폭 1280px, 안쪽 여백 32px 제외 1248px)는 가로 1620px 이상, 앱(글 폭 1440px)은 1820px 이상.
+   글 오른쪽의 빈 여백에만 뜬다: 글을 덮지 않고 화면도 밀지 않는다. 정적 페이지(글 폭 1280px, 안쪽 여백 32px 제외 1248px)는 가로 1616px 이상, 앱(글 폭 1440px, 실제 화면은 더 좁은 경우가 많다)은 1780px 이상.
    그보다 좁은 화면과 핸드폰에서는 뜨지 않는다 (글을 가리거나 모바일 방해 광고로 보이는 것을 피한다). 인쇄에서는 숨긴다. */
 .tr-ad[data-slot="rail"] { display: none; margin: 0; }
-@media (min-width: 1620px) {
+@media (min-width: 1616px) {
   .tr-ad[data-slot="rail"]:not([data-app]) { display: block; position: fixed; top: 88px; right: max(8px, calc((100vw - 1248px) / 2 - 176px)); width: 160px; z-index: 30; }
   .tr-ad[data-slot="side"] { display: none; }   /* 같은 광고가 옆 칸에도 또 보이지 않게 */
 }
-@media (min-width: 1820px) {
+@media (min-width: 1780px) {
   .tr-ad[data-slot="rail"][data-app] { display: block; position: fixed; top: 88px; right: max(8px, calc((100vw - 1440px) / 2 - 176px)); width: 160px; z-index: 30; }
 }
 .tr-ad[data-slot="rail"] .tr-ad-card { grid-template-columns: 1fr; box-shadow: 0 6px 22px rgba(10, 20, 32, .28); }
