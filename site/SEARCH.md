@@ -46,3 +46,13 @@ Google·네이버에 제출할 사이트맵은 `/sitemap.xml` 하나입니다.
 - 머리의 KO·EN 전환(`@@EN@@`·`@@KO@@` 자리표시는 `build_lib.page()`가 바꾼다)과 `hreflang`은 각 쪽의 짝을 가리킨다. 사이트맵에 영문 쪽이 모두 들어 있다.
 - 점검(`tools/check_search.py`): 한국어·영문 쪽이 일대일이고, 영문 쪽에 한글(브랜드 이름 괄호·`lang="ko"` 링크 제외)이 남지 않는다.
 - 영문 쪽도 규칙은 같다: 재고·가격·납기 약속, 후기·인증, 회사·출처 사이트 이름 없음. 납품은 국내, 견적은 원화(KRW).
+
+
+## Transition 광고 자리 (대표 요청 2026-11-19)
+- 원본: `site/tr-ad/` (`tr-ad.css`, `tr-ad.js`, `img/*`). 대표가 준 패키지(boltnote-ads.zip) 그대로이고, 문안·그림·링크는 Transition 쪽이 정한다. 문구를 여기서 고치지 않는다. 빌드(`site/build_brand.py`)가 `docs/assets/tr-ad/`로 복사한다 (그림은 같은 폴더에 평평하게).
+- 자리: A `inline`(본문 끝, 견적 단추 다음) · B `side`(오른쪽 칸 맨 아래, 1023px 이하에서 숨김) · C `foot`(문의 띠 `bn-strip` 다음, `<footer>` 바로 위). 규격표·제품 안내·규격 사전 낱장은 A·B·C, 모음 쪽과 홈은 C만. 빈 상자는 `site/build_lib.py`의 `ad_slot()`이 만든다.
+- 한국어 쪽에서만: 머리의 `TRAD`(css·js 두 줄)는 `lang == "ko"`인 색인 쪽과 홈에만 들어간다. 영문(`/en/`)·404·관리 화면에는 상자도 파일도 없다. `tr-ad.js`도 `/en/`에서는 스스로 멈춘다.
+- 홈 앱(`app/base.html` 바닥글 위)의 띠는 홈과 읽는 화면(제품·사전·노트·소개 등)에서만 보이게 `app/src/zzzzzzzzzzzz_trad.css`가 `body[data-route]`로 제한한다. 견적함·Sales·견적·BOM·주문·품목 설정 화면에서는 숨는다.
+- 하지 않는 것: 팝업·고정 띠·화면을 가리는 창, 쿠키·저장소·외부 요청, 광고 눌림을 우리 문의 집계에 더하는 것, 견적 단추보다 위에 두는 것. 링크는 새 창 + `rel="sponsored noopener"` + utm(`utm_content=<자리>-<광고>`)이다.
+- 창간호 50부가 마감되면 `site/tr-ad/tr-ad.js` 맨 위 `PRINT_ON`을 `false`로 바꾼다 (Transition 쪽이 알려 준다).
+- 점검: `tools/check_search.py`(자리 구성·영문 없음·견적 안내가 먼저), `worker/tests/browser.py` `check_trad`(PC·핸드폰 화면, 앱의 견적 화면에서 띠 숨김).

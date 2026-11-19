@@ -10,7 +10,7 @@ import re
 import sys
 
 from catalog import catalog, brand_copy, home_copy, table_data, SITE_URL, HOME_TITLE, HOME_DESC, SOCIAL_IMAGE
-from build_lib import site_info, beacon_tag, adsense_tag
+from build_lib import site_info, beacon_tag, adsense_tag, TRAD
 from build_en import facts
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -142,6 +142,7 @@ def build(out: pathlib.Path) -> None:
         f"<script>{BOOT_SCRIPT}</script>\n"
         f"{beacon_tag()}"
         f"{adsense_tag()}"
+        f"{TRAD}"
         "</head>\n<body>\n"
         f"{body}\n"
         "</body>\n</html>\n"

@@ -54,6 +54,7 @@ def tree(root: pathlib.Path):
     keep += sorted((root / "docs" / "tables").glob("*.html"))
     keep += sorted((root / "docs" / "en").rglob("*.html"))
     keep += sorted((root / "docs" / "brand").glob("*"))
+    keep += sorted(p for p in (root / "docs" / "assets" / "tr-ad").rglob("*") if p.is_file())
     keep += sorted((root / "docs" / "admin").glob("*"))
     return keep
 

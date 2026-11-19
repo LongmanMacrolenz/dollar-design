@@ -7,7 +7,7 @@ import html
 import json
 import pathlib
 
-from build_lib import page, header, footer, site_info, brand_strip, org_graph
+from build_lib import page, header, footer, site_info, brand_strip, org_graph, ad_slot
 from catalog import catalog, declaration, public_label, compact_description, table_data, table_name, TABLE_ALIAS, SITE_URL, SITE_REV
 
 ROOT = pathlib.Path(__file__).resolve().parent
@@ -188,13 +188,14 @@ def product_html(id, f, families, tiles, paths, library, shapes, info):
             + '<h2>이 품목의 RFQ에 넣을 내용</h2><p>새 양식을 작성할 필요 없이 기존 BOM·메모·요청서를 보내세요. 빠진 사양은 확인 질문으로 이어갑니다.</p>'
             + f'<pre class="rfq-example">{e(example)}</pre><a class="cta" href="/#list">이메일 주소·RFQ 예시 보기 →</a>'
             + '<p class="src">기존 공개 카탈로그의 규격 표기·안내를 정리했습니다. 개별 품목 검토일은 별도 기록되지 않았습니다. 설계·계약에는 적용 규격 원문과 고객 도면을 확인하며, 공개 치수표의 범위 밖 값은 추정하지 않습니다.</p>'
+            + ad_slot("inline", f'{f["en"]} ' + " ".join(x[1] for x in f["std"]))
             + '</article><aside><div class="box dark"><h2>견적에서 확인하는 조건</h2>'
             + f'<p>{context}</p><p>재고·단가·납기와 제조사 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.</p><a class="cta" href="/#list">Sales 문의 →</a></div>'
             + '<div class="box"><h2>사양 확인 질문</h2><ul class="f">' + ''.join(f'<li>{e(q)}</li>' for q in questions) + '</ul></div>'
             + ('<div class="box"><h2>관련 규격·구매 지식</h2><div class="chips">' + ''.join(f'<a class="chip" href="/lib/{x["id"]}">{e(x["t"])}</a>' for x in related[:8]) + '</div></div>' if related else '')
-            + '<div class="box"><h2>구매 결정 경로</h2><p>단위 → 나사 → 재질·등급 → 코팅·환경 → 서류 순서로 확인합니다.</p><a href="/#lib?path=purchase">라이브러리에서 확인하기 →</a></div></aside></div>'
+            + '<div class="box"><h2>구매 결정 경로</h2><p>단위 → 나사 → 재질·등급 → 코팅·환경 → 서류 순서로 확인합니다.</p><a href="/#lib?path=purchase">라이브러리에서 확인하기 →</a></div>' + ad_slot("side", f'{f["en"]} ' + " ".join(x[1] for x in f["std"])) + '</aside></div>'
             + ('<section class="product-category"><h2>함께 비교할 품목</h2><p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p><div class="cards">' + ''.join(card(k, families[k], paths) for k in related_products) + '</div></section>' if related_products else '')
-            + '</div></main>' + brand_strip(info) + footer(info))
+            + '</div></main>' + brand_strip(info) + ad_slot("foot") + footer(info))
     return document(title, desc, "products/" + paths[id], body, breadcrumb)
 
 
@@ -219,7 +220,7 @@ def listing_html(families, tiles, paths, info, category=None):
             + '<nav class="category-nav" aria-label="제품군">' + ''.join(f'<a class="chip" href="/products/category/{t["id"]}">{e(t["ko"])}</a>' for t in tiles) + '</nav>'
             + '<p class="product-note">주력 품목군 · 조건부 조달 품목 · 원문·도면 검토 품목을 구분합니다. 품목 수는 탐색 분류이며 재고·공급 확약이 아닙니다. 실제 가능 여부와 납기는 견적 시 확인합니다.</p>'
             + '<form class="product-search" role="search" id="product-search"><label for="product-q">품목명·영문명·규격으로 찾기</label><input class="q" id="product-q" type="search" placeholder="예: 육각너트, Hex Nut, A193 B7" autocomplete="off"><p id="product-count" aria-live="polite">제품 카드를 누르면 구매 안내로 이동합니다.</p></form>'
-            + '<p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p>' + ''.join(sections) + '</div></main>' + brand_strip(info) + footer(info)
+            + '<p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p>' + ''.join(sections) + '</div></main>' + brand_strip(info) + ad_slot("foot") + footer(info)
             + '<script>' + (ROOT / "product-index.js").read_text(encoding="utf-8") + '</script>')
     return document(title, compact_description(desc), path, body, crumbs, True)
 

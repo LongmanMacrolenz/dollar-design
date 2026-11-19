@@ -79,6 +79,16 @@ def beacon_tag(info: dict | None = None) -> str:
     return f'<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon=\'{{"token": "{token}"}}\'></script>\n'
 
 
+# Transition 광고 (대표 요청 2026-11-19, 원본 site/tr-ad/, README는 대표가 준 패키지): 한국어 쪽에서만 불러온다.
+# 자리는 빈 상자(<div class="tr-ad" data-slot=…>)이고 스크립트가 채운다. 규칙: 견적 안내 다음에 둔다, 팝업·고정 띠 없음, 영문·견적함·견적 요청·BOM 화면 없음.
+TRAD = '<link rel="stylesheet" href="/assets/tr-ad/tr-ad.css">\n<script src="/assets/tr-ad/tr-ad.js" defer></script>\n'
+
+
+def ad_slot(slot: str, topic: str = "") -> str:
+    """slot: inline(본문 카드) · side(옆 칸 카드, 넓은 화면만) · foot(바닥 띠). topic은 쪽의 주제(스터드·플랜지·펌프 쪽에서 광고 순서를 고른다)."""
+    return f'<div class="tr-ad" data-slot="{slot}"' + (f' data-topic="{e(topic)}"' if topic else "") + "></div>"
+
+
 def adsense_tag(info: dict | None = None) -> str:
     """구글 애드센스 스크립트. SHOP.adsenseClient(e1_data.js)가 비어 있으면 아무것도 넣지 않는다. 게시자 ID는 공개 값이다."""
     cid = (info or site_info()).get("adsenseClient", "")
@@ -181,7 +191,7 @@ def _page(title: str, desc: str, path: str, body: str, ld: dict | None = None, i
         + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
         f'<meta property="og:image" content="{SITE_URL}{SOCIAL_IMAGE}"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
-        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}{ADSENSE if index else ''}</head>\n<body>\n{body}\n{COUNT if index else ''}</body>\n</html>\n"
+        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}{ADSENSE if index else ''}{TRAD if index and lang == 'ko' else ''}</head>\n<body>\n{body}\n{COUNT if index else ''}</body>\n</html>\n"
     )
 
 
@@ -304,13 +314,14 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
             + official_links(x)
             + f'<p class="src" id="source">근거: {e(" · ".join(x.get("src", [])))} · 라이브러리 일괄 검토 {CHECKED} (개별 항목 검토일 미기록). 프로젝트 판본·허용차·사용 조건은 규격 원문과 공급처 서류로 확인해야 합니다. 미확인 값은 추정하지 마세요.</p>'
+            + '<p class="tr-ad-q"><a class="cta" href="/#list">이 규격이 들어간 BOM·RFQ로 Sales 문의 →</a></p>' + ad_slot("inline", x["t"] + " " + x.get("en", ""))
             + "</article><aside>"
             + f'<div class="box"><h2>지식 지도 · {e(topic["title"])}</h2><p>{e(topic["desc"])}</p><a href="/lib/#topic-{topic["id"]}">이 주제 전체 보기 →</a></div>' + reading
             + ('<div class="box"><h2>관련 항목</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{r["id"]}">{e(r["t"])}</a>' for r in rel) + "</div></div>" if rel else "")
             + ('<div class="box"><h2>관련 품목</h2><div class="chips">' + "".join(f'<a class="chip" href="{product_path(k)}">{e(v)}</a>' for k, v in fams.items()) + "</div></div>" if fams else "")
             + ('<div class="box"><h2>관련 규격표</h2><div class="chips">' + "".join(f'<a class="chip" href="{link}">{e(label)} 규격표</a>' for link, label in tables.items()) + "</div></div>" if tables else "")
             + '<div class="box dark"><h2>이 규격이 들어간 BOM이 있으신가요?</h2><p>표기 그대로 보내 주시면 줄마다 규격·등급과 필요한 서류를 맞춰 견적합니다.</p><a class="cta" href="/#list">Sales로 보내기 →</a></div>'
-            + "</aside></div></div></main>" + brand_strip(info) + footer(info))
+            + ad_slot("side", x["t"] + " " + x.get("en", "")) + "</aside></div></div></main>" + brand_strip(info) + ad_slot("foot") + footer(info))
     ld = {"@context": "https://schema.org", "@type": "DefinedTerm", "name": x["t"], "alternateName": [x.get("ko", "")] + x.get("aka", [])[:6],
           "description": x.get("sum", ""), "url": f"{SITE_URL}lib/{x['id']}",
           "inDefinedTermSet": {"@type": "DefinedTermSet", "name": "볼트노트 체결부품 규격 사전", "url": f"{SITE_URL}lib/"}}
@@ -340,7 +351,7 @@ def index_html(L: list, info: dict) -> str:
             + '<h2>체결부품 지식의 전체 지도</h2><nav class="library-map" aria-label="라이브러리 주제">' + topics + '</nav></div>'
             + f'<p class="search-note" id="count" aria-live="polite" aria-atomic="true">{len(L)}개 항목</p>'
             + '<div class="no-results" id="empty" hidden><p>현재 검색어에 맞는 항목이 없습니다. 단어를 줄여 다시 찾아보세요.</p><button id="reset" type="button">검색 지우기</button><p>사전에 없는 사양은 <a href="/#list">Sales</a>로 보내 주세요.</p></div>'
-            + "".join(secs) + "</div></main>" + brand_strip(info) + footer(info) + js)
+            + "".join(secs) + "</div></main>" + brand_strip(info) + ad_slot("foot") + footer(info) + js)
     ld = {"@context": "https://schema.org", "@type": "DefinedTermSet", "name": "볼트노트 체결부품 규격 사전", "url": f"{SITE_URL}lib/",
           "hasDefinedTerm": [{"@type": "DefinedTerm", "name": x["t"], "url": f"{SITE_URL}lib/{x['id']}"} for x in L]}
     return page("체결부품 지식 라이브러리 | 볼트노트", f"체결부품 규격과 실무 지식 {len(L)}개 항목. 주제별 탐색과 BOM·플랜지·기계 조립·구매 확인 읽기 경로", "lib/", body, ld)
