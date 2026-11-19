@@ -4,3 +4,25 @@
 .tr-ad-mid .tr-ad-strip { padding: 12px 16px; border: 1px solid rgba(255, 255, 255, .08); border-radius: 6px; }
 .bn-trad { padding-top: 12px; padding-bottom: 12px; }
 .bn-trad .tr-ad { margin: 0 auto; max-width: 1200px; }
+
+/* ── 오른쪽에 떠 있는 세로 배너 (rail, 대표 요청 2026-11-19) ──
+   글 오른쪽의 빈 여백에만 뜬다: 글을 덮지 않고 화면도 밀지 않는다. 정적 페이지(글 폭 1280px, 안쪽 여백 32px 제외 1248px)는 가로 1620px 이상, 앱(글 폭 1440px)은 1820px 이상.
+   그보다 좁은 화면과 핸드폰에서는 뜨지 않는다 (글을 가리거나 모바일 방해 광고로 보이는 것을 피한다). 인쇄에서는 숨긴다. */
+.tr-ad[data-slot="rail"] { display: none; margin: 0; }
+@media (min-width: 1620px) {
+  .tr-ad[data-slot="rail"]:not([data-app]) { display: block; position: fixed; top: 88px; right: max(8px, calc((100vw - 1248px) / 2 - 176px)); width: 160px; z-index: 30; }
+  .tr-ad[data-slot="side"] { display: none; }   /* 같은 광고가 옆 칸에도 또 보이지 않게 */
+}
+@media (min-width: 1820px) {
+  .tr-ad[data-slot="rail"][data-app] { display: block; position: fixed; top: 88px; right: max(8px, calc((100vw - 1440px) / 2 - 176px)); width: 160px; z-index: 30; }
+}
+.tr-ad[data-slot="rail"] .tr-ad-card { grid-template-columns: 1fr; box-shadow: 0 6px 22px rgba(10, 20, 32, .28); }
+.tr-ad[data-slot="rail"] .tr-ad-media { min-height: 0; aspect-ratio: 4 / 3; }
+.tr-ad[data-slot="rail"] .tr-ad-card.is-cover .tr-ad-media { aspect-ratio: auto; padding: 12px 0; }
+.tr-ad[data-slot="rail"] .tr-ad-card.is-cover .tr-ad-media img { width: 84px; }
+.tr-ad[data-slot="rail"] .tr-ad-body { padding: 12px 12px 14px; gap: 6px; }
+.tr-ad[data-slot="rail"] .tr-ad-kicker, .tr-ad[data-slot="rail"] .tr-ad-text { display: none; }
+.tr-ad[data-slot="rail"] .tr-ad-title { font-size: 14px; line-height: 1.45; }
+.tr-ad[data-slot="rail"] .tr-ad-go { align-self: stretch; text-align: center; font-size: 13px; padding: 8px 10px; }
+.bn-ad-x { position: absolute; top: 6px; right: 6px; z-index: 2; width: 24px; height: 24px; padding: 0; border: 0; border-radius: 50%; background: rgba(0, 0, 0, .6); color: #fff; font: 700 12px/24px sans-serif; cursor: pointer; }
+.bn-ad-x:hover, .bn-ad-x:focus-visible { background: #000; outline: 2px solid #F7A823; outline-offset: 1px; }

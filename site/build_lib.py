@@ -81,7 +81,7 @@ def beacon_tag(info: dict | None = None) -> str:
 
 # Transition 광고 (대표 요청 2026-11-19, 원본 site/tr-ad/, README는 대표가 준 패키지): 한국어 쪽에서만 불러온다.
 # 자리는 빈 상자(<div class="tr-ad" data-slot=…>)이고 스크립트가 채운다. 규칙: 견적 안내 다음에 둔다, 팝업·고정 띠 없음, 영문·견적함·견적 요청·BOM 화면 없음.
-TRAD = '<link rel="stylesheet" href="/assets/tr-ad/tr-ad.css">\n<link rel="stylesheet" href="/assets/tr-ad/bn-ad.css">\n<script src="/assets/tr-ad/tr-ad.js" defer></script>\n'
+TRAD = '<link rel="stylesheet" href="/assets/tr-ad/tr-ad.css">\n<link rel="stylesheet" href="/assets/tr-ad/bn-ad.css">\n<script src="/assets/tr-ad/tr-ad.js" defer></script>\n<script src="/assets/tr-ad/bn-ad.js" defer></script>\n'
 
 
 def ad_slot(slot: str, topic: str = "", cls: str = "") -> str:
@@ -191,7 +191,7 @@ def _page(title: str, desc: str, path: str, body: str, ld: dict | None = None, i
         + (f'<meta property="og:url" content="{url}">' if index else "") + f'<meta property="og:title" content="{e(title)}"><meta property="og:description" content="{e(desc)}">'
         f'<meta property="og:image" content="{SITE_URL}{SOCIAL_IMAGE}"><meta name="twitter:card" content="summary_large_image">\n'
         + (f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>\n' if ld else "")
-        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}{ADSENSE if index else ''}{TRAD if index and lang == 'ko' else ''}</head>\n<body>\n{body}\n{COUNT if index else ''}</body>\n</html>\n"
+        + f"{FONTS}\n<style>{CSS}</style>\n{BEACON}{ADSENSE if index else ''}{TRAD if index and lang == 'ko' else ''}</head>\n<body>\n{body}\n{ad_slot('rail') if index and lang == 'ko' else ''}{COUNT if index else ''}</body>\n</html>\n"
     )
 
 
