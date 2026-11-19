@@ -120,7 +120,7 @@ def page_html(id, f, t, families, tiles, tables, paths, library, shapes, info):
             + f'<p class="lead">{e(name)}의 호칭별 치수를 한 표로 정리했습니다. 규격서 원문이 아니라, 공개 자료로 대조한 값을 볼트노트 양식으로 옮긴 참고 표입니다.</p><p class="tbl-facts">{e(facts)}</p>'
             + f'<div class="product-actions"><a class="cta" href="/#list">이 품목 견적 문의 →</a><a href="/products/{slug}">구매 안내 보기</a><a href="/#c-{id}">2D 도면·사양 선택 ↗</a></div></div>{visual}</section>'
             + '<div class="product-grid"><article><h2 id="table">치수표</h2>' + table_html(id, f, t)
-            + (f'<p class="tbl-extra">{e(extra)}</p>' if extra else "") + ad_slot("foot", f'{f["en"]} {t["standard"]}', "tr-ad-mid")
+            + (f'<p class="tbl-extra">{e(extra)}</p>' if extra else "")
             + f'<div class="tbl-quote"><p><b>{e(name)} 규격이 필요하신가요?</b> 호칭·길이·재질·수량이 적힌 BOM이나 도면을 그대로 보내 주세요. 적용 규격을 기준으로 확인한 뒤 견적합니다.</p><a class="cta" href="/#list">이 규격으로 견적 받기 →</a></div>'
             + (f'<h2>이 품목은</h2><p>{e(public_label(f["use"]))}</p>' if f.get("use") else "")
             + '<h2 id="basis-detail">이 표의 근거와 한계</h2><ul class="f">' + "".join(f"<li>{e(x)}</li>" for x in limits) + "</ul>"

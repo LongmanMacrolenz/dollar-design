@@ -183,7 +183,7 @@ def product_html(id, f, families, tiles, paths, library, shapes, info):
             + '<div class="product-grid"><article><h2>적용 규격·구매 시 구분할 표기</h2>'
             + '<p class="product-note">아래 규격은 같은 치수·요건을 보장하는 대체 규격 목록이 아닙니다. BOM의 규격과 판본, 도면 요구를 기준으로 대조합니다.</p>'
             + f'<table><caption class="sr">{e(name)} 카탈로그 규격 표기</caption><thead><tr><th>기관·기준</th><th>규격과 적용 범위</th></tr></thead><tbody>{standards}</tbody></table>'
-            + table_note(id, families, paths) + ad_slot("foot", f['en'], "tr-ad-mid")
+            + table_note(id, families, paths)
             + f'<h2>구매 전에 확인할 차이</h2><ul class="f">{notes}</ul>{options}'
             + '<h2>이 품목의 RFQ에 넣을 내용</h2><p>새 양식을 작성할 필요 없이 기존 BOM·메모·요청서를 보내세요. 빠진 사양은 확인 질문으로 이어갑니다.</p>'
             + f'<pre class="rfq-example">{e(example)}</pre><a class="cta" href="/#list">이메일 주소·RFQ 예시 보기 →</a>'

@@ -393,8 +393,9 @@ def check_trad(page, BASE, OUT):
   """Transition 광고 (대표 요청 2026-11-19): 규격표 낱장에서 A·B·C가 그려지고 견적 단추 뒤에 오며, 핸드폰에서 B는 숨고, /en/에는 없고, 앱의 견적 화면에서는 띠가 숨는다."""
   wide=page.context.browser.new_context(viewport={'width':1280,'height':900});w=wide.new_page();problems=[];w.on('pageerror',lambda e:problems.append(str(e)))
   w.goto(BASE+'/tables/clevis-pin');w.wait_for_selector('.tr-ad[data-slot=inline] a')
-  inline=w.locator('.tr-ad[data-slot=inline] a');side=w.locator('.tr-ad[data-slot=side] a');foot=w.locator('.tr-ad[data-slot=foot]:not(.tr-ad-mid) a')
-  assert inline.is_visible() and side.is_visible() and foot.is_visible() and w.locator('.tr-ad-mid .tr-ad-strip').is_visible()
+  inline=w.locator('.tr-ad[data-slot=inline] a');side=w.locator('.tr-ad[data-slot=side] a');foot=w.locator('.tr-ad[data-slot=foot] a')
+  assert inline.is_visible() and side.is_visible() and foot.is_visible()
+  assert w.locator('.tr-ad[data-slot=foot]').count()==1 and w.locator('.tr-ad-mid').count()==0,'one foot strip only'
   quote=w.locator('.tbl-quote').bounding_box();ad=inline.bounding_box();assert ad['y']>quote['y']+quote['height'],'ad must come after the quotation prompt'
   for loc in (inline,side,foot):
     href=loc.get_attribute('href');assert href.startswith('https://transition-radar.com/') and 'utm_source=boltnote' in href and loc.get_attribute('target')=='_blank' and 'sponsored' in loc.get_attribute('rel') and 'noopener' in loc.get_attribute('rel')

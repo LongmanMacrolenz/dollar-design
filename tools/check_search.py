@@ -239,8 +239,8 @@ def main():
         if rel.parts[0] == "en" or rel.name == "404.html":
             assert not slots and "tr-ad" not in text, rel
         elif rel.parts[0] in ("tables", "products", "lib") and q.name != "index.html" and rel.parts[:2] != ("products", "category"):
-            assert slots == ["foot", "inline", "side", "foot", "rail"], (rel, slots)   # 표 아래 작은 띠(tr-ad-mid) · 본문 끝 카드 · 옆 칸 카드 · 바닥 띠
-            assert 'class="tr-ad tr-ad-mid"' in text and text.index('href="/#list"') < text.index('data-slot="inline"'), rel
+            assert slots == ["inline", "side", "foot", "rail"], (rel, slots)   # 본문 끝 카드 · 옆 칸 카드 · 바닥 띠(하나만) · 떠 있는 배너
+            assert "tr-ad-mid" not in text and text.index('href="/#list"') < text.index('data-slot="inline"'), rel
             assert text.rindex('class="bn-strip"') < text.rindex('data-slot="foot"') < text.index("<footer"), rel
         elif rel.parts[0] in ("tables", "products") and rel.name == "index.html" or rel.parts == ("lib", "index.html") or rel.parts[:2] == ("products", "category"):
             assert slots == ["inline", "foot", "rail"], (rel, slots)   # 모음 쪽: 위쪽 카드 하나와 바닥 띠
@@ -256,7 +256,7 @@ def main():
     assert "localStorage" not in ad_js and "cookie" not in ad_js and "fetch(" not in ad_js and "XMLHttpRequest" not in ad_js and "sponsored" in ad_js
     bn_js = (ROOT / "docs/assets/tr-ad/bn-ad.js").read_text(encoding="utf-8")
     assert "localStorage" not in bn_js and "sessionStorage" not in bn_js and "cookie" not in bn_js and "fetch(" not in bn_js and "XMLHttpRequest" not in bn_js
-    print("Transition ad slots: KO detail pages mid·A·B·C, lists card+C, none on /en/ and 404: PASS")
+    print("Transition ad slots: KO detail pages A·B·C(one strip)·rail, lists card+C, none on /en/ and 404: PASS")
     for name, expected in [("googlee7950c29a2b5a35e.html", 53), ("naver873356c1ec7239a24ea882fae7172928.html", 67)]:
         assert len((ROOT / "docs" / name).read_bytes()) == expected, name
     print(f"{len(families)} product guides, {len(tiles)} categories, {len(urls)} canonical URLs: metadata and public links PASS")
