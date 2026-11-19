@@ -309,7 +309,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + ('<a href="#table">표·조건</a>' if tbl else '') + ('<a href="#watch">구매 시 주의</a>' if x.get("watch") else '')
             + '<a href="#source">근거</a></nav><div class="grid"><article>'
             + f'<p class="lead">{e(x.get("sum", ""))}</p>' + (f'<p class="{STL[x["status"].startswith("현행")]}">상태: {e(x["status"])}</p>' if x.get("status") else "")
-            + '<h2 id="core">핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl + ad_slot("foot", x["t"], "tr-ad-mid")
+            + '<h2 id="core">핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl
             + ('<section class="watch" id="watch"><h2>BOM·구매 때 주의</h2><ul class="f">' + "".join(f"<li>{e(w)}</li>" for w in x["watch"]) + "</ul></section>" if x.get("watch") else "")
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
             + official_links(x)
