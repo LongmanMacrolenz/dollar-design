@@ -12,7 +12,7 @@ import json
 import pathlib
 import re
 
-from build_lib import header, footer, site_info, brand_strip, CHECKED
+from build_lib import header, footer, site_info, brand_strip, CHECKED, ad_slot
 from build_products import document, image_for, related_library
 from catalog import catalog, declaration, public_label, compact_description, table_data, table_name, TABLE_ALIAS, T2_NOTE, SITE_URL, SITE_REV
 
@@ -126,12 +126,13 @@ def page_html(id, f, t, families, tiles, tables, paths, library, shapes, info):
             + '<h2 id="basis-detail">이 표의 근거와 한계</h2><ul class="f">' + "".join(f"<li>{e(x)}</li>" for x in limits) + "</ul>"
             + '<h2>표에 없는 호칭·길이가 필요하면</h2><p>BOM이나 도면을 그대로 보내 주세요. 적용 규격과 요구 치수를 기준으로 확인한 뒤 견적합니다.</p>'
             + '<a class="cta" href="/#list">이메일 주소·RFQ 예시 보기 →</a>'
+            + ad_slot("inline", f'{f["en"]} {t["standard"]}')
             + '</article><aside><div class="box dark"><h2>견적에서 확인하는 조건</h2>'
             + '<p>표의 치수는 참고용입니다. 재질·강도, 표면처리, 길이와 서류 조건은 요청 사양으로 확인합니다.</p><p>재고·단가·납기는 공급처 확인 뒤 견적서에 적습니다.</p><a class="cta" href="/#list">Sales 문의 →</a></div>'
             + ('<div class="box"><h2>관련 규격·구매 지식</h2><div class="chips">' + "".join(f'<a class="chip" href="/lib/{x["id"]}">{e(x["t"])}</a>' for x in related[:8]) + "</div></div>" if related else "")
-            + '<div class="box"><h2>규격표 모음</h2><p>볼트·너트·와셔·핀 종류별 규격표를 한곳에서 찾습니다.</p><a href="/tables/">규격표 전체 보기 →</a></div></aside></div>'
+            + '<div class="box"><h2>규격표 모음</h2><p>볼트·너트·와셔·핀 종류별 규격표를 한곳에서 찾습니다.</p><a href="/tables/">규격표 전체 보기 →</a></div>' + ad_slot("side", f'{f["en"]} {t["standard"]}') + '</aside></div>'
             + ('<section class="product-category tbl-more"><h2>같은 종류의 다른 규격표</h2><div class="cards tbl-list">' + "".join(card(k, families[k], tables[k], paths) for k in near[:6]) + "</div></section>" if near else "")
-            + "</div></main>" + brand_strip(info) + footer(info))
+            + "</div></main>" + brand_strip(info) + ad_slot("foot") + footer(info))
     return document(title, desc, "tables/" + slug, body, breadcrumb, extra=[dataset], main_entity=dataset["@id"]).replace("</style>", TABLE_CSS + "</style>", 1)
 
 
@@ -157,7 +158,7 @@ def index_html(families, tiles, tables, paths, info):
               '표마다 근거를 적었습니다. 근거를 확인하지 못한 품목과 호칭은 싣지 않았으며, 그런 품목은 도면이나 규격 번호를 기준으로 견적합니다.</p>'
             + '<form class="tbl-search" role="search" id="table-search"><label for="table-q">품목명·영문명·규격 번호로 찾기</label>'
               '<input class="q" id="table-q" type="search" placeholder="예: 플랜지 볼트, Washer, DIN 6921" autocomplete="off"><p id="table-count" aria-live="polite">규격표를 누르면 표로 이동합니다.</p></form>'
-            + "".join(sections) + "</div></main>" + brand_strip(info) + footer(info)
+            + "".join(sections) + "</div></main>" + brand_strip(info) + ad_slot("foot") + footer(info)
             + "<script>" + (ROOT / "table-index.js").read_text(encoding="utf-8") + "</script>")
     return document(title, compact_description(desc), "tables/", body, [("홈", "/"), ("규격표", "/tables/")], True).replace("</style>", TABLE_CSS + "</style>", 1)
 

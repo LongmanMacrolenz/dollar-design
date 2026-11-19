@@ -4268,6 +4268,15 @@ body.ia-at-home .bn-footer-sign img { width:min(100%,360px); }
 }
 @media(max-width:360px) { .bn-company .bn-wrap,.bn-boot .bn-wrap { padding-inline:20px; }.bn-company .bn-company-hero h1,.bn-boot h1 { font-size:27px; }.bn-company .bn-btn { font-size:12px; padding-inline:17px; gap:18px; }.bn-company .bn-product h3 { font-size:16px; }.bn-review-raw { font-size:14px; } }
 @media(prefers-reduced-motion:reduce) { .bn-company *, .bn-company *::before, .bn-company *::after { transition:none!important; animation:none!important; scroll-behavior:auto!important; } }
+/* ── zzzzzzzzzzzz_trad.css ── */
+/* Transition 광고 띠(C, site/tr-ad/tr-ad.js)는 홈과 읽는 화면에서만 보인다 (대표 요청 2026-11-19).
+   견적함(cart)·Sales 문의(list)·견적(quote)·BOM(bom)·주문(buy)·소재(materials)·품목 설정(c-*)·상품(m-*) 같은 견적 화면에는 두지 않는다.
+   화면 이름은 document.body.dataset.route (app/src/v7_ia.js)가 넣는다. 광고 본체의 모양은 site/tr-ad/tr-ad.css가 정한다. */
+.tr-ad[data-slot="foot"] { display: none; }
+body[data-route="home"] .tr-ad[data-slot="foot"], body[data-route="products"] .tr-ad[data-slot="foot"], body[data-route="lib"] .tr-ad[data-slot="foot"],
+body[data-route="ref"] .tr-ad[data-slot="foot"], body[data-route="tools"] .tr-ad[data-slot="foot"], body[data-route="notes"] .tr-ad[data-slot="foot"],
+body[data-route="about"] .tr-ad[data-slot="foot"], body[data-route="help"] .tr-ad[data-slot="foot"], body[data-route="privacy"] .tr-ad[data-slot="foot"],
+body[data-route="terms"] .tr-ad[data-slot="foot"], body[data-route="t"] .tr-ad[data-slot="foot"], body[data-route="k"] .tr-ad[data-slot="foot"] { display: block; }
 /* ==== BOM CSS END ==== */
 
 /* 32 ─ 동작 줄이기 ──────────────────────────────────────────────────── */
@@ -4518,6 +4527,7 @@ body.ia-at-home .bn-footer-sign img { width:min(100%,360px); }
 
 <main id="view" class="wrap" tabindex="-1"></main>
 
+<div class="tr-ad" data-slot="foot"></div>
 <footer class="foot ia-foot">
   <div class="wrap">
     <div class="bn-footer-sign" aria-hidden="true"><img src="/brand/boltnote-logo-light.svg" width="632" height="104" alt="" loading="lazy"></div>
