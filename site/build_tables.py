@@ -120,7 +120,7 @@ def page_html(id, f, t, families, tiles, tables, paths, library, shapes, info):
             + f'<p class="lead">{e(name)}의 호칭별 치수를 한 표로 정리했습니다. 규격서 원문이 아니라, 공개 자료로 대조한 값을 볼트노트 양식으로 옮긴 참고 표입니다.</p><p class="tbl-facts">{e(facts)}</p>'
             + f'<div class="product-actions"><a class="cta" href="/#list">이 품목 견적 문의 →</a><a href="/products/{slug}">구매 안내 보기</a><a href="/#c-{id}">2D 도면·사양 선택 ↗</a></div></div>{visual}</section>'
             + '<div class="product-grid"><article><h2 id="table">치수표</h2>' + table_html(id, f, t)
-            + (f'<p class="tbl-extra">{e(extra)}</p>' if extra else "")
+            + (f'<p class="tbl-extra">{e(extra)}</p>' if extra else "") + ad_slot("foot", f'{f["en"]} {t["standard"]}', "tr-ad-mid")
             + f'<div class="tbl-quote"><p><b>{e(name)} 규격이 필요하신가요?</b> 호칭·길이·재질·수량이 적힌 BOM이나 도면을 그대로 보내 주세요. 적용 규격을 기준으로 확인한 뒤 견적합니다.</p><a class="cta" href="/#list">이 규격으로 견적 받기 →</a></div>'
             + (f'<h2>이 품목은</h2><p>{e(public_label(f["use"]))}</p>' if f.get("use") else "")
             + '<h2 id="basis-detail">이 표의 근거와 한계</h2><ul class="f">' + "".join(f"<li>{e(x)}</li>" for x in limits) + "</ul>"
@@ -158,7 +158,7 @@ def index_html(families, tiles, tables, paths, info):
               '표마다 근거를 적었습니다. 근거를 확인하지 못한 품목과 호칭은 싣지 않았으며, 그런 품목은 도면이나 규격 번호를 기준으로 견적합니다.</p>'
             + '<form class="tbl-search" role="search" id="table-search"><label for="table-q">품목명·영문명·규격 번호로 찾기</label>'
               '<input class="q" id="table-q" type="search" placeholder="예: 플랜지 볼트, Washer, DIN 6921" autocomplete="off"><p id="table-count" aria-live="polite">규격표를 누르면 표로 이동합니다.</p></form>'
-            + "".join(sections) + "</div></main>" + brand_strip(info) + ad_slot("foot") + footer(info)
+            + ad_slot("inline", "플랜트 플랜지 스터드") + "".join(sections) + "</div></main>" + brand_strip(info) + ad_slot("foot") + footer(info)
             + "<script>" + (ROOT / "table-index.js").read_text(encoding="utf-8") + "</script>")
     return document(title, compact_description(desc), "tables/", body, [("홈", "/"), ("규격표", "/tables/")], True).replace("</style>", TABLE_CSS + "</style>", 1)
 

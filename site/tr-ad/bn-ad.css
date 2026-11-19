@@ -1,0 +1,6 @@
+/* 볼트노트 쪽 광고 배치 보정 (대표 요청 2026-11-19, 볼트노트가 만든 파일 — tr-ad.css는 Transition 패키지 원본이라 건드리지 않는다).
+   tr-ad-mid: 표·핵심 사항 바로 아래에 들어가는 작은 한 줄 광고 (바닥 띠와 같은 모양, 본문 폭 안에서 둥근 상자). 팝업이나 화면을 가리는 요소가 아니다. */
+.tr-ad.tr-ad-mid[data-slot="foot"] { margin: 18px 0; }
+.tr-ad-mid .tr-ad-strip { padding: 12px 16px; border: 1px solid rgba(255, 255, 255, .08); border-radius: 6px; }
+.bn-trad { padding-top: 12px; padding-bottom: 12px; }
+.bn-trad .tr-ad { margin: 0 auto; max-width: 1200px; }

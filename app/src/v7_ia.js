@@ -253,6 +253,7 @@ V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
     <p class="bn-company-product-note">제품군의 참고용 렌더링 · 실제 제품 사진 아님. 치수·재질·표면처리는 품목별로 확인하세요.</p>
     <nav class="bn-company-collections" aria-label="용도별 제품 모음"><span>용도별로 찾기</span>${Object.entries(CAT_COLL).filter(([k])=>['plant','pump','flange'].includes(k)).map(([k,c])=>`<a href="#k-${k}" data-go="k-${k}">${esc(c.ko)} <i aria-hidden="true">↗</i></a>`).join('')}</nav>
   </div></section>
+  <div class="bn-wrap bn-trad"><div class="tr-ad" data-slot="inline" data-topic="플랜트 플랜지 스터드"></div></div>
   ${hmCompanyReview()}
   ${hmCompanyExpertise()}
   <section class="bn-company-contact bn-company-section" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-company-contact-grid">
@@ -261,7 +262,7 @@ V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
   </div></section>
 </div>`;
 
-V.after.home = () => { hmBind(); bnFilmInit(); };
+V.after.home = () => { hmBind(); bnFilmInit(); if (window.trAdFill) window.trAdFill(); };   // Transition 광고(site/tr-ad): 홈 제품 목록 다음 카드 + 바닥 띠를 채운다
 
 function hmBind() {
   const v = view();

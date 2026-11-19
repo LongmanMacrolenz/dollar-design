@@ -81,12 +81,12 @@ def beacon_tag(info: dict | None = None) -> str:
 
 # Transition 광고 (대표 요청 2026-11-19, 원본 site/tr-ad/, README는 대표가 준 패키지): 한국어 쪽에서만 불러온다.
 # 자리는 빈 상자(<div class="tr-ad" data-slot=…>)이고 스크립트가 채운다. 규칙: 견적 안내 다음에 둔다, 팝업·고정 띠 없음, 영문·견적함·견적 요청·BOM 화면 없음.
-TRAD = '<link rel="stylesheet" href="/assets/tr-ad/tr-ad.css">\n<script src="/assets/tr-ad/tr-ad.js" defer></script>\n'
+TRAD = '<link rel="stylesheet" href="/assets/tr-ad/tr-ad.css">\n<link rel="stylesheet" href="/assets/tr-ad/bn-ad.css">\n<script src="/assets/tr-ad/tr-ad.js" defer></script>\n'
 
 
-def ad_slot(slot: str, topic: str = "") -> str:
+def ad_slot(slot: str, topic: str = "", cls: str = "") -> str:
     """slot: inline(본문 카드) · side(옆 칸 카드, 넓은 화면만) · foot(바닥 띠). topic은 쪽의 주제(스터드·플랜지·펌프 쪽에서 광고 순서를 고른다)."""
-    return f'<div class="tr-ad" data-slot="{slot}"' + (f' data-topic="{e(topic)}"' if topic else "") + "></div>"
+    return f'<div class="tr-ad{" " + cls if cls else ""}" data-slot="{slot}"' + (f' data-topic="{e(topic)}"' if topic else "") + "></div>"
 
 
 def adsense_tag(info: dict | None = None) -> str:
@@ -309,7 +309,7 @@ def entry_html(x: dict, by: dict, info: dict) -> str:
             + ('<a href="#table">표·조건</a>' if tbl else '') + ('<a href="#watch">구매 시 주의</a>' if x.get("watch") else '')
             + '<a href="#source">근거</a></nav><div class="grid"><article>'
             + f'<p class="lead">{e(x.get("sum", ""))}</p>' + (f'<p class="{STL[x["status"].startswith("현행")]}">상태: {e(x["status"])}</p>' if x.get("status") else "")
-            + '<h2 id="core">핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl
+            + '<h2 id="core">핵심</h2><ul class="f">' + "".join(f"<li>{e(f)}</li>" for f in x.get("facts", [])) + "</ul>" + tbl + ad_slot("foot", x["t"], "tr-ad-mid")
             + ('<section class="watch" id="watch"><h2>BOM·구매 때 주의</h2><ul class="f">' + "".join(f"<li>{e(w)}</li>" for w in x["watch"]) + "</ul></section>" if x.get("watch") else "")
             + ('<h2>대응·대체 규격</h2><ul class="f">' + "".join(f'<li><b>{e(q.get("std", ""))}</b> {e(q.get("note", ""))}</li>' for q in x["eq"]) + "</ul>" if x.get("eq") else "")
             + official_links(x)
@@ -345,7 +345,7 @@ def index_html(L: list, info: dict) -> str:
     js = '<script>' + (ROOT / "lib-index.js").read_text(encoding="utf-8") + '</script>'
     body = (header() + '<main><div class="w"><p class="crumbs"><a href="/">홈</a> › 규격 사전</p>'
             + '<div class="library-head"><p class="eyebrow">FASTENER KNOWLEDGE LIBRARY</p><h1>체결부품 지식 라이브러리</h1>'
-            + '<p class="intro">부품을 고르고, 도면을 읽고, 구매 조건을 정리할 때. 규격과 실무 지식을 필요한 순서로 찾아보세요.</p></div>'
+            + '<p class="intro">부품을 고르고, 도면을 읽고, 구매 조건을 정리할 때. 규격과 실무 지식을 필요한 순서로 찾아보세요.</p></div>' + ad_slot("inline", "플랜트 플랜지 스터드")
             + f'<form class="library-search" id="search" role="search"><label for="q">규격 번호, 품목 이름, 궁금한 개념으로 찾기</label><input class="q" id="q" type="search" placeholder="예: A193 B7, 토크 예압, 핀, EN 10204 3.1" maxlength="200" autocomplete="off"><p class="search-note">{len(L)}개 항목 · 규격·개념·구매 시 주의까지 검색합니다. Enter를 누르면 검색 결과로 이동합니다.</p></form>'
             + '<div id="overview"><h2>무엇을 확인하고 계신가요?</h2><div class="library-paths">' + paths + '</div>'
             + '<h2>체결부품 지식의 전체 지도</h2><nav class="library-map" aria-label="라이브러리 주제">' + topics + '</nav></div>'

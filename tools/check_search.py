@@ -229,7 +229,7 @@ def main():
             pass
     print("English site: pairs, hreflang, no Hangul: PASS")
     # Transition 광고 자리 (대표 요청 2026-11-19): 한국어 낱장은 inline·side·foot, 목록·홈은 foot만, 영문·404는 없음. 견적 안내가 광고보다 먼저
-    slot = _re.compile(r'class="tr-ad" data-slot="(\w+)"')
+    slot = _re.compile(r'class="tr-ad[^"]*" data-slot="(\w+)"')
     for q in sorted((ROOT / "docs").rglob("*.html")):
         rel = q.relative_to(ROOT / "docs")
         text = q.read_text(encoding="utf-8")
@@ -239,10 +239,14 @@ def main():
         if rel.parts[0] == "en" or rel.name == "404.html":
             assert not slots and "tr-ad" not in text, rel
         elif rel.parts[0] in ("tables", "products", "lib") and q.name != "index.html" and rel.parts[:2] != ("products", "category"):
-            assert slots == ["inline", "side", "foot"], (rel, slots)
-            assert text.index('href="/#list"') < text.index('data-slot="inline"'), rel
-            assert text.index('class="bn-strip"') < text.index('data-slot="foot"') < text.index("<footer"), rel
-        elif rel.parts[0] in ("tables", "products", "lib") or rel.name == "index.html":
+            assert slots == ["foot", "inline", "side", "foot"], (rel, slots)   # 표 아래 작은 띠(tr-ad-mid) · 본문 끝 카드 · 옆 칸 카드 · 바닥 띠
+            assert 'class="tr-ad tr-ad-mid"' in text and text.index('href="/#list"') < text.index('data-slot="inline"'), rel
+            assert text.rindex('class="bn-strip"') < text.rindex('data-slot="foot"') < text.index("<footer"), rel
+        elif rel.parts[0] in ("tables", "products") and rel.name == "index.html" or rel.parts == ("lib", "index.html") or rel.parts[:2] == ("products", "category"):
+            assert slots == ["inline", "foot"], (rel, slots)   # 모음 쪽: 위쪽 카드 하나와 바닥 띠
+        elif rel.parts == ("index.html",):
+            assert sorted(slots) == ["foot", "inline"], (rel, slots)   # 홈: 바닥 띠(정적)와 제품 목록 다음 카드(앱 화면 조각 안)
+        elif rel.name == "index.html":
             assert slots == ["foot"], (rel, slots)
         if slots:
             assert "/assets/tr-ad/tr-ad.css" in text and "/assets/tr-ad/tr-ad.js" in text, rel
@@ -250,7 +254,7 @@ def main():
         assert (ROOT / "docs/assets/tr-ad" / name).stat().st_size > 1000, name
     ad_js = (ROOT / "docs/assets/tr-ad/tr-ad.js").read_text(encoding="utf-8")
     assert "localStorage" not in ad_js and "cookie" not in ad_js and "fetch(" not in ad_js and "XMLHttpRequest" not in ad_js and "sponsored" in ad_js
-    print("Transition ad slots: KO detail pages A·B·C, lists C only, none on /en/ and 404: PASS")
+    print("Transition ad slots: KO detail pages mid·A·B·C, lists card+C, none on /en/ and 404: PASS")
     for name, expected in [("googlee7950c29a2b5a35e.html", 53), ("naver873356c1ec7239a24ea882fae7172928.html", 67)]:
         assert len((ROOT / "docs" / name).read_bytes()) == expected, name
     print(f"{len(families)} product guides, {len(tiles)} categories, {len(urls)} canonical URLs: metadata and public links PASS")

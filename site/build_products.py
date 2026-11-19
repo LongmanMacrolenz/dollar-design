@@ -183,7 +183,7 @@ def product_html(id, f, families, tiles, paths, library, shapes, info):
             + '<div class="product-grid"><article><h2>적용 규격·구매 시 구분할 표기</h2>'
             + '<p class="product-note">아래 규격은 같은 치수·요건을 보장하는 대체 규격 목록이 아닙니다. BOM의 규격과 판본, 도면 요구를 기준으로 대조합니다.</p>'
             + f'<table><caption class="sr">{e(name)} 카탈로그 규격 표기</caption><thead><tr><th>기관·기준</th><th>규격과 적용 범위</th></tr></thead><tbody>{standards}</tbody></table>'
-            + table_note(id, families, paths)
+            + table_note(id, families, paths) + ad_slot("foot", f['en'], "tr-ad-mid")
             + f'<h2>구매 전에 확인할 차이</h2><ul class="f">{notes}</ul>{options}'
             + '<h2>이 품목의 RFQ에 넣을 내용</h2><p>새 양식을 작성할 필요 없이 기존 BOM·메모·요청서를 보내세요. 빠진 사양은 확인 질문으로 이어갑니다.</p>'
             + f'<pre class="rfq-example">{e(example)}</pre><a class="cta" href="/#list">이메일 주소·RFQ 예시 보기 →</a>'
@@ -220,7 +220,7 @@ def listing_html(families, tiles, paths, info, category=None):
             + '<nav class="category-nav" aria-label="제품군">' + ''.join(f'<a class="chip" href="/products/category/{t["id"]}">{e(t["ko"])}</a>' for t in tiles) + '</nav>'
             + '<p class="product-note">주력 품목군 · 조건부 조달 품목 · 원문·도면 검토 품목을 구분합니다. 품목 수는 탐색 분류이며 재고·공급 확약이 아닙니다. 실제 가능 여부와 납기는 견적 시 확인합니다.</p>'
             + '<form class="product-search" role="search" id="product-search"><label for="product-q">품목명·영문명·규격으로 찾기</label><input class="q" id="product-q" type="search" placeholder="예: 육각너트, Hex Nut, A193 B7" autocomplete="off"><p id="product-count" aria-live="polite">제품 카드를 누르면 구매 안내로 이동합니다.</p></form>'
-            + '<p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p>' + ''.join(sections) + '</div></main>' + brand_strip(info) + ad_slot("foot") + footer(info)
+            + ad_slot("inline", "플랜트 플랜지 스터드") + '<p class="product-note">참고용 렌더링 · 실제 제품 사진 아님</p>' + ''.join(sections) + '</div></main>' + brand_strip(info) + ad_slot("foot") + footer(info)
             + '<script>' + (ROOT / "product-index.js").read_text(encoding="utf-8") + '</script>')
     return document(title, compact_description(desc), path, body, crumbs, True)
 

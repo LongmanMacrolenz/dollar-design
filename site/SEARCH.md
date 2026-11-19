@@ -56,3 +56,4 @@ Google·네이버에 제출할 사이트맵은 `/sitemap.xml` 하나입니다.
 - 하지 않는 것: 팝업·고정 띠·화면을 가리는 창, 쿠키·저장소·외부 요청, 광고 눌림을 우리 문의 집계에 더하는 것, 견적 단추보다 위에 두는 것. 링크는 새 창 + `rel="sponsored noopener"` + utm(`utm_content=<자리>-<광고>`)이다.
 - 창간호 50부가 마감되면 `site/tr-ad/tr-ad.js` 맨 위 `PRINT_ON`을 `false`로 바꾼다 (Transition 쪽이 알려 준다).
 - 점검: `tools/check_search.py`(자리 구성·영문 없음·견적 안내가 먼저), `worker/tests/browser.py` `check_trad`(PC·핸드폰 화면, 앱의 견적 화면에서 띠 숨김).
+- 2026-11-19 확대 (대표: 볼트노트 자체 수입 기대는 0원, 주력은 Transition 매거진이라 광고를 키운다. 팝업·화면 가림 없이): 낱장은 **표·핵심 사항 바로 아래 작은 한 줄 띠(`tr-ad-mid`, `data-slot="foot"`)**가 하나 더 들어가고, 홈은 제품 목록 다음에 카드 한 장(`app/src/v7_ia.js`의 `.bn-trad`, 화면을 그린 뒤 `V.after.home`이 `trAdFill()`을 부른다), 모음 쪽(`/tables/`·`/products/`·`/lib/`·제품 분류)은 위쪽에 카드 하나와 바닥 띠가 있다. 볼트노트 쪽 보정 CSS는 `site/tr-ad/bn-ad.css`(Transition 원본 `tr-ad.css`는 고치지 않는다).
