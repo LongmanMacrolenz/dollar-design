@@ -37,8 +37,8 @@
       on: true, img: "machine-compressor.jpg", shape: "wide",
       kicker: "Transition 매거진 · 기계의 원리",
       title: "펌프는 액체를, 압축기는 기체를",
-      text: "둘 다 압력을 올리는 기계인데 구조는 왜 갈릴까. 플랜트 현장의 기계를 그림으로 풀었습니다.",
-      cta: "기사 읽기", path: "/magazine/01/mechanics"
+      text: "둘 다 압력을 올리는 기계인데 구조는 왜 갈릴까. 가입하면 기사를 끝까지 읽을 수 있습니다.",
+      cta: "가입하고 읽기", path: "/magazine/01/mechanics"
     },
     magazine: {
       on: true, img: "machine-compressor.jpg", shape: "wide",
