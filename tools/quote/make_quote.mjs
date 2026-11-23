@@ -115,7 +115,7 @@ if (wonKo(129800) !== '일십이만구천팔백원' || bomVatSplit([100, 200], 3
 // ── 문서 조각 (클래스는 app/src/v3_quote.js의 #quote 양식과 같다) ─────────────
 const th13 = '<th>순번</th><th>품명</th><th>규격</th><th>재질·강도</th><th>표면처리</th><th>적용규격</th><th>원산지(제조사)</th><th>단위</th><th class="r">수량</th><th class="r">단가</th><th class="r">공급가액</th><th class="r">세액</th><th>비고</th>';
 const colg = '<colgroup><col class="w6"><col class="w8"><col class="w11"><col class="w10"><col class="w8"><col class="w7"><col class="w7"><col class="w4"><col class="w7"><col class="w6"><col class="w7"><col class="w6"><col class="w13"></colgroup>';
-const leadText = () => LEAD.days ? `${LEAD.basis} ${LEAD.days}영업일${LEAD.maxDays ? ` (통관·운송 지연 시 최대 ${LEAD.maxDays}영업일)` : ''}` : '견적서 회신 때 확정';
+const leadText = () => LEAD.text ? LEAD.text : LEAD.days ? `${LEAD.basis} ${LEAD.days}영업일${LEAD.maxDays ? ` (통관·운송 지연 시 최대 ${LEAD.maxDays}영업일)` : ''}` : '견적서 회신 때 확정';
 
 function optSection(o, no, vats) {
   const c = T[o.key];
@@ -246,7 +246,8 @@ if (!NO_PDF) {
   const b = await chromium.launch();
   for (const [v, keys, no] of variants) {
     const pg = await b.newPage({ viewport: { width: 1000, height: 1400 } });
-    await pg.goto('file://' + path.join(ROOT, 'docs', 'index.html') + '#quote');
+    await pg.route(u => !u.protocol.startsWith('file'), r => r.abort());   // 광고·분석 스크립트 등 외부 요청은 막아 오프라인으로 그린다
+    await pg.goto('file://' + path.join(ROOT, 'docs', 'index.html') + '#quote', { waitUntil: 'domcontentloaded' });
     await pg.waitForFunction(() => document.querySelector('.qd-doc-w') || document.querySelector('#qd-quote'), null, { timeout: 20000 }).catch(() => fail('docs/index.html에서 견적서 영역(.qd-doc-w)을 찾지 못했습니다. python3 tools/build_all.py 로 먼저 빌드하세요'));
     const calc = Object.fromEntries(keys.map(k => [k, { vats: bomVatSplit(T[k].amounts, T[k].vat), ko: wonKo(T[k].total) }]));
     const ok = await pg.evaluate(({ article, css }) => {
@@ -256,7 +257,7 @@ if (!NO_PDF) {
     if (!ok) fail('견적서 영역을 바꾸지 못했습니다');
     await pg.emulateMedia({ media: 'print' }); await pg.evaluate(() => document.fonts.ready); await pg.waitForTimeout(300);
     const scale = (Q.pdf || {})[v === 'ALL' ? 'scale' : 'singleScale'] ?? (v === 'ALL' && MULTI ? 0.9 : 0.8);
-    await pg.pdf({ path: path.join(OUT, `${no}.pdf`), preferCSSPageSize: true, printBackground: true, scale });
+    await pg.pdf({ path: path.join(OUT, `${no}.pdf`), preferCSSPageSize: true, printBackground: true, scale, ...((Q.pdf || {}).pageRanges ? { pageRanges: Q.pdf.pageRanges } : {}) });
     await pg.close();
     console.log(`PDF ${no}.pdf (scale ${scale})`);
   }
