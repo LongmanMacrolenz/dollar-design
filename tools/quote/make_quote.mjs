@@ -196,7 +196,7 @@ body, .qd-doc, .qd-doc * { font-family: 'Gothic A1', 'Noto Sans KR', sans-serif 
 function mailFor(keys, no) {
   const opts = keys.map(k => OPTIONS.find(o => o.key === k));
   const block = o => { const c = T[o.key]; return [MULTI ? `■ ${o.title || '옵션 ' + o.key}` : '■ 견적 내역',
-    ...o.rows.map(r => `- ${r.spec} ${r.qty}${r.unit}${r.note ? ` (${r.note})` : ''}: 단가 ${won(r.unitPrice)} / 금액 ${won(r.amount)}`),
+    ...o.rows.map(r => `- ${r.unit === '식' ? r.name.replace(/ \(.*$/, '') + ' · ' : ''}${r.spec} ${r.qty}${r.unit}${r.note ? ` (${r.note})` : ''}: 단가 ${won(r.unitPrice)} / 금액 ${won(r.amount)}`),
     ...(SHIP && SHIP.show ? [`- ${SHIP.label}: ${won(SHIP.sellKRW)}`] : []),
     `- 공급가액 ${won(c.supply)} + 부가세 ${won(c.vat)} = 합계 ${won(c.total)}`].join('\n'); };
   const M = Q.mail || {};
