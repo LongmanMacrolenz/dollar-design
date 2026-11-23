@@ -75,7 +75,7 @@ for (const o of OPTIONS) {
     const goods = Math.round(b.price * packs * fxOf(b.currency));
     const duty = b.currency === 'KRW' ? 0 : Math.round(goods * DUTY);
     const cost = goods + duty;
-    const unitPrice = Math.ceil(sell(cost) / l.qty);   // l.unit 은 단위(EA), unitPrice 는 단가
+    const unitPrice = l.sellUnit != null ? l.sellUnit : Math.ceil(sell(cost) / l.qty);   // l.unit 은 단위(EA), unitPrice 는 단가
     return { ...l, unit: l.unit || 'EA', buy: b, packs, buyQty: buy, goods, duty, cost, unitPrice, amount: unitPrice * l.qty };
   });
 }
@@ -86,14 +86,14 @@ if (Q.shipping) {
   const foreignKRW = f ? Math.round(f.amount * fxOf(f.currency || 'USD')) : 0;
   const duty = f ? Math.round(foreignKRW * DUTY) : 0;
   const cost = foreignKRW + duty + (P.clearanceFeeKRW || 0) + (P.domesticShipKRW || 0) + (s.krw || 0);
-  SHIP = { label: s.label || '운임·통관 (해외 운송, 관세·통관수수료, 국내 배송 포함 · 1회)', remark: s.remark || '일부만 주문해도 1회 부과', foreignKRW, duty, cost, sellKRW: sell(cost) };
+  SHIP = { label: s.label || '운임·통관 (해외 운송, 관세·통관수수료, 국내 배송 포함 · 1회)', remark: s.remark || '일부만 주문해도 1회 부과', foreignKRW, duty, cost, fold: !!s.fold, show: !s.fold, sellKRW: s.fold ? 0 : sell(cost) };   // fold: 운임·통관 원가는 원가표에만 넣고 고객 견적서에는 줄을 만들지 않는다 (단가로 가격을 정할 때)
 }
 function totals(keys) {
   const rows = keys.flatMap(k => OPTIONS.find(o => o.key === k).rows);
   const sub = rows.reduce((a, r) => a + r.amount, 0);
   const supply = sub + (SHIP ? SHIP.sellKRW : 0), vat = Math.round(supply * 0.1);   // bomVatTotal과 같은 식
   const cost = rows.reduce((a, r) => a + r.cost, 0) + (SHIP ? SHIP.cost : 0);
-  return { keys, sub, supply, vat, total: supply + vat, cost, profit: supply - cost, amounts: [...rows.map(r => r.amount), ...(SHIP ? [SHIP.sellKRW] : [])] };
+  return { keys, sub, supply, vat, total: supply + vat, cost, profit: supply - cost, amounts: [...rows.map(r => r.amount), ...(SHIP && SHIP.show ? [SHIP.sellKRW] : [])] };
 }
 const ALL = OPTIONS.map(o => o.key);
 const T = Object.fromEntries([...ALL.map(k => [k, totals([k])]), ['ALL', totals(ALL)]]);
@@ -120,18 +120,18 @@ const leadText = () => LEAD.text ? LEAD.text : LEAD.days ? `${LEAD.basis} ${LEAD
 function optSection(o, no, vats) {
   const c = T[o.key];
   const rows = o.rows.map((r, i) => `<tr><td class="mono qd-no" data-l="순번">${MULTI ? `${o.key}-${i + 1}` : i + 1}</td><td class="wide" data-l="품명"><b>${esc(r.name)}</b>${r.nameEn ? `<span class="qd-nm-en"> / ${esc(r.nameEn)}</span>` : ''}</td><td class="mono" data-l="규격">${esc(r.spec)}</td><td data-l="재질·강도">${esc(r.mat || o.mat || '')}</td><td data-l="표면처리">${esc(r.fin || o.fin || '')}</td><td data-l="적용규격">${esc(r.std || '')}</td><td class="qd-mk" data-l="원산지(제조사)">${esc(r.origin || '발주 후 통보').replace(' ', '<br>')}</td><td data-l="단위">${esc(r.unit)}</td><td class="r num" data-l="수량">${r.qty} ${esc(r.unit)}</td><td class="r num" data-l="단가">${won(r.unitPrice)}</td><td class="r num" data-l="공급가액"><b>${won(r.amount)}</b></td><td class="r num" data-l="세액">${won(vats[i])}</td><td class="qd-rm wide" data-l="비고">${r.note ? `<span class="sub">${esc(r.note)}</span>` : ''}${LEAD.days ? `<span class="sub">납기 ${esc(LEAD.basis)} ${LEAD.days}영업일</span>` : ''}</td></tr>`).join('');
-  const ship = SHIP ? `<tr class="qd-ship"><td class="mono" data-l="순번">—</td><td data-l="품명" colspan="6">${esc(SHIP.label)}</td><td data-l="단위">식</td><td class="r num" data-l="수량">1</td><td class="r num" data-l="단가">${won(SHIP.sellKRW)}</td><td class="r num" data-l="공급가액"><b>${won(SHIP.sellKRW)}</b></td><td class="r num" data-l="세액">${won(vats[vats.length - 1])}</td><td class="qd-rm wide" data-l="비고"><span class="sub">${esc(SHIP.remark)}</span></td></tr>` : '';
+  const ship = SHIP && SHIP.show ? `<tr class="qd-ship"><td class="mono" data-l="순번">—</td><td data-l="품명" colspan="6">${esc(SHIP.label)}</td><td data-l="단위">식</td><td class="r num" data-l="수량">1</td><td class="r num" data-l="단가">${won(SHIP.sellKRW)}</td><td class="r num" data-l="공급가액"><b>${won(SHIP.sellKRW)}</b></td><td class="r num" data-l="세액">${won(vats[vats.length - 1])}</td><td class="qd-rm wide" data-l="비고"><span class="sub">${esc(SHIP.remark)}</span></td></tr>` : '';
   const title = MULTI ? `${no}. ${esc(o.title || '옵션 ' + o.key)}` : '견적 내역';
-  return `<section class="qd-sec qd-opt"><h3>${title} <small>${o.rows.length}종 · 단가 VAT 별도${SHIP ? ' · 운임·통관 별도 줄' : ''}</small></h3><div class="tblw qd-tw"><table class="tbl mstack qd-t qd-t1">${colg}<thead><tr>${th13}</tr></thead><tbody>${rows}${ship}<tr class="qd-end"><td colspan="13">- 이하 여백 -</td></tr></tbody></table></div>
-  <table class="qd-money"><tbody><tr><th scope="row">공급가액 합계${SHIP ? ' (운임·통관 포함)' : ''}</th><td class="num">${won(c.supply)}</td></tr><tr><th scope="row">부가가치세 (10%)</th><td class="num">${won(c.vat)}</td></tr><tr class="grand"><th scope="row">합계${MULTI ? ` (옵션 ${o.key})` : ''}</th><td class="num">${won(c.total)}</td></tr></tbody></table></section>`;
+  return `<section class="qd-sec qd-opt"><h3>${title} <small>${o.rows.length}종 · 단가 VAT 별도${SHIP && SHIP.show ? ' · 운임·통관 별도 줄' : ''}</small></h3><div class="tblw qd-tw"><table class="tbl mstack qd-t qd-t1">${colg}<thead><tr>${th13}</tr></thead><tbody>${rows}${ship}<tr class="qd-end"><td colspan="13">- 이하 여백 -</td></tr></tbody></table></div>
+  <table class="qd-money"><tbody><tr><th scope="row">공급가액 합계${SHIP && SHIP.show ? ' (운임·통관 포함)' : ''}</th><td class="num">${won(c.supply)}</td></tr><tr><th scope="row">부가가치세 (10%)</th><td class="num">${won(c.vat)}</td></tr><tr class="grand"><th scope="row">합계${MULTI ? ` (옵션 ${o.key})` : ''}</th><td class="num">${won(c.total)}</td></tr></tbody></table></section>`;
 }
 const band = (o, ko) => `<div class="qd-band"><span class="lab">${MULTI ? esc(o.title || '옵션 ' + o.key) + ' · ' : ''}합계금액 (부가가치세 포함)</span><b class="ko-amt">일금 ${esc(ko)}정</b><span class="mono">(₩${T[o.key].total.toLocaleString('ko-KR')})</span></div>`;
 
 function notesFor(keys) {
   const n = [...(Q.notes || [])];
   if (Q.autoNotes !== false) {
-    if (SHIP) n.push('운임·통관 줄에는 해외 운송비, 관세·통관수수료, 국내 배송비가 들어 있으며 단가에는 넣지 않았습니다. ' + (keys.length > 1 ? '옵션을 함께 주문하시거나 일부 품목만 주문하셔도 이 줄은 1회만 부과합니다.' : '일부 품목만 주문하셔도 이 줄은 1회 부과합니다.') + ' 단가는 이 줄을 제외한 금액입니다.');
-    if (keys.length > 1) n.push(`옵션을 모두 함께 주문하시는 경우: 공급가액 ${won(T.ALL.supply)} · 부가세 ${won(T.ALL.vat)} · 합계 ${won(T.ALL.total)}${SHIP ? ' (운임·통관 1회 포함)' : ''}.`);
+    if (SHIP && SHIP.show) n.push('운임·통관 줄에는 해외 운송비, 관세·통관수수료, 국내 배송비가 들어 있으며 단가에는 넣지 않았습니다. ' + (keys.length > 1 ? '옵션을 함께 주문하시거나 일부 품목만 주문하셔도 이 줄은 1회만 부과합니다.' : '일부 품목만 주문하셔도 이 줄은 1회 부과합니다.') + ' 단가는 이 줄을 제외한 금액입니다.');
+    if (keys.length > 1) n.push(`옵션을 모두 함께 주문하시는 경우: 공급가액 ${won(T.ALL.supply)} · 부가세 ${won(T.ALL.vat)} · 합계 ${won(T.ALL.total)}${SHIP && SHIP.show ? ' (운임·통관 1회 포함)' : ''}.`);
     n.push(`납기: ${leadText()}.`);
     n.push('서류: 별도 요청이 없어 제조사 성적서는 포함하지 않았습니다. 필요하시면 알려 주세요. 제공 가능 여부를 확인해 안내드립니다.');
     n.push('단가는 부가가치세 별도입니다. 수량이 바뀌면 단가를 다시 협의합니다.');
@@ -150,7 +150,7 @@ function articleFor(keys, no, calc) {
   const dft = {
     '납품기한': leadText(), '납품장소': '귀사 지정 장소',
     '대금 지급 조건': '계좌이체. 처음 거래: 발주 확인 후 선입금(입금 확인 시 출고, 입금 시 세금계산서 발행)', '증빙': '계좌이체: 전자세금계산서',
-    '유효기간': `${koDate(VALID)}까지 (견적일로부터 ${VALID_DAYS}일)`, '운송조건': SHIP ? 'DAP 지정 장소 · 택배 (운임은 견적서의 운임·통관 줄에 포함)' : 'DAP 지정 장소 · 택배',
+    '유효기간': `${koDate(VALID)}까지 (견적일로부터 ${VALID_DAYS}일)`, '운송조건': SHIP && SHIP.show ? 'DAP 지정 장소 · 택배 (운임은 견적서의 운임·통관 줄에 포함)' : 'DAP 지정 장소 · 택배',
   };
   const terms = Object.entries({ ...dft, ...(Q.terms || {}) });
   const revs = Q.revisions || [{ rev: REV, date: ISSUED, desc: '최초 발행 / First issue' }];
@@ -165,7 +165,7 @@ function articleFor(keys, no, calc) {
   ${opts.map(o => band(o, calc[o.key].ko)).join('')}
   <table class="qd-terms"><tbody>${terms.filter((_, i) => i % 2 === 0).map((_, j) => { const a = terms[2 * j], b = terms[2 * j + 1]; return `<tr><th scope="row">${esc(a[0])}</th><td>${esc(a[1])}</td>${b ? `<th scope="row">${esc(b[0])}</th><td>${esc(b[1])}</td>` : '<th></th><td></td>'}</tr>`; }).join('')}</tbody></table>
   ${opts.map((o, i) => optSection(o, i + 1, calc[o.key].vats)).join('')}
-  ${keys.length > 1 ? `<p class="qd-ref">옵션을 모두 함께 주문하시는 경우${SHIP ? ' (운임·통관 1회)' : ''}: 공급가액 ${won(T.ALL.supply)} · 부가세 ${won(T.ALL.vat)} · 합계 ${won(T.ALL.total)}</p>` : ''}
+  ${keys.length > 1 ? `<p class="qd-ref">옵션을 모두 함께 주문하시는 경우${SHIP && SHIP.show ? ' (운임·통관 1회)' : ''}: 공급가액 ${won(T.ALL.supply)} · 부가세 ${won(T.ALL.vat)} · 합계 ${won(T.ALL.total)}</p>` : ''}
   <section class="qd-sec qd-notes"><h3>특기사항</h3><ol>${notesFor(keys).map(n => `<li><span>${esc(n)}</span></li>`).join('')}</ol></section>
   <dl class="qd-foot"><dt>입금계좌</dt><dd>${esc(SUP.account)}</dd><dt>담당자</dt><dd>${esc(SUP.owner)} · ${esc(SUP.tel)}</dd></dl>
   <table class="qd-rev"><caption>개정 이력 Revision History</caption><thead><tr><th>Rev</th><th>날짜 Date</th><th>내용 Description</th><th>작성 By</th><th>검토 Chk'd</th></tr></thead><tbody>${revs.map(r => `<tr><td class="mono">${esc(r.rev)}</td><td class="mono">${esc(r.date)}</td><td>${esc(r.desc)}</td><td>${esc(SUP.owner)}</td><td>${esc(SUP.owner)}</td></tr>`).join('')}</tbody></table>
@@ -196,7 +196,7 @@ function mailFor(keys, no) {
   const opts = keys.map(k => OPTIONS.find(o => o.key === k));
   const block = o => { const c = T[o.key]; return [MULTI ? `■ ${o.title || '옵션 ' + o.key}` : '■ 견적 내역',
     ...o.rows.map(r => `- ${r.spec} ${r.qty}${r.unit}${r.note ? ` (${r.note})` : ''}: 단가 ${won(r.unitPrice)} / 금액 ${won(r.amount)}`),
-    ...(SHIP ? [`- ${SHIP.label}: ${won(SHIP.sellKRW)}`] : []),
+    ...(SHIP && SHIP.show ? [`- ${SHIP.label}: ${won(SHIP.sellKRW)}`] : []),
     `- 공급가액 ${won(c.supply)} + 부가세 ${won(c.vat)} = 합계 ${won(c.total)}`].join('\n'); };
   const M = Q.mail || {};
   const lines = [
@@ -204,7 +204,7 @@ function mailFor(keys, no) {
     `안녕하세요, ${CUST.name} ${CUST.attn.replace(/ 귀하$/, '')}님.`, `${SUP.name} ${SUP.owner}입니다. 견적 문의 감사합니다.`, '',
     ...(M.intro ? [M.intro, ''] : []),
     opts.map(block).join('\n\n'), '',
-    ...(SHIP ? [`※ 운임·통관 줄은 단가와 별도이며 1회만 부과합니다. ${keys.length > 1 ? '옵션을 함께 주문하시거나 일부 품목만 주문하셔도 같습니다.' : '일부 품목만 주문하셔도 같습니다.'}`] : []),
+    ...(SHIP && SHIP.show ? [`※ 운임·통관 줄은 단가와 별도이며 1회만 부과합니다. ${keys.length > 1 ? '옵션을 함께 주문하시거나 일부 품목만 주문하셔도 같습니다.' : '일부 품목만 주문하셔도 같습니다.'}`] : []),
     ...(keys.length > 1 ? [`※ 옵션을 모두 함께 주문하시는 경우: 공급가액 ${won(T.ALL.supply)} + 부가세 ${won(T.ALL.vat)} = 합계 ${won(T.ALL.total)}`] : []),
     ...(M.extra ? ['', ...[].concat(M.extra)] : []), '',
     `납기는 ${leadText()}입니다.`, `견적 유효기간은 ${koDate(VALID)}까지입니다.`,
