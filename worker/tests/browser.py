@@ -558,6 +558,10 @@ def check_count(page, BASE, OUT):
   admin.reload();admin.get_by_role('button',name='문의 집계',exact=True).click();admin.locator('#counts').wait_for();assert skip.is_checked()
   skip.uncheck();assert admin.evaluate('localStorage.getItem("bn.nocount")') is None
   admin.set_viewport_size({'width':360,'height':740});assert admin.evaluate('document.documentElement.scrollWidth<=innerWidth')
+  # 입찰공고 탭: 키(DATA_GO_KR_KEY)가 없는 시험 환경에서는 설정 안내만 보이고 수집 버튼은 꺼져 있다
+  admin.set_viewport_size({'width':1280,'height':900});admin.get_by_role('button',name='입찰공고',exact=True).click();admin.locator('#bids').wait_for()
+  assert '인증키가 아직 없습니다' in admin.locator('#bids').inner_text() and admin.get_by_role('button',name='지금 수집',exact=True).is_disabled()
+  admin.set_viewport_size({'width':360,'height':740});assert admin.evaluate('document.documentElement.scrollWidth<=innerWidth')
   assert not problems,problems
   context.close()
   print('문의 집계 · 자동화 기본 꺼짐/이름만 한 번씩/세지 않기·추적 거부/관리자 합계: PASS')

@@ -7,6 +7,7 @@ import {MAIL_ACCOUNT,MAX_MAIL_BYTES,MailError,mailErrorMessage,ImapClient,parseM
 import {productCandidate} from './product.mjs';
 import {businessDate} from './dates.mjs';
 import {BUSINESS,quoteMessage,inquiryMessage} from './templates.mjs';
+import {backfillTasks,dailyTasks,runBidTasks,bidsCSV,bidTime,kstDay,kstHour,KEEP_DAYS} from './bids.mjs';
 import {parseBOM,mailBOM,workflowFor,workflowCSV,requirementsFor,supplierSearches,inquiryConditions,replyTarget,supplierRequest} from './workflow.mjs';
 
 function expectedRevision(body,old){if(old&&body.revision!==old.revision)throw new DomainError('다른 창에서 변경되었습니다. 다시 불러오세요.',409);return body.revision;}
@@ -71,8 +72,9 @@ export default {
     } catch(e){return json({error:e instanceof DomainError?e.message:'요청을 처리하지 못했습니다.'},e.status||500);}
   },
   async scheduled(_event,env,ctx) {
-    if(!env.NAVER_APP_PASSWORD||!env.PROCUREMENT_ADMIN_KEY) return;
-    ctx.waitUntil(store(env).fetch(new Request('https://private/scheduled',{method:'POST'})));
+    if(!env.PROCUREMENT_ADMIN_KEY) return;
+    if(env.NAVER_APP_PASSWORD) ctx.waitUntil(store(env).fetch(new Request('https://private/scheduled',{method:'POST'})));
+    if(env.DATA_GO_KR_KEY) ctx.waitUntil(store(env).fetch(new Request('https://private/bids-tick',{method:'POST'})));   // 나라장터 파스너 공고 (worker/bids.mjs)
   }
 };
 
@@ -136,9 +138,12 @@ export class ProcurementStore extends DurableObject {
     const path=new URL(request.url).pathname;
     try {
       if(path==='/scheduled'){await this.sync();await this.flush();return json({ok:true});}
+      if(path==='/bids-tick')return json(await this.bidsTick());
       if(path==='/count')return json({counted:this.count(await request.text())});   // Worker의 countPing만 부른다 (밖에서는 /api/*만 여기로 온다)
       if(request.method==='GET') {
         if(path==='/api/counts')return json(this.counts());
+        if(path==='/api/bids')return json(this.bids());
+        if(path==='/api/bids.csv')return new Response(bidsCSV(this.bids().bids),{headers:{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':`attachment; filename="g2b-fastener-${kstDay(Date.now())}.csv"`,'Cache-Control':'no-store'}});
         if(path==='/api/state')return json({readiness:this.readiness(),requests:this.list('request'),suppliers:SUPPLIERS.map(s=>this.get('supplier',s.id)),settings:this.get('settings','main'),outbox:this.list('outbox'),quotes:this.list('quote').map(customerQuote),mail:this.list('mail').map(({body,...m})=>m),business:BUSINESS});
         let m=path.match(/^\/api\/requests\/([^/]+)$/);if(m){const req=this.required('request',m[1]);return json({request:req,offers:this.list('offer').filter(o=>o.requestId===m[1]),plan:this.plan(m[1]),workflow:this.workflow(m[1]),requirements:req.lines?.map(l=>({lineId:l.id,rows:requirementsFor(l,req),searches:supplierSearches(l,this.list('supplier'))}))||[],replies:this.list('mail').filter(m=>m.requestId===req.id),inquiries:this.list('outbox').filter(o=>o.requestId===req.id&&o.kind==='inquiry')});}
         m=path.match(/^\/api\/requests\/([^/]+)\/workflow.csv$/);if(m){const req=this.required('request',m[1]);return new Response(workflowCSV(req,this.workflow(req.id)),{headers:{'Content-Type':'text/csv; charset=utf-8','Content-Disposition':`attachment; filename="${req.number}-CD.csv"`,'Cache-Control':'no-store'}});}
@@ -149,6 +154,7 @@ export class ProcurementStore extends DurableObject {
       if(request.method!=='POST')throw new DomainError('지원하지 않는 요청입니다.',405);
       const body=await jsonBody(request);
       if(path==='/api/sync'){await this.sync();return json(this.readiness());}
+      if(path==='/api/bids/run'){await this.bidsTick({force:true});return json(this.bids());}
       if(path==='/api/bom/preview')return json(parseBOM(body.raw,{specialRequirements:body.specialRequirements,source:body.source||'고객 BOM'}));
       if(path==='/api/workflow/run')return json(await this.inquiryBatch(body.requestId,{automatic:true}));
       if(path==='/api/settings') {
@@ -236,6 +242,40 @@ export class ProcurementStore extends DurableObject {
     if(req.revision!==q.requestRevision||settings.revision!==q.settingsRevision||q.offerRevisions.some(o=>this.get('offer',o.id)?.revision!==o.revision))throw new DomainError('품목 또는 공급 조건이 변경되었습니다. 견적서를 다시 작성하세요.',409);
     if(Date.parse(q.validUntil)<=Date.now())throw new DomainError('견적 유효기간이 지났습니다.',409);
     const plan=this.plan(req.id);if(!plan.ready)throw new DomainError('공급 조건을 다시 확인하세요.',409);
+  }
+  // ── 나라장터 파스너 입찰공고 (worker/bids.mjs). 5분마다 불리고, 할 일이 있을 때만 조달청 API를 부른다 ──
+  bidState(){const s=this.get('bidsync','main')||{};const {tasks,...rest}=s;return {...rest,configured:!!this.env.DATA_GO_KR_KEY,pending:tasks?.length||0};}
+  bids(){
+    const now=Date.now();
+    const list=this.list('bid').map(b=>({...b,closed:(bidTime(b.closeAt)??Infinity)<now}));
+    list.sort((a,b)=>(a.closed-b.closed)||((bidTime(a.closeAt)??9e15)-(bidTime(b.closeAt)??9e15)));
+    return {state:this.bidState(),bids:list};
+  }
+  async bidsTick({force=false}={}){
+    const key=this.env.DATA_GO_KR_KEY;if(!key)return this.bidState();
+    if(this.bidRunning)return this.bidState();this.bidRunning=true;
+    try{
+      const now=Date.now(),today=kstDay(now);
+      const s={tasks:null,lastDaily:'',found:0,...(this.get('bidsync','main')||{})};delete s.revision;
+      if(!force&&s.pausedUntil&&now<s.pausedUntil)return this.bidState();
+      if(!s.tasks&&!s.backfilled){s.tasks=backfillTasks(now);s.backfilled=true;s.lastDaily=today;s.startedAt=new Date(now).toISOString();}
+      if(s.lastDaily!==today&&kstHour(now)>=6){s.tasks=[...(s.tasks||[]),...dailyTasks(now)];s.lastDaily=today;}
+      if(s.tasks?.length){
+        const r=await runBidTasks(key,s.tasks,async url=>(await fetch(url,{headers:{Accept:'application/json'}})).text());
+        let added=0;
+        for(const rec of r.records){
+          const old=this.get('bid',rec.id);if(!old)added++;
+          this.put('bid',rec.id,{...rec,keywords:[...new Set([...(old?.keywords||[]),rec.keyword])],firstSeen:old?.firstSeen||new Date(now).toISOString()});
+        }
+        s.tasks=r.tasks;s.lastRun=new Date(now).toISOString();s.lastCalls=r.calls;s.found=(s.found||0)+added;
+        if(r.error){s.error={...r.error,at:s.lastRun};s.pausedUntil=r.error.code==='22'?Date.parse(kstDay(now+86400000)+'T06:00:00+09:00'):now+3600000;}
+        else{s.error=null;s.pausedUntil=0;if(!s.tasks.length)s.lastSuccess=s.lastRun;}
+      }
+      const cutoff=now-KEEP_DAYS*86400000;
+      for(const b of this.list('bid'))if((bidTime(b.closeAt)??now)<cutoff)this.sql.exec("DELETE FROM documents WHERE kind='bid' AND id=?",b.id);
+      this.put('bidsync','main',s);
+      return this.bidState();
+    }finally{this.bidRunning=false;}
   }
   socket(hostname,port){return connect({hostname,port},{secureTransport:'on',allowHalfOpen:false});}
   async sync() {
