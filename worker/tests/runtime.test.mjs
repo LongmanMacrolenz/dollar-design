@@ -85,5 +85,7 @@ test('boltnote.net is the canonical host: old workers.dev and www get a 301 on G
       for(const f of ['/googlee7950c29a2b5a35e.html','/naver873356c1ec7239a24ea882fae7172928.html']) assert.notEqual((await get('https://'+host+f)).status,301);
     }
     const home=await get('https://boltnote.net/');assert.equal(home.status,200);   // the canonical host is served, not redirected
+    const plain=await get('http://boltnote.net/en/tables/hex-bolt-full-thread?x=1');assert.equal(plain.status,301);assert.equal(plain.headers.get('location'),'https://boltnote.net/en/tables/hex-bolt-full-thread?x=1');   // http → https
+    assert.notEqual((await get('http://boltnote.net/count',{method:'POST'})).status,301);
   }finally{await mf.dispose();}
 });

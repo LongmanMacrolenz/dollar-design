@@ -46,6 +46,8 @@ export default {
     // 소유 확인 파일과 /api/ 는 예전 주소에서도 그대로 둔다(검색엔진 재확인·관리 도구 호환).
     {
       const u=new URL(request.url);
+      // http로 들어온 정식 주소는 https로 영구 이동한다 (2026-11-25: http 쪽이 200으로 열려 중복 주소로 잡히던 것을 막음)
+      if(u.protocol==='http:'&&u.hostname==='boltnote.net'&&(request.method==='GET'||request.method==='HEAD'))return Response.redirect('https://boltnote.net'+u.pathname+u.search,301);
       if((u.hostname==='boltnote.boltnote.workers.dev'||u.hostname==='www.boltnote.net')&&(request.method==='GET'||request.method==='HEAD')
         &&!path.startsWith('/api/')&&path!=='/googlee7950c29a2b5a35e.html'&&path!=='/naver873356c1ec7239a24ea882fae7172928.html'&&path!=='/naver12f5e4657429cd6bc694712c3b3be88b.html') {
         return Response.redirect('https://boltnote.net'+u.pathname+u.search,301);
