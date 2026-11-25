@@ -242,22 +242,23 @@ function pmMail() {
   const subj = '[목록견적] ', body = ['볼트노트 견적 담당자님께', '목록 파일을 첨부합니다.', '필요한 날짜·납품지:', '필요한 서류(3.1, CoC):'].join('\r\n');
   return `<a class="pm-btn ghost" href="${esc('mailto:' + String(CONTACT.rfq).trim() + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body))}">견적 메일 보내기</a>`;
 }
-/* 홈: 취급 제품 → 사양 검토 예시 → 검토 원칙 → 견적 문의.
+/* 홈: 엔지니어 소개 → 사양 검토 예시(검토하는 사람) → 취급 제품 → 견적 문의.
+   2026-11-25 "엔지니어 박세중" 방향으로 단순화: 검토 원칙·심화 자료 구역을 빼고 링크만 남김. 규격표·사전·제품 쪽 주소와 내용은 그대로(검색 영향 없음).
    2026-11 기업 홈페이지 개편. 수치·품목·연락처는 기존 공개 데이터만 사용한다.
    조립·스크롤 고정 연출은 보관하고 홈에서는 초기화하지 않는다. */
 V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
   ${hmCompanyHero()}
+  ${hmCompanyReview()}
   <section class="bn-company-products bn-company-section" aria-labelledby="bn-h-products"><div class="bn-wrap">
-    <div class="bn-company-section-head"><div><p class="bn-kicker" lang="en">01 / FASTENER COLLECTION</p><h2 id="bn-h-products">필요한 부품부터<br>살펴보세요.</h2></div><div><p class="bn-section-description">미터·인치 규격의 산업용 체결부품.<br>형상과 용도에 맞는 품목을 확인하세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+    <div class="bn-company-section-head"><div><p class="bn-kicker" lang="en">02 / FASTENER COLLECTION</p><h2 id="bn-h-products">필요한 부품부터<br>살펴보세요.</h2></div><div><p class="bn-section-description">미터·인치 규격의 산업용 체결부품.<br>형상과 용도에 맞는 품목을 확인하세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
     ${hmTiles()}
     <p class="bn-company-product-note">제품군의 참고용 렌더링 · 실제 제품 사진 아님. 치수·재질·표면처리는 품목별로 확인하세요.</p>
     <nav class="bn-company-collections" aria-label="용도별 제품 모음"><span>용도별로 찾기</span>${Object.entries(CAT_COLL).filter(([k])=>['plant','pump','flange'].includes(k)).map(([k,c])=>`<a href="#k-${k}" data-go="k-${k}">${esc(c.ko)} <i aria-hidden="true">↗</i></a>`).join('')}</nav>
+    <nav class="bn-home-links" aria-label="자료·도구"><a href="#lib" data-go="lib">규격 사전 ↗</a><a href="#ref" data-go="ref">도면·CAD ↗</a><a href="#tools" data-go="tools">계산·대조 도구 ↗</a><a href="#materials" data-go="materials">소재 문의 ↗</a></nav>
   </div></section>
   <div class="bn-wrap bn-trad"><div class="tr-ad" data-slot="inline" data-topic="플랜트 플랜지 스터드"></div></div>
-  ${hmCompanyReview()}
-  ${hmCompanyExpertise()}
   <section class="bn-company-contact bn-company-section" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-company-contact-grid">
-    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">04 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 보내 주세요.<br>사양 확인과 공급처 검토를 이어갑니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>필요한 품목과 수량, 요구 조건을 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급처 검토</b><p>빠진 사양을 질문하고 공급 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건과 질문·편차를 구분해 안내합니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">03 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 보내 주세요.<br>사양 확인과 공급처 검토를 이어갑니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>필요한 품목과 수량, 요구 조건을 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급처 검토</b><p>빠진 사양을 질문하고 공급 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건과 질문·편차를 구분해 안내합니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
     ${salesContactMarkup(true)}
   </div></section>
 </div>`;
