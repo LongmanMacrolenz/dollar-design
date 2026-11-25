@@ -132,7 +132,7 @@ def check_boot(page, BASE, OUT):
   context=browser.new_context(viewport={'width':1280,'height':800},java_script_enabled=False);still=context.new_page();still.goto(BASE+'/')
   assert still.locator('html').get_attribute('class')=='bn-boot-home' and still.locator('h1').count()==1
   assert still.locator('#initial-home-title').inner_text().replace('\n','')=='엔지니어가 사양을 읽고,체결부품을 구해 드립니다.'
-  assert '공급처 확인 결과를 견적과 C&D 리스트로 드립니다' in still.locator('.bn-boot-lead').inner_text()
+  assert '공급처 확인 결과를 견적서와 C&D 리스트로 드립니다' in still.locator('.bn-boot-lead').inner_text() and '영문 RFQ도 한 번에 받습니다' in still.locator('.bn-boot-lead').inner_text()
   assert still.locator('.bn-boot-grid img').get_attribute('src')=='/media/boltnote-hero.webp'
   assert still.locator('.bn-boot-btn[href="/#list"]').is_visible() and still.locator('.bn-boot-more a[href="/products/hex-nut"]').is_visible()
   assert still.evaluate('getComputedStyle(document.body).backgroundColor')=='rgb(10, 14, 19)' and still.locator('meta[name="theme-color"]').get_attribute('content')=='#0a0e13'
@@ -273,6 +273,7 @@ def check_home(page, BASE, OUT):
   assert page.locator('.bn-company-products .bn-product').count()==6
   assert '가상 사양 검토 예시' in page.locator('.bn-review-sheet').inner_text()
   assert '실제 고객 자료나 공급 가능 판정이 아닙니다' in page.locator('.bn-review-disclaimer').inner_text()
+  assert page.locator('.bn-proof li').count()==4 and '공급처에 제공 여부를 확인해 견적서에 적습니다' in page.locator('.bn-proof').inner_text()   # 네 가지: 서류는 약속하지 않는다
   assert '기계엔지니어' in page.locator('.bn-reviewer').inner_text() and page.locator('.bn-reviewer a[href="#about"]').count()==1   # 검토하는 사람
   assert page.locator('.bn-company-principles').count()==0 and page.locator('.bn-company-products .bn-home-links a').count()==4
   assert page.locator('.bn-tighten,.bn-scene,#bn-brand-video,#sb').count()==0
@@ -313,6 +314,9 @@ def check_sales(page, BASE, OUT):
   page.emulate_media(reduced_motion='reduce')
   page.goto(BASE+'/#list');page.locator('#sales-copy-address').wait_for()
   requests=[];page.on('request',lambda r:requests.append(r.url) if '/api/' in r.url else None)
+  # 맞는 의뢰·처음 보내는 분 안내: 세 칸, 서류는 '확인해 적는다'까지, 재고는 두지 않는다고 밝힌다
+  fit=page.locator('.sales-fit');assert fit.locator('> div').count()==3 and '재고를 두지 않고 주문마다 조달합니다' in fit.inner_text() and '공급처에 제공 여부를 확인해 견적서에 적습니다' in fit.inner_text()
+  assert '요청 범위: [일반품 기준 단가·납기만 먼저 / 특수 요건 포함 정식 견적]' in page.locator('#sales-example-body').inner_text()
   for width,height in [(320,668),(390,844),(768,1024),(1440,900)]:
    page.set_viewport_size({'width':width,'height':height});page.evaluate('document.fonts.ready')
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width

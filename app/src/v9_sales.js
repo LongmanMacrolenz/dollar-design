@@ -13,6 +13,7 @@ function salesMailPackage() {
       '품목·수량·사양과 특수요건은 첨부 자료를 확인해 주세요.',
       '',
       '요청사항: 단가, 공급 가능 수량, 납기, 서류 제공 범위',
+      '요청 범위: [일반품 기준 단가·납기만 먼저 / 특수 요건 포함 정식 견적]',
       '희망 시점: [정해진 경우만 적어 주세요]',
       '추가 조건: [필요한 서류·표면처리·대체품 검토 여부 등]',
       '회사 / 담당자: [회사명 / 성함]',
@@ -63,6 +64,15 @@ function salesExampleMarkup() {
     <p class="sales-example-note">주소·제목·본문을 원하는 메일 서비스에 붙여 넣고 자료를 첨부해 보내 주세요.</p><p class="sales-status" id="sales-example-status" data-sales-status role="status" aria-live="polite"></p>
   </section>`;
 }
+/* 맞는 의뢰와 처음 보내는 분 안내 (2026-11-25, 엔지니어 박세중 방향). 가격·납기·서류 제공을 약속하지 않는다: 서류는 '공급처 확인 뒤 견적서에 적는다'까지. */
+function salesFitMarkup() {
+  const list=items=>`<ul>${items.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
+  return `<section class="sales-fit" aria-labelledby="sales-fit-heading"><h2 id="sales-fit-heading" class="sr">어떤 의뢰를 받는지</h2>
+    <div><p class="sales-label">이런 의뢰를 잘 받습니다</p>${list(['볼트·너트·와셔·스터드·특수재가 섞인 BOM·RFQ 한 장','영문 RFQ, C&D(확인·편차) 리스트가 필요한 건','사양을 읽고 정리해야 하는 도면·메모·사진'])}</div>
+    <div><p class="sales-label">맞지 않을 수 있습니다</p>${list(['흔한 규격품이 오늘 바로 필요한 경우. 재고를 두지 않고 주문마다 조달합니다.','사양이 정해져 있고 단가만 비교하려는 경우'])}<p class="sales-fit-note">애매하면 자료를 그대로 보내 주세요. 가능 여부부터 회신드립니다.</p></div>
+    <div><p class="sales-label">처음 보내시는 분께</p>${list(['견적만 받아 보셔도 됩니다. 구매 결정은 견적서를 보신 뒤에 하시면 됩니다.','품목·규격, 수량과 단위(EA·SET)만 있어도 시작합니다. 빠진 사양은 질문 목록으로 한 번에 여쭙니다.','성적서·시험 같은 요구 서류가 있으면 적어 주세요. 공급처에 제공 여부를 확인해 견적서에 적습니다. 특수 조건이 많으면 일반품 기준 견적과 특수 조건 확인을 나누어 회신할 수 있습니다.'])}</div>
+  </section>`;
+}
 function salesPage() {
   if (state.listPrefill) {salesDraft.memo=state.listPrefill;if(state.listTopic!=null)salesDraft.topic=state.listTopic;state.listPrefill=null;}
   state.listTopic=null;
@@ -73,6 +83,7 @@ function salesPage() {
       <p class="sales-lead">기존 목록이나 요청서로 시작하세요.<br>사양 확인부터 공급처 검토와 견적 회신까지<br>볼트노트 Sales가 이어갑니다.</p>
       <p class="sales-short">정해진 양식 없이, 아는 내용만 보내셔도 됩니다.</p>
     </div>${salesContactMarkup()}</div>
+    ${salesFitMarkup()}
     ${salesExampleMarkup()}
     <div class="sales-options">
       <details class="sales-memo" id="sales-memo-details"${salesDraft.memo?' open':''}><summary><span>파일이 없다면, 메모로 문의하세요.</span><span aria-hidden="true">+</span></summary>
@@ -86,7 +97,7 @@ function salesPage() {
       ${requirements?`<details class="sales-requirements"><summary><span>함께 보낼 특수요건 메모</span><span aria-hidden="true">+</span></summary><div class="sales-option-body"><p>작성해 둔 확인 질문은 메일 본문에 함께 담습니다.</p><pre class="purchase-draft">${esc(requirements)}</pre><div class="sales-memo-tools"><button type="button" data-purchase-download>체크리스트 내려받기</button><a href="#lib?path=purchase" data-go="lib?path=purchase">확인 질문 수정 ↗</a></div></div></details>`:''}
       <details class="sales-manual" id="sales-manual-details"><summary><span>직접 품목을 작성하고 싶으신가요? <small>선택</small></span><span aria-hidden="true">+</span></summary><div class="sales-option-body"><p>표를 붙여 넣어 미리 보거나, 제품을 골라 견적함에 담을 수 있습니다.</p><div class="sales-manual-links"><a href="#products" data-go="products">제품에서 고르기 ↗</a><a href="#cart" data-go="cart">담아 둔 견적함 ↗</a></div><div id="sales-manual-body"></div><div id="ia-filep" class="ia-filep-w" hidden></div></div></details>
     </div>
-    <section class="sales-next" aria-label="자료를 보내신 뒤 진행"><p class="sales-label">자료를 보내시면</p><ol><li><span>01</span><div><b>자료 확인</b><p>BOM·메모·RFQ를 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급 조건 검토</b><p>추가 질문과 공급처 확인을 진행합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인한 조건과 편차를 정리해 답합니다.</p></div></li></ol><p class="sales-scope">단가·납기·서류 제공 범위는 공급처 확인 뒤 안내합니다. 상담·거래 범위는 <a href="#about" data-go="about">회사 소개</a>에서 확인하실 수 있습니다.</p></section>
+    <section class="sales-next" aria-label="자료를 보내신 뒤 진행"><p class="sales-label">자료를 보내시면</p><ol><li><span>01</span><div><b>자료 확인</b><p>줄마다 읽고, 빠진 사양과 되물을 점은 한 번에 모아 여쭙니다.</p></div></li><li><span>02</span><div><b>공급처 확인</b><p>답을 받으면 공급처에 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건은 견적서에, 확인하지 못한 조건과 편차는 C&amp;D 리스트에 나눠 적습니다.</p></div></li></ol><p class="sales-scope">단가·납기·서류 제공 범위는 공급처 확인 뒤 안내합니다. 상담·거래 범위는 <a href="#about" data-go="about">회사 소개</a>에서 확인하실 수 있습니다.</p></section>
   </div></section>`;
 }
 function salesInit() {

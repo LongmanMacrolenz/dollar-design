@@ -258,7 +258,7 @@ V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
   </div></section>
   <div class="bn-wrap bn-trad"><div class="tr-ad" data-slot="inline" data-topic="플랜트 플랜지 스터드"></div></div>
   <section class="bn-company-contact bn-company-section" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-company-contact-grid">
-    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">03 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 보내 주세요.<br>사양 확인과 공급처 검토를 이어갑니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>필요한 품목과 수량, 요구 조건을 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급처 검토</b><p>빠진 사양을 질문하고 공급 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건과 질문·편차를 구분해 안내합니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">03 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 그대로 보내 주세요.<br>여러 곳에 따로 문의하는 수고를 덜어 드립니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>줄마다 읽고, 빠진 사양과 되물을 점은 한 번에 모아 여쭙니다.</p></div></li><li><span>02</span><div><b>공급처 확인</b><p>답을 받으면 공급처에 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건은 견적서에, 확인하지 못한 조건과 편차는 C&amp;D 리스트에 나눠 적습니다. 공급이 어려운 줄은 이유와 함께 적습니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
     ${salesContactMarkup(true)}
   </div></section>
 </div>`;
@@ -855,6 +855,8 @@ function iaAboutTop() {
     <div class="s2 e"><span class="lab">서류</span><span>${iaDocsLine(false)} ${esc(CAD_TRUST_COPY.always.ko)}.</span></div>
     <div class="s2"><span class="lab">합니다</span><span>사양·짝 부품·서류를 줄마다 확인 · 공급 불가 줄은 이유와 함께 적음 · 바뀐 점은 확인 메일에 적고 그때 취소 가능</span></div>
     <div class="s2 e redp"><span class="lab">하지 않습니다</span><span>당일 출고 약속 · 승인 없는 대체품 · 3.1 직접 발행 · 받은 도면 공개 · 원자력·선급·항공 품목</span></div>
+    <div class="s2"><span class="lab">검토 원칙</span><span>도면과 BOM에 적힌 요구를 기준으로 규격·재질·등급·치수를 읽고, 의문이 있으면 견적 전에 여쭙니다. 적용 설계와 사용 적합성의 최종 판단은 설계하신 쪽의 몫이며, 대체나 편차는 승인을 받은 뒤에만 진행합니다.</span></div>
+    <div class="s2 e"><span class="lab">공급처께</span><span>견적 요청은 고객 자료를 그대로 넘기지 않고 품명·규격·재질·등급·표면처리·수량으로 정리해 드립니다. 처음에는 일반품 기준 단가와 납기를 여쭙고, 시험·서류 같은 특수 조건은 해당 줄만 따로 여쭙니다. 회신해 주신 내용은 해당 견적 건에만 씁니다.</span></div>
     <div class="s4 e"><span class="lab">대금·사업자 서류</span><span>계좌이체(확인 메일을 받은 뒤) · 카드는 요청 시 결제 링크 · 전자세금계산서. 사업자등록증·통장 사본은 요청하시면 메일로 드립니다. 사업자등록번호 ${iaBizNo()} · ${iaMailOrder()} · ${iaBizLink()}</span></div>
   </div>`;
 }

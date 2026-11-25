@@ -3926,6 +3926,14 @@ footer.foot.ia-foot { background:#142234; }
 .sales-chat .sales-kakao svg{flex:none}
 @media(max-width:700px){.sales-biz{padding:18px 18px 16px 24px}.sales-biz-name b{font-size:18px}.sales-biz-logo{width:112px}}
 @media(prefers-reduced-motion:reduce){.sales-biz{transform:none;transition:none}}
+
+/* 맞는 의뢰·처음 보내는 분 안내 (2026-11-25) */
+.sales-fit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 40px;margin:44px 0 8px;padding:28px 0;border-block:1px solid #d6dcd4}
+.sales-fit .sales-label{margin:0 0 12px;letter-spacing:0;font-size:13px;font-weight:700;color:#182a23}.sales-fit ul{margin:0;padding:0;list-style:none;display:grid;gap:9px}
+.sales-fit li{position:relative;padding-left:14px;font-size:13.5px;line-height:1.7;color:#33463d;word-break:keep-all}
+.sales-fit li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:1px;background:#b83b20}
+.sales-fit-note{margin:12px 0 0;font-size:12.5px;color:#5c6f65;line-height:1.7}
+@media (max-width:900px){.sales-fit{grid-template-columns:1fr;gap:22px;margin-top:32px;padding:22px 0}}
 /* ── zzzzzzzzzz_home.css ── */
 /* 홈 리뉴얼 (2026-11-10): 어두운 금속 무대 + 조임 장면(v9_tighten.js). 모든 규칙은 .bn-home / .ia-at-home 아래에만 둔다 (다른 화면은 그대로). */
 .bn-home { --paper:#0a0e13; --sheet:#111922; --sheet-2:#18222d; --ink:#f2f3ef; --ink-2:#c3ccd4; --ink-3:#93a0ac; --hair:#4d5965; --hair-2:#27323d; --bn-orange-ink:#ff8f73; background:var(--paper); color:var(--ink); }
@@ -4316,6 +4324,14 @@ body.ia-at-home .bn-footer-sign img { width:min(100%,360px); }
 .bn-reviewer .bn-text-link { margin-top:6px; }
 .bn-company-products .bn-home-links { padding-top:22px; }
 .bn-company-products .bn-home-links a:hover { color:inherit; text-decoration:underline; }
+
+/* 검토 구역의 네 가지 (2026-11-25 임원 패널 반영) */
+.bn-proof { list-style:none; margin:26px 0 0; padding:0; display:grid; gap:14px; }
+.bn-proof li { display:grid; grid-template-columns:26px 1fr; gap:10px; align-items:start; }
+.bn-proof li>span { color:#b83b20; font:11px var(--f-mono); padding-top:4px; }
+.bn-proof b { font-size:15px; font-weight:650; letter-spacing:-.02em; }
+.bn-proof p { margin:3px 0 0; font-size:13px; line-height:1.75; color:#4b5b61; word-break:keep-all; }
+.bn-company .bn-company-lead { max-width:480px; }
 /* ── zzzzzzzzzzzz_trad.css ── */
 /* Transition 광고 띠(C, site/tr-ad/tr-ad.js)는 홈과 읽는 화면에서만 보인다 (대표 요청 2026-11-19).
    견적함(cart)·Sales 문의(list)·견적(quote)·BOM(bom)·주문(buy)·소재(materials)·품목 설정(c-*)·상품(m-*) 같은 견적 화면에는 두지 않는다.
@@ -4573,7 +4589,7 @@ body[data-route="terms"] .tr-ad[data-slot="foot"], body[data-route="t"] .tr-ad[d
   <a href="#cart" data-go="cart"><span class="tb-mini-lab">견적함</span> <span class="cart-n">0</span></a>
 </div>
 
-<main id="view" class="wrap" tabindex="-1"><section class="search-overview bn-boot" aria-labelledby="initial-home-title"><div class="bn-boot-stage"><div class="bn-wrap bn-boot-grid"><div class="bn-boot-copy"><p class="bn-boot-eyebrow" lang="en">BOLTNOTE <span>/</span> INDUSTRIAL FASTENERS</p><h1 id="initial-home-title"><span>엔지니어가 사양을 읽고,</span><span>체결부품을 구해 드립니다.</span></h1><p class="bn-boot-lead">볼트·너트·스터드와 산업용 체결부품. 기계엔지니어 박세중이 BOM·도면의 사양을 한 줄씩 검토하고, 공급처 확인 결과를 견적과 C&amp;D 리스트로 드립니다.</p><p class="bn-boot-actions"><a class="bn-boot-btn" href="/#list">견적 문의 <span aria-hidden="true">↗</span></a><a class="bn-boot-btn ghost" href="/products/">취급 제품 보기 <span aria-hidden="true">↗</span></a></p><p class="bn-company-invitation">기존 BOM·RFQ·사진으로 시작하셔도 됩니다.</p></div><figure><img src="/media/boltnote-hero.webp" width="1536" height="1024" fetchpriority="high" alt="육각볼트, 렌치볼트, 스터드, 너트, 와셔와 핀의 형상 예시"><figcaption>참고용 렌더링 · 실제 제품 사진 아님</figcaption></figure></div></div><div class="bn-wrap bn-boot-more"><p>볼트노트는 기존 BOM·메모·RFQ를 읽고 체결부품의 사양, 공급 조건과 필요한 서류를 확인합니다. 미터·인치 볼트, 육각너트·헤비너트, ASTM 스터드와 기계 체결부품을 품목별로 살펴보세요.</p><p><a href="/#list">BOM·RFQ로 Sales 문의 →</a> · 견적 이메일 a8wlhg942@naver.com</p><h2>볼트노트는 이런 곳입니다</h2><ul class="bn-boot-facts"><li>하는 일: 산업용 볼트·너트·스터드 등 체결부품의 사양을 검토하고 견적·공급합니다. 거래 상대는 사업자입니다.</li><li>받는 자료: BOM·RFQ(엑셀·PDF), 도면, 사진, 메모를 그대로 받습니다. 정해진 양식은 없습니다.</li><li>회신: 받은 요청은 접수 확인 메일을 드리고, 20줄 이하는 1영업일 안에 견적합니다.</li><li>공급: 재고를 두지 않고 주문마다 국내 공급처에서 조달합니다. 단가와 납기는 공급처 확인 뒤 견적서에 적습니다.</li><li>운영: 대표 박세중, 기계엔지니어, 회전기기 분야 7년.</li><li>규격표: 볼트·너트·와셔·핀 등 96종의 치수표를 공개합니다. 규격서 원문이 아니라 공개 자료를 대조한 참고 표이며 표마다 근거를 적습니다.</li></ul><h2>제품별 규격·구매 안내</h2><p><a href="/products/category/bolt">볼트·나사</a> · <a href="/products/category/nut">너트</a> · <a href="/products/category/washer">와셔</a> · <a href="/products/category/stud">스터드·전산볼트</a> · <a href="/products/category/pin">핀·멈춤링·키</a> · <a href="/products/category/rivet">리벳·인서트</a></p><ul><li><a href="/products/hex-bolt-full-thread">육각볼트 (온나사) · Hexagon Head Screw</a></li><li><a href="/products/hex-bolt-partial-thread">육각볼트 (반나사) · Hexagon Head Bolt</a></li><li><a href="/products/hex-nut">육각너트 (스타일 1) · Hexagon Regular Nut (Style 1)</a></li><li><a href="/products/heavy-hex-nut">플랜트용 헤비 육각너트 (단품) · Heavy Hex Nut (Nut Only)</a></li><li><a href="/products/stud-bolt-b7">스터드볼트 B7 + 2H 헤비너트 · Stud Bolt with Heavy Hex Nuts, A193 B7 / A194 2H</a></li><li><a href="/products/stainless-stud-bolt-b8-b8m">스테인리스 스터드 B8·B8M + 8·8M · Stainless Steel Stud Bolt, A193 B8·B8M / A194 8·8M</a></li><li><a href="/products/stud-bolt-l7">저온용 스터드 A320 L7 + A194 7L · Low-Temperature Stud Bolt, A320 L7 / A194 7L</a></li><li><a href="/products/socket-head-cap-screw">렌치볼트 (육각 구멍붙이) · Hexagon Socket Head Cap Screw</a></li><li><a href="/products/plain-washer">평와셔 · Plain Washer, Normal Series</a></li><li><a href="/products/threaded-rod">전산볼트 (1m) · Threaded Rod, 1 m</a></li></ul><p><a href="/products/">전체 제품 안내</a> · <a href="/tables/">볼트·너트 규격표 모음</a> · <a href="/lib/">체결부품 규격·구매 지식 라이브러리</a></p><p>주력 품목군, 조건부 조달 품목, 원문·도면 검토 품목을 구분합니다. 재고·단가·납기와 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.</p><noscript><p>견적은 위 이메일로 기존 자료를 보내 주세요. 제품 안내와 라이브러리는 자바스크립트 없이도 읽을 수 있습니다.</p></noscript></div></section></main>
+<main id="view" class="wrap" tabindex="-1"><section class="search-overview bn-boot" aria-labelledby="initial-home-title"><div class="bn-boot-stage"><div class="bn-wrap bn-boot-grid"><div class="bn-boot-copy"><p class="bn-boot-eyebrow" lang="en">BOLTNOTE <span>/</span> INDUSTRIAL FASTENERS</p><h1 id="initial-home-title"><span>엔지니어가 사양을 읽고,</span><span>체결부품을 구해 드립니다.</span></h1><p class="bn-boot-lead">플랜트·정비 볼팅의 BOM·도면을 기계엔지니어 박세중이 한 줄씩 읽고, 공급처 확인 결과를 견적서와 C&amp;D 리스트로 드립니다. 볼트·너트·와셔·특수재가 섞인 목록도, 영문 RFQ도 한 번에 받습니다.</p><p class="bn-boot-actions"><a class="bn-boot-btn" href="/#list">견적 문의 <span aria-hidden="true">↗</span></a><a class="bn-boot-btn ghost" href="/products/">취급 제품 보기 <span aria-hidden="true">↗</span></a></p><p class="bn-company-invitation">기존 BOM·RFQ·사진으로 시작하셔도 됩니다.</p></div><figure><img src="/media/boltnote-hero.webp" width="1536" height="1024" fetchpriority="high" alt="육각볼트, 렌치볼트, 스터드, 너트, 와셔와 핀의 형상 예시"><figcaption>참고용 렌더링 · 실제 제품 사진 아님</figcaption></figure></div></div><div class="bn-wrap bn-boot-more"><p>볼트노트는 기존 BOM·메모·RFQ를 읽고 체결부품의 사양, 공급 조건과 필요한 서류를 확인합니다. 미터·인치 볼트, 육각너트·헤비너트, ASTM 스터드와 기계 체결부품을 품목별로 살펴보세요.</p><p><a href="/#list">BOM·RFQ로 Sales 문의 →</a> · 견적 이메일 a8wlhg942@naver.com</p><h2>볼트노트는 이런 곳입니다</h2><ul class="bn-boot-facts"><li>하는 일: 산업용 볼트·너트·스터드 등 체결부품의 사양을 검토하고 견적·공급합니다. 거래 상대는 사업자입니다.</li><li>받는 자료: BOM·RFQ(엑셀·PDF), 도면, 사진, 메모를 그대로 받습니다. 정해진 양식은 없습니다.</li><li>회신: 받은 요청은 접수 확인 메일을 드리고, 20줄 이하는 1영업일 안에 견적합니다.</li><li>공급: 재고를 두지 않고 주문마다 국내 공급처에서 조달합니다. 단가와 납기는 공급처 확인 뒤 견적서에 적습니다.</li><li>운영: 대표 박세중, 기계엔지니어, 회전기기 분야 7년.</li><li>규격표: 볼트·너트·와셔·핀 등 96종의 치수표를 공개합니다. 규격서 원문이 아니라 공개 자료를 대조한 참고 표이며 표마다 근거를 적습니다.</li></ul><h2>제품별 규격·구매 안내</h2><p><a href="/products/category/bolt">볼트·나사</a> · <a href="/products/category/nut">너트</a> · <a href="/products/category/washer">와셔</a> · <a href="/products/category/stud">스터드·전산볼트</a> · <a href="/products/category/pin">핀·멈춤링·키</a> · <a href="/products/category/rivet">리벳·인서트</a></p><ul><li><a href="/products/hex-bolt-full-thread">육각볼트 (온나사) · Hexagon Head Screw</a></li><li><a href="/products/hex-bolt-partial-thread">육각볼트 (반나사) · Hexagon Head Bolt</a></li><li><a href="/products/hex-nut">육각너트 (스타일 1) · Hexagon Regular Nut (Style 1)</a></li><li><a href="/products/heavy-hex-nut">플랜트용 헤비 육각너트 (단품) · Heavy Hex Nut (Nut Only)</a></li><li><a href="/products/stud-bolt-b7">스터드볼트 B7 + 2H 헤비너트 · Stud Bolt with Heavy Hex Nuts, A193 B7 / A194 2H</a></li><li><a href="/products/stainless-stud-bolt-b8-b8m">스테인리스 스터드 B8·B8M + 8·8M · Stainless Steel Stud Bolt, A193 B8·B8M / A194 8·8M</a></li><li><a href="/products/stud-bolt-l7">저온용 스터드 A320 L7 + A194 7L · Low-Temperature Stud Bolt, A320 L7 / A194 7L</a></li><li><a href="/products/socket-head-cap-screw">렌치볼트 (육각 구멍붙이) · Hexagon Socket Head Cap Screw</a></li><li><a href="/products/plain-washer">평와셔 · Plain Washer, Normal Series</a></li><li><a href="/products/threaded-rod">전산볼트 (1m) · Threaded Rod, 1 m</a></li></ul><p><a href="/products/">전체 제품 안내</a> · <a href="/tables/">볼트·너트 규격표 모음</a> · <a href="/lib/">체결부품 규격·구매 지식 라이브러리</a></p><p>주력 품목군, 조건부 조달 품목, 원문·도면 검토 품목을 구분합니다. 재고·단가·납기와 서류 제공 여부는 공급처 확인 뒤 견적서에 적습니다.</p><noscript><p>견적은 위 이메일로 기존 자료를 보내 주세요. 제품 안내와 라이브러리는 자바스크립트 없이도 읽을 수 있습니다.</p></noscript></div></section></main>
 
 <div class="tr-ad" data-slot="foot"></div>
 <div class="tr-ad" data-slot="rail" data-app></div>
@@ -13054,7 +13070,7 @@ function bnBrandInit() {
    BN_HOME_COPY is also read by site/catalog.py for the no-JavaScript entrance. */
 const BN_HOME_COPY = {
   "h1": ["엔지니어가 사양을 읽고,", "체결부품을 구해 드립니다."],
-  "lead": "볼트·너트·스터드와 산업용 체결부품. 기계엔지니어 박세중이 BOM·도면의 사양을 한 줄씩 검토하고, 공급처 확인 결과를 견적과 C&D 리스트로 드립니다."
+  "lead": "플랜트·정비 볼팅의 BOM·도면을 기계엔지니어 박세중이 한 줄씩 읽고, 공급처 확인 결과를 견적서와 C&D 리스트로 드립니다. 볼트·너트·와셔·특수재가 섞인 목록도, 영문 RFQ도 한 번에 받습니다."
 };
 
 function hmCompanyHero() {
@@ -13064,7 +13080,7 @@ function hmCompanyHero() {
         <h1 id="h-z-a" tabindex="-1">${BN_HOME_COPY.h1.map(t=>`<span>${esc(t)}</span>`).join('')}</h1>
         <p class="bn-company-lead">${esc(BN_HOME_COPY.lead)}</p>
         <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">BOM·도면 보내기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="/tables/">규격표 보기 <span aria-hidden="true">↗</span></a></div>
-        <p class="bn-company-invitation">엑셀·PDF·사진 그대로 보내셔도 됩니다. 확인 질문과 편차는 C&amp;D 리스트로 따로 정리합니다.</p>
+        <p class="bn-company-invitation">엑셀·PDF·사진·메일 본문 그대로 보내 주세요. 형식을 맞추실 필요 없습니다.</p>
       </div>
       <figure class="bn-company-visual"><div class="bn-company-image"><img src="media/boltnote-hero.webp" alt="육각볼트, 렌치볼트, 스터드, 너트, 와셔와 핀의 형상 예시" width="1536" height="1024" fetchpriority="high" decoding="async"><span class="bn-visual-index" lang="en">FIG. 01 / THE ESSENTIALS</span></div><figcaption><span lang="en">METRIC &amp; INCH</span><span>참고용 렌더링 · 실제 제품 사진 아님</span></figcaption></figure>
     </div>
@@ -13074,7 +13090,13 @@ function hmCompanyHero() {
 
 function hmCompanyReview() {
   return `<section class="bn-company-review bn-company-section" aria-labelledby="bn-h-review"><div class="bn-wrap bn-company-review-grid">
-    <div><p class="bn-kicker" lang="en">01 / ENGINEER TO ENGINEER</p><h2 id="bn-h-review">같은 이름이어도,<br>사양은 다릅니다.</h2><p class="bn-section-description">호칭 하나로 판단하지 않습니다.<br>도면의 표기와 사용 조건을 함께 읽습니다.</p><div class="bn-reviewer"><p class="bn-kicker" lang="en">REVIEWED BY</p><b>${iaOwner()} <small>기계엔지니어</small></b><span>회전기기 분야 ${iaYears()}년 · 볼트노트 대표</span><span>견적 사양을 직접 검토합니다.</span><a class="bn-text-link" href="#about" data-go="about">볼트노트 소개 <span aria-hidden="true">↗</span></a></div></div>
+    <div><p class="bn-kicker" lang="en">01 / ENGINEER TO ENGINEER</p><h2 id="bn-h-review">목록을 보내 주시면,<br>이렇게 읽어 드립니다.</h2><p class="bn-section-description">호칭 하나로 판단하지 않습니다.<br>확인된 조건은 견적서에, 질문과 편차는 C&amp;D 리스트에 따로 적습니다.</p>
+      <ol class="bn-proof">${[
+        ['사양 읽기','규격·재질·등급·나사를 줄마다 확인하고, 모호한 곳은 질문으로 돌려드립니다.'],
+        ['섞인 목록 한 장으로','볼트·너트·와셔·특수재가 섞인 BOM을 그대로 받습니다. 여러 곳에 나눠 문의하지 않으셔도 됩니다.'],
+        ['영문 RFQ','영문 BOM·RFQ를 줄마다 읽고, 질문과 편차는 C&D 리스트로 정리합니다.'],
+        ['요구 서류 확인','성적서 등 요구 서류는 공급처에 제공 여부를 확인해 견적서에 적습니다.']
+      ].map(([t,d],i)=>`<li><span>0${i+1}</span><div><b>${esc(t)}</b><p>${esc(d)}</p></div></li>`).join('')}</ol><div class="bn-reviewer"><p class="bn-kicker" lang="en">REVIEWED BY</p><b>${iaOwner()} <small>기계엔지니어</small></b><span>회전기기 분야 ${iaYears()}년 · 볼트노트 대표</span><span>견적 사양을 직접 검토합니다.</span><a class="bn-text-link" href="#about" data-go="about">볼트노트 소개 <span aria-hidden="true">↗</span></a></div></div>
     <div class="bn-review-sheet"><div class="bn-review-sheet-head"><span lang="en">SPECIFICATION / REVIEW NOTE</span><span>가상 사양 검토 예시</span></div>
       <p class="bn-review-label">BOM에 적힌 한 줄</p><p class="bn-review-raw"><code>STUD BOLT · 3/4"-10 UNC-2A<br>ASTM A193 B7</code></p>
       <dl class="bn-review-checks"><div><dt><span>01</span> 나사</dt><dd>호칭 · 산 수 · 외나사 공차를 구분합니다.</dd></div><div><dt><span>02</span> 재질·짝 부품</dt><dd>스터드 등급과 짝이 되는 너트 조건을 확인합니다.</dd></div><div><dt><span>03</span> 추가 질문</dt><dd>길이 · 수량 · 표면처리 · 요구 서류를 확인합니다.</dd></div></dl>
@@ -13345,7 +13367,7 @@ V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
   </div></section>
   <div class="bn-wrap bn-trad"><div class="tr-ad" data-slot="inline" data-topic="플랜트 플랜지 스터드"></div></div>
   <section class="bn-company-contact bn-company-section" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-company-contact-grid">
-    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">03 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 보내 주세요.<br>사양 확인과 공급처 검토를 이어갑니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>필요한 품목과 수량, 요구 조건을 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급처 검토</b><p>빠진 사양을 질문하고 공급 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건과 질문·편차를 구분해 안내합니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">03 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 그대로 보내 주세요.<br>여러 곳에 따로 문의하는 수고를 덜어 드립니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>줄마다 읽고, 빠진 사양과 되물을 점은 한 번에 모아 여쭙니다.</p></div></li><li><span>02</span><div><b>공급처 확인</b><p>답을 받으면 공급처에 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건은 견적서에, 확인하지 못한 조건과 편차는 C&amp;D 리스트에 나눠 적습니다. 공급이 어려운 줄은 이유와 함께 적습니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
     ${salesContactMarkup(true)}
   </div></section>
 </div>`;
@@ -13942,6 +13964,8 @@ function iaAboutTop() {
     <div class="s2 e"><span class="lab">서류</span><span>${iaDocsLine(false)} ${esc(CAD_TRUST_COPY.always.ko)}.</span></div>
     <div class="s2"><span class="lab">합니다</span><span>사양·짝 부품·서류를 줄마다 확인 · 공급 불가 줄은 이유와 함께 적음 · 바뀐 점은 확인 메일에 적고 그때 취소 가능</span></div>
     <div class="s2 e redp"><span class="lab">하지 않습니다</span><span>당일 출고 약속 · 승인 없는 대체품 · 3.1 직접 발행 · 받은 도면 공개 · 원자력·선급·항공 품목</span></div>
+    <div class="s2"><span class="lab">검토 원칙</span><span>도면과 BOM에 적힌 요구를 기준으로 규격·재질·등급·치수를 읽고, 의문이 있으면 견적 전에 여쭙니다. 적용 설계와 사용 적합성의 최종 판단은 설계하신 쪽의 몫이며, 대체나 편차는 승인을 받은 뒤에만 진행합니다.</span></div>
+    <div class="s2 e"><span class="lab">공급처께</span><span>견적 요청은 고객 자료를 그대로 넘기지 않고 품명·규격·재질·등급·표면처리·수량으로 정리해 드립니다. 처음에는 일반품 기준 단가와 납기를 여쭙고, 시험·서류 같은 특수 조건은 해당 줄만 따로 여쭙니다. 회신해 주신 내용은 해당 견적 건에만 씁니다.</span></div>
     <div class="s4 e"><span class="lab">대금·사업자 서류</span><span>계좌이체(확인 메일을 받은 뒤) · 카드는 요청 시 결제 링크 · 전자세금계산서. 사업자등록증·통장 사본은 요청하시면 메일로 드립니다. 사업자등록번호 ${iaBizNo()} · ${iaMailOrder()} · ${iaBizLink()}</span></div>
   </div>`;
 }
@@ -15143,6 +15167,7 @@ function salesMailPackage() {
       '품목·수량·사양과 특수요건은 첨부 자료를 확인해 주세요.',
       '',
       '요청사항: 단가, 공급 가능 수량, 납기, 서류 제공 범위',
+      '요청 범위: [일반품 기준 단가·납기만 먼저 / 특수 요건 포함 정식 견적]',
       '희망 시점: [정해진 경우만 적어 주세요]',
       '추가 조건: [필요한 서류·표면처리·대체품 검토 여부 등]',
       '회사 / 담당자: [회사명 / 성함]',
@@ -15193,6 +15218,15 @@ function salesExampleMarkup() {
     <p class="sales-example-note">주소·제목·본문을 원하는 메일 서비스에 붙여 넣고 자료를 첨부해 보내 주세요.</p><p class="sales-status" id="sales-example-status" data-sales-status role="status" aria-live="polite"></p>
   </section>`;
 }
+/* 맞는 의뢰와 처음 보내는 분 안내 (2026-11-25, 엔지니어 박세중 방향). 가격·납기·서류 제공을 약속하지 않는다: 서류는 '공급처 확인 뒤 견적서에 적는다'까지. */
+function salesFitMarkup() {
+  const list=items=>`<ul>${items.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`;
+  return `<section class="sales-fit" aria-labelledby="sales-fit-heading"><h2 id="sales-fit-heading" class="sr">어떤 의뢰를 받는지</h2>
+    <div><p class="sales-label">이런 의뢰를 잘 받습니다</p>${list(['볼트·너트·와셔·스터드·특수재가 섞인 BOM·RFQ 한 장','영문 RFQ, C&D(확인·편차) 리스트가 필요한 건','사양을 읽고 정리해야 하는 도면·메모·사진'])}</div>
+    <div><p class="sales-label">맞지 않을 수 있습니다</p>${list(['흔한 규격품이 오늘 바로 필요한 경우. 재고를 두지 않고 주문마다 조달합니다.','사양이 정해져 있고 단가만 비교하려는 경우'])}<p class="sales-fit-note">애매하면 자료를 그대로 보내 주세요. 가능 여부부터 회신드립니다.</p></div>
+    <div><p class="sales-label">처음 보내시는 분께</p>${list(['견적만 받아 보셔도 됩니다. 구매 결정은 견적서를 보신 뒤에 하시면 됩니다.','품목·규격, 수량과 단위(EA·SET)만 있어도 시작합니다. 빠진 사양은 질문 목록으로 한 번에 여쭙니다.','성적서·시험 같은 요구 서류가 있으면 적어 주세요. 공급처에 제공 여부를 확인해 견적서에 적습니다. 특수 조건이 많으면 일반품 기준 견적과 특수 조건 확인을 나누어 회신할 수 있습니다.'])}</div>
+  </section>`;
+}
 function salesPage() {
   if (state.listPrefill) {salesDraft.memo=state.listPrefill;if(state.listTopic!=null)salesDraft.topic=state.listTopic;state.listPrefill=null;}
   state.listTopic=null;
@@ -15203,6 +15237,7 @@ function salesPage() {
       <p class="sales-lead">기존 목록이나 요청서로 시작하세요.<br>사양 확인부터 공급처 검토와 견적 회신까지<br>볼트노트 Sales가 이어갑니다.</p>
       <p class="sales-short">정해진 양식 없이, 아는 내용만 보내셔도 됩니다.</p>
     </div>${salesContactMarkup()}</div>
+    ${salesFitMarkup()}
     ${salesExampleMarkup()}
     <div class="sales-options">
       <details class="sales-memo" id="sales-memo-details"${salesDraft.memo?' open':''}><summary><span>파일이 없다면, 메모로 문의하세요.</span><span aria-hidden="true">+</span></summary>
@@ -15216,7 +15251,7 @@ function salesPage() {
       ${requirements?`<details class="sales-requirements"><summary><span>함께 보낼 특수요건 메모</span><span aria-hidden="true">+</span></summary><div class="sales-option-body"><p>작성해 둔 확인 질문은 메일 본문에 함께 담습니다.</p><pre class="purchase-draft">${esc(requirements)}</pre><div class="sales-memo-tools"><button type="button" data-purchase-download>체크리스트 내려받기</button><a href="#lib?path=purchase" data-go="lib?path=purchase">확인 질문 수정 ↗</a></div></div></details>`:''}
       <details class="sales-manual" id="sales-manual-details"><summary><span>직접 품목을 작성하고 싶으신가요? <small>선택</small></span><span aria-hidden="true">+</span></summary><div class="sales-option-body"><p>표를 붙여 넣어 미리 보거나, 제품을 골라 견적함에 담을 수 있습니다.</p><div class="sales-manual-links"><a href="#products" data-go="products">제품에서 고르기 ↗</a><a href="#cart" data-go="cart">담아 둔 견적함 ↗</a></div><div id="sales-manual-body"></div><div id="ia-filep" class="ia-filep-w" hidden></div></div></details>
     </div>
-    <section class="sales-next" aria-label="자료를 보내신 뒤 진행"><p class="sales-label">자료를 보내시면</p><ol><li><span>01</span><div><b>자료 확인</b><p>BOM·메모·RFQ를 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급 조건 검토</b><p>추가 질문과 공급처 확인을 진행합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인한 조건과 편차를 정리해 답합니다.</p></div></li></ol><p class="sales-scope">단가·납기·서류 제공 범위는 공급처 확인 뒤 안내합니다. 상담·거래 범위는 <a href="#about" data-go="about">회사 소개</a>에서 확인하실 수 있습니다.</p></section>
+    <section class="sales-next" aria-label="자료를 보내신 뒤 진행"><p class="sales-label">자료를 보내시면</p><ol><li><span>01</span><div><b>자료 확인</b><p>줄마다 읽고, 빠진 사양과 되물을 점은 한 번에 모아 여쭙니다.</p></div></li><li><span>02</span><div><b>공급처 확인</b><p>답을 받으면 공급처에 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건은 견적서에, 확인하지 못한 조건과 편차는 C&amp;D 리스트에 나눠 적습니다.</p></div></li></ol><p class="sales-scope">단가·납기·서류 제공 범위는 공급처 확인 뒤 안내합니다. 상담·거래 범위는 <a href="#about" data-go="about">회사 소개</a>에서 확인하실 수 있습니다.</p></section>
   </div></section>`;
 }
 function salesInit() {
