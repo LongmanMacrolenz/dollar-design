@@ -425,9 +425,8 @@ def check_trad(page, BASE, OUT):
   phone=page.context.browser.new_context(viewport={'width':375,'height':740});m=phone.new_page()
   m.goto(BASE+'/tables/clevis-pin');m.wait_for_selector('.tr-ad[data-slot=inline] a')
   assert m.locator('.tr-ad[data-slot=inline] a').is_visible() and not m.locator('.tr-ad[data-slot=side]').is_visible() and m.evaluate('document.documentElement.scrollWidth<=innerWidth')
-  m.wait_for_selector('.tr-ad[data-slot=rail][data-mode=bar] a');bar=m.locator('.tr-ad[data-slot=rail]').bounding_box()
-  assert bar['width']>=374 and abs(bar['y']+bar['height']-740)<2 and m.evaluate("document.documentElement.classList.contains('bn-rail-bar')"),'phone: bottom bar'
-  m.locator('.bn-ad-x').click();assert not m.locator('.tr-ad[data-slot=rail]').is_visible() and not m.evaluate("document.documentElement.classList.contains('bn-rail-bar')")
+  # 핸드폰: 떠 있는 광고(바닥 띠)는 없다 (2026-11-25 제거). 본문 카드만 보인다
+  m.wait_for_selector('.tr-ad[data-slot=rail][data-mode=off]',state='attached');assert not m.locator('.tr-ad[data-slot=rail]').is_visible() and not m.evaluate("document.documentElement.className.includes('bn-rail-')"),'phone: no floating ad'
   m.goto(BASE+'/en/tables/clevis-pin');m.wait_for_timeout(500);assert m.locator('.tr-ad').count()==0
   m.goto(BASE+'/');m.wait_for_selector('.tr-ad[data-slot=foot] a');assert m.locator('.tr-ad[data-slot=foot] a').is_visible()
   m.wait_for_selector('.bn-trad .tr-ad[data-slot=inline] a');home_ad=m.locator('.bn-trad .tr-ad a').bounding_box();tiles=m.locator('.bn-company-products').bounding_box();assert home_ad['y']>=tiles['y']+tiles['height']-2,'home card must follow the product list'
@@ -436,7 +435,7 @@ def check_trad(page, BASE, OUT):
   m.evaluate("location.hash='products'");m.wait_for_timeout(500);assert m.locator('.tr-ad[data-slot=foot] a').is_visible()
   assert not problems,problems
   phone.close()
-  print('Transition 광고 · 규격표 A·B·C, 견적 안내 뒤, 떠 있는 광고 full·compact·tab·bar, 영문 없음, 앱 견적 화면에서 띠 숨김: PASS')
+  print('Transition 광고 · 규격표 A·B·C, 견적 안내 뒤, 떠 있는 광고 full·compact·tab, 핸드폰 없음, 영문 없음, 앱 견적 화면에서 띠 숨김: PASS')
 
 
 def check_english(page, BASE, OUT):

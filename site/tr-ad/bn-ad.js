@@ -1,13 +1,14 @@
 /* 떠 있는 광고(rail)의 모양 고르기와 닫기·탭 단추 (볼트노트가 만든 파일, 대표 요청 2026-11-19).
    tr-ad.js가 광고를 채운 뒤, 화면의 남는 오른쪽 여백을 재서 모양(data-mode)을 정한다:
-     bar(핸드폰) · full(여백 넉넉) · compact(조금 모자람) · tab(여백 없음: 가장자리 탭).
+     full(여백 넉넉) · compact(조금 모자람) · tab(여백 없음: 가장자리 탭) · off(핸드폰: 떠 있는 광고 없음).
+   핸드폰 바닥 띠(bar)는 2026-11-25 대표 요청으로 뺐다(검색 노출 급락 점검 1단계, Transition 원칙 2 '붙는 띠 금지'). 핸드폰은 본문·바닥글 위 카드만 보인다.
    글의 오른쪽 끝은 CSS 폭으로 안다: 정적 페이지 1248px, 앱 탭 1256px, 앱 홈 1440px (글을 덮지 않게 보수적으로 잡았다).
    쿠키·기기 저장소·외부 요청을 쓰지 않는다. 닫으면 그 화면에서만 가린다 (다른 화면으로 가면 다시 뜬다). */
 (() => {
   "use strict";
   if (/^\/en(\/|$)/.test(location.pathname)) return;
   const root = document.documentElement;
-  const MODES = ["full", "compact", "tab", "bar"];
+  const MODES = ["full", "compact", "tab"];
   let el = null, closed = false;
 
   function contentWidth() {
@@ -16,7 +17,7 @@
   }
   function mode() {
     const vw = root.clientWidth;
-    if (vw <= 700) return "bar";
+    if (vw <= 700) return "off";
     const margin = (vw - contentWidth()) / 2;
     return margin >= 170 ? "full" : margin >= 130 ? "compact" : "tab";
   }
