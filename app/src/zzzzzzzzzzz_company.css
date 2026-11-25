@@ -123,3 +123,13 @@ body.ia-at-home .bn-footer-sign img { width:min(100%,360px); }
 }
 @media(max-width:360px) { .bn-company .bn-wrap,.bn-boot .bn-wrap { padding-inline:20px; }.bn-company .bn-company-hero h1,.bn-boot h1 { font-size:27px; }.bn-company .bn-btn { font-size:12px; padding-inline:17px; gap:18px; }.bn-company .bn-product h3 { font-size:16px; }.bn-review-raw { font-size:14px; } }
 @media(prefers-reduced-motion:reduce) { .bn-company *, .bn-company *::before, .bn-company *::after { transition:none!important; animation:none!important; scroll-behavior:auto!important; } }
+
+/* 검토하는 사람 (2026-11-25 엔지니어 박세중 방향) */
+.bn-reviewer { display:grid; gap:6px; margin-top:28px; padding:18px 0 0; border-top:1px solid #c8d1cc; }
+.bn-reviewer .bn-kicker { margin:0; }
+.bn-reviewer b { font-size:20px; font-weight:700; }
+.bn-reviewer b small { font-size:13px; font-weight:500; margin-left:6px; opacity:.75; }
+.bn-reviewer span { font-size:14px; line-height:1.6; }
+.bn-reviewer .bn-text-link { margin-top:6px; }
+.bn-company-products .bn-home-links { padding-top:22px; }
+.bn-company-products .bn-home-links a:hover { color:inherit; text-decoration:underline; }

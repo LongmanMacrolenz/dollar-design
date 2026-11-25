@@ -4268,6 +4268,16 @@ body.ia-at-home .bn-footer-sign img { width:min(100%,360px); }
 }
 @media(max-width:360px) { .bn-company .bn-wrap,.bn-boot .bn-wrap { padding-inline:20px; }.bn-company .bn-company-hero h1,.bn-boot h1 { font-size:27px; }.bn-company .bn-btn { font-size:12px; padding-inline:17px; gap:18px; }.bn-company .bn-product h3 { font-size:16px; }.bn-review-raw { font-size:14px; } }
 @media(prefers-reduced-motion:reduce) { .bn-company *, .bn-company *::before, .bn-company *::after { transition:none!important; animation:none!important; scroll-behavior:auto!important; } }
+
+/* 검토하는 사람 (2026-11-25 엔지니어 박세중 방향) */
+.bn-reviewer { display:grid; gap:6px; margin-top:28px; padding:18px 0 0; border-top:1px solid #c8d1cc; }
+.bn-reviewer .bn-kicker { margin:0; }
+.bn-reviewer b { font-size:20px; font-weight:700; }
+.bn-reviewer b small { font-size:13px; font-weight:500; margin-left:6px; opacity:.75; }
+.bn-reviewer span { font-size:14px; line-height:1.6; }
+.bn-reviewer .bn-text-link { margin-top:6px; }
+.bn-company-products .bn-home-links { padding-top:22px; }
+.bn-company-products .bn-home-links a:hover { color:inherit; text-decoration:underline; }
 /* ── zzzzzzzzzzzz_trad.css ── */
 /* Transition 광고 띠(C, site/tr-ad/tr-ad.js)는 홈과 읽는 화면에서만 보인다 (대표 요청 2026-11-19).
    견적함(cart)·Sales 문의(list)·견적(quote)·BOM(bom)·주문(buy)·소재(materials)·품목 설정(c-*)·상품(m-*) 같은 견적 화면에는 두지 않는다.
@@ -13005,8 +13015,8 @@ function bnBrandInit() {
    The example is a reading guide, never a customer record or supply promise.
    BN_HOME_COPY is also read by site/catalog.py for the no-JavaScript entrance. */
 const BN_HOME_COPY = {
-  "h1": ["도면 속 사양을,", "필요한 체결부품으로."],
-  "lead": "볼트·너트·스터드와 산업용 체결부품. 기계엔지니어가 규격과 요구 조건을 검토하고, 공급처 확인 결과를 견적으로 안내합니다."
+  "h1": ["엔지니어가 사양을 읽고,", "체결부품을 구해 드립니다."],
+  "lead": "볼트·너트·스터드와 산업용 체결부품. 기계엔지니어 박세중이 BOM·도면의 사양을 한 줄씩 검토하고, 공급처 확인 결과를 견적과 C&D 리스트로 드립니다."
 };
 
 function hmCompanyHero() {
@@ -13015,8 +13025,8 @@ function hmCompanyHero() {
       <div class="bn-company-copy"><p class="bn-kicker" lang="en"><span></span> BOLTNOTE / INDUSTRIAL FASTENERS</p>
         <h1 id="h-z-a" tabindex="-1">${BN_HOME_COPY.h1.map(t=>`<span>${esc(t)}</span>`).join('')}</h1>
         <p class="bn-company-lead">${esc(BN_HOME_COPY.lead)}</p>
-        <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">견적 문의 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="#products" data-go="products">취급 제품 보기 <span aria-hidden="true">↗</span></a></div>
-        <p class="bn-company-invitation">기존 BOM·RFQ·사진으로 시작하셔도 됩니다.</p>
+        <div class="bn-actions"><a class="bn-btn" href="#list" data-go="list" data-purchase-event="start">BOM·도면 보내기 <span aria-hidden="true">↗</span></a><a class="bn-btn bn-btn-outline" href="/tables/">규격표 보기 <span aria-hidden="true">↗</span></a></div>
+        <p class="bn-company-invitation">엑셀·PDF·사진 그대로 보내셔도 됩니다. 확인 질문과 편차는 C&amp;D 리스트로 따로 정리합니다.</p>
       </div>
       <figure class="bn-company-visual"><div class="bn-company-image"><img src="media/boltnote-hero.webp" alt="육각볼트, 렌치볼트, 스터드, 너트, 와셔와 핀의 형상 예시" width="1536" height="1024" fetchpriority="high" decoding="async"><span class="bn-visual-index" lang="en">FIG. 01 / THE ESSENTIALS</span></div><figcaption><span lang="en">METRIC &amp; INCH</span><span>참고용 렌더링 · 실제 제품 사진 아님</span></figcaption></figure>
     </div>
@@ -13026,7 +13036,7 @@ function hmCompanyHero() {
 
 function hmCompanyReview() {
   return `<section class="bn-company-review bn-company-section" aria-labelledby="bn-h-review"><div class="bn-wrap bn-company-review-grid">
-    <div><p class="bn-kicker" lang="en">02 / THE ENGINEERING APPROACH</p><h2 id="bn-h-review">같은 이름이어도,<br>사양은 다릅니다.</h2><p class="bn-section-description">호칭 하나로 판단하지 않습니다.<br>도면의 표기와 사용 조건을 함께 읽습니다.</p><a class="bn-text-link" href="#lib?path=purchase" data-go="lib?path=purchase">구매 전 확인할 것 <span aria-hidden="true">↗</span></a></div>
+    <div><p class="bn-kicker" lang="en">01 / ENGINEER TO ENGINEER</p><h2 id="bn-h-review">같은 이름이어도,<br>사양은 다릅니다.</h2><p class="bn-section-description">호칭 하나로 판단하지 않습니다.<br>도면의 표기와 사용 조건을 함께 읽습니다.</p><div class="bn-reviewer"><p class="bn-kicker" lang="en">REVIEWED BY</p><b>${iaOwner()} <small>기계엔지니어</small></b><span>회전기기 분야 ${iaYears()}년 · 볼트노트 대표</span><span>견적 사양을 직접 검토합니다.</span><a class="bn-text-link" href="#about" data-go="about">볼트노트 소개 <span aria-hidden="true">↗</span></a></div></div>
     <div class="bn-review-sheet"><div class="bn-review-sheet-head"><span lang="en">SPECIFICATION / REVIEW NOTE</span><span>가상 사양 검토 예시</span></div>
       <p class="bn-review-label">BOM에 적힌 한 줄</p><p class="bn-review-raw"><code>STUD BOLT · 3/4"-10 UNC-2A<br>ASTM A193 B7</code></p>
       <dl class="bn-review-checks"><div><dt><span>01</span> 나사</dt><dd>호칭 · 산 수 · 외나사 공차를 구분합니다.</dd></div><div><dt><span>02</span> 재질·짝 부품</dt><dd>스터드 등급과 짝이 되는 너트 조건을 확인합니다.</dd></div><div><dt><span>03</span> 추가 질문</dt><dd>길이 · 수량 · 표면처리 · 요구 서류를 확인합니다.</dd></div></dl>
@@ -13036,19 +13046,6 @@ function hmCompanyReview() {
   </div></section>`;
 }
 
-function hmCompanyExpertise() {
-  return `<section class="bn-company-expertise bn-company-section" aria-labelledby="bn-h-expertise"><div class="bn-wrap">
-    <div class="bn-company-section-head"><div><p class="bn-kicker" lang="en">03 / ENGINEER TO ENGINEER</p><h2 id="bn-h-expertise">작은 것이,<br>전부를 붙잡습니다.</h2></div><div class="bn-expertise-intro"><p>볼트노트는 기계엔지니어가 운영하는<br>체결부품 견적·공급 사업자입니다.</p><p>회전기기 분야 ${iaYears()}년의 경험으로,<br>대표 ${iaOwner()}이 견적 사양을 직접 검토합니다.</p><a class="bn-text-link" href="#about" data-go="about">볼트노트 소개 <span aria-hidden="true">↗</span></a></div></div>
-    <div class="bn-company-principles">${[
-      ['01','사양을 먼저 확인합니다.','나사 계열, 재질·등급, 길이 기준과 표면처리를 함께 검토합니다.'],
-      ['02','차이를 기록합니다.','요청과 공급 제안이 다르면 차이와 확인 질문을 구분합니다. 대체품은 고객 승인 후 진행합니다.'],
-      ['03','확인한 범위를 적습니다.','공급 조건과 제조사 서류 제공 범위를 확인하고, 미확인 사항은 견적에서 구분합니다.']
-    ].map(([n,t,d])=>`<article><span>${n}</span><h3>${t}</h3><p>${d}</p></article>`).join('')}</div>
-    <div class="bn-company-resources"><a href="#lib" data-go="lib"><span lang="en">ENGINEERING NOTES</span><b>규격을 이해하는 자료</b><span>나사 · 재질 · 표면처리 · 품질문서 <i aria-hidden="true">↗</i></span></a><a href="#ref" data-go="ref"><span lang="en">DRAWINGS &amp; CAD</span><b>형상과 치수를 보는 자료</b><span>제공 품목의 도면 · STEP · DXF <i aria-hidden="true">↗</i></span></a></div>
-    ${bnEngineeringMarkup()}
-    <nav class="bn-home-links" aria-label="추가 문의·도구"><a href="#tools" data-go="tools">계산·대조 도구 ↗</a><a href="#materials" data-go="materials">소재 문의 ↗</a></nav>
-  </div></section>`;
-}
 /* ── v7_ia.js ── */
 /* ── v7_ia.js: 홈·내비 단순화 (ia/spec.md, 대표 승인 2026-10-01 · DECISIONS 9) ──
    새 경로: home(교체) · products · buy · list · ref · notes · about · t-<칸> · k-<모음> · c-<품목>. 옛 경로는 별칭(iaNorm).
@@ -13294,22 +13291,23 @@ function pmMail() {
   const subj = '[목록견적] ', body = ['볼트노트 견적 담당자님께', '목록 파일을 첨부합니다.', '필요한 날짜·납품지:', '필요한 서류(3.1, CoC):'].join('\r\n');
   return `<a class="pm-btn ghost" href="${esc('mailto:' + String(CONTACT.rfq).trim() + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body))}">견적 메일 보내기</a>`;
 }
-/* 홈: 취급 제품 → 사양 검토 예시 → 검토 원칙 → 견적 문의.
+/* 홈: 엔지니어 소개 → 사양 검토 예시(검토하는 사람) → 취급 제품 → 견적 문의.
+   2026-11-25 "엔지니어 박세중" 방향으로 단순화: 검토 원칙·심화 자료 구역을 빼고 링크만 남김. 규격표·사전·제품 쪽 주소와 내용은 그대로(검색 영향 없음).
    2026-11 기업 홈페이지 개편. 수치·품목·연락처는 기존 공개 데이터만 사용한다.
    조립·스크롤 고정 연출은 보관하고 홈에서는 초기화하지 않는다. */
 V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
   ${hmCompanyHero()}
+  ${hmCompanyReview()}
   <section class="bn-company-products bn-company-section" aria-labelledby="bn-h-products"><div class="bn-wrap">
-    <div class="bn-company-section-head"><div><p class="bn-kicker" lang="en">01 / FASTENER COLLECTION</p><h2 id="bn-h-products">필요한 부품부터<br>살펴보세요.</h2></div><div><p class="bn-section-description">미터·인치 규격의 산업용 체결부품.<br>형상과 용도에 맞는 품목을 확인하세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
+    <div class="bn-company-section-head"><div><p class="bn-kicker" lang="en">02 / FASTENER COLLECTION</p><h2 id="bn-h-products">필요한 부품부터<br>살펴보세요.</h2></div><div><p class="bn-section-description">미터·인치 규격의 산업용 체결부품.<br>형상과 용도에 맞는 품목을 확인하세요.</p><a class="bn-text-link" href="#products" data-go="products">전체 제품 보기 <span aria-hidden="true">↗</span></a></div></div>
     ${hmTiles()}
     <p class="bn-company-product-note">제품군의 참고용 렌더링 · 실제 제품 사진 아님. 치수·재질·표면처리는 품목별로 확인하세요.</p>
     <nav class="bn-company-collections" aria-label="용도별 제품 모음"><span>용도별로 찾기</span>${Object.entries(CAT_COLL).filter(([k])=>['plant','pump','flange'].includes(k)).map(([k,c])=>`<a href="#k-${k}" data-go="k-${k}">${esc(c.ko)} <i aria-hidden="true">↗</i></a>`).join('')}</nav>
+    <nav class="bn-home-links" aria-label="자료·도구"><a href="#lib" data-go="lib">규격 사전 ↗</a><a href="#ref" data-go="ref">도면·CAD ↗</a><a href="#tools" data-go="tools">계산·대조 도구 ↗</a><a href="#materials" data-go="materials">소재 문의 ↗</a></nav>
   </div></section>
   <div class="bn-wrap bn-trad"><div class="tr-ad" data-slot="inline" data-topic="플랜트 플랜지 스터드"></div></div>
-  ${hmCompanyReview()}
-  ${hmCompanyExpertise()}
   <section class="bn-company-contact bn-company-section" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-company-contact-grid">
-    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">04 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 보내 주세요.<br>사양 확인과 공급처 검토를 이어갑니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>필요한 품목과 수량, 요구 조건을 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급처 검토</b><p>빠진 사양을 질문하고 공급 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건과 질문·편차를 구분해 안내합니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
+    <div class="bn-company-contact-copy"><p class="bn-kicker" lang="en">03 / START WITH YOUR LIST</p><h2 id="bn-h-rfq">지금 가지고 계신<br>자료로 시작하세요.</h2><p class="bn-section-description">BOM·RFQ·도면·사진, 기존 자료를 보내 주세요.<br>사양 확인과 공급처 검토를 이어갑니다.</p><ol><li><span>01</span><div><b>자료 확인</b><p>필요한 품목과 수량, 요구 조건을 읽습니다.</p></div></li><li><span>02</span><div><b>사양·공급처 검토</b><p>빠진 사양을 질문하고 공급 조건을 확인합니다.</p></div></li><li><span>03</span><div><b>견적 회신</b><p>확인된 조건과 질문·편차를 구분해 안내합니다.</p></div></li></ol><a class="bn-text-link" href="#list" data-go="list" data-purchase-event="start">견적 문의·RFQ 예시 보기 <span aria-hidden="true">↗</span></a></div>
     ${salesContactMarkup(true)}
   </div></section>
 </div>`;

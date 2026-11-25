@@ -131,8 +131,8 @@ def check_boot(page, BASE, OUT):
   # No JavaScript: the static overview is the whole page, with one keyword h1 and the footer below the first screen.
   context=browser.new_context(viewport={'width':1280,'height':800},java_script_enabled=False);still=context.new_page();still.goto(BASE+'/')
   assert still.locator('html').get_attribute('class')=='bn-boot-home' and still.locator('h1').count()==1
-  assert still.locator('#initial-home-title').inner_text().replace('\n','')=='도면 속 사양을,필요한 체결부품으로.'
-  assert '공급처 확인 결과를 견적으로 안내합니다' in still.locator('.bn-boot-lead').inner_text()
+  assert still.locator('#initial-home-title').inner_text().replace('\n','')=='엔지니어가 사양을 읽고,체결부품을 구해 드립니다.'
+  assert '공급처 확인 결과를 견적과 C&D 리스트로 드립니다' in still.locator('.bn-boot-lead').inner_text()
   assert still.locator('.bn-boot-grid img').get_attribute('src')=='/media/boltnote-hero.webp'
   assert still.locator('.bn-boot-btn[href="/#list"]').is_visible() and still.locator('.bn-boot-more a[href="/products/hex-nut"]').is_visible()
   assert still.evaluate('getComputedStyle(document.body).backgroundColor')=='rgb(10, 14, 19)' and still.locator('meta[name="theme-color"]').get_attribute('content')=='#0a0e13'
@@ -262,28 +262,29 @@ def check_landed(page, BASE, OUT):
   assert not requests,requests
 
 def check_home(page, BASE, OUT):
-  """Product-led company home: accessible actions, natural scrolling and the existing inquiry handoff."""
+  """Engineer-led company home: accessible actions, natural scrolling and the existing inquiry handoff."""
   page.context.grant_permissions(['clipboard-read','clipboard-write'])
   page.emulate_media(reduced_motion='no-preference');page.set_viewport_size({'width':1280,'height':800})
   page.goto(BASE+'/#home');page.locator('.bn-company-hero h1').wait_for()
   assert page.locator('#view h1').count()==1
-  assert page.locator('#h-z-a').inner_text().replace('\n','')=='도면 속 사양을,필요한 체결부품으로.'
+  assert page.locator('#h-z-a').inner_text().replace('\n','')=='엔지니어가 사양을 읽고,체결부품을 구해 드립니다.'
   assert page.locator('.bn-company-hero img').get_attribute('fetchpriority')=='high'
   assert '참고용 렌더링 · 실제 제품 사진 아님' in page.locator('.bn-company-visual figcaption').inner_text()
   assert page.locator('.bn-company-products .bn-product').count()==6
   assert '가상 사양 검토 예시' in page.locator('.bn-review-sheet').inner_text()
   assert '실제 고객 자료나 공급 가능 판정이 아닙니다' in page.locator('.bn-review-disclaimer').inner_text()
-  assert page.locator('.bn-company-principles article').count()==3
+  assert '기계엔지니어' in page.locator('.bn-reviewer').inner_text() and page.locator('.bn-reviewer a[href="#about"]').count()==1   # 검토하는 사람
+  assert page.locator('.bn-company-principles').count()==0 and page.locator('.bn-company-products .bn-home-links a').count()==4
   assert page.locator('.bn-tighten,.bn-scene,#bn-brand-video,#sb').count()==0
-  assert page.locator('#bn-engineering-details').count()==1
+  assert page.locator('#bn-engineering-details').count()==0   # 2026-11-25 홈 단순화: 심화 자료는 사전·도구로
   assert page.evaluate('window.__tightenTest===undefined && window.__sceneTest===undefined')
   for width,height in [(320,668),(390,844),(768,1024),(1440,900)]:
    page.set_viewport_size({'width':width,'height':height});page.evaluate('scrollTo(0,0)')
    cta=page.locator('.bn-company-copy a[data-purchase-event=start]')
    box=cta.bounding_box();assert cta.is_visible() and box['y']+box['height']<=height,(width,box)
    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),width
-   # The product section follows the hero itself; no invisible scroll runway or gated content.
-   geometry=page.evaluate('()=>{const h=document.querySelector(".bn-company-hero").getBoundingClientRect(),p=document.querySelector(".bn-company-products").getBoundingClientRect();return {gap:p.top-h.bottom,hero:h.height,columns:getComputedStyle(document.querySelector(".bn-company .bn-products")).gridTemplateColumns.split(" ").length}}')
+   # The engineer review follows the hero itself; no invisible scroll runway or gated content.
+   geometry=page.evaluate('()=>{const h=document.querySelector(".bn-company-hero").getBoundingClientRect(),p=document.querySelector(".bn-company-review").getBoundingClientRect();return {gap:p.top-h.bottom,hero:h.height,columns:getComputedStyle(document.querySelector(".bn-company .bn-products")).gridTemplateColumns.split(" ").length}}')
    assert abs(geometry['gap'])<=1 and geometry['hero']<height*1.65,geometry
    assert geometry['columns']==(2 if width<=760 else 3),geometry
   page.set_viewport_size({'width':1440,'height':1000})
@@ -299,11 +300,8 @@ def check_home(page, BASE, OUT):
   assert page.locator('.sales-biz img.sales-biz-logo').get_attribute('alt')=='볼트노트'
   assert page.locator('.sales-chat a.sales-kakao svg').count()==1
   assert page.locator('.bn-home a[href^="mailto:"]').count()==0
-  # Technical media stays opt-in and opening its notes does not attach or autoplay a movie.
-  assert page.locator('#bn-film-video source[src]').count()==0
-  page.locator('#bn-engineering-details > summary').click()
-  assert page.locator('#bn-film-play').is_visible() and page.evaluate('document.querySelector("#bn-film-video").paused')
-  page.locator('#bn-engineering-details > summary').click()
+  # No movie is attached to the home.
+  assert page.locator('#bn-film-video').count()==0
   page.emulate_media(reduced_motion='reduce');page.reload();page.locator('.bn-company-hero').wait_for()
   assert page.locator('.bn-tighten,.bn-scene').count()==0
   page.set_viewport_size({'width':390,'height':844});page.screenshot(path=str(OUT/'company-home-mobile.png'),full_page=True)
