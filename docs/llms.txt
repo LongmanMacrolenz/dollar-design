@@ -184,6 +184,11 @@
 - [ISO 8752 스프링핀 (슬롯형, 중하중)](https://boltnote.net/lib/iso-8752)
 - [ISO 1234 분할핀](https://boltnote.net/lib/iso-1234)
 
+## 엔지니어 노트 (대표 박세중이 쓴 사양 읽기 글)
+
+- [엔지니어 노트 전체](https://boltnote.net/notes/)
+- [A193 B7에 저온 충격시험이 붙은 RFQ 읽는 법: A320 L7과 너트까지](https://boltnote.net/notes/b7-impact-test-a320-l7): B7 볼트에 충격시험이 붙은 RFQ에서 되물을 점, A320 L7 대안, 너트·성적서 확인을 정리합니다.
+
 ## English (same pages in English)
 
 - [English home, RFQ in English](https://boltnote.net/en/): quoted in KRW for delivery within Korea

@@ -136,7 +136,7 @@ footer{background:var(--night);color:var(--tx-2);font-size:13px;padding:36px 0}f
 .library-search{padding:22px 24px;border:1px solid var(--hair-2);background:var(--sheet);border-radius:10px;margin-bottom:32px}.library-search label{font-size:14px;font-weight:700}.q{margin:10px 0}.search-note{font-size:12px;color:var(--ink-3);margin:0}.no-results{border:1px solid var(--hair-2);padding:24px;background:var(--sheet);border-radius:10px}.no-results button{padding:12px 16px;cursor:pointer}
 .toc,.entry-tools{display:flex;flex-wrap:wrap;gap:8px 24px;margin:20px 0}.toc a,.entry-tools a{font-size:13px;padding:8px 0}.toc{border-bottom:1px solid var(--hair-2)}.reading{list-style:none;padding:0;margin:0}.reading li{margin:16px 0}.reading li>span{display:block;font-size:12px;font-weight:700;margin-bottom:8px}.chip{min-height:40px;max-width:100%;overflow-wrap:anywhere}.chip.current{background:var(--ink);color:var(--sheet)}.sec>p{color:var(--ink-2);font-size:14px}.cards .card{min-width:0;overflow-wrap:anywhere}
 @media(max-width:960px){.library-paths,.library-map{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:480px){.library-paths{grid-template-columns:minmax(0,1fr)}.topic{padding:18px 14px}.topic b{font-size:15px}.library-search{padding:18px}.brand{font-size:18px}nav.top a{padding:10px 8px}}
+@media(max-width:480px){.library-paths{grid-template-columns:minmax(0,1fr)}.topic{padding:18px 14px}.topic b{font-size:15px}.library-search{padding:18px}.brand{font-size:18px}nav.top a{padding:10px 8px}@media(max-width:430px){nav.top{gap:0}nav.top a{padding:10px 6px;font-size:14.5px}}}
 @media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}nav.top{order:3;flex-basis:100%}}
 .bn-strip{background:#0a0e13;color:#c3ccd4;padding:44px 0 46px;border-bottom:1px solid #1d2731}
 .bn-strip-line{display:flex;align-items:center;gap:12px;margin:0;font-family:"Hahmlet","Gothic A1","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.025em;line-height:1.2;color:#fff}
@@ -200,7 +200,7 @@ STL = {True: "stl ok", False: "stl"}   # 현행은 회색, 폐지·대체는 붉
 
 
 def header(on: str = "lib") -> str:
-    nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/#about", "회사 소개", "")]
+    nav = [("/products/", "제품", "products"), ("/tables/", "규격표", "tables"), ("/#list", "Sales", ""), ("/lib/", "규격 사전", "lib"), ("/notes/", "노트", "notes"), ("/#about", "회사 소개", "")]
     return ('<header><div class="w"><a class="brand" href="/" aria-label="Boltnote · 볼트노트 홈">' + MARK + '</a><nav class="top" aria-label="주 메뉴">'
             + "".join(f'<a href="{h}"{ON if k == on else ""}>{t}</a>' for h, t, k in nav)
             + '</nav><nav class="lang" aria-label="언어 Language"><b aria-current="true">KO</b> · <a href="@@EN@@" lang="en" hreflang="en" title="English">EN</a></nav>'
@@ -371,6 +371,8 @@ def main() -> None:
     (DOCS / "404.html").write_text(not_found_html(info), encoding="utf-8")   # 사이트맵에 넣지 않는다
     urls = [SITE_URL, SITE_URL + "lib/"] + [f'{SITE_URL}lib/{x["id"]}' for x in L] + product_urls() + table_urls() + [SITE_URL + "en/"]
     urls += [SITE_URL + "en/" + u[len(SITE_URL):] for u in urls[:-1] if u != SITE_URL]   # 영문 쪽 (site/build_en_site.py)
+    from build_notes import note_urls   # 엔지니어 노트는 한국어 쪽만 (site/build_notes.py)
+    urls += note_urls()
     (DOCS / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                                       + "".join(f"  <url><loc>{u}</loc><lastmod>{SITE_REV}</lastmod></url>\n" for u in urls) + "</urlset>\n", encoding="utf-8")
     (DOCS / "robots.txt").write_text(f"# 검색엔진과 AI 로봇 모두 허용한다 (규격표·제품 안내는 인용되도록 열어 둔다). AI 요약 안내: {SITE_URL}llms.txt\nUser-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n", encoding="utf-8")

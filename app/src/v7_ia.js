@@ -254,7 +254,7 @@ V.home = () => `<div class="bn-home bn-studio bn-company" id="z-a">
     ${hmTiles()}
     <p class="bn-company-product-note">제품군의 참고용 렌더링 · 실제 제품 사진 아님. 치수·재질·표면처리는 품목별로 확인하세요.</p>
     <nav class="bn-company-collections" aria-label="용도별 제품 모음"><span>용도별로 찾기</span>${Object.entries(CAT_COLL).filter(([k])=>['plant','pump','flange'].includes(k)).map(([k,c])=>`<a href="#k-${k}" data-go="k-${k}">${esc(c.ko)} <i aria-hidden="true">↗</i></a>`).join('')}</nav>
-    <nav class="bn-home-links" aria-label="자료·도구"><a href="#lib" data-go="lib">규격 사전 ↗</a><a href="#ref" data-go="ref">도면·CAD ↗</a><a href="#tools" data-go="tools">계산·대조 도구 ↗</a><a href="#materials" data-go="materials">소재 문의 ↗</a></nav>
+    <nav class="bn-home-links" aria-label="자료·도구"><a href="#lib" data-go="lib">규격 사전 ↗</a><a href="#ref" data-go="ref">도면·CAD ↗</a><a href="#tools" data-go="tools">계산·대조 도구 ↗</a><a href="#materials" data-go="materials">소재 문의 ↗</a><a href="/notes/">엔지니어 노트 →</a></nav>
   </div></section>
   <div class="bn-wrap bn-trad"><div class="tr-ad" data-slot="inline" data-topic="플랜트 플랜지 스터드"></div></div>
   <section class="bn-company-contact bn-company-section" aria-labelledby="bn-h-rfq"><div class="bn-wrap bn-company-contact-grid">

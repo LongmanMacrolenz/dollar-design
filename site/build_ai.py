@@ -53,6 +53,11 @@ def build():
     sec += [f"- [{t['ko']}]({SITE_URL}products/category/{t['id']})" for t in tiles]
     sec += ["", "## 규격 사전 (규격·등급·재질·용어)", "", f"- [규격 사전 전체]({SITE_URL}lib/): {len(library)}개 항목"]
     sec += [f"- [{x['t']} {x['ko']}]({SITE_URL}lib/{x['id']})" for x in library if x.get("kind") == "std"][:60]
+    from build_notes import load as load_notes   # 엔지니어 노트 (site/build_notes.py)
+    notes = load_notes()
+    if notes:
+        sec += ["", "## 엔지니어 노트 (대표 박세중이 쓴 사양 읽기 글)", "", f"- [엔지니어 노트 전체]({SITE_URL}notes/)"]
+        sec += [f"- [{n['title']}]({SITE_URL}notes/{n['slug']}): {n['desc']}" for n in notes]
     sec += ["", "## English (same pages in English)", "", f"- [English home, RFQ in English]({SITE_URL}en/): quoted in KRW for delivery within Korea",
             f"- [Dimension tables]({SITE_URL}en/tables/) · [Product guides]({SITE_URL}en/products/) · [Standards glossary]({SITE_URL}en/lib/): each page has the same path under /en/ (e.g. {SITE_URL}en/tables/<slug>)"]
     sec += ["", "## Optional", "",

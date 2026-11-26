@@ -275,7 +275,7 @@ def check_home(page, BASE, OUT):
   assert '실제 고객 자료나 공급 가능 판정이 아닙니다' in page.locator('.bn-review-disclaimer').inner_text()
   assert page.locator('.bn-proof li').count()==4 and '공급처에 제공 여부를 확인해 견적서에 적습니다' in page.locator('.bn-proof').inner_text()   # 네 가지: 서류는 약속하지 않는다
   assert '기계엔지니어' in page.locator('.bn-reviewer').inner_text() and page.locator('.bn-reviewer a[href="#about"]').count()==1   # 검토하는 사람
-  assert page.locator('.bn-company-principles').count()==0 and page.locator('.bn-company-products .bn-home-links a').count()==4
+  assert page.locator('.bn-company-principles').count()==0 and page.locator('.bn-company-products .bn-home-links a').count()==5 and page.locator('.bn-home-links a[href="/notes/"]').count()==1
   assert page.locator('.bn-tighten,.bn-scene,#bn-brand-video,#sb').count()==0
   assert page.locator('#bn-engineering-details').count()==0   # 2026-11-25 홈 단순화: 심화 자료는 사전·도구로
   assert page.evaluate('window.__tightenTest===undefined && window.__sceneTest===undefined')
