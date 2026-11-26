@@ -28,15 +28,15 @@ NOTE_CSS = """
 .note-cta{margin:22px 0 0;padding:16px 18px;border-radius:10px;background:#edf0f4}.note-cta p{margin:0 0 10px;font-size:15px}
 .note-list{max-width:760px;margin:20px 0 0;padding:0;list-style:none}.note-list li{margin:0 0 14px}.note-list a{display:block;padding:16px 18px;border:1px solid var(--hair-2);border-radius:10px;background:var(--sheet);text-decoration:none}
 .note-list b{display:block;font-size:17px;color:var(--ink-1,#1d2330)}.note-list span{display:block;font-size:14px;color:var(--ink-2);margin-top:6px}.note-list small{display:block;font-size:12.5px;color:var(--ink-3);margin-top:6px}
-@media print{header,footer,.bn-strip,.note-cta,.tr-ad{display:none!important}}
+@media print{header,footer,.bn-strip,.note-cta{display:none!important}}
 """
 AUTHOR = "박세중 · 기계엔지니어"
 
 
-def load():
-    """site/notes/*.md → 글 목록 (작성일 최신순). README.md는 쓰는 법이라 뺀다."""
+def load(lang="ko"):
+    """site/notes/*.md (영문은 site/notes/en/*.md) → 글 목록 (작성일 최신순). README.md는 쓰는 법이라 뺀다."""
     notes = []
-    for f in sorted(SRC.glob("*.md")):
+    for f in sorted((SRC / ("en" if lang == "en" else "")).glob("*.md")):
         if f.name == "README.md":
             continue
         text = f.read_text(encoding="utf-8")
@@ -46,7 +46,7 @@ def load():
         meta = {k.strip(): v.strip() for k, v in meta.items()}
         for k in ("title", "desc", "date", "lib"):
             assert meta.get(k), f"{f.name}: {k} missing"
-        assert len(meta["desc"]) <= 80, f"{f.name}: desc longer than 80"
+        assert len(meta["desc"]) <= (160 if lang == "en" else 80), f"{f.name}: desc too long"
         assert re.fullmatch(r"[a-z0-9-]+", f.stem), f"slug must be lowercase ascii: {f.name}"
         meta.setdefault("updated", meta["date"])
         notes.append({"slug": f.stem, "lib": [x.strip() for x in meta["lib"].split(",") if x.strip()], "body": m.group(2), **{k: v for k, v in meta.items() if k != "lib"}})
@@ -54,8 +54,10 @@ def load():
 
 
 def note_urls():
+    """한국어 글마다 영문 짝이 있어야 한다(대표 요청 2026-11-26: 영문 쪽도 한국어와 같은 구조)."""
     notes = load()
-    return ([SITE_URL + "notes/"] + [SITE_URL + "notes/" + n["slug"] for n in notes]) if notes else []
+    assert {n["slug"] for n in notes} == {n["slug"] for n in load("en")}, "every note needs an English counterpart in site/notes/en/"
+    return ([SITE_URL + "notes/"] + [SITE_URL + "notes/" + n["slug"] for n in notes] + [SITE_URL + "en/notes/"] + [SITE_URL + "en/notes/" + n["slug"] for n in notes]) if notes else []
 
 
 def inline(s):
@@ -131,6 +133,51 @@ def index_html(notes, info):
     return document(title, desc, "notes/", body, [("홈", "/"), ("엔지니어 노트", "/notes/")], True).replace("</style>", NOTE_CSS + "</style>", 1)
 
 
+EN = {"home": "Home", "notes": "Engineer notes", "by": "By", "role": "Park Sejung · Mechanical engineer", "written": "Written", "updated": "Updated",
+      "basis": "Basis of this article", "basis_p": "The figures and requirements in this article are only those already recorded, with their sources, in the glossary entries below. Each entry lists the standard and interpretation numbers.",
+      "docs": "Source documents", "disclaim": "General guidance. For actual design and ordering, the applicable code, the specification and the edition of the standard in force take precedence.",
+      "cta_h": "Do you have a BOM or RFQ with similar specifications?", "cta_p": "Send it as it is. We read every line and return the open points as a clarification & deviation (C&D) list together with the quotation.", "cta": "Send a BOM / RFQ →"}
+
+
+def en_parts():
+    from build_en import header as en_header, footer as en_footer
+    from build_en_site import src_en
+    return en_header, en_footer, src_en
+
+
+def note_html_en(n, by, info):
+    en_header, en_footer, src_en = en_parts()
+    libt = json.loads((ROOT / "en" / "lib.json").read_text(encoding="utf-8"))
+    path = "en/notes/" + n["slug"]
+    crumbs = [("Home", "/en/"), ("Engineer notes", "/en/notes/"), (n["title"], "/" + path)]
+    basis = "".join(f'<a class="chip" href="/en/lib/{x}">{e(libt[x].get("t", by[x]["t"]))}</a>' for x in n["lib"])
+    srcs = sorted({src_en(s) for x in n["lib"] for s in by[x].get("src", [])})
+    dates = f'{EN["written"]} {n["date"]}' + (f' · {EN["updated"]} {n["updated"]}' if n["updated"] != n["date"] else "")
+    article = {"@type": "TechArticle", "@id": SITE_URL + path + "#article", "headline": n["title"], "description": n["desc"], "url": SITE_URL + path,
+               "inLanguage": "en", "datePublished": n["date"], "dateModified": n["updated"], "author": {"@id": SITE_URL + "#owner"},
+               "publisher": {"@id": SITE_URL + "#organization"}, "citation": srcs}
+    body = (en_header("notes") + f'<main><div class="w"><p class="crumbs"><a href="/en/">Home</a> › <a href="/en/notes/">Engineer notes</a> › {e(n["title"])}</p>'
+            + f'<article class="note"><p class="eyebrow">ENGINEER NOTE</p><h1>{e(n["title"])}</h1>'
+            + f'<p class="byline">{EN["by"]} <b>{EN["role"]}</b> · <time datetime="{n["date"]}">{dates}</time></p>'
+            + markdown(n["body"])
+            + f'<section class="note-basis"><h2>{EN["basis"]}</h2><p>{EN["basis_p"]}</p><div class="chips">{basis}</div><p>{EN["docs"]}: {e(" · ".join(srcs))}</p><p>{EN["disclaim"]}</p></section>'
+            + f'<div class="note-cta"><p><b>{EN["cta_h"]}</b> {EN["cta_p"]}</p><a class="cta" href="/en/#rfq">{EN["cta"]}</a></div>'
+            + '</article></div></main>' + en_footer(info))
+    return document(f'{n["title"]} | Boltnote engineer notes', n["desc"], path, body, crumbs, extra=[article], main_entity=article["@id"], lang="en").replace("</style>", NOTE_CSS + "</style>", 1)
+
+
+def index_html_en(notes, info):
+    en_header, en_footer, _ = en_parts()
+    items = "".join(f'<li><a href="/en/notes/{n["slug"]}"><b>{e(n["title"])}</b><span>{e(n["desc"])}</span><small>{EN["written"]} {n["date"]} · {EN["by"]} {EN["role"]}</small></a></li>' for n in notes)
+    body = (en_header("notes") + '<main><div class="w"><p class="crumbs"><a href="/en/">Home</a> › Engineer notes</p>'
+            + '<div class="product-intro"><p class="eyebrow">ENGINEER NOTES</p><h1>Engineer notes</h1>'
+            + '<p>How a single specification line from an RFQ is read, what is asked back, and how it is split between the quotation and the C&amp;D list. Figures are only those recorded with their sources in the glossary.</p></div>'
+            + f'<ul class="note-list">{items}</ul>'
+            + '<div class="product-actions"><a class="cta" href="/en/#rfq">Send a BOM / RFQ →</a><a href="/en/lib/">Glossary</a><a href="/en/tables/">Dimension tables</a></div>'
+            + "</div></main>" + en_footer(info))
+    return document("Engineer notes: reading bolting specifications | Boltnote", "How a mechanical engineer reads, questions and quotes the bolting specifications found in RFQs and BOMs.", "en/notes/", body, [("Home", "/en/"), ("Engineer notes", "/en/notes/")], True, lang="en").replace("</style>", NOTE_CSS + "</style>", 1)
+
+
 def main():
     notes = load()
     by = {x["id"]: x for x in json.loads((ROOT / "lib.json").read_text(encoding="utf-8"))}
@@ -142,7 +189,15 @@ def main():
     for n in notes:
         (out / (n["slug"] + ".html")).write_text(note_html(n, by, info), encoding="utf-8")
     (out / "index.html").write_text(index_html(notes, info), encoding="utf-8")
-    print(f"wrote {len(notes)} engineer notes + index")
+    en_notes = load("en")
+    out_en = DOCS / "en" / "notes"
+    out_en.mkdir(parents=True, exist_ok=True)
+    for old in out_en.glob("*.html"):
+        old.unlink()
+    for n in en_notes:
+        (out_en / (n["slug"] + ".html")).write_text(note_html_en(n, by, info), encoding="utf-8")
+    (out_en / "index.html").write_text(index_html_en(en_notes, info), encoding="utf-8")
+    print(f"wrote {len(notes)} engineer notes + index (+ {len(en_notes)} in English)")
 
 
 if __name__ == "__main__":
