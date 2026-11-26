@@ -5421,9 +5421,10 @@ const SHOP = {
   wbPublic: false,          // true면 목록 붙여넣기 뒤 4A 작업대를 바로 보여 줌
   funnelCount: true,        // 문의 집계 (대표 요청 2026-11-10): 화면·버튼 이름의 횟수를 /count로 보내 날짜별 합계로 센다 (v9_count.js, site/count.js). false면 보내지 않고 처리방침 B항 문구도 빠짐
   adsenseClient: 'ca-pub-6804110869369028',   // 구글 애드센스 게시자 ID(공개 값, 대표 신청 2026-11-17). 비우면 광고 스크립트·처리방침 문구가 모두 빠진다
-  analyticsToken: '30e74e7c6eec4d9bbd8439bc695b18a9',   // 대표 전달 2026-11-09 (Cloudflare Web Analytics, 공개 값)       // Cloudflare Web Analytics 비컨 토큰(공개 값, 대시보드 → Web Analytics). 비우면 분석 스크립트를 넣지 않고 처리방침 B·D항도 '쓰지 않음'으로 표시. 값을 넣으면 site/build.py·build_lib.py가 모든 페이지에 스크립트를 넣는다
+  analyticsAuto: true,   // 2026-11-26: Cloudflare Web Analytics를 대시보드의 자동 설치(Enable)로 쓴다. true면 사이트는 스크립트를 직접 넣지 않고(넣으면 Cloudflare가 자동 삽입을 건너뛴다) 처리방침만 '방문 통계 사용'으로 표시한다
+  analyticsToken: '',   // 직접 설치(JS Snippet)로 되돌릴 때만 토큰을 넣고 analyticsAuto를 false로. 옛 토큰 30e74e7c…은 workers.dev 시절 사이트의 것이라 비웠다   // 대표 전달 2026-11-09 (Cloudflare Web Analytics, 공개 값)       // Cloudflare Web Analytics 비컨 토큰(공개 값, 대시보드 → Web Analytics). 비우면 분석 스크립트를 넣지 않고 처리방침 B·D항도 '쓰지 않음'으로 표시. 값을 넣으면 site/build.py·build_lib.py가 모든 페이지에 스크립트를 넣는다
 };
-const ANALYTICS_ON = /^[A-Za-z0-9_-]{8,}$/.test(SHOP.analyticsToken || '');
+const ANALYTICS_ON = /^[A-Za-z0-9_-]{8,}$/.test(SHOP.analyticsToken || '') || SHOP.analyticsAuto === true;
 const COUNT_ON = SHOP.funnelCount === true;
 const ADSENSE_ON = /^ca-pub-\d{10,}$/.test(SHOP.adsenseClient || '');
 const ORDER_LIVE = SHOP.ordersOpen && /\S/.test(SHOP.mailOrderNo) && /\S/.test(SHOP.bizNo);

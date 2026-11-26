@@ -62,7 +62,7 @@ def site_info() -> dict:
         "mailOrderNo": val(r"mailOrderNo: '([^']*)'"),
         # 전화 응대 시간: SHOP.sla가 가리키는 SLA_COPY 항목의 tel 값 (e1_data.js 한 곳에서만 바꾼다)
         "telHours": val(r"\b" + re.escape(val(r"sla: '(\w+)'") or "parttime") + r": \{[^}]*?tel: '([^']*)'"),
-        "analyticsToken": val(r"analyticsToken: '([^']*)'"),
+        "analyticsToken": val(r"analyticsToken: '([^']*)'"),   # 비어 있고 analyticsAuto가 true면 Cloudflare 자동 설치(스크립트를 직접 넣지 않는다)
         "adsenseClient": val(r"adsenseClient: '([^']*)'"),
         "funnelCount": val(r"funnelCount: (true|false)") == "true",   # 문의 집계 스위치 (e1_data.js SHOP.funnelCount)
     }
