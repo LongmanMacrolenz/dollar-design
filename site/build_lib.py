@@ -168,7 +168,7 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com"><link href=
 def page(title: str, desc: str, path: str, body: str, ld: dict | None = None, index: bool = True, lang: str = "ko", alternates: dict | None = None) -> str:
     """정적 페이지. 한국어 쪽(tables·products·lib)과 /en/ 아래 영문 쪽은 같은 경로로 짝을 이루고, 머리의 KO·EN 전환과 hreflang이 서로를 가리킨다."""
     if alternates is None and index:
-        if lang == "ko" and re.match(r"(tables|products|lib)(/|$)", path):
+        if lang == "ko" and re.match(r"(tables|products|lib|notes)(/|$)", path):
             alternates = {"ko": path, "en": "en/" + path, "x-default": path}
         elif lang == "en" and path.startswith("en/") and path != "en/":
             alternates = {"ko": path[3:], "en": path, "x-default": path[3:]}

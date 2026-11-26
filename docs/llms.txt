@@ -188,6 +188,7 @@
 
 - [엔지니어 노트 전체](https://boltnote.net/notes/)
 - [A193 B7에 저온 충격시험이 붙은 RFQ 읽는 법: A320 L7과 너트까지](https://boltnote.net/notes/b7-impact-test-a320-l7): B7 볼트에 충격시험이 붙은 RFQ에서 되물을 점, A320 L7 대안, 너트·성적서 확인을 정리합니다.
+- [Engineer notes (English)](https://boltnote.net/en/notes/)
 
 ## English (same pages in English)
 
