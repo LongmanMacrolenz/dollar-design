@@ -296,7 +296,7 @@ def check_home(page, BASE, OUT):
   assert page.evaluate('location.hash')=='#t-bolt'
   page.goto(BASE+'/#home');page.locator('.bn-company-hero').wait_for()
   page.locator('#sales-home-copy').click();page.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
-  assert page.evaluate('navigator.clipboard.readText()')=='a8wlhg942@naver.com'
+  assert page.evaluate('navigator.clipboard.readText()')=='sales@boltnote.net'
   assert '접수 완료' not in page.locator('#sales-status').inner_text()
   assert page.locator('.sales-biz img.sales-biz-logo').get_attribute('alt')=='볼트노트'
   assert page.locator('.sales-chat a.sales-kakao svg').count()==1
@@ -323,7 +323,7 @@ def check_sales(page, BASE, OUT):
    button=page.locator('#sales-copy-address').bounding_box();assert button['y']+button['height']<=height,(width,button)
    assert page.locator('.sales-page input:visible,.sales-page textarea:visible,.sales-page select:visible').count()==0
    assert page.locator('#sb').count()==0
-  assert page.locator('#sales-email').inner_text()=='a8wlhg942@naver.com'
+  assert page.locator('#sales-email').inner_text()=='sales@boltnote.net'
   assert page.locator('.sales-page a[href^="mailto:"]').count()==0
   assert page.locator('#sales-example-heading').inner_text()=='RFQ 이메일 예시'
   subject=page.locator('#sales-example-subject').inner_text();assert subject.startswith('[RFQ] Q-')
@@ -333,7 +333,7 @@ def check_sales(page, BASE, OUT):
   assert page.locator('.sales-chat a').get_attribute('href')==CHANNEL_CHAT
   pages=len(page.context.pages)
   page.locator('#sales-copy-address').click();page.locator('#sales-status').filter(has_text='이메일 주소를 복사').wait_for()
-  assert page.evaluate('navigator.clipboard.readText()')=='a8wlhg942@naver.com'
+  assert page.evaluate('navigator.clipboard.readText()')=='sales@boltnote.net'
   page.locator('[data-sales-copy=subject]').click();page.locator('#sales-example-status').filter(has_text='제목을 복사').wait_for()
   assert page.evaluate('navigator.clipboard.readText()')==subject
   page.locator('.sales-example [data-sales-copy=body]').click();page.locator('#sales-example-status').filter(has_text='본문 전체를 복사').wait_for()
@@ -444,7 +444,7 @@ def check_english(page, BASE, OUT):
   """English page for buyers in Korea: lang en, the address and KakaoTalk visible, no mail-app link, fits a phone, linked from the Korean menu."""
   context=page.context.browser.new_context(viewport={'width':320,'height':740});tab=context.new_page();problems=[];tab.on('pageerror',lambda e:problems.append(str(e)))
   assert tab.goto(BASE+'/en/').status==200 and tab.locator('html').get_attribute('lang')=='en' and tab.locator('h1').count()==1
-  assert tab.locator('.en-mail').inner_text()=='a8wlhg942@naver.com' and tab.locator('a[href^="https://pf.kakao.com/"]').count()>=1 and tab.locator('.en-send').count()==1 and tab.locator('a[href^="mailto:"]').count()==0
+  assert tab.locator('.en-mail').inner_text()=='sales@boltnote.net' and tab.locator('a[href^="https://pf.kakao.com/"]').count()>=1 and tab.locator('.en-send').count()==1 and tab.locator('a[href^="mailto:"]').count()==0
   text=tab.locator('main').inner_text();assert 'KRW' in text and 'We hold no stock' in text and '1 business day' in text
   assert tab.evaluate('document.documentElement.scrollWidth<=innerWidth') and tab.locator('a[href="/en/tables/"]').count()>=1
   assert tab.locator('nav.lang a[href="/"]').inner_text()=='KO' and tab.locator('nav.top a[href="/en/"]').count()==0

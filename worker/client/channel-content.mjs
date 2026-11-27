@@ -7,7 +7,7 @@ export const CHANNEL = Object.freeze({
   manager:'https://business.kakao.com/space/10705866/dashboard',
   chats:'https://business.kakao.com/space/10705866/channel/_ZlHxiX/chats',
   posts:'https://business.kakao.com/space/10705866/channel/_ZlHxiX/posts',
-  email:'a8wlhg942@naver.com', tel:'010-2093-0196',
+  email:'sales@boltnote.net', tel:'010-2093-0196',
   confirmed:'2026-10-06',
 });
 export const GROUPS = [

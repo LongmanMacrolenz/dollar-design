@@ -126,3 +126,9 @@ Cloudflare의 Git 연결이 `main` 병합 후 `npx wrangler deploy`로 배포합
 로컬 메일 연결을 검증할 때만 `.dev.vars`에 테스트용 비밀정보를 넣습니다(파일은 git이 무시). 테스트는 합성 가격·example.com 주소와 가짜 소켓을 사용하며 실제 메일을 발송하지 않습니다.
 
 한국어 PDF 글꼴: Google Fonts 공식 Gothic A1 Regular, SIL Open Font License. `worker/assets/OFL.txt` 참조.
+
+## 공개 견적 주소 sales@boltnote.net (2026-11-27)
+
+- 사이트·견적서·메일 서명에는 `sales@boltnote.net`만 보입니다(`CONTACT.rfq`, `worker/mail.mjs`의 `MAIL_PUBLIC`).
+- 받는 쪽: Cloudflare Email Routing이 `sales@boltnote.net`을 네이버 계정으로 전달합니다. 관리자 화면은 계속 네이버 IMAP으로 읽습니다(`MAIL_ACCOUNT`은 로그인 계정일 뿐 고객에게 보이지 않음).
+- 보내는 쪽: 네이버 SMTP는 발신 주소를 네이버 계정으로만 허용하므로 `From`은 네이버 주소, `Reply-To`는 `sales@boltnote.net`입니다. 고객이 답장하면 `sales@`로 들어옵니다.
