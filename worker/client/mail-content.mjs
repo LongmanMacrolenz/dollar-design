@@ -4,11 +4,11 @@
 const SITE='https://boltnote.net';
 export const SIGN=`볼트노트 · 박세중
 사업자등록번호 456-19-02858
-a8wlhg942@naver.com · 010-2093-0196 (평일 09–18시)
+sales@boltnote.net · 010-2093-0196 (평일 09–18시)
 ${SITE}`;
 // 광고 메일(내가 먼저 권해 동의받은 메일)의 맨 아래에 붙이는 두 문단: 보내는 곳(명칭·주소·전화·메일)과 수신 거부 안내(한글·영문).
 // 주소는 보내기 전에 직접 적는다 (저장소·화면에 남기지 않는다).
-export const AD_FOOT=`보내는 곳: 볼트노트(대표 박세중) · [사업장 주소] · 010-2093-0196 · a8wlhg942@naver.com
+export const AD_FOOT=`보내는 곳: 볼트노트(대표 박세중) · [사업장 주소] · 010-2093-0196 · sales@boltnote.net
 
 수신을 원하지 않으시면 이 메일에 "수신거부"라고만 회신해 주세요. 다시 보내지 않습니다.
 If you do not want to receive emails from us, reply to this email with "unsubscribe".`;

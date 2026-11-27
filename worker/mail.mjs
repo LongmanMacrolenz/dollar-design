@@ -4,7 +4,8 @@ import {email,text,DomainError} from './domain.mjs';
 
 const utf8=new TextEncoder();
 const decode=new TextDecoder();
-export const MAIL_ACCOUNT='a8wlhg942@naver.com';
+export const MAIL_ACCOUNT='a8wlhg942@naver.com';   // 네이버 로그인 계정(IMAP/SMTP). 고객에게 보이는 주소가 아니다
+export const MAIL_PUBLIC='sales@boltnote.net';     // 공개 견적 주소 (2026-11-27). Cloudflare Email Routing이 MAIL_ACCOUNT로 전달한다
 export const MAX_MAIL_BYTES=8*1024*1024;
 export class MailError extends Error {
   constructor(code,unknown=false){super(code);this.code=code;this.deliveryUnknown=unknown;}
@@ -138,7 +139,7 @@ export function buildMessage({to,subject,plain,html,attachment,messageId,replyTo
   to=email(to);const id=text(messageId,120);
   if(!/^[a-zA-Z0-9._-]+$/.test(id)) throw new DomainError('메일 식별자를 확인하세요.');
   const mix='bnm_'+id,alt='bna_'+id;
-  const headers=[`From: ${encodeHeader('볼트노트')} <${MAIL_ACCOUNT}>`,`To: ${to}`,`Subject: ${encodeHeader(subject)}`,`Date: ${new Date().toUTCString()}`,`Message-ID: <${id}@naver.com>`,'MIME-Version: 1.0'];
+  const headers=[`From: ${encodeHeader('볼트노트')} <${MAIL_ACCOUNT}>`,`Reply-To: ${MAIL_PUBLIC}`,`To: ${to}`,`Subject: ${encodeHeader(subject)}`,`Date: ${new Date().toUTCString()}`,`Message-ID: <${id}@naver.com>`,'MIME-Version: 1.0'];
   if(replyToMessageId && /^<[^<>\r\n]{1,490}>$/.test(replyToMessageId)) headers.push(`In-Reply-To: ${replyToMessageId}`,`References: ${replyToMessageId}`);
   headers.push(`Content-Type: multipart/mixed; boundary="${mix}"`);
   let body=`--${mix}\r\nContent-Type: multipart/alternative; boundary="${alt}"\r\n\r\n`;
