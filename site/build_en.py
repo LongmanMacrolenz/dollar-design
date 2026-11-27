@@ -62,7 +62,7 @@ def facts():
 
 def header(on: str = ""):
     """한국어 머리(site/build_lib.py header)와 같은 메뉴 순서·같은 단추. 영문 쪽은 규격표·제품·사전·노트가 /en/ 아래 짝이다."""
-    nav = [("/en/products/", "Products", "products"), ("/en/tables/", "Dimension tables", "tables"), ("/en/#rfq", "Sales", ""), ("/en/lib/", "Glossary", "lib"), ("/en/notes/", "Notes", "notes"), ("/en/#about", "About", "")]
+    nav = [("/en/products/", "Products", "products"), ("/en/tables/", "Dimension tables", "tables"), ("/en/#rfq", "Sales", ""), ("/en/lib/", "Glossary", "lib"), ("/en/notes/", "Notes", "notes"), ("/en/ads/", "Advertise", "ads"), ("/en/#about", "About", "")]
     return ('<header><div class="w"><a class="brand" href="/en/" aria-label="Boltnote home (English)">' + MARK + '</a>'
             '<nav class="top" aria-label="Main">' + "".join('<a href="%s"%s>%s</a>' % (h, ' class="on" aria-current="page"' if k == on else "", t) for h, t, k in nav) + '</nav>'
             '<nav class="lang" aria-label="Language"><a href="@@KO@@" lang="ko" hreflang="ko" title="한국어">KO</a> · <b aria-current="true">EN</b></nav>'

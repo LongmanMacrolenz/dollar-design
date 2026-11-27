@@ -38,6 +38,7 @@ def build(root: pathlib.Path):
     print(run("site/build_products.py", cwd=root))
     print(run("site/build_tables.py", cwd=root))
     print(run("site/build_notes.py", cwd=root))
+    print(run("site/build_ads.py", cwd=root))
     print(run("site/build_en_site.py", cwd=root))
     print(run("site/build_ai.py", cwd=root))
     print(run("site/build_en.py", cwd=root))
@@ -54,6 +55,7 @@ def tree(root: pathlib.Path):
     keep += sorted((root / "docs" / "products").rglob("*.html"))
     keep += sorted((root / "docs" / "tables").glob("*.html"))
     keep += sorted((root / "docs" / "notes").glob("*.html"))
+    keep += [root / "docs" / "ads" / "index.html", root / "docs" / "en" / "ads" / "index.html"]
     keep += sorted((root / "docs" / "en").rglob("*.html"))
     keep += sorted((root / "docs" / "brand").glob("*"))
     keep += sorted(p for p in (root / "docs" / "assets" / "tr-ad").rglob("*") if p.is_file())
